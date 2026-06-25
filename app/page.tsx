@@ -1,3 +1,5 @@
+import { Navbar } from "@/components/Navbar";
+
 const features = [
   {
     title: "Built for Elite Football",
@@ -61,6 +63,8 @@ const features = [
 export default function Home() {
   return (
     <div className="flex min-h-full flex-col">
+      <Navbar />
+
       {/* Hero */}
       <section className="relative flex flex-1 flex-col items-center justify-center overflow-hidden px-6 py-24 sm:py-32">
         <div
