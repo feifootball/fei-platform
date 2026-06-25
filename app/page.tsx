@@ -101,21 +101,26 @@ export default function Home() {
       {/* Hero */}
       <section className="flex flex-1 flex-col items-center justify-center px-6 py-32 sm:py-44">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="mb-10 text-xs font-medium uppercase tracking-[0.35em] text-fei-sky sm:text-sm">
-            Football is global.
-          </p>
+        <p className="mb-6 text-xs font-medium uppercase tracking-[0.35em] text-fei-sky sm:text-sm">
+  Football is global.
+</p>
 
-          <h1 className="text-5xl font-bold leading-tight tracking-tight text-fei-text sm:text-6xl">
-            Communication limits
-            <br />
-            opportunity.
-          </h1>
+<h1 className="bg-gradient-to-r from-fei-yellow to-fei-sky bg-clip-text text-8xl font-black text-transparent sm:text-9xl">
+  FEI
+</h1>
 
-          <p className="mx-auto mt-10 max-w-xl text-lg font-semibold leading-snug text-fei-yellow sm:text-xl">
-            FEI builds communication intelligence
-            <br />
-            for football professionals.
-          </p>
+<div className="mt-6">
+  <p className="text-4xl font-bold leading-tight tracking-tight text-fei-text sm:text-5xl">
+    The language of elite football
+  </p>
+  <p className="text-4xl font-bold leading-tight tracking-tight text-fei-yellow sm:text-5xl">
+    is English.
+  </p>
+</div>
+
+<p className="mx-auto mt-6 max-w-xl text-base text-fei-text/60">
+  Communication intelligence for football professionals.
+</p>
 
           <div className="mt-14">
             <a
