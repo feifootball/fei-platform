@@ -99,38 +99,25 @@ export default function Home() {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative flex flex-1 flex-col items-center justify-center overflow-hidden px-6 py-24 sm:py-32">
-        <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(125,211,252,0.12)_0%,_transparent_60%)]"
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute -top-24 left-1/2 size-96 -translate-x-1/2 rounded-full bg-fei-sky/5 blur-3xl"
-          aria-hidden
-        />
-
-        <div className="relative z-10 mx-auto max-w-3xl text-center">
-          <p className="mb-4 text-sm font-medium uppercase tracking-[0.25em] text-fei-sky">
-            Football English Intelligence
+      <section className="flex flex-1 flex-col items-center justify-center px-6 py-32 sm:py-44">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="mb-10 text-xs font-medium uppercase tracking-[0.35em] text-fei-sky sm:text-sm">
+            Football is global.
           </p>
 
-          <h1 className="text-8xl font-black tracking-tight sm:text-9xl">
-            <span className="bg-gradient-to-r from-fei-yellow to-fei-sky bg-clip-text text-transparent">
-              FEI
-            </span>
+          <h1 className="text-5xl font-bold leading-tight tracking-tight text-fei-text sm:text-6xl">
+            Communication limits
+            <br />
+            opportunity.
           </h1>
 
-          <div className="mt-8 text-3xl font-semibold leading-tight sm:text-4xl">
-            <p className="text-fei-text">The language of elite football</p>
-            <p className="text-fei-yellow">is English.</p>
-          </div>
-
-          <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-fei-text/60 sm:text-lg">
-            Purpose-built for scouts, coaches, analysts and players who compete
-            at the highest level.
+          <p className="mx-auto mt-10 max-w-xl text-lg font-semibold leading-snug text-fei-yellow sm:text-xl">
+            FEI builds communication intelligence
+            <br />
+            for football professionals.
           </p>
 
-          <div className="mt-10">
+          <div className="mt-14">
             <a
               href="#get-started"
               className="inline-flex items-center gap-2 rounded-full bg-fei-yellow px-8 py-3.5 text-base font-semibold text-fei-bg transition-all hover:bg-fei-yellow/90 hover:shadow-[0_0_32px_rgba(250,204,21,0.35)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fei-yellow"
