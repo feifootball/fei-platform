@@ -68,17 +68,29 @@ const stats = [
 ];
 
 const roles = [
-  { name: "Scout", emoji: "🔭" },
-  { name: "Head Coach", emoji: "📋" },
-  { name: "Academy Director", emoji: "🎓" },
-  { name: "Assistant Coach", emoji: "🤝" },
-  { name: "Performance Analyst", emoji: "📊" },
-  { name: "Head of Scouting", emoji: "🗺️" },
-  { name: "Fitness Coach", emoji: "💪" },
-  { name: "Sports Psychologist", emoji: "🧠" },
-  { name: "Physiotherapist", emoji: "🩹" },
-  { name: "Nutritionist", emoji: "🥗" },
-  { name: "Professional Players", emoji: "⚽" },
+  { name: "Scout", description: "Identify and report talent globally" },
+  { name: "Head Coach", description: "Lead tactical communication" },
+  { name: "Academy Director", description: "Build the next generation" },
+  { name: "Assistant Coach", description: "Translate vision into action" },
+  {
+    name: "Performance Analyst",
+    description: "Convert data into decisions",
+  },
+  { name: "Head of Scouting", description: "Drive recruitment strategy" },
+  { name: "Fitness Coach", description: "Protect player availability" },
+  {
+    name: "Sports Psychologist",
+    description: "Facilitate mental performance",
+  },
+  {
+    name: "Physiotherapist",
+    description: "Communicate with medical precision",
+  },
+  { name: "Nutritionist", description: "Turn nutrition into performance" },
+  {
+    name: "Professional Players",
+    description: "Represent the club on the global stage",
+  },
 ];
 
 export default function Home() {
@@ -203,13 +215,13 @@ export default function Home() {
               {roles.map((role) => (
                 <article
                   key={role.name}
-                  className="flex flex-col items-center gap-2 rounded-xl border border-transparent bg-[#162033] px-4 py-5 text-center transition-colors hover:border-fei-sky"
+                  className="flex flex-col items-center gap-1.5 rounded-xl border border-transparent bg-[#162033] px-4 py-5 text-center transition-colors hover:border-fei-sky"
                 >
-                  <span className="text-2xl" aria-hidden>
-                    {role.emoji}
-                  </span>
-                  <span className="text-sm font-medium text-fei-text">
+                  <span className="text-sm font-bold text-fei-yellow">
                     {role.name}
+                  </span>
+                  <span className="text-xs leading-snug text-fei-sky">
+                    {role.description}
                   </span>
                 </article>
               ))}
