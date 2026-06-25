@@ -60,6 +60,13 @@ const features = [
   },
 ];
 
+const stats = [
+  { value: "11", label: "Roles" },
+  { value: "126", label: "Scenarios" },
+  { value: "4", label: "CEFR Levels" },
+  { value: "504", label: "Unique Tasks" },
+];
+
 const roles = [
   { name: "Scout", emoji: "🔭" },
   { name: "Head Coach", emoji: "📋" },
@@ -132,11 +139,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features */}
+      {/* Stats */}
       <section
-        id="get-started"
-        className="border-t border-fei-text/10 px-6 py-20 sm:py-28"
+        aria-label="Platform statistics"
+        className="border-y border-fei-text/10 bg-fei-text/[0.02] px-6 py-12 sm:py-14"
       >
+        <div className="mx-auto grid max-w-5xl grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-4">
+          {stats.map((stat) => (
+            <div key={stat.label} className="text-center">
+              <p className="text-4xl font-bold tracking-tight text-fei-yellow sm:text-5xl">
+                {stat.value}
+              </p>
+              <p className="mt-1.5 text-sm text-fei-sky">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Features */}
+      <section id="get-started" className="px-6 py-20 sm:py-28">
         <div className="mx-auto max-w-5xl">
           <div className="mb-12 text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
