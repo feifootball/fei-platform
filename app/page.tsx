@@ -114,17 +114,20 @@ export default function Home() {
             Football English Intelligence
           </p>
 
-          <h1 className="text-6xl font-bold tracking-tight sm:text-8xl">
-            <span className="text-fei-yellow">FEI</span>
+          <h1 className="text-8xl font-black tracking-tight sm:text-9xl">
+            <span className="bg-gradient-to-r from-fei-yellow to-fei-sky bg-clip-text text-transparent">
+              FEI
+            </span>
           </h1>
 
-          <p className="mt-6 text-xl font-light leading-relaxed text-fei-text/80 sm:text-2xl">
-            Professional English for Elite Football
-          </p>
+          <div className="mt-8 text-3xl font-semibold leading-tight sm:text-4xl">
+            <p className="text-fei-text">The language of elite football</p>
+            <p className="text-fei-yellow">is English.</p>
+          </div>
 
-          <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-fei-text/60">
-            The SaaS platform that equips football professionals with the
-            language skills to perform on the global stage.
+          <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-fei-text/60 sm:text-lg">
+            Purpose-built for scouts, coaches, analysts and players who compete
+            at the highest level.
           </p>
 
           <div className="mt-10">
