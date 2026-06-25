@@ -60,6 +60,20 @@ const features = [
   },
 ];
 
+const roles = [
+  { name: "Scout", emoji: "🔭" },
+  { name: "Head Coach", emoji: "📋" },
+  { name: "Academy Director", emoji: "🎓" },
+  { name: "Assistant Coach", emoji: "🤝" },
+  { name: "Performance Analyst", emoji: "📊" },
+  { name: "Head of Scouting", emoji: "🗺️" },
+  { name: "Fitness Coach", emoji: "💪" },
+  { name: "Sports Psychologist", emoji: "🧠" },
+  { name: "Physiotherapist", emoji: "🩹" },
+  { name: "Nutritionist", emoji: "🥗" },
+  { name: "Professional Players", emoji: "⚽" },
+];
+
 export default function Home() {
   return (
     <div className="flex min-h-full flex-col">
@@ -152,6 +166,33 @@ export default function Home() {
                 </p>
               </article>
             ))}
+          </div>
+
+          <div className="mt-24 border-t border-fei-text/10 pt-20">
+            <div className="mb-10 text-center">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                Built for Every Role in the Club
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-fei-text/60">
+                From the dressing room to the boardroom.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
+              {roles.map((role) => (
+                <article
+                  key={role.name}
+                  className="flex flex-col items-center gap-2 rounded-xl border border-transparent bg-[#162033] px-4 py-5 text-center transition-colors hover:border-fei-sky"
+                >
+                  <span className="text-2xl" aria-hidden>
+                    {role.emoji}
+                  </span>
+                  <span className="text-sm font-medium text-fei-text">
+                    {role.name}
+                  </span>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
