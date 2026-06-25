@@ -218,6 +218,48 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Final CTA */}
+      <section
+        aria-labelledby="final-cta-heading"
+        className="relative overflow-hidden px-6 py-20 sm:py-28"
+      >
+        <div
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(250,204,21,0.08)_0%,_transparent_70%)]"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-0 bg-gradient-to-b from-fei-yellow/[0.04] via-transparent to-transparent"
+          aria-hidden
+        />
+
+        <div className="relative z-10 mx-auto max-w-3xl text-center">
+          <h2
+            id="final-cta-heading"
+            className="text-3xl font-bold tracking-tight sm:text-5xl"
+          >
+            Ready to Perform at the Highest Level?
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-lg text-fei-text/60 sm:text-xl">
+            Join the clubs and professionals already training with FEI.
+          </p>
+
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <a
+              href="#get-started"
+              className="inline-flex items-center justify-center rounded-full bg-fei-yellow px-8 py-3.5 text-base font-semibold text-fei-bg transition-all hover:bg-fei-yellow/90 hover:shadow-[0_0_32px_rgba(250,204,21,0.35)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fei-yellow"
+            >
+              Get Started
+            </a>
+            <a
+              href="#"
+              className="inline-flex items-center justify-center rounded-full border border-fei-sky px-8 py-3.5 text-base font-medium text-fei-sky transition-colors hover:bg-fei-sky/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fei-sky"
+            >
+              Book a Demo
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="mt-auto border-t border-fei-text/10 px-6 py-8">
         <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 sm:flex-row">
