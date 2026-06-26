@@ -270,8 +270,8 @@ export default function Home() {
       {/* Footer */}
       <footer className="mt-auto border-t border-fei-text/10 px-6 py-8">
         <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 sm:flex-row">
-          <div className="flex items-center gap-2">
-            <span className="text-lg font-bold text-fei-yellow">FEI</span>
+          <div className="flex items-center gap-2.5">
+            <img src="/logo.svg" alt="FEI" className="h-6 w-auto" />
             <span className="text-sm text-fei-text/50">
               Football English Intelligence
             </span>
