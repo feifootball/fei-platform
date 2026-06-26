@@ -9,16 +9,10 @@ export function Navbar() {
           </span>
         </a>
         <div className="flex items-center gap-3">
-          
-            href="#login"
-            className="rounded-full border border-fei-sky px-5 py-2 text-sm font-medium text-fei-sky transition-colors hover:bg-fei-sky/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fei-sky"
-          >
+          <a href="#login" className="rounded-full border border-fei-sky px-5 py-2 text-sm font-medium text-fei-sky transition-colors hover:bg-fei-sky/10">
             Login
           </a>
-          
-            href="#get-started"
-            className="rounded-full bg-fei-yellow px-5 py-2 text-sm font-semibold text-fei-bg transition-colors hover:bg-fei-yellow/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fei-yellow"
-          >
+          <a href="#get-started" className="rounded-full bg-fei-yellow px-5 py-2 text-sm font-semibold text-fei-bg transition-colors hover:bg-fei-yellow/90">
             Get Started
           </a>
         </div>
