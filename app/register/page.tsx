@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { createClient } from '@/lib/supabase'
-import { useRouter } from 'next/navigation'
 
 export default function RegisterPage() {
   const [email, setEmail] = useState('')
@@ -10,7 +9,7 @@ export default function RegisterPage() {
   const [name, setName] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
-  const router = useRouter()
+  const [success, setSuccess] = useState(false)
   const supabase = createClient()
 
   async function handleRegister(e: React.FormEvent) {
@@ -26,8 +25,31 @@ export default function RegisterPage() {
       setError(error.message)
       setLoading(false)
     } else {
-      router.push('/dashboard')
+      setSuccess(true)
     }
+  }
+
+  if (success) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-fei-bg px-6">
+        <div className="w-full max-w-md text-center">
+          <span className="text-4xl font-black text-fei-yellow">FEI</span>
+          <p className="mt-2 text-sm text-fei-sky">Football English Intelligence</p>
+          <div className="mt-8 rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-8">
+            <div className="mb-4 text-4xl">📬</div>
+            <h1 className="mb-3 text-2xl font-bold text-fei-text">Check your inbox</h1>
+            <p className="text-fei-text/60">
+              We sent a confirmation email to <span className="text-fei-yellow font-medium">{email}</span>.
+              Click the link in the email to activate your account.
+            </p>
+            <p className="mt-4 text-sm text-fei-text/40">
+              Already confirmed?{' '}
+              <a href="/login" className="text-fei-sky hover:underline">Sign in</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    )
   }
 
   return (
