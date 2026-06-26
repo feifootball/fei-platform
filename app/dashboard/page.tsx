@@ -40,10 +40,12 @@ export default function DashboardPage() {
     <div className="min-h-screen bg-fei-bg px-6 py-12">
       <div className="mx-auto max-w-4xl">
         <div className="mb-8 flex items-center justify-between">
-          <div>
-            <span className="text-2xl font-black text-fei-yellow">FEI</span>
-            <span className="ml-2 text-sm text-fei-sky">Football English Intelligence</span>
-          </div>
+          <a href="/" className="flex items-center gap-2.5">
+            <img src="/logo.svg" alt="FEI" className="h-8 w-auto" />
+            <span className="text-xs font-medium text-fei-sky sm:text-sm">
+              Football English Intelligence
+            </span>
+          </a>
           <button
             onClick={handleLogout}
             className="rounded-full border border-fei-text/20 px-4 py-2 text-sm text-fei-text/60 hover:border-fei-text/40"
