@@ -27,6 +27,17 @@ type AssessmentRecord = {
   completed_at?: string | null
 }
 
+type Subscription = {
+  id: string
+  user_id: string
+  plan: string
+  status: string
+  price: number | null
+  started_at: string | null
+  expires_at: string | null
+  created_at: string | null
+}
+
 type AuthUserSummary = {
   id: string
   email: string
@@ -99,6 +110,45 @@ function getCefrDistribution(assessments: AssessmentRecord[]) {
     .sort((a, b) => a.level.localeCompare(b.level))
 }
 
+function getActiveUsers(profiles: Profile[]) {
+  const thirtyDaysAgo = new Date()
+  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30)
+
+  return profiles.filter((p) => {
+    if (!p.created_at) return false
+    return new Date(p.created_at) > thirtyDaysAgo
+  }).length
+}
+
+function getSubscriptionMetrics(subscriptions: Subscription[]) {
+  const now = new Date()
+  const activeCount = subscriptions.filter((s) => s.status === 'active').length
+  const expiredCount = subscriptions.filter(
+    (s) => s.expires_at && new Date(s.expires_at) < now && s.status !== 'cancelled'
+  ).length
+
+  const totalRevenue = subscriptions
+    .filter((s) => s.status === 'active' && s.price)
+    .reduce((sum, s) => sum + (s.price || 0), 0)
+
+  const monthlyRevenue = subscriptions
+    .filter(
+      (s) =>
+        s.status === 'active' &&
+        s.price &&
+        s.started_at &&
+        new Date(s.started_at) <= now
+    )
+    .reduce((sum, s) => sum + (s.price || 0), 0)
+
+  return {
+    activeCount,
+    expiredCount,
+    totalRevenue,
+    monthlyRevenue,
+  }
+}
+
 function EmptyState({ children }: { children: React.ReactNode }) {
   return (
     <p className="mt-4 rounded-xl border border-fei-text/10 bg-fei-text/[0.04] px-4 py-5 text-sm leading-relaxed text-fei-text/60">
@@ -165,6 +215,7 @@ export default async function AdminPage() {
   const profiles = (profilesData ?? []) as Profile[]
   const recentProfiles = profiles.slice(0, 8)
   const roleCounts = getRoleCounts(profiles)
+  const activeUsersLast30 = getActiveUsers(profiles)
   const authUsers = await listAllAuthUsers()
   const profileUserIds = new Set(profiles.map((profile) => profile.user_id))
   const usersWithoutProfile: AuthUserSummary[] = authUsers
@@ -180,20 +231,32 @@ export default async function AdminPage() {
       return bTime - aTime
     })
 
-  const { count: completedAssessmentCount, error: assessmentCountError } = await supabase
+  const { count: completedAssessmentCount } = await supabase
     .from('assessment_history')
     .select('id', { count: 'exact', head: true })
 
-  const { data: assessmentData, error: assessmentDataError } = await supabase
+  const { data: assessmentData } = await supabase
     .from('assessment_history')
     .select('id, user_id, score, level, created_at, completed_at')
     .order('created_at', { ascending: false })
     .limit(1000)
 
-  const assessments =
-    assessmentCountError || assessmentDataError ? [] : ((assessmentData ?? []) as AssessmentRecord[])
+  const assessments = (assessmentData ?? []) as AssessmentRecord[]
   const cefrDistribution = getCefrDistribution(assessments)
   const recentActivity = assessments.slice(0, 8)
+
+  const { data: subscriptionsData } = await supabase
+    .from('subscriptions')
+    .select('*')
+    .order('created_at', { ascending: false })
+
+  const subscriptions = (subscriptionsData ?? []) as Subscription[]
+  const subscriptionMetrics = getSubscriptionMetrics(subscriptions)
+
+  const conversionRate =
+    authUsers.length > 0
+      ? Math.round((profiles.length / authUsers.length) * 100)
+      : 0
 
   return (
     <div className="min-h-screen bg-fei-bg px-6 py-12">
@@ -217,15 +280,23 @@ export default async function AdminPage() {
           <p className="text-sm font-semibold uppercase tracking-[0.25em] text-fei-sky">Founder admin</p>
           <h1 className="mt-3 text-3xl font-bold text-fei-text sm:text-4xl">FEI Admin Dashboard</h1>
           <p className="mt-3 max-w-2xl text-fei-text/50">
-            A simple internal view of profiles and diagnostic activity.
+            Internal view of users, assessments, and revenue metrics.
           </p>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           <StatCard label="Total registered users" value={authUsers.length} />
-          <StatCard label="Total profiles" value={totalProfiles ?? profiles.length} />
-          <StatCard label="Completed assessments" value={completedAssessmentCount ?? assessments.length} />
+          <StatCard label="Active (last 30 days)" value={activeUsersLast30} />
+          <StatCard label="Conversion rate" value={`${conversionRate}%`} />
+          <StatCard label="Assessments completed" value={completedAssessmentCount ?? 0} />
           <StatCard label="Roles represented" value={roleCounts.length} />
+        </div>
+
+        <div className="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <StatCard label="Active subscriptions" value={subscriptionMetrics.activeCount} />
+          <StatCard label="Expired subscriptions" value={subscriptionMetrics.expiredCount} />
+          <StatCard label="Total revenue" value={`$${subscriptionMetrics.totalRevenue.toFixed(2)}`} />
+          <StatCard label="MRR" value={`$${subscriptionMetrics.monthlyRevenue.toFixed(2)}`} />
         </div>
 
         <div className="mt-6 grid gap-6 lg:grid-cols-2">
@@ -251,19 +322,20 @@ export default async function AdminPage() {
           </section>
 
           <section className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-6">
-            <h2 className="text-xl font-bold text-fei-text">Recent profiles</h2>
-            {recentProfiles.length === 0 ? (
-              <EmptyState>No recent profiles are available yet.</EmptyState>
+            <h2 className="text-xl font-bold text-fei-text">CEFR distribution</h2>
+            {cefrDistribution.length === 0 ? (
+              <EmptyState>
+                CEFR distribution will appear once assessments are completed.
+              </EmptyState>
             ) : (
-              <div className="mt-5 grid gap-3">
-                {recentProfiles.map((profile) => (
+              <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                {cefrDistribution.map((item) => (
                   <div
-                    key={`${profile.user_id}-${profile.created_at ?? 'profile'}`}
+                    key={item.level}
                     className="rounded-xl border border-fei-text/10 bg-fei-text/[0.04] p-4"
                   >
-                    <p className="font-semibold text-fei-text">{profile.role ?? 'No role selected'}</p>
-                    <p className="mt-1 break-all text-xs text-fei-text/45">User ID: {profile.user_id}</p>
-                    <p className="mt-2 text-sm text-fei-sky">{formatDate(profile.created_at)}</p>
+                    <p className="text-sm font-medium text-fei-text/50">CEFR {item.level}</p>
+                    <p className="mt-2 text-3xl font-black text-fei-yellow">{item.count}</p>
                   </div>
                 ))}
               </div>
@@ -291,43 +363,6 @@ export default async function AdminPage() {
                     <p className="font-semibold text-fei-text">{authUser.email}</p>
                     <p className="mt-1 break-all text-xs text-fei-text/45">User ID: {authUser.id}</p>
                     <p className="mt-2 text-sm text-fei-sky">{formatDate(authUser.created_at)}</p>
-                  </div>
-                ))}
-              </div>
-            )}
-          </section>
-
-          <section className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-6">
-            <h2 className="text-xl font-bold text-fei-text">Assessment metrics</h2>
-            {assessments.length === 0 ? (
-              <EmptyState>
-                Assessment data will appear here once users complete diagnostics.
-              </EmptyState>
-            ) : (
-              <div className="mt-5 rounded-xl border border-fei-text/10 bg-fei-text/[0.04] p-5">
-                <p className="text-sm font-medium text-fei-text/50">Total completed assessments</p>
-                <p className="mt-3 text-4xl font-black text-fei-yellow">
-                  {completedAssessmentCount ?? assessments.length}
-                </p>
-              </div>
-            )}
-          </section>
-
-          <section className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-6">
-            <h2 className="text-xl font-bold text-fei-text">CEFR distribution</h2>
-            {cefrDistribution.length === 0 ? (
-              <EmptyState>
-                CEFR distribution will appear once assessments are completed.
-              </EmptyState>
-            ) : (
-              <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                {cefrDistribution.map((item) => (
-                  <div
-                    key={item.level}
-                    className="rounded-xl border border-fei-text/10 bg-fei-text/[0.04] p-4"
-                  >
-                    <p className="text-sm font-medium text-fei-text/50">CEFR {item.level}</p>
-                    <p className="mt-2 text-3xl font-black text-fei-yellow">{item.count}</p>
                   </div>
                 ))}
               </div>
