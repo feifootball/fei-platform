@@ -101,31 +101,31 @@ export default function Home() {
       {/* Hero */}
       <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pb-24 pt-36 sm:pt-44">
         <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,rgba(250,204,21,0.13),transparent_34%),radial-gradient(circle_at_18%_35%,rgba(56,189,248,0.12),transparent_28%),linear-gradient(180deg,rgba(15,23,42,0)_0%,rgba(15,23,42,0.35)_100%)]"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_12%,rgba(250,204,21,0.12),transparent_34%),radial-gradient(circle_at_16%_34%,rgba(56,189,248,0.10),transparent_30%),linear-gradient(180deg,rgba(15,23,42,0)_0%,rgba(15,23,42,0.42)_100%)]"
           aria-hidden
         />
 
         <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="text-center lg:text-left">
-            <p className="mb-6 inline-flex rounded-full border border-fei-sky/20 bg-fei-sky/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-fei-sky">
+            <p className="mb-6 text-xs font-semibold uppercase tracking-[0.32em] text-fei-sky sm:text-sm">
               Football is global.
             </p>
 
-            <h1 className="max-w-4xl text-5xl font-black leading-[0.95] tracking-tight text-fei-text sm:text-7xl lg:text-8xl">
+            <h1 className="max-w-4xl pb-3 text-5xl font-black leading-[1.08] tracking-tight text-fei-text sm:text-7xl lg:text-8xl">
               Football English
-              <span className="block bg-gradient-to-r from-fei-yellow to-fei-sky bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-fei-yellow to-fei-sky bg-clip-text pb-2 text-transparent">
                 Intelligence.
               </span>
             </h1>
 
-            <p className="mt-7 max-w-2xl text-xl font-semibold leading-8 text-fei-text sm:text-2xl">
-              Communication Intelligence for Global Football.
+            <p className="mt-4 max-w-2xl text-2xl font-bold leading-tight text-fei-text sm:text-3xl">
+              Communication Creates Opportunity.
             </p>
 
             <p className="mt-5 max-w-2xl text-base leading-8 text-fei-text/60 sm:text-lg">
-              FEI helps football professionals develop the English communication
-              skills that create opportunity — from the dressing room to the
-              boardroom, from trials to interviews, from clubs to the global game.
+              FEI helps football professionals build the English communication
+              skills needed for trials, clubs, interviews, agents, scouts, and
+              the global game.
             </p>
 
             <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row lg:justify-start">
@@ -156,59 +156,103 @@ export default function Home() {
                 Login
               </a>
             </div>
-
-            <p className="mt-8 text-sm font-medium text-fei-text/45">
-              Communication Creates Opportunity.
-            </p>
           </div>
 
           <div className="relative mx-auto w-full max-w-md lg:max-w-none">
-            <div className="absolute -inset-6 rounded-[2.5rem] bg-fei-yellow/10 blur-3xl" aria-hidden />
+            <div className="absolute -inset-8 rounded-[3rem] bg-fei-yellow/10 blur-3xl" aria-hidden />
+            <div className="absolute right-4 top-8 h-24 w-24 rounded-full bg-fei-sky/10 blur-2xl" aria-hidden />
+            <div className="absolute bottom-8 left-4 h-28 w-28 rounded-full bg-fei-yellow/10 blur-2xl" aria-hidden />
 
-            <div className="relative overflow-hidden rounded-[2rem] border border-fei-text/10 bg-[#101827]/85 p-5 shadow-2xl backdrop-blur-xl">
-              <div className="flex items-center justify-between border-b border-fei-text/10 pb-4">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.25em] text-fei-sky">
-                    FEI Platform
-                  </p>
-                  <p className="mt-1 text-lg font-bold text-fei-text">
-                    Diagnostic Preview
-                  </p>
-                </div>
-
-                <div className="rounded-full bg-fei-yellow px-3 py-1 text-xs font-bold text-fei-bg">
-                  Live
-                </div>
-              </div>
-
-              <div className="mt-5 space-y-3">
-                {[
-                  "Choose your football role",
-                  "Measure real communication skills",
-                  "Understand your profile",
-                  "Follow a personalized learning path",
-                ].map((item, index) => (
-                  <div
-                    key={item}
-                    className="flex items-center gap-3 rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-4"
-                  >
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-fei-sky/10 text-sm font-bold text-fei-sky">
-                      {index + 1}
-                    </span>
-                    <span className="text-sm font-medium text-fei-text/75">
-                      {item}
-                    </span>
+            <div className="relative rounded-[2.25rem] border border-fei-text/10 bg-[#101827]/85 p-5 shadow-2xl backdrop-blur-xl">
+              <div className="rounded-[1.75rem] border border-fei-text/10 bg-fei-bg/70 p-5">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-fei-sky">
+                      FEI Profile
+                    </p>
+                    <h2 className="mt-2 text-2xl font-bold text-fei-text">
+                      Communication Readiness
+                    </h2>
                   </div>
-                ))}
+
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full border border-fei-yellow/30 bg-fei-yellow/10 text-xl font-black text-fei-yellow">
+                    B2
+                  </div>
+                </div>
+
+                <div className="mt-7 grid gap-3">
+                  <div className="rounded-2xl border border-fei-yellow/20 bg-fei-yellow/[0.08] p-4">
+                    <div className="flex items-center justify-between gap-4">
+                      <p className="text-sm font-semibold text-fei-text">
+                        Career conversations
+                      </p>
+                      <span className="text-xs font-bold text-fei-yellow">
+                        Strong
+                      </span>
+                    </div>
+                    <div className="mt-3 h-2 overflow-hidden rounded-full bg-fei-text/10">
+                      <div className="h-full w-[82%] rounded-full bg-fei-yellow" />
+                    </div>
+                  </div>
+
+                  <div className="rounded-2xl border border-fei-sky/20 bg-fei-sky/[0.07] p-4">
+                    <div className="flex items-center justify-between gap-4">
+                      <p className="text-sm font-semibold text-fei-text">
+                        Media communication
+                      </p>
+                      <span className="text-xs font-bold text-fei-sky">
+                        Developing
+                      </span>
+                    </div>
+                    <div className="mt-3 h-2 overflow-hidden rounded-full bg-fei-text/10">
+                      <div className="h-full w-[64%] rounded-full bg-fei-sky" />
+                    </div>
+                  </div>
+
+                  <div className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-4">
+                    <div className="flex items-center justify-between gap-4">
+                      <p className="text-sm font-semibold text-fei-text">
+                        Match & training English
+                      </p>
+                      <span className="text-xs font-bold text-fei-text/55">
+                        Advanced
+                      </span>
+                    </div>
+                    <div className="mt-3 h-2 overflow-hidden rounded-full bg-fei-text/10">
+                      <div className="h-full w-[90%] rounded-full bg-fei-text/70" />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-5 rounded-2xl border border-fei-text/10 bg-[#162033] p-4">
+                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-fei-sky">
+                    Recommended path
+                  </p>
+                  <p className="mt-2 text-base font-bold text-fei-text">
+                    Professional Player Communication
+                  </p>
+                  <p className="mt-1 text-sm leading-6 text-fei-text/55">
+                    Start with interviews, agent conversations, and club trial
+                    communication.
+                  </p>
+                </div>
               </div>
 
-              <div className="mt-5 rounded-2xl border border-fei-yellow/20 bg-fei-yellow/[0.08] p-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-fei-yellow">
-                  Role-based intelligence
+              <div className="pointer-events-none absolute -left-5 top-16 hidden rounded-2xl border border-fei-text/10 bg-[#070b12]/95 px-4 py-3 shadow-xl backdrop-blur-xl sm:block">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">
+                  Role
                 </p>
-                <p className="mt-2 text-sm leading-6 text-fei-text/65">
-                  Built for players, coaches, scouts, clubs, academies, and the
-                  professionals shaping global football careers.
+                <p className="mt-1 text-sm font-bold text-fei-text">
+                  Professional Player
+                </p>
+              </div>
+
+              <div className="pointer-events-none absolute -right-5 bottom-14 hidden rounded-2xl border border-fei-yellow/20 bg-[#070b12]/95 px-4 py-3 shadow-xl backdrop-blur-xl sm:block">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-yellow">
+                  Next
+                </p>
+                <p className="mt-1 text-sm font-bold text-fei-text">
+                  Personalized modules
                 </p>
               </div>
             </div>
