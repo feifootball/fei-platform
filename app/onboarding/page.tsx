@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 
 interface Question {
@@ -79,13 +79,13 @@ const diagnosticQuestions: { [key: string]: Question[] } = {
   ],
 }
 
-export default function OnboardingPage() {
+function OnboardingContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const roleParam = searchParams.get('role')
   
-  const [userRole, setUserRole] = useState<string | null>(roleParam)
-  const [loading, setLoading] = useState(!roleParam)
+  const [userRole, setUserRole] = useState<string | null>(null)
+  const [loading, setLoading] = useState(true)
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [answers, setAnswers] = useState<number[]>([])
   const [submitted, setSubmitted] = useState(false)
@@ -100,6 +100,7 @@ export default function OnboardingPage() {
     if (!roleParam) {
       router.push('/dashboard')
     } else {
+      setUserRole(roleParam)
       setLoading(false)
     }
   }, [roleParam, router])
@@ -325,5 +326,13 @@ export default function OnboardingPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function OnboardingPage() {
+  return (
+    <Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-fei-bg"><p className="text-fei-sky">Loading...</p></div>}>
+      <OnboardingContent />
+    </Suspense>
   )
 }
