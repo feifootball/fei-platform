@@ -1,8 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { createClient } from '@/lib/supabase'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 interface Question {
   id: string
@@ -45,6 +44,16 @@ const diagnosticQuestions: { [key: string]: Question[] } = {
       ],
       correctAnswer: 1,
     },
+    {
+      id: 'hc-2',
+      text: 'How would you communicate a difficult personnel decision to your team?',
+      options: [
+        'Someone is leaving.',
+        'After careful evaluation, we\'ve made the strategic decision to part ways. I appreciate their contributions and wish them well.',
+        'We need to make changes.',
+      ],
+      correctAnswer: 1,
+    },
   ],
   'Scout': [
     {
@@ -57,13 +66,26 @@ const diagnosticQuestions: { [key: string]: Question[] } = {
       ],
       correctAnswer: 1,
     },
+    {
+      id: 'sc-2',
+      text: 'Describing a player\'s technical level to colleagues, what language do you use?',
+      options: [
+        'He is a good midfielder.',
+        'His ball retention under pressure averages 87%, with progressive pass accuracy of 78% in the final third.',
+        'He plays well.',
+      ],
+      correctAnswer: 1,
+    },
   ],
 }
 
 export default function OnboardingPage() {
-  const [user, setUser] = useState<any>(null)
-  const [userRole, setUserRole] = useState<string | null>(null)
-  const [loading, setLoading] = useState(true)
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const roleParam = searchParams.get('role')
+  
+  const [userRole, setUserRole] = useState<string | null>(roleParam)
+  const [loading, setLoading] = useState(!roleParam)
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [answers, setAnswers] = useState<number[]>([])
   const [submitted, setSubmitted] = useState(false)
@@ -73,36 +95,14 @@ export default function OnboardingPage() {
     message: string
     correctCount: number
   } | null>(null)
-  const router = useRouter()
-  const supabase = createClient()
 
   useEffect(() => {
-    async function loadUserData() {
-      const { data: { user } } = await supabase.auth.getUser()
-      if (!user) {
-        router.push('/login')
-        return
-      }
-
-      setUser(user)
-
-      const { data: profile, error } = await supabase
-        .from('profiles')
-        .select('role')
-        .eq('user_id', user.id)
-        .single()
-
-      if (error || !profile?.role) {
-        router.push('/dashboard')
-        return
-      }
-
-      setUserRole(profile.role)
+    if (!roleParam) {
+      router.push('/dashboard')
+    } else {
       setLoading(false)
     }
-
-    loadUserData()
-  }, [])
+  }, [roleParam, router])
 
   if (loading) {
     return (

@@ -43,21 +43,9 @@ export default function DashboardPage() {
     router.push('/')
   }
 
-  async function handleContinue() {
+  function handleContinue() {
     if (!selected) return
-    
-    try {
-      await supabase
-        .from('profiles')
-        .upsert({
-          user_id: user.id,
-          role: selected,
-        })
-    } catch (err) {
-      console.log('Could not save to DB, continuing anyway')
-    }
-    
-    router.push('/onboarding')
+    router.push(`/onboarding?role=${encodeURIComponent(selected)}`)
   }
 
   if (loading) {
