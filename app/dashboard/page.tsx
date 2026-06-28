@@ -43,6 +43,23 @@ export default function DashboardPage() {
     router.push('/')
   }
 
+  async function handleContinue() {
+    if (!selected) return
+    
+    try {
+      await supabase
+        .from('profiles')
+        .upsert({
+          user_id: user.id,
+          role: selected,
+        })
+    } catch (err) {
+      console.log('Could not save to DB, continuing anyway')
+    }
+    
+    router.push('/onboarding')
+  }
+
   if (loading) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-fei-bg">
@@ -97,7 +114,10 @@ export default function DashboardPage() {
 
         {selected && (
           <div className="mt-8 text-center">
-            <button className="rounded-full bg-fei-yellow px-8 py-3 font-semibold text-fei-bg transition-colors hover:bg-fei-yellow/90">
+            <button
+              onClick={handleContinue}
+              className="rounded-full bg-fei-yellow px-8 py-3 font-semibold text-fei-bg transition-colors hover:bg-fei-yellow/90"
+            >
               Continue as {selected}
             </button>
           </div>
