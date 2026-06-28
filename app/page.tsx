@@ -44,18 +44,18 @@ export default function Home() {
       <section className="relative overflow-hidden px-6 py-20 sm:py-28 lg:py-36">
         <div className="mx-auto max-w-4xl">
           <p className="text-sm font-semibold uppercase tracking-[0.25em] text-fei-sky">Football is global.</p>
-          <h1 className="mt-6 text-5xl font-black leading-tight text-fei-text sm:text-6xl lg:text-7xl">
+          <h1 className="mt-6 text-6xl font-black leading-[1.1] text-fei-text sm:text-7xl lg:text-8xl">
             Football
             <br />
             English
             <br />
-            <span className="bg-gradient-to-r from-fei-yellow via-fei-yellow to-lime-300 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-fei-yellow to-fei-sky bg-clip-text text-transparent">
               Intelligence.
             </span>
           </h1>
-          <p className="mt-6 text-lg font-semibold text-fei-text">Communication Creates Opportunity.</p>
-          <p className="mt-3 max-w-xl text-fei-text/60">FEI helps football professionals build the English communication skills needed for trials, clubs, interviews, agents, scouts, and the global game.</p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <p className="mt-8 text-lg font-semibold text-fei-text">Communication Creates Opportunity.</p>
+          <p className="mt-4 max-w-xl text-fei-text/60">FEI helps football professionals build the English communication skills needed for trials, clubs, interviews, agents, scouts, and the global game.</p>
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <a href="/register" className="inline-flex items-center gap-2 rounded-full bg-fei-yellow px-8 py-3 font-semibold text-fei-bg">
               Get Started
               <span>→</span>
