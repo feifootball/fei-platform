@@ -1,7 +1,8 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { createClient } from '@/lib/supabase'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
 const roles = [
@@ -19,11 +20,11 @@ const roles = [
 ]
 
 export default function DashboardPage() {
-  const [user, setUser] = useState<any>(null)
   const [loading, setLoading] = useState(true)
   const [selected, setSelected] = useState<string | null>(null)
+  const [isAccountMenuOpen, setIsAccountMenuOpen] = useState(false)
   const router = useRouter()
-  const supabase = createClient()
+  const supabase = useMemo(() => createClient(), [])
 
   useEffect(() => {
     async function getUser() {
@@ -31,16 +32,15 @@ export default function DashboardPage() {
       if (!user) {
         router.push('/login')
       } else {
-        setUser(user)
         setLoading(false)
       }
     }
     getUser()
-  }, [])
+  }, [router, supabase])
 
   async function handleLogout() {
     await supabase.auth.signOut()
-    router.push('/')
+    router.push('/login')
   }
 
   function handleContinue() {
@@ -60,18 +60,49 @@ export default function DashboardPage() {
     <div className="min-h-screen bg-fei-bg px-6 py-12">
       <div className="mx-auto max-w-5xl">
         <div className="mb-10 flex items-center justify-between">
-          <a href="/" className="flex items-center gap-2.5">
+          <Link href="/" className="flex items-center gap-2.5">
             <img src="/logo.svg" alt="FEI" className="h-8 w-auto" />
             <span className="text-xs font-medium text-fei-sky sm:text-sm">
               Football English Intelligence
             </span>
-          </a>
-          <button
-            onClick={handleLogout}
-            className="rounded-full border border-fei-text/20 px-4 py-2 text-sm text-fei-text/60 hover:border-fei-text/40 transition-colors"
-          >
-            Sign out
-          </button>
+          </Link>
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => setIsAccountMenuOpen((isOpen) => !isOpen)}
+              className="rounded-full border border-fei-text/20 px-4 py-2 text-sm text-fei-text/70 transition-colors hover:border-fei-text/40 hover:text-fei-text"
+              aria-expanded={isAccountMenuOpen}
+              aria-haspopup="menu"
+            >
+              <span>Account</span>
+              <span className="ml-2 text-fei-sky" aria-hidden="true">
+                ▾
+              </span>
+            </button>
+
+            {isAccountMenuOpen && (
+              <div
+                className="absolute right-0 z-10 mt-3 w-44 overflow-hidden rounded-xl border border-fei-text/10 bg-fei-bg shadow-xl shadow-black/20"
+                role="menu"
+              >
+                <Link
+                  href="/settings"
+                  className="block px-4 py-3 text-sm text-fei-text/75 transition-colors hover:bg-fei-text/[0.04] hover:text-fei-yellow"
+                  role="menuitem"
+                >
+                  Settings
+                </Link>
+                <button
+                  type="button"
+                  onClick={handleLogout}
+                  className="block w-full px-4 py-3 text-left text-sm text-fei-text/75 transition-colors hover:bg-fei-text/[0.04] hover:text-fei-yellow"
+                  role="menuitem"
+                >
+                  Sign out
+                </button>
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="mb-10 text-center">
