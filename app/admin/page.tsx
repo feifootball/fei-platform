@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { redirect } from 'next/navigation'
+import type { User } from '@supabase/supabase-js'
+import { createAdminClient } from '@/lib/supabase/admin'
 import { createClient } from '@/lib/supabase/server'
 
 const ADMIN_EMAIL = 'danielaportillafl@gmail.com'
@@ -25,6 +27,12 @@ type AssessmentRecord = {
   completed_at?: string | null
 }
 
+type AuthUserSummary = {
+  id: string
+  email: string
+  created_at: string | null
+}
+
 function formatDate(value: string | null | undefined) {
   if (!value) return 'Date unavailable'
 
@@ -33,6 +41,35 @@ function formatDate(value: string | null | undefined) {
     month: 'short',
     day: 'numeric',
   }).format(new Date(value))
+}
+
+async function listAllAuthUsers() {
+  const supabaseAdmin = createAdminClient()
+  const users: User[] = []
+  const perPage = 1000
+  let page = 1
+
+  while (true) {
+    const { data, error } = await supabaseAdmin.auth.admin.listUsers({
+      page,
+      perPage,
+    })
+
+    if (error) {
+      throw error
+    }
+
+    const currentPageUsers = data.users ?? []
+    users.push(...currentPageUsers)
+
+    if (!data.nextPage || data.nextPage <= page) {
+      break
+    }
+
+    page = data.nextPage
+  }
+
+  return users
 }
 
 function getRoleCounts(profiles: Profile[]) {
@@ -128,6 +165,20 @@ export default async function AdminPage() {
   const profiles = (profilesData ?? []) as Profile[]
   const recentProfiles = profiles.slice(0, 8)
   const roleCounts = getRoleCounts(profiles)
+  const authUsers = await listAllAuthUsers()
+  const profileUserIds = new Set(profiles.map((profile) => profile.user_id))
+  const usersWithoutProfile: AuthUserSummary[] = authUsers
+    .filter((authUser) => !profileUserIds.has(authUser.id))
+    .map((authUser) => ({
+      id: authUser.id,
+      email: authUser.email ?? 'Email unavailable',
+      created_at: authUser.created_at ?? null,
+    }))
+    .sort((a, b) => {
+      const aTime = a.created_at ? new Date(a.created_at).getTime() : 0
+      const bTime = b.created_at ? new Date(b.created_at).getTime() : 0
+      return bTime - aTime
+    })
 
   const { count: completedAssessmentCount, error: assessmentCountError } = await supabase
     .from('assessment_history')
@@ -170,7 +221,8 @@ export default async function AdminPage() {
           </p>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <StatCard label="Total registered users" value={authUsers.length} />
           <StatCard label="Total profiles" value={totalProfiles ?? profiles.length} />
           <StatCard label="Completed assessments" value={completedAssessmentCount ?? assessments.length} />
           <StatCard label="Roles represented" value={roleCounts.length} />
@@ -220,6 +272,31 @@ export default async function AdminPage() {
         </div>
 
         <div className="mt-6 grid gap-6">
+          <section className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-6">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <h2 className="text-xl font-bold text-fei-text">Registered users without profile</h2>
+              <span className="rounded-full bg-fei-yellow/10 px-3 py-1 text-sm font-bold text-fei-yellow">
+                {usersWithoutProfile.length}
+              </span>
+            </div>
+            {usersWithoutProfile.length === 0 ? (
+              <EmptyState>Every registered user has a profile.</EmptyState>
+            ) : (
+              <div className="mt-5 grid gap-3">
+                {usersWithoutProfile.slice(0, 20).map((authUser) => (
+                  <div
+                    key={authUser.id}
+                    className="rounded-xl border border-fei-text/10 bg-fei-text/[0.04] p-4"
+                  >
+                    <p className="font-semibold text-fei-text">{authUser.email}</p>
+                    <p className="mt-1 break-all text-xs text-fei-text/45">User ID: {authUser.id}</p>
+                    <p className="mt-2 text-sm text-fei-sky">{formatDate(authUser.created_at)}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </section>
+
           <section className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-6">
             <h2 className="text-xl font-bold text-fei-text">Assessment metrics</h2>
             {assessments.length === 0 ? (
