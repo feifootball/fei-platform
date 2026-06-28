@@ -1,147 +1,143 @@
-'use client'
-
-import { useEffect, useMemo, useState } from 'react'
-import { createClient } from '@/lib/supabase'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { redirect } from "next/navigation";
+import { createClient } from "@/lib/supabase/server";
 
 const roles = [
-  { name: 'Professional Player', description: 'Perform and represent the club globally' },
-  { name: 'Head Coach', description: 'Lead tactical communication' },
-  { name: 'Assistant Coach', description: 'Translate vision into action' },
-  { name: 'Academy Director', description: 'Build the next generation' },
-  { name: 'Scout', description: 'Identify and report talent globally' },
-  { name: 'Head of Scouting', description: 'Drive recruitment strategy' },
-  { name: 'Performance Analyst', description: 'Convert data into decisions' },
-  { name: 'Fitness Coach', description: 'Protect player availability' },
-  { name: 'Physiotherapist', description: 'Communicate with medical precision' },
-  { name: 'Sports Psychologist', description: 'Facilitate mental performance' },
-  { name: 'Nutritionist', description: 'Turn nutrition into performance' },
-]
+  {
+    value: "player",
+    label: "Player",
+    description:
+      "Improve your football English for trials, clubs, agents, media, and global opportunities.",
+  },
+  {
+    value: "parent",
+    label: "Parent",
+    description:
+      "Support your child’s football journey with clearer communication and better guidance.",
+  },
+  {
+    value: "coach",
+    label: "Coach",
+    description:
+      "Communicate more effectively with players, families, clubs, and international environments.",
+  },
+  {
+    value: "agent",
+    label: "Agent",
+    description:
+      "Strengthen communication with players, clubs, scouts, and global football stakeholders.",
+  },
+] as const;
 
-export default function DashboardPage() {
-  const [loading, setLoading] = useState(true)
-  const [selected, setSelected] = useState<string | null>(null)
-  const [isAccountMenuOpen, setIsAccountMenuOpen] = useState(false)
-  const router = useRouter()
-  const supabase = useMemo(() => createClient(), [])
+type RoleValue = (typeof roles)[number]["value"];
 
-  useEffect(() => {
-    async function getUser() {
-      const { data: { user } } = await supabase.auth.getUser()
-      if (!user) {
-        router.push('/login')
-      } else {
-        setLoading(false)
-      }
+async function saveRole(formData: FormData) {
+  "use server";
+
+  const role = String(formData.get("role") || "");
+  const validRoles = roles.map((item) => item.value);
+
+  if (!validRoles.includes(role as RoleValue)) {
+    throw new Error("Invalid role selected.");
+  }
+
+  const supabase = await createClient();
+
+  const {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.getUser();
+
+  if (userError || !user) {
+    redirect("/login");
+  }
+
+  const { data: existingProfile, error: lookupError } = await supabase
+    .from("profiles")
+    .select("id")
+    .eq("user_id", user.id)
+    .maybeSingle();
+
+  if (lookupError) {
+    throw new Error(`Could not check profile: ${lookupError.message}`);
+  }
+
+  if (existingProfile) {
+    const { error: updateError } = await supabase
+      .from("profiles")
+      .update({ role })
+      .eq("user_id", user.id);
+
+    if (updateError) {
+      throw new Error(`Could not update profile role: ${updateError.message}`);
     }
-    getUser()
-  }, [router, supabase])
+  } else {
+    const { error: insertError } = await supabase.from("profiles").insert({
+      user_id: user.id,
+      role,
+    });
 
-  async function handleLogout() {
-    await supabase.auth.signOut()
-    router.push('/login')
+    if (insertError) {
+      throw new Error(`Could not create profile role: ${insertError.message}`);
+    }
   }
 
-  function handleContinue() {
-    if (!selected) return
-    router.push(`/onboarding?role=${encodeURIComponent(selected)}`)
-  }
+  redirect("/onboarding");
+}
 
-  if (loading) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-fei-bg">
-        <p className="text-fei-sky">Loading...</p>
-      </div>
-    )
+export default async function DashboardPage() {
+  const supabase = await createClient();
+
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser();
+
+  if (error || !user) {
+    redirect("/login");
   }
 
   return (
-    <div className="min-h-screen bg-fei-bg px-6 py-12">
-      <div className="mx-auto max-w-5xl">
-        <div className="mb-10 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2.5">
-            <img src="/logo.svg" alt="FEI" className="h-8 w-auto" />
-            <span className="text-xs font-medium text-fei-sky sm:text-sm">
-              Football English Intelligence
-            </span>
-          </Link>
-          <div className="relative">
-            <button
-              type="button"
-              onClick={() => setIsAccountMenuOpen((isOpen) => !isOpen)}
-              className="rounded-full border border-fei-text/20 px-4 py-2 text-sm text-fei-text/70 transition-colors hover:border-fei-text/40 hover:text-fei-text"
-              aria-expanded={isAccountMenuOpen}
-              aria-haspopup="menu"
-            >
-              <span>Account</span>
-              <span className="ml-2 text-fei-sky" aria-hidden="true">
-                ▾
-              </span>
-            </button>
-
-            {isAccountMenuOpen && (
-              <div
-                className="absolute right-0 z-10 mt-3 w-44 overflow-hidden rounded-xl border border-fei-text/10 bg-fei-bg shadow-xl shadow-black/20"
-                role="menu"
-              >
-                <Link
-                  href="/settings"
-                  className="block px-4 py-3 text-sm text-fei-text/75 transition-colors hover:bg-fei-text/[0.04] hover:text-fei-yellow"
-                  role="menuitem"
-                >
-                  Settings
-                </Link>
-                <button
-                  type="button"
-                  onClick={handleLogout}
-                  className="block w-full px-4 py-3 text-left text-sm text-fei-text/75 transition-colors hover:bg-fei-text/[0.04] hover:text-fei-yellow"
-                  role="menuitem"
-                >
-                  Sign out
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
-
-        <div className="mb-10 text-center">
-          <h1 className="text-3xl font-bold text-fei-text sm:text-4xl">
-            Select Your Professional Role
-          </h1>
-          <p className="mt-3 text-fei-text/50">
-            Choose the role that best describes your position in the club.
+    <main className="min-h-screen bg-black px-6 py-10 text-white">
+      <div className="mx-auto max-w-6xl">
+        <section className="mb-10 rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 shadow-2xl">
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-white/45">
+            FEI Platform
           </p>
-        </div>
 
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
+          <h1 className="max-w-3xl text-4xl font-semibold tracking-tight sm:text-6xl">
+            Choose your FEI role
+          </h1>
+
+          <p className="mt-5 max-w-2xl text-lg leading-8 text-white/60">
+            Select your role to personalize your FEI diagnostic assessment and learning path.
+          </p>
+        </section>
+
+        <div className="grid gap-5 md:grid-cols-2">
           {roles.map((role) => (
-            <button
-              key={role.name}
-              onClick={() => setSelected(role.name)}
-              className={`flex flex-col items-center gap-1.5 rounded-xl border px-4 py-5 text-center transition-all ${
-                selected === role.name
-                  ? 'border-fei-yellow bg-fei-yellow/10'
-                  : 'border-fei-text/10 bg-fei-text/[0.03] hover:border-fei-sky'
-              }`}
-            >
-              <span className="text-sm font-bold text-fei-yellow">{role.name}</span>
-              <span className="text-xs leading-snug text-fei-sky">{role.description}</span>
-            </button>
+            <form key={role.value} action={saveRole}>
+              <input type="hidden" name="role" value={role.value} />
+
+              <button
+                type="submit"
+                className="group h-full w-full rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 text-left transition hover:-translate-y-1 hover:border-white/25 hover:bg-white/[0.07]"
+              >
+                <h2 className="text-3xl font-semibold tracking-tight">
+                  {role.label}
+                </h2>
+
+                <p className="mt-5 max-w-xl text-base leading-7 text-white/60">
+                  {role.description}
+                </p>
+
+                <div className="mt-8 inline-flex rounded-full border border-white/15 px-5 py-3 text-sm font-semibold text-white transition group-hover:border-white group-hover:bg-white group-hover:text-black">
+                  Continue as {role.label}
+                </div>
+              </button>
+            </form>
           ))}
         </div>
-
-        {selected && (
-          <div className="mt-8 text-center">
-            <button
-              onClick={handleContinue}
-              className="rounded-full bg-fei-yellow px-8 py-3 font-semibold text-fei-bg transition-colors hover:bg-fei-yellow/90"
-            >
-              Continue as {selected}
-            </button>
-          </div>
-        )}
       </div>
-    </div>
-  )
+    </main>
+  );
 }
