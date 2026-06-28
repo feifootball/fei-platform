@@ -3,8 +3,11 @@
 import { useState } from "react";
 
 const navLinks = [
-  { label: "About", href: "#get-started" },
+  { label: "Product", href: "#get-started" },
+  { label: "Diagnostic", href: "#diagnostic" },
   { label: "Roles", href: "#roles" },
+  { label: "For Clubs", href: "#clubs" },
+  { label: "About", href: "#about" },
 ];
 
 function InstagramIcon() {
