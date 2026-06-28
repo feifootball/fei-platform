@@ -4,17 +4,14 @@ const features = [
   {
     title: "Built for Elite Football",
     description: "English training designed for the professional game — players, coaches, scouts, and club staff who operate at the highest level.",
-    icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="size-7" aria-hidden><circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" /><path d="M2 12h20" /></svg>,
   },
   {
     title: "Real-World Scenarios",
     description: "Practice press conferences, contract talks, tactical briefings, and matchday communication — the English you actually need on and off the pitch.",
-    icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="size-7" aria-hidden><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>,
   },
   {
     title: "Intelligence-Driven Learning",
     description: "Adaptive, AI-powered paths that evolve with your role, level, and goals — so every session moves you closer to fluency under pressure.",
-    icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="size-7" aria-hidden><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" /><circle cx="12" cy="12" r="4" /></svg>,
   },
 ];
 
@@ -43,17 +40,27 @@ export default function Home() {
   return (
     <div className="flex min-h-full flex-col">
       <Navbar />
+
       <section className="relative overflow-hidden px-6 py-20 sm:py-28 lg:py-36">
-        <div className="relative z-10 mx-auto max-w-4xl">
+        <div className="mx-auto max-w-4xl">
           <p className="text-sm font-semibold uppercase tracking-[0.25em] text-fei-sky">Football is global.</p>
-          <h1 className="mt-6 text-5xl font-black leading-tight tracking-tight text-fei-text sm:text-6xl lg:text-7xl">
-            Football English <span className="text-fei-yellow">Intelligence.</span>
+          <h1 className="mt-6 text-5xl font-black leading-tight text-fei-text sm:text-6xl">
+            Football
+            <br />
+            English
+            <br />
+            <span className="text-fei-yellow">Intelligence.</span>
           </h1>
-          <p className="mt-6 text-lg text-fei-text/60 sm:text-xl">Communication Creates Opportunity.</p>
-          <p className="mt-4 max-w-2xl text-fei-text/50">FEI helps football professionals build English communication skills for trials, clubs, interviews, agents, scouts, and the global game.</p>
-          <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row">
-            <a href="/register" className="rounded-full bg-fei-yellow px-8 py-3.5 text-base font-semibold text-fei-bg">Get Started</a>
-            <a href="/login" className="rounded-full border border-fei-sky px-8 py-3.5 text-base font-medium text-fei-sky">Sign In</a>
+          <p className="mt-6 text-lg font-semibold text-fei-text">Communication Creates Opportunity.</p>
+          <p className="mt-3 max-w-xl text-fei-text/60">FEI helps football professionals build the English communication skills needed for trials, clubs, interviews, agents, scouts, and the global game.</p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href="/register" className="inline-flex items-center gap-2 rounded-full bg-fei-yellow px-8 py-3 font-semibold text-fei-bg">
+              Get Started
+              <span>→</span>
+            </a>
+            <a href="/login" className="inline-flex items-center justify-center rounded-full border border-fei-sky px-8 py-3 font-semibold text-fei-sky">
+              Login
+            </a>
           </div>
         </div>
       </section>
@@ -78,7 +85,6 @@ export default function Home() {
           <div className="grid gap-6 sm:grid-cols-3">
             {features.map((feature) => (
               <article key={feature.title} className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-6">
-                <div className="mb-4 inline-flex rounded-xl bg-fei-sky/10 p-3 text-fei-sky">{feature.icon}</div>
                 <h3 className="text-lg font-semibold text-fei-text">{feature.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-fei-text/60">{feature.description}</p>
               </article>
