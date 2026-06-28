@@ -148,8 +148,9 @@ export default function Home() {
 
       {/* Stats */}
       <section
+        id="diagnostic"
         aria-label="Platform statistics"
-        className="border-y border-fei-text/10 bg-fei-text/[0.02] px-6 py-12 sm:py-14"
+        className="scroll-mt-32 border-y border-fei-text/10 bg-fei-text/[0.02] px-6 py-12 sm:py-14"
       >
         <div className="mx-auto grid max-w-5xl grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-4">
           {stats.map((stat) => (
@@ -166,7 +167,7 @@ export default function Home() {
       {/* Features */}
       <section id="get-started" className="px-6 py-20 sm:py-28">
         <div className="mx-auto max-w-5xl">
-          <div className="mb-12 text-center">
+          <div id="about" className="mb-12 scroll-mt-32 text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
               What is <span className="text-fei-sky">FEI</span>?
             </h2>
@@ -196,7 +197,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="mt-24 border-t border-fei-text/10 pt-20">
+          <div id="roles" className="mt-24 scroll-mt-32 border-t border-fei-text/10 pt-20">
             <div className="mb-10 text-center">
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
                 Built for Every Role in the Club
@@ -227,8 +228,9 @@ export default function Home() {
 
       {/* Final CTA */}
       <section
+        id="clubs"
         aria-labelledby="final-cta-heading"
-        className="relative overflow-hidden px-6 py-20 sm:py-28"
+        className="relative scroll-mt-32 overflow-hidden px-6 py-20 sm:py-28"
       >
         <div
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(250,204,21,0.08)_0%,_transparent_70%)]"
