@@ -7,36 +7,40 @@ import Link from 'next/link'
 export function NotificationBell() {
   const [unreadCount, setUnreadCount] = useState(0)
   const [loading, setLoading] = useState(true)
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
   const supabase = createClient()
 
   useEffect(() => {
-    async function loadUnreadCount() {
+    async function loadData() {
       const { data: { user } } = await supabase.auth.getUser()
+      
       if (!user) {
+        setIsAuthenticated(false)
         setLoading(false)
         return
       }
 
-      const { count, error } = await supabase
+      setIsAuthenticated(true)
+
+      const { count } = await supabase
         .from('notifications')
         .select('id', { count: 'exact', head: true })
         .eq('user_id', user.id)
         .eq('read', false)
 
-      if (!error) {
-        setUnreadCount(count || 0)
-      }
+      setUnreadCount(count || 0)
       setLoading(false)
     }
 
-    loadUnreadCount()
+    loadData()
 
     // Re-check every 10 seconds
-    const interval = setInterval(loadUnreadCount, 10000)
+    const interval = setInterval(loadData, 10000)
     return () => clearInterval(interval)
   }, [])
 
-  if (loading) {
+  // No render si no está autenticado o aún está cargando
+  if (loading || !isAuthenticated) {
     return null
   }
 
