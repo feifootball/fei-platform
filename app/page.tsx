@@ -99,49 +99,119 @@ export default function Home() {
       <Navbar />
 
       {/* Hero */}
-      <section className="flex flex-1 flex-col items-center justify-center px-6 py-32 sm:py-44">
-        <div className="mx-auto max-w-3xl text-center">
-        <p className="mb-6 text-xs font-medium uppercase tracking-[0.35em] text-fei-sky sm:text-sm">
-  Football is global.
-</p>
+      <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pb-24 pt-36 sm:pt-44">
+        <div
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,rgba(250,204,21,0.13),transparent_34%),radial-gradient(circle_at_18%_35%,rgba(56,189,248,0.12),transparent_28%),linear-gradient(180deg,rgba(15,23,42,0)_0%,rgba(15,23,42,0.35)_100%)]"
+          aria-hidden
+        />
 
-<h1 className="bg-gradient-to-r from-fei-yellow to-fei-sky bg-clip-text text-8xl font-black text-transparent sm:text-9xl">
-  FEI
-</h1>
+        <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="text-center lg:text-left">
+            <p className="mb-6 inline-flex rounded-full border border-fei-sky/20 bg-fei-sky/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-fei-sky">
+              Football is global.
+            </p>
 
-<div className="mt-6">
-  <p className="text-4xl font-bold leading-tight tracking-tight text-fei-text sm:text-5xl">
-    The language of elite football
-  </p>
-  <p className="text-4xl font-bold leading-tight tracking-tight text-fei-yellow sm:text-5xl">
-    is English.
-  </p>
-</div>
+            <h1 className="max-w-4xl text-5xl font-black leading-[0.95] tracking-tight text-fei-text sm:text-7xl lg:text-8xl">
+              Football English
+              <span className="block bg-gradient-to-r from-fei-yellow to-fei-sky bg-clip-text text-transparent">
+                Intelligence.
+              </span>
+            </h1>
 
-<p className="mx-auto mt-6 max-w-xl text-base text-fei-text/60">
-  Communication intelligence for football professionals.
-</p>
+            <p className="mt-7 max-w-2xl text-xl font-semibold leading-8 text-fei-text sm:text-2xl">
+              Communication Intelligence for Global Football.
+            </p>
 
-          <div className="mt-14">
-            <a
-              href="#get-started"
-              className="inline-flex items-center gap-2 rounded-full bg-fei-yellow px-8 py-3.5 text-base font-semibold text-fei-bg transition-all hover:bg-fei-yellow/90 hover:shadow-[0_0_32px_rgba(250,204,21,0.35)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fei-yellow"
-            >
-              Get Started
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                className="size-4"
-                aria-hidden
+            <p className="mt-5 max-w-2xl text-base leading-8 text-fei-text/60 sm:text-lg">
+              FEI helps football professionals develop the English communication
+              skills that create opportunity — from the dressing room to the
+              boardroom, from trials to interviews, from clubs to the global game.
+            </p>
+
+            <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row lg:justify-start">
+              <a
+                href="#get-started"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-fei-yellow px-8 py-3.5 text-base font-semibold text-fei-bg transition-all hover:bg-fei-yellow/90 hover:shadow-[0_0_32px_rgba(250,204,21,0.35)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fei-yellow"
               >
-                <path
-                  fillRule="evenodd"
-                  d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </a>
+                Get Started
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  className="size-4"
+                  aria-hidden
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </a>
+
+              <a
+                href="/login"
+                className="inline-flex items-center justify-center rounded-full border border-fei-sky/50 px-8 py-3.5 text-base font-semibold text-fei-sky transition hover:bg-fei-sky/10"
+              >
+                Login
+              </a>
+            </div>
+
+            <p className="mt-8 text-sm font-medium text-fei-text/45">
+              Communication Creates Opportunity.
+            </p>
+          </div>
+
+          <div className="relative mx-auto w-full max-w-md lg:max-w-none">
+            <div className="absolute -inset-6 rounded-[2.5rem] bg-fei-yellow/10 blur-3xl" aria-hidden />
+
+            <div className="relative overflow-hidden rounded-[2rem] border border-fei-text/10 bg-[#101827]/85 p-5 shadow-2xl backdrop-blur-xl">
+              <div className="flex items-center justify-between border-b border-fei-text/10 pb-4">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.25em] text-fei-sky">
+                    FEI Platform
+                  </p>
+                  <p className="mt-1 text-lg font-bold text-fei-text">
+                    Diagnostic Preview
+                  </p>
+                </div>
+
+                <div className="rounded-full bg-fei-yellow px-3 py-1 text-xs font-bold text-fei-bg">
+                  Live
+                </div>
+              </div>
+
+              <div className="mt-5 space-y-3">
+                {[
+                  "Choose your football role",
+                  "Measure real communication skills",
+                  "Understand your profile",
+                  "Follow a personalized learning path",
+                ].map((item, index) => (
+                  <div
+                    key={item}
+                    className="flex items-center gap-3 rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-4"
+                  >
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-fei-sky/10 text-sm font-bold text-fei-sky">
+                      {index + 1}
+                    </span>
+                    <span className="text-sm font-medium text-fei-text/75">
+                      {item}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-5 rounded-2xl border border-fei-yellow/20 bg-fei-yellow/[0.08] p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-fei-yellow">
+                  Role-based intelligence
+                </p>
+                <p className="mt-2 text-sm leading-6 text-fei-text/65">
+                  Built for players, coaches, scouts, clubs, academies, and the
+                  professionals shaping global football careers.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
