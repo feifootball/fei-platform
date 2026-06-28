@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { NotificationBell } from "./NotificationBell";
 
 const navLinks = [
   { label: "Product", href: "#get-started" },
@@ -54,7 +55,7 @@ export function Navbar() {
 
           <div className="hidden items-center gap-1 rounded-full bg-white/[0.03] px-2 py-1 md:flex">
             {navLinks.map((link) => (
-              <a
+              
                 key={link.label}
                 href={link.href}
                 className="rounded-full px-4 py-2 text-sm font-medium text-white/60 transition hover:bg-white/[0.06] hover:text-white"
@@ -65,7 +66,7 @@ export function Navbar() {
           </div>
 
           <div className="hidden items-center gap-2 md:flex">
-            <a
+            
               href="https://instagram.com/fei.football"
               target="_blank"
               rel="noopener noreferrer"
@@ -75,7 +76,7 @@ export function Navbar() {
               <InstagramIcon />
             </a>
 
-            <a
+            
               href="https://linkedin.com/company/football-english-intelligence"
               target="_blank"
               rel="noopener noreferrer"
@@ -85,14 +86,16 @@ export function Navbar() {
               <LinkedInIcon />
             </a>
 
-            <a
+            <NotificationBell />
+
+            
               href="/login"
               className="rounded-full border border-fei-sky/70 px-5 py-2 text-sm font-medium text-fei-sky transition hover:bg-fei-sky/10"
             >
               Login
             </a>
 
-            <a
+            
               href="/register"
               className="rounded-full bg-fei-yellow px-5 py-2 text-sm font-semibold text-fei-bg transition hover:bg-fei-yellow/90 hover:shadow-[0_0_28px_rgba(250,204,21,0.28)]"
             >
@@ -101,7 +104,7 @@ export function Navbar() {
           </div>
 
           <div className="flex items-center gap-2 md:hidden">
-            <a
+            
               href="https://instagram.com/fei.football"
               target="_blank"
               rel="noopener noreferrer"
@@ -110,6 +113,8 @@ export function Navbar() {
             >
               <InstagramIcon />
             </a>
+
+            <NotificationBell />
 
             <button
               type="button"
@@ -154,7 +159,7 @@ export function Navbar() {
           <div className="mt-3 overflow-hidden rounded-[1.75rem] border border-white/10 bg-[#070b12]/95 p-3 shadow-[0_18px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl md:hidden">
             <div className="grid gap-1">
               {navLinks.map((link) => (
-                <a
+                
                   key={link.label}
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
@@ -166,7 +171,7 @@ export function Navbar() {
             </div>
 
             <div className="mt-3 flex items-center gap-2 border-t border-white/10 pt-3">
-              <a
+              
                 href="https://instagram.com/fei.football"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -176,7 +181,7 @@ export function Navbar() {
                 <InstagramIcon />
               </a>
 
-              <a
+              
                 href="https://linkedin.com/company/football-english-intelligence"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -186,7 +191,7 @@ export function Navbar() {
                 <LinkedInIcon />
               </a>
 
-              <a
+              
                 href="/login"
                 onClick={() => setMenuOpen(false)}
                 className="ml-auto rounded-full border border-fei-sky/70 px-4 py-3 text-center text-sm font-semibold text-fei-sky transition hover:bg-fei-sky/10"
@@ -194,7 +199,7 @@ export function Navbar() {
                 Login
               </a>
 
-              <a
+              
                 href="/register"
                 onClick={() => setMenuOpen(false)}
                 className="rounded-full bg-fei-yellow px-4 py-3 text-center text-sm font-bold text-fei-bg transition hover:bg-fei-yellow/90"
