@@ -68,6 +68,16 @@ export default function LoginPage() {
             Don't have an account?{' '}
             <a href="/register" className="text-fei-sky hover:underline">Register</a>
           </p>
+        
+          <div className="mt-4 text-center">
+            <a
+              href="/forgot-password"
+              className="text-sm font-medium text-fei-sky hover:text-fei-yellow transition-colors"
+            >
+              Forgot your password?
+            </a>
+          </div>
+
         </form>
       </div>
     </div>
