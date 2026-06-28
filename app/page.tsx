@@ -72,25 +72,13 @@ const roles = [
   { name: "Head Coach", description: "Lead tactical communication" },
   { name: "Academy Director", description: "Build the next generation" },
   { name: "Assistant Coach", description: "Translate vision into action" },
-  {
-    name: "Performance Analyst",
-    description: "Convert data into decisions",
-  },
+  { name: "Performance Analyst", description: "Convert data into decisions" },
   { name: "Head of Scouting", description: "Drive recruitment strategy" },
   { name: "Fitness Coach", description: "Protect player availability" },
-  {
-    name: "Sports Psychologist",
-    description: "Facilitate mental performance",
-  },
-  {
-    name: "Physiotherapist",
-    description: "Communicate with medical precision",
-  },
+  { name: "Sports Psychologist", description: "Facilitate mental performance" },
+  { name: "Physiotherapist", description: "Communicate with medical precision" },
   { name: "Nutritionist", description: "Turn nutrition into performance" },
-  {
-    name: "Professional Players",
-    description: "Represent the club on the global stage",
-  },
+  { name: "Professional Players", description: "Represent the club on the global stage" },
 ];
 
 export default function Home() {
@@ -98,7 +86,6 @@ export default function Home() {
     <div className="flex min-h-full flex-col">
       <Navbar />
 
-      {/* Hero */}
       <section className="relative overflow-hidden px-6 py-20 sm:py-28 lg:py-36">
         <div
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(125,211,252,0.1)_0%,_transparent_50%)]"
@@ -115,8 +102,7 @@ export default function Home() {
           </p>
 
           <h1 className="mt-6 text-5xl font-black leading-tight tracking-tight text-fei-text sm:text-6xl lg:text-7xl">
-            Football English{" "}
-            <span className="text-fei-yellow">Intelligence.</span>
+            Football English <span className="text-fei-yellow">Intelligence.</span>
           </h1>
 
           <p className="mt-6 text-lg text-fei-text/60 sm:text-xl">
@@ -124,21 +110,19 @@ export default function Home() {
           </p>
 
           <p className="mt-4 max-w-2xl text-fei-text/50">
-            FEI helps football professionals build the English communication skills
-            needed for trials, clubs, interviews, agents, scouts, and the global
-            game.
+            FEI helps football professionals build the English communication skills needed for trials, clubs, interviews, agents, scouts, and the global game.
           </p>
 
           <div className="mt-10 flex flex-col items-start justify-start gap-4 sm:flex-row">
             
               href="/register"
-              className="inline-flex items-center justify-center rounded-full bg-fei-yellow px-8 py-3.5 text-base font-semibold text-fei-bg transition-all hover:bg-fei-yellow/90 hover:shadow-[0_0_32px_rgba(250,204,21,0.35)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fei-yellow"
+              className="inline-flex items-center justify-center rounded-full bg-fei-yellow px-8 py-3.5 text-base font-semibold text-fei-bg transition-all hover:bg-fei-yellow/90 hover:shadow-[0_0_32px_rgba(250,204,21,0.35)]"
             >
               Get Started
             </a>
             
               href="/login"
-              className="inline-flex items-center justify-center rounded-full border border-fei-sky px-8 py-3.5 text-base font-medium text-fei-sky transition-colors hover:bg-fei-sky/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fei-sky"
+              className="inline-flex items-center justify-center rounded-full border border-fei-sky px-8 py-3.5 text-base font-medium text-fei-sky transition-colors hover:bg-fei-sky/10"
             >
               Sign In
             </a>
@@ -146,7 +130,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats */}
       <section
         id="diagnostic"
         aria-label="Platform statistics"
@@ -164,7 +147,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features */}
       <section id="get-started" className="px-6 py-20 sm:py-28">
         <div className="mx-auto max-w-5xl">
           <div id="about" className="mb-12 scroll-mt-32 text-center">
@@ -172,9 +154,7 @@ export default function Home() {
               What is <span className="text-fei-sky">FEI</span>?
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-fei-text/60">
-              A purpose-built platform for the football industry — not generic
-              language courses, but professional English for those who live the
-              game.
+              A purpose-built platform for the football industry — not generic language courses, but professional English for those who live the game.
             </p>
           </div>
 
@@ -226,21 +206,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Final CTA */}
       <section
         id="clubs"
         aria-labelledby="final-cta-heading"
         className="relative scroll-mt-32 overflow-hidden px-6 py-20 sm:py-28"
       >
-        <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(250,204,21,0.08)_0%,_transparent_70%)]"
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute inset-0 bg-gradient-to-b from-fei-yellow/[0.04] via-transparent to-transparent"
-          aria-hidden
-        />
-
         <div className="relative z-10 mx-auto max-w-3xl text-center">
           <h2
             id="final-cta-heading"
@@ -255,13 +225,13 @@ export default function Home() {
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             
               href="/register"
-              className="inline-flex items-center justify-center rounded-full bg-fei-yellow px-8 py-3.5 text-base font-semibold text-fei-bg transition-all hover:bg-fei-yellow/90 hover:shadow-[0_0_32px_rgba(250,204,21,0.35)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fei-yellow"
+              className="inline-flex items-center justify-center rounded-full bg-fei-yellow px-8 py-3.5 text-base font-semibold text-fei-bg transition-all hover:bg-fei-yellow/90"
             >
               Get Started
             </a>
             
               href="#"
-              className="inline-flex items-center justify-center rounded-full border border-fei-sky px-8 py-3.5 text-base font-medium text-fei-sky transition-colors hover:bg-fei-sky/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fei-sky"
+              className="inline-flex items-center justify-center rounded-full border border-fei-sky px-8 py-3.5 text-base font-medium text-fei-sky transition-colors hover:bg-fei-sky/10"
             >
               Book a Demo
             </a>
@@ -269,7 +239,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="mt-auto border-t border-fei-text/10 px-6 py-8">
         <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 sm:flex-row">
           <div className="flex items-center gap-2.5">
