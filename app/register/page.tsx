@@ -47,6 +47,17 @@ export default function RegisterPage() {
       return
     }
 
+    const hasMinimumLength = password.length >= 8
+    const hasUppercase = /[A-Z]/.test(password)
+    const hasLowercase = /[a-z]/.test(password)
+    const hasNumber = /[0-9]/.test(password)
+
+    if (!hasMinimumLength || !hasUppercase || !hasLowercase || !hasNumber) {
+      setError('Password must be at least 8 characters and include uppercase, lowercase, and a number.')
+      setLoading(false)
+      return
+    }
+
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
@@ -234,10 +245,13 @@ export default function RegisterPage() {
               value={password}
               onChange={e => setPassword(e.target.value)}
               required
-              minLength={6}
+              minLength={8}
               className="w-full rounded-xl border border-fei-text/10 bg-fei-text/[0.05] px-4 py-3 text-fei-text placeholder-fei-text/30 focus:border-fei-yellow focus:outline-none"
               placeholder="••••••••"
             />
+            <p className="mt-2 text-xs leading-5 text-fei-text/40">
+              Use at least 8 characters with uppercase, lowercase, and a number.
+            </p>
           </div>
 
           <button
