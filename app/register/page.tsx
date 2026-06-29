@@ -104,13 +104,14 @@ export default function RegisterPage() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth={1.7}
+                strokeWidth={1.8}
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="h-8 w-8"
                 aria-hidden
               >
-                <path d="M4 6h16v12H4z" />
-                <path d="m4 7 8 6 8-6" />
-                <path d="m9 17 2 2 4-5" />
+                <rect x="3.5" y="5.5" width="17" height="13" rx="2.5" />
+                <path d="M5 7.5 12 13l7-5.5" />
               </svg>
             </div>
 
@@ -142,10 +143,7 @@ export default function RegisterPage() {
               Go to Sign in
             </a>
 
-            <p className="mt-4 text-sm text-fei-text/40">
-              Already confirmed?{' '}
-              <a href="/login" className="text-fei-sky hover:underline">Sign in</a>
-            </p>
+
           </div>
         </div>
       </div>
