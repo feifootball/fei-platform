@@ -707,7 +707,7 @@ function AssessmentContent() {
               Audio & Microphone Check
             </div>
             <h1 className="mt-4 text-3xl font-black text-fei-text">Check your setup</h1>
-            <p className="mt-2 text-fei-text/60">Check your audio before starting. Microphone access is recommended for the speaking task.</p>
+            <p className="mt-2 text-fei-text/60">Check your audio and enable your microphone before starting the diagnostic.</p>
           </div>
 
           <div className="space-y-4">
@@ -722,7 +722,7 @@ function AssessmentContent() {
                 disabled={audioTestPlaying}
                 className="inline-flex items-center gap-2 rounded-full border border-fei-sky px-5 py-2.5 text-sm font-semibold text-fei-sky transition hover:bg-fei-sky/10 disabled:opacity-50"
               >
-                {audioTestPlaying ? '🔊 Playing...' : '▶ Play test audio'}
+                {audioTestPlaying ? 'Playing...' : 'Play test audio'}
               </button>
             </div>
 
@@ -731,7 +731,7 @@ function AssessmentContent() {
                 <div className="flex h-8 w-8 items-center justify-center rounded-full bg-fei-sky/10 text-fei-sky font-bold text-sm">2</div>
                 <h3 className="font-bold text-fei-text">Speaking setup</h3>
               </div>
-              <p className="mb-4 text-sm text-fei-text/60">Enable your microphone now, or continue and complete the speaking task later.</p>
+              <p className="mb-4 text-sm text-fei-text/60">Enable your microphone now to start the assessment.</p>
               {micPermission === 'granted' ? (
                 <div className="inline-flex items-center gap-2 rounded-full bg-green-500/10 px-5 py-2.5 text-sm font-semibold text-green-400">
                   ✓ Microphone ready
@@ -923,7 +923,7 @@ function AssessmentContent() {
 
           <div className="mb-6">
             <SectionBadge label="Listening in Context" />
-            <p className="mt-2 text-xs text-fei-text/40">🎧 Use headphones for best results</p>
+            <p className="mt-2 text-xs text-fei-text/40">Use headphones for best results.</p>
           </div>
 
           <div className="mb-6">
