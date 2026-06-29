@@ -255,8 +255,8 @@ export default function DashboardPage() {
                   <p className="mt-2 font-bold text-fei-text">FEI Pathway</p>
                 </div>
                 <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/40 p-4">
-                  <p className="text-xs uppercase tracking-[0.2em] text-fei-text/35">Format</p>
-                  <p className="mt-2 font-bold text-fei-text">Role-specific</p>
+                  <p className="text-xs uppercase tracking-[0.2em] text-fei-text/35">Type</p>
+                  <p className="mt-2 font-bold text-fei-text">Role diagnostic</p>
                 </div>
               </div>
 
@@ -275,12 +275,12 @@ export default function DashboardPage() {
 
               <div className="mt-6 space-y-4">
                 {[
-                  'Football vocabulary',
-                  'Tactical understanding',
-                  'Reading match context',
-                  'Listening to football communication',
-                  'Functional communication',
-                  'Writing and speaking tasks',
+                  'Understanding coach instructions',
+                  'Reading tactical and match information',
+                  'Responding to feedback professionally',
+                  'Reporting injury or physical discomfort',
+                  'Communicating under match pressure',
+                  'Handling role and playing-time conversations',
                 ].map(item => (
                   <div key={item} className="flex items-center gap-3 text-sm text-fei-text/65">
                     <span className="h-2 w-2 rounded-full bg-fei-yellow" />
