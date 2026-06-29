@@ -616,23 +616,12 @@ function AssessmentContent() {
           </div>
 
           <div className="mb-8 rounded-2xl border border-fei-sky/20 bg-fei-sky/[0.04] p-6">
-            <h2 className="mb-2 font-bold text-fei-text">Assessment structure</h2>
-            <p className="mb-4 text-sm text-fei-text/60">The assessment is progressive. Questions move from A2 to C1 level — this is normal and intentional.</p>
-            <div className="grid gap-2 sm:grid-cols-2">
-              {[
-                { label: 'Section 1', desc: 'Role warm-up (2 items)' },
-                { label: 'Section 2', desc: 'Professional reading (3 items)' },
-                { label: 'Section 3', desc: 'Listening in context (3 items)' },
-                { label: 'Section 4', desc: 'Football vocabulary (3 items)' },
-                { label: 'Section 5', desc: 'Functional communication (4 items)' },
-                { label: 'Section 6', desc: 'Writing + speaking production (2 items)' },
-              ].map((s) => (
-                <div key={s.label} className="flex items-center gap-3 text-sm">
-                  <span className="text-xs font-semibold text-fei-sky">{s.label}</span>
-                  <span className="text-fei-text/60">{s.desc}</span>
-                </div>
-              ))}
-            </div>
+            <h2 className="mb-3 font-bold text-fei-text">What this diagnostic measures</h2>
+            <p className="text-sm leading-6 text-fei-text/65">
+              This assessment evaluates football-specific English across tactical understanding,
+              professional vocabulary, listening, reading, functional communication, writing,
+              and speaking tasks.
+            </p>
           </div>
 
           <button
@@ -1135,11 +1124,11 @@ function AssessmentContent() {
             </div>
           )}
 
-          <div className="mb-8 flex gap-3">
+          <div className="mb-4">
             {!isRecording && !recordingDone && (
               <button
                 onClick={startRecording}
-                className="flex-1 rounded-full bg-red-500 py-3.5 font-bold text-white transition hover:bg-red-500/90"
+                className="w-full rounded-full bg-red-500 py-3.5 font-bold text-white transition hover:bg-red-500/90"
               >
                 🎙 Start recording
               </button>
@@ -1148,7 +1137,7 @@ function AssessmentContent() {
               <button
                 onClick={stopRecording}
                 disabled={recordingTime < 20}
-                className="flex-1 rounded-full border border-red-500/50 py-3.5 font-bold text-red-400 transition hover:bg-red-500/10 disabled:opacity-40 disabled:cursor-not-allowed"
+                className="w-full rounded-full border-2 border-red-500 py-3.5 font-bold text-red-400 transition hover:bg-red-500/10 disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 ⏹ Stop recording
               </button>
@@ -1156,18 +1145,30 @@ function AssessmentContent() {
           </div>
 
           {recordingDone && (
-            <button
-              onClick={() => finishAssessment(Math.min(4, Math.max(1, Math.round(recordingTime / 18))))}
-              className="w-full rounded-full bg-fei-yellow py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90"
-            >
-              {saving ? 'Saving results...' : 'Submit assessment →'}
-            </button>
+            <div className="space-y-3">
+              <button
+                onClick={() => {
+                  setRecordingDone(false)
+                  setRecordingTime(0)
+                  setIsRecording(false)
+                }}
+                className="w-full rounded-full border border-fei-text/20 py-3 text-sm font-medium text-fei-text/60 transition hover:border-fei-text/40 hover:text-fei-text"
+              >
+                🔄 Record again
+              </button>
+              <button
+                onClick={() => finishAssessment(Math.min(4, Math.max(1, Math.round(recordingTime / 18))))}
+                className="w-full rounded-full bg-fei-yellow py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90"
+              >
+                {saving ? 'Saving results...' : 'Submit assessment →'}
+              </button>
+            </div>
           )}
 
-          {!recordingDone && (
+          {!isRecording && !recordingDone && (
             <button
               onClick={() => finishAssessment(1)}
-              className="w-full text-center text-xs text-fei-text/30 hover:text-fei-text/50 transition"
+              className="mt-4 w-full text-center text-xs text-fei-text/30 hover:text-fei-text/50 transition"
             >
               Skip speaking and submit
             </button>

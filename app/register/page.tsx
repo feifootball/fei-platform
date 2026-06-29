@@ -3,10 +3,28 @@
 import { useState } from 'react'
 import { createClient } from '@/lib/supabase'
 
+const roles = [
+  'Professional Player',
+  'Head Coach',
+  'Assistant Coach',
+  'Scout',
+  'Head of Scouting',
+  'Academy Director',
+  'Performance Analyst',
+  'Fitness Coach',
+  'Physiotherapist',
+  'Sports Psychologist',
+  'Nutritionist',
+  'Other football role',
+  "I'll choose later",
+]
+
 export default function RegisterPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [name, setName] = useState('')
+  const [role, setRole] = useState('')
+  const [customRole, setCustomRole] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
@@ -17,10 +35,28 @@ export default function RegisterPage() {
     setLoading(true)
     setError('')
 
+    if (!role) {
+      setError('Please choose your football role.')
+      setLoading(false)
+      return
+    }
+
+    if (role === 'Other football role' && !customRole.trim()) {
+      setError('Please tell us your football role.')
+      setLoading(false)
+      return
+    }
+
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
-      options: { data: { full_name: name } }
+      options: {
+        data: {
+          full_name: name,
+          role,
+          custom_role: role === 'Other football role' ? customRole.trim() : null,
+        },
+      },
     })
 
     if (error) {
@@ -29,12 +65,15 @@ export default function RegisterPage() {
       return
     }
 
-    // Guardar full_name en profiles
     if (data.user) {
-      await supabase.from('profiles').upsert({
-        user_id: data.user.id,
-        full_name: name,
-      }, { onConflict: 'user_id' })
+      await supabase.from('profiles').upsert(
+        {
+          user_id: data.user.id,
+          full_name: name,
+          role,
+        },
+        { onConflict: 'user_id' }
+      )
     }
 
     setSuccess(true)
@@ -65,15 +104,21 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-fei-bg px-6">
-      <div className="w-full max-w-md">
+    <div className="flex min-h-screen items-center justify-center bg-fei-bg px-6 py-12">
+      <div className="w-full max-w-lg">
         <div className="mb-8 text-center">
           <span className="text-4xl font-black text-fei-yellow">FEI</span>
           <p className="mt-2 text-sm text-fei-sky">Football English Intelligence</p>
         </div>
+
         <form onSubmit={handleRegister} className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-8">
-          <h1 className="mb-6 text-2xl font-bold text-fei-text">Create your account</h1>
+          <h1 className="mb-2 text-2xl font-bold text-fei-text">Create your account</h1>
+          <p className="mb-6 text-sm leading-6 text-fei-text/50">
+            Choose the football role that best matches your pathway. FEI uses this to personalize your diagnostic.
+          </p>
+
           {error && <p className="mb-4 rounded-lg bg-red-500/10 px-4 py-3 text-sm text-red-400">{error}</p>}
+
           <div className="mb-4">
             <label className="mb-2 block text-sm font-medium text-fei-text/70">Full name</label>
             <input
@@ -85,6 +130,46 @@ export default function RegisterPage() {
               placeholder="Your name"
             />
           </div>
+
+          <div className="mb-4">
+            <label className="mb-2 block text-sm font-medium text-fei-text/70">Football role</label>
+            <select
+              value={role}
+              onChange={e => setRole(e.target.value)}
+              required
+              className="w-full rounded-xl border border-fei-text/10 bg-fei-text/[0.05] px-4 py-3 text-fei-text focus:border-fei-yellow focus:outline-none"
+            >
+              <option value="">Choose your role</option>
+              {roles.map(item => (
+                <option key={item} value={item} className="bg-fei-bg text-fei-text">
+                  {item}
+                </option>
+              ))}
+            </select>
+
+            {role === "I'll choose later" && (
+              <p className="mt-3 rounded-xl border border-fei-sky/20 bg-fei-sky/[0.06] px-4 py-3 text-sm leading-6 text-fei-text/60">
+                You can create your account now, but you will need to choose a football role before starting your FEI Diagnostic.
+              </p>
+            )}
+
+            {role === 'Other football role' && (
+              <div className="mt-3">
+                <input
+                  type="text"
+                  value={customRole}
+                  onChange={e => setCustomRole(e.target.value)}
+                  required
+                  className="w-full rounded-xl border border-fei-text/10 bg-fei-text/[0.05] px-4 py-3 text-fei-text placeholder-fei-text/30 focus:border-fei-yellow focus:outline-none"
+                  placeholder="Tell us your football role"
+                />
+                <p className="mt-3 rounded-xl border border-fei-yellow/20 bg-fei-yellow/[0.06] px-4 py-3 text-sm leading-6 text-fei-text/60">
+                  FEI diagnostics are currently built around specific football roles. Tell us your role, then choose the closest available role later to begin your diagnostic.
+                </p>
+              </div>
+            )}
+          </div>
+
           <div className="mb-4">
             <label className="mb-2 block text-sm font-medium text-fei-text/70">Email</label>
             <input
@@ -96,6 +181,7 @@ export default function RegisterPage() {
               placeholder="you@club.com"
             />
           </div>
+
           <div className="mb-6">
             <label className="mb-2 block text-sm font-medium text-fei-text/70">Password</label>
             <input
@@ -108,6 +194,7 @@ export default function RegisterPage() {
               placeholder="••••••••"
             />
           </div>
+
           <button
             type="submit"
             disabled={loading}
@@ -115,6 +202,7 @@ export default function RegisterPage() {
           >
             {loading ? 'Creating account...' : 'Get Started'}
           </button>
+
           <p className="mt-4 text-center text-sm text-fei-text/50">
             Already have an account?{' '}
             <a href="/login" className="text-fei-sky hover:underline">Sign in</a>
