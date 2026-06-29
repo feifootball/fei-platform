@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { createClient } from "@/lib/supabase";
 import { usePathname } from "next/navigation";
 
 type Lang = 'en' | 'es';
@@ -25,13 +24,9 @@ const navLinks = {
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [authLoading, setAuthLoading] = useState(true);
   const [lang, setLang] = useState<Lang>('en');
   const pathname = usePathname();
   const isLanding = pathname === '/';
-  const supabase = createClient();
-
   useEffect(() => {
     const saved = localStorage.getItem('fei_lang') as Lang;
     if (saved === 'en' || saved === 'es') setLang(saved);
@@ -42,15 +37,6 @@ export function Navbar() {
     }
     window.addEventListener('fei_lang_change', handleLangChange);
     return () => window.removeEventListener('fei_lang_change', handleLangChange);
-  }, []);
-
-  useEffect(() => {
-    async function checkAuth() {
-      const { data: { user } } = await supabase.auth.getUser();
-      setIsAuthenticated(!!user);
-      setAuthLoading(false);
-    }
-    checkAuth();
   }, []);
 
   function toggleLang() {
@@ -94,12 +80,6 @@ export function Navbar() {
               </button>
             )}
 
-            {!authLoading && isAuthenticated && (
-              <a href="/notifications" className="inline-flex h-9 w-9 items-center justify-center rounded-full text-white/40 transition hover:bg-white/[0.06] hover:text-fei-sky">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-              </a>
-            )}
-
             <a href="/login" className="rounded-full border border-fei-sky/70 px-5 py-2 text-sm font-medium text-fei-sky transition hover:bg-fei-sky/10">{lang === 'en' ? 'Login' : 'Ingresar'}</a>
             <a href="/register" className="rounded-full bg-fei-yellow px-5 py-2 text-sm font-semibold text-fei-bg transition hover:bg-fei-yellow/90">{lang === 'en' ? 'Get Started' : 'Comenzar'}</a>
           </div>
@@ -109,11 +89,6 @@ export function Navbar() {
               <button onClick={toggleLang} className="rounded-full border border-white/20 px-3 py-1.5 text-xs font-bold text-white/70 transition hover:bg-white/[0.08] hover:text-white">
                 {lang === 'en' ? 'ES' : 'EN'}
               </button>
-            )}
-            {!authLoading && isAuthenticated && (
-              <a href="/notifications" className="inline-flex h-10 w-10 items-center justify-center rounded-full text-white/45 transition hover:bg-white/[0.06] hover:text-fei-sky">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-              </a>
             )}
             <button type="button" onClick={() => setMenuOpen((v) => !v)} className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white transition hover:bg-white/[0.08]">
               {menuOpen ? (
