@@ -241,6 +241,229 @@ const items = {
   ],
 }
 
+
+const headCoachItems = {
+  warmup: [
+    {
+      id: 'w1',
+      label: 'Item 1 — Role Identification',
+      context: 'Which situation happens most often in your role as a first-team head coach?',
+      question: 'Choose the option that best matches the role’s daily communication reality.',
+      options: [
+        'A. Preparing individual nutrition plans for injured players',
+        'B. Writing detailed scouting reports for recruitment meetings',
+        'C. Delivering tactical direction to players and staff',
+        'D. Managing academy school partnerships and family meetings',
+      ],
+      correct: 'C',
+    },
+    {
+      id: 'w2',
+      label: 'Item 2 — Communication Priority',
+      context: 'What type of communication is most critical for your daily work?',
+      question: 'Choose the area that most directly affects your coaching performance pathway.',
+      options: [
+        'A. Explaining tactical decisions clearly to players and staff',
+        'B. Creating public content for club social media channels',
+        'C. Negotiating player contracts with agents and lawyers',
+        'D. Preparing medical return-to-play documentation',
+      ],
+      correct: 'A',
+    },
+  ],
+  reading: [
+    {
+      id: 'r1',
+      level: 'A2',
+      label: 'Item 3 — Defensive Focus',
+      context: 'Your assistant coach sends this note before training:\\n\\n"Today we work on our mid-block. Keep the midfield line close to the back four. Do not leave space between the lines. When the ball goes wide, shift together and stay compact."',
+      question: 'What is the main defensive focus?',
+      options: [
+        'A. Press every pass as soon as the opponent receives',
+        'B. Protect the penalty area with a very deep line',
+        'C. Move the midfield wider to create passing angles',
+        'D. Stay compact and protect space between the lines',
+      ],
+      correct: 'D',
+    },
+    {
+      id: 'r2',
+      level: 'B1',
+      label: 'Item 4 — Opposition Weakness',
+      context: 'The analyst sends this opposition note:\\n\\n"Their fullbacks push high in possession, but the midfield is slow to cover wide spaces. When they lose the ball, there is often a gap behind the fullback. Quick switches can create chances before they recover."',
+      question: 'What weakness should the coach identify?',
+      options: [
+        'A. Their goalkeeper struggles with direct long shots',
+        'B. Their wide cover is slow after fullbacks advance',
+        'C. Their center-backs are weak in first-contact duels',
+        'D. Their strikers stop pressing after losing the ball',
+      ],
+      correct: 'B',
+    },
+    {
+      id: 'r3',
+      level: 'B2',
+      label: 'Item 5 — Crisis Management Brief',
+      context: 'Internal staff memo:\\n\\n"The last three results have created pressure, but the tactical framework is not the main issue. The data shows the team is reaching good areas, yet execution in both boxes has dropped. The message to the squad must protect belief while making standards non-negotiable."',
+      question: 'What message should the coach send internally?',
+      options: [
+        'A. Keep the tactical framework, address execution and reinforce standards',
+        'B. Tell the squad the results are unlucky and avoid criticism',
+        'C. Change the tactical model to show immediate action',
+        'D. Focus only on motivation and leave analysis for later',
+      ],
+      correct: 'A',
+    },
+  ],
+  listening: [
+    {
+      id: 'l1',
+      level: 'A2',
+      label: 'Item 6 — Midfield Protection',
+      script: 'Today we play with three midfielders. The six protects the space in front of the back line. Stay connected. Do not open the middle. Compact, always compact.',
+      question: 'What is the main priority for the midfield?',
+      options: [
+        'A. Push higher to support the striker at every attack',
+        'B. Spread out to cover both touchlines quickly',
+        'C. Protect the central space in front of defense',
+        'D. Drop all midfielders into the penalty area',
+      ],
+      correct: 'C',
+    },
+    {
+      id: 'l2',
+      level: 'B1',
+      label: 'Item 7 — Player Availability Decision',
+      script: 'The fitness coach says the player has high fatigue markers. We still need his pressing early because of the opponent’s build-up. So he starts, but we manage the second half and bring him off before seventy if the match allows.',
+      question: 'What is the final decision about the player?',
+      options: [
+        'A. Leave him out so he can fully recover',
+        'B. Start him and manage his minutes before seventy',
+        'C. Use him only if the team is losing late',
+        'D. Play him ninety minutes because he is essential',
+      ],
+      correct: 'B',
+    },
+    {
+      id: 'l3',
+      level: 'B2',
+      label: 'Item 8 — Post-Match Leadership',
+      script: 'The result hurts, but the performance was closer to what we want. Our pressing energy was good, and the structure was clearer. The second goal came from one poor decision in build-up. Tomorrow we correct that moment without losing the standards we showed.',
+      question: 'What is the coach’s core message?',
+      options: [
+        'A. The defeat proves the tactical structure must change',
+        'B. The team should ignore the result and move on',
+        'C. One mistake matters more than the whole performance',
+        'D. Keep the positives, correct the error and hold standards',
+      ],
+      correct: 'D',
+    },
+  ],
+  vocabulary: [
+    {
+      id: 'v1',
+      level: 'A2',
+      label: 'Item 9 — Compactness',
+      context: 'During training, the coach says: “The back line and midfield need compactness when we defend.”',
+      question: 'What does “compactness” mean here?',
+      options: [
+        'A. Players stay close enough to protect central spaces',
+        'B. Players make short passes to keep possession safely',
+        'C. Players move quickly into wide attacking positions',
+        'D. Players keep the ball far away from the goalkeeper',
+      ],
+      correct: 'A',
+    },
+    {
+      id: 'v2',
+      level: 'B1',
+      label: 'Item 10 — Pressing Trigger',
+      context: 'The assistant coach says: “Their pressing trigger is the pass from our goalkeeper to the center-back.”',
+      question: 'What is a “pressing trigger”?',
+      options: [
+        'A. The player who leads the press in every phase',
+        'B. The defensive shape used after losing the ball',
+        'C. The moment or cue that starts the press',
+        'D. The mistake that ends a pressing sequence',
+      ],
+      correct: 'C',
+    },
+    {
+      id: 'v3',
+      level: 'B2',
+      label: 'Item 11 — Squad Availability',
+      context: 'The Sporting Director says: “We need to review squad availability across the next three windows before confirming recruitment priorities.”',
+      question: 'What does “availability across the next three windows” refer to?',
+      options: [
+        'A. Media commitments during the next three match weeks',
+        'B. Training facility access for future preparation blocks',
+        'C. Matchday travel availability for upcoming away fixtures',
+        'D. Player status and options in future transfer periods',
+      ],
+      correct: 'D',
+    },
+  ],
+  functional: [
+    {
+      id: 'f1',
+      level: 'B1',
+      label: 'Item 12 — Clear Instruction',
+      context: 'A player does not understand the pressing trigger. You have 20 seconds to explain it clearly.',
+      question: 'Which explanation is clearest?',
+      options: [
+        'A. Press with intensity, but don’t lose the team shape.',
+        'B. Wait for the pass to the fullback; then close him down.',
+        'C. The trigger depends on the opponent’s confidence.',
+        'D. Press when you feel the opponent is under pressure.',
+      ],
+      correct: 'B',
+    },
+    {
+      id: 'f2',
+      level: 'B2',
+      label: 'Item 13 — Feedback Under Resistance',
+      context: 'During video feedback, a player says: “But the center-back moved late, not me.” You need to keep the conversation productive.',
+      question: 'What is the best response?',
+      options: [
+        'A. You are focusing on the wrong player; watch your position again.',
+        'B. The center-back was late, so we will review his clip separately.',
+        'C. His timing was late, but your starting position gave you no recovery time.',
+        'D. The clip is not about blame; we only need more concentration.',
+      ],
+      correct: 'C',
+    },
+    {
+      id: 'f3',
+      level: 'B2',
+      label: 'Item 14 — Crisis Media Response',
+      context: 'After two losses, a journalist says: “Your defense looks broken. Do you need to change tactics completely?”',
+      question: 'Which response is most professional?',
+      options: [
+        'A. Our defensive structure needs cleaner transition positioning, not a full reset.',
+        'B. The defense is not broken; the results make the question sound worse.',
+        'C. We will change what is needed, but I won’t discuss the plan today.',
+        'D. The players know the issue, and tomorrow they must respond better.',
+      ],
+      correct: 'A',
+    },
+    {
+      id: 'f4',
+      level: 'C1',
+      label: 'Item 15 — Executive Negotiation',
+      context: 'The Sporting Director says: “We need to reduce costs. Can you work with fewer staff members and still compete?”',
+      question: 'What is the most strategic response?',
+      options: [
+        'A. We can reduce some staff, but performance risk will increase.',
+        'B. Yes, if everyone accepts more responsibility across departments.',
+        'C. I can work with less, but recruitment and analysis must stay untouched.',
+        'D. Let’s define acceptable risk first; then I can propose responsible reductions.',
+      ],
+      correct: 'D',
+    },
+  ],
+}
+
+
 const insights = {
   A2: {
     level: 'A2',
@@ -266,10 +489,10 @@ const insights = {
 
 // ─── SCORE CALCULATOR ────────────────────────────────────────────────────────
 
-function calculateResult(answers: Record<string, Answer>, writingScore: number, speakingScore: number): Result {
+function calculateResult(assessmentItems: typeof items, answers: Record<string, Answer>, writingScore: number, speakingScore: number): Result {
   let score = 0
   const maxObjective = 13
-  const allItems = [...items.reading, ...items.listening, ...items.vocabulary, ...items.functional]
+  const allItems = [...assessmentItems.reading, ...assessmentItems.listening, ...assessmentItems.vocabulary, ...assessmentItems.functional]
 
   allItems.forEach((item) => {
     const ans = answers[item.id]
@@ -279,10 +502,10 @@ function calculateResult(answers: Record<string, Answer>, writingScore: number, 
   const totalScore = score + writingScore + speakingScore
   const maxScore = maxObjective + 4 + 4
 
-  const a2Items = [items.reading[0], items.listening[0], items.vocabulary[0]]
-  const b1Items = [items.reading[1], items.listening[1], items.vocabulary[1], items.functional[0]]
-  const b2Items = [items.reading[2], items.listening[2], items.vocabulary[2], items.functional[1], items.functional[2]]
-  const c1Item = items.functional[3]
+  const a2Items = [assessmentItems.reading[0], assessmentItems.listening[0], assessmentItems.vocabulary[0]]
+  const b1Items = [assessmentItems.reading[1], assessmentItems.listening[1], assessmentItems.vocabulary[1], assessmentItems.functional[0]]
+  const b2Items = [assessmentItems.reading[2], assessmentItems.listening[2], assessmentItems.vocabulary[2], assessmentItems.functional[1], assessmentItems.functional[2]]
+  const c1Item = assessmentItems.functional[3]
 
   const a2Score = a2Items.filter((i) => answers[i.id]?.startsWith(i.correct)).length
   const b1Score = b1Items.filter((i) => answers[i.id]?.startsWith(i.correct)).length
@@ -417,7 +640,9 @@ function AssessmentContent() {
   const supabase = createClient()
 
   const selectedRole = searchParams.get('role') || 'Professional Player'
-  const assessmentAvailable = selectedRole === 'Professional Player'
+  const assessmentAvailable = selectedRole === 'Professional Player' || selectedRole === 'Head Coach'
+  const activeItems = selectedRole === 'Head Coach' ? headCoachItems : items
+  const roleSubtitle = selectedRole === 'Head Coach' ? 'First Team' : 'Senior Squad'
 
   const [section, setSection] = useState<Section>('intro')
   const [answers, setAnswers] = useState<Record<string, Answer>>({})
@@ -477,9 +702,15 @@ function AssessmentContent() {
   }
 
   function scoreWriting(text: string): number {
-    const words = text.trim().split(/\s+/).length
+    const words = text.trim() ? text.trim().split(/\s+/).length : 0
     const sentences = text.trim().split(/[.!?]+/).filter(Boolean).length
-    const hasKey = ['hamstring', 'sharp', 'turn', 'cool-down', 'sprint', 'tight'].some((w) => text.toLowerCase().includes(w))
+    const lower = text.toLowerCase()
+
+    const professionalPlayerKeywords = ['hamstring', 'sharp', 'turn', 'cool-down', 'sprint', 'tight']
+    const headCoachKeywords = ['press', 'pressure', 'plan', 'space', 'calm', 'width', 'standards', 'discipline', 'belief']
+
+    const keywords = selectedRole === 'Head Coach' ? headCoachKeywords : professionalPlayerKeywords
+    const hasKey = keywords.some((w) => lower.includes(w))
 
     if (words < 20 || sentences < 2) return 1
     if (words >= 20 && sentences >= 3 && !hasKey) return 2
@@ -489,7 +720,7 @@ function AssessmentContent() {
 
   async function finishAssessment(spScore: number) {
     const wScore = scoreWriting(writingText)
-    const res = calculateResult(answers, wScore, spScore)
+    const res = calculateResult(activeItems, answers, wScore, spScore)
     setResult(res)
     setSaving(true)
 
@@ -654,7 +885,7 @@ function AssessmentContent() {
               Diagnostic Assessment
             </div>
             <h1 className="mt-4 text-4xl font-black text-fei-text sm:text-5xl">{selectedRole}</h1>
-            <p className="mt-3 text-fei-text/60">Senior Squad · FEI Communication Intelligence</p>
+            <p className="mt-3 text-fei-text/60">{roleSubtitle} · FEI Communication Intelligence</p>
           </div>
 
           <div className="mb-8 grid gap-4 sm:grid-cols-2">
@@ -705,7 +936,7 @@ function AssessmentContent() {
             <h2 className="mb-4 font-bold text-fei-text">Before you begin</h2>
             <ul className="space-y-4 text-sm text-fei-text/70">
               {[
-                'Use headphones or speakers for listening items.',
+                'Use headphones or speakers for listening activeItems.',
                 'Enable your microphone for the final spoken response.',
                 'Stay on this page until the assessment is complete.',
                 'Find a quiet place with a stable internet connection.',
@@ -768,7 +999,7 @@ function AssessmentContent() {
                 <div className="flex h-8 w-8 items-center justify-center rounded-full bg-fei-sky/10 text-fei-sky font-bold text-sm">1</div>
                 <h3 className="font-bold text-fei-text">Audio test</h3>
               </div>
-              <p className="mb-4 text-sm text-fei-text/60">Play the sample audio to confirm you can hear the listening items.</p>
+              <p className="mb-4 text-sm text-fei-text/60">Play the sample audio to confirm you can hear the listening activeItems.</p>
               <button
                 onClick={playAudioTest}
                 disabled={audioTestPlaying}
@@ -844,7 +1075,7 @@ function AssessmentContent() {
 
   // WARM-UP
   if (section === 'warm-up') {
-    const item = items.warmup[warmupStep]
+    const item = activeItems.warmup[warmupStep]
     const selected = answers[item.id]
 
     return (
@@ -882,7 +1113,7 @@ function AssessmentContent() {
           <button
             onClick={() => {
               if (!selected) return
-              if (warmupStep < items.warmup.length - 1) {
+              if (warmupStep < activeItems.warmup.length - 1) {
                 setWarmupStep(warmupStep + 1)
               } else {
                 setSection('reading')
@@ -891,7 +1122,7 @@ function AssessmentContent() {
             disabled={!selected}
             className="w-full rounded-full bg-fei-yellow py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-yellow/20 disabled:text-fei-yellow/50 disabled:opacity-100"
           >
-            {!selected ? 'Select an option to continue' : warmupStep < items.warmup.length - 1 ? 'Next →' : 'Continue to Reading →'}
+            {!selected ? 'Select an option to continue' : warmupStep < activeItems.warmup.length - 1 ? 'Next →' : 'Continue to Reading →'}
           </button>
         </div>
       </div>
@@ -900,7 +1131,7 @@ function AssessmentContent() {
 
   // READING
   if (section === 'reading') {
-    const item = items.reading[readingStep]
+    const item = activeItems.reading[readingStep]
     const selected = answers[item.id]
 
     return (
@@ -941,7 +1172,7 @@ function AssessmentContent() {
           <button
             onClick={() => {
               if (!selected) return
-              if (readingStep < items.reading.length - 1) {
+              if (readingStep < activeItems.reading.length - 1) {
                 setReadingStep(readingStep + 1)
               } else {
                 setSection('listening')
@@ -950,7 +1181,7 @@ function AssessmentContent() {
             disabled={!selected}
             className="w-full rounded-full bg-fei-yellow py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-yellow/20 disabled:text-fei-yellow/50 disabled:opacity-100"
           >
-            {!selected ? 'Select an option to continue' : readingStep < items.reading.length - 1 ? 'Next →' : 'Continue to Listening →'}
+            {!selected ? 'Select an option to continue' : readingStep < activeItems.reading.length - 1 ? 'Next →' : 'Continue to Listening →'}
           </button>
         </div>
       </div>
@@ -959,7 +1190,7 @@ function AssessmentContent() {
 
   // LISTENING
   if (section === 'listening') {
-    const item = items.listening[listeningStep]
+    const item = activeItems.listening[listeningStep]
     const selected = answers[item.id]
 
     return (
@@ -1000,7 +1231,7 @@ function AssessmentContent() {
           <button
             onClick={() => {
               if (!selected) return
-              if (listeningStep < items.listening.length - 1) {
+              if (listeningStep < activeItems.listening.length - 1) {
                 setListeningStep(listeningStep + 1)
               } else {
                 setSection('vocabulary')
@@ -1009,7 +1240,7 @@ function AssessmentContent() {
             disabled={!selected}
             className="w-full rounded-full bg-fei-yellow py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-yellow/20 disabled:text-fei-yellow/50 disabled:opacity-100"
           >
-            {!selected ? 'Select an option to continue' : listeningStep < items.listening.length - 1 ? 'Next →' : 'Continue to Vocabulary →'}
+            {!selected ? 'Select an option to continue' : listeningStep < activeItems.listening.length - 1 ? 'Next →' : 'Continue to Vocabulary →'}
           </button>
         </div>
       </div>
@@ -1018,7 +1249,7 @@ function AssessmentContent() {
 
   // VOCABULARY
   if (section === 'vocabulary') {
-    const item = items.vocabulary[vocabStep]
+    const item = activeItems.vocabulary[vocabStep]
     const selected = answers[item.id]
 
     return (
@@ -1058,7 +1289,7 @@ function AssessmentContent() {
           <button
             onClick={() => {
               if (!selected) return
-              if (vocabStep < items.vocabulary.length - 1) {
+              if (vocabStep < activeItems.vocabulary.length - 1) {
                 setVocabStep(vocabStep + 1)
               } else {
                 setSection('functional')
@@ -1067,7 +1298,7 @@ function AssessmentContent() {
             disabled={!selected}
             className="w-full rounded-full bg-fei-yellow py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-yellow/20 disabled:text-fei-yellow/50 disabled:opacity-100"
           >
-            {!selected ? 'Select an option to continue' : vocabStep < items.vocabulary.length - 1 ? 'Next →' : 'Continue to Functional Communication →'}
+            {!selected ? 'Select an option to continue' : vocabStep < activeItems.vocabulary.length - 1 ? 'Next →' : 'Continue to Functional Communication →'}
           </button>
         </div>
       </div>
@@ -1076,7 +1307,7 @@ function AssessmentContent() {
 
   // FUNCTIONAL COMMUNICATION
   if (section === 'functional') {
-    const item = items.functional[functionalStep]
+    const item = activeItems.functional[functionalStep]
     const selected = answers[item.id]
 
     return (
@@ -1116,7 +1347,7 @@ function AssessmentContent() {
           <button
             onClick={() => {
               if (!selected) return
-              if (functionalStep < items.functional.length - 1) {
+              if (functionalStep < activeItems.functional.length - 1) {
                 setFunctionalStep(functionalStep + 1)
               } else {
                 setSection('writing')
@@ -1125,7 +1356,7 @@ function AssessmentContent() {
             disabled={!selected}
             className="w-full rounded-full bg-fei-yellow py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-yellow/20 disabled:text-fei-yellow/50 disabled:opacity-100"
           >
-            {!selected ? 'Select an option to continue' : functionalStep < items.functional.length - 1 ? 'Next →' : 'Continue to Writing →'}
+            {!selected ? 'Select an option to continue' : functionalStep < activeItems.functional.length - 1 ? 'Next →' : 'Continue to Writing →'}
           </button>
         </div>
       </div>
@@ -1154,12 +1385,18 @@ function AssessmentContent() {
           <div className="mb-6 rounded-2xl border border-fei-sky/20 bg-fei-sky/[0.03] p-6">
             <p className="mb-2 text-xs font-semibold uppercase tracking-[0.15em] text-fei-sky">Situation</p>
             <p className="text-sm leading-relaxed text-fei-text/80">
-              After training today, you developed tightness in your left hamstring during the second half. It started when you made a sharp turning movement while sprinting. The sensation increased slightly during the cool-down. You want to report this to the physiotherapist before tomorrow's session.
+{selectedRole === 'Head Coach'
+                ? 'You are briefing the squad two hours before a match against a high-pressing opponent. Focus on what they will face, what your plan is, and what tone you want to set.'
+                : "After training today, you developed tightness in your left hamstring during the second half. It started when you made a sharp turning movement while sprinting. The sensation increased slightly during the cool-down. You want to report this to the physiotherapist before tomorrow's session."}
             </p>
           </div>
 
           <div className="mb-3">
-            <p className="font-semibold text-fei-text">Write a message to the physiotherapist reporting this discomfort.</p>
+            <p className="font-semibold text-fei-text">
+              {selectedRole === 'Head Coach'
+                ? 'Write the opening 3–5 sentences of your pre-match briefing.'
+                : 'Write a message to the physiotherapist reporting this discomfort.'}
+            </p>
             <p className="mt-1 text-sm text-fei-text/50">Write 3–5 sentences in professional English.</p>
           </div>
 
@@ -1207,12 +1444,18 @@ function AssessmentContent() {
           <div className="mb-6 rounded-2xl border border-fei-sky/20 bg-fei-sky/[0.03] p-6">
             <p className="mb-2 text-xs font-semibold uppercase tracking-[0.15em] text-fei-sky">Situation</p>
             <p className="text-sm leading-relaxed text-fei-text/80">
-              You have just received feedback from the head coach about your last match. The coach said you were too slow in transition and needed to be more aggressive in pressing. You disagree slightly because the transition was fast and you were managing some discomfort.
+{selectedRole === 'Head Coach'
+                ? 'You have just substituted a senior player after 25 minutes in a 1–0 loss. The player expected to play 90 minutes. The crowd is loud and other players are watching.'
+                : 'You have just received feedback from the head coach about your last match. The coach said you were too slow in transition and needed to be more aggressive in pressing. You disagree slightly because the transition was fast and you were managing some discomfort.'}
             </p>
           </div>
 
           <div className="mb-6">
-            <p className="font-semibold text-fei-text">Explain how you would respond to the coach professionally.</p>
+            <p className="font-semibold text-fei-text">
+              {selectedRole === 'Head Coach'
+                ? 'Explain the substitution decision while protecting the relationship and your authority.'
+                : 'Explain how you would respond to the coach professionally.'}
+            </p>
             <p className="mt-1 text-sm text-fei-text/50">Recommended time: 45–60 seconds. Recording stops automatically at 75 seconds.</p>
           </div>
 
@@ -1395,9 +1638,56 @@ function AssessmentContent() {
       ],
     }
 
-    const focusItems = pathwayFocus[result.level] || pathwayFocus.A2
-    const pathwayDescription = pathwayDescriptions[result.level] || pathwayDescriptions.A2
-    const aiInsight = aiInsights[result.level] || aiInsights.A2
+    const rolePathwayDescriptions: Record<string, string> = selectedRole === 'Head Coach'
+      ? {
+          A2: 'You can deliver clear tactical instructions in familiar situations. Your pathway will build your ability to manage feedback, staff alignment, and matchday communication with more authority.',
+          B1: 'You communicate effectively with players and staff on routine matters. Your pathway will help you lead more complex team situations, match briefings, and feedback conversations with greater clarity.',
+          B2: 'You lead teams with professional clarity and control. Your pathway will refine your crisis management, executive communication, and ability to influence staff and squad behavior under pressure.',
+          C1: 'You command multi-audience communication strategically. Your pathway will deepen your ability to align football operations, lead through complexity, and represent the club with authority.',
+        }
+      : pathwayDescriptions
+
+    const roleAiInsights: Record<string, string> = selectedRole === 'Head Coach'
+      ? {
+          A2: 'Your result shows a developing foundation in first-team coaching communication. You can communicate direct tactical ideas in familiar situations, but your next step is to build more structure when managing feedback, staff alignment, and matchday pressure. FEI recommends starting with clear tactical language and practical briefing work so your communication becomes more consistent with players and staff.',
+          B1: 'Your result shows that you can manage routine coaching communication with players and staff. Your next step is to lead more complex situations with stronger structure, especially tactical adjustments, individual feedback, match briefings, and media responses. FEI recommends focused role-specific training to help you communicate decisions with clarity and authority.',
+          B2: 'Your result shows strong professional coaching communication across tactical, staff, and pressure-based situations. Your next step is to refine crisis management, executive communication, and leadership under pressure. FEI recommends advanced role-specific training to help you influence players, staff, and decision-makers with greater strategic control.',
+          C1: 'Your result shows advanced strategic communication for a first-team head coach. You can manage complex football messages across players, staff, media, and executives. Your next step is refinement: institutional alignment, high-pressure leadership, executive influence, and elite communication control.',
+        }
+      : aiInsights
+
+    const rolePathwayFocus: Record<string, string[]> = selectedRole === 'Head Coach'
+      ? {
+          A2: [
+            'Clear tactical language',
+            'Basic briefing structure',
+            'Simple staff communication',
+            'Player feedback foundations',
+          ],
+          B1: [
+            'Tactical adjustment',
+            'Individual feedback',
+            'Match briefings',
+            'Media response under pressure',
+          ],
+          B2: [
+            'Crisis communication',
+            'Executive negotiation',
+            'Leadership under pressure',
+            'Advanced staff alignment',
+          ],
+          C1: [
+            'Strategic influence',
+            'High-pressure leadership',
+            'Institutional alignment',
+            'Elite communication control',
+          ],
+        }
+      : pathwayFocus
+
+    const focusItems = rolePathwayFocus[result.level] || rolePathwayFocus.A2
+    const pathwayDescription = rolePathwayDescriptions[result.level] || rolePathwayDescriptions.A2
+    const aiInsight = roleAiInsights[result.level] || roleAiInsights.A2
     const pathwayLabel = levelLabels[result.level] || 'Foundation'
     const pathwayColor = levelColors[result.level] || 'text-fei-sky'
     const overallEvidence = Math.round((result.score / result.maxScore) * 100)
