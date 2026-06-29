@@ -583,49 +583,75 @@ function AssessmentContent() {
           </div>
 
           <div className="mb-8 grid gap-4 sm:grid-cols-2">
-            {[
-              { icon: '⏱', label: 'Duration', value: '10–12 minutes' },
-              { icon: '🎯', label: 'Result', value: 'FEI Pathway + AI Insight' },
-            ].map((stat) => (
-              <div key={stat.label} className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-5 text-center">
-                <div className="text-2xl">{stat.icon}</div>
-                <p className="mt-2 text-xs text-fei-text/50">{stat.label}</p>
-                <p className="mt-1 font-semibold text-fei-text">{stat.value}</p>
+            <div className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-5 text-center">
+              <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full border border-fei-sky/20 bg-fei-sky/[0.08] text-fei-sky">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={1.8}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-5 w-5"
+                  aria-hidden
+                >
+                  <circle cx="12" cy="12" r="8.5" />
+                  <path d="M12 7.5v5l3 2" />
+                </svg>
               </div>
-            ))}
+              <p className="text-xs text-fei-text/50">Duration</p>
+              <p className="mt-1 font-semibold text-fei-text">10–12 minutes</p>
+            </div>
+
+            <div className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-5 text-center">
+              <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full border border-fei-yellow/20 bg-fei-yellow/[0.08] text-fei-yellow">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={1.8}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-5 w-5"
+                  aria-hidden
+                >
+                  <path d="M12 3.5 19 7.5v5c0 4.5-3 7.5-7 8-4-.5-7-3.5-7-8v-5l7-4Z" />
+                  <path d="M9 12.5 11 14.5 15.5 9.5" />
+                </svg>
+              </div>
+              <p className="text-xs text-fei-text/50">Result</p>
+              <p className="mt-1 font-semibold text-fei-text">FEI Pathway + AI Insight</p>
+            </div>
           </div>
 
           <div className="mb-8 rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-6">
             <h2 className="mb-4 font-bold text-fei-text">Before you begin</h2>
-            <ul className="space-y-3 text-sm text-fei-text/70">
+            <ul className="space-y-4 text-sm text-fei-text/70">
               {[
-                '🎧  Use headphones or speakers for listening items.',
-                '🎙  Enable your microphone for the final spoken response.',
-                '📵  Stay on this page until the assessment is complete.',
-                '📱  Find a quiet place with a stable internet connection.',
-                '✅  Answer every item. There is no penalty for incorrect answers.',
+                'Use headphones or speakers for listening items.',
+                'Enable your microphone for the final spoken response.',
+                'Stay on this page until the assessment is complete.',
+                'Find a quiet place with a stable internet connection.',
+                'Answer every item. There is no penalty for incorrect answers.',
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3">
-                  <span className="shrink-0">{item.split('  ')[0]}</span>
-                  <span>{item.split('  ')[1]}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="mb-8 rounded-2xl border border-fei-sky/20 bg-fei-sky/[0.04] p-6">
-            <h2 className="mb-4 font-bold text-fei-text">What this diagnostic measures</h2>
-            <ul className="space-y-3 text-sm leading-6 text-fei-text/65">
-              {[
-                'Understanding coach instructions',
-                'Reading tactical and match information',
-                'Responding to feedback professionally',
-                'Reporting injury or physical discomfort',
-                'Communicating under match pressure',
-                'Handling role and playing-time conversations',
-              ].map(item => (
-                <li key={item} className="flex items-start gap-3">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-fei-yellow" />
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-fei-yellow/25 bg-fei-yellow/[0.08] text-fei-yellow">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="h-3 w-3"
+                      aria-hidden
+                    >
+                      <path d="m6 12 4 4 8-8" />
+                    </svg>
+                  </span>
                   <span>{item}</span>
                 </li>
               ))}
