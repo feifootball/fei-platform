@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase";
 
 const navLinks = [
-  { label: "Product", href: "#get-started" },
-  { label: "Diagnostic", href: "#diagnostic" },
-  { label: "Roles", href: "#roles" },
-  { label: "For Clubs", href: "#clubs" },
-  { label: "About", href: "#about" },
+  { label: "How it works", href: "/#how-it-works" },
+  { label: "Roles", href: "/#roles" },
+  { label: "For Clubs", href: "/#for-clubs" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "About", href: "/#about" },
 ];
 
 export function Navbar() {
@@ -33,9 +33,7 @@ export function Navbar() {
 
           <a href="/" className="flex min-w-0 items-center gap-3">
             <img src="/logo.svg" alt="FEI" className="h-7 w-auto sm:h-8" />
-            <span className="hidden whitespace-nowrap text-xs font-medium tracking-wide text-fei-sky/80 lg:block">
-              Football English Intelligence
-            </span>
+            <span className="hidden whitespace-nowrap text-xs font-medium tracking-wide text-fei-sky/80 lg:block">Football English Intelligence</span>
           </a>
 
           <div className="hidden items-center gap-1 rounded-full bg-white/[0.03] px-2 py-1 md:flex">
@@ -49,29 +47,21 @@ export function Navbar() {
           <div className="hidden items-center gap-2 md:flex">
             <a href="https://instagram.com/fei.football" target="_blank" rel="noopener noreferrer" className="inline-flex h-9 w-9 items-center justify-center rounded-full text-white/40 transition hover:bg-white/[0.06] hover:text-fei-sky" aria-label="Instagram">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                <circle cx="12" cy="12" r="4"/>
-                <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
               </svg>
             </a>
-
             <a href="https://linkedin.com/company/football-english-intelligence" target="_blank" rel="noopener noreferrer" className="inline-flex h-9 w-9 items-center justify-center rounded-full text-white/40 transition hover:bg-white/[0.06] hover:text-fei-sky" aria-label="LinkedIn">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                <rect x="2" y="9" width="4" height="12"/>
-                <circle cx="4" cy="4" r="2"/>
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
               </svg>
             </a>
-
             {!authLoading && isAuthenticated && (
               <a href="/notifications" className="inline-flex h-9 w-9 items-center justify-center rounded-full text-white/40 transition hover:bg-white/[0.06] hover:text-fei-sky" aria-label="Notifications">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-                  <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>
                 </svg>
               </a>
             )}
-
             <a href="/login" className="rounded-full border border-fei-sky/70 px-5 py-2 text-sm font-medium text-fei-sky transition hover:bg-fei-sky/10">Login</a>
             <a href="/register" className="rounded-full bg-fei-yellow px-5 py-2 text-sm font-semibold text-fei-bg transition hover:bg-fei-yellow/90">Get Started</a>
           </div>
@@ -80,13 +70,11 @@ export function Navbar() {
             {!authLoading && isAuthenticated && (
               <a href="/notifications" className="inline-flex h-10 w-10 items-center justify-center rounded-full text-white/45 transition hover:bg-white/[0.06] hover:text-fei-sky">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-                  <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                  <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>
                 </svg>
               </a>
             )}
-
-            <button type="button" onClick={() => setMenuOpen((v) => !v)} className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white transition hover:bg-white/[0.08]" aria-label={menuOpen ? "Close menu" : "Open menu"}>
+            <button type="button" onClick={() => setMenuOpen((v) => !v)} className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white transition hover:bg-white/[0.08]">
               {menuOpen ? (
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
               ) : (
@@ -106,18 +94,14 @@ export function Navbar() {
               ))}
             </div>
             <div className="mt-3 flex items-center gap-2 border-t border-white/10 pt-3">
-              <a href="https://instagram.com/fei.football" target="_blank" rel="noopener noreferrer" className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-white/55 transition hover:bg-white/[0.06] hover:text-fei-sky">
+              <a href="https://instagram.com/fei.football" target="_blank" rel="noopener noreferrer" className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-white/55 transition hover:text-fei-sky">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                  <circle cx="12" cy="12" r="4"/>
-                  <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
                 </svg>
               </a>
-              <a href="https://linkedin.com/company/football-english-intelligence" target="_blank" rel="noopener noreferrer" className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-white/55 transition hover:bg-white/[0.06] hover:text-fei-sky">
+              <a href="https://linkedin.com/company/football-english-intelligence" target="_blank" rel="noopener noreferrer" className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-white/55 transition hover:text-fei-sky">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                  <rect x="2" y="9" width="4" height="12"/>
-                  <circle cx="4" cy="4" r="2"/>
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
                 </svg>
               </a>
               <a href="/login" onClick={() => setMenuOpen(false)} className="ml-auto rounded-full border border-fei-sky/70 px-4 py-3 text-sm font-semibold text-fei-sky">Login</a>
