@@ -11,6 +11,20 @@ type Profile = {
   created_at: string | null
 }
 
+const diagnosticRoles = [
+  'Professional Player',
+  'Head Coach',
+  'Assistant Coach',
+  'Scout',
+  'Head of Scouting',
+  'Academy Director',
+  'Performance Analyst',
+  'Fitness Coach',
+  'Physiotherapist',
+  'Sports Psychologist',
+  'Nutritionist',
+]
+
 type AssessmentRecord = {
   id?: string
   score?: number | null
@@ -34,6 +48,10 @@ export default function SettingsPage() {
   const [profile, setProfile] = useState<Profile | null>(null)
   const [assessments, setAssessments] = useState<AssessmentRecord[]>([])
   const [loading, setLoading] = useState(true)
+  const [selectedRole, setSelectedRole] = useState('')
+  const [roleError, setRoleError] = useState('')
+  const [roleSuccess, setRoleSuccess] = useState('')
+  const [roleLoading, setRoleLoading] = useState(false)
   const [newPassword, setNewPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [passwordError, setPasswordError] = useState('')
@@ -60,6 +78,7 @@ export default function SettingsPage() {
         .maybeSingle()
 
       setProfile(profileData)
+      setSelectedRole(profileData?.role && diagnosticRoles.includes(profileData.role) ? profileData.role : '')
 
       const { data: assessmentData, error: assessmentError } = await supabase
         .from('assessment_history')
@@ -73,6 +92,46 @@ export default function SettingsPage() {
 
     loadSettings()
   }, [router, supabase])
+
+  async function handleRoleChange(e: React.FormEvent) {
+    e.preventDefault()
+    setRoleError('')
+    setRoleSuccess('')
+
+    if (!selectedRole) {
+      setRoleError('Please choose a football role.')
+      return
+    }
+
+    if (!user) {
+      router.push('/login')
+      return
+    }
+
+    setRoleLoading(true)
+
+    const { error } = await supabase
+      .from('profiles')
+      .upsert(
+        {
+          user_id: user.id,
+          role: selectedRole,
+        },
+        { onConflict: 'user_id' }
+      )
+
+    if (error) {
+      setRoleError(error.message)
+    } else {
+      setProfile((prev) => ({
+        role: selectedRole,
+        created_at: prev?.created_at ?? null,
+      }))
+      setRoleSuccess('Football role updated successfully.')
+    }
+
+    setRoleLoading(false)
+  }
 
   async function handlePasswordChange(e: React.FormEvent) {
     e.preventDefault()
@@ -149,6 +208,55 @@ export default function SettingsPage() {
                 </p>
               </div>
             </div>
+          </section>
+
+          <section className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-6">
+            <h2 className="text-xl font-bold text-fei-text">Football Role</h2>
+            <p className="mt-2 text-sm text-fei-text/50">
+              Change your FEI role to update your diagnostic context.
+            </p>
+
+            <form onSubmit={handleRoleChange} className="mt-5 grid gap-4">
+              {roleSuccess && (
+                <p className="rounded-lg bg-fei-sky/10 px-4 py-3 text-sm text-fei-sky">{roleSuccess}</p>
+              )}
+              {roleError && (
+                <p className="rounded-lg bg-red-500/10 px-4 py-3 text-sm text-red-400">{roleError}</p>
+              )}
+
+              <div>
+                <label className="mb-2 block text-sm font-medium text-fei-text/70">Selected role</label>
+                <select
+                  value={selectedRole}
+                  onChange={(e) => setSelectedRole(e.target.value)}
+                  className="w-full rounded-xl border border-fei-text/10 bg-fei-text/[0.05] px-4 py-3 text-fei-text focus:border-fei-yellow focus:outline-none"
+                >
+                  <option value="" className="bg-fei-bg text-fei-text">Choose your role</option>
+                  {diagnosticRoles.map((role) => (
+                    <option key={role} value={role} className="bg-fei-bg text-fei-text">
+                      {role}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="flex flex-wrap gap-3">
+                <button
+                  type="submit"
+                  disabled={roleLoading || !selectedRole}
+                  className="rounded-full bg-fei-yellow px-8 py-3 font-semibold text-fei-bg transition-colors hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-yellow/20 disabled:text-fei-yellow/50 disabled:opacity-100"
+                >
+                  {roleLoading ? 'Saving role...' : 'Save role'}
+                </button>
+
+                <Link
+                  href={selectedRole ? `/assessment?role=${encodeURIComponent(selectedRole)}` : '/assessment'}
+                  className="rounded-full border border-fei-sky/40 px-8 py-3 font-semibold text-fei-sky transition-colors hover:bg-fei-sky/10"
+                >
+                  Test selected diagnostic
+                </Link>
+              </div>
+            </form>
           </section>
 
           <section className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-6">
