@@ -155,6 +155,9 @@ export default function DashboardPage() {
             <Link href="/learning" className="transition hover:text-fei-text">
               Learning Path
             </Link>
+            <Link href="/settings" className="transition hover:text-fei-text">
+              Settings
+            </Link>
             <button
               onClick={handleLogout}
               className="rounded-full border border-fei-text/15 px-5 py-2 text-fei-text/70 transition hover:border-fei-yellow hover:text-fei-yellow"
