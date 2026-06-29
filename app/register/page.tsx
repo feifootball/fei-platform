@@ -87,12 +87,50 @@ export default function RegisterPage() {
           <span className="text-4xl font-black text-fei-yellow">FEI</span>
           <p className="mt-2 text-sm text-fei-sky">Football English Intelligence</p>
           <div className="mt-8 rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-8">
-            <div className="mb-4 text-4xl">📬</div>
-            <h1 className="mb-3 text-2xl font-bold text-fei-text">Check your inbox</h1>
+            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-fei-yellow/25 bg-fei-yellow/10 text-fei-yellow">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={1.7}
+                className="h-8 w-8"
+                aria-hidden
+              >
+                <path d="M4 6h16v12H4z" />
+                <path d="m4 7 8 6 8-6" />
+                <path d="m9 17 2 2 4-5" />
+              </svg>
+            </div>
+
+            <h1 className="mb-3 text-2xl font-bold text-fei-text">
+              Confirm your FEI account
+            </h1>
+
             <p className="text-fei-text/60">
-              We sent a confirmation email to <span className="font-medium text-fei-yellow">{email}</span>.
-              Click the link in the email to activate your account.
+              We sent a confirmation link to:
             </p>
+
+            <div className="mx-auto mt-4 max-w-full rounded-full border border-fei-yellow/20 bg-fei-yellow/[0.08] px-4 py-2 text-sm font-semibold text-fei-yellow">
+              {email}
+            </div>
+
+            <p className="mt-5 text-sm leading-6 text-fei-text/60">
+              Open the email and click the confirmation link to activate your FEI profile
+              and continue to your diagnostic.
+            </p>
+
+            <p className="mt-4 text-xs leading-5 text-fei-text/40">
+              Can’t find it? Check your spam or promotions folder.
+            </p>
+
+            <a
+              href="/login"
+              className="mt-6 inline-flex w-full justify-center rounded-full bg-fei-yellow px-6 py-3 font-semibold text-fei-bg transition hover:bg-fei-yellow/90"
+            >
+              Go to Sign in
+            </a>
+
             <p className="mt-4 text-sm text-fei-text/40">
               Already confirmed?{' '}
               <a href="/login" className="text-fei-sky hover:underline">Sign in</a>
