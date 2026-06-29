@@ -1289,6 +1289,13 @@ function AssessmentContent() {
       C1: 'You demonstrate advanced professional communication with strong awareness, precision, and maturity. Your pathway will help you refine leadership communication, negotiation, public presence, and high-pressure decision-making.',
     }
 
+    const aiInsights: Record<string, string> = {
+      A2: 'Your result shows a developing foundation in professional football English. You can handle some direct communication in familiar situations, but you need more consistency when instructions become faster, more tactical, or more pressure-based. Your next step is to strengthen real-time understanding, clarification skills, and clearer communication with coaches, teammates, and medical staff. FEI recommends starting with practical role-specific training so you can improve in the situations that affect your daily performance most.',
+      B1: 'Your result shows that you can manage common football communication, especially when the context is familiar and the message is direct. Your next step is to communicate with more structure and precision when conversations become more detailed, tactical, or pressure-based. FEI recommends focused role-specific training to help you respond more confidently in professional situations.',
+      B2: 'Your result shows strong professional communication potential across football-specific situations. You can understand and respond to many complex messages, but your next step is to improve strategic control in feedback, role conversations, and high-pressure communication. FEI recommends advanced role-specific training to help you communicate with more authority and precision.',
+      C1: 'Your result shows advanced professional communication ability with strong awareness, precision, and maturity. Your next step is refinement: leadership communication, negotiation, public presence, and high-pressure decision-making. FEI recommends advanced training designed to sharpen your communication at the highest professional level.',
+    }
+
     const pathwayFocus: Record<string, string[]> = {
       A2: [
         'Understanding tactical instructions',
@@ -1318,6 +1325,7 @@ function AssessmentContent() {
 
     const focusItems = pathwayFocus[result.level] || pathwayFocus.A2
     const pathwayDescription = pathwayDescriptions[result.level] || pathwayDescriptions.A2
+    const aiInsight = aiInsights[result.level] || aiInsights.A2
     const pathwayLabel = levelLabels[result.level] || 'Foundation'
     const pathwayColor = levelColors[result.level] || 'text-fei-sky'
     const overallEvidence = Math.round((result.score / result.maxScore) * 100)
@@ -1366,11 +1374,33 @@ function AssessmentContent() {
             </div>
 
             <div className="rounded-3xl border border-fei-text/10 bg-fei-text/[0.03] p-6 lg:col-span-5">
+              <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-fei-yellow">
+                Diagnostic Evidence
+              </p>
+
+              <div className="space-y-4">
+                <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-5 text-center">
+                  <p className="text-4xl font-black text-fei-yellow">{result.score} / {result.maxScore}</p>
+                  <p className="mt-2 text-xs text-fei-text/45">Diagnostic score</p>
+                </div>
+
+                <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-5 text-center">
+                  <p className="text-4xl font-black text-fei-yellow">{overallEvidence}%</p>
+                  <p className="mt-2 text-xs text-fei-text/45">Diagnostic evidence</p>
+                </div>
+              </div>
+
+              <p className="mt-5 text-sm leading-6 text-fei-text/55">
+                Your score helps FEI identify the most useful starting pathway for your football communication profile. It is not a pass/fail result.
+              </p>
+            </div>
+
+            <div className="rounded-3xl border border-fei-text/10 bg-fei-text/[0.03] p-6 lg:col-span-12">
               <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">
                 AI Insight
               </p>
-              <p className="text-sm leading-relaxed text-fei-text/80">
-                {result.insight}
+              <p className="max-w-5xl text-sm leading-relaxed text-fei-text/80">
+                {aiInsight}
               </p>
             </div>
 
@@ -1379,24 +1409,13 @@ function AssessmentContent() {
                 Why this pathway?
               </p>
               <p className="text-sm leading-relaxed text-fei-text/70">
-                Your diagnostic evidence shows that <span className="font-semibold text-fei-text">{result.level}</span> is the best starting point for your football communication profile. This is not a pass/fail result; it helps FEI recommend the pathway where targeted training can create the fastest progress.
+                Your diagnostic evidence shows that <span className="font-semibold text-fei-text">{result.level}</span> is the best starting point for your football communication profile. This is not a pass/fail result; it helps FEI recommend the pathway where targeted training can create the fastest and most relevant progress for your role.
               </p>
-
-              <div className="mt-5 grid grid-cols-2 gap-4">
-                <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-4 text-center">
-                  <p className="text-2xl font-black text-fei-yellow">{result.score} / {result.maxScore}</p>
-                  <p className="mt-1 text-xs text-fei-text/45">Diagnostic score</p>
-                </div>
-                <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-4 text-center">
-                  <p className="text-2xl font-black text-fei-yellow">{overallEvidence}%</p>
-                  <p className="mt-1 text-xs text-fei-text/45">Overall evidence</p>
-                </div>
-              </div>
             </div>
 
             <div className="rounded-3xl border border-fei-sky/20 bg-fei-sky/[0.04] p-6 lg:col-span-5">
               <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">
-                Pathway focus
+                Pathway Focus
               </p>
               <ul className="space-y-3 text-sm text-fei-text/70">
                 {focusItems.map(item => (
