@@ -137,7 +137,7 @@ export default function RegisterPage() {
               value={role}
               onChange={e => setRole(e.target.value)}
               required
-              className="w-full rounded-xl border border-fei-text/10 bg-fei-text/[0.05] px-4 py-3 text-fei-text focus:border-fei-yellow focus:outline-none"
+              className="w-full rounded-xl border border-fei-text/10 bg-fei-text/[0.05] px-4 py-3 text-base text-fei-text focus:border-fei-yellow focus:outline-none"
             >
               <option value="">Choose your role</option>
               {roles.map(item => (
