@@ -110,15 +110,23 @@ export default function SettingsPage() {
 
     setRoleLoading(true)
 
-    const { error } = await supabase
+    const { data: existingProfile } = await supabase
       .from('profiles')
-      .upsert(
-        {
-          user_id: user.id,
-          role: selectedRole,
-        },
-        { onConflict: 'user_id' }
-      )
+      .select('user_id')
+      .eq('user_id', user.id)
+      .maybeSingle()
+
+    const { error } = existingProfile
+      ? await supabase
+          .from('profiles')
+          .update({ role: selectedRole })
+          .eq('user_id', user.id)
+      : await supabase
+          .from('profiles')
+          .insert({
+            user_id: user.id,
+            role: selectedRole,
+          })
 
     if (error) {
       setRoleError(error.message)
