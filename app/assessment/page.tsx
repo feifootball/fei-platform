@@ -1268,11 +1268,25 @@ function AssessmentContent() {
 
   // RESULT
   if (section === 'result' && result) {
+    const levelLabels: Record<string, string> = {
+      A2: 'Foundation',
+      B1: 'Intermediate',
+      B2: 'Professional',
+      C1: 'Advanced Professional',
+    }
+
     const levelColors: Record<string, string> = {
       A2: 'text-fei-sky',
       B1: 'text-fei-sky',
       B2: 'text-fei-yellow',
       C1: 'text-fei-yellow',
+    }
+
+    const pathwayDescriptions: Record<string, string> = {
+      A2: 'You understand basic football communication and can follow direct instructions in training and matchday contexts. Your pathway will build the confidence and vocabulary you need to communicate more clearly with coaches, medical staff, and teammates in everyday professional situations.',
+      B1: 'You can manage many common football communication situations and respond professionally in routine interactions. Your pathway will help you communicate with more structure, confidence, and precision when situations become more complex.',
+      B2: 'You communicate with clarity across most professional football situations and can handle feedback, tactical information, and role-related conversations with growing confidence. Your pathway will help you strengthen strategic control in pressure moments.',
+      C1: 'You demonstrate advanced professional communication with strong awareness, precision, and maturity. Your pathway will help you refine leadership communication, negotiation, public presence, and high-pressure decision-making.',
     }
 
     const pathwayFocus: Record<string, string[]> = {
@@ -1303,11 +1317,14 @@ function AssessmentContent() {
     }
 
     const focusItems = pathwayFocus[result.level] || pathwayFocus.A2
+    const pathwayDescription = pathwayDescriptions[result.level] || pathwayDescriptions.A2
+    const pathwayLabel = levelLabels[result.level] || 'Foundation'
+    const pathwayColor = levelColors[result.level] || 'text-fei-sky'
     const overallEvidence = Math.round((result.score / result.maxScore) * 100)
 
     return (
-      <div className="min-h-screen bg-fei-bg px-6 py-12">
-        <div className="mx-auto max-w-2xl">
+      <div className="min-h-screen bg-fei-bg px-6 py-12 lg:px-8">
+        <div className="mx-auto w-full max-w-6xl">
           <div className="mb-10 flex items-center gap-3">
             <img src="/logo.svg" alt="FEI" className="h-8 w-auto" />
             <span className="text-xs font-medium text-fei-sky">Football English Intelligence</span>
@@ -1317,65 +1334,84 @@ function AssessmentContent() {
             <div className="inline-block rounded-full bg-fei-yellow/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-fei-yellow">
               Assessment Complete
             </div>
-            <h1 className="mt-4 text-3xl font-black text-fei-text">Your FEI Profile</h1>
-          </div>
-
-          <div className="mb-6 rounded-2xl border border-fei-yellow/20 bg-fei-yellow/5 p-8 text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-fei-text/50">Recommended Pathway</p>
-            <p className={`mt-4 text-7xl font-black ${levelColors[result.level]}`}>{result.level}</p>
-            <p className="mt-2 text-lg font-semibold text-fei-text">
-              {result.level === 'A2' && 'Foundation'}
-              {result.level === 'B1' && 'Intermediate'}
-              {result.level === 'B2' && 'Professional'}
-              {result.level === 'C1' && 'Advanced Professional'}
+            <h1 className="mt-4 text-4xl font-black text-fei-text">Your FEI Profile</h1>
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-fei-text/50">
+              This short profile gives you your recommended starting pathway. Your full diagnostic report and personalized training plan are unlocked inside your FEI pathway.
             </p>
           </div>
 
-          <div className="mb-6 rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-6">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">AI Insight</p>
-            <p className="text-sm leading-relaxed text-fei-text/80">{result.insight}</p>
-          </div>
-
-          <div className="mb-6 rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-6">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-fei-yellow">Why this pathway?</p>
-            <p className="text-sm leading-relaxed text-fei-text/70">
-              Your diagnostic evidence shows that <span className="font-semibold text-fei-text">{result.level}</span> is the best starting point for your football communication profile. This is not a pass/fail result; it helps FEI recommend the pathway where targeted training can create the fastest progress.
-            </p>
-
-            <div className="mt-5 grid grid-cols-2 gap-4">
-              <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-4 text-center">
-                <p className="text-2xl font-black text-fei-yellow">{result.score} / {result.maxScore}</p>
-                <p className="mt-1 text-xs text-fei-text/45">Diagnostic score</p>
-              </div>
-              <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-4 text-center">
-                <p className="text-2xl font-black text-fei-yellow">{overallEvidence}%</p>
-                <p className="mt-1 text-xs text-fei-text/45">Overall evidence</p>
-              </div>
-            </div>
-          </div>
-
-            <div className="rounded-3xl border border-fei-sky/20 bg-fei-sky/[0.04] p-6 lg:col-span-7">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">Pathway focus</p>
-            <ul className="space-y-3 text-sm text-fei-text/70">
-              {focusItems.map(item => (
-                <li key={item} className="flex items-start gap-3">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-fei-yellow" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-5 rounded-2xl border border-fei-yellow/20 bg-fei-yellow/[0.06] p-4">
-              <p className="text-sm leading-6 text-fei-text/70">
-                Your complete FEI report and personalized training plan are unlocked inside your pathway.
+          <div className="grid gap-6 lg:grid-cols-12">
+            <div className="rounded-3xl border border-fei-yellow/20 bg-fei-yellow/[0.05] p-8 text-center lg:col-span-7">
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-fei-text/50">
+                Recommended Pathway
               </p>
+              <p className={`mt-5 text-8xl font-black ${pathwayColor}`}>
+                {result.level}
+              </p>
+              <p className="mt-2 text-2xl font-bold text-fei-text">
+                {pathwayLabel}
+              </p>
+
+              <div className="mx-auto mt-8 max-w-2xl rounded-2xl border border-fei-sky/20 bg-fei-bg/35 p-5 text-left">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">
+                  Professional Player
+                </p>
+                <p className="mt-2 text-lg font-bold text-fei-text">
+                  {result.level} — {pathwayLabel}
+                </p>
+                <p className="mt-3 text-sm leading-6 text-fei-text/70">
+                  {pathwayDescription}
+                </p>
+              </div>
             </div>
-          </div>
 
             <div className="rounded-3xl border border-fei-text/10 bg-fei-text/[0.03] p-6 lg:col-span-5">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-fei-yellow">Next step</p>
-              <p className="text-sm leading-relaxed text-fei-text/70">
-                Your short diagnostic profile is now ready. Continue into your FEI pathway to unlock your full report, role-specific training, and the first lessons recommended for your communication level.
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">
+                AI Insight
               </p>
+              <p className="text-sm leading-relaxed text-fei-text/80">
+                {result.insight}
+              </p>
+            </div>
+
+            <div className="rounded-3xl border border-fei-text/10 bg-fei-text/[0.03] p-6 lg:col-span-7">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-fei-yellow">
+                Why this pathway?
+              </p>
+              <p className="text-sm leading-relaxed text-fei-text/70">
+                Your diagnostic evidence shows that <span className="font-semibold text-fei-text">{result.level}</span> is the best starting point for your football communication profile. This is not a pass/fail result; it helps FEI recommend the pathway where targeted training can create the fastest progress.
+              </p>
+
+              <div className="mt-5 grid grid-cols-2 gap-4">
+                <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-4 text-center">
+                  <p className="text-2xl font-black text-fei-yellow">{result.score} / {result.maxScore}</p>
+                  <p className="mt-1 text-xs text-fei-text/45">Diagnostic score</p>
+                </div>
+                <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-4 text-center">
+                  <p className="text-2xl font-black text-fei-yellow">{overallEvidence}%</p>
+                  <p className="mt-1 text-xs text-fei-text/45">Overall evidence</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-3xl border border-fei-sky/20 bg-fei-sky/[0.04] p-6 lg:col-span-5">
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">
+                Pathway focus
+              </p>
+              <ul className="space-y-3 text-sm text-fei-text/70">
+                {focusItems.map(item => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="mt-2 h-1.5 w-1.5 rounded-full bg-fei-yellow" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-5 rounded-2xl border border-fei-yellow/20 bg-fei-yellow/[0.06] p-4">
+                <p className="text-sm leading-6 text-fei-text/70">
+                  Unlock your complete FEI report to see detailed strengths, development priorities, and your personalized training plan.
+                </p>
+              </div>
             </div>
           </div>
 
