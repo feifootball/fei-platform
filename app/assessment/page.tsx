@@ -336,18 +336,25 @@ function SectionBadge({ label }: { label: string }) {
   )
 }
 
-function OptionButton({ option, selected, onSelect }: { option: string; selected: boolean; onSelect: () => void }) {
+function OptionButton({
+  option,
+  selected,
+  onSelect,
+}: {
+  option: string
+  selected: boolean
+  onSelect: () => void
+}) {
   return (
     <button
       onClick={onSelect}
-      className={`w-full rounded-xl border px-5 py-4 text-left text-sm transition-all duration-200 select-none ${
+      className={`w-full rounded-2xl border px-5 py-4 text-left text-sm leading-6 transition ${
         selected
-          ? 'border-fei-yellow bg-fei-yellow/10 text-fei-text'
-          : 'border-fei-text/10 bg-fei-text/[0.02] text-fei-text/80 hover:border-fei-sky/40 hover:bg-fei-sky/[0.04]'
+          ? 'border-fei-yellow bg-fei-yellow/[0.07] text-fei-text shadow-[0_0_0_1px_rgba(255,214,10,0.12)]'
+          : 'border-fei-text/10 bg-fei-text/[0.03] text-fei-text/70 hover:border-fei-sky/35 hover:bg-fei-sky/[0.035] hover:text-fei-text'
       }`}
-      onContextMenu={(e) => e.preventDefault()}
     >
-      {option}
+      <span className="font-medium">{option}</span>
     </button>
   )
 }
@@ -775,7 +782,6 @@ function AssessmentContent() {
             <div className="flex items-center gap-3">
               <img src="/logo.svg" alt="FEI" className="h-7 w-auto" />
             </div>
-            <span className="text-xs text-fei-text/40">Item {getItemNumber('warm-up', warmupStep)} of {totalItems}</span>
           </div>
 
           <ProgressBar current={getItemNumber('warm-up', warmupStep)} total={totalItems} />
@@ -811,9 +817,9 @@ function AssessmentContent() {
               }
             }}
             disabled={!selected}
-            className="w-full rounded-full bg-fei-yellow py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:opacity-40 disabled:cursor-not-allowed"
+            className="w-full rounded-full bg-fei-yellow py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-yellow/20 disabled:text-fei-yellow/50 disabled:opacity-100"
           >
-            {warmupStep < items.warmup.length - 1 ? 'Next →' : 'Continue to Reading →'}
+            {!selected ? 'Select an option to continue' : warmupStep < items.warmup.length - 1 ? 'Next →' : 'Continue to Reading →'}
           </button>
         </div>
       </div>
@@ -832,7 +838,6 @@ function AssessmentContent() {
             <div className="flex items-center gap-3">
               <img src="/logo.svg" alt="FEI" className="h-7 w-auto" />
             </div>
-            <span className="text-xs text-fei-text/40">Item {getItemNumber('reading', readingStep)} of {totalItems}</span>
           </div>
 
           <ProgressBar current={getItemNumber('reading', readingStep)} total={totalItems} />
@@ -871,9 +876,9 @@ function AssessmentContent() {
               }
             }}
             disabled={!selected}
-            className="w-full rounded-full bg-fei-yellow py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:opacity-40 disabled:cursor-not-allowed"
+            className="w-full rounded-full bg-fei-yellow py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-yellow/20 disabled:text-fei-yellow/50 disabled:opacity-100"
           >
-            {readingStep < items.reading.length - 1 ? 'Next →' : 'Continue to Listening →'}
+            {!selected ? 'Select an option to continue' : readingStep < items.reading.length - 1 ? 'Next →' : 'Continue to Listening →'}
           </button>
         </div>
       </div>
@@ -892,7 +897,6 @@ function AssessmentContent() {
             <div className="flex items-center gap-3">
               <img src="/logo.svg" alt="FEI" className="h-7 w-auto" />
             </div>
-            <span className="text-xs text-fei-text/40">Item {getItemNumber('listening', listeningStep)} of {totalItems}</span>
           </div>
 
           <ProgressBar current={getItemNumber('listening', listeningStep)} total={totalItems} />
@@ -931,9 +935,9 @@ function AssessmentContent() {
               }
             }}
             disabled={!selected}
-            className="w-full rounded-full bg-fei-yellow py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:opacity-40 disabled:cursor-not-allowed"
+            className="w-full rounded-full bg-fei-yellow py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-yellow/20 disabled:text-fei-yellow/50 disabled:opacity-100"
           >
-            {listeningStep < items.listening.length - 1 ? 'Next →' : 'Continue to Vocabulary →'}
+            {!selected ? 'Select an option to continue' : listeningStep < items.listening.length - 1 ? 'Next →' : 'Continue to Vocabulary →'}
           </button>
         </div>
       </div>
@@ -952,7 +956,6 @@ function AssessmentContent() {
             <div className="flex items-center gap-3">
               <img src="/logo.svg" alt="FEI" className="h-7 w-auto" />
             </div>
-            <span className="text-xs text-fei-text/40">Item {getItemNumber('vocabulary', vocabStep)} of {totalItems}</span>
           </div>
 
           <ProgressBar current={getItemNumber('vocabulary', vocabStep)} total={totalItems} />
@@ -990,9 +993,9 @@ function AssessmentContent() {
               }
             }}
             disabled={!selected}
-            className="w-full rounded-full bg-fei-yellow py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:opacity-40 disabled:cursor-not-allowed"
+            className="w-full rounded-full bg-fei-yellow py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-yellow/20 disabled:text-fei-yellow/50 disabled:opacity-100"
           >
-            {vocabStep < items.vocabulary.length - 1 ? 'Next →' : 'Continue to Functional Communication →'}
+            {!selected ? 'Select an option to continue' : vocabStep < items.vocabulary.length - 1 ? 'Next →' : 'Continue to Functional Communication →'}
           </button>
         </div>
       </div>
@@ -1011,7 +1014,6 @@ function AssessmentContent() {
             <div className="flex items-center gap-3">
               <img src="/logo.svg" alt="FEI" className="h-7 w-auto" />
             </div>
-            <span className="text-xs text-fei-text/40">Item {getItemNumber('functional', functionalStep)} of {totalItems}</span>
           </div>
 
           <ProgressBar current={getItemNumber('functional', functionalStep)} total={totalItems} />
@@ -1049,9 +1051,9 @@ function AssessmentContent() {
               }
             }}
             disabled={!selected}
-            className="w-full rounded-full bg-fei-yellow py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:opacity-40 disabled:cursor-not-allowed"
+            className="w-full rounded-full bg-fei-yellow py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-yellow/20 disabled:text-fei-yellow/50 disabled:opacity-100"
           >
-            {functionalStep < items.functional.length - 1 ? 'Next →' : 'Continue to Writing →'}
+            {!selected ? 'Select an option to continue' : functionalStep < items.functional.length - 1 ? 'Next →' : 'Continue to Writing →'}
           </button>
         </div>
       </div>
@@ -1069,7 +1071,6 @@ function AssessmentContent() {
             <div className="flex items-center gap-3">
               <img src="/logo.svg" alt="FEI" className="h-7 w-auto" />
             </div>
-            <span className="text-xs text-fei-text/40">Item 16 of {totalItems}</span>
           </div>
 
           <ProgressBar current={16} total={totalItems} />
@@ -1105,7 +1106,7 @@ function AssessmentContent() {
           <button
             onClick={() => setSection('speaking')}
             disabled={wordCount < 10}
-            className="w-full rounded-full bg-fei-yellow py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:opacity-40 disabled:cursor-not-allowed"
+            className="w-full rounded-full bg-fei-yellow py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-yellow/20 disabled:text-fei-yellow/50 disabled:opacity-100"
           >
             Continue to Speaking →
           </button>
@@ -1123,7 +1124,6 @@ function AssessmentContent() {
             <div className="flex items-center gap-3">
               <img src="/logo.svg" alt="FEI" className="h-7 w-auto" />
             </div>
-            <span className="text-xs text-fei-text/40">Item 17 of {totalItems}</span>
           </div>
 
           <ProgressBar current={17} total={totalItems} />
@@ -1140,8 +1140,8 @@ function AssessmentContent() {
           </div>
 
           <div className="mb-6">
-            <p className="font-semibold text-fei-text">In 45–60 seconds, explain how you would respond to the coach professionally.</p>
-            <p className="mt-1 text-sm text-fei-text/50">Speak clearly and professionally. Recording stops automatically at 75 seconds.</p>
+            <p className="font-semibold text-fei-text">Explain how you would respond to the coach professionally.</p>
+            <p className="mt-1 text-sm text-fei-text/50">Recommended time: 45–60 seconds. Recording stops automatically at 75 seconds.</p>
           </div>
 
           {isRecording && (
@@ -1158,15 +1158,27 @@ function AssessmentContent() {
                 />
               </div>
               <p className="mt-2 text-xs text-fei-text/40">
-                {recordingTime < 45 ? `Minimum time: ${45 - recordingTime}s remaining` : recordingTime < 60 ? '✓ Good length — you can continue' : '⚠ Consider wrapping up'}
+                {recordingTime < 45 ? 'Recommended minimum: 45 seconds. You can stop anytime.' : recordingTime < 60 ? 'Good length — you can continue' : 'Consider wrapping up.'}
               </p>
             </div>
           )}
 
           {recordingDone && (
-            <div className="mb-6 rounded-2xl border border-green-500/20 bg-green-500/5 p-5 text-center">
-              <p className="text-sm font-semibold text-green-400">✓ Recording saved ({recordingTime}s)</p>
-              <p className="mt-1 text-xs text-fei-text/40">Your speaking sample has been captured.</p>
+            <div
+              className={`mb-6 rounded-2xl border p-5 text-center ${
+                recordingTime < 45
+                  ? 'border-fei-yellow/25 bg-fei-yellow/[0.06]'
+                  : 'border-green-500/20 bg-green-500/5'
+              }`}
+            >
+              <p className={`text-sm font-semibold ${recordingTime < 45 ? 'text-fei-yellow' : 'text-green-400'}`}>
+                {recordingTime < 45 ? `Recording saved (${recordingTime}s)` : `✓ Recording saved (${recordingTime}s)`}
+              </p>
+              <p className="mt-1 text-xs leading-5 text-fei-text/45">
+                {recordingTime < 45
+                  ? 'Your response is shorter than recommended. For a stronger AI Insight, try to speak for 45–60 seconds.'
+                  : 'Your speaking sample has been captured.'}
+              </p>
             </div>
           )}
 
@@ -1174,18 +1186,34 @@ function AssessmentContent() {
             {!isRecording && !recordingDone && (
               <button
                 onClick={startRecording}
-                className="w-full rounded-full bg-red-500 py-3.5 font-bold text-white transition hover:bg-red-500/90"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-red-500 py-3.5 font-bold text-white transition hover:bg-red-500/90"
               >
-                🎙 Start recording
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={1.9}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-5 w-5"
+                  aria-hidden
+                >
+                  <path d="M12 14.5a3.5 3.5 0 0 0 3.5-3.5V6a3.5 3.5 0 0 0-7 0v5a3.5 3.5 0 0 0 3.5 3.5Z" />
+                  <path d="M5.5 10.5a6.5 6.5 0 0 0 13 0" />
+                  <path d="M12 17v3.5" />
+                  <path d="M9 20.5h6" />
+                </svg>
+                Start recording
               </button>
             )}
             {isRecording && (
               <button
                 onClick={stopRecording}
-                disabled={recordingTime < 20}
-                className="w-full rounded-full border-2 border-red-500 py-3.5 font-bold text-red-400 transition hover:bg-red-500/10 disabled:opacity-40 disabled:cursor-not-allowed"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-red-500 py-3.5 font-bold text-red-400 transition hover:bg-red-500/10"
               >
-                ⏹ Stop recording
+                <span className="h-3 w-3 rounded-[3px] bg-current" />
+                Stop recording
               </button>
             )}
           </div>
@@ -1198,9 +1226,23 @@ function AssessmentContent() {
                   setRecordingTime(0)
                   setIsRecording(false)
                 }}
-                className="w-full rounded-full border border-fei-text/20 py-3 text-sm font-medium text-fei-text/60 transition hover:border-fei-text/40 hover:text-fei-text"
+                className="mx-auto flex w-fit items-center justify-center gap-2 rounded-full border border-fei-text/20 px-5 py-2.5 text-sm font-medium text-fei-text/65 transition hover:border-fei-sky/35 hover:text-fei-sky"
               >
-                🔄 Record again
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={1.9}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-4 w-4"
+                  aria-hidden
+                >
+                  <path d="M20 11a8 8 0 1 0-2.35 5.65" />
+                  <path d="M20 4v7h-7" />
+                </svg>
+                Record again
               </button>
               <button
                 onClick={() => finishAssessment(Math.min(4, Math.max(1, Math.round(recordingTime / 18))))}
@@ -1233,6 +1275,36 @@ function AssessmentContent() {
       C1: 'text-fei-yellow',
     }
 
+    const pathwayFocus: Record<string, string[]> = {
+      A2: [
+        'Understanding tactical instructions',
+        'Asking for clarification',
+        'Reporting physical status',
+        'Responding to basic feedback',
+      ],
+      B1: [
+        'Tactical clarification',
+        'Feedback response',
+        'Medical communication',
+        'Speaking with confidence under pressure',
+      ],
+      B2: [
+        'Complex feedback conversations',
+        'Playing-time and role discussions',
+        'Public communication',
+        'Leadership communication under pressure',
+      ],
+      C1: [
+        'Advanced leadership communication',
+        'Strategic negotiation',
+        'Crisis and media communication',
+        'Personal brand and reputation management',
+      ],
+    }
+
+    const focusItems = pathwayFocus[result.level] || pathwayFocus.A2
+    const overallEvidence = Math.round((result.score / result.maxScore) * 100)
+
     return (
       <div className="min-h-screen bg-fei-bg px-6 py-12">
         <div className="mx-auto max-w-2xl">
@@ -1264,26 +1336,50 @@ function AssessmentContent() {
             <p className="text-sm leading-relaxed text-fei-text/80">{result.insight}</p>
           </div>
 
-          <div className="mb-8 grid grid-cols-2 gap-4">
-            <div className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-5 text-center">
-              <p className="text-3xl font-black text-fei-yellow">{result.score}</p>
-              <p className="mt-1 text-xs text-fei-text/50">Points scored</p>
+          <div className="mb-6 rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-6">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-fei-yellow">Why this pathway?</p>
+            <p className="text-sm leading-relaxed text-fei-text/70">
+              Your diagnostic evidence shows that <span className="font-semibold text-fei-text">{result.level}</span> is the best starting point for your football communication profile. This is not a pass/fail result; it helps FEI recommend the pathway where targeted training can create the fastest progress.
+            </p>
+
+            <div className="mt-5 grid grid-cols-2 gap-4">
+              <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-4 text-center">
+                <p className="text-2xl font-black text-fei-yellow">{result.score} / {result.maxScore}</p>
+                <p className="mt-1 text-xs text-fei-text/45">Diagnostic score</p>
+              </div>
+              <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-4 text-center">
+                <p className="text-2xl font-black text-fei-yellow">{overallEvidence}%</p>
+                <p className="mt-1 text-xs text-fei-text/45">Overall evidence</p>
+              </div>
             </div>
-            <div className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-5 text-center">
-              <p className="text-3xl font-black text-fei-yellow">{Math.round((result.score / result.maxScore) * 100)}%</p>
-              <p className="mt-1 text-xs text-fei-text/50">Overall score</p>
+          </div>
+
+          <div className="mb-8 rounded-2xl border border-fei-sky/20 bg-fei-sky/[0.04] p-6">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">Pathway focus</p>
+            <ul className="space-y-3 text-sm text-fei-text/70">
+              {focusItems.map(item => (
+                <li key={item} className="flex items-start gap-3">
+                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-fei-yellow" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-5 rounded-2xl border border-fei-yellow/20 bg-fei-yellow/[0.06] p-4">
+              <p className="text-sm leading-6 text-fei-text/70">
+                Your complete FEI report and personalized training plan are unlocked inside your pathway.
+              </p>
             </div>
           </div>
 
           <button
-            onClick={() => router.push('/dashboard')}
+            onClick={() => router.push('/learning')}
             className="w-full rounded-full bg-fei-yellow py-4 text-base font-bold text-fei-bg transition hover:bg-fei-yellow/90"
           >
-            Go to my dashboard →
+            Start my FEI pathway →
           </button>
 
           <p className="mt-4 text-center text-xs text-fei-text/30">
-            Results saved to your FEI profile · feifootball.com
+            Your short diagnostic profile has been saved. You can review your progress from your dashboard.
           </p>
         </div>
       </div>
