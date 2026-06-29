@@ -582,10 +582,9 @@ function AssessmentContent() {
             <p className="mt-3 text-fei-text/60">Senior Squad · FEI Communication Intelligence</p>
           </div>
 
-          <div className="mb-8 grid gap-4 sm:grid-cols-3">
+          <div className="mb-8 grid gap-4 sm:grid-cols-2">
             {[
               { icon: '⏱', label: 'Duration', value: '10–12 minutes' },
-              { icon: '📋', label: 'Items', value: '17 questions' },
               { icon: '🎯', label: 'Result', value: 'FEI Pathway + AI Insight' },
             ].map((stat) => (
               <div key={stat.label} className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-5 text-center">
@@ -603,7 +602,6 @@ function AssessmentContent() {
                 '🎧  Use headphones or speakers for listening items.',
                 '🎙  Enable your microphone for the final spoken response.',
                 '📵  Stay on this page until the assessment is complete.',
-                '🔒  Copying or sharing questions is not permitted.',
                 '📱  Find a quiet place with a stable internet connection.',
                 '✅  Answer every item. There is no penalty for incorrect answers.',
               ].map((item) => (
