@@ -684,7 +684,7 @@ function AssessmentContent() {
               Audio & Microphone Check
             </div>
             <h1 className="mt-4 text-3xl font-black text-fei-text">Check your setup</h1>
-            <p className="mt-2 text-fei-text/60">Complete both checks before starting the assessment.</p>
+            <p className="mt-2 text-fei-text/60">Check your audio before starting. Microphone access is recommended for the speaking task.</p>
           </div>
 
           <div className="space-y-4">
@@ -693,7 +693,7 @@ function AssessmentContent() {
                 <div className="flex h-8 w-8 items-center justify-center rounded-full bg-fei-sky/10 text-fei-sky font-bold text-sm">1</div>
                 <h3 className="font-bold text-fei-text">Audio test</h3>
               </div>
-              <p className="mb-4 text-sm text-fei-text/60">Click play to test your speakers or headphones.</p>
+              <p className="mb-4 text-sm text-fei-text/60">Play the sample audio to confirm you can hear the listening items.</p>
               <button
                 onClick={playAudioTest}
                 disabled={audioTestPlaying}
@@ -706,9 +706,9 @@ function AssessmentContent() {
             <div className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-6">
               <div className="mb-4 flex items-center gap-3">
                 <div className="flex h-8 w-8 items-center justify-center rounded-full bg-fei-sky/10 text-fei-sky font-bold text-sm">2</div>
-                <h3 className="font-bold text-fei-text">Microphone permission</h3>
+                <h3 className="font-bold text-fei-text">Speaking setup</h3>
               </div>
-              <p className="mb-4 text-sm text-fei-text/60">The speaking section requires your microphone. Click below to grant access.</p>
+              <p className="mb-4 text-sm text-fei-text/60">Enable your microphone now, or continue and complete the speaking task later.</p>
               {micPermission === 'granted' ? (
                 <div className="inline-flex items-center gap-2 rounded-full bg-green-500/10 px-5 py-2.5 text-sm font-semibold text-green-400">
                   ✓ Microphone ready
@@ -722,7 +722,23 @@ function AssessmentContent() {
                   onClick={requestMic}
                   className="inline-flex items-center gap-2 rounded-full bg-fei-yellow px-5 py-2.5 text-sm font-semibold text-fei-bg transition hover:bg-fei-yellow/90"
                 >
-                  🎙 Enable microphone
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={1.9}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-5 w-5"
+                    aria-hidden
+                  >
+                    <path d="M12 14.5a3.5 3.5 0 0 0 3.5-3.5V6a3.5 3.5 0 0 0-7 0v5a3.5 3.5 0 0 0 3.5 3.5Z" />
+                    <path d="M5.5 10.5a6.5 6.5 0 0 0 13 0" />
+                    <path d="M12 17v3.5" />
+                    <path d="M9 20.5h6" />
+                  </svg>
+                  Enable microphone
                 </button>
               )}
             </div>
@@ -739,7 +755,7 @@ function AssessmentContent() {
               onClick={() => setSection('warm-up')}
               className="flex-1 rounded-full bg-fei-yellow py-3 text-sm font-bold text-fei-bg transition hover:bg-fei-yellow/90"
             >
-              {micPermission === 'granted' ? 'Start assessment →' : 'Continue without microphone →'}
+              {micPermission === 'granted' ? 'Start assessment →' : 'Continue to assessment →'}
             </button>
           </div>
         </div>
