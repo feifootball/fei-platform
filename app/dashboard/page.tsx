@@ -125,7 +125,7 @@ export default function DashboardPage() {
     setSavingRole(false)
   }
 
-  function getLevelLabel(level: string) {
+  function getResultLabel(level: string) {
     if (!level) return '—'
     return level.toUpperCase()
   }
@@ -140,7 +140,7 @@ export default function DashboardPage() {
 
   const hasValidRole = !needsRoleSelection(userRole)
   const diagnosticStatus = lastAssessment ? 'Completed' : 'Not started'
-  const currentLevel = lastAssessment ? getLevelLabel(lastAssessment.level) : '—'
+  const currentResult = lastAssessment ? getResultLabel(lastAssessment.level) : '—'
 
   return (
     <main className="min-h-screen bg-fei-bg text-fei-text">
@@ -242,21 +242,21 @@ export default function DashboardPage() {
                 Start your {userRole} diagnostic assessment
               </h2>
               <p className="mt-4 max-w-2xl text-lg leading-8 text-fei-text/60">
-                Find out your current football English level and unlock a learning path based on the communication demands of your role.
+                Complete a short role-specific diagnostic and receive one recommended FEI pathway based on your football communication profile.
               </p>
 
               <div className="mt-7 grid gap-3 sm:grid-cols-3">
                 <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/40 p-4">
                   <p className="text-xs uppercase tracking-[0.2em] text-fei-text/35">Time</p>
-                  <p className="mt-2 font-bold text-fei-text">20–30 min</p>
+                  <p className="mt-2 font-bold text-fei-text">10–12 min</p>
                 </div>
                 <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/40 p-4">
-                  <p className="text-xs uppercase tracking-[0.2em] text-fei-text/35">Level</p>
-                  <p className="mt-2 font-bold text-fei-text">CEFR estimate</p>
+                  <p className="text-xs uppercase tracking-[0.2em] text-fei-text/35">Result</p>
+                  <p className="mt-2 font-bold text-fei-text">FEI Pathway</p>
                 </div>
                 <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/40 p-4">
-                  <p className="text-xs uppercase tracking-[0.2em] text-fei-text/35">Focus</p>
-                  <p className="mt-2 font-bold text-fei-text">Football context</p>
+                  <p className="text-xs uppercase tracking-[0.2em] text-fei-text/35">Format</p>
+                  <p className="mt-2 font-bold text-fei-text">Role-specific</p>
                 </div>
               </div>
 
@@ -304,7 +304,7 @@ export default function DashboardPage() {
           </div>
 
           <div className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-6 text-center">
-            <p className="text-4xl font-black text-fei-yellow">{currentLevel}</p>
+            <p className="text-4xl font-black text-fei-yellow">{currentResult}</p>
             <p className="mt-2 text-sm text-fei-text/45">Current level</p>
           </div>
 
