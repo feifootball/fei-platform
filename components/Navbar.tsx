@@ -14,12 +14,14 @@ const navLinks = [
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [authLoading, setAuthLoading] = useState(true);
   const supabase = createClient();
 
   useEffect(() => {
     async function checkAuth() {
       const { data: { user } } = await supabase.auth.getUser();
       setIsAuthenticated(!!user);
+      setAuthLoading(false);
     }
     checkAuth();
   }, []);
@@ -29,7 +31,6 @@ export function Navbar() {
       <nav className="mx-auto max-w-6xl">
         <div className="flex items-center justify-between rounded-full border border-white/10 bg-[#070b12]/90 px-4 py-3 shadow-[0_18px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:px-5">
 
-          {/* Logo */}
           <a href="/" className="flex min-w-0 items-center gap-3">
             <img src="/logo.svg" alt="FEI" className="h-7 w-auto sm:h-8" />
             <span className="hidden whitespace-nowrap text-xs font-medium tracking-wide text-fei-sky/80 lg:block">
@@ -37,7 +38,6 @@ export function Navbar() {
             </span>
           </a>
 
-          {/* Nav links - desktop */}
           <div className="hidden items-center gap-1 rounded-full bg-white/[0.03] px-2 py-1 md:flex">
             {navLinks.map((link) => (
               <a key={link.label} href={link.href} className="rounded-full px-4 py-2 text-sm font-medium text-white/60 transition hover:bg-white/[0.06] hover:text-white">
@@ -46,9 +46,7 @@ export function Navbar() {
             ))}
           </div>
 
-          {/* Right side - desktop */}
           <div className="hidden items-center gap-2 md:flex">
-            {/* Instagram */}
             <a href="https://instagram.com/fei.football" target="_blank" rel="noopener noreferrer" className="inline-flex h-9 w-9 items-center justify-center rounded-full text-white/40 transition hover:bg-white/[0.06] hover:text-fei-sky" aria-label="Instagram">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
@@ -57,7 +55,6 @@ export function Navbar() {
               </svg>
             </a>
 
-            {/* LinkedIn */}
             <a href="https://linkedin.com/company/football-english-intelligence" target="_blank" rel="noopener noreferrer" className="inline-flex h-9 w-9 items-center justify-center rounded-full text-white/40 transition hover:bg-white/[0.06] hover:text-fei-sky" aria-label="LinkedIn">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
@@ -66,8 +63,7 @@ export function Navbar() {
               </svg>
             </a>
 
-            {/* Campanita solo si logueado */}
-            {isAuthenticated && (
+            {!authLoading && isAuthenticated && (
               <a href="/notifications" className="inline-flex h-9 w-9 items-center justify-center rounded-full text-white/40 transition hover:bg-white/[0.06] hover:text-fei-sky" aria-label="Notifications">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
@@ -80,9 +76,8 @@ export function Navbar() {
             <a href="/register" className="rounded-full bg-fei-yellow px-5 py-2 text-sm font-semibold text-fei-bg transition hover:bg-fei-yellow/90">Get Started</a>
           </div>
 
-          {/* Mobile right */}
           <div className="flex items-center gap-2 md:hidden">
-            {isAuthenticated && (
+            {!authLoading && isAuthenticated && (
               <a href="/notifications" className="inline-flex h-10 w-10 items-center justify-center rounded-full text-white/45 transition hover:bg-white/[0.06] hover:text-fei-sky">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
@@ -101,7 +96,6 @@ export function Navbar() {
           </div>
         </div>
 
-        {/* Mobile menu */}
         {menuOpen && (
           <div className="mt-3 overflow-hidden rounded-[1.75rem] border border-white/10 bg-[#070b12]/95 p-3 shadow-[0_18px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl md:hidden">
             <div className="grid gap-1">
