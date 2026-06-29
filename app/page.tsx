@@ -104,6 +104,18 @@ export default function Home() {
                   <span className="text-xs leading-snug text-fei-sky">{role.description}</span>
                 </article>
               ))}
+              
+              <article className="flex flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-fei-text/20 bg-fei-text/[0.02] px-4 py-5 text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-6 w-6 text-fei-text/40">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 6v6m3-3H9" />
+                </svg>
+                <span className="text-xs font-semibold uppercase tracking-[0.15em] text-fei-text/50">Muy pronto</span>
+                <p className="text-xs leading-snug text-fei-text/40">¿Falta un rol? Cuéntanos</p>
+                <a href="/suggest-role" className="mt-2 text-xs font-semibold text-fei-sky underline hover:text-fei-yellow">
+                  Sugerir rol
+                </a>
+              </article>
             </div>
           </div>
         </div>
