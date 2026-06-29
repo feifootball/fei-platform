@@ -71,7 +71,28 @@ export default function RegisterPage() {
     })
 
     if (error) {
-      setError(error.message)
+      const message = error.message.toLowerCase()
+
+      if (
+        message.includes('email rate limit') ||
+        message.includes('rate limit') ||
+        message.includes('too many requests')
+      ) {
+        setError(
+          'We may have already sent a confirmation email to this address. Please check your inbox, spam, or promotions folder before trying again.'
+        )
+      } else if (
+        message.includes('already registered') ||
+        message.includes('already exists') ||
+        message.includes('user already')
+      ) {
+        setError(
+          'This email may already be registered. Please sign in or check your inbox for a confirmation email.'
+        )
+      } else {
+        setError(error.message)
+      }
+
       setLoading(false)
       return
     }
