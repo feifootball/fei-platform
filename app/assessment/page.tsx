@@ -787,7 +787,7 @@ function AssessmentContent() {
 
           <div className="mb-6 rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-6">
             <p className="mb-3 text-sm text-fei-text/60">{item.context}</p>
-            <p className="font-semibold text-fei-text select-none">{item.question}</p>
+            <p className="font-semibold text-fei-sky select-none">{item.question}</p>
           </div>
 
           <div className="mb-8 space-y-3">
@@ -847,7 +847,7 @@ function AssessmentContent() {
           </div>
 
           <div className="mb-6">
-            <p className="font-semibold text-fei-text select-none">{item.question}</p>
+            <p className="font-semibold text-fei-sky select-none">{item.question}</p>
           </div>
 
           <div className="mb-8 space-y-3">
@@ -907,7 +907,7 @@ function AssessmentContent() {
           </div>
 
           <div className="mb-6">
-            <p className="font-semibold text-fei-text select-none">{item.question}</p>
+            <p className="font-semibold text-fei-sky select-none">{item.question}</p>
           </div>
 
           <div className="mb-8 space-y-3">
@@ -966,7 +966,7 @@ function AssessmentContent() {
           </div>
 
           <div className="mb-6">
-            <p className="font-semibold text-fei-text select-none">{item.question}</p>
+            <p className="font-semibold text-fei-sky select-none">{item.question}</p>
           </div>
 
           <div className="mb-8 space-y-3">
@@ -1025,7 +1025,7 @@ function AssessmentContent() {
           </div>
 
           <div className="mb-6">
-            <p className="font-semibold text-fei-text select-none">{item.question}</p>
+            <p className="font-semibold text-fei-sky select-none">{item.question}</p>
           </div>
 
           <div className="mb-8 space-y-3">
