@@ -164,7 +164,7 @@ export default function DashboardPage() {
               <p className="text-xs font-semibold uppercase tracking-[0.25em] text-fei-sky">Get Started</p>
               <h2 className="mt-4 text-2xl font-bold text-fei-text">Take your diagnostic assessment</h2>
               <p className="mx-auto mt-3 max-w-md text-fei-text/60">Find out your CEFR level and get a personalized learning path based on your role in football.</p>
-              <Link href="/onboarding" className="mt-6 inline-flex rounded-full bg-fei-yellow px-8 py-3 font-semibold text-fei-bg transition hover:bg-fei-yellow/90">
+              <Link href={`/assessment?role=${encodeURIComponent(userRole || "Professional Player")}`} className="mt-6 inline-flex rounded-full bg-fei-yellow px-8 py-3 font-semibold text-fei-bg transition hover:bg-fei-yellow/90">
                 Start Assessment →
               </Link>
             </div>
