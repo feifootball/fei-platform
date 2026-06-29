@@ -12,12 +12,32 @@ type Assessment = {
   completed_at: string
 }
 
+const diagnosticRoles = [
+  'Professional Player',
+  'Head Coach',
+  'Assistant Coach',
+  'Scout',
+  'Head of Scouting',
+  'Academy Director',
+  'Performance Analyst',
+  'Fitness Coach',
+  'Physiotherapist',
+  'Sports Psychologist',
+  'Nutritionist',
+]
+
+const needsRoleSelection = (role: string) => {
+  return !role || role === "I'll choose later" || role === 'Other football role'
+}
+
 export default function DashboardPage() {
   const router = useRouter()
   const supabase = createClient()
   const [loading, setLoading] = useState(true)
   const [displayName, setDisplayName] = useState('')
   const [userRole, setUserRole] = useState('')
+  const [selectedRole, setSelectedRole] = useState('')
+  const [savingRole, setSavingRole] = useState(false)
   const [lastAssessment, setLastAssessment] = useState<Assessment | null>(null)
   const [assessmentCount, setAssessmentCount] = useState(0)
   const [unreadCount, setUnreadCount] = useState(0)
@@ -40,6 +60,11 @@ export default function DashboardPage() {
       const name = profileData?.full_name || metaName || emailName
       setDisplayName(name)
       setUserRole(profileData?.role || '')
+      setSelectedRole(
+        profileData?.role && diagnosticRoles.includes(profileData.role)
+          ? profileData.role
+          : ''
+      )
 
       const { data: assessmentData, count: aCount } = await supabase
         .from('assessment_history')
@@ -68,6 +93,35 @@ export default function DashboardPage() {
   async function handleLogout() {
     await supabase.auth.signOut()
     router.push('/')
+  }
+
+  async function handleSaveRole() {
+    if (!selectedRole) return
+
+    setSavingRole(true)
+
+    const { data: { user } } = await supabase.auth.getUser()
+
+    if (!user) {
+      router.push('/login')
+      return
+    }
+
+    const { error } = await supabase
+      .from('profiles')
+      .upsert(
+        {
+          user_id: user.id,
+          role: selectedRole,
+        },
+        { onConflict: 'user_id' }
+      )
+
+    if (!error) {
+      setUserRole(selectedRole)
+    }
+
+    setSavingRole(false)
   }
 
   function getLevelLabel(level: string) {
@@ -159,12 +213,57 @@ export default function DashboardPage() {
                 </div>
               </div>
             </div>
+          ) : needsRoleSelection(userRole) ? (
+            <div className="rounded-2xl border border-dashed border-fei-yellow/30 bg-fei-yellow/[0.03] p-10">
+              <div className="mx-auto max-w-xl text-center">
+                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-fei-yellow">Choose your role</p>
+                <h2 className="mt-4 text-2xl font-bold text-fei-text">Select a football role to start your diagnostic</h2>
+                <p className="mx-auto mt-3 max-w-md text-fei-text/60">
+                  FEI diagnostics are role-specific. Choose the closest available role so your assessment matches your football context.
+                </p>
+
+                {userRole === 'Other football role' && (
+                  <p className="mt-4 rounded-xl border border-fei-sky/20 bg-fei-sky/[0.06] px-4 py-3 text-sm leading-6 text-fei-text/60">
+                    Thanks for telling us your role. For now, please choose the closest available FEI role to begin your diagnostic.
+                  </p>
+                )}
+
+                <select
+                  value={selectedRole}
+                  onChange={e => setSelectedRole(e.target.value)}
+                  className="mt-6 h-[60px] w-full appearance-none rounded-xl border border-fei-text/10 bg-fei-text/[0.05] px-4 pr-12 text-base text-fei-text focus:border-fei-yellow focus:outline-none"
+                  style={{
+                    backgroundImage:
+                      "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%237dd3fc' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M6 9l6 6 6-6'/%3E%3C/svg%3E\")",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "right 1rem center",
+                    backgroundSize: "1.25rem",
+                  }}
+                >
+                  <option value="">Choose your closest role</option>
+                  {diagnosticRoles.map(role => (
+                    <option key={role} value={role} className="bg-fei-bg text-fei-text">
+                      {role}
+                    </option>
+                  ))}
+                </select>
+
+                <button
+                  type="button"
+                  onClick={handleSaveRole}
+                  disabled={!selectedRole || savingRole}
+                  className="mt-6 inline-flex rounded-full bg-fei-yellow px-8 py-3 font-semibold text-fei-bg transition hover:bg-fei-yellow/90 disabled:opacity-50"
+                >
+                  {savingRole ? 'Saving role...' : 'Save role'}
+                </button>
+              </div>
+            </div>
           ) : (
             <div className="rounded-2xl border border-dashed border-fei-sky/30 bg-fei-sky/[0.03] p-10 text-center">
               <p className="text-xs font-semibold uppercase tracking-[0.25em] text-fei-sky">Get Started</p>
               <h2 className="mt-4 text-2xl font-bold text-fei-text">Take your diagnostic assessment</h2>
               <p className="mx-auto mt-3 max-w-md text-fei-text/60">Find out your CEFR level and get a personalized learning path based on your role in football.</p>
-              <Link href={`/assessment?role=${encodeURIComponent(userRole || "Professional Player")}`} className="mt-6 inline-flex rounded-full bg-fei-yellow px-8 py-3 font-semibold text-fei-bg transition hover:bg-fei-yellow/90">
+              <Link href={`/assessment?role=${encodeURIComponent(userRole)}`} className="mt-6 inline-flex rounded-full bg-fei-yellow px-8 py-3 font-semibold text-fei-bg transition hover:bg-fei-yellow/90">
                 Start Assessment →
               </Link>
             </div>
