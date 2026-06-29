@@ -16,17 +16,29 @@ export default function RegisterPage() {
     e.preventDefault()
     setLoading(true)
     setError('')
-    const { error } = await supabase.auth.signUp({
+
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
       options: { data: { full_name: name } }
     })
+
     if (error) {
       setError(error.message)
       setLoading(false)
-    } else {
-      setSuccess(true)
+      return
     }
+
+    // Guardar full_name en profiles
+    if (data.user) {
+      await supabase.from('profiles').upsert({
+        user_id: data.user.id,
+        full_name: name,
+      }, { onConflict: 'user_id' })
+    }
+
+    setSuccess(true)
+    setLoading(false)
   }
 
   if (success) {
@@ -39,7 +51,7 @@ export default function RegisterPage() {
             <div className="mb-4 text-4xl">📬</div>
             <h1 className="mb-3 text-2xl font-bold text-fei-text">Check your inbox</h1>
             <p className="text-fei-text/60">
-              We sent a confirmation email to <span className="text-fei-yellow font-medium">{email}</span>.
+              We sent a confirmation email to <span className="font-medium text-fei-yellow">{email}</span>.
               Click the link in the email to activate your account.
             </p>
             <p className="mt-4 text-sm text-fei-text/40">
