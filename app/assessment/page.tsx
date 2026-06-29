@@ -574,8 +574,8 @@ function AssessmentContent() {
   // INTRO
   if (section === 'intro') {
     return (
-      <div className="min-h-screen bg-fei-bg px-6 py-12">
-        <div className="mx-auto max-w-2xl">
+      <div className="min-h-screen bg-fei-bg px-6 py-12 lg:px-8">
+        <div className="mx-auto w-full max-w-6xl">
           <div className="mb-12 flex items-center gap-3">
             <img src="/logo.svg" alt="FEI" className="h-8 w-auto" />
             <span className="text-xs font-medium text-fei-sky">Football English Intelligence</span>
@@ -791,7 +791,7 @@ function AssessmentContent() {
             <p className="mt-2 text-xs text-fei-text/40">These questions help personalize your pathway. There are no wrong answers here.</p>
           </div>
 
-          <div className="mb-6 rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-6">
+            <div className="rounded-3xl border border-fei-text/10 bg-fei-text/[0.03] p-6 lg:col-span-5">
             <p className="mb-3 text-sm text-fei-text/60">{item.context}</p>
             <p className="font-semibold text-fei-sky select-none">{item.question}</p>
           </div>
@@ -1354,7 +1354,7 @@ function AssessmentContent() {
             </div>
           </div>
 
-          <div className="mb-8 rounded-2xl border border-fei-sky/20 bg-fei-sky/[0.04] p-6">
+            <div className="rounded-3xl border border-fei-sky/20 bg-fei-sky/[0.04] p-6 lg:col-span-7">
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">Pathway focus</p>
             <ul className="space-y-3 text-sm text-fei-text/70">
               {focusItems.map(item => (
@@ -1371,9 +1371,17 @@ function AssessmentContent() {
             </div>
           </div>
 
+            <div className="rounded-3xl border border-fei-text/10 bg-fei-text/[0.03] p-6 lg:col-span-5">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-fei-yellow">Next step</p>
+              <p className="text-sm leading-relaxed text-fei-text/70">
+                Your short diagnostic profile is now ready. Continue into your FEI pathway to unlock your full report, role-specific training, and the first lessons recommended for your communication level.
+              </p>
+            </div>
+          </div>
+
           <button
             onClick={() => router.push('/learning')}
-            className="w-full rounded-full bg-fei-yellow py-4 text-base font-bold text-fei-bg transition hover:bg-fei-yellow/90"
+            className="mt-8 w-full rounded-full bg-fei-yellow py-4 text-base font-bold text-fei-bg transition hover:bg-fei-yellow/90"
           >
             Start my FEI pathway →
           </button>
