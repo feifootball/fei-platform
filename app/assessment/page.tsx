@@ -618,9 +618,9 @@ function AssessmentContent() {
           <div className="mb-8 rounded-2xl border border-fei-sky/20 bg-fei-sky/[0.04] p-6">
             <h2 className="mb-3 font-bold text-fei-text">What this diagnostic measures</h2>
             <p className="text-sm leading-6 text-fei-text/65">
-              This assessment evaluates football-specific English across tactical understanding,
-              professional vocabulary, listening, reading, functional communication, writing,
-              and speaking tasks.
+              You will complete football-specific scenarios that assess how you understand instructions,
+              respond to feedback, report physical discomfort, manage public communication, and handle
+              role-related conversations.
             </p>
           </div>
 
@@ -630,10 +630,6 @@ function AssessmentContent() {
           >
             Begin assessment →
           </button>
-
-          <p className="mt-4 text-center text-xs text-fei-text/30">
-            FEI Internal Document · Not for distribution · feifootball.com
-          </p>
         </div>
       </div>
     )
