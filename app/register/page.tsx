@@ -137,7 +137,14 @@ export default function RegisterPage() {
               value={role}
               onChange={e => setRole(e.target.value)}
               required
-              className="h-[60px] w-full appearance-none rounded-xl border border-fei-text/10 bg-fei-text/[0.05] px-4 text-base text-fei-text focus:border-fei-yellow focus:outline-none"
+              className="h-[60px] w-full appearance-none rounded-xl border border-fei-text/10 bg-fei-text/[0.05] px-4 pr-12 text-base text-fei-text focus:border-fei-yellow focus:outline-none"
+              style={{
+                backgroundImage:
+                  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%237dd3fc' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M6 9l6 6 6-6'/%3E%3C/svg%3E\")",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "right 1rem center",
+                backgroundSize: "1.25rem",
+              }}
             >
               <option value="">Choose your role</option>
               {roles.map(item => (
