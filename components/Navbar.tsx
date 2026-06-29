@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase";
+import { usePathname } from "next/navigation";
 
 const navLinks = {
   en: [
@@ -27,10 +28,12 @@ interface NavbarProps {
   onToggleLang?: () => void;
 }
 
-export function Navbar({ lang = 'en', onToggleLang }: NavbarProps) {
+export function Navbar({ lang, onToggleLang }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [authLoading, setAuthLoading] = useState(true);
+  const pathname = usePathname();
+  const isLanding = pathname === '/';
   const supabase = createClient();
 
   useEffect(() => {
@@ -42,7 +45,8 @@ export function Navbar({ lang = 'en', onToggleLang }: NavbarProps) {
     checkAuth();
   }, []);
 
-  const links = navLinks[lang];
+  const currentLang = lang || 'en';
+  const links = navLinks[currentLang];
 
   return (
     <header className="fixed inset-x-0 top-4 z-50 px-4 sm:top-6 sm:px-6">
@@ -74,10 +78,9 @@ export function Navbar({ lang = 'en', onToggleLang }: NavbarProps) {
               </svg>
             </a>
 
-            {/* Language toggle */}
-            {onToggleLang && (
-              <button onClick={onToggleLang} className="rounded-full border border-white/10 px-3 py-1.5 text-xs font-semibold text-white/60 transition hover:bg-white/[0.06] hover:text-white">
-                {lang === 'en' ? 'ES' : 'EN'}
+            {isLanding && onToggleLang && (
+              <button onClick={onToggleLang} className="rounded-full border border-white/20 px-3 py-1.5 text-xs font-bold text-white/70 transition hover:bg-white/[0.06] hover:text-white">
+                {currentLang === 'en' ? '🌐 ES' : '🌐 EN'}
               </button>
             )}
 
@@ -89,14 +92,14 @@ export function Navbar({ lang = 'en', onToggleLang }: NavbarProps) {
               </a>
             )}
 
-            <a href="/login" className="rounded-full border border-fei-sky/70 px-5 py-2 text-sm font-medium text-fei-sky transition hover:bg-fei-sky/10">{lang === 'en' ? 'Login' : 'Ingresar'}</a>
-            <a href="/register" className="rounded-full bg-fei-yellow px-5 py-2 text-sm font-semibold text-fei-bg transition hover:bg-fei-yellow/90">{lang === 'en' ? 'Get Started' : 'Comenzar'}</a>
+            <a href="/login" className="rounded-full border border-fei-sky/70 px-5 py-2 text-sm font-medium text-fei-sky transition hover:bg-fei-sky/10">{currentLang === 'en' ? 'Login' : 'Ingresar'}</a>
+            <a href="/register" className="rounded-full bg-fei-yellow px-5 py-2 text-sm font-semibold text-fei-bg transition hover:bg-fei-yellow/90">{currentLang === 'en' ? 'Get Started' : 'Comenzar'}</a>
           </div>
 
           <div className="flex items-center gap-2 md:hidden">
-            {onToggleLang && (
-              <button onClick={onToggleLang} className="rounded-full border border-white/10 px-3 py-1.5 text-xs font-semibold text-white/60 transition hover:bg-white/[0.06] hover:text-white">
-                {lang === 'en' ? 'ES' : 'EN'}
+            {isLanding && onToggleLang && (
+              <button onClick={onToggleLang} className="rounded-full border border-white/20 px-3 py-1.5 text-xs font-bold text-white/70 transition hover:bg-white/[0.06] hover:text-white">
+                {currentLang === 'en' ? 'ES' : 'EN'}
               </button>
             )}
 
@@ -138,8 +141,8 @@ export function Navbar({ lang = 'en', onToggleLang }: NavbarProps) {
                   <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
                 </svg>
               </a>
-              <a href="/login" onClick={() => setMenuOpen(false)} className="ml-auto rounded-full border border-fei-sky/70 px-4 py-3 text-sm font-semibold text-fei-sky">{lang === 'en' ? 'Login' : 'Ingresar'}</a>
-              <a href="/register" onClick={() => setMenuOpen(false)} className="rounded-full bg-fei-yellow px-4 py-3 text-sm font-bold text-fei-bg">{lang === 'en' ? 'Get Started' : 'Comenzar'}</a>
+              <a href="/login" onClick={() => setMenuOpen(false)} className="ml-auto rounded-full border border-fei-sky/70 px-4 py-3 text-sm font-semibold text-fei-sky">{currentLang === 'en' ? 'Login' : 'Ingresar'}</a>
+              <a href="/register" onClick={() => setMenuOpen(false)} className="rounded-full bg-fei-yellow px-4 py-3 text-sm font-bold text-fei-bg">{currentLang === 'en' ? 'Get Started' : 'Comenzar'}</a>
             </div>
           </div>
         )}
