@@ -413,7 +413,11 @@ function AudioPlayer({ script, itemId }: { script: string; itemId: string }) {
 
 function AssessmentContent() {
   const router = useRouter()
+  const searchParams = useSearchParams()
   const supabase = createClient()
+
+  const selectedRole = searchParams.get('role') || 'Professional Player'
+  const assessmentAvailable = selectedRole === 'Professional Player'
 
   const [section, setSection] = useState<Section>('intro')
   const [answers, setAnswers] = useState<Record<string, Answer>>({})
@@ -493,7 +497,7 @@ function AssessmentContent() {
     if (user) {
       await supabase.from('assessment_history').insert({
         user_id: user.id,
-        role: 'Professional Player',
+        role: selectedRole,
         score: Math.round((res.score / res.maxScore) * 100),
         level: res.level,
         completed_at: new Date().toISOString(),
@@ -587,6 +591,54 @@ function AssessmentContent() {
 
   // ─── SCREENS ────────────────────────────────────────────────────────────────
 
+  if (!assessmentAvailable) {
+    return (
+      <div className="min-h-screen bg-fei-bg px-6 py-12 lg:px-8">
+        <div className="mx-auto flex min-h-[70vh] w-full max-w-3xl flex-col justify-center">
+          <div className="mb-10 flex items-center gap-3">
+            <img src="/logo.svg" alt="FEI" className="h-8 w-auto" />
+            <span className="text-xs font-medium text-fei-sky">Football English Intelligence</span>
+          </div>
+
+          <div className="rounded-3xl border border-fei-text/10 bg-fei-text/[0.03] p-8 text-center">
+            <div className="mx-auto mb-5 flex h-12 w-12 items-center justify-center rounded-full border border-fei-yellow/20 bg-fei-yellow/[0.08] text-fei-yellow">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={1.8}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-6 w-6"
+                aria-hidden
+              >
+                <path d="M12 6v6l4 2" />
+                <circle cx="12" cy="12" r="8.5" />
+              </svg>
+            </div>
+
+            <div className="mb-4 inline-block rounded-full bg-fei-sky/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">
+              Assessment Coming Soon
+            </div>
+
+            <h1 className="text-3xl font-black text-fei-text">{selectedRole}</h1>
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-fei-text/60">
+              This role-specific diagnostic is being prepared. FEI diagnostics are built separately for each football role so the questions, scenarios, and pathway recommendation match your real communication context.
+            </p>
+
+            <button
+              onClick={() => router.push('/dashboard')}
+              className="mt-8 rounded-full bg-fei-yellow px-8 py-3 text-sm font-bold text-fei-bg transition hover:bg-fei-yellow/90"
+            >
+              Back to dashboard
+            </button>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   // INTRO
   if (section === 'intro') {
     return (
@@ -601,7 +653,7 @@ function AssessmentContent() {
             <div className="inline-block rounded-full bg-fei-yellow/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-fei-yellow">
               Diagnostic Assessment
             </div>
-            <h1 className="mt-4 text-4xl font-black text-fei-text sm:text-5xl">Professional Player</h1>
+            <h1 className="mt-4 text-4xl font-black text-fei-text sm:text-5xl">{selectedRole}</h1>
             <p className="mt-3 text-fei-text/60">Senior Squad · FEI Communication Intelligence</p>
           </div>
 
@@ -1382,7 +1434,7 @@ function AssessmentContent() {
 
               <div className="mx-auto mt-8 max-w-2xl rounded-2xl border border-fei-sky/20 bg-fei-bg/35 p-5 text-left">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">
-                  Professional Player
+                  {selectedRole}
                 </p>
                 <p className="mt-2 text-lg font-bold text-fei-text">
                   {result.level} — {pathwayLabel}
