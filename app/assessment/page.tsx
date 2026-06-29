@@ -586,7 +586,7 @@ function AssessmentContent() {
             {[
               { icon: '⏱', label: 'Duration', value: '10–12 minutes' },
               { icon: '📋', label: 'Items', value: '17 questions' },
-              { icon: '🎯', label: 'Result', value: 'CEFR level + AI Insight' },
+              { icon: '🎯', label: 'Result', value: 'FEI Pathway + AI Insight' },
             ].map((stat) => (
               <div key={stat.label} className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-5 text-center">
                 <div className="text-2xl">{stat.icon}</div>
@@ -600,12 +600,12 @@ function AssessmentContent() {
             <h2 className="mb-4 font-bold text-fei-text">Before you begin</h2>
             <ul className="space-y-3 text-sm text-fei-text/70">
               {[
-                '🎧  Use headphones or speakers — there are 3 audio listening items.',
-                '🎙  Enable your microphone — the final item is a 45–60 second spoken response.',
-                '📵  Do not leave this page during the assessment — your progress will be lost.',
+                '🎧  Use headphones or speakers for listening items.',
+                '🎙  Enable your microphone for the final spoken response.',
+                '📵  Stay on this page until the assessment is complete.',
                 '🔒  Copying or sharing questions is not permitted.',
                 '📱  Find a quiet place with a stable internet connection.',
-                '✅  Answer every item — there is no penalty for incorrect answers.',
+                '✅  Answer every item. There is no penalty for incorrect answers.',
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3">
                   <span className="shrink-0">{item.split('  ')[0]}</span>
@@ -616,12 +616,22 @@ function AssessmentContent() {
           </div>
 
           <div className="mb-8 rounded-2xl border border-fei-sky/20 bg-fei-sky/[0.04] p-6">
-            <h2 className="mb-3 font-bold text-fei-text">What this diagnostic measures</h2>
-            <p className="text-sm leading-6 text-fei-text/65">
-              You will complete football-specific scenarios that assess how you understand instructions,
-              respond to feedback, report physical discomfort, manage public communication, and handle
-              role-related conversations.
-            </p>
+            <h2 className="mb-4 font-bold text-fei-text">What this diagnostic measures</h2>
+            <ul className="space-y-3 text-sm leading-6 text-fei-text/65">
+              {[
+                'Understanding coach instructions',
+                'Reading tactical and match information',
+                'Responding to feedback professionally',
+                'Reporting injury or physical discomfort',
+                'Communicating under match pressure',
+                'Handling role and playing-time conversations',
+              ].map(item => (
+                <li key={item} className="flex items-start gap-3">
+                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-fei-yellow" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <button
