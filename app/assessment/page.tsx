@@ -775,10 +775,14 @@ function AssessmentContent() {
               ← Back
             </button>
             <button
-              onClick={() => setSection('warm-up')}
-              className="flex-1 rounded-full bg-fei-yellow py-3 text-sm font-bold text-fei-bg transition hover:bg-fei-yellow/90"
+              onClick={() => {
+                if (micPermission !== 'granted') return
+                setSection('warm-up')
+              }}
+              disabled={micPermission !== 'granted'}
+              className="flex-1 rounded-full bg-fei-yellow py-3 text-sm font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-yellow/20 disabled:text-fei-yellow/50 disabled:opacity-100"
             >
-              {micPermission === 'granted' ? 'Start assessment →' : 'Continue to assessment →'}
+              {micPermission === 'granted' ? 'Start assessment →' : 'Enable microphone to start'}
             </button>
           </div>
         </div>
