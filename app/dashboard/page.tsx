@@ -166,23 +166,21 @@ export default function DashboardPage() {
       </nav>
 
       <section className="mx-auto max-w-7xl px-6 py-10">
-        <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.45em] text-fei-sky">
-              Welcome back
-            </p>
-            <h1 className="text-5xl font-black tracking-tight text-fei-text md:text-6xl">
-              {displayName}
-            </h1>
+        <div className="mb-10">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.45em] text-fei-sky">
+            Welcome back
+          </p>
+          <h1 className="text-5xl font-black tracking-tight text-fei-text md:text-6xl">
+            {displayName}
+          </h1>
 
-            <div className="mt-5 inline-flex rounded-full border border-fei-sky/20 bg-fei-sky/[0.06] px-4 py-2 text-sm font-medium text-fei-sky">
-              Role: {userRole || 'Not selected'}
-            </div>
+          <div className="mt-5 inline-flex rounded-full border border-fei-sky/20 bg-fei-sky/[0.06] px-4 py-2 text-sm font-medium text-fei-sky">
+            Role: {userRole || 'Not selected'}
           </div>
 
-          <div className="max-w-md rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-5 text-sm leading-6 text-fei-text/55">
+          <p className="mt-4 max-w-2xl text-base leading-7 text-fei-text/55">
             FEI adapts your diagnostic and learning path to your role in football, so your English training feels practical, contextual, and career-focused.
-          </div>
+          </p>
         </div>
 
         {needsRoleSelection(userRole) ? (
