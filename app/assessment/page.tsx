@@ -434,6 +434,7 @@ function AssessmentContent() {
   const [saving, setSaving] = useState(false)
 
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
+  const mediaStreamRef = useRef<MediaStream | null>(null)
   const timerRef = useRef<NodeJS.Timeout | null>(null)
   const totalItems = 17
 
@@ -505,7 +506,8 @@ function AssessmentContent() {
 
   async function requestMic() {
     try {
-      await navigator.mediaDevices.getUserMedia({ audio: true })
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+      mediaStreamRef.current = stream
       setMicPermission('granted')
     } catch {
       setMicPermission('denied')
@@ -525,10 +527,17 @@ function AssessmentContent() {
 
   async function startRecording() {
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+      let stream = mediaStreamRef.current
+
+      if (!stream || stream.getTracks().every((track) => track.readyState === 'ended')) {
+        stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+        mediaStreamRef.current = stream
+      }
+
       const mediaRecorder = new MediaRecorder(stream)
       mediaRecorderRef.current = mediaRecorder
       mediaRecorder.start()
+      setMicPermission('granted')
       setIsRecording(true)
       setRecordingTime(0)
 
@@ -547,9 +556,8 @@ function AssessmentContent() {
   }
 
   function stopRecording() {
-    if (mediaRecorderRef.current) {
+    if (mediaRecorderRef.current && mediaRecorderRef.current.state !== 'inactive') {
       mediaRecorderRef.current.stop()
-      mediaRecorderRef.current.stream?.getTracks().forEach((t) => t.stop())
     }
     if (timerRef.current) clearInterval(timerRef.current)
     setIsRecording(false)
@@ -568,6 +576,14 @@ function AssessmentContent() {
     }
     return map[section] || 1
   }
+
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current)
+      mediaStreamRef.current?.getTracks().forEach((track) => track.stop())
+      mediaStreamRef.current = null
+    }
+  }, [])
 
   // ─── SCREENS ────────────────────────────────────────────────────────────────
 
