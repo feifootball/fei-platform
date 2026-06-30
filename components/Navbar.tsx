@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
 
 type Lang = 'en' | 'es';
 
@@ -25,8 +24,7 @@ const navLinks = {
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [lang, setLang] = useState<Lang>('en');
-  const pathname = usePathname();
-  const isLanding = pathname === '/';
+
   useEffect(() => {
     const saved = localStorage.getItem('fei_lang') as Lang;
     if (saved === 'en' || saved === 'es') setLang(saved);
@@ -35,6 +33,7 @@ export function Navbar() {
       const custom = e as CustomEvent<Lang>;
       setLang(custom.detail);
     }
+
     window.addEventListener('fei_lang_change', handleLangChange);
     return () => window.removeEventListener('fei_lang_change', handleLangChange);
   }, []);
@@ -49,79 +48,108 @@ export function Navbar() {
   const links = navLinks[lang];
 
   return (
-    <header className="fixed inset-x-0 top-4 z-50 px-4 sm:top-6 sm:px-6">
-      <nav className="mx-auto max-w-6xl">
-        <div className="flex items-center justify-between rounded-full border border-white/10 bg-[#070b12]/90 px-4 py-3 shadow-[0_18px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:px-5">
+    <header className="border-b border-fei-text/10 bg-fei-bg/95">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        <a href="/" className="flex items-center">
+          <img src="/logo.svg" alt="FEI" className="h-7 w-auto" />
+        </a>
 
-          <a href="/" className="flex min-w-0 items-center gap-3">
-            <img src="/logo.svg" alt="FEI" className="h-7 w-auto sm:h-8" />
-            <span className="hidden whitespace-nowrap text-xs font-medium tracking-wide text-fei-sky/80 lg:block">Football English Intelligence</span>
+        <div className="hidden items-center gap-7 md:flex">
+          {links.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className="text-sm font-medium text-fei-text/55 transition hover:text-fei-text"
+            >
+              {link.label}
+            </a>
+          ))}
+
+          <button
+            onClick={toggleLang}
+            className="rounded-full border border-fei-text/20 px-4 py-2 text-sm font-semibold text-fei-text/60 transition hover:border-fei-text/40 hover:text-fei-text"
+          >
+            {lang === 'en' ? 'ES' : 'EN'}
+          </button>
+
+          <a
+            href="/login"
+            className="text-sm font-medium text-fei-text/55 transition hover:text-fei-text"
+          >
+            {lang === 'en' ? 'Login' : 'Ingresar'}
           </a>
 
-          <div className="hidden items-center gap-1 rounded-full bg-white/[0.03] px-2 py-1 md:flex">
+          <a
+            href="/register"
+            className="rounded-full border border-fei-text/20 px-5 py-2 text-sm font-medium text-fei-text/70 transition hover:border-fei-text/40 hover:text-fei-text"
+          >
+            {lang === 'en' ? 'Start' : 'Comenzar'}
+          </a>
+        </div>
+
+        <div className="flex items-center gap-2 md:hidden">
+          <button
+            onClick={toggleLang}
+            className="rounded-full border border-fei-text/20 px-3 py-1.5 text-xs font-bold text-fei-text/60 transition hover:text-fei-text"
+          >
+            {lang === 'en' ? 'ES' : 'EN'}
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setMenuOpen((value) => !value)}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-fei-text/20 text-fei-text/70 transition hover:text-fei-text"
+            aria-label="Open menu"
+          >
+            {menuOpen ? (
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+                <path d="M18 6 6 18" />
+                <path d="m6 6 12 12" />
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+                <path d="M4 7h16" />
+                <path d="M4 12h16" />
+                <path d="M4 17h16" />
+              </svg>
+            )}
+          </button>
+        </div>
+      </nav>
+
+      {menuOpen && (
+        <div className="border-t border-fei-text/10 bg-fei-bg px-6 py-4 md:hidden">
+          <div className="mx-auto grid max-w-7xl gap-1">
             {links.map((link) => (
-              <a key={link.label} href={link.href} className="rounded-full px-4 py-2 text-sm font-medium text-white/60 transition hover:bg-white/[0.06] hover:text-white">
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                className="rounded-xl px-3 py-3 text-sm font-medium text-fei-text/65 transition hover:bg-fei-text/[0.04] hover:text-fei-text"
+              >
                 {link.label}
               </a>
             ))}
-          </div>
 
-          <div className="hidden items-center gap-2 md:flex">
-            <a href="https://instagram.com/fei.football" target="_blank" rel="noopener noreferrer" className="inline-flex h-9 w-9 items-center justify-center rounded-full text-white/40 transition hover:bg-white/[0.06] hover:text-fei-sky" aria-label="Instagram">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
-            </a>
-            <a href="https://linkedin.com/company/football-english-intelligence" target="_blank" rel="noopener noreferrer" className="inline-flex h-9 w-9 items-center justify-center rounded-full text-white/40 transition hover:bg-white/[0.06] hover:text-fei-sky" aria-label="LinkedIn">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-            </a>
-
-            {isLanding && (
-              <button onClick={toggleLang} className="rounded-full border border-white/20 px-3 py-1.5 text-xs font-bold text-white/70 transition hover:bg-white/[0.08] hover:text-white">
-                {lang === 'en' ? 'ES' : 'EN'}
-              </button>
-            )}
-
-            <a href="/login" className="rounded-full border border-fei-sky/70 px-5 py-2 text-sm font-medium text-fei-sky transition hover:bg-fei-sky/10">{lang === 'en' ? 'Login' : 'Ingresar'}</a>
-            <a href="/register" className="rounded-full bg-fei-yellow px-5 py-2 text-sm font-semibold text-fei-bg transition hover:bg-fei-yellow/90">{lang === 'en' ? 'Get Started' : 'Comenzar'}</a>
-          </div>
-
-          <div className="flex items-center gap-2 md:hidden">
-            {isLanding && (
-              <button onClick={toggleLang} className="rounded-full border border-white/20 px-3 py-1.5 text-xs font-bold text-white/70 transition hover:bg-white/[0.08] hover:text-white">
-                {lang === 'en' ? 'ES' : 'EN'}
-              </button>
-            )}
-            <button type="button" onClick={() => setMenuOpen((v) => !v)} className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white transition hover:bg-white/[0.08]">
-              {menuOpen ? (
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-              ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg>
-              )}
-            </button>
+            <div className="mt-3 flex gap-3 border-t border-fei-text/10 pt-4">
+              <a
+                href="/login"
+                onClick={() => setMenuOpen(false)}
+                className="flex-1 rounded-full border border-fei-sky/40 px-4 py-3 text-center text-sm font-semibold text-fei-sky"
+              >
+                {lang === 'en' ? 'Login' : 'Ingresar'}
+              </a>
+              <a
+                href="/register"
+                onClick={() => setMenuOpen(false)}
+                className="flex-1 rounded-full bg-fei-yellow px-4 py-3 text-center text-sm font-bold text-fei-bg"
+              >
+                {lang === 'en' ? 'Start' : 'Comenzar'}
+              </a>
+            </div>
           </div>
         </div>
-
-        {menuOpen && (
-          <div className="mt-3 overflow-hidden rounded-[1.75rem] border border-white/10 bg-[#070b12]/95 p-3 shadow-[0_18px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl md:hidden">
-            <div className="grid gap-1">
-              {links.map((link) => (
-                <a key={link.label} href={link.href} onClick={() => setMenuOpen(false)} className="rounded-2xl px-4 py-3 text-base font-medium text-white/75 transition hover:bg-white/[0.06] hover:text-white">
-                  {link.label}
-                </a>
-              ))}
-            </div>
-            <div className="mt-3 flex items-center gap-2 border-t border-white/10 pt-3">
-              <a href="https://instagram.com/fei.football" target="_blank" rel="noopener noreferrer" className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-white/55 transition hover:text-fei-sky">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
-              </a>
-              <a href="https://linkedin.com/company/football-english-intelligence" target="_blank" rel="noopener noreferrer" className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-white/55 transition hover:text-fei-sky">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-              </a>
-              <a href="/login" onClick={() => setMenuOpen(false)} className="ml-auto rounded-full border border-fei-sky/70 px-4 py-3 text-sm font-semibold text-fei-sky">{lang === 'en' ? 'Login' : 'Ingresar'}</a>
-              <a href="/register" onClick={() => setMenuOpen(false)} className="rounded-full bg-fei-yellow px-4 py-3 text-sm font-bold text-fei-bg">{lang === 'en' ? 'Get Started' : 'Comenzar'}</a>
-            </div>
-          </div>
-        )}
-      </nav>
+      )}
     </header>
   );
 }

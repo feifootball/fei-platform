@@ -8,9 +8,9 @@ type Lang = 'en' | 'es';
 const translations = {
   en: {
     tagline: "Football is global.",
-    hero_subtitle: "Communication Creates Opportunity.",
-    hero_description: "FEI helps football professionals build the English communication skills needed for trials, clubs, interviews, agents, scouts, and the global game.",
-    cta_start: "Get Started",
+    hero_subtitle: "",
+    hero_description: "The only English platform built for elite football.\nCommunication is your competitive advantage.",
+    cta_start: "Start your diagnostic",
     cta_login: "Login",
     stats: [
       { value: "11", label: "Roles" },
@@ -57,9 +57,9 @@ const translations = {
   },
   es: {
     tagline: "El fútbol es global.",
-    hero_subtitle: "La comunicación crea oportunidades.",
-    hero_description: "FEI ayuda a los profesionales del fútbol a desarrollar las habilidades de comunicación en inglés necesarias para pruebas, clubes, entrevistas, agentes, scouts y el juego global.",
-    cta_start: "Comenzar",
+    hero_subtitle: "",
+    hero_description: "La única plataforma de inglés diseñada para el fútbol de élite.\nLa comunicación es tu ventaja competitiva.",
+    cta_start: "Comenzar diagnóstico",
     cta_login: "Ingresar",
     stats: [
       { value: "11", label: "Roles" },
@@ -142,24 +142,22 @@ export default function Home() {
     <div className="flex min-h-full flex-col">
       <Navbar />
 
-      <section className="relative overflow-hidden px-6 py-20 sm:py-28 lg:py-36">
-        <div className="mx-auto max-w-4xl">
+      <section className="relative overflow-hidden px-6 py-20 sm:py-28 lg:py-32">
+        <div className="mx-auto max-w-7xl">
           <p className="text-sm font-semibold uppercase tracking-[0.25em] text-fei-sky">{t.tagline}</p>
-          <h1 className="mt-6 text-6xl font-black leading-[1.1] text-fei-text sm:text-7xl lg:text-8xl">
-            Football<br />English<br />
-            <span className="bg-gradient-to-r from-fei-yellow to-fei-sky bg-clip-text text-transparent">Intelligence.</span>
+          <h1 className="mt-6 text-5xl font-black leading-[1.05] text-fei-text sm:text-6xl lg:text-7xl xl:text-8xl">
+            Football English <span className="bg-gradient-to-r from-fei-yellow to-fei-sky bg-clip-text text-transparent">Intelligence.</span>
           </h1>
-          <p className="mt-8 text-lg font-semibold text-fei-text">{t.hero_subtitle}</p>
-          <p className="mt-4 max-w-xl text-fei-text/60">{t.hero_description}</p>
+          <p className="mt-6 max-w-2xl whitespace-pre-line text-lg leading-8 text-fei-text/65">{t.hero_description}</p>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <a href="/register" className="inline-flex items-center gap-2 rounded-full bg-fei-yellow px-8 py-3 font-semibold text-fei-bg">{t.cta_start} <span>→</span></a>
-            <a href="/login" className="inline-flex items-center justify-center rounded-full border border-fei-sky px-8 py-3 font-semibold text-fei-sky">{t.cta_login}</a>
+            <a href="/register" className="inline-flex items-center gap-2 rounded-full bg-fei-yellow px-8 py-3 font-semibold text-fei-bg transition hover:bg-fei-yellow/90">{t.cta_start} <span>→</span></a>
+            <a href="/login" className="inline-flex items-center justify-center rounded-full border border-fei-sky/50 px-8 py-3 font-semibold text-fei-sky transition hover:bg-fei-sky/10">{t.cta_login}</a>
           </div>
         </div>
       </section>
 
       <section id="diagnostic" className="scroll-mt-32 border-y border-fei-text/10 bg-fei-text/[0.02] px-6 py-12 sm:py-14">
-        <div className="mx-auto grid max-w-5xl grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-4">
+        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-4">
           {t.stats.map((stat) => (
             <div key={stat.label} className="text-center">
               <p className="text-4xl font-bold tracking-tight text-fei-yellow sm:text-5xl">{stat.value}</p>
@@ -170,7 +168,7 @@ export default function Home() {
       </section>
 
       <section id="how-it-works" className="scroll-mt-32 px-6 py-20 sm:py-28">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-7xl">
           <div className="mb-12 text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{t.how_title}</h2>
             <p className="mx-auto mt-4 max-w-2xl text-fei-text/60">{t.how_subtitle}</p>
@@ -203,7 +201,7 @@ export default function Home() {
       </section>
 
       <section id="roles" className="scroll-mt-32 border-t border-fei-text/10 px-6 py-20 sm:py-28">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-7xl">
           <div className="mb-10 text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{t.roles_title}</h2>
             <p className="mx-auto mt-4 max-w-2xl text-fei-text/60">{t.roles_subtitle}</p>
@@ -226,7 +224,7 @@ export default function Home() {
       </section>
 
       <section id="for-clubs" className="scroll-mt-32 border-t border-fei-text/10 px-6 py-20 sm:py-28">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-7xl">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.25em] text-fei-sky">{t.clubs_label}</p>
@@ -250,7 +248,7 @@ export default function Home() {
       </section>
 
       <section id="pricing" className="scroll-mt-32 border-t border-fei-text/10 px-6 py-20 sm:py-28">
-        <div className="mx-auto max-w-5xl text-center">
+        <div className="mx-auto max-w-7xl text-center">
           <p className="text-sm font-semibold uppercase tracking-[0.25em] text-fei-sky">{t.pricing_label}</p>
           <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">{t.pricing_title}</h2>
           <p className="mx-auto mt-4 max-w-xl text-fei-text/60">{t.pricing_subtitle}</p>
@@ -259,7 +257,7 @@ export default function Home() {
       </section>
 
       <footer className="mt-auto border-t border-fei-text/10 px-6 py-10">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-7xl">
           <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
             <div className="flex items-center gap-2.5">
               <img src="/logo.svg" alt="FEI" className="h-6 w-auto" />
