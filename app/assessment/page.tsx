@@ -910,6 +910,229 @@ const academyDirectorItems = {
 }
 
 
+
+const headOfScoutingItems = {
+  warmup: [
+    {
+      id: 'w1',
+      label: 'Item 1 — Primary Communication Focus',
+      context: 'You are completing the FEI diagnostic for the Head of Scouting — Recruitment Leadership role.',
+      question: 'Which communication situation is most central to your role?',
+      options: [
+        'A. Delivering daily tactical instructions to first-team players.',
+        'B. Aligning scouts around recruitment philosophy and criteria.',
+        'C. Managing player recovery plans with medical staff.',
+        'D. Creating social media content for transfer announcements.',
+      ],
+      correct: 'B',
+    },
+    {
+      id: 'w2',
+      label: 'Item 2 — Communication Priority',
+      context: 'The diagnostic personalizes the pathway based on your main communication demand.',
+      question: 'Which communication task is most important in your daily work?',
+      options: [
+        'A. Translating tactical needs into clear recruitment profiles.',
+        'B. Explaining warm-up exercises to first-team players.',
+        'C. Reporting nutrition plans to the performance department.',
+        'D. Preparing matchday media quotes for the head coach.',
+      ],
+      correct: 'A',
+    },
+  ],
+  reading: [
+    {
+      id: 'r1',
+      level: 'A2',
+      label: 'Item 3 — Recruitment Priority Update',
+      context: 'Recruitment update:\\n\\n"Q3 focus: centre-backs, fullbacks and 8/10 midfielders. Priority profile: centre-back. Italian league coverage remains active."',
+      question: 'Which profile is the current priority?',
+      options: [
+        'A. Fullbacks with attacking output.',
+        'B. 8/10 midfielders from Italy.',
+        'C. Any player from the Italian league.',
+        'D. Centre-backs for the recruitment list.',
+      ],
+      correct: 'D',
+    },
+    {
+      id: 'r2',
+      level: 'B1',
+      label: 'Item 4 — Vague Scout Report',
+      context: 'A scout writes: “He is a dynamic midfielder.” You ask for clarification: pressing intensity, box runs, decision speed or ball progression?',
+      question: 'What is the main weakness in the scout’s wording?',
+      options: [
+        'A. It gives too much technical detail too early.',
+        'B. It lacks specific evidence about the player’s qualities.',
+        'C. It focuses too much on physical performance.',
+        'D. It already contains a complete recruitment profile.',
+      ],
+      correct: 'B',
+    },
+    {
+      id: 'r3',
+      level: 'B2',
+      label: 'Item 5 — Best Available vs Best Fit',
+      context: 'The board asks for the “best available” player. The Sporting Director says the club needs the “best fit at the best price.” The recruitment team must clarify the decision criteria before presenting recommendations.',
+      question: 'What is the key issue?',
+      options: [
+        'A. The board wants to cancel the recruitment process.',
+        'B. The recruitment team has already chosen the player.',
+        'C. There is tension between reputation, fit and value.',
+        'D. The Sporting Director wants to avoid all spending.',
+      ],
+      correct: 'C',
+    },
+  ],
+  listening: [
+    {
+      id: 'l1',
+      level: 'A2',
+      label: 'Item 6 — Scouting Network Update',
+      script: 'We have 12 scouts covering six countries. This quarter we completed 240 observations, created an 18-player shortlist and made three formal recommendations.',
+      question: 'How many formal recommendations were made?',
+      options: [
+        'A. Three formal recommendations.',
+        'B. Six formal recommendations.',
+        'C. Twelve formal recommendations.',
+        'D. Eighteen formal recommendations.',
+      ],
+      correct: 'A',
+    },
+    {
+      id: 'l2',
+      level: 'B1',
+      label: 'Item 7 — Two Recruitment Strategies',
+      script: 'The European scout recommends a proven 28-year-old. The South American scout recommends a 21-year-old with potential. With a €15M budget, we should explore both, but they represent different strategies.',
+      question: 'What is the final direction?',
+      options: [
+        'A. Choose only the older proven player.',
+        'B. Choose only the younger potential player.',
+        'C. Explore both profiles because they serve different strategies.',
+        'D. Delay all recruitment because the budget is too small.',
+      ],
+      correct: 'C',
+    },
+    {
+      id: 'l3',
+      level: 'B2',
+      label: 'Item 8 — Urgent Market Opportunity',
+      script: 'An agent says there is a 48-hour opportunity at €18M. Normal market price is closer to €25M. The risk is rushing; the opportunity is value. Our role is to present the case and facilitate the decision.',
+      question: 'What should the Head of Scouting do?',
+      options: [
+        'A. Reject the opportunity because 48 hours is too short.',
+        'B. Accept the deal immediately before the price rises.',
+        'C. Ask the agent to make the decision for the club.',
+        'D. Frame the risk and value so leadership can decide.',
+      ],
+      correct: 'D',
+    },
+  ],
+  vocabulary: [
+    {
+      id: 'v1',
+      level: 'A2',
+      label: 'Item 9 — Recruitment Profile',
+      context: 'The Sporting Director says: “We need a clear recruitment profile before assigning scouts.”',
+      question: 'What is a recruitment profile?',
+      options: [
+        'A. A player’s social media and public image.',
+        'B. The specific criteria for the position and role.',
+        'C. The final contract offered to the player.',
+        'D. A list of previous clubs and agents.',
+      ],
+      correct: 'B',
+    },
+    {
+      id: 'v2',
+      level: 'B1',
+      label: 'Item 10 — Transfer Window Strategy',
+      context: 'The recruitment department reviews its transfer window strategy before January.',
+      question: 'What does this mean?',
+      options: [
+        'A. The travel schedule for scouts during the season.',
+        'B. The press plan for announcing new signings.',
+        'C. The training plan for integrating new players.',
+        'D. The planned recruitment approach for a market period.',
+      ],
+      correct: 'D',
+    },
+    {
+      id: 'v3',
+      level: 'B2',
+      label: 'Item 11 — Market Intelligence',
+      context: 'A report says: “Market intelligence suggests two competitors are moving early, and availability may change after the window opens.”',
+      question: 'What does market intelligence refer to here?',
+      options: [
+        'A. Information on availability, pricing and competitor activity.',
+        'B. A player’s ability to understand tactical instructions.',
+        'C. A list of public transfer rumors from media sources only.',
+        'D. The financial report from the club’s accounting team.',
+      ],
+      correct: 'A',
+    },
+  ],
+  functional: [
+    {
+      id: 'f1',
+      level: 'B1',
+      label: 'Item 12 — Briefing a New Scout',
+      context: 'A new scout asks how to prioritize reports for your department. You want to communicate the recruitment philosophy clearly.',
+      question: 'Which response is most appropriate?',
+      options: [
+        'A. Write reports the way you prefer, as long as the player looks interesting.',
+        'B. Focus mainly on technical quality; price and role fit come later.',
+        'C. We value fit, cost and evidence. Reports must connect players to our profiles.',
+        'D. Send every good player to the shortlist and we will decide centrally.',
+      ],
+      correct: 'C',
+    },
+    {
+      id: 'f2',
+      level: 'B2',
+      label: 'Item 13 — Scout Disagrees with Priority',
+      context: 'A senior scout argues that striker depth is urgent, but your current strategic priority is midfield depth.',
+      question: 'Which response best maintains alignment?',
+      options: [
+        'A. Striker depth is not part of this window, so stop monitoring that area.',
+        'B. I understand the concern; keep monitoring strikers, but midfield remains priority this window.',
+        'C. You may be right, so we should change the priority immediately.',
+        'D. Both areas are equally important, so submit recommendations for both.',
+      ],
+      correct: 'B',
+    },
+    {
+      id: 'f3',
+      level: 'B2',
+      label: 'Item 14 — Unrealistic Coach Request',
+      context: 'The head coach wants a proven goalscorer, but the market price is far above the approved budget.',
+      question: 'Which response is strongest?',
+      options: [
+        'A. The profile is valid, but the current budget requires alternatives or a longer timeline.',
+        'B. The coach’s request is unrealistic, so recruitment should ignore it.',
+        'C. We should ask finance to increase the budget before scouting anyone.',
+        'D. A cheaper player will solve the problem if we act quickly enough.',
+      ],
+      correct: 'A',
+    },
+    {
+      id: 'f4',
+      level: 'C1',
+      label: 'Item 15 — Board Skepticism',
+      context: 'The board questions your recruitment strategy because it produces fewer headline signings. You need to defend the long-term approach.',
+      question: 'Which response is most strategic?',
+      options: [
+        'A. Headline signings are not our model, so the board needs patience.',
+        'B. The strategy is cheaper, and that should be enough justification.',
+        'C. We can change the strategy if the board wants faster visibility.',
+        'D. The model trades headlines for fit, depth and sustainable squad value.',
+      ],
+      correct: 'D',
+    },
+  ],
+}
+
+
 const insights = {
   A2: {
     level: 'A2',
@@ -1104,9 +1327,9 @@ function AssessmentContent() {
   const supabase = createClient()
 
   const selectedRole = searchParams.get('role') || 'Professional Player'
-  const assessmentAvailable = selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Academy Director'
-  const activeItems = selectedRole === 'Head Coach' ? headCoachItems : selectedRole === 'Assistant Coach' ? assistantCoachItems : selectedRole === 'Academy Director' ? academyDirectorItems : items
-  const roleSubtitle = selectedRole === 'Academy Director' ? 'Youth & Academy' : selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' ? 'First Team' : 'Senior Squad'
+  const assessmentAvailable = selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Academy Director' || selectedRole === 'Head of Scouting'
+  const activeItems = selectedRole === 'Head Coach' ? headCoachItems : selectedRole === 'Assistant Coach' ? assistantCoachItems : selectedRole === 'Academy Director' ? academyDirectorItems : selectedRole === 'Head of Scouting' ? headOfScoutingItems : items
+  const roleSubtitle = selectedRole === 'Academy Director' ? 'Youth & Academy' : selectedRole === 'Head of Scouting' ? 'Recruitment Leadership' : selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' ? 'First Team' : 'Senior Squad'
 
   const [section, setSection] = useState<Section>('intro')
   const [answers, setAnswers] = useState<Record<string, Answer>>({})
@@ -1174,6 +1397,7 @@ function AssessmentContent() {
     const headCoachKeywords = ['press', 'pressure', 'plan', 'space', 'calm', 'width', 'standards', 'discipline', 'belief']
     const assistantCoachKeywords = ['press', 'pressing', 'spacing', 'timing', 'fatigue', 'repetition', 'compactness', 'structure', 'focus']
     const academyDirectorKeywords = ['academy', 'readiness', 'standards', 'development', 'pathway', 'u16', 'progress', 'consistency', 'first-team']
+    const headOfScoutingKeywords = ['recruitment', 'profile', 'market', 'shortlist', 'budget', 'strategy', 'scouts', 'fit', 'value', 'q4']
 
     const keywords =
       selectedRole === 'Head Coach'
@@ -1182,7 +1406,9 @@ function AssessmentContent() {
           ? assistantCoachKeywords
           : selectedRole === 'Academy Director'
             ? academyDirectorKeywords
-            : professionalPlayerKeywords
+            : selectedRole === 'Head of Scouting'
+              ? headOfScoutingKeywords
+              : professionalPlayerKeywords
 
     const hasKey = keywords.some((w) => lower.includes(w))
 
@@ -1910,7 +2136,9 @@ function AssessmentContent() {
                   ? 'You are closing a training session after a pressing exercise. The players pressed well in the first repetitions, but in reps 5–8 they lost focus, spacing, and timing.'
                   : selectedRole === 'Academy Director'
                     ? 'You need to send a short message to academy coaches about this year’s development standards. Explain that the academy will assess readiness, not only physical dominance or short-term match performance. Mention that the U16 group is strong, but standards must remain consistent.'
-                    : "After training today, you developed tightness in your left hamstring during the second half. It started when you made a sharp turning movement while sprinting. The sensation increased slightly during the cool-down. You want to report this to the physiotherapist before tomorrow's session."}
+                    : selectedRole === 'Head of Scouting'
+                      ? 'You need to write a short Q4 recruitment memo for leadership. Include priority profiles, strategic logic, and the next decision step.'
+                      : "After training today, you developed tightness in your left hamstring during the second half. It started when you made a sharp turning movement while sprinting. The sensation increased slightly during the cool-down. You want to report this to the physiotherapist before tomorrow's session."}
             </p>
           </div>
 
@@ -1922,7 +2150,9 @@ function AssessmentContent() {
                   ? 'Write 3–5 sentences to close the session. Include what went well, what needs to improve, and tomorrow’s focus.'
                   : selectedRole === 'Academy Director'
                     ? 'Write 3–5 sentences to academy coaches about development standards and player readiness.'
-                    : 'Write a message to the physiotherapist reporting this discomfort.'}
+                    : selectedRole === 'Head of Scouting'
+                      ? 'Write 3–5 sentences for leadership with priority profiles, strategic logic, and next decision step.'
+                      : 'Write a message to the physiotherapist reporting this discomfort.'}
             </p>
             <p className="mt-1 text-sm text-fei-text/50">Write 3–5 sentences in professional English.</p>
           </div>
@@ -1980,7 +2210,9 @@ function AssessmentContent() {
                   ? 'Two players are not pressing together during a training exercise. One player jumps early, the other waits, and the opponent plays through the gap.'
                   : selectedRole === 'Academy Director'
                     ? 'The Sporting Director wants to fast-track a U18 striker into the first team. You believe the player is not ready yet and that a second-team loan is the better pathway.'
-                    : 'You have just received feedback from the head coach about your last match. The coach said you were too slow in transition and needed to be more aggressive in pressing. You disagree slightly because the transition was fast and you were managing some discomfort.'}
+                    : selectedRole === 'Head of Scouting'
+                      ? 'The board prefers big-name signings, but your recruitment model prioritizes system fit, early identification, and sustainable value.'
+                      : 'You have just received feedback from the head coach about your last match. The coach said you were too slow in transition and needed to be more aggressive in pressing. You disagree slightly because the transition was fast and you were managing some discomfort.'}
             </p>
           </div>
 
@@ -1992,7 +2224,9 @@ function AssessmentContent() {
                   ? 'Correct both players clearly and professionally before restarting the drill.'
                   : selectedRole === 'Academy Director'
                     ? 'Explain your position clearly and professionally, balancing first-team need with player development.'
-                    : 'Explain how you would respond to the coach professionally.'}
+                    : selectedRole === 'Head of Scouting'
+                      ? 'Defend your recruitment strategy clearly and professionally to the board.'
+                      : 'Explain how you would respond to the coach professionally.'}
             </p>
             <p className="mt-1 text-sm text-fei-text/50">Recommended time: 45–60 seconds. Recording stops automatically at 75 seconds.</p>
           </div>
@@ -2205,7 +2439,14 @@ function AssessmentContent() {
                 B2: 'You communicate academy standards with professional clarity across several stakeholder situations. Your pathway will help you strengthen difficult conversations, strategic reporting, and alignment with the first team.',
                 C1: 'You demonstrate advanced academy leadership communication with strategic awareness and institutional maturity. Your pathway will refine board-level influence, stakeholder alignment, and high-pressure pathway decisions.',
               }
-            : pathwayDescriptions
+            : selectedRole === 'Head of Scouting'
+              ? {
+                  A2: 'You understand basic recruitment information and simple priorities. Your pathway will build profile language, scouting communication, and clearer recruitment criteria.',
+                  B1: 'You manage common recruitment communication. Your pathway will strengthen precision, alignment, and recommendation structure across scouts and decision-makers.',
+                  B2: 'You communicate recruitment priorities clearly. Your pathway will develop market reasoning, profile-fit communication, and executive recommendations.',
+                  C1: 'You demonstrate strategic recruitment leadership. Your pathway will refine board-level influence, high-stakes alignment, and long-term recruitment value communication.',
+                }
+              : pathwayDescriptions
 
     const roleAiInsights: Record<string, string> =
       selectedRole === 'Head Coach'
@@ -2229,7 +2470,14 @@ function AssessmentContent() {
                 B2: 'Your result shows strong professional communication across academy standards, pathway decisions, and stakeholder situations. Your next step is to strengthen difficult conversations, strategic reporting, and alignment with the first team.',
                 C1: 'Your result shows advanced academy leadership communication with strategic awareness and institutional maturity. Your next step is refinement: board-level influence, stakeholder alignment, high-pressure pathway decisions, and long-term development philosophy.',
               }
-            : aiInsights
+            : selectedRole === 'Head of Scouting'
+              ? {
+                  A2: 'Your result shows that you can understand direct recruitment information and simple priorities. Your next step is to build stronger profile language, clearer scouting criteria, and more confident communication with scouts and recruitment staff.',
+                  B1: 'Your result shows that you can manage common recruitment communication. Your next step is to improve specificity, alignment, and recommendation structure so scouting reports connect more clearly to recruitment priorities and role profiles.',
+                  B2: 'Your result shows strong professional recruitment communication. You can communicate priorities, profile fit, and market reality with clarity. Your next step is to develop sharper market reasoning and executive recommendation language under pressure.',
+                  C1: 'Your result shows strategic recruitment leadership. You can frame fit, value, risk, and long-term squad sustainability for senior decision-makers. Your next step is refinement: board-level influence, high-stakes alignment, and institutional recruitment strategy.',
+                }
+              : aiInsights
 
     const rolePathwayFocus: Record<string, string[]> =
       selectedRole === 'Head Coach'
@@ -2313,7 +2561,34 @@ function AssessmentContent() {
                   'High-pressure pathway decisions',
                 ],
               }
-            : pathwayFocus
+            : selectedRole === 'Head of Scouting'
+              ? {
+                  A2: [
+                    'Recruitment profile language',
+                    'Basic scouting communication',
+                    'Simple priority updates',
+                    'Recruitment criteria foundations',
+                  ],
+                  B1: [
+                    'Scout report specificity',
+                    'Profile-fit communication',
+                    'Recommendation structure',
+                    'Recruitment team alignment',
+                  ],
+                  B2: [
+                    'Market intelligence',
+                    'Strategic priority protection',
+                    'Budget and value framing',
+                    'Executive recommendation clarity',
+                  ],
+                  C1: [
+                    'Board-level influence',
+                    'High-stakes recruitment alignment',
+                    'Sustainable squad value',
+                    'Strategic risk and value framing',
+                  ],
+                }
+              : pathwayFocus
 
     const focusItems = rolePathwayFocus[result.level] || rolePathwayFocus.A2
     const pathwayDescription = rolePathwayDescriptions[result.level] || rolePathwayDescriptions.A2
