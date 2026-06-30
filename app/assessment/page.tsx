@@ -1208,8 +1208,8 @@ function AssessmentContent() {
   // AUDIO CHECK
   if (section === 'audio-check') {
     return (
-      <div className="min-h-screen bg-fei-bg px-6 py-12">
-        <div className="mx-auto max-w-2xl">
+      <div className="min-h-screen bg-fei-bg px-6 py-12 lg:px-8">
+        <div className="mx-auto w-full max-w-6xl">
           <div className="mb-10 flex items-center gap-3">
             <img src="/logo.svg" alt="FEI" className="h-8 w-auto" />
             <span className="text-xs font-medium text-fei-sky">Football English Intelligence</span>
@@ -1223,7 +1223,7 @@ function AssessmentContent() {
             <p className="mt-2 text-fei-text/60">Check your audio and enable your microphone before starting the diagnostic.</p>
           </div>
 
-          <div className="space-y-4">
+          <div className="grid gap-4 lg:grid-cols-2">
             <div className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-6">
               <div className="mb-4 flex items-center gap-3">
                 <div className="flex h-8 w-8 items-center justify-center rounded-full bg-fei-sky/10 text-fei-sky font-bold text-sm">1</div>
