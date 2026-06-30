@@ -2025,6 +2025,229 @@ const nutritionistItems = {
 }
 
 
+
+const physiotherapistItems = {
+  warmup: [
+    {
+      id: 'w1',
+      label: 'Item 1 — Primary Communication Focus',
+      context: 'You are completing the FEI diagnostic for the Physiotherapist — Medical & Rehabilitation role.',
+      question: 'Which communication situation is most central to your role?',
+      options: [
+        'A. Designing tactical opposition reports for the coaching staff.',
+        'B. Negotiating player contracts with recruitment leadership.',
+        'C. Assessing injuries and guiding return-to-play decisions.',
+        'D. Preparing public comments after difficult match results.',
+      ],
+      correct: 'C',
+    },
+    {
+      id: 'w2',
+      label: 'Item 2 — Communication Priority',
+      context: 'The diagnostic personalizes the pathway based on your main communication demand.',
+      question: 'Which communication task matters most in your daily work?',
+      options: [
+        'A. Explaining transfer value to the sporting director.',
+        'B. Communicating injury status clearly to players and staff.',
+        'C. Delivering tactical instructions during the match.',
+        'D. Creating public media responses for the club.',
+      ],
+      correct: 'B',
+    },
+  ],
+  reading: [
+    {
+      id: 'r1',
+      level: 'A2',
+      label: 'Item 3 — Initial Injury Note',
+      context: 'Medical note:\\n\\n"Ankle pain started Friday. Swelling is present and movement is limited. Possible mild sprain. Rest for 48 hours and reassess on Monday."',
+      question: 'What is the recommended next step?',
+      options: [
+        'A. Begin full training because the injury is mild.',
+        'B. Complete imaging immediately before any rest period.',
+        'C. Return to running if swelling improves by Saturday.',
+        'D. Rest for 48 hours and reassess on Monday.',
+      ],
+      correct: 'D',
+    },
+    {
+      id: 'r2',
+      level: 'B1',
+      label: 'Item 4 — Rehabilitation Timeline',
+      context: 'Rehab update:\\n\\n"Grade 1 hamstring strain confirmed. Week 1 is rest and protection. Weeks 2–4 are gradual strength and running work. Weeks 5–6 are sport-specific return. Expected timeline: 5–6 weeks."',
+      question: 'What is the expected recovery timeline?',
+      options: [
+        'A. Five to six weeks, with gradual progression.',
+        'B. One week, if pain decreases quickly.',
+        'C. Two to four weeks, ending after running work.',
+        'D. Six weeks of complete rest before sport-specific work.',
+      ],
+      correct: 'A',
+    },
+    {
+      id: 'r3',
+      level: 'B2',
+      label: 'Item 5 — Complex Pain Presentation',
+      context: 'Case note:\\n\\n"The player reports knee pain. Imaging does not explain the full complaint, and pain behavior is inconsistent. The medical team should continue physiotherapy while also involving sports psychology to address fear, confidence and pain response."',
+      question: 'What is the main recommendation?',
+      options: [
+        'A. Stop physiotherapy until imaging gives a clearer answer.',
+        'B. Treat the complaint as psychological and reduce medical work.',
+        'C. Use a multidisciplinary plan that includes physiotherapy and psychology.',
+        'D. Clear the player because imaging does not show a major injury.',
+      ],
+      correct: 'C',
+    },
+  ],
+  listening: [
+    {
+      id: 'l1',
+      level: 'A2',
+      label: 'Item 6 — Pain Location and Type',
+      script: 'Where is the pain? Lower back. When did it start? Two days ago. What were you doing? Turning in midfield. Is it sharp or dull? Sharp.',
+      question: 'What symptom is being reported?',
+      options: [
+        'A. Dull knee pain after sprinting.',
+        'B. Sharp lower back pain after turning.',
+        'C. Sharp ankle pain after landing.',
+        'D. General muscle soreness after training.',
+      ],
+      correct: 'B',
+    },
+    {
+      id: 'l2',
+      level: 'B1',
+      label: 'Item 7 — Post-Op Return Plan',
+      script: 'The player is 16 weeks post-op. Strength is 92%, agility is 88%, and confidence is 7 out of 10. I recommend a graduated return: first a friendly, then 30 minutes in the next match if the response is good.',
+      question: 'What return-to-play plan is suggested?',
+      options: [
+        'A. Full match immediately because strength is above 90%.',
+        'B. Graduated return with a friendly first and limited minutes after.',
+        'C. No football yet because agility is below strength level.',
+        'D. Training only until confidence reaches 10 out of 10.',
+      ],
+      correct: 'B',
+    },
+    {
+      id: 'l3',
+      level: 'B2',
+      label: 'Item 8 — Fear of Re-Injury',
+      script: 'The player is 12 weeks post-injury and physically progressing well. The main concern now is fear of re-injury. We need confidence-building exposure and psychology support alongside the physical plan.',
+      question: 'What is the key issue?',
+      options: [
+        'A. The injury has returned and the player must stop completely.',
+        'B. The physical plan should replace psychology support.',
+        'C. The player is ready because physical progress is good.',
+        'D. Psychological confidence must be addressed with physical rehab.',
+      ],
+      correct: 'D',
+    },
+  ],
+  vocabulary: [
+    {
+      id: 'v1',
+      level: 'A2',
+      label: 'Item 9 — Range of Motion',
+      context: 'The report says: “Range of motion is still limited after the ankle sprain.”',
+      question: 'What does range of motion mean?',
+      options: [
+        'A. The distance a player covers during running.',
+        'B. The speed reached during a sprint.',
+        'C. How much a joint can move.',
+        'D. How long pain lasts after treatment.',
+      ],
+      correct: 'C',
+    },
+    {
+      id: 'v2',
+      level: 'B1',
+      label: 'Item 10 — Load Tolerance',
+      context: 'The physiotherapist says: “We need to test his load tolerance before increasing training intensity.”',
+      question: 'What does load tolerance mean?',
+      options: [
+        'A. How much physical demand the player can safely handle.',
+        'B. How well the player understands tactical instructions.',
+        'C. How much pain the player can ignore during the match.',
+        'D. How quickly the player completes rehabilitation paperwork.',
+      ],
+      correct: 'A',
+    },
+    {
+      id: 'v3',
+      level: 'B2',
+      label: 'Item 11 — Functional Capacity',
+      context: 'Before return to play, the report says: “Functional capacity must match the demands of the position.”',
+      question: 'What does functional capacity refer to?',
+      options: [
+        'A. General fitness level measured by total weekly distance.',
+        'B. The player’s motivation to return to competition.',
+        'C. Medical imaging results after the injury.',
+        'D. Ability to perform sport-specific movements required for play.',
+      ],
+      correct: 'D',
+    },
+  ],
+  functional: [
+    {
+      id: 'f1',
+      level: 'B1',
+      label: 'Item 12 — Explaining a Grade 1 Strain',
+      context: 'A player asks what a Grade 1 hamstring strain means and whether the muscle is torn.',
+      question: 'Which explanation is clearest?',
+      options: [
+        'A. It is not serious, so you should be back as soon as you feel comfortable.',
+        'B. It is a mild strain, not a full tear. We follow a 5–6 week protocol to return safely.',
+        'C. It is a muscle problem, but the exact timeline depends only on pain tomorrow.',
+        'D. It means your hamstring is damaged, so we avoid football for several months.',
+      ],
+      correct: 'B',
+    },
+    {
+      id: 'f2',
+      level: 'B2',
+      label: 'Item 13 — Player Wants Early Return',
+      context: 'A player wants to return early because an important match is coming. He is improving, but testing shows he is not ready for full-speed work.',
+      question: 'What is the best response?',
+      options: [
+        'A. If you accept the risk, we can try full training and see how it feels.',
+        'B. The match is important, so we can shorten the plan if pain stays low.',
+        'C. Returning early increases re-injury risk. We need you back strong, not just back quickly.',
+        'D. You are not ready, and selection pressure should not affect the medical plan.',
+      ],
+      correct: 'C',
+    },
+    {
+      id: 'f3',
+      level: 'B2',
+      label: 'Item 14 — Coach Pressure on Availability',
+      context: 'The head coach asks whether a player can be available this weekend. Strength is 85%, and the player has not completed a graduated return.',
+      question: 'What should you say?',
+      options: [
+        'A. At 85% strength, availability is risky. A 95% target plus graduated minutes is safer.',
+        'B. He can be available if we limit his tactical role and avoid defensive actions.',
+        'C. The coach can decide because team need is part of the final decision.',
+        'D. He should be held out until every test is perfect and risk is zero.',
+      ],
+      correct: 'A',
+    },
+    {
+      id: 'f4',
+      level: 'C1',
+      label: 'Item 15 — Complex Case Framing',
+      context: 'A player has real pain after injury, but fear and previous trauma are also affecting movement confidence. Coaches are confused because imaging is improving.',
+      question: 'Which framing is most professional?',
+      options: [
+        'A. The pain is probably psychological now, so we should reduce physical treatment.',
+        'B. The scan is improving, so we should push him to trust the knee again.',
+        'C. The case is unclear, so we should delay decisions until symptoms are simple.',
+        'D. The pain is real and fear is part of the case. We treat both through rehab and psychology support.',
+      ],
+      correct: 'D',
+    },
+  ],
+}
+
+
 const insights = {
   A2: {
     level: 'A2',
@@ -2219,9 +2442,9 @@ function AssessmentContent() {
   const supabase = createClient()
 
   const selectedRole = searchParams.get('role') || 'Professional Player'
-  const assessmentAvailable = selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Academy Director' || selectedRole === 'Head of Scouting' || selectedRole === 'Scout' || selectedRole === 'Fitness Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Nutritionist'
-  const activeItems = selectedRole === 'Head Coach' ? headCoachItems : selectedRole === 'Assistant Coach' ? assistantCoachItems : selectedRole === 'Academy Director' ? academyDirectorItems : selectedRole === 'Head of Scouting' ? headOfScoutingItems : selectedRole === 'Scout' ? scoutItems : selectedRole === 'Fitness Coach' ? fitnessCoachItems : selectedRole === 'Performance Analyst' ? performanceAnalystItems : selectedRole === 'Nutritionist' ? nutritionistItems : items
-  const roleSubtitle = selectedRole === 'Academy Director' ? 'Youth & Academy' : selectedRole === 'Head of Scouting' ? 'Recruitment Leadership' : selectedRole === 'Scout' ? 'First Team Recruitment' : selectedRole === 'Fitness Coach' ? 'Strength & Conditioning' : selectedRole === 'Performance Analyst' ? 'First Team Analysis' : selectedRole === 'Nutritionist' ? 'Performance Nutrition' : selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' ? 'First Team' : 'Senior Squad'
+  const assessmentAvailable = selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Academy Director' || selectedRole === 'Head of Scouting' || selectedRole === 'Scout' || selectedRole === 'Fitness Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Nutritionist' || selectedRole === 'Physiotherapist'
+  const activeItems = selectedRole === 'Head Coach' ? headCoachItems : selectedRole === 'Assistant Coach' ? assistantCoachItems : selectedRole === 'Academy Director' ? academyDirectorItems : selectedRole === 'Head of Scouting' ? headOfScoutingItems : selectedRole === 'Scout' ? scoutItems : selectedRole === 'Fitness Coach' ? fitnessCoachItems : selectedRole === 'Performance Analyst' ? performanceAnalystItems : selectedRole === 'Nutritionist' ? nutritionistItems : selectedRole === 'Physiotherapist' ? physiotherapistItems : items
+  const roleSubtitle = selectedRole === 'Academy Director' ? 'Youth & Academy' : selectedRole === 'Head of Scouting' ? 'Recruitment Leadership' : selectedRole === 'Scout' ? 'First Team Recruitment' : selectedRole === 'Fitness Coach' ? 'Strength & Conditioning' : selectedRole === 'Performance Analyst' ? 'First Team Analysis' : selectedRole === 'Nutritionist' ? 'Performance Nutrition' : selectedRole === 'Physiotherapist' ? 'Medical & Rehabilitation' : selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' ? 'First Team' : 'Senior Squad'
 
   const [section, setSection] = useState<Section>('intro')
   const [answers, setAnswers] = useState<Record<string, Answer>>({})
@@ -2294,6 +2517,7 @@ function AssessmentContent() {
     const fitnessCoachKeywords = ['load', 'fitness', 'fatigue', 'recovery', 'threshold', 'volume', 'intensity', 'availability', 'risk', 'readiness']
     const performanceAnalystKeywords = ['analysis', 'data', 'video', 'pattern', 'press', 'transition', 'opponent', 'space', 'evidence', 'tactical']
     const nutritionistKeywords = ['nutrition', 'fueling', 'hydration', 'recovery', 'carbohydrate', 'protein', 'glycogen', 'meal', 'timing', 'performance']
+    const physiotherapistKeywords = ['injury', 'rehab', 'rehabilitation', 'pain', 'strength', 'agility', 'confidence', 'return', 'play', 'risk']
 
     const keywords =
       selectedRole === 'Head Coach'
@@ -2312,7 +2536,9 @@ function AssessmentContent() {
                     ? performanceAnalystKeywords
                     : selectedRole === 'Nutritionist'
                       ? nutritionistKeywords
-                      : professionalPlayerKeywords
+                      : selectedRole === 'Physiotherapist'
+                        ? physiotherapistKeywords
+                        : professionalPlayerKeywords
 
     const hasKey = keywords.some((w) => lower.includes(w))
 
@@ -3050,7 +3276,9 @@ function AssessmentContent() {
                             ? 'You need to write a short opposition analysis memo for the coaching staff. The opponent uses a high line, a sweeping goalkeeper, compact midfield pressing and aggressive fullbacks.'
                             : selectedRole === 'Nutritionist'
                               ? 'You need to write a short match-day nutrition guide for a player. Include breakfast, pre-match fueling, hydration or electrolytes, half-time support and post-match recovery.'
-                              : "After training today, you developed tightness in your left hamstring during the second half. It started when you made a sharp turning movement while sprinting. The sensation increased slightly during the cool-down. You want to report this to the physiotherapist before tomorrow's session."}
+                              : selectedRole === 'Physiotherapist'
+                                ? 'You need to write a short rehabilitation progress note for the coaching staff. The player is in Week 3. Strength is 70%, pain is 2/10 with activity, agility is 55%, and confidence is improving after the first sprint without hesitation.'
+                                : "After training today, you developed tightness in your left hamstring during the second half. It started when you made a sharp turning movement while sprinting. The sensation increased slightly during the cool-down. You want to report this to the physiotherapist before tomorrow's session."}
             </p>
           </div>
 
@@ -3072,7 +3300,9 @@ function AssessmentContent() {
                             ? 'Write 3–5 sentences with the main tactical risk and recommended response.'
                             : selectedRole === 'Nutritionist'
                               ? 'Write 3–5 sentences with breakfast, pre-match fueling, hydration, half-time support and post-match recovery.'
-                              : 'Write a message to the physiotherapist reporting this discomfort.'}
+                              : selectedRole === 'Physiotherapist'
+                                ? 'Write 3–5 sentences with status, next step and expected return direction.'
+                                : 'Write a message to the physiotherapist reporting this discomfort.'}
             </p>
             <p className="mt-1 text-sm text-fei-text/50">Write 3–5 sentences in professional English.</p>
           </div>
@@ -3140,7 +3370,9 @@ function AssessmentContent() {
                             ? 'You need to explain a player analysis to the coaching staff. The player has strong passing numbers, good spatial awareness and quick decisions when free, but his execution drops under pressure.'
                             : selectedRole === 'Nutritionist'
                               ? 'You need to explain to a player why you are adjusting his fueling plan. He has been reporting fatigue late in matches, and his hydration and pre-training timing are inconsistent.'
-                              : 'You have just received feedback from the head coach about your last match. The coach said you were too slow in transition and needed to be more aggressive in pressing. You disagree slightly because the transition was fast and you were managing some discomfort.'}
+                              : selectedRole === 'Physiotherapist'
+                                ? 'You need to explain a return-to-play recommendation to the head coach. The player is improving, but you need to balance strength, movement testing, confidence and match availability.'
+                                : 'You have just received feedback from the head coach about your last match. The coach said you were too slow in transition and needed to be more aggressive in pressing. You disagree slightly because the transition was fast and you were managing some discomfort.'}
             </p>
           </div>
 
@@ -3162,7 +3394,9 @@ function AssessmentContent() {
                             ? 'Explain the analysis clearly, separating technical quality from pressure execution and giving a coachable next step.'
                             : selectedRole === 'Nutritionist'
                               ? 'Explain the adjustment clearly, linking timing, hydration, energy and realistic behavior change.'
-                              : 'Explain how you would respond to the coach professionally.'}
+                              : selectedRole === 'Physiotherapist'
+                                ? 'Explain the recommendation clearly, balancing medical reality, team need, confidence and risk.'
+                                : 'Explain how you would respond to the coach professionally.'}
             </p>
             <p className="mt-1 text-sm text-fei-text/50">Recommended time: 45–60 seconds. Recording stops automatically at 75 seconds.</p>
           </div>
@@ -3382,7 +3616,14 @@ function AssessmentContent() {
                   B2: 'You communicate recruitment priorities clearly. Your pathway will develop market reasoning, profile-fit communication, and executive recommendations.',
                   C1: 'You demonstrate strategic recruitment leadership. Your pathway will refine board-level influence, high-stakes alignment, and long-term recruitment value communication.',
                 }
-              : selectedRole === 'Nutritionist'
+              : selectedRole === 'Physiotherapist'
+                ? {
+                    A2: 'You understand basic injury and rehabilitation information. Your pathway will build confidence in explaining status, treatment and simple return-to-play decisions.',
+                    B1: 'You can communicate common medical updates and basic rehab plans. Your pathway will strengthen precision, risk explanation and player-coach communication.',
+                    B2: 'You communicate injury status and rehabilitation progress with professional clarity. Your pathway will develop complex return-to-play, confidence and multidisciplinary communication.',
+                    C1: 'You manage complex medical communication with precision, care and strategic judgment. Your pathway will refine high-stakes return-to-play and stakeholder alignment.',
+                  }
+                : selectedRole === 'Nutritionist'
                 ? {
                     A2: 'You understand basic nutrition and recovery instructions. Your pathway will build confidence in explaining fueling, hydration and recovery routines.',
                     B1: 'You can communicate common nutrition plans. Your pathway will strengthen timing, personalization and practical player behavior change.',
@@ -3441,7 +3682,14 @@ function AssessmentContent() {
                   B2: 'Your result shows strong professional recruitment communication. You can communicate priorities, profile fit, and market reality with clarity. Your next step is to develop sharper market reasoning and executive recommendation language under pressure.',
                   C1: 'Your result shows strategic recruitment leadership. You can frame fit, value, risk, and long-term squad sustainability for senior decision-makers. Your next step is refinement: board-level influence, high-stakes alignment, and institutional recruitment strategy.',
                 }
-              : selectedRole === 'Nutritionist'
+              : selectedRole === 'Physiotherapist'
+                ? {
+                    A2: 'Your result shows that you understand basic injury and rehabilitation information. Your next step is to build confidence explaining status, treatment and simple return-to-play decisions in clear football language.',
+                    B1: 'Your result shows that you can communicate common medical updates and basic rehab plans. Your next step is to strengthen precision, risk explanation and player-coach communication.',
+                    B2: 'Your result shows strong professional communication around injury status and rehabilitation progress. Your next step is to develop complex return-to-play, confidence and multidisciplinary communication.',
+                    C1: 'Your result shows complex medical communication with precision, care and strategic judgment. Your next step is refinement: high-stakes return-to-play decisions, stakeholder alignment and clinically mature communication under pressure.',
+                  }
+                : selectedRole === 'Nutritionist'
                 ? {
                     A2: 'Your result shows that you understand basic nutrition and recovery instructions. Your next step is to build confidence explaining fueling, hydration and recovery routines in simple football situations.',
                     B1: 'Your result shows that you can communicate common nutrition plans. Your next step is to strengthen timing, personalization and practical player behavior-change language.',
@@ -3580,7 +3828,34 @@ function AssessmentContent() {
                     'Strategic risk and value framing',
                   ],
                 }
-              : selectedRole === 'Nutritionist'
+              : selectedRole === 'Physiotherapist'
+                ? {
+                    A2: [
+                      'Basic injury status language',
+                      'Simple rehab instructions',
+                      'Pain and movement vocabulary',
+                      'Clear player explanations',
+                    ],
+                    B1: [
+                      'Rehabilitation timeline communication',
+                      'Risk explanation',
+                      'Player-coach updates',
+                      'Return-to-play foundations',
+                    ],
+                    B2: [
+                      'Graduated return-to-play',
+                      'Coach pressure conversations',
+                      'Confidence and fear communication',
+                      'Clinical progress reporting',
+                    ],
+                    C1: [
+                      'Complex case framing',
+                      'Multidisciplinary care communication',
+                      'High-stakes availability decisions',
+                      'Stakeholder alignment under pressure',
+                    ],
+                  }
+                : selectedRole === 'Nutritionist'
                 ? {
                     A2: [
                       'Basic fueling language',
