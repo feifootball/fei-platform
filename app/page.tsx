@@ -253,12 +253,6 @@ export default function Home() {
                 </span>
               </div>
 
-              <a
-                href="/suggest-role"
-                className="mt-8 inline-flex rounded-full border border-fei-text/15 px-5 py-2.5 text-sm font-bold text-fei-text/75 transition hover:border-fei-yellow/40 hover:bg-fei-yellow/[0.08] hover:text-fei-yellow"
-              >
-                {lang === 'en' ? "Can't find your role? Suggest one" : '¿No encuentras tu rol? Sugiérelo'}
-              </a>
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -279,19 +273,14 @@ export default function Home() {
                   key={item.role}
                   className="group relative min-h-[150px] overflow-hidden rounded-3xl border border-fei-text/10 bg-fei-text/[0.025] p-5 transition duration-300 hover:-translate-y-1 hover:border-fei-yellow/35 hover:bg-fei-yellow/[0.045] hover:shadow-[0_18px_55px_rgba(0,0,0,0.18)]"
                 >
-                  <div className="pointer-events-none absolute -right-1 -top-3 text-6xl font-black leading-none text-fei-sky/[0.11] transition duration-300 group-hover:text-fei-yellow/[0.22] sm:text-7xl">
+                  <div className="pointer-events-none absolute -right-1 -top-4 text-7xl font-black leading-none text-fei-sky/[0.12] transition duration-300 group-hover:text-fei-yellow/[0.24] sm:text-8xl">
                     {String(index + 1).padStart(2, '0')}
                   </div>
 
                   <div className="relative z-10 flex h-full flex-col justify-between">
-                    <div>
-                      <p className="mb-5 text-xs font-black uppercase tracking-[0.24em] text-fei-sky/70">
-                        Role {String(index + 1).padStart(2, '0')}
-                      </p>
-                      <h3 className="max-w-[12rem] text-base font-black leading-5 text-fei-text">
-                        {item.role}
-                      </h3>
-                    </div>
+                    <h3 className="max-w-[12rem] text-xl font-semibold leading-6 text-fei-text sm:text-2xl">
+                      {item.role}
+                    </h3>
 
                     <p className="mt-5 translate-y-2 text-sm leading-5 text-fei-text/0 transition duration-300 group-hover:translate-y-0 group-hover:text-fei-text/65">
                       {item.insight}
@@ -299,6 +288,25 @@ export default function Home() {
                   </div>
                 </article>
               ))}
+
+              <a
+                href="/suggest-role"
+                className="group relative min-h-[150px] overflow-hidden rounded-3xl border border-fei-sky/25 bg-fei-sky/[0.07] p-5 transition duration-300 hover:-translate-y-1 hover:border-fei-sky/45 hover:bg-fei-sky/[0.12] hover:shadow-[0_18px_55px_rgba(0,0,0,0.18)]"
+              >
+                <div className="pointer-events-none absolute -right-1 -top-4 text-7xl font-black leading-none text-fei-sky/[0.18] transition duration-300 group-hover:text-fei-yellow/[0.20] sm:text-8xl">
+                  +
+                </div>
+
+                <div className="relative z-10 flex h-full flex-col justify-between">
+                  <h3 className="max-w-[12rem] text-xl font-semibold leading-6 text-fei-text sm:text-2xl">
+                    {lang === 'en' ? "Can't find your role?" : '¿No encuentras tu rol?'}
+                  </h3>
+
+                  <p className="mt-5 text-sm font-semibold leading-5 text-fei-sky transition duration-300 group-hover:text-fei-yellow">
+                    {lang === 'en' ? 'Suggest a new role' : 'Sugiere un nuevo rol'}
+                  </p>
+                </div>
+              </a>
             </div>
           </div>
         </div>

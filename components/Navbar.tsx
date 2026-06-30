@@ -82,8 +82,8 @@ export function Navbar() {
   const navLinkClass = (sectionId: string) =>
     `inline-flex rounded-full px-2.5 py-1.5 text-[15px] font-semibold transition duration-300 ${
       activeSection === sectionId
-        ? "bg-fei-yellow/[0.09] text-fei-yellow shadow-[0_0_22px_rgba(241,196,15,0.18)]"
-        : "text-fei-text/60 hover:bg-fei-text/[0.04] hover:text-fei-text"
+        ? "bg-white/[0.06] text-fei-text shadow-[0_0_22px_rgba(255,255,255,0.12)]"
+        : "text-fei-text/60 hover:bg-white/[0.04] hover:text-fei-text"
     }`;
 
   return (
