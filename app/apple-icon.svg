@@ -1,0 +1,15 @@
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="180" height="180" rx="40" fill="#07111F"/>
+  <rect x="14" y="14" width="152" height="152" rx="30" stroke="#F1C40F" stroke-opacity="0.28" stroke-width="7"/>
+  <circle cx="90" cy="90" r="58" fill="#F1C40F" fill-opacity="0.06"/>
+  <text
+    x="90"
+    y="104"
+    text-anchor="middle"
+    font-family="Inter, Arial, sans-serif"
+    font-size="46"
+    font-weight="900"
+    letter-spacing="-3"
+    fill="#F1C40F"
+  >FEI</text>
+</svg>
