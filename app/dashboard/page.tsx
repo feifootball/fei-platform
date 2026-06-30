@@ -307,12 +307,12 @@ export default function DashboardPage() {
 
               <div className="mt-6 space-y-4">
                 {[
-                  'Understanding coach instructions',
-                  'Reading tactical and match information',
-                  'Responding to feedback professionally',
-                  'Reporting injury or physical discomfort',
-                  'Communicating under match pressure',
-                  'Handling role and playing-time conversations',
+                  'Understanding role-specific football communication',
+                  'Reading tactical and professional information',
+                  'Responding to feedback with clarity',
+                  'Explaining decisions, observations, or recommendations',
+                  'Communicating under match and workplace pressure',
+                  'Using professional English in real football situations',
                 ].map(item => (
                   <div key={item} className="flex items-center gap-3 text-sm text-fei-text/65">
                     <span className="h-2 w-2 rounded-full bg-fei-yellow" />

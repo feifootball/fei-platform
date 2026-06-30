@@ -117,7 +117,7 @@ const roles = [
   { name: "Sports Psychologist", en: "Facilitate mental performance", es: "Facilitar el rendimiento mental" },
   { name: "Physiotherapist", en: "Communicate with medical precision", es: "Comunicar con precisión médica" },
   { name: "Nutritionist", en: "Turn nutrition into performance", es: "Convertir la nutrición en rendimiento" },
-  { name: "Professional Players", en: "Represent the club on the global stage", es: "Representar al club en el escenario global" },
+  { name: "Professional Player", en: "Represent the club on the global stage", es: "Representar al club en el escenario global" },
 ];
 
 export default function Home() {
