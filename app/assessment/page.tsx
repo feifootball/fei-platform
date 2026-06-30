@@ -687,6 +687,229 @@ const assistantCoachItems = {
 }
 
 
+
+const academyDirectorItems = {
+  warmup: [
+    {
+      id: 'w1',
+      label: 'Item 1 — Role Identification',
+      context: 'Which situation is most common in your role as an academy director?',
+      question: 'Choose the option that best matches the daily communication reality of the role.',
+      options: [
+        'A. Delivering individual tactical feedback to senior first-team players',
+        'B. Aligning academy staff around development philosophy and standards',
+        'C. Designing weekly recovery loads for youth players',
+        'D. Negotiating senior player contracts with agents',
+      ],
+      correct: 'B',
+    },
+    {
+      id: 'w2',
+      label: 'Item 2 — Communication Priority',
+      context: 'What type of communication demands the most time in your role?',
+      question: 'Choose the communication area that most directly affects your academy leadership pathway.',
+      options: [
+        'A. Managing public messages after first-team match results',
+        'B. Writing physical reports for each academy age group',
+        'C. Delivering daily technical corrections on the pitch',
+        'D. Coordinating academy, first team, staff and families',
+      ],
+      correct: 'D',
+    },
+  ],
+  reading: [
+    {
+      id: 'r1',
+      level: 'A2',
+      label: 'Item 3 — Academy Group Update',
+      context: 'You receive this academy update:\\n\\n"The U17 group has 18 players this month. Three players have met the criteria to progress to U19 training next month. The rest will continue with the same development plan."',
+      question: 'What will happen to three U17 players next month?',
+      options: [
+        'A. They will progress to U19 training.',
+        'B. They will join the first team immediately.',
+        'C. They will move into injury recovery.',
+        'D. They will repeat the full U17 cycle.',
+      ],
+      correct: 'A',
+    },
+    {
+      id: 'r2',
+      level: 'B1',
+      label: 'Item 4 — Player Progress Review',
+      context: 'A coach sends this note about a U16 midfielder:\\n\\n"Technically, he is one of the strongest players in the group. However, his attitude has been inconsistent, especially when sessions become demanding. This is not a quality issue; it is a maturity and focus issue."',
+      question: 'What is the main development concern?',
+      options: [
+        'A. His technical quality is below the group standard.',
+        'B. His physical speed is not ready for promotion.',
+        'C. His attitude, focus and maturity need improvement.',
+        'D. His tactical role should change before the next review.',
+      ],
+      correct: 'C',
+    },
+    {
+      id: 'r3',
+      level: 'B2',
+      label: 'Item 5 — First-Team Pathway Decision',
+      context: 'The first team wants to use a U18 striker immediately because of injuries. Academy staff believe the player is talented but not ready for senior pressure. A short second-team loan is proposed so he can play competitive minutes while staying in a protected development environment.',
+      question: 'What does this solution mainly achieve?',
+      options: [
+        'A. It blocks promotion because academy standards matter most.',
+        'B. It balances first-team need with long-term development.',
+        'C. It moves the player directly into senior competition.',
+        'D. It removes academy responsibility for the decision.',
+      ],
+      correct: 'B',
+    },
+  ],
+  listening: [
+    {
+      id: 'l1',
+      level: 'A2',
+      label: 'Item 6 — Academy Status Update',
+      script: 'The academy has 50 players across five age groups. The U16 group is strong, with eight players showing good potential. The main need this month is a new goalkeeper coach for the U15 group.',
+      question: 'What specific resource need is mentioned?',
+      options: [
+        'A. More U16 midfielders for next season',
+        'B. A performance analyst for the U17 group',
+        'C. Extra first-team training slots for U18',
+        'D. A goalkeeper coach for the U15 group',
+      ],
+      correct: 'D',
+    },
+    {
+      id: 'l2',
+      level: 'B1',
+      label: 'Item 7 — Recruitment Criteria Change',
+      script: 'The first team is changing to a 4-2-3-1. That means our academy needs midfielders who can adapt to different roles. We should update the recruitment criteria for the next U14 intake immediately.',
+      question: 'What should change in recruitment?',
+      options: [
+        'A. Recruit midfielders who can adapt to different roles.',
+        'B. Select only attacking players for the next intake.',
+        'C. Keep recruitment criteria unchanged this season.',
+        'D. Promote current U14 players directly to U18.',
+      ],
+      correct: 'A',
+    },
+    {
+      id: 'l3',
+      level: 'B2',
+      label: 'Item 8 — Parent Expectation Management',
+      script: 'The parent says his son should move up because he is bigger and faster than most U17 players. But bigger is not always better. We assess readiness, not just physical advantage. If we lower the standard now, we may waste a year of real development.',
+      question: 'What is the main message?',
+      options: [
+        'A. Physical advantage should decide promotion timing.',
+        'B. Parent satisfaction should guide pathway decisions.',
+        'C. Readiness standards protect long-term development.',
+        'D. Stronger players should always train with older groups.',
+      ],
+      correct: 'C',
+    },
+  ],
+  vocabulary: [
+    {
+      id: 'v1',
+      level: 'A2',
+      label: 'Item 9 — Competency Framework',
+      context: 'A new coach asks about the academy competency framework. You explain that it shows what players must demonstrate at each stage.',
+      question: 'What does "competency framework" mean here?',
+      options: [
+        'A. A list of academy matches and seasonal results',
+        'B. A clear standard of what players must demonstrate',
+        'C. A report showing only physical testing scores',
+        'D. A schedule for moving players between groups',
+      ],
+      correct: 'B',
+    },
+    {
+      id: 'v2',
+      level: 'B1',
+      label: 'Item 10 — Pathway Mapping',
+      context: 'In a family meeting, you say: "We use pathway mapping to show how a player can move from youth development toward first-team readiness."',
+      question: 'What does "pathway mapping" refer to?',
+      options: [
+        'A. A map of academy training facilities',
+        'B. A list of players selected for the next match',
+        'C. A ranking of players by technical potential',
+        'D. A plan showing development stages toward first team',
+      ],
+      correct: 'D',
+    },
+    {
+      id: 'v3',
+      level: 'B2',
+      label: 'Item 11 — Academy ROI Metrics',
+      context: 'The board asks about academy ROI metrics: first-team progressions, player value, transfer potential and club reputation.',
+      question: 'What are "academy ROI metrics" measuring?',
+      options: [
+        'A. Development impact through progressions, value and reputation',
+        'B. Daily training attendance across all age groups',
+        'C. Player happiness and family satisfaction only',
+        'D. Facility maintenance costs across the academy',
+      ],
+      correct: 'A',
+    },
+  ],
+  functional: [
+    {
+      id: 'f1',
+      level: 'B1',
+      label: 'Item 12 — Academy Standards',
+      context: 'A new academy coach asks how strict discipline should be with younger players. You want to protect standards without treating youth players like senior professionals.',
+      question: 'What is the best response?',
+      options: [
+        'A. "Keep discipline strict; if standards drop, players should lose minutes."',
+        'B. "Be flexible with discipline because young players need freedom to learn."',
+        'C. "Use professional standards in age-appropriate ways. Discipline teaches responsibility."',
+        'D. "Leave discipline to senior staff so coaches can focus on technical work."',
+      ],
+      correct: 'C',
+    },
+    {
+      id: 'f2',
+      level: 'B2',
+      label: 'Item 13 — Parent Expectation',
+      context: 'A parent says their son is special and should definitely stay in the academy. You see potential, but the next decision depends on focus, consistency and maturity.',
+      question: 'Which response is most professional?',
+      options: [
+        'A. "Your son is talented, so we can promise another long-term academy cycle."',
+        'B. "We see potential, but focus and consistency must improve before we reassess."',
+        'C. "He is not ready, and staying longer will not change the decision."',
+        'D. "Physical talent is enough for now; attitude can develop later."',
+      ],
+      correct: 'B',
+    },
+    {
+      id: 'f3',
+      level: 'B2',
+      label: 'Item 14 — Fast-Track Pressure',
+      context: 'The Sporting Director wants to fast-track an academy striker because the first team needs depth. You believe immediate promotion would break the development model.',
+      question: 'What is the strongest response?',
+      options: [
+        'A. "I understand the need. A short second-team loan gives minutes while protecting the pathway."',
+        'B. "Move him up now; first-team pressure will show if he can handle the level."',
+        'C. "Keep him in U18 only; the model should not adapt to first-team needs."',
+        'D. "Ask the player what he prefers and make the pathway fit that choice."',
+      ],
+      correct: 'A',
+    },
+    {
+      id: 'f4',
+      level: 'C1',
+      label: 'Item 15 — Academy Philosophy Shift',
+      context: 'You are introducing a new academy philosophy to coaches, parents and leadership. The philosophy changes the definition of success from fast promotion to first-team readiness.',
+      question: 'What is the most strategic message?',
+      options: [
+        'A. "We are changing the model because faster promotion is now the main measure of success."',
+        'B. "The new philosophy keeps standards flexible so more players can move up early."',
+        'C. "This change is mainly about improving match results in the short term."',
+        'D. "We are redefining success: not faster promotion, but better preparation for first-team demands."',
+      ],
+      correct: 'D',
+    },
+  ],
+}
+
+
 const insights = {
   A2: {
     level: 'A2',
@@ -863,9 +1086,9 @@ function AssessmentContent() {
   const supabase = createClient()
 
   const selectedRole = searchParams.get('role') || 'Professional Player'
-  const assessmentAvailable = selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach'
-  const activeItems = selectedRole === 'Head Coach' ? headCoachItems : selectedRole === 'Assistant Coach' ? assistantCoachItems : items
-  const roleSubtitle = selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' ? 'First Team' : 'Senior Squad'
+  const assessmentAvailable = selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Academy Director'
+  const activeItems = selectedRole === 'Head Coach' ? headCoachItems : selectedRole === 'Assistant Coach' ? assistantCoachItems : selectedRole === 'Academy Director' ? academyDirectorItems : items
+  const roleSubtitle = selectedRole === 'Academy Director' ? 'Youth & Academy' : selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' ? 'First Team' : 'Senior Squad'
 
   const [section, setSection] = useState<Section>('intro')
   const [answers, setAnswers] = useState<Record<string, Answer>>({})
@@ -932,13 +1155,16 @@ function AssessmentContent() {
     const professionalPlayerKeywords = ['hamstring', 'sharp', 'turn', 'cool-down', 'sprint', 'tight']
     const headCoachKeywords = ['press', 'pressure', 'plan', 'space', 'calm', 'width', 'standards', 'discipline', 'belief']
     const assistantCoachKeywords = ['press', 'pressing', 'spacing', 'timing', 'fatigue', 'repetition', 'compactness', 'structure', 'focus']
+    const academyDirectorKeywords = ['academy', 'readiness', 'standards', 'development', 'pathway', 'u16', 'progress', 'consistency', 'first-team']
 
     const keywords =
       selectedRole === 'Head Coach'
         ? headCoachKeywords
         : selectedRole === 'Assistant Coach'
           ? assistantCoachKeywords
-          : professionalPlayerKeywords
+          : selectedRole === 'Academy Director'
+            ? academyDirectorKeywords
+            : professionalPlayerKeywords
 
     const hasKey = keywords.some((w) => lower.includes(w))
 
@@ -1619,7 +1845,9 @@ function AssessmentContent() {
                 ? 'You are briefing the squad two hours before a match against a high-pressing opponent. Focus on what they will face, what your plan is, and what tone you want to set.'
                 : selectedRole === 'Assistant Coach'
                   ? 'You are closing a training session after a pressing exercise. The players pressed well in the first repetitions, but in reps 5–8 they lost focus, spacing, and timing.'
-                  : "After training today, you developed tightness in your left hamstring during the second half. It started when you made a sharp turning movement while sprinting. The sensation increased slightly during the cool-down. You want to report this to the physiotherapist before tomorrow's session."}
+                  : selectedRole === 'Academy Director'
+                    ? 'You need to send a short message to academy coaches about this year’s development standards. Explain that the academy will assess readiness, not only physical dominance or short-term match performance. Mention that the U16 group is strong, but standards must remain consistent.'
+                    : "After training today, you developed tightness in your left hamstring during the second half. It started when you made a sharp turning movement while sprinting. The sensation increased slightly during the cool-down. You want to report this to the physiotherapist before tomorrow's session."}
             </p>
           </div>
 
@@ -1629,7 +1857,9 @@ function AssessmentContent() {
                 ? 'Write the opening 3–5 sentences of your pre-match briefing.'
                 : selectedRole === 'Assistant Coach'
                   ? 'Write 3–5 sentences to close the session. Include what went well, what needs to improve, and tomorrow’s focus.'
-                  : 'Write a message to the physiotherapist reporting this discomfort.'}
+                  : selectedRole === 'Academy Director'
+                    ? 'Write 3–5 sentences to academy coaches about development standards and player readiness.'
+                    : 'Write a message to the physiotherapist reporting this discomfort.'}
             </p>
             <p className="mt-1 text-sm text-fei-text/50">Write 3–5 sentences in professional English.</p>
           </div>
@@ -1682,7 +1912,9 @@ function AssessmentContent() {
                 ? 'You have just substituted a senior player after 25 minutes in a 1–0 loss. The player expected to play 90 minutes. The crowd is loud and other players are watching.'
                 : selectedRole === 'Assistant Coach'
                   ? 'Two players are not pressing together during a training exercise. One player jumps early, the other waits, and the opponent plays through the gap.'
-                  : 'You have just received feedback from the head coach about your last match. The coach said you were too slow in transition and needed to be more aggressive in pressing. You disagree slightly because the transition was fast and you were managing some discomfort.'}
+                  : selectedRole === 'Academy Director'
+                    ? 'The Sporting Director wants to fast-track a U18 striker into the first team. You believe the player is not ready yet and that a second-team loan is the better pathway.'
+                    : 'You have just received feedback from the head coach about your last match. The coach said you were too slow in transition and needed to be more aggressive in pressing. You disagree slightly because the transition was fast and you were managing some discomfort.'}
             </p>
           </div>
 
@@ -1692,7 +1924,9 @@ function AssessmentContent() {
                 ? 'Explain the substitution decision while protecting the relationship and your authority.'
                 : selectedRole === 'Assistant Coach'
                   ? 'Correct both players clearly and professionally before restarting the drill.'
-                  : 'Explain how you would respond to the coach professionally.'}
+                  : selectedRole === 'Academy Director'
+                    ? 'Explain your position clearly and professionally, balancing first-team need with player development.'
+                    : 'Explain how you would respond to the coach professionally.'}
             </p>
             <p className="mt-1 text-sm text-fei-text/50">Recommended time: 45–60 seconds. Recording stops automatically at 75 seconds.</p>
           </div>
@@ -1891,7 +2125,14 @@ function AssessmentContent() {
               B2: 'You communicate with professional clarity across tactical and training contexts. Your pathway will refine how you translate coaching ideas, manage player confusion, and support staff alignment.',
               C1: 'You communicate with strategic precision and strong staff awareness. Your pathway will deepen your ability to translate tactical intent, correct behavior under pressure, and protect alignment across the coaching team.',
             }
-          : pathwayDescriptions
+          : selectedRole === 'Academy Director'
+            ? {
+                A2: 'You can understand basic academy communication and identify clear development information. Your pathway will help you communicate standards, expectations, and player pathway decisions with more confidence.',
+                B1: 'You manage many routine academy communication situations and can explain common development needs. Your pathway will help you add structure, precision, and authority when speaking with staff, families, and leadership.',
+                B2: 'You communicate academy standards with professional clarity across several stakeholder situations. Your pathway will help you strengthen difficult conversations, strategic reporting, and alignment with the first team.',
+                C1: 'You demonstrate advanced academy leadership communication with strategic awareness and institutional maturity. Your pathway will refine board-level influence, stakeholder alignment, and high-pressure pathway decisions.',
+              }
+            : pathwayDescriptions
 
     const roleAiInsights: Record<string, string> =
       selectedRole === 'Head Coach'
@@ -1908,7 +2149,14 @@ function AssessmentContent() {
               B2: 'Your result shows strong professional communication across tactical and training contexts. You can explain, correct, and support players with clarity. Your next step is to refine how you translate coaching ideas, manage player confusion, and maintain staff alignment under pressure.',
               C1: 'Your result shows strategic precision and strong staff awareness. You can translate tactical intent, correct behavior under pressure, and protect alignment across the coaching team. Your next step is advanced communication control in high-speed training and matchday support contexts.',
             }
-          : aiInsights
+          : selectedRole === 'Academy Director'
+            ? {
+                A2: 'Your result shows a developing foundation in academy leadership communication. You can understand basic development information and clear pathway updates, but your next step is to communicate standards, expectations, and player progression decisions with more confidence.',
+                B1: 'Your result shows that you can manage many routine academy communication situations. Your next step is to add more structure, precision, and authority when explaining development needs to coaches, families, and leadership.',
+                B2: 'Your result shows strong professional communication across academy standards, pathway decisions, and stakeholder situations. Your next step is to strengthen difficult conversations, strategic reporting, and alignment with the first team.',
+                C1: 'Your result shows advanced academy leadership communication with strategic awareness and institutional maturity. Your next step is refinement: board-level influence, stakeholder alignment, high-pressure pathway decisions, and long-term development philosophy.',
+              }
+            : aiInsights
 
     const rolePathwayFocus: Record<string, string[]> =
       selectedRole === 'Head Coach'
@@ -1965,7 +2213,34 @@ function AssessmentContent() {
                 'Advanced coaching-team alignment',
               ],
             }
-          : pathwayFocus
+          : selectedRole === 'Academy Director'
+            ? {
+                A2: [
+                  'Basic academy updates',
+                  'Development standards',
+                  'Player pathway vocabulary',
+                  'Clear staff communication',
+                ],
+                B1: [
+                  'Talent pathway communication',
+                  'Parent expectation management',
+                  'Academy standards',
+                  'Staff leadership basics',
+                ],
+                B2: [
+                  'Organisational alignment',
+                  'Fast-track pressure',
+                  'Strategic academy reporting',
+                  'First-team pathway decisions',
+                ],
+                C1: [
+                  'Academy philosophy communication',
+                  'Board-level influence',
+                  'Stakeholder alignment',
+                  'High-pressure pathway decisions',
+                ],
+              }
+            : pathwayFocus
 
     const focusItems = rolePathwayFocus[result.level] || rolePathwayFocus.A2
     const pathwayDescription = rolePathwayDescriptions[result.level] || rolePathwayDescriptions.A2
