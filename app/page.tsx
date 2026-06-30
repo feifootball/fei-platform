@@ -18,12 +18,12 @@ const translations = {
       { value: "4", label: "CEFR Levels" },
       { value: "504", label: "Unique Tasks" },
     ],
-    how_title: "Cómo funciona FEI",
-    how_subtitle: "Un proceso enfocado para profesionales del fútbol que necesitan comunicación específica por rol.",
+    how_title: "How FEI Works",
+    how_subtitle: "A focused process for football professionals who need role-specific communication.",
     steps: [
-      { step: "01", title: "Diagnostica", description: "Encuentra tu nivel inicial con una evaluación corta basada en tu rol." },
-      { step: "02", title: "Personaliza", description: "Recibe una ruta según tu nivel, objetivos y contexto futbolístico." },
-      { step: "03", title: "Practica", description: "Entrena con situaciones reales del fútbol profesional." },
+      { step: "01", title: "Diagnose", description: "Find your starting level with a short assessment built around your role." },
+      { step: "02", title: "Personalize", description: "Receive a pathway shaped by your level, objectives, and football context." },
+      { step: "03", title: "Practice", description: "Train with real situations from the professional game." },
     ],
     about_title: "What is",
     about_subtitle: "A purpose-built platform for football — not generic language courses, but professional English for those who live the game.",
@@ -178,7 +178,7 @@ export default function Home() {
               The FEI Method
             </p>
             <h2 className="text-3xl font-black tracking-tight text-fei-text sm:text-4xl">{t.how_title}</h2>
-            <p className="mt-3 text-base leading-7 text-fei-text/60 sm:text-lg">{t.how_subtitle}</p>
+            <p className="mt-3 max-w-5xl text-base leading-7 text-fei-text/60 sm:text-lg lg:whitespace-nowrap">{t.how_subtitle}</p>
           </div>
 
           <div className="grid gap-8 border-y border-fei-text/10 py-8 md:grid-cols-3 md:gap-0">
@@ -207,7 +207,7 @@ export default function Home() {
                 </div>
 
                 <h3 className="text-xl font-bold text-fei-text">{item.title}</h3>
-                <p className="mt-3 max-w-sm text-sm leading-6 text-fei-text/60">{item.description}</p>
+                <p className="mt-3 max-w-sm text-base leading-7 text-fei-text/60">{item.description}</p>
               </article>
             ))}
           </div>
