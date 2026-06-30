@@ -172,66 +172,15 @@ export default function Home() {
       </section>
 
       <section className="px-6 pb-14">
-        <div className="mx-auto grid max-w-7xl gap-8 rounded-3xl border border-fei-text/10 bg-fei-text/[0.025] p-7 sm:p-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-fei-sky">
-              Football Communication Map
-            </p>
-            <h2 className="mt-4 max-w-xl text-3xl font-black leading-tight text-fei-text sm:text-4xl">
-              Built around the real communication demands of football.
-            </h2>
-            <p className="mt-4 max-w-lg text-base leading-7 text-fei-text/55">
-              FEI connects each role to the situations, language, pressure moments, and professional decisions that shape communication in the global game.
-            </p>
-
-            <div className="mt-8 grid grid-cols-2 gap-4">
-              {[
-                { value: '11', label: 'Roles' },
-                { value: '126', label: 'Scenarios' },
-                { value: '504', label: 'Real Tasks' },
-                { value: 'A2→C1', label: 'Pathways' },
-              ].map((item) => (
-                <div key={item.label} className="border-l border-fei-yellow/40 pl-4">
-                  <p className="text-3xl font-black text-fei-yellow">{item.value}</p>
-                  <p className="mt-1 text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky/80">{item.label}</p>
-                </div>
-              ))}
-            </div>
+        <div className="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2">
+          <div className="rounded-3xl border border-fei-text/10 bg-fei-text/[0.025] p-8 sm:p-10">
+            <p className="text-6xl font-black tracking-tight text-fei-yellow sm:text-7xl">11</p>
+            <p className="mt-3 text-sm font-semibold uppercase tracking-[0.25em] text-fei-sky">Roles</p>
           </div>
 
-          <div className="relative min-h-[330px] overflow-hidden rounded-3xl border border-fei-sky/15 bg-[#0d1628] p-6">
-            <div className="absolute inset-6 rounded-[1.5rem] border border-fei-sky/15" />
-            <div className="absolute left-1/2 top-6 h-[calc(100%-3rem)] w-px -translate-x-1/2 bg-fei-sky/10" />
-            <div className="absolute left-1/2 top-1/2 h-28 w-28 -translate-x-1/2 -translate-y-1/2 rounded-full border border-fei-sky/15" />
-            <div className="absolute left-6 top-1/2 h-28 w-16 -translate-y-1/2 rounded-r-2xl border-y border-r border-fei-sky/15" />
-            <div className="absolute right-6 top-1/2 h-28 w-16 -translate-y-1/2 rounded-l-2xl border-y border-l border-fei-sky/15" />
-
-            <div className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 rounded-full border border-fei-yellow/30 bg-fei-yellow/[0.08] px-5 py-3 text-center">
-              <p className="text-xs font-bold uppercase tracking-[0.22em] text-fei-yellow">FEI</p>
-              <p className="mt-1 text-xs text-fei-text/55">Communication Intelligence</p>
-            </div>
-
-            {[
-              { label: 'Player', className: 'left-[18%] top-[22%]' },
-              { label: 'Coach', className: 'left-[39%] top-[18%]' },
-              { label: 'Scout', className: 'right-[22%] top-[25%]' },
-              { label: 'Analyst', className: 'left-[25%] bottom-[22%]' },
-              { label: 'Medical', className: 'right-[34%] bottom-[18%]' },
-              { label: 'Club', className: 'right-[12%] bottom-[34%]' },
-            ].map((item) => (
-              <div key={item.label} className={`absolute ${item.className}`}>
-                <div className="flex items-center gap-2 rounded-full border border-fei-text/10 bg-fei-bg/70 px-3 py-2 shadow-[0_12px_40px_rgba(0,0,0,0.25)]">
-                  <span className="h-2 w-2 rounded-full bg-fei-yellow" />
-                  <span className="text-xs font-semibold text-fei-text/75">{item.label}</span>
-                </div>
-              </div>
-            ))}
-
-            <div className="absolute inset-x-8 bottom-6 flex items-center justify-between text-[10px] font-semibold uppercase tracking-[0.22em] text-fei-sky/50">
-              <span>Role</span>
-              <span>Context</span>
-              <span>Pathway</span>
-            </div>
+          <div className="rounded-3xl border border-fei-text/10 bg-fei-text/[0.025] p-8 sm:p-10">
+            <p className="text-6xl font-black tracking-tight text-fei-yellow sm:text-7xl">126</p>
+            <p className="mt-3 text-sm font-semibold uppercase tracking-[0.25em] text-fei-sky">Scenarios</p>
           </div>
         </div>
       </section>
