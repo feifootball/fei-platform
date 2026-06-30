@@ -1579,6 +1579,229 @@ const fitnessCoachItems = {
 }
 
 
+
+const performanceAnalystItems = {
+  warmup: [
+    {
+      id: 'w1',
+      label: 'Item 1 — Primary Communication Focus',
+      context: 'You are completing the FEI diagnostic for the Performance Analyst — First Team Analysis role.',
+      question: 'Which communication situation is most central to your role?',
+      options: [
+        'A. Managing player recovery plans with the medical team.',
+        'B. Communicating video and data evidence to coaches and staff.',
+        'C. Negotiating player contracts with external agents.',
+        'D. Running daily tactical drills with the first-team squad.',
+      ],
+      correct: 'B',
+    },
+    {
+      id: 'w2',
+      label: 'Item 2 — Communication Priority',
+      context: 'The diagnostic personalizes the pathway based on your main communication demand.',
+      question: 'Which communication task matters most in your daily work?',
+      options: [
+        'A. Giving live touchline instructions during the match.',
+        'B. Writing medical updates after training sessions.',
+        'C. Presenting tactical patterns and analysis clearly.',
+        'D. Handling player salary and contract discussions.',
+      ],
+      correct: 'C',
+    },
+  ],
+  reading: [
+    {
+      id: 'r1',
+      level: 'A2',
+      label: 'Item 3 — Transition Pattern',
+      context: 'Analysis note:\\n\\n"The team pressed well for the first 20 minutes, but lost structure after that. In transition, the best moments came from quick counters after winning the ball."',
+      question: 'Which attacking pattern was most useful?',
+      options: [
+        'A. Quick counters after winning possession.',
+        'B. Long possession phases in the back line.',
+        'C. Slow circulation to protect the result.',
+        'D. Crossing early from both wide areas.',
+      ],
+      correct: 'A',
+    },
+    {
+      id: 'r2',
+      level: 'B1',
+      label: 'Item 4 — High Line Weakness',
+      context: 'Opponent report:\\n\\n"Team A defends with a high line. When pressed, they often play long. Their main weakness appears when the press is broken and there is space behind the back line."',
+      question: 'What should your team look to exploit?',
+      options: [
+        'A. The space behind the defensive line.',
+        'B. The goalkeeper’s short distribution errors.',
+        'C. The opponent’s low-block defending.',
+        'D. The fullbacks’ lack of attacking width.',
+      ],
+      correct: 'A',
+    },
+    {
+      id: 'r3',
+      level: 'B2',
+      label: 'Item 5 — Movement Intelligence',
+      context: 'Player report:\\n\\n"The midfielder completed 78% of his passes and created six key passes. The numbers are useful, but the video shows something more important: 15 off-ball movements created space before the final pass. His value is not only in possession."',
+      question: 'What is the analyst highlighting?',
+      options: [
+        'A. The player’s passing accuracy is too low for the role.',
+        'B. The player’s value comes only from key passes.',
+        'C. The player should be judged mainly by final assists.',
+        'D. Off-ball movement adds value beyond basic data.',
+      ],
+      correct: 'D',
+    },
+  ],
+  listening: [
+    {
+      id: 'l1',
+      level: 'A2',
+      label: 'Item 6 — Scanning Before Receiving',
+      script: 'The number 8 does not check his shoulder before receiving. The defender behind him is free. The simple solution is to scan before the ball arrives.',
+      question: 'What is the main recommendation?',
+      options: [
+        'A. Receive deeper to avoid pressure.',
+        'B. Scan before receiving the ball.',
+        'C. Pass backward more often.',
+        'D. Avoid receiving in midfield.',
+      ],
+      correct: 'B',
+    },
+    {
+      id: 'l2',
+      level: 'B1',
+      label: 'Item 7 — Zone-Based Pressing Response',
+      script: 'They press as a unit in midfield when the pass goes sideways. If we play forward early, they drop instead of jumping. The response changes by zone: high attack, midfield press, compact defensive block.',
+      question: 'What is the main idea?',
+      options: [
+        'A. The opponent presses the same way in every zone.',
+        'B. The opponent only defends deep and never presses.',
+        'C. The opponent responds differently depending on the zone.',
+        'D. The opponent leaves midfield open after every forward pass.',
+      ],
+      correct: 'C',
+    },
+    {
+      id: 'l3',
+      level: 'B2',
+      label: 'Item 8 — Possession Loss Interpretation',
+      script: 'The coach asks why we lost possession. The data says 68% of losses came from poor first touch under pressure, not risky passing. The problem is execution under pressure, not the intention to play forward.',
+      question: 'What is the analyst’s interpretation?',
+      options: [
+        'A. The team should stop passing forward in build-up.',
+        'B. The coach’s observation is wrong and should be ignored.',
+        'C. The problem is mainly tactical risk-taking.',
+        'D. The issue is technical execution under pressure.',
+      ],
+      correct: 'D',
+    },
+  ],
+  vocabulary: [
+    {
+      id: 'v1',
+      level: 'A2',
+      label: 'Item 9 — Possession Accuracy',
+      context: 'The report states: “Possession accuracy dropped to 74% in the second half.”',
+      question: 'What does possession accuracy mean here?',
+      options: [
+        'A. How often the team created shots from possession.',
+        'B. How long the team kept the ball in each phase.',
+        'C. The percentage of passes completed successfully.',
+        'D. The number of defensive actions after losing possession.',
+      ],
+      correct: 'C',
+    },
+    {
+      id: 'v2',
+      level: 'B1',
+      label: 'Item 10 — Progressive Pass',
+      context: 'The analyst says: “The key action was the progressive pass into the final third.”',
+      question: 'What is a progressive pass?',
+      options: [
+        'A. A safe pass that keeps possession in the same zone.',
+        'B. A pass that moves the ball meaningfully toward goal.',
+        'C. A pass made by the most advanced midfielder.',
+        'D. A pass played immediately after winning a tackle.',
+      ],
+      correct: 'B',
+    },
+    {
+      id: 'v3',
+      level: 'B2',
+      label: 'Item 11 — Spatial Dominance',
+      context: 'The report says: “We had spatial dominance in the left half-space, even before the chance was created.”',
+      question: 'What does spatial dominance mean here?',
+      options: [
+        'A. Having more shots from one side of the pitch.',
+        'B. Defending deeper to protect the central corridor.',
+        'C. Maintaining possession for long periods without pressure.',
+        'D. Controlling important pitch areas through positioning.',
+      ],
+      correct: 'D',
+    },
+  ],
+  functional: [
+    {
+      id: 'f1',
+      level: 'B1',
+      label: 'Item 12 — Presenting a Video Clip',
+      context: 'You are showing a video clip to the coaching staff. The fullback receives wide, and your midfielder is too deep to press on time.',
+      question: 'Which explanation is clearest?',
+      options: [
+        'A. Watch the fullback receive. Our midfielder is too deep, so the press arrives late.',
+        'B. The clip shows the fullback receiving, but the main issue is general intensity.',
+        'C. We should press this action, although the timing is not the key detail.',
+        'D. The midfielder is involved, but the fullback’s touch matters more than our shape.',
+      ],
+      correct: 'A',
+    },
+    {
+      id: 'f2',
+      level: 'B2',
+      label: 'Item 13 — Data Contradicts Observation',
+      context: 'A coach says, “We lost the ball because we were too risky.” Your data shows the main issue was poor first touch under pressure.',
+      question: 'What is the best response?',
+      options: [
+        'A. The data proves the team was not risky, so the tactical concern is wrong.',
+        'B. Risk may be part of it, but we should avoid correcting technique too early.',
+        'C. Let me show the sequence: the losses come after poor first touch under pressure.',
+        'D. We should remove forward passes until the players make fewer mistakes.',
+      ],
+      correct: 'C',
+    },
+    {
+      id: 'f3',
+      level: 'B2',
+      label: 'Item 14 — Coach Challenges Recommendation',
+      context: 'You recommend testing a new build-up adjustment. The coach is skeptical and wants proof before using it in a match.',
+      question: 'What is the best response?',
+      options: [
+        'A. The data is clear, so we should apply it immediately.',
+        'B. If the coach is unsure, we should leave the idea for another cycle.',
+        'C. The recommendation is valid, but implementation depends on player confidence.',
+        'D. Let’s test it for ten minutes in training and review the evidence afterward.',
+      ],
+      correct: 'D',
+    },
+    {
+      id: 'f4',
+      level: 'C1',
+      label: 'Item 15 — Multiple Interpretations',
+      context: 'The head coach, assistant coach and fitness coach interpret the same performance pattern differently. You need to frame your analysis without dismissing any stakeholder.',
+      question: 'Which response is most strategic?',
+      options: [
+        'A. The data is objective, so the interpretation should be the same for everyone.',
+        'B. The data shows what happened; the meaning depends on tactical and physical context.',
+        'C. The coaches should agree first, then the analyst can prepare the report.',
+        'D. The safest approach is to present only numbers and avoid interpretation.',
+      ],
+      correct: 'B',
+    },
+  ],
+}
+
+
 const insights = {
   A2: {
     level: 'A2',
@@ -1773,9 +1996,9 @@ function AssessmentContent() {
   const supabase = createClient()
 
   const selectedRole = searchParams.get('role') || 'Professional Player'
-  const assessmentAvailable = selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Academy Director' || selectedRole === 'Head of Scouting' || selectedRole === 'Scout' || selectedRole === 'Fitness Coach'
-  const activeItems = selectedRole === 'Head Coach' ? headCoachItems : selectedRole === 'Assistant Coach' ? assistantCoachItems : selectedRole === 'Academy Director' ? academyDirectorItems : selectedRole === 'Head of Scouting' ? headOfScoutingItems : selectedRole === 'Scout' ? scoutItems : selectedRole === 'Fitness Coach' ? fitnessCoachItems : items
-  const roleSubtitle = selectedRole === 'Academy Director' ? 'Youth & Academy' : selectedRole === 'Head of Scouting' ? 'Recruitment Leadership' : selectedRole === 'Scout' ? 'First Team Recruitment' : selectedRole === 'Fitness Coach' ? 'Strength & Conditioning' : selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' ? 'First Team' : 'Senior Squad'
+  const assessmentAvailable = selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Academy Director' || selectedRole === 'Head of Scouting' || selectedRole === 'Scout' || selectedRole === 'Fitness Coach' || selectedRole === 'Performance Analyst'
+  const activeItems = selectedRole === 'Head Coach' ? headCoachItems : selectedRole === 'Assistant Coach' ? assistantCoachItems : selectedRole === 'Academy Director' ? academyDirectorItems : selectedRole === 'Head of Scouting' ? headOfScoutingItems : selectedRole === 'Scout' ? scoutItems : selectedRole === 'Fitness Coach' ? fitnessCoachItems : selectedRole === 'Performance Analyst' ? performanceAnalystItems : items
+  const roleSubtitle = selectedRole === 'Academy Director' ? 'Youth & Academy' : selectedRole === 'Head of Scouting' ? 'Recruitment Leadership' : selectedRole === 'Scout' ? 'First Team Recruitment' : selectedRole === 'Fitness Coach' ? 'Strength & Conditioning' : selectedRole === 'Performance Analyst' ? 'First Team Analysis' : selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' ? 'First Team' : 'Senior Squad'
 
   const [section, setSection] = useState<Section>('intro')
   const [answers, setAnswers] = useState<Record<string, Answer>>({})
@@ -1846,6 +2069,7 @@ function AssessmentContent() {
     const headOfScoutingKeywords = ['recruitment', 'profile', 'market', 'shortlist', 'budget', 'strategy', 'scouts', 'fit', 'value', 'q4']
     const scoutKeywords = ['scout', 'scouting', 'player', 'technical', 'fit', 'risk', 'monitoring', 'market', 'value', 'recommendation']
     const fitnessCoachKeywords = ['load', 'fitness', 'fatigue', 'recovery', 'threshold', 'volume', 'intensity', 'availability', 'risk', 'readiness']
+    const performanceAnalystKeywords = ['analysis', 'data', 'video', 'pattern', 'press', 'transition', 'opponent', 'space', 'evidence', 'tactical']
 
     const keywords =
       selectedRole === 'Head Coach'
@@ -1860,7 +2084,9 @@ function AssessmentContent() {
                 ? scoutKeywords
                 : selectedRole === 'Fitness Coach'
                   ? fitnessCoachKeywords
-                  : professionalPlayerKeywords
+                  : selectedRole === 'Performance Analyst'
+                    ? performanceAnalystKeywords
+                    : professionalPlayerKeywords
 
     const hasKey = keywords.some((w) => lower.includes(w))
 
@@ -2594,7 +2820,9 @@ function AssessmentContent() {
                         ? 'You need to write a short scout report recommendation for a technically strong player with inconsistent form. Include profile fit, risk, and next step.'
                         : selectedRole === 'Fitness Coach'
                           ? 'You need to write a short weekly load report for the coaching staff. The squad average is 8.3 km, weekly load is up 3%, three players show emerging fatigue, and Friday volume may need to be reduced before the match.'
-                          : "After training today, you developed tightness in your left hamstring during the second half. It started when you made a sharp turning movement while sprinting. The sensation increased slightly during the cool-down. You want to report this to the physiotherapist before tomorrow's session."}
+                          : selectedRole === 'Performance Analyst'
+                            ? 'You need to write a short opposition analysis memo for the coaching staff. The opponent uses a high line, a sweeping goalkeeper, compact midfield pressing and aggressive fullbacks.'
+                            : "After training today, you developed tightness in your left hamstring during the second half. It started when you made a sharp turning movement while sprinting. The sensation increased slightly during the cool-down. You want to report this to the physiotherapist before tomorrow's session."}
             </p>
           </div>
 
@@ -2612,7 +2840,9 @@ function AssessmentContent() {
                         ? 'Write 3–5 sentences with player quality, profile fit, risk, and recommended next step.'
                         : selectedRole === 'Fitness Coach'
                           ? 'Write 3–5 sentences with the key load finding and recommendation.'
-                          : 'Write a message to the physiotherapist reporting this discomfort.'}
+                          : selectedRole === 'Performance Analyst'
+                            ? 'Write 3–5 sentences with the main tactical risk and recommended response.'
+                            : 'Write a message to the physiotherapist reporting this discomfort.'}
             </p>
             <p className="mt-1 text-sm text-fei-text/50">Write 3–5 sentences in professional English.</p>
           </div>
@@ -2676,7 +2906,9 @@ function AssessmentContent() {
                         ? 'You need to defend a recommendation to the Director of Recruitment. The player is technical, affordable now, and likely to become more expensive, but there are consistency concerns.'
                         : selectedRole === 'Fitness Coach'
                           ? 'You need to explain your load position to the head coach. The match is important, current load is close to threshold, and you need to protect performance without sounding negative or overly cautious.'
-                          : 'You have just received feedback from the head coach about your last match. The coach said you were too slow in transition and needed to be more aggressive in pressing. You disagree slightly because the transition was fast and you were managing some discomfort.'}
+                          : selectedRole === 'Performance Analyst'
+                            ? 'You need to explain a player analysis to the coaching staff. The player has strong passing numbers, good spatial awareness and quick decisions when free, but his execution drops under pressure.'
+                            : 'You have just received feedback from the head coach about your last match. The coach said you were too slow in transition and needed to be more aggressive in pressing. You disagree slightly because the transition was fast and you were managing some discomfort.'}
             </p>
           </div>
 
@@ -2694,7 +2926,9 @@ function AssessmentContent() {
                         ? 'Defend your recommendation clearly, including tactical fit, value, timing, and risk.'
                         : selectedRole === 'Fitness Coach'
                           ? 'Explain your load recommendation clearly, balancing match performance, risk, and availability.'
-                          : 'Explain how you would respond to the coach professionally.'}
+                          : selectedRole === 'Performance Analyst'
+                            ? 'Explain the analysis clearly, separating technical quality from pressure execution and giving a coachable next step.'
+                            : 'Explain how you would respond to the coach professionally.'}
             </p>
             <p className="mt-1 text-sm text-fei-text/50">Recommended time: 45–60 seconds. Recording stops automatically at 75 seconds.</p>
           </div>
@@ -2914,7 +3148,14 @@ function AssessmentContent() {
                   B2: 'You communicate recruitment priorities clearly. Your pathway will develop market reasoning, profile-fit communication, and executive recommendations.',
                   C1: 'You demonstrate strategic recruitment leadership. Your pathway will refine board-level influence, high-stakes alignment, and long-term recruitment value communication.',
                 }
-              : selectedRole === 'Fitness Coach'
+              : selectedRole === 'Performance Analyst'
+                ? {
+                    A2: 'You understand basic analysis information and key tactical terms. Your pathway will build confidence in explaining patterns clearly.',
+                    B1: 'You can communicate common analysis points. Your pathway will strengthen evidence structure and tactical explanation.',
+                    B2: 'You present analysis with clarity and professional logic. Your pathway will develop influence, pressure communication, and advanced interpretation.',
+                    C1: 'You demonstrate strategic analysis communication. Your pathway will refine multi-stakeholder interpretation and high-level tactical influence.',
+                  }
+                : selectedRole === 'Fitness Coach'
                 ? {
                     A2: 'You understand basic fitness and recovery information. Your pathway will build confidence in explaining load, readiness, and simple risk decisions.',
                     B1: 'You can communicate common load and recovery decisions. Your pathway will strengthen structure, data explanation, and coach-facing clarity.',
@@ -2959,7 +3200,14 @@ function AssessmentContent() {
                   B2: 'Your result shows strong professional recruitment communication. You can communicate priorities, profile fit, and market reality with clarity. Your next step is to develop sharper market reasoning and executive recommendation language under pressure.',
                   C1: 'Your result shows strategic recruitment leadership. You can frame fit, value, risk, and long-term squad sustainability for senior decision-makers. Your next step is refinement: board-level influence, high-stakes alignment, and institutional recruitment strategy.',
                 }
-              : selectedRole === 'Fitness Coach'
+              : selectedRole === 'Performance Analyst'
+                ? {
+                    A2: 'Your result shows that you understand basic analysis information and key tactical terms. Your next step is to build confidence explaining patterns clearly and connecting simple evidence to coaching decisions.',
+                    B1: 'Your result shows that you can communicate common analysis points. Your next step is to strengthen evidence structure, tactical explanation, and clearer recommendations for coaching staff.',
+                    B2: 'Your result shows strong professional analysis communication. You can present patterns, evidence, and recommendations with clarity. Your next step is to develop influence, pressure communication, and advanced interpretation across staff contexts.',
+                    C1: 'Your result shows strategic analysis communication. You can separate evidence from interpretation and integrate multiple stakeholder perspectives. Your next step is refinement: multi-stakeholder interpretation and high-level tactical influence.',
+                  }
+                : selectedRole === 'Fitness Coach'
                 ? {
                     A2: 'Your result shows that you understand basic fitness and recovery information. Your next step is to build confidence explaining load, readiness, and simple risk decisions to players and staff.',
                     B1: 'Your result shows that you can communicate common load and recovery decisions. Your next step is to strengthen structure, data explanation, and coach-facing clarity when discussing workload and readiness.',
@@ -3084,7 +3332,34 @@ function AssessmentContent() {
                     'Strategic risk and value framing',
                   ],
                 }
-              : selectedRole === 'Fitness Coach'
+              : selectedRole === 'Performance Analyst'
+                ? {
+                    A2: [
+                      'Basic tactical vocabulary',
+                      'Simple pattern explanation',
+                      'Video evidence foundations',
+                      'Clear observation language',
+                    ],
+                    B1: [
+                      'Tactical pattern recognition',
+                      'Evidence structure',
+                      'Coach-facing explanations',
+                      'Video clip presentation',
+                    ],
+                    B2: [
+                      'Data and video interpretation',
+                      'Recommendation under pressure',
+                      'Advanced tactical vocabulary',
+                      'Player analysis communication',
+                    ],
+                    C1: [
+                      'Multi-stakeholder interpretation',
+                      'Strategic tactical influence',
+                      'Evidence vs meaning',
+                      'High-pressure analysis communication',
+                    ],
+                  }
+                : selectedRole === 'Fitness Coach'
                 ? {
                     A2: [
                       'Basic recovery communication',
