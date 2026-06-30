@@ -151,7 +151,7 @@ export default function Home() {
             <span className="bg-gradient-to-r from-fei-yellow to-fei-sky bg-clip-text text-transparent">Intelligence.</span>
           </h1>
 
-          <div className="mt-7 max-w-3xl font-serif text-2xl leading-10 text-fei-text/70 sm:text-3xl sm:leading-[3rem]">
+          <div className="mt-7 max-w-2xl text-lg leading-8 text-fei-text/65 sm:text-xl sm:leading-9">
             {lang === 'en' ? (
               <>
                 <p>The only English platform built for elite football.</p>
@@ -167,7 +167,6 @@ export default function Home() {
 
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <a href="/register" className="inline-flex items-center justify-center rounded-full bg-fei-yellow px-8 py-3 font-semibold text-fei-bg transition hover:bg-fei-yellow/90">{t.cta_start}</a>
-            <a href="/login" className="inline-flex items-center justify-center rounded-full border border-fei-sky/50 px-8 py-3 font-semibold text-fei-sky transition hover:bg-fei-sky/10">{t.cta_login}</a>
           </div>
         </div>
       </section>

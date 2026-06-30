@@ -83,7 +83,7 @@ export function Navbar() {
             href="/register"
             className="rounded-full border border-fei-text/20 px-5 py-2 text-sm font-medium text-fei-text/70 transition hover:border-fei-text/40 hover:text-fei-text"
           >
-            {lang === 'en' ? 'Start' : 'Comenzar'}
+            {lang === 'en' ? 'Register' : 'Registrarse'}
           </a>
         </div>
 
@@ -144,7 +144,7 @@ export function Navbar() {
                 onClick={() => setMenuOpen(false)}
                 className="flex-1 rounded-full bg-fei-yellow px-4 py-3 text-center text-sm font-bold text-fei-bg"
               >
-                {lang === 'en' ? 'Start' : 'Comenzar'}
+                {lang === 'en' ? 'Register' : 'Registrarse'}
               </a>
             </div>
           </div>
