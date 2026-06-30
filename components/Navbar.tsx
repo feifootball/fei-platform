@@ -21,7 +21,31 @@ const navLinks = {
   ],
 };
 
-export function Navbar() {
+\1  const [activeSection, setActiveSection] = useState("")
+
+  useEffect(() => {
+    const sectionIds = ["how-it-works", "about", "roles", "for-clubs", "pricing"]
+
+    const handleScroll = () => {
+      const current = sectionIds.find((id) => {
+        const element = document.getElementById(id)
+        if (!element) return false
+        const rect = element.getBoundingClientRect()
+        return rect.top <= 130 && rect.bottom >= 130
+      })
+
+      setActiveSection(current || "")
+    }
+
+    handleScroll()
+    window.addEventListener("scroll", handleScroll, { passive: true })
+
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  const navLinkClass = (sectionId: string) =>
+    `text-sm font-medium transition ${activeSection === sectionId ? "text-fei-yellow" : "text-fei-text/70 hover:text-fei-text"}`
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [lang, setLang] = useState<Lang>('en');
 
@@ -48,7 +72,7 @@ export function Navbar() {
   const links = navLinks[lang];
 
   return (
-    <header className="border-b border-fei-text/10 bg-fei-bg/95">
+    <header className="sticky top-0 z-50 border-b backdrop-blur-xl border-fei-text/10 bg-fei-bg/95">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <a href="/" className="flex items-center">
           <img src="/logo.svg" alt="FEI" className="h-9 w-auto" />

@@ -18,12 +18,12 @@ const translations = {
       { value: "4", label: "CEFR Levels" },
       { value: "504", label: "Unique Tasks" },
     ],
-    how_title: "How it works",
-    how_subtitle: "A simple path from diagnostic to role-specific training.",
+    how_title: "How FEI Works",
+    how_subtitle: "From assessment to role-specific communication training.",
     steps: [
-      { step: "01", title: "Take the diagnostic", description: "Complete a short role-specific assessment and identify your starting level." },
-      { step: "02", title: "Get your pathway", description: "Receive a recommended path based on your role, level, and communication needs." },
-      { step: "03", title: "Train with football context", description: "Practice through real football situations and build confidence over time." },
+      { step: "01", title: "Diagnose", description: "Identify your starting level through a role-specific assessment." },
+      { step: "02", title: "Personalize", description: "Get a pathway shaped by your role, level, and communication needs." },
+      { step: "03", title: "Practice", description: "Train with real football situations and build confidence over time." },
     ],
     about_title: "What is",
     about_subtitle: "A purpose-built platform for football — not generic language courses, but professional English for those who live the game.",
@@ -67,12 +67,12 @@ const translations = {
       { value: "4", label: "Niveles CEFR" },
       { value: "504", label: "Tareas únicas" },
     ],
-    how_title: "Cómo funciona",
-    how_subtitle: "Una ruta simple desde el diagnóstico hasta el entrenamiento específico por rol.",
+    how_title: "Cómo funciona FEI",
+    how_subtitle: "Del diagnóstico al entrenamiento de comunicación por rol.",
     steps: [
-      { step: "01", title: "Haz el diagnóstico", description: "Completa una evaluación corta por rol e identifica tu nivel inicial." },
-      { step: "02", title: "Recibe tu ruta", description: "Obtén una ruta recomendada según tu rol, nivel y necesidades de comunicación." },
-      { step: "03", title: "Entrena con contexto futbolístico", description: "Practica con situaciones reales del fútbol y gana confianza progresivamente." },
+      { step: "01", title: "Diagnostica", description: "Identifica tu nivel inicial con una evaluación específica para tu rol." },
+      { step: "02", title: "Personaliza", description: "Recibe una ruta adaptada a tu rol, nivel y necesidades de comunicación." },
+      { step: "03", title: "Practica", description: "Entrena con situaciones reales del fútbol y gana confianza progresivamente." },
     ],
     about_title: "¿Qué es",
     about_subtitle: "Una plataforma diseñada para el fútbol — no cursos genéricos de idiomas, sino inglés profesional para quienes viven el juego.",
@@ -171,46 +171,48 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="diagnostic" className="scroll-mt-32 px-6 pb-10">
-        <div className="mx-auto max-w-7xl rounded-3xl border border-fei-text/10 bg-fei-text/[0.025] px-8 py-7 sm:px-10">
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-            <h2 className="max-w-3xl text-lg font-semibold leading-7 text-fei-text/75 sm:text-xl">
-              Built around the real communication demands of football.
-            </h2>
-
-            <div className="flex flex-wrap gap-8 sm:gap-12">
-              <div>
-                <p className="text-3xl font-black text-fei-yellow sm:text-4xl">11</p>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.22em] text-fei-sky">Roles</p>
-              </div>
-
-              <div>
-                <p className="text-3xl font-black text-fei-yellow sm:text-4xl">126</p>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.22em] text-fei-sky">Scenarios</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="how-it-works" className="scroll-mt-32 px-6 py-10 sm:py-12">
+      <section id="how-it-works" className="scroll-mt-28 px-6 py-12 sm:py-14">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-8 text-center">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{t.how_title}</h2>
-            <p className="mx-auto mt-3 max-w-2xl text-fei-text/60">{t.how_subtitle}</p>
+          <div className="mb-10 max-w-3xl">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.28em] text-fei-sky">
+              Process
+            </p>
+            <h2 className="text-3xl font-black tracking-tight text-fei-text sm:text-4xl">{t.how_title}</h2>
+            <p className="mt-3 text-base leading-7 text-fei-text/60 sm:text-lg">{t.how_subtitle}</p>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-3">
-            {t.steps.map((item) => (
-              <article key={item.step} className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-6">
-                <p className="text-xs font-bold uppercase tracking-[0.25em] text-fei-sky">{item.step}</p>
-                <h3 className="mt-4 text-lg font-semibold text-fei-text">{item.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-fei-text/60">{item.description}</p>
+          <div className="grid gap-0 overflow-hidden rounded-3xl border border-fei-text/10 bg-fei-text/[0.025] lg:grid-cols-3">
+            {t.steps.map((item, index) => (
+              <article key={item.step} className="relative border-fei-text/10 p-7 lg:border-l lg:first:border-l-0">
+                <div className="mb-8 flex items-center justify-between">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-fei-yellow/25 bg-fei-yellow/[0.08] text-fei-yellow">
+                    {index === 0 && (
+                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M12 4v16M4 12h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                      </svg>
+                    )}
+                    {index === 1 && (
+                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    )}
+                    {index === 2 && (
+                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    )}
+                  </div>
+
+                  <span className="text-xs font-bold uppercase tracking-[0.24em] text-fei-sky/70">{item.step}</span>
+                </div>
+
+                <h3 className="text-xl font-bold text-fei-text">{item.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-fei-text/60">{item.description}</p>
               </article>
             ))}
           </div>
 
-          <div id="about" className="mt-12 scroll-mt-32 border-t border-fei-text/10 pt-12">
+          <div id="about" className="mt-14 scroll-mt-28 border-t border-fei-text/10 pt-14">
             <div className="mb-12 text-center">
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{t.about_title} <span className="text-fei-sky">FEI</span>?</h2>
               <p className="mx-auto mt-4 max-w-2xl text-fei-text/60">{t.about_subtitle}</p>
