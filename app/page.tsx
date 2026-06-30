@@ -18,12 +18,12 @@ const translations = {
       { value: "4", label: "CEFR Levels" },
       { value: "504", label: "Unique Tasks" },
     ],
-    how_title: "How it works",
-    how_subtitle: "Three steps to professional English in football.",
+    how_title: "Your Path to Professional Communication",
+    how_subtitle: "Three steps. One diagnostic. A clearer path forward.",
     steps: [
-      { step: "01", title: "Take the Diagnostic", description: "Complete a role-specific assessment to find your CEFR level and communication gaps." },
-      { step: "02", title: "Get Your Path", description: "Receive a personalized learning path based on your role, level, and professional goals." },
-      { step: "03", title: "Train & Progress", description: "Work through real football scenarios and track your progress toward fluency." },
+      { step: "01", title: "DIAGNOSE", description: "10–12 Minute Assessment|Find your communication level in your specific role. Discover your strengths and gaps." },
+      { step: "02", title: "PERSONALIZE", description: "Your Custom Playbook|Get a tailored learning path based on your role, level, and professional goals." },
+      { step: "03", title: "PRACTICE", description: "Real Football Scenarios|Train through authentic situations. Track fluency growth." },
     ],
     about_title: "What is",
     about_subtitle: "A purpose-built platform for football — not generic language courses, but professional English for those who live the game.",
@@ -67,12 +67,12 @@ const translations = {
       { value: "4", label: "Niveles CEFR" },
       { value: "504", label: "Tareas únicas" },
     ],
-    how_title: "Cómo funciona",
-    how_subtitle: "Tres pasos hacia el inglés profesional en el fútbol.",
+    how_title: "Tu ruta hacia la comunicación profesional",
+    how_subtitle: "Tres pasos. Un diagnóstico. Una ruta más clara.",
     steps: [
-      { step: "01", title: "Haz el diagnóstico", description: "Completa una evaluación específica para tu rol y descubre tu nivel CEFR y tus brechas de comunicación." },
-      { step: "02", title: "Obtén tu ruta", description: "Recibe un camino de aprendizaje personalizado según tu rol, nivel y objetivos profesionales." },
-      { step: "03", title: "Entrena y progresa", description: "Trabaja con escenarios reales del fútbol y haz seguimiento de tu progreso hacia la fluidez." },
+      { step: "01", title: "DIAGNOSTICA", description: "Evaluación de 10–12 minutos|Encuentra tu nivel de comunicación en tu rol específico. Descubre fortalezas y brechas." },
+      { step: "02", title: "PERSONALIZA", description: "Tu playbook personalizado|Recibe una ruta de aprendizaje adaptada a tu rol, nivel y objetivos profesionales." },
+      { step: "03", title: "PRACTICA", description: "Escenarios reales de fútbol|Entrena con situaciones auténticas. Haz seguimiento de tu crecimiento." },
     ],
     about_title: "¿Qué es",
     about_subtitle: "Una plataforma diseñada para el fútbol — no cursos genéricos de idiomas, sino inglés profesional para quienes viven el juego.",
@@ -193,23 +193,37 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="how-it-works" className="scroll-mt-32 px-6 py-20 sm:py-28">
+      <section id="how-it-works" className="scroll-mt-32 px-6 py-14 sm:py-18">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-12 text-center">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{t.how_title}</h2>
-            <p className="mx-auto mt-4 max-w-2xl text-fei-text/60">{t.how_subtitle}</p>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-3">
-            {t.steps.map((item) => (
-              <div key={item.step} className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-6">
-                <p className="text-4xl font-black text-fei-yellow/20">{item.step}</p>
-                <h3 className="mt-3 text-lg font-semibold text-fei-text">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-fei-text/60">{item.description}</p>
-              </div>
-            ))}
+          <div className="mb-10 max-w-3xl">
+            <h2 className="text-3xl font-black tracking-tight text-fei-text sm:text-4xl">{t.how_title}</h2>
+            <p className="mt-4 text-lg text-fei-text/60">{t.how_subtitle}</p>
           </div>
 
-          <div id="about" className="mt-24 scroll-mt-32 border-t border-fei-text/10 pt-20">
+          <div className="grid gap-5 lg:grid-cols-3">
+            {t.steps.map((item, index) => {
+              const [cardTitle, cardDescription] = item.description.split('|')
+              const progressWidth = index === 0 ? '33%' : index === 1 ? '66%' : '100%'
+
+              return (
+                <article key={item.step} className="rounded-3xl border border-fei-text/10 bg-fei-text/[0.03] p-6">
+                  <div className="mb-6 flex items-center justify-between">
+                    <span className="text-xs font-bold uppercase tracking-[0.25em] text-fei-sky">{item.title}</span>
+                    <span className="text-xs font-semibold text-fei-text/35">{item.step}/03</span>
+                  </div>
+
+                  <div className="mb-6 h-1.5 overflow-hidden rounded-full bg-fei-text/10">
+                    <div className="h-full rounded-full bg-fei-yellow" style={{ width: progressWidth }} />
+                  </div>
+
+                  <h3 className="text-xl font-bold text-fei-text">{cardTitle}</h3>
+                  <p className="mt-3 text-sm leading-6 text-fei-text/60">{cardDescription}</p>
+                </article>
+              )
+            })}
+          </div>
+
+          <div id="about" className="mt-16 scroll-mt-32 border-t border-fei-text/10 pt-14">
             <div className="mb-12 text-center">
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{t.about_title} <span className="text-fei-sky">FEI</span>?</h2>
               <p className="mx-auto mt-4 max-w-2xl text-fei-text/60">{t.about_subtitle}</p>
