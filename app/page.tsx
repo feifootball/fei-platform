@@ -171,29 +171,26 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="how-it-works" className="scroll-mt-28 px-6 py-12 sm:py-14">
+      <section id="how-it-works" className="scroll-mt-28 px-6 py-14 sm:py-16">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-10 max-w-3xl">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.28em] text-fei-sky">
-              Process
-            </p>
+          <div className="mb-10 text-center">
             <h2 className="text-3xl font-black tracking-tight text-fei-text sm:text-4xl">{t.how_title}</h2>
-            <p className="mt-3 text-base leading-7 text-fei-text/60 sm:text-lg">{t.how_subtitle}</p>
+            <p className="mx-auto mt-3 max-w-3xl text-base leading-7 text-fei-text/60 sm:text-lg">{t.how_subtitle}</p>
           </div>
 
-          <div className="grid gap-0 overflow-hidden rounded-3xl border border-fei-text/10 bg-fei-text/[0.025] lg:grid-cols-3">
+          <div className="grid overflow-hidden rounded-3xl border border-fei-text/10 bg-fei-text/[0.025] sm:grid-cols-3">
             {t.steps.map((item, index) => (
-              <article key={item.step} className="relative border-fei-text/10 p-7 lg:border-l lg:first:border-l-0">
-                <div className="mb-8 flex items-center justify-between">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-fei-yellow/25 bg-fei-yellow/[0.08] text-fei-yellow">
+              <article key={item.step} className="border-fei-text/10 p-7 sm:border-l sm:first:border-l-0">
+                <div className="mb-7 flex items-center justify-between">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-fei-yellow/[0.08] text-fei-yellow">
                     {index === 0 && (
                       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M12 4v16M4 12h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                        <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                       </svg>
                     )}
                     {index === 1 && (
                       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        <path d="M4 7h16M4 12h10M4 17h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                       </svg>
                     )}
                     {index === 2 && (
@@ -211,25 +208,10 @@ export default function Home() {
               </article>
             ))}
           </div>
-
-          <div id="about" className="mt-14 scroll-mt-28 border-t border-fei-text/10 pt-14">
-            <div className="mb-12 text-center">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{t.about_title} <span className="text-fei-sky">FEI</span>?</h2>
-              <p className="mx-auto mt-4 max-w-2xl text-fei-text/60">{t.about_subtitle}</p>
-            </div>
-            <div className="grid gap-6 sm:grid-cols-3">
-              {t.features.map((feature) => (
-                <article key={feature.title} className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-6">
-                  <h3 className="text-lg font-semibold text-fei-text">{feature.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-fei-text/60">{feature.description}</p>
-                </article>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
-      <section id="roles" className="scroll-mt-32 border-t border-fei-text/10 px-6 py-20 sm:py-28">
+      <section id="roles" className="scroll-mt-28 border-t border-fei-text/10 px-6 py-16 sm:py-20">
         <div className="mx-auto max-w-7xl">
           <div className="mb-10 text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{t.roles_title}</h2>
