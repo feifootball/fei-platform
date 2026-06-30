@@ -464,6 +464,229 @@ const headCoachItems = {
 }
 
 
+
+const assistantCoachItems = {
+  warmup: [
+    {
+      id: 'w1',
+      label: 'Item 1 — Role Identification',
+      context: 'Which situation happens most often in your work as a first-team assistant coach?',
+      question: 'Choose the option that best matches the role’s daily communication reality.',
+      options: [
+        'A. Managing transfer negotiations with agents',
+        'B. Preparing individual recovery plans for players',
+        'C. Correcting players during training',
+        'D. Leading commercial meetings with sponsors',
+      ],
+      correct: 'C',
+    },
+    {
+      id: 'w2',
+      label: 'Item 2 — Communication Priority',
+      context: 'What type of communication is most critical for your daily performance?',
+      question: 'Choose the area that most directly affects your assistant-coach pathway.',
+      options: [
+        'A. Managing public interviews after matches',
+        'B. Explaining exercises and correcting technique',
+        'C. Writing recruitment reports for directors',
+        'D. Setting commercial priorities with sponsors',
+      ],
+      correct: 'B',
+    },
+  ],
+  reading: [
+    {
+      id: 'r1',
+      level: 'A2',
+      label: 'Item 3 — Pressing Instruction',
+      context: 'Before training, the head coach sends you this note:\\n\\n"In the first block, focus on the pressing trigger. When the ball arrives to the opposition fullback, the nearest winger presses and the rest of the unit shifts across. Keep the distances short."',
+      question: 'What should you emphasize to the players?',
+      options: [
+        'A. The winger should wait for the center-back to press first.',
+        'B. The unit should drop deeper when the fullback receives.',
+        'C. The winger presses and the unit shifts together.',
+        'D. The team should attack centrally after every recovery.',
+      ],
+      correct: 'C',
+    },
+    {
+      id: 'r2',
+      level: 'B1',
+      label: 'Item 4 — Unit Spacing',
+      context: 'After training, the analyst writes:\\n\\n"The first 15 minutes were intense and organized. After that, the front line kept pressing, but the midfield line stopped moving with them. The spaces between units became too big, so the opponent played through us more easily."',
+      question: 'What was the main tactical issue after the first 15 minutes?',
+      options: [
+        'A. The front line stopped pressing after 15 minutes.',
+        'B. The unit spacing broke down as fatigue increased.',
+        'C. The midfield pressed too aggressively from the start.',
+        'D. The opponent created danger only from wide crosses.',
+      ],
+      correct: 'B',
+    },
+    {
+      id: 'r3',
+      level: 'B2',
+      label: 'Item 5 — Pressing Under Fatigue',
+      context: 'The head coach writes:\\n\\n"The players know the pressing shape, but under fatigue they react late after losing the ball. We need them to connect the press with recovery runs: if the first press fails, the second action must protect central space. The issue is not effort; it is recognizing when pressing becomes recovery."',
+      question: 'What message should the assistant coach reinforce?',
+      options: [
+        'A. Keep pressing every loss of possession with maximum intensity.',
+        'B. Save energy and stop pressing once the first action fails.',
+        'C. Link the press to recovery decisions when fatigue appears.',
+        'D. Focus only on the first defensive action after losing it.',
+      ],
+      correct: 'C',
+    },
+  ],
+  listening: [
+    {
+      id: 'l1',
+      level: 'A2',
+      label: 'Item 6 — Rondo Transition',
+      script: 'In the 5v5 rondo, defenders press to win the ball. When you win it, counter quickly into the mini-goal. Press, win, attack. That is the sequence.',
+      question: 'What should the defenders do in the drill?',
+      options: [
+        'A. Keep possession and slow the drill down.',
+        'B. Win the ball and attack quickly.',
+        'C. Stay passive and protect the middle.',
+        'D. Wait for the coach before countering.',
+      ],
+      correct: 'B',
+    },
+    {
+      id: 'l2',
+      level: 'B1',
+      label: 'Item 7 — Pressing Heights',
+      script: 'We will work in three zones today. In the attacking zone, press high. In midfield, press only when the pass is slow. In our defensive zone, stay compact and protect the center.',
+      question: 'What is the pressing plan across the three zones?',
+      options: [
+        'A. Press high in every zone and protect the ball.',
+        'B. Press only in midfield and avoid the defensive zone.',
+        'C. Press high, then selective midfield press, then compact defending.',
+        'D. Stay compact everywhere and avoid pressing high.',
+      ],
+      correct: 'C',
+    },
+    {
+      id: 'l3',
+      level: 'B2',
+      label: 'Item 8 — Anticipatory Reading',
+      script: 'The correction is not just reaction speed. The best players read danger before it fully appears. If the pass is obvious, you are already late. Scan the receiver, the body shape, and the space behind you. Anticipate, then move.',
+      question: 'What is the main coaching point?',
+      options: [
+        'A. React faster only after the opponent has received.',
+        'B. Read danger early by scanning cues before the pass.',
+        'C. Stay deeper so you never need to anticipate.',
+        'D. Focus on speed more than tactical information.',
+      ],
+      correct: 'B',
+    },
+  ],
+  vocabulary: [
+    {
+      id: 'v1',
+      level: 'A2',
+      label: 'Item 9 — Rondo',
+      context: 'During training, the head coach says: “Start with a 5v5 rondo. Keep the ball moving and protect the central player.”',
+      question: 'What is a “rondo” in this context?',
+      options: [
+        'A. A fitness drill focused on long sprint intervals.',
+        'B. A video meeting reviewing pressing clips.',
+        'C. A small-sided possession drill in limited space.',
+        'D. A defensive shape used near the penalty area.',
+      ],
+      correct: 'C',
+    },
+    {
+      id: 'v2',
+      level: 'B1',
+      label: 'Item 10 — Body Scanning',
+      context: 'During a passing exercise, you tell a player: “Scan before you receive. Check your shoulder before the ball arrives.”',
+      question: 'What does “body scanning” mean here?',
+      options: [
+        'A. Protecting body position in physical duels.',
+        'B. Checking around before receiving the ball.',
+        'C. Measuring sprint speed after training.',
+        'D. Watching only the ball during possession.',
+      ],
+      correct: 'B',
+    },
+    {
+      id: 'v3',
+      level: 'B2',
+      label: 'Item 11 — Numerical Overload',
+      context: 'The analyst says: “We can create a numerical overload on the left side if the fullback steps inside and the winger holds the width.”',
+      question: 'What does “numerical overload” mean?',
+      options: [
+        'A. Playing with fewer touches under pressure.',
+        'B. Creating width with both fullbacks.',
+        'C. Having more players than the opponent in an area.',
+        'D. Moving the defensive line higher than usual.',
+      ],
+      correct: 'C',
+    },
+  ],
+  functional: [
+    {
+      id: 'f1',
+      level: 'B1',
+      label: 'Item 12 — Pressing Trigger Explanation',
+      context: 'A player asks: “When exactly should I start the press?” You need to explain the trigger quickly before the next repetition.',
+      question: 'Which explanation is clearest?',
+      options: [
+        'A. Press when you feel the fullback is unsure.',
+        'B. Press every time the ball moves to the side.',
+        'C. Wait until the striker decides to go first.',
+        'D. Press when the fullback receives facing our goal.',
+      ],
+      correct: 'D',
+    },
+    {
+      id: 'f2',
+      level: 'B2',
+      label: 'Item 13 — Repetition Under Fatigue',
+      context: 'A player is frustrated because the pressing drill keeps repeating. He says: “We already understand this. Why are we doing it again?”',
+      question: 'What is the best response?',
+      options: [
+        'A. You are tired because you did not concentrate enough.',
+        'B. We can stop the exercise if the group understands it.',
+        'C. Repetition makes the reaction automatic under match fatigue.',
+        'D. The head coach wants more repetitions, so we continue.',
+      ],
+      correct: 'C',
+    },
+    {
+      id: 'f3',
+      level: 'B2',
+      label: 'Item 14 — Supporting a Confused Player',
+      context: 'A player looks confused after being corrected for a late pressing action. You need to make the feedback usable without overwhelming him.',
+      question: 'Which response gives the clearest support?',
+      options: [
+        'A. Your position was fine, but your next action needs more intensity.',
+        'B. Your position was right. The timing was late. Move earlier as the pass travels.',
+        'C. You understood the idea, but the recovery run must be more aggressive.',
+        'D. The coach wants more speed, so focus mainly on pressing harder.',
+      ],
+      correct: 'B',
+    },
+    {
+      id: 'f4',
+      level: 'C1',
+      label: 'Item 15 — Translating Tactical Intention',
+      context: 'The head coach tells a midfielder: “I need you to think, not just react.” The player looks unsure. You need to translate the idea into a clear action.',
+      question: 'What is the most useful clarification?',
+      options: [
+        'A. Press quicker and stop waiting for the play to develop.',
+        'B. Stay calmer and make fewer emotional decisions.',
+        'C. Take more time before passing so the safe option appears.',
+        'D. Scan before receiving so you see two options before the ball arrives.',
+      ],
+      correct: 'D',
+    },
+  ],
+}
+
+
 const insights = {
   A2: {
     level: 'A2',
@@ -640,9 +863,9 @@ function AssessmentContent() {
   const supabase = createClient()
 
   const selectedRole = searchParams.get('role') || 'Professional Player'
-  const assessmentAvailable = selectedRole === 'Professional Player' || selectedRole === 'Head Coach'
-  const activeItems = selectedRole === 'Head Coach' ? headCoachItems : items
-  const roleSubtitle = selectedRole === 'Head Coach' ? 'First Team' : 'Senior Squad'
+  const assessmentAvailable = selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach'
+  const activeItems = selectedRole === 'Head Coach' ? headCoachItems : selectedRole === 'Assistant Coach' ? assistantCoachItems : items
+  const roleSubtitle = selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' ? 'First Team' : 'Senior Squad'
 
   const [section, setSection] = useState<Section>('intro')
   const [answers, setAnswers] = useState<Record<string, Answer>>({})
@@ -708,8 +931,15 @@ function AssessmentContent() {
 
     const professionalPlayerKeywords = ['hamstring', 'sharp', 'turn', 'cool-down', 'sprint', 'tight']
     const headCoachKeywords = ['press', 'pressure', 'plan', 'space', 'calm', 'width', 'standards', 'discipline', 'belief']
+    const assistantCoachKeywords = ['press', 'pressing', 'spacing', 'timing', 'fatigue', 'repetition', 'compactness', 'structure', 'focus']
 
-    const keywords = selectedRole === 'Head Coach' ? headCoachKeywords : professionalPlayerKeywords
+    const keywords =
+      selectedRole === 'Head Coach'
+        ? headCoachKeywords
+        : selectedRole === 'Assistant Coach'
+          ? assistantCoachKeywords
+          : professionalPlayerKeywords
+
     const hasKey = keywords.some((w) => lower.includes(w))
 
     if (words < 20 || sentences < 2) return 1
@@ -936,7 +1166,7 @@ function AssessmentContent() {
             <h2 className="mb-4 font-bold text-fei-text">Before you begin</h2>
             <ul className="space-y-4 text-sm text-fei-text/70">
               {[
-                'Use headphones or speakers for listening activeItems.',
+                'Use headphones or speakers for listening items.',
                 'Enable your microphone for the final spoken response.',
                 'Stay on this page until the assessment is complete.',
                 'Find a quiet place with a stable internet connection.',
@@ -999,7 +1229,7 @@ function AssessmentContent() {
                 <div className="flex h-8 w-8 items-center justify-center rounded-full bg-fei-sky/10 text-fei-sky font-bold text-sm">1</div>
                 <h3 className="font-bold text-fei-text">Audio test</h3>
               </div>
-              <p className="mb-4 text-sm text-fei-text/60">Play the sample audio to confirm you can hear the listening activeItems.</p>
+              <p className="mb-4 text-sm text-fei-text/60">Play the sample audio to confirm you can hear the listening items.</p>
               <button
                 onClick={playAudioTest}
                 disabled={audioTestPlaying}
@@ -1387,7 +1617,9 @@ function AssessmentContent() {
             <p className="text-sm leading-relaxed text-fei-text/80">
 {selectedRole === 'Head Coach'
                 ? 'You are briefing the squad two hours before a match against a high-pressing opponent. Focus on what they will face, what your plan is, and what tone you want to set.'
-                : "After training today, you developed tightness in your left hamstring during the second half. It started when you made a sharp turning movement while sprinting. The sensation increased slightly during the cool-down. You want to report this to the physiotherapist before tomorrow's session."}
+                : selectedRole === 'Assistant Coach'
+                  ? 'You are closing a training session after a pressing exercise. The players pressed well in the first repetitions, but in reps 5–8 they lost focus, spacing, and timing.'
+                  : "After training today, you developed tightness in your left hamstring during the second half. It started when you made a sharp turning movement while sprinting. The sensation increased slightly during the cool-down. You want to report this to the physiotherapist before tomorrow's session."}
             </p>
           </div>
 
@@ -1395,7 +1627,9 @@ function AssessmentContent() {
             <p className="font-semibold text-fei-text">
               {selectedRole === 'Head Coach'
                 ? 'Write the opening 3–5 sentences of your pre-match briefing.'
-                : 'Write a message to the physiotherapist reporting this discomfort.'}
+                : selectedRole === 'Assistant Coach'
+                  ? 'Write 3–5 sentences to close the session. Include what went well, what needs to improve, and tomorrow’s focus.'
+                  : 'Write a message to the physiotherapist reporting this discomfort.'}
             </p>
             <p className="mt-1 text-sm text-fei-text/50">Write 3–5 sentences in professional English.</p>
           </div>
@@ -1446,7 +1680,9 @@ function AssessmentContent() {
             <p className="text-sm leading-relaxed text-fei-text/80">
 {selectedRole === 'Head Coach'
                 ? 'You have just substituted a senior player after 25 minutes in a 1–0 loss. The player expected to play 90 minutes. The crowd is loud and other players are watching.'
-                : 'You have just received feedback from the head coach about your last match. The coach said you were too slow in transition and needed to be more aggressive in pressing. You disagree slightly because the transition was fast and you were managing some discomfort.'}
+                : selectedRole === 'Assistant Coach'
+                  ? 'Two players are not pressing together during a training exercise. One player jumps early, the other waits, and the opponent plays through the gap.'
+                  : 'You have just received feedback from the head coach about your last match. The coach said you were too slow in transition and needed to be more aggressive in pressing. You disagree slightly because the transition was fast and you were managing some discomfort.'}
             </p>
           </div>
 
@@ -1454,7 +1690,9 @@ function AssessmentContent() {
             <p className="font-semibold text-fei-text">
               {selectedRole === 'Head Coach'
                 ? 'Explain the substitution decision while protecting the relationship and your authority.'
-                : 'Explain how you would respond to the coach professionally.'}
+                : selectedRole === 'Assistant Coach'
+                  ? 'Correct both players clearly and professionally before restarting the drill.'
+                  : 'Explain how you would respond to the coach professionally.'}
             </p>
             <p className="mt-1 text-sm text-fei-text/50">Recommended time: 45–60 seconds. Recording stops automatically at 75 seconds.</p>
           </div>
@@ -1638,52 +1876,96 @@ function AssessmentContent() {
       ],
     }
 
-    const rolePathwayDescriptions: Record<string, string> = selectedRole === 'Head Coach'
-      ? {
-          A2: 'You can deliver clear tactical instructions in familiar situations. Your pathway will build your ability to manage feedback, staff alignment, and matchday communication with more authority.',
-          B1: 'You communicate effectively with players and staff on routine matters. Your pathway will help you lead more complex team situations, match briefings, and feedback conversations with greater clarity.',
-          B2: 'You lead teams with professional clarity and control. Your pathway will refine your crisis management, executive communication, and ability to influence staff and squad behavior under pressure.',
-          C1: 'You command multi-audience communication strategically. Your pathway will deepen your ability to align football operations, lead through complexity, and represent the club with authority.',
-        }
-      : pathwayDescriptions
+    const rolePathwayDescriptions: Record<string, string> =
+      selectedRole === 'Head Coach'
+        ? {
+            A2: 'You can deliver clear tactical instructions in familiar situations. Your pathway will build your ability to manage feedback, staff alignment, and matchday communication with more authority.',
+            B1: 'You communicate effectively with players and staff on routine matters. Your pathway will help you lead more complex team situations, match briefings, and feedback conversations with greater clarity.',
+            B2: 'You lead teams with professional clarity and control. Your pathway will refine your crisis management, executive communication, and ability to influence staff and squad behavior under pressure.',
+            C1: 'You command multi-audience communication strategically. Your pathway will deepen your ability to align football operations, lead through complexity, and represent the club with authority.',
+          }
+        : selectedRole === 'Assistant Coach'
+          ? {
+              A2: 'You can understand and deliver simple training instructions in familiar contexts. Your pathway will build confidence in tactical clarification, correction, and player support during training.',
+              B1: 'You manage common assistant-coach communication tasks and can support players in routine training situations. Your pathway will strengthen precision, tactical explanation, and correction under pressure.',
+              B2: 'You communicate with professional clarity across tactical and training contexts. Your pathway will refine how you translate coaching ideas, manage player confusion, and support staff alignment.',
+              C1: 'You communicate with strategic precision and strong staff awareness. Your pathway will deepen your ability to translate tactical intent, correct behavior under pressure, and protect alignment across the coaching team.',
+            }
+          : pathwayDescriptions
 
-    const roleAiInsights: Record<string, string> = selectedRole === 'Head Coach'
-      ? {
-          A2: 'Your result shows a developing foundation in first-team coaching communication. You can communicate direct tactical ideas in familiar situations, but your next step is to build more structure when managing feedback, staff alignment, and matchday pressure. FEI recommends starting with clear tactical language and practical briefing work so your communication becomes more consistent with players and staff.',
-          B1: 'Your result shows that you can manage routine coaching communication with players and staff. Your next step is to lead more complex situations with stronger structure, especially tactical adjustments, individual feedback, match briefings, and media responses. FEI recommends focused role-specific training to help you communicate decisions with clarity and authority.',
-          B2: 'Your result shows strong professional coaching communication across tactical, staff, and pressure-based situations. Your next step is to refine crisis management, executive communication, and leadership under pressure. FEI recommends advanced role-specific training to help you influence players, staff, and decision-makers with greater strategic control.',
-          C1: 'Your result shows advanced strategic communication for a first-team head coach. You can manage complex football messages across players, staff, media, and executives. Your next step is refinement: institutional alignment, high-pressure leadership, executive influence, and elite communication control.',
-        }
-      : aiInsights
+    const roleAiInsights: Record<string, string> =
+      selectedRole === 'Head Coach'
+        ? {
+            A2: 'Your result shows a developing foundation in first-team coaching communication. You can communicate direct tactical ideas in familiar situations, but your next step is to build more structure when managing feedback, staff alignment, and matchday pressure. FEI recommends starting with clear tactical language and practical briefing work so your communication becomes more consistent with players and staff.',
+            B1: 'Your result shows that you can manage routine coaching communication with players and staff. Your next step is to lead more complex situations with stronger structure, especially tactical adjustments, individual feedback, match briefings, and media responses. FEI recommends focused role-specific training to help you communicate decisions with clarity and authority.',
+            B2: 'Your result shows strong professional coaching communication across tactical, staff, and pressure-based situations. Your next step is to refine crisis management, executive communication, and leadership under pressure. FEI recommends advanced role-specific training to help you influence players, staff, and decision-makers with greater strategic control.',
+            C1: 'Your result shows advanced strategic communication for a first-team head coach. You can manage complex football messages across players, staff, media, and executives. Your next step is refinement: institutional alignment, high-pressure leadership, executive influence, and elite communication control.',
+          }
+        : selectedRole === 'Assistant Coach'
+          ? {
+              A2: 'Your result shows a developing foundation in assistant-coach communication. You can handle simple training instructions in familiar contexts, but your next step is to build more confidence in tactical clarification, player correction, and support during live training situations.',
+              B1: 'Your result shows that you can manage common assistant-coach communication tasks and support players in routine training situations. Your next step is to communicate with more precision when explaining tactical details, correcting technique, and responding under pressure.',
+              B2: 'Your result shows strong professional communication across tactical and training contexts. You can explain, correct, and support players with clarity. Your next step is to refine how you translate coaching ideas, manage player confusion, and maintain staff alignment under pressure.',
+              C1: 'Your result shows strategic precision and strong staff awareness. You can translate tactical intent, correct behavior under pressure, and protect alignment across the coaching team. Your next step is advanced communication control in high-speed training and matchday support contexts.',
+            }
+          : aiInsights
 
-    const rolePathwayFocus: Record<string, string[]> = selectedRole === 'Head Coach'
-      ? {
-          A2: [
-            'Clear tactical language',
-            'Basic briefing structure',
-            'Simple staff communication',
-            'Player feedback foundations',
-          ],
-          B1: [
-            'Tactical adjustment',
-            'Individual feedback',
-            'Match briefings',
-            'Media response under pressure',
-          ],
-          B2: [
-            'Crisis communication',
-            'Executive negotiation',
-            'Leadership under pressure',
-            'Advanced staff alignment',
-          ],
-          C1: [
-            'Strategic influence',
-            'High-pressure leadership',
-            'Institutional alignment',
-            'Elite communication control',
-          ],
-        }
-      : pathwayFocus
+    const rolePathwayFocus: Record<string, string[]> =
+      selectedRole === 'Head Coach'
+        ? {
+            A2: [
+              'Clear tactical language',
+              'Basic briefing structure',
+              'Simple staff communication',
+              'Player feedback foundations',
+            ],
+            B1: [
+              'Tactical adjustment',
+              'Individual feedback',
+              'Match briefings',
+              'Media response under pressure',
+            ],
+            B2: [
+              'Crisis communication',
+              'Executive negotiation',
+              'Leadership under pressure',
+              'Advanced staff alignment',
+            ],
+            C1: [
+              'Strategic influence',
+              'High-pressure leadership',
+              'Institutional alignment',
+              'Elite communication control',
+            ],
+          }
+        : selectedRole === 'Assistant Coach'
+          ? {
+              A2: [
+                'Simple training instructions',
+                'Basic tactical clarification',
+                'Player support language',
+                'Training vocabulary foundations',
+              ],
+              B1: [
+                'Exercise explanation',
+                'Pressing trigger correction',
+                'Technique feedback',
+                'Communication under repetition',
+              ],
+              B2: [
+                'Tactical correction under fatigue',
+                'Player confusion support',
+                'Staff alignment',
+                'Training motivation',
+              ],
+              C1: [
+                'Head coach message translation',
+                'Strategic tactical clarification',
+                'Collective correction under pressure',
+                'Advanced coaching-team alignment',
+              ],
+            }
+          : pathwayFocus
 
     const focusItems = rolePathwayFocus[result.level] || rolePathwayFocus.A2
     const pathwayDescription = rolePathwayDescriptions[result.level] || rolePathwayDescriptions.A2
