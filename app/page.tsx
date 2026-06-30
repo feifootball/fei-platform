@@ -171,7 +171,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-6 pb-14">
+      <section id="diagnostic" className="scroll-mt-32 px-6 pb-20">
         <div className="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2">
           <div className="rounded-3xl border border-fei-text/10 bg-fei-text/[0.025] p-8 sm:p-10">
             <p className="text-6xl font-black tracking-tight text-fei-yellow sm:text-7xl">11</p>
@@ -182,17 +182,6 @@ export default function Home() {
             <p className="text-6xl font-black tracking-tight text-fei-yellow sm:text-7xl">126</p>
             <p className="mt-3 text-sm font-semibold uppercase tracking-[0.25em] text-fei-sky">Scenarios</p>
           </div>
-        </div>
-      </section>
-
-      <section id="diagnostic" className="scroll-mt-32 border-y border-fei-text/10 bg-fei-text/[0.02] px-6 py-12 sm:py-14">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-4">
-          {t.stats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <p className="text-4xl font-bold tracking-tight text-fei-yellow sm:text-5xl">{stat.value}</p>
-              <p className="mt-1.5 text-sm text-fei-sky">{stat.label}</p>
-            </div>
-          ))}
         </div>
       </section>
 
