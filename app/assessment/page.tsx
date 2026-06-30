@@ -1550,7 +1550,7 @@ function AssessmentContent() {
             <p className="mt-2 text-xs text-fei-text/40">These questions help personalize your pathway. There are no wrong answers here.</p>
           </div>
 
-            <div className="rounded-3xl border border-fei-text/10 bg-fei-text/[0.03] p-6 lg:col-span-5">
+            <div className="mb-6 rounded-3xl border border-fei-text/10 bg-fei-text/[0.03] p-6 lg:col-span-5">
             <p className="mb-3 text-sm text-fei-text/60">{item.context}</p>
             <p className="font-semibold text-fei-sky select-none">{item.question}</p>
           </div>
