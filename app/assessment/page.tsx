@@ -2248,6 +2248,229 @@ const physiotherapistItems = {
 }
 
 
+
+const sportsPsychologistItems = {
+  warmup: [
+    {
+      id: 'w1',
+      label: 'Item 1 — Primary Communication Focus',
+      context: 'You are completing the FEI diagnostic for Sports Psychologist — Mental Performance.',
+      question: 'Which situation is most central to your role?',
+      options: [
+        'A. Preparing tactical reports for coaching staff.',
+        'B. Managing physical load during training weeks.',
+        'C. Building trust and supporting performance behavior.',
+        'D. Writing recruitment recommendations for players.',
+      ],
+      correct: 'C',
+    },
+    {
+      id: 'w2',
+      label: 'Item 2 — Communication Priority',
+      context: 'Different sports psychology tasks require different language, tone and confidentiality awareness.',
+      question: 'Which communication area usually demands the most care?',
+      options: [
+        'A. Managing confidence, pressure and resilience.',
+        'B. Explaining transfer value to recruitment staff.',
+        'C. Correcting technical errors during training.',
+        'D. Planning recovery meals after matches.',
+      ],
+      correct: 'A',
+    },
+  ],
+  reading: [
+    {
+      id: 'r1',
+      level: 'A2',
+      label: 'Item 3 — Confidence Check-In Note',
+      context: 'Player check-in note:\\n\\n"Confidence is down after recent missed chances. Sleep has been poor. Mood is frustrated but the player remains engaged. Red flags: none. Schedule confidence conversation on Friday."',
+      question: 'What is the best summary of the support level?',
+      options: [
+        'A. The player needs immediate removal from matchday duties.',
+        'B. The player has no performance concern to discuss.',
+        'C. The player needs medical imaging before psychology support.',
+        'D. Concern is low, but confidence support is appropriate.',
+      ],
+      correct: 'D',
+    },
+    {
+      id: 'r2',
+      level: 'B1',
+      label: 'Item 4 — Anxiety Before Matches',
+      context: 'Case note:\\n\\n"Before matches, the player reports anxiety with tight chest and faster breathing. Performance drops when anxious. The pattern appears linked to perfectionism: the player believes mistakes are unacceptable. Plan: breathing routine and reframing mistakes as learning."',
+      question: 'What is the main intervention focus?',
+      options: [
+        'A. Increase physical conditioning before matches.',
+        'B. Use breathing routines and reframe perfectionism.',
+        'C. Remove all pre-match expectations from the player.',
+        'D. Focus only on technical finishing practice.',
+      ],
+      correct: 'B',
+    },
+    {
+      id: 'r3',
+      level: 'B2',
+      label: 'Item 5 — Grief, Isolation and Performance',
+      context: 'Case note:\\n\\n"The player is grieving a personal loss, underperforming and becoming isolated. Medical screening is clear. The response appears consistent with grief and adjustment difficulty. Plan: coordinate football support with grief counseling and maintain long-term monitoring."',
+      question: 'What is the key recommendation?',
+      options: [
+        'A. Treat the case as a short technical performance issue.',
+        'B. Provide long-term psychological support with football integration.',
+        'C. Keep the case only between the player and head coach.',
+        'D. Return the player to full pressure as soon as possible.',
+      ],
+      correct: 'B',
+    },
+  ],
+  listening: [
+    {
+      id: 'l1',
+      level: 'A2',
+      label: 'Item 6 — Baseline Mental Check-In',
+      script: 'How are you feeling mentally this week? Do you feel pressure before matches? How is your confidence? Are you sleeping well? Any concerns you want to discuss?',
+      question: 'What is the purpose of this conversation?',
+      options: [
+        'A. To select the player for the next match.',
+        'B. To challenge the player’s tactical decisions.',
+        'C. To establish a simple mental-performance baseline.',
+        'D. To explain a full clinical treatment plan.',
+      ],
+      correct: 'C',
+    },
+    {
+      id: 'l2',
+      level: 'B1',
+      label: 'Item 7 — Performance Setback Response',
+      script: 'The player is disappointed after a poor match, but he is still engaged. He says he knows what he needs to work on. We should normalize disappointment and separate one performance from his value as a player.',
+      question: 'What is the main message?',
+      options: [
+        'A. Separate the poor performance from the player’s self-worth.',
+        'B. Tell the player the match result does not matter.',
+        'C. Avoid discussing the poor performance this week.',
+        'D. Focus only on tactical mistakes and ignore emotion.',
+      ],
+      correct: 'A',
+    },
+    {
+      id: 'l3',
+      level: 'B2',
+      label: 'Item 8 — Anxiety Before an Important Match',
+      script: 'The player feels fear before the important match. The coach wants confidence, but eliminating anxiety completely is unrealistic. We should help him transform that energy into activation and focus.',
+      question: 'What is the best interpretation?',
+      options: [
+        'A. The player should avoid the match because fear is present.',
+        'B. The coach should stop discussing confidence this week.',
+        'C. The goal is to remove all anxiety before kick-off.',
+        'D. The goal is to channel anxiety into useful activation.',
+      ],
+      correct: 'D',
+    },
+  ],
+  vocabulary: [
+    {
+      id: 'v1',
+      level: 'A2',
+      label: 'Item 9 — Confidence',
+      context: 'A coach says: “The player’s confidence has dropped after several missed chances.”',
+      question: 'What does confidence mean here?',
+      options: [
+        'A. The player’s physical speed during games.',
+        'B. Belief in the ability to perform well.',
+        'C. The player’s tactical role in the team.',
+        'D. The player’s match availability status.',
+      ],
+      correct: 'B',
+    },
+    {
+      id: 'v2',
+      level: 'B1',
+      label: 'Item 10 — Pressure Management',
+      context: 'A player says: “I need help with pressure management before big matches.”',
+      question: 'What does pressure management refer to?',
+      options: [
+        'A. Reducing training intensity before every match.',
+        'B. Avoiding difficult matches until confidence returns.',
+        'C. Using techniques to perform despite stress.',
+        'D. Changing the tactical plan to reduce responsibility.',
+      ],
+      correct: 'C',
+    },
+    {
+      id: 'v3',
+      level: 'B2',
+      label: 'Item 11 — Resilience',
+      context: 'The report says: “The player shows resilience after setbacks but still needs stronger recovery routines.”',
+      question: 'What does resilience mean in this context?',
+      options: [
+        'A. Ignoring emotional reactions after mistakes.',
+        'B. Staying physically available for every match.',
+        'C. Avoiding pressure situations whenever possible.',
+        'D. Recovering from setbacks and maintaining performance.',
+      ],
+      correct: 'D',
+    },
+  ],
+  functional: [
+    {
+      id: 'f1',
+      level: 'B1',
+      label: 'Item 12 — Overwhelmed Rookie',
+      context: 'A young player says: “Everything at this level feels too fast. I’m not sure I belong here.”',
+      question: 'What is the best response?',
+      options: [
+        'A. That reaction is normal at this level. Let’s practice one situation that feels difficult.',
+        'B. You should not feel that way if you are ready for first-team football.',
+        'C. The speed will improve only if you play more matches immediately.',
+        'D. Try not to think about it and focus on training harder.',
+      ],
+      correct: 'A',
+    },
+    {
+      id: 'f2',
+      level: 'B2',
+      label: 'Item 13 — Confidence After an Error',
+      context: 'A player lost confidence after a major mistake and says: “One error ruined everything.”',
+      question: 'What is the best response?',
+      options: [
+        'A. You should forget the mistake and avoid thinking about it.',
+        'B. The error was not important because everyone makes mistakes.',
+        'C. One error gives information. We can learn from it without letting it define you.',
+        'D. The coach will decide whether the error affects your selection.',
+      ],
+      correct: 'C',
+    },
+    {
+      id: 'f3',
+      level: 'B2',
+      label: 'Item 14 — Injury Psychology',
+      context: 'A player in rehab says: “This is boring. I want to return faster. I’m tired of waiting.”',
+      question: 'What is the best response?',
+      options: [
+        'A. If you feel ready, we can speed up the return timeline.',
+        'B. Frustration is normal. The goal is patience now so you return stronger, not just earlier.',
+        'C. Rehab is mostly physical, so motivation is not the main issue.',
+        'D. You should avoid thinking about football until rehab ends.',
+      ],
+      correct: 'B',
+    },
+    {
+      id: 'f4',
+      level: 'C1',
+      label: 'Item 15 — Multi-Stakeholder Player Support',
+      context: 'A player is struggling after injury, the coach wants technical clarity, the physio is managing rehab and the family is worried. Confidentiality must be protected.',
+      question: 'What is the strongest professional framing?',
+      options: [
+        'A. The coach should receive all details so the football plan is clear.',
+        'B. The family should lead the support because they know the player best.',
+        'C. The physio should manage the case because injury is the main issue.',
+        'D. Support must align medical, technical and personal needs while protecting confidentiality.',
+      ],
+      correct: 'D',
+    },
+  ],
+}
+
+
 const insights = {
   A2: {
     level: 'A2',
@@ -2442,9 +2665,9 @@ function AssessmentContent() {
   const supabase = createClient()
 
   const selectedRole = searchParams.get('role') || 'Professional Player'
-  const assessmentAvailable = selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Academy Director' || selectedRole === 'Head of Scouting' || selectedRole === 'Scout' || selectedRole === 'Fitness Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Nutritionist' || selectedRole === 'Physiotherapist'
-  const activeItems = selectedRole === 'Head Coach' ? headCoachItems : selectedRole === 'Assistant Coach' ? assistantCoachItems : selectedRole === 'Academy Director' ? academyDirectorItems : selectedRole === 'Head of Scouting' ? headOfScoutingItems : selectedRole === 'Scout' ? scoutItems : selectedRole === 'Fitness Coach' ? fitnessCoachItems : selectedRole === 'Performance Analyst' ? performanceAnalystItems : selectedRole === 'Nutritionist' ? nutritionistItems : selectedRole === 'Physiotherapist' ? physiotherapistItems : items
-  const roleSubtitle = selectedRole === 'Academy Director' ? 'Youth & Academy' : selectedRole === 'Head of Scouting' ? 'Recruitment Leadership' : selectedRole === 'Scout' ? 'First Team Recruitment' : selectedRole === 'Fitness Coach' ? 'Strength & Conditioning' : selectedRole === 'Performance Analyst' ? 'First Team Analysis' : selectedRole === 'Nutritionist' ? 'Performance Nutrition' : selectedRole === 'Physiotherapist' ? 'Medical & Rehabilitation' : selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' ? 'First Team' : 'Senior Squad'
+  const assessmentAvailable = selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Academy Director' || selectedRole === 'Head of Scouting' || selectedRole === 'Scout' || selectedRole === 'Fitness Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Nutritionist' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist'
+  const activeItems = selectedRole === 'Head Coach' ? headCoachItems : selectedRole === 'Assistant Coach' ? assistantCoachItems : selectedRole === 'Academy Director' ? academyDirectorItems : selectedRole === 'Head of Scouting' ? headOfScoutingItems : selectedRole === 'Scout' ? scoutItems : selectedRole === 'Fitness Coach' ? fitnessCoachItems : selectedRole === 'Performance Analyst' ? performanceAnalystItems : selectedRole === 'Nutritionist' ? nutritionistItems : selectedRole === 'Physiotherapist' ? physiotherapistItems : selectedRole === 'Sports Psychologist' ? sportsPsychologistItems : items
+  const roleSubtitle = selectedRole === 'Academy Director' ? 'Youth & Academy' : selectedRole === 'Head of Scouting' ? 'Recruitment Leadership' : selectedRole === 'Scout' ? 'First Team Recruitment' : selectedRole === 'Fitness Coach' ? 'Strength & Conditioning' : selectedRole === 'Performance Analyst' ? 'First Team Analysis' : selectedRole === 'Nutritionist' ? 'Performance Nutrition' : selectedRole === 'Physiotherapist' ? 'Medical & Rehabilitation' : selectedRole === 'Sports Psychologist' ? 'Mental Performance' : selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' ? 'First Team' : 'Senior Squad'
 
   const [section, setSection] = useState<Section>('intro')
   const [answers, setAnswers] = useState<Record<string, Answer>>({})
@@ -2518,6 +2741,7 @@ function AssessmentContent() {
     const performanceAnalystKeywords = ['analysis', 'data', 'video', 'pattern', 'press', 'transition', 'opponent', 'space', 'evidence', 'tactical']
     const nutritionistKeywords = ['nutrition', 'fueling', 'hydration', 'recovery', 'carbohydrate', 'protein', 'glycogen', 'meal', 'timing', 'performance']
     const physiotherapistKeywords = ['injury', 'rehab', 'rehabilitation', 'pain', 'strength', 'agility', 'confidence', 'return', 'play', 'risk']
+    const sportsPsychologistKeywords = ['confidence', 'pressure', 'anxiety', 'resilience', 'support', 'mistakes', 'performance', 'psychology', 'mental', 'coach']
 
     const keywords =
       selectedRole === 'Head Coach'
@@ -2538,7 +2762,9 @@ function AssessmentContent() {
                       ? nutritionistKeywords
                       : selectedRole === 'Physiotherapist'
                         ? physiotherapistKeywords
-                        : professionalPlayerKeywords
+                        : selectedRole === 'Sports Psychologist'
+                          ? sportsPsychologistKeywords
+                          : professionalPlayerKeywords
 
     const hasKey = keywords.some((w) => lower.includes(w))
 
@@ -3278,7 +3504,9 @@ function AssessmentContent() {
                               ? 'You need to write a short match-day nutrition guide for a player. Include breakfast, pre-match fueling, hydration or electrolytes, half-time support and post-match recovery.'
                               : selectedRole === 'Physiotherapist'
                                 ? 'You need to write a short rehabilitation progress note for the coaching staff. The player is in Week 3. Strength is 70%, pain is 2/10 with activity, agility is 55%, and confidence is improving after the first sprint without hesitation.'
-                                : "After training today, you developed tightness in your left hamstring during the second half. It started when you made a sharp turning movement while sprinting. The sensation increased slightly during the cool-down. You want to report this to the physiotherapist before tomorrow's session."}
+                                : selectedRole === 'Sports Psychologist'
+                                  ? 'You need to write a short mental performance note for the coaching staff. The player is dealing with perfectionism, anxiety before matches and reduced confidence after mistakes.'
+                                  : "After training today, you developed tightness in your left hamstring during the second half. It started when you made a sharp turning movement while sprinting. The sensation increased slightly during the cool-down. You want to report this to the physiotherapist before tomorrow's session."}
             </p>
           </div>
 
@@ -3302,7 +3530,9 @@ function AssessmentContent() {
                               ? 'Write 3–5 sentences with breakfast, pre-match fueling, hydration, half-time support and post-match recovery.'
                               : selectedRole === 'Physiotherapist'
                                 ? 'Write 3–5 sentences with status, next step and expected return direction.'
-                                : 'Write a message to the physiotherapist reporting this discomfort.'}
+                                : selectedRole === 'Sports Psychologist'
+                                  ? 'Write 3–5 sentences with the key issue, strategy and coaching support needed.'
+                                  : 'Write a message to the physiotherapist reporting this discomfort.'}
             </p>
             <p className="mt-1 text-sm text-fei-text/50">Write 3–5 sentences in professional English.</p>
           </div>
@@ -3372,7 +3602,9 @@ function AssessmentContent() {
                               ? 'You need to explain to a player why you are adjusting his fueling plan. He has been reporting fatigue late in matches, and his hydration and pre-training timing are inconsistent.'
                               : selectedRole === 'Physiotherapist'
                                 ? 'You need to explain a return-to-play recommendation to the head coach. The player is improving, but you need to balance strength, movement testing, confidence and match availability.'
-                                : 'You have just received feedback from the head coach about your last match. The coach said you were too slow in transition and needed to be more aggressive in pressing. You disagree slightly because the transition was fast and you were managing some discomfort.'}
+                                : selectedRole === 'Sports Psychologist'
+                                  ? 'You need to explain to the head coach how to support a player whose perfectionism is creating pre-match anxiety and lower confidence after mistakes.'
+                                  : 'You have just received feedback from the head coach about your last match. The coach said you were too slow in transition and needed to be more aggressive in pressing. You disagree slightly because the transition was fast and you were managing some discomfort.'}
             </p>
           </div>
 
@@ -3396,7 +3628,9 @@ function AssessmentContent() {
                               ? 'Explain the adjustment clearly, linking timing, hydration, energy and realistic behavior change.'
                               : selectedRole === 'Physiotherapist'
                                 ? 'Explain the recommendation clearly, balancing medical reality, team need, confidence and risk.'
-                                : 'Explain how you would respond to the coach professionally.'}
+                                : selectedRole === 'Sports Psychologist'
+                                  ? 'Explain the support strategy clearly, balancing confidence, standards, anxiety and sustainable performance.'
+                                  : 'Explain how you would respond to the coach professionally.'}
             </p>
             <p className="mt-1 text-sm text-fei-text/50">Recommended time: 45–60 seconds. Recording stops automatically at 75 seconds.</p>
           </div>
@@ -3616,7 +3850,14 @@ function AssessmentContent() {
                   B2: 'You communicate recruitment priorities clearly. Your pathway will develop market reasoning, profile-fit communication, and executive recommendations.',
                   C1: 'You demonstrate strategic recruitment leadership. Your pathway will refine board-level influence, high-stakes alignment, and long-term recruitment value communication.',
                 }
-              : selectedRole === 'Physiotherapist'
+              : selectedRole === 'Sports Psychologist'
+                ? {
+                    A2: 'You understand basic mental-performance communication. Your pathway will build confidence in check-ins, support language and simple pressure-management tools.',
+                    B1: 'You can support common confidence and pressure situations. Your pathway will strengthen structure, emotional precision and player-centered communication.',
+                    B2: 'You communicate psychological support with clarity and professionalism. Your pathway will develop advanced resilience, injury psychology and coach-facing communication.',
+                    C1: 'You manage complex mental-performance communication with strategic care. Your pathway will refine multi-stakeholder alignment, confidentiality and high-pressure support.',
+                  }
+                : selectedRole === 'Physiotherapist'
                 ? {
                     A2: 'You understand basic injury and rehabilitation information. Your pathway will build confidence in explaining status, treatment and simple return-to-play decisions.',
                     B1: 'You can communicate common medical updates and basic rehab plans. Your pathway will strengthen precision, risk explanation and player-coach communication.',
@@ -3682,7 +3923,14 @@ function AssessmentContent() {
                   B2: 'Your result shows strong professional recruitment communication. You can communicate priorities, profile fit, and market reality with clarity. Your next step is to develop sharper market reasoning and executive recommendation language under pressure.',
                   C1: 'Your result shows strategic recruitment leadership. You can frame fit, value, risk, and long-term squad sustainability for senior decision-makers. Your next step is refinement: board-level influence, high-stakes alignment, and institutional recruitment strategy.',
                 }
-              : selectedRole === 'Physiotherapist'
+              : selectedRole === 'Sports Psychologist'
+                ? {
+                    A2: 'Your result shows that you understand basic mental-performance communication. Your next step is to build confidence in check-ins, support language and simple pressure-management tools.',
+                    B1: 'Your result shows that you can support common confidence and pressure situations. Your next step is to strengthen structure, emotional precision and player-centered communication.',
+                    B2: 'Your result shows strong professional communication around psychological support. Your next step is to develop advanced resilience language, injury psychology communication and coach-facing strategies.',
+                    C1: 'Your result shows complex mental-performance communication with strategic care. Your next step is refinement: multi-stakeholder alignment, confidentiality boundaries and high-pressure support.',
+                  }
+                : selectedRole === 'Physiotherapist'
                 ? {
                     A2: 'Your result shows that you understand basic injury and rehabilitation information. Your next step is to build confidence explaining status, treatment and simple return-to-play decisions in clear football language.',
                     B1: 'Your result shows that you can communicate common medical updates and basic rehab plans. Your next step is to strengthen precision, risk explanation and player-coach communication.',
@@ -3828,7 +4076,34 @@ function AssessmentContent() {
                     'Strategic risk and value framing',
                   ],
                 }
-              : selectedRole === 'Physiotherapist'
+              : selectedRole === 'Sports Psychologist'
+                ? {
+                    A2: [
+                      'Basic check-in language',
+                      'Confidence support',
+                      'Simple pressure-management tools',
+                      'Safe player communication',
+                    ],
+                    B1: [
+                      'Anxiety reframing',
+                      'Supportive feedback',
+                      'Player-centered communication',
+                      'Resilience foundations',
+                    ],
+                    B2: [
+                      'Performance identity',
+                      'Mistake reframing',
+                      'Injury psychology support',
+                      'Coach-facing communication',
+                    ],
+                    C1: [
+                      'Confidentiality boundaries',
+                      'Multi-stakeholder alignment',
+                      'High-pressure support',
+                      'Strategic mental-performance care',
+                    ],
+                  }
+                : selectedRole === 'Physiotherapist'
                 ? {
                     A2: [
                       'Basic injury status language',
