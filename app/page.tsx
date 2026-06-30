@@ -255,7 +255,7 @@ export default function Home() {
 
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
               {[
                 { role: 'Professional Player', insight: 'Interviews, teammates, pressure moments.' },
                 { role: 'Head Coach', insight: 'Tactics, media, staff leadership.' },
@@ -271,14 +271,14 @@ export default function Home() {
               ].map((item, index) => (
                 <article
                   key={item.role}
-                  className="group relative min-h-[138px] overflow-hidden rounded-3xl border border-fei-text/10 bg-fei-text/[0.025] p-4 transition duration-300 hover:-translate-y-1 hover:border-fei-yellow/35 hover:bg-fei-yellow/[0.045] hover:shadow-[0_18px_55px_rgba(0,0,0,0.18)]"
+                  className="group relative min-h-[122px] overflow-hidden rounded-3xl border border-fei-text/10 bg-fei-text/[0.025] p-4 transition duration-300 hover:-translate-y-1 hover:border-fei-yellow/35 hover:bg-fei-yellow/[0.045] hover:shadow-[0_18px_55px_rgba(0,0,0,0.18)]"
                 >
-                  <div className="pointer-events-none absolute -right-1 -top-3 text-6xl font-black leading-none text-fei-sky/[0.12] transition duration-300 group-hover:text-fei-yellow/[0.24] sm:text-7xl">
+                  <div className="pointer-events-none absolute -right-1 -top-4 text-7xl font-black leading-none text-fei-sky/[0.12] transition duration-300 group-hover:text-fei-yellow/[0.24] sm:text-8xl">
                     {String(index + 1).padStart(2, '0')}
                   </div>
 
                   <div className="relative z-10 flex h-full flex-col justify-between">
-                    <h3 className="max-w-[12rem] text-lg font-medium leading-6 text-fei-text sm:text-xl">
+                    <h3 className="max-w-[12rem] text-xl font-medium leading-6 text-fei-text sm:text-2xl">
                       {item.role}
                     </h3>
 
@@ -291,14 +291,14 @@ export default function Home() {
 
               <a
                 href="/suggest-role"
-                className="group relative min-h-[138px] overflow-hidden rounded-3xl border border-fei-yellow/25 bg-fei-yellow/[0.07] p-4 transition duration-300 hover:-translate-y-1 hover:border-fei-yellow/45 hover:bg-fei-yellow/[0.12] hover:shadow-[0_18px_55px_rgba(0,0,0,0.18)]"
+                className="group relative min-h-[122px] overflow-hidden rounded-3xl border border-fei-yellow/25 bg-fei-yellow/[0.07] p-4 transition duration-300 hover:-translate-y-1 hover:border-fei-yellow/45 hover:bg-fei-yellow/[0.12] hover:shadow-[0_18px_55px_rgba(0,0,0,0.18)]"
               >
-                <div className="pointer-events-none absolute -right-1 -top-3 text-6xl font-black leading-none text-fei-yellow/[0.20] transition duration-300 group-hover:text-fei-yellow/[0.30] sm:text-7xl">
+                <div className="pointer-events-none absolute -right-1 -top-4 text-7xl font-black leading-none text-fei-yellow/[0.20] transition duration-300 group-hover:text-fei-yellow/[0.30] sm:text-8xl">
                   +
                 </div>
 
                 <div className="relative z-10 flex h-full flex-col justify-between">
-                  <h3 className="max-w-[12rem] text-lg font-semibold leading-6 text-fei-yellow sm:text-xl">
+                  <h3 className="max-w-[12rem] text-xl font-semibold leading-6 text-fei-yellow sm:text-2xl">
                     {lang === 'en' ? "Can't find your role?" : '¿No encuentras tu rol?'}
                   </h3>
 
