@@ -27,6 +27,7 @@ const diagnosticRoles = [
 
 type AssessmentRecord = {
   id?: string
+  role?: string | null
   score?: number | null
   level?: string | null
   created_at?: string | null
@@ -84,7 +85,7 @@ export default function SettingsPage() {
         .from('assessment_history')
         .select('*')
         .eq('user_id', userData.user.id)
-        .order('created_at', { ascending: false })
+        .order('completed_at', { ascending: false })
 
       setAssessments(assessmentError ? [] : assessmentData ?? [])
       setLoading(false)
@@ -332,6 +333,9 @@ export default function SettingsPage() {
                     <p className="font-semibold text-fei-text">
                       {assessment.level ? `CEFR Level: ${assessment.level}` : 'Completed assessment'}
                     </p>
+                    <p className="mt-1 text-sm text-fei-yellow">
+                      {assessment.role ?? 'Role unavailable'}
+                    </p>
                     <p className="mt-1 text-sm text-fei-text/50">
                       {typeof assessment.score === 'number' ? `Score: ${assessment.score}%` : 'Score unavailable'}
                     </p>
@@ -350,7 +354,7 @@ export default function SettingsPage() {
               <p className="mt-4 text-sm text-fei-text/60">No completed assessment yet.</p>
             )}
             <Link
-              href="/onboarding"
+              href={selectedRole ? `/assessment?role=${encodeURIComponent(selectedRole)}` : '/dashboard'}
               className="mt-5 inline-flex rounded-full bg-fei-yellow px-8 py-3 font-semibold text-fei-bg transition-colors hover:bg-fei-yellow/90"
             >
               Retake assessment
