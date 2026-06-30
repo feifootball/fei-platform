@@ -18,12 +18,12 @@ const translations = {
       { value: "4", label: "CEFR Levels" },
       { value: "504", label: "Unique Tasks" },
     ],
-    how_title: "How FEI Works",
-    how_subtitle: "From assessment to role-specific communication training.",
+    how_title: "Cómo funciona FEI",
+    how_subtitle: "Un proceso enfocado para profesionales del fútbol que necesitan comunicación específica por rol.",
     steps: [
-      { step: "01", title: "Diagnose", description: "Identify your starting level through a role-specific assessment." },
-      { step: "02", title: "Personalize", description: "Get a pathway shaped by your role, level, and communication needs." },
-      { step: "03", title: "Practice", description: "Train with real football situations and build confidence over time." },
+      { step: "01", title: "Diagnostica", description: "Encuentra tu nivel inicial con una evaluación corta basada en tu rol." },
+      { step: "02", title: "Personaliza", description: "Recibe una ruta según tu nivel, objetivos y contexto futbolístico." },
+      { step: "03", title: "Practica", description: "Entrena con situaciones reales del fútbol profesional." },
     ],
     about_title: "What is",
     about_subtitle: "A purpose-built platform for football — not generic language courses, but professional English for those who live the game.",
@@ -173,16 +173,19 @@ export default function Home() {
 
       <section id="how-it-works" className="scroll-mt-28 px-6 py-14 sm:py-16">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-10 text-center">
+          <div className="mb-10 max-w-3xl">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.28em] text-fei-sky">
+              The FEI Method
+            </p>
             <h2 className="text-3xl font-black tracking-tight text-fei-text sm:text-4xl">{t.how_title}</h2>
-            <p className="mx-auto mt-3 max-w-3xl text-base leading-7 text-fei-text/60 sm:text-lg">{t.how_subtitle}</p>
+            <p className="mt-3 text-base leading-7 text-fei-text/60 sm:text-lg">{t.how_subtitle}</p>
           </div>
 
-          <div className="grid overflow-hidden rounded-3xl border border-fei-text/10 bg-fei-text/[0.025] sm:grid-cols-3">
+          <div className="grid gap-8 border-y border-fei-text/10 py-8 md:grid-cols-3 md:gap-0">
             {t.steps.map((item, index) => (
-              <article key={item.step} className="border-fei-text/10 p-7 sm:border-l sm:first:border-l-0">
-                <div className="mb-7 flex items-center justify-between">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-fei-yellow/[0.08] text-fei-yellow">
+              <article key={item.step} className="relative md:border-l md:border-fei-text/10 md:pl-8 md:first:border-l-0 md:first:pl-0">
+                <div className="mb-6 flex items-center gap-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full border border-fei-yellow/25 bg-fei-yellow/[0.08] text-fei-yellow">
                     {index === 0 && (
                       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                         <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
@@ -204,7 +207,7 @@ export default function Home() {
                 </div>
 
                 <h3 className="text-xl font-bold text-fei-text">{item.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-fei-text/60">{item.description}</p>
+                <p className="mt-3 max-w-sm text-sm leading-6 text-fei-text/60">{item.description}</p>
               </article>
             ))}
           </div>
