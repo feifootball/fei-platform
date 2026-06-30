@@ -30,6 +30,24 @@ const needsRoleSelection = (role: string) => {
   return !role || role === "I'll choose later" || role === 'Other football role'
 }
 
+function ChevronRightIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2.2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="h-4 w-4"
+      aria-hidden
+    >
+      <path d="m9 18 6-6-6-6" />
+    </svg>
+  )
+}
+
 export default function DashboardPage() {
   const router = useRouter()
   const supabase = createClient()
@@ -275,7 +293,10 @@ export default function DashboardPage() {
                 href={`/assessment?role=${encodeURIComponent(userRole)}`}
                 className="mt-8 inline-flex rounded-full bg-fei-yellow px-8 py-3 font-semibold text-fei-bg transition hover:bg-fei-yellow/90"
               >
-                Start Assessment →
+                <span className="inline-flex items-center gap-2">
+                  Start Assessment
+                  <ChevronRightIcon />
+                </span>
               </Link>
             </div>
 
@@ -337,7 +358,10 @@ export default function DashboardPage() {
               Your personalized training path will appear here after your diagnostic results are ready.
             </p>
             <Link href="/learning" className="mt-6 inline-flex text-sm font-semibold text-fei-sky hover:underline">
-              View Learning Path →
+              <span className="inline-flex items-center gap-1.5">
+                View Learning Path
+                <ChevronRightIcon />
+              </span>
             </Link>
           </div>
 

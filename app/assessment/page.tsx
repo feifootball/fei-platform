@@ -1028,6 +1028,24 @@ function OptionButton({
   )
 }
 
+function ChevronRightIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2.2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="h-4 w-4"
+      aria-hidden
+    >
+      <path d="m9 18 6-6-6-6" />
+    </svg>
+  )
+}
+
 function AudioPlayer({ script, itemId }: { script: string; itemId: string }) {
   const [played, setPlayed] = useState(false)
   const [playing, setPlaying] = useState(false)
@@ -1424,7 +1442,10 @@ function AssessmentContent() {
             onClick={() => setSection('audio-check')}
             className="w-full rounded-full bg-fei-yellow py-4 text-base font-bold text-fei-bg transition hover:bg-fei-yellow/90"
           >
-            Begin assessment →
+            <span className="inline-flex items-center justify-center gap-2">
+              Begin assessment
+              <ChevronRightIcon />
+            </span>
           </button>
         </div>
       </div>
@@ -1521,7 +1542,14 @@ function AssessmentContent() {
               disabled={micPermission !== 'granted'}
               className="rounded-full bg-fei-yellow px-10 py-3 text-sm font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-yellow/20 disabled:text-fei-yellow/50 disabled:opacity-100"
             >
-              {micPermission === 'granted' ? 'Start assessment →' : 'Enable microphone to start'}
+              {micPermission === 'granted' ? (
+                <span className="inline-flex items-center justify-center gap-2">
+                  Start assessment
+                  <ChevronRightIcon />
+                </span>
+              ) : (
+                'Enable microphone to start'
+              )}
             </button>
           </div>
         </div>
@@ -1578,7 +1606,14 @@ function AssessmentContent() {
             disabled={!selected}
             className="w-full rounded-full bg-fei-yellow py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-yellow/20 disabled:text-fei-yellow/50 disabled:opacity-100"
           >
-            {!selected ? 'Select an option to continue' : warmupStep < activeItems.warmup.length - 1 ? 'Next →' : 'Continue to Reading →'}
+            {!selected ? (
+              'Select an option to continue'
+            ) : (
+              <span className="inline-flex items-center justify-center gap-2">
+                {warmupStep < activeItems.warmup.length - 1 ? 'Next' : 'Continue to Reading'}
+                <ChevronRightIcon />
+              </span>
+            )}
           </button>
         </div>
       </div>
@@ -1637,7 +1672,14 @@ function AssessmentContent() {
             disabled={!selected}
             className="w-full rounded-full bg-fei-yellow py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-yellow/20 disabled:text-fei-yellow/50 disabled:opacity-100"
           >
-            {!selected ? 'Select an option to continue' : readingStep < activeItems.reading.length - 1 ? 'Next →' : 'Continue to Listening →'}
+            {!selected ? (
+              'Select an option to continue'
+            ) : (
+              <span className="inline-flex items-center justify-center gap-2">
+                {readingStep < activeItems.reading.length - 1 ? 'Next' : 'Continue to Listening'}
+                <ChevronRightIcon />
+              </span>
+            )}
           </button>
         </div>
       </div>
@@ -1696,7 +1738,14 @@ function AssessmentContent() {
             disabled={!selected}
             className="w-full rounded-full bg-fei-yellow py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-yellow/20 disabled:text-fei-yellow/50 disabled:opacity-100"
           >
-            {!selected ? 'Select an option to continue' : listeningStep < activeItems.listening.length - 1 ? 'Next →' : 'Continue to Vocabulary →'}
+            {!selected ? (
+              'Select an option to continue'
+            ) : (
+              <span className="inline-flex items-center justify-center gap-2">
+                {listeningStep < activeItems.listening.length - 1 ? 'Next' : 'Continue to Vocabulary'}
+                <ChevronRightIcon />
+              </span>
+            )}
           </button>
         </div>
       </div>
@@ -1754,7 +1803,14 @@ function AssessmentContent() {
             disabled={!selected}
             className="w-full rounded-full bg-fei-yellow py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-yellow/20 disabled:text-fei-yellow/50 disabled:opacity-100"
           >
-            {!selected ? 'Select an option to continue' : vocabStep < activeItems.vocabulary.length - 1 ? 'Next →' : 'Continue to Functional Communication →'}
+            {!selected ? (
+              'Select an option to continue'
+            ) : (
+              <span className="inline-flex items-center justify-center gap-2">
+                {vocabStep < activeItems.vocabulary.length - 1 ? 'Next' : 'Continue to Functional Communication'}
+                <ChevronRightIcon />
+              </span>
+            )}
           </button>
         </div>
       </div>
@@ -1812,7 +1868,14 @@ function AssessmentContent() {
             disabled={!selected}
             className="w-full rounded-full bg-fei-yellow py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-yellow/20 disabled:text-fei-yellow/50 disabled:opacity-100"
           >
-            {!selected ? 'Select an option to continue' : functionalStep < activeItems.functional.length - 1 ? 'Next →' : 'Continue to Writing →'}
+            {!selected ? (
+              'Select an option to continue'
+            ) : (
+              <span className="inline-flex items-center justify-center gap-2">
+                {functionalStep < activeItems.functional.length - 1 ? 'Next' : 'Continue to Writing'}
+                <ChevronRightIcon />
+              </span>
+            )}
           </button>
         </div>
       </div>
@@ -1881,7 +1944,10 @@ function AssessmentContent() {
             disabled={wordCount < 10}
             className="w-full rounded-full bg-fei-yellow py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-yellow/20 disabled:text-fei-yellow/50 disabled:opacity-100"
           >
-            Continue to Speaking →
+            <span className="inline-flex items-center justify-center gap-2">
+              Continue to Speaking
+              <ChevronRightIcon />
+            </span>
           </button>
         </div>
       </div>
@@ -2035,7 +2101,14 @@ function AssessmentContent() {
                 onClick={() => finishAssessment(Math.min(4, Math.max(1, Math.round(recordingTime / 18))))}
                 className="w-full rounded-full bg-fei-yellow py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90"
               >
-                {saving ? 'Saving results...' : 'Submit assessment →'}
+                {saving ? (
+                  'Saving results...'
+                ) : (
+                  <span className="inline-flex items-center justify-center gap-2">
+                    Submit assessment
+                    <ChevronRightIcon />
+                  </span>
+                )}
               </button>
             </div>
           )}
@@ -2357,7 +2430,10 @@ function AssessmentContent() {
             onClick={() => router.push('/learning')}
             className="mt-8 w-full rounded-full bg-fei-yellow py-4 text-base font-bold text-fei-bg transition hover:bg-fei-yellow/90"
           >
-            Start my FEI pathway →
+            <span className="inline-flex items-center justify-center gap-2">
+              Start my FEI pathway
+              <ChevronRightIcon />
+            </span>
           </button>
 
           <p className="mt-4 text-center text-xs text-fei-text/30">
