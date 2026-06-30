@@ -177,13 +177,26 @@ export default function Home() {
             <p className="mb-3 text-xs font-bold uppercase tracking-[0.28em] text-fei-sky">
               The FEI Method
             </p>
-            <h2 className="text-3xl font-black tracking-tight text-fei-text sm:text-4xl">{t.how_title}</h2>
+            <h2 className="text-3xl font-black tracking-tight text-fei-text sm:text-4xl">
+              {t.how_title.includes('FEI') ? (
+                <>
+                  {t.how_title.replace('FEI', '')}
+                  <span className="text-fei-sky">FEI</span>
+                </>
+              ) : (
+                t.how_title
+              )}
+            </h2>
             <p className="mt-3 max-w-5xl text-base leading-7 text-fei-text/60 sm:text-lg lg:whitespace-nowrap">{t.how_subtitle}</p>
           </div>
 
           <div className="grid gap-8 border-y border-fei-text/10 py-8 md:grid-cols-3 md:gap-0">
             {t.steps.map((item, index) => (
-              <article key={item.step} className="relative md:border-l md:border-fei-text/10 md:pl-8 md:first:border-l-0 md:first:pl-0">
+              <article key={item.step} className="group relative md:border-l md:border-fei-text/10 md:pl-8 md:first:border-l-0 md:first:pl-0">
+                <div className="pointer-events-none absolute -top-4 right-4 text-7xl font-black leading-none text-fei-sky/[0.09] transition duration-300 group-hover:text-fei-yellow/[0.16] sm:text-8xl">
+                  {item.step}
+                </div>
+
                 <div className="mb-6 flex items-center gap-4">
                   <div className="flex h-12 w-12 items-center justify-center rounded-full border border-fei-yellow/25 bg-fei-yellow/[0.08] text-fei-yellow">
                     {index === 0 && (
@@ -203,7 +216,7 @@ export default function Home() {
                     )}
                   </div>
 
-                  <span className="text-xs font-bold uppercase tracking-[0.24em] text-fei-sky/70">{item.step}</span>
+                  <span className="text-2xl font-black tracking-tight text-fei-yellow sm:text-3xl">{item.step}</span>
                 </div>
 
                 <h3 className="text-xl font-bold text-fei-text">{item.title}</h3>
@@ -216,23 +229,66 @@ export default function Home() {
 
       <section id="roles" className="scroll-mt-28 border-t border-fei-text/10 px-6 py-16 sm:py-20">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-10 text-center">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{t.roles_title}</h2>
-            <p className="mx-auto mt-4 max-w-2xl text-fei-text/60">{t.roles_subtitle}</p>
-          </div>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
-            {roles.map((role) => (
-              <article key={role.name} className="flex flex-col items-center gap-1.5 rounded-xl border border-transparent bg-[#162033] px-4 py-5 text-center">
-                <span className="text-sm font-bold text-fei-yellow">{role.name}</span>
-                <span className="text-xs leading-snug text-fei-sky">{lang === 'en' ? role.en : role.es}</span>
-              </article>
-            ))}
-            <article className="flex flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-fei-text/20 bg-fei-text/[0.02] px-4 py-5 text-center">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-6 w-6 text-fei-text/40"><circle cx="12" cy="12" r="10" /><path d="M12 6v6m3-3H9" /></svg>
-              <span className="text-xs font-semibold uppercase tracking-[0.15em] text-fei-text/50">{t.coming_soon}</span>
-              <p className="text-xs leading-snug text-fei-text/40">{t.suggest_role_text}</p>
-              <a href="/suggest-role" className="mt-2 text-xs font-semibold text-fei-sky underline hover:text-fei-yellow">{t.suggest_role_link}</a>
-            </article>
+          <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+            <div>
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.28em] text-fei-sky">
+                Role Intelligence
+              </p>
+              <h2 className="text-3xl font-black tracking-tight text-fei-text sm:text-4xl">
+                Built for every role in the club.
+              </h2>
+              <p className="mt-4 max-w-xl text-base leading-7 text-fei-text/60 sm:text-lg">
+                <span className="font-semibold text-fei-sky">FEI</span> adapts communication training to the decisions, pressure, and language each football professional faces.
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-3">
+                <span className="rounded-full border border-fei-yellow/30 bg-fei-yellow/[0.08] px-4 py-2 text-sm font-bold text-fei-yellow">
+                  11 Roles
+                </span>
+                <span className="rounded-full border border-fei-sky/25 bg-fei-sky/[0.07] px-4 py-2 text-sm font-bold text-fei-sky">
+                  126 Scenarios
+                </span>
+              </div>
+            </div>
+
+            <div className="relative overflow-hidden rounded-[2rem] border border-fei-text/10 bg-fei-text/[0.025] p-5 sm:p-6">
+              <div className="absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full border border-fei-sky/10" />
+              <div className="absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full border border-fei-yellow/10" />
+              <div className="absolute left-1/2 top-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full bg-fei-yellow/[0.06] blur-2xl" />
+
+              <div className="relative grid gap-3 sm:grid-cols-3">
+                {[
+                  'Professional Player',
+                  'Head Coach',
+                  'Assistant Coach',
+                  'Scout',
+                  'Head of Scouting',
+                  'Academy Director',
+                  'Performance Analyst',
+                  'Fitness Coach',
+                  'Physiotherapist',
+                  'Sports Psychologist',
+                  'Nutritionist',
+                ].map((role, index) => (
+                  <div
+                    key={role}
+                    className={`group relative rounded-2xl border p-4 transition duration-300 hover:-translate-y-1 ${
+                      index === 0 || index === 1 || index === 6
+                        ? 'border-fei-yellow/25 bg-fei-yellow/[0.06]'
+                        : 'border-fei-text/10 bg-fei-bg/35'
+                    }`}
+                  >
+                    <div className="mb-4 flex items-center justify-between">
+                      <span className="text-[10px] font-black uppercase tracking-[0.24em] text-fei-sky/70">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                      <span className="h-2 w-2 rounded-full bg-fei-yellow shadow-[0_0_18px_rgba(241,196,15,0.35)]" />
+                    </div>
+                    <p className="text-sm font-bold leading-5 text-fei-text">{role}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
