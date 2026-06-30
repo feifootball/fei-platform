@@ -1802,6 +1802,229 @@ const performanceAnalystItems = {
 }
 
 
+
+const nutritionistItems = {
+  warmup: [
+    {
+      id: 'w1',
+      label: 'Item 1 — Primary Role Focus',
+      context: 'You are working as a performance nutritionist with a first-team squad.',
+      question: 'Which situation best represents your core role?',
+      options: [
+        'A. Preparing medical treatment notes for injured players.',
+        'B. Educating players on fueling, hydration and recovery.',
+        'C. Designing tactical plans for matchday execution.',
+        'D. Negotiating food supplier contracts for the club.',
+      ],
+      correct: 'B',
+    },
+    {
+      id: 'w2',
+      label: 'Item 2 — Daily Communication Priority',
+      context: 'Your work requires both nutrition knowledge and player behavior change.',
+      question: 'Which communication task is most important for your daily impact?',
+      options: [
+        'A. Writing general meal plans without follow-up.',
+        'B. Explaining nutrition only during team meetings.',
+        'C. Reporting kitchen stock issues to operations staff.',
+        'D. Personalizing plans and helping players follow them.',
+      ],
+      correct: 'D',
+    },
+  ],
+  reading: [
+    {
+      id: 'r1',
+      level: 'A2',
+      label: 'Item 3 — Post-Training Recovery Timing',
+      context: 'A player receives this schedule:\\n\\n"Breakfast: carbohydrates and protein. 9:30am pre-training snack: banana and almonds. Post-training: recovery meal within 30 minutes."',
+      question: 'What should the player do after training?',
+      options: [
+        'A. Eat almonds only before the recovery meal.',
+        'B. Wait until dinner to replace the meal properly.',
+        'C. Eat the recovery meal within 30 minutes.',
+        'D. Skip the snack if breakfast had protein.',
+      ],
+      correct: 'C',
+    },
+    {
+      id: 'r2',
+      level: 'B1',
+      label: 'Item 4 — Match-Day Hydration Protocol',
+      context: 'The protocol says:\\n\\n"The day before the match, target 3–4L hydration. On match day: 500ml with breakfast, 300ml two hours before kick-off, small sips during warm-up, and 1.5L for every kilogram lost after the match."',
+      question: 'What is the post-match hydration recommendation?',
+      options: [
+        'A. Drink 1.5L for each kilogram of body weight lost.',
+        'B. Drink 500ml after breakfast and wait until recovery meal.',
+        'C. Drink 300ml two hours before the next session.',
+        'D. Drink small sips only if thirst remains high.',
+      ],
+      correct: 'A',
+    },
+    {
+      id: 'r3',
+      level: 'B2',
+      label: 'Item 5 — Sleep, Digestion and Recovery',
+      context: 'A player reports poor sleep and digestive discomfort after evening training. Dinner is usually at 7:00pm and is high in fat. Hydration is low. The recommendation is to move dinner earlier, reduce fat, improve carbohydrate timing and increase fluids gradually.',
+      question: 'What is the main meaning of this recommendation?',
+      options: [
+        'A. The player should reduce carbohydrates because they disturb sleep.',
+        'B. The issue is mostly psychological and not linked to food timing.',
+        'C. Meal timing and composition may be affecting sleep and recovery.',
+        'D. A heavy dinner is useful if training finishes late in the day.',
+      ],
+      correct: 'C',
+    },
+  ],
+  listening: [
+    {
+      id: 'l1',
+      level: 'A2',
+      label: 'Item 6 — Fueling Before and After Training',
+      script: 'Carbohydrates two to three hours before training help provide energy. After training, carbohydrates plus protein within 30 minutes help recovery.',
+      question: 'What is the main difference between the two recommendations?',
+      options: [
+        'A. Before training is mainly for hydration; after training is for sleep.',
+        'B. Before training supports energy; after training supports recovery.',
+        'C. Before training needs protein only; after training needs carbohydrates only.',
+        'D. Before training should be avoided if recovery is already strong.',
+      ],
+      correct: 'B',
+    },
+    {
+      id: 'l2',
+      level: 'B1',
+      label: 'Item 7 — Second-Half Energy Problem',
+      script: 'The player’s energy drops in the second half. His breakfast is five hours before kick-off, and his pre-match snack is too light. Add a carbohydrate snack one hour before the match to improve available energy.',
+      question: 'What is the likely nutrition issue?',
+      options: [
+        'A. The player is taking too much fluid before the match.',
+        'B. The carbohydrate timing before the match is insufficient.',
+        'C. The recovery meal after the match is too early.',
+        'D. The player needs less breakfast and more fasting time.',
+      ],
+      correct: 'B',
+    },
+    {
+      id: 'l3',
+      level: 'B2',
+      label: 'Item 8 — Nutrition During Ramadan',
+      script: 'The player is fasting during the day. We need to respect that. The pre-dawn meal should include slow-release carbohydrates and protein. After sunset, we prioritize hydration and recovery. The plan must be flexible, respectful and performance-focused.',
+      question: 'What is the nutritionist’s best approach?',
+      options: [
+        'A. Keep the normal matchday plan because performance routines should not change.',
+        'B. Ask the player to avoid training until the fasting period ends.',
+        'C. Focus only on hydration and leave food choices to the player.',
+        'D. Adapt the protocol respectfully around fasting and recovery windows.',
+      ],
+      correct: 'D',
+    },
+  ],
+  vocabulary: [
+    {
+      id: 'v1',
+      level: 'A2',
+      label: 'Item 9 — Glycogen',
+      context: 'The nutritionist says: “We need to restore glycogen after the match.”',
+      question: 'What does glycogen refer to in this context?',
+      options: [
+        'A. Stored energy in the muscles used during exercise.',
+        'B. A vitamin that controls hydration during training.',
+        'C. A digestive enzyme used after heavy meals.',
+        'D. A recovery drink taken only after injuries.',
+      ],
+      correct: 'A',
+    },
+    {
+      id: 'v2',
+      level: 'B1',
+      label: 'Item 10 — Nutrient Timing',
+      context: 'The plan says: “Nutrient timing is important on double-session days.”',
+      question: 'What does nutrient timing mean?',
+      options: [
+        'A. Eating only when the player feels hungry.',
+        'B. Choosing foods based only on total calories.',
+        'C. Planning when nutrients are consumed around training.',
+        'D. Avoiding all snacks between team meals.',
+      ],
+      correct: 'C',
+    },
+    {
+      id: 'v3',
+      level: 'B2',
+      label: 'Item 11 — Micronutrient Density',
+      context: 'The report says: “The player’s meals are high in calories but low in micronutrient density.”',
+      question: 'What does micronutrient density mean?',
+      options: [
+        'A. The amount of protein included in every meal.',
+        'B. The speed at which carbohydrates are digested.',
+        'C. The percentage of calories from fat sources.',
+        'D. The vitamins and minerals provided relative to calories.',
+      ],
+      correct: 'D',
+    },
+  ],
+  functional: [
+    {
+      id: 'f1',
+      level: 'B1',
+      label: 'Item 12 — Explaining a Basic Nutrition Plan',
+      context: 'A player asks why breakfast and the post-training meal are both important.',
+      question: 'Which response is clearest?',
+      options: [
+        'A. Breakfast is useful, but the post-training meal matters only after matches.',
+        'B. Breakfast fuels the session. The post-training meal helps recovery and prepares the next session.',
+        'C. Both meals are important because players should eat whenever food is available.',
+        'D. The plan is standard for everyone, so following it is the main objective.',
+      ],
+      correct: 'B',
+    },
+    {
+      id: 'f2',
+      level: 'B2',
+      label: 'Item 13 — Adherence and Behavior Change',
+      context: 'A player struggles to follow the full plan. He often skips the post-training meal and says the plan feels too much.',
+      question: 'What is the best response?',
+      options: [
+        'A. If the plan feels difficult, we can remove most structure for now.',
+        'B. You need to follow the complete plan before we can measure progress.',
+        'C. Start with one change: the post-training meal. Once that is automatic, we add the next step.',
+        'D. Skipping meals shows low discipline, so we need stricter monitoring immediately.',
+      ],
+      correct: 'C',
+    },
+    {
+      id: 'f3',
+      level: 'B2',
+      label: 'Item 14 — Dietary Restriction Support',
+      context: 'A vegetarian player worries that he cannot meet protein targets during a heavy training week.',
+      question: 'Which response is most professional?',
+      options: [
+        'A. We can meet your protein needs with planned options such as tofu, legumes, dairy or fortified alternatives.',
+        'B. Vegetarian diets are difficult during heavy weeks, so targets should be lower.',
+        'C. Protein timing is less important if carbohydrate intake is already high.',
+        'D. You should use supplements instead of adjusting meals this week.',
+      ],
+      correct: 'A',
+    },
+    {
+      id: 'f4',
+      level: 'C1',
+      label: 'Item 15 — Complex Multi-Stakeholder Solution',
+      context: 'A player has digestive sensitivity before training. The coach wants him to eat a heavier pre-training meal because the session will be intense. The player is worried about discomfort.',
+      question: 'What is the strongest professional response?',
+      options: [
+        'A. The coach’s request should guide the plan because the session is demanding.',
+        'B. The player should avoid pre-training food to prevent discomfort.',
+        'C. Use the normal pre-training meal and review symptoms afterward.',
+        'D. Use easily digestible carbohydrates before training and keep the heavier meal for recovery.',
+      ],
+      correct: 'D',
+    },
+  ],
+}
+
+
 const insights = {
   A2: {
     level: 'A2',
@@ -1996,9 +2219,9 @@ function AssessmentContent() {
   const supabase = createClient()
 
   const selectedRole = searchParams.get('role') || 'Professional Player'
-  const assessmentAvailable = selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Academy Director' || selectedRole === 'Head of Scouting' || selectedRole === 'Scout' || selectedRole === 'Fitness Coach' || selectedRole === 'Performance Analyst'
-  const activeItems = selectedRole === 'Head Coach' ? headCoachItems : selectedRole === 'Assistant Coach' ? assistantCoachItems : selectedRole === 'Academy Director' ? academyDirectorItems : selectedRole === 'Head of Scouting' ? headOfScoutingItems : selectedRole === 'Scout' ? scoutItems : selectedRole === 'Fitness Coach' ? fitnessCoachItems : selectedRole === 'Performance Analyst' ? performanceAnalystItems : items
-  const roleSubtitle = selectedRole === 'Academy Director' ? 'Youth & Academy' : selectedRole === 'Head of Scouting' ? 'Recruitment Leadership' : selectedRole === 'Scout' ? 'First Team Recruitment' : selectedRole === 'Fitness Coach' ? 'Strength & Conditioning' : selectedRole === 'Performance Analyst' ? 'First Team Analysis' : selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' ? 'First Team' : 'Senior Squad'
+  const assessmentAvailable = selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Academy Director' || selectedRole === 'Head of Scouting' || selectedRole === 'Scout' || selectedRole === 'Fitness Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Nutritionist'
+  const activeItems = selectedRole === 'Head Coach' ? headCoachItems : selectedRole === 'Assistant Coach' ? assistantCoachItems : selectedRole === 'Academy Director' ? academyDirectorItems : selectedRole === 'Head of Scouting' ? headOfScoutingItems : selectedRole === 'Scout' ? scoutItems : selectedRole === 'Fitness Coach' ? fitnessCoachItems : selectedRole === 'Performance Analyst' ? performanceAnalystItems : selectedRole === 'Nutritionist' ? nutritionistItems : items
+  const roleSubtitle = selectedRole === 'Academy Director' ? 'Youth & Academy' : selectedRole === 'Head of Scouting' ? 'Recruitment Leadership' : selectedRole === 'Scout' ? 'First Team Recruitment' : selectedRole === 'Fitness Coach' ? 'Strength & Conditioning' : selectedRole === 'Performance Analyst' ? 'First Team Analysis' : selectedRole === 'Nutritionist' ? 'Performance Nutrition' : selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' ? 'First Team' : 'Senior Squad'
 
   const [section, setSection] = useState<Section>('intro')
   const [answers, setAnswers] = useState<Record<string, Answer>>({})
@@ -2070,6 +2293,7 @@ function AssessmentContent() {
     const scoutKeywords = ['scout', 'scouting', 'player', 'technical', 'fit', 'risk', 'monitoring', 'market', 'value', 'recommendation']
     const fitnessCoachKeywords = ['load', 'fitness', 'fatigue', 'recovery', 'threshold', 'volume', 'intensity', 'availability', 'risk', 'readiness']
     const performanceAnalystKeywords = ['analysis', 'data', 'video', 'pattern', 'press', 'transition', 'opponent', 'space', 'evidence', 'tactical']
+    const nutritionistKeywords = ['nutrition', 'fueling', 'hydration', 'recovery', 'carbohydrate', 'protein', 'glycogen', 'meal', 'timing', 'performance']
 
     const keywords =
       selectedRole === 'Head Coach'
@@ -2086,7 +2310,9 @@ function AssessmentContent() {
                   ? fitnessCoachKeywords
                   : selectedRole === 'Performance Analyst'
                     ? performanceAnalystKeywords
-                    : professionalPlayerKeywords
+                    : selectedRole === 'Nutritionist'
+                      ? nutritionistKeywords
+                      : professionalPlayerKeywords
 
     const hasKey = keywords.some((w) => lower.includes(w))
 
@@ -2822,7 +3048,9 @@ function AssessmentContent() {
                           ? 'You need to write a short weekly load report for the coaching staff. The squad average is 8.3 km, weekly load is up 3%, three players show emerging fatigue, and Friday volume may need to be reduced before the match.'
                           : selectedRole === 'Performance Analyst'
                             ? 'You need to write a short opposition analysis memo for the coaching staff. The opponent uses a high line, a sweeping goalkeeper, compact midfield pressing and aggressive fullbacks.'
-                            : "After training today, you developed tightness in your left hamstring during the second half. It started when you made a sharp turning movement while sprinting. The sensation increased slightly during the cool-down. You want to report this to the physiotherapist before tomorrow's session."}
+                            : selectedRole === 'Nutritionist'
+                              ? 'You need to write a short match-day nutrition guide for a player. Include breakfast, pre-match fueling, hydration or electrolytes, half-time support and post-match recovery.'
+                              : "After training today, you developed tightness in your left hamstring during the second half. It started when you made a sharp turning movement while sprinting. The sensation increased slightly during the cool-down. You want to report this to the physiotherapist before tomorrow's session."}
             </p>
           </div>
 
@@ -2842,7 +3070,9 @@ function AssessmentContent() {
                           ? 'Write 3–5 sentences with the key load finding and recommendation.'
                           : selectedRole === 'Performance Analyst'
                             ? 'Write 3–5 sentences with the main tactical risk and recommended response.'
-                            : 'Write a message to the physiotherapist reporting this discomfort.'}
+                            : selectedRole === 'Nutritionist'
+                              ? 'Write 3–5 sentences with breakfast, pre-match fueling, hydration, half-time support and post-match recovery.'
+                              : 'Write a message to the physiotherapist reporting this discomfort.'}
             </p>
             <p className="mt-1 text-sm text-fei-text/50">Write 3–5 sentences in professional English.</p>
           </div>
@@ -2908,7 +3138,9 @@ function AssessmentContent() {
                           ? 'You need to explain your load position to the head coach. The match is important, current load is close to threshold, and you need to protect performance without sounding negative or overly cautious.'
                           : selectedRole === 'Performance Analyst'
                             ? 'You need to explain a player analysis to the coaching staff. The player has strong passing numbers, good spatial awareness and quick decisions when free, but his execution drops under pressure.'
-                            : 'You have just received feedback from the head coach about your last match. The coach said you were too slow in transition and needed to be more aggressive in pressing. You disagree slightly because the transition was fast and you were managing some discomfort.'}
+                            : selectedRole === 'Nutritionist'
+                              ? 'You need to explain to a player why you are adjusting his fueling plan. He has been reporting fatigue late in matches, and his hydration and pre-training timing are inconsistent.'
+                              : 'You have just received feedback from the head coach about your last match. The coach said you were too slow in transition and needed to be more aggressive in pressing. You disagree slightly because the transition was fast and you were managing some discomfort.'}
             </p>
           </div>
 
@@ -2928,7 +3160,9 @@ function AssessmentContent() {
                           ? 'Explain your load recommendation clearly, balancing match performance, risk, and availability.'
                           : selectedRole === 'Performance Analyst'
                             ? 'Explain the analysis clearly, separating technical quality from pressure execution and giving a coachable next step.'
-                            : 'Explain how you would respond to the coach professionally.'}
+                            : selectedRole === 'Nutritionist'
+                              ? 'Explain the adjustment clearly, linking timing, hydration, energy and realistic behavior change.'
+                              : 'Explain how you would respond to the coach professionally.'}
             </p>
             <p className="mt-1 text-sm text-fei-text/50">Recommended time: 45–60 seconds. Recording stops automatically at 75 seconds.</p>
           </div>
@@ -3148,7 +3382,14 @@ function AssessmentContent() {
                   B2: 'You communicate recruitment priorities clearly. Your pathway will develop market reasoning, profile-fit communication, and executive recommendations.',
                   C1: 'You demonstrate strategic recruitment leadership. Your pathway will refine board-level influence, high-stakes alignment, and long-term recruitment value communication.',
                 }
-              : selectedRole === 'Performance Analyst'
+              : selectedRole === 'Nutritionist'
+                ? {
+                    A2: 'You understand basic nutrition and recovery instructions. Your pathway will build confidence in explaining fueling, hydration and recovery routines.',
+                    B1: 'You can communicate common nutrition plans. Your pathway will strengthen timing, personalization and practical player behavior change.',
+                    B2: 'You explain performance nutrition decisions with professional clarity. Your pathway will develop cultural adaptation, adherence strategy and high-pressure player communication.',
+                    C1: 'You manage complex nutrition communication with precision and strategic awareness. Your pathway will refine multi-stakeholder decisions and long-term performance planning.',
+                  }
+                : selectedRole === 'Performance Analyst'
                 ? {
                     A2: 'You understand basic analysis information and key tactical terms. Your pathway will build confidence in explaining patterns clearly.',
                     B1: 'You can communicate common analysis points. Your pathway will strengthen evidence structure and tactical explanation.',
@@ -3200,7 +3441,14 @@ function AssessmentContent() {
                   B2: 'Your result shows strong professional recruitment communication. You can communicate priorities, profile fit, and market reality with clarity. Your next step is to develop sharper market reasoning and executive recommendation language under pressure.',
                   C1: 'Your result shows strategic recruitment leadership. You can frame fit, value, risk, and long-term squad sustainability for senior decision-makers. Your next step is refinement: board-level influence, high-stakes alignment, and institutional recruitment strategy.',
                 }
-              : selectedRole === 'Performance Analyst'
+              : selectedRole === 'Nutritionist'
+                ? {
+                    A2: 'Your result shows that you understand basic nutrition and recovery instructions. Your next step is to build confidence explaining fueling, hydration and recovery routines in simple football situations.',
+                    B1: 'Your result shows that you can communicate common nutrition plans. Your next step is to strengthen timing, personalization and practical player behavior-change language.',
+                    B2: 'Your result shows strong professional communication around performance nutrition decisions. Your next step is to develop cultural adaptation, adherence strategy and high-pressure player communication.',
+                    C1: 'Your result shows complex nutrition communication with precision and strategic awareness. Your next step is refinement: multi-stakeholder decisions, long-term performance planning and realistic behavior-change leadership.',
+                  }
+                : selectedRole === 'Performance Analyst'
                 ? {
                     A2: 'Your result shows that you understand basic analysis information and key tactical terms. Your next step is to build confidence explaining patterns clearly and connecting simple evidence to coaching decisions.',
                     B1: 'Your result shows that you can communicate common analysis points. Your next step is to strengthen evidence structure, tactical explanation, and clearer recommendations for coaching staff.',
@@ -3332,7 +3580,34 @@ function AssessmentContent() {
                     'Strategic risk and value framing',
                   ],
                 }
-              : selectedRole === 'Performance Analyst'
+              : selectedRole === 'Nutritionist'
+                ? {
+                    A2: [
+                      'Basic fueling language',
+                      'Hydration instructions',
+                      'Recovery meal timing',
+                      'Simple nutrition explanations',
+                    ],
+                    B1: [
+                      'Nutrient timing',
+                      'Player plan personalization',
+                      'Recovery routines',
+                      'Behavior-change support',
+                    ],
+                    B2: [
+                      'Cultural nutrition adaptation',
+                      'Dietary restriction support',
+                      'Hydration and fatigue explanation',
+                      'Adherence strategy',
+                    ],
+                    C1: [
+                      'Multi-stakeholder nutrition decisions',
+                      'Strategic performance planning',
+                      'Digestive tolerance communication',
+                      'Long-term behavior-change leadership',
+                    ],
+                  }
+                : selectedRole === 'Performance Analyst'
                 ? {
                     A2: [
                       'Basic tactical vocabulary',
