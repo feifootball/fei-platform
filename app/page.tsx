@@ -172,15 +172,28 @@ export default function Home() {
       </section>
 
       <section id="diagnostic" className="scroll-mt-32 px-6 pb-20">
-        <div className="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2">
-          <div className="rounded-3xl border border-fei-text/10 bg-fei-text/[0.025] p-8 sm:p-10">
-            <p className="text-6xl font-black tracking-tight text-fei-yellow sm:text-7xl">11</p>
-            <p className="mt-3 text-sm font-semibold uppercase tracking-[0.25em] text-fei-sky">Roles</p>
-          </div>
+        <div className="mx-auto max-w-7xl rounded-3xl border border-fei-text/10 bg-fei-text/[0.025] px-8 py-8 sm:px-10">
+          <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-fei-sky">
+                Football Communication Intelligence
+              </p>
+              <h2 className="mt-4 max-w-3xl text-2xl font-black leading-tight text-fei-text sm:text-3xl">
+                Built around the real communication demands of football.
+              </h2>
+            </div>
 
-          <div className="rounded-3xl border border-fei-text/10 bg-fei-text/[0.025] p-8 sm:p-10">
-            <p className="text-6xl font-black tracking-tight text-fei-yellow sm:text-7xl">126</p>
-            <p className="mt-3 text-sm font-semibold uppercase tracking-[0.25em] text-fei-sky">Scenarios</p>
+            <div className="flex flex-wrap gap-8 sm:gap-12">
+              <div>
+                <p className="text-4xl font-black text-fei-yellow sm:text-5xl">11</p>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.22em] text-fei-sky">Roles</p>
+              </div>
+
+              <div>
+                <p className="text-4xl font-black text-fei-yellow sm:text-5xl">126</p>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.22em] text-fei-sky">Scenarios</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
