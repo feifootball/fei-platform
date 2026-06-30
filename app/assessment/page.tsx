@@ -1280,7 +1280,7 @@ function AssessmentContent() {
             </div>
           </div>
 
-          <div className="mt-8 flex gap-4">
+          <div className="mt-8 flex flex-wrap items-center gap-4">
             <button
               onClick={() => setSection('intro')}
               className="rounded-full border border-fei-text/20 px-6 py-3 text-sm font-medium text-fei-text/60 transition hover:border-fei-text/40 hover:text-fei-text"
@@ -1293,7 +1293,7 @@ function AssessmentContent() {
                 setSection('warm-up')
               }}
               disabled={micPermission !== 'granted'}
-              className="flex-1 rounded-full bg-fei-yellow py-3 text-sm font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-yellow/20 disabled:text-fei-yellow/50 disabled:opacity-100"
+              className="rounded-full bg-fei-yellow px-10 py-3 text-sm font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-yellow/20 disabled:text-fei-yellow/50 disabled:opacity-100"
             >
               {micPermission === 'granted' ? 'Start assessment →' : 'Enable microphone to start'}
             </button>
