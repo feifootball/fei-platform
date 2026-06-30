@@ -18,7 +18,7 @@ const translations = {
       { value: "4", label: "CEFR Levels" },
       { value: "504", label: "Unique Tasks" },
     ],
-    how_title: "How FEI Works",
+    how_title: "How FEI works",
     how_subtitle: "A focused process for football professionals who need role-specific communication.",
     steps: [
       { step: "01", title: "Diagnose", description: "Find your starting level with a short assessment built around your role." },
@@ -180,8 +180,9 @@ export default function Home() {
             <h2 className="text-3xl font-black tracking-tight text-fei-text sm:text-4xl">
               {t.how_title.includes('FEI') ? (
                 <>
-                  {t.how_title.replace('FEI', '')}
+                  {t.how_title.split('FEI')[0]}
                   <span className="text-fei-sky">FEI</span>
+                  {t.how_title.split('FEI').slice(1).join('FEI')}
                 </>
               ) : (
                 t.how_title
@@ -229,14 +230,16 @@ export default function Home() {
 
       <section id="roles" className="scroll-mt-28 border-t border-fei-text/10 px-6 py-16 sm:py-20">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+          <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
             <div>
               <p className="mb-3 text-xs font-bold uppercase tracking-[0.28em] text-fei-sky">
                 Role Intelligence
               </p>
+
               <h2 className="text-3xl font-black tracking-tight text-fei-text sm:text-4xl">
                 Built for every role in the club.
               </h2>
+
               <p className="mt-4 max-w-xl text-base leading-7 text-fei-text/60 sm:text-lg">
                 <span className="font-semibold text-fei-sky">FEI</span> adapts communication training to the decisions, pressure, and language each football professional faces.
               </p>
@@ -249,45 +252,53 @@ export default function Home() {
                   126 Scenarios
                 </span>
               </div>
+
+              <a
+                href="/suggest-role"
+                className="mt-8 inline-flex rounded-full border border-fei-text/15 px-5 py-2.5 text-sm font-bold text-fei-text/75 transition hover:border-fei-yellow/40 hover:bg-fei-yellow/[0.08] hover:text-fei-yellow"
+              >
+                {lang === 'en' ? "Can't find your role? Suggest one" : '¿No encuentras tu rol? Sugiérelo'}
+              </a>
             </div>
 
-            <div className="relative overflow-hidden rounded-[2rem] border border-fei-text/10 bg-fei-text/[0.025] p-5 sm:p-6">
-              <div className="absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full border border-fei-sky/10" />
-              <div className="absolute left-1/2 top-1/2 h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full border border-fei-yellow/10" />
-              <div className="absolute left-1/2 top-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full bg-fei-yellow/[0.06] blur-2xl" />
-
-              <div className="relative grid gap-3 sm:grid-cols-3">
-                {[
-                  'Professional Player',
-                  'Head Coach',
-                  'Assistant Coach',
-                  'Scout',
-                  'Head of Scouting',
-                  'Academy Director',
-                  'Performance Analyst',
-                  'Fitness Coach',
-                  'Physiotherapist',
-                  'Sports Psychologist',
-                  'Nutritionist',
-                ].map((role, index) => (
-                  <div
-                    key={role}
-                    className={`group relative rounded-2xl border p-4 transition duration-300 hover:-translate-y-1 ${
-                      index === 0 || index === 1 || index === 6
-                        ? 'border-fei-yellow/25 bg-fei-yellow/[0.06]'
-                        : 'border-fei-text/10 bg-fei-bg/35'
-                    }`}
-                  >
-                    <div className="mb-4 flex items-center justify-between">
-                      <span className="text-[10px] font-black uppercase tracking-[0.24em] text-fei-sky/70">
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
-                      <span className="h-2 w-2 rounded-full bg-fei-yellow shadow-[0_0_18px_rgba(241,196,15,0.35)]" />
-                    </div>
-                    <p className="text-sm font-bold leading-5 text-fei-text">{role}</p>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                { role: 'Professional Player', insight: 'Interviews, teammates, pressure moments.' },
+                { role: 'Head Coach', insight: 'Tactics, media, staff leadership.' },
+                { role: 'Assistant Coach', insight: 'Session delivery and player feedback.' },
+                { role: 'Scout', insight: 'Reports, observations, player profiles.' },
+                { role: 'Head of Scouting', insight: 'Strategy, recruitment, decision briefs.' },
+                { role: 'Academy Director', insight: 'Development, parents, staff alignment.' },
+                { role: 'Performance Analyst', insight: 'Data, clips, tactical communication.' },
+                { role: 'Fitness Coach', insight: 'Load, recovery, physical plans.' },
+                { role: 'Physiotherapist', insight: 'Injury updates and return-to-play.' },
+                { role: 'Sports Psychologist', insight: 'Confidence, pressure, mental routines.' },
+                { role: 'Nutritionist', insight: 'Meal plans, habits, performance fuel.' },
+              ].map((item, index) => (
+                <article
+                  key={item.role}
+                  className="group relative min-h-[150px] overflow-hidden rounded-3xl border border-fei-text/10 bg-fei-text/[0.025] p-5 transition duration-300 hover:-translate-y-1 hover:border-fei-yellow/35 hover:bg-fei-yellow/[0.045] hover:shadow-[0_18px_55px_rgba(0,0,0,0.18)]"
+                >
+                  <div className="pointer-events-none absolute -right-1 -top-3 text-6xl font-black leading-none text-fei-sky/[0.11] transition duration-300 group-hover:text-fei-yellow/[0.22] sm:text-7xl">
+                    {String(index + 1).padStart(2, '0')}
                   </div>
-                ))}
-              </div>
+
+                  <div className="relative z-10 flex h-full flex-col justify-between">
+                    <div>
+                      <p className="mb-5 text-xs font-black uppercase tracking-[0.24em] text-fei-sky/70">
+                        Role {String(index + 1).padStart(2, '0')}
+                      </p>
+                      <h3 className="max-w-[12rem] text-base font-black leading-5 text-fei-text">
+                        {item.role}
+                      </h3>
+                    </div>
+
+                    <p className="mt-5 translate-y-2 text-sm leading-5 text-fei-text/0 transition duration-300 group-hover:translate-y-0 group-hover:text-fei-text/65">
+                      {item.insight}
+                    </p>
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
         </div>

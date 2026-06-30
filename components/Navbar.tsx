@@ -80,10 +80,10 @@ export function Navbar() {
   const links = navLinks[lang];
 
   const navLinkClass = (sectionId: string) =>
-    `text-sm font-medium transition ${
+    `inline-flex rounded-full px-2.5 py-1.5 text-[15px] font-semibold transition duration-300 ${
       activeSection === sectionId
-        ? "text-fei-yellow"
-        : "text-fei-text/55 hover:text-fei-text"
+        ? "bg-fei-yellow/[0.09] text-fei-yellow shadow-[0_0_22px_rgba(241,196,15,0.18)]"
+        : "text-fei-text/60 hover:bg-fei-text/[0.04] hover:text-fei-text"
     }`;
 
   return (
@@ -94,7 +94,7 @@ export function Navbar() {
         </a>
 
         <div className="hidden items-center md:flex">
-          <div className="flex items-center gap-7">
+          <div className="flex items-center gap-4">
             {links.map((link) => (
               <a key={link.label} href={link.href} className={navLinkClass(link.sectionId)}>
                 {link.label}
