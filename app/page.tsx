@@ -165,17 +165,30 @@ export default function Home() {
             )}
           </div>
 
-          <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-semibold uppercase tracking-[0.2em] text-fei-sky/80">
-            <span>11 Roles</span>
-            <span className="text-fei-yellow">•</span>
-            <span>126 Scenarios</span>
-            <span className="text-fei-yellow">•</span>
-            <span>504 Real Tasks</span>
-          </div>
-
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <a href="/register" className="inline-flex items-center justify-center rounded-full bg-fei-yellow px-8 py-3 font-semibold text-fei-bg transition hover:bg-fei-yellow/90">{t.cta_start}</a>
-            <a href="#for-clubs" className="inline-flex items-center justify-center rounded-full border border-fei-sky/50 px-8 py-3 font-semibold text-fei-sky transition hover:bg-fei-sky/10">For Clubs</a>
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 pb-14">
+        <div className="mx-auto max-w-7xl rounded-3xl border border-fei-text/10 bg-fei-text/[0.025] p-6 sm:p-7">
+          <div className="grid gap-4 md:grid-cols-4">
+            {[
+              { step: '01', title: lang === 'en' ? 'Choose your role' : 'Elige tu rol', detail: '11 football profiles' },
+              { step: '02', title: lang === 'en' ? 'Take the diagnostic' : 'Haz el diagnóstico', detail: '10–12 minutes' },
+              { step: '03', title: lang === 'en' ? 'Get your pathway' : 'Recibe tu ruta', detail: 'A2 → C1' },
+              { step: '04', title: lang === 'en' ? 'Train with context' : 'Entrena con contexto', detail: '504 real tasks' },
+            ].map((item) => (
+              <article key={item.step} className="relative rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-5">
+                <div className="mb-5 flex items-center justify-between">
+                  <span className="text-xs font-bold uppercase tracking-[0.25em] text-fei-sky">{item.step}</span>
+                  <span className="h-2 w-2 rounded-full bg-fei-yellow" />
+                </div>
+                <h3 className="text-base font-bold text-fei-text">{item.title}</h3>
+                <p className="mt-2 text-sm text-fei-text/45">{item.detail}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>

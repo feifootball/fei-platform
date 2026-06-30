@@ -54,44 +54,62 @@ export function Navbar() {
           <img src="/logo.svg" alt="FEI" className="h-9 w-auto" />
         </a>
 
-        <div className="hidden items-center gap-7 md:flex">
-          {links.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="text-sm font-medium text-fei-text/55 transition hover:text-fei-text"
+        <div className="hidden items-center md:flex">
+          <div className="flex items-center gap-7">
+            {links.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="text-sm font-medium text-fei-text/55 transition hover:text-fei-text"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+
+          <div className="ml-8 flex items-center gap-3">
+            <button
+              onClick={toggleLang}
+              className="inline-flex items-center gap-2 rounded-full border border-fei-text/20 px-4 py-2 text-sm font-semibold text-fei-text/60 transition hover:border-fei-text/40 hover:text-fei-text"
+              aria-label="Change language"
             >
-              {link.label}
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-fei-sky" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M3 12h18" />
+                <path d="M12 3c2.2 2.4 3.3 5.4 3.3 9S14.2 18.6 12 21" />
+                <path d="M12 3c-2.2 2.4-3.3 5.4-3.3 9S9.8 18.6 12 21" />
+              </svg>
+              {lang === 'en' ? 'ES' : 'EN'}
+            </button>
+
+            <a
+              href="/login"
+              className="rounded-full border border-fei-sky/45 px-5 py-2 text-sm font-semibold text-fei-sky transition hover:bg-fei-sky/10"
+            >
+              {lang === 'en' ? 'Login' : 'Ingresar'}
             </a>
-          ))}
 
-          <button
-            onClick={toggleLang}
-            className="rounded-full border border-fei-text/20 px-4 py-2 text-sm font-semibold text-fei-text/60 transition hover:border-fei-text/40 hover:text-fei-text"
-          >
-            {lang === 'en' ? 'ES' : 'EN'}
-          </button>
-
-          <a
-            href="/login"
-            className="rounded-full border border-fei-sky/45 px-5 py-2 text-sm font-semibold text-fei-sky transition hover:bg-fei-sky/10"
-          >
-            {lang === 'en' ? 'Login' : 'Ingresar'}
-          </a>
-
-          <a
-            href="/register"
-            className="rounded-full bg-fei-yellow px-5 py-2 text-sm font-bold text-fei-bg transition hover:bg-fei-yellow/90"
-          >
-            {lang === 'en' ? 'Register' : 'Registrarse'}
-          </a>
+            <a
+              href="/register"
+              className="rounded-full bg-fei-yellow px-5 py-2 text-sm font-bold text-fei-bg transition hover:bg-fei-yellow/90"
+            >
+              {lang === 'en' ? 'Register' : 'Registrarse'}
+            </a>
+          </div>
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
           <button
             onClick={toggleLang}
-            className="rounded-full border border-fei-text/20 px-3 py-1.5 text-xs font-bold text-fei-text/60 transition hover:text-fei-text"
+            className="inline-flex items-center gap-1.5 rounded-full border border-fei-text/20 px-3 py-1.5 text-xs font-bold text-fei-text/60 transition hover:text-fei-text"
+            aria-label="Change language"
           >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 text-fei-sky" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M3 12h18" />
+              <path d="M12 3c2.2 2.4 3.3 5.4 3.3 9S14.2 18.6 12 21" />
+              <path d="M12 3c-2.2 2.4-3.3 5.4-3.3 9S9.8 18.6 12 21" />
+            </svg>
             {lang === 'en' ? 'ES' : 'EN'}
           </button>
 
