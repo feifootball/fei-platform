@@ -74,14 +74,14 @@ export function Navbar() {
 
           <a
             href="/login"
-            className="text-sm font-medium text-fei-text/55 transition hover:text-fei-text"
+            className="rounded-full border border-fei-sky/45 px-5 py-2 text-sm font-semibold text-fei-sky transition hover:bg-fei-sky/10"
           >
             {lang === 'en' ? 'Login' : 'Ingresar'}
           </a>
 
           <a
             href="/register"
-            className="rounded-full border border-fei-text/20 px-5 py-2 text-sm font-medium text-fei-text/70 transition hover:border-fei-text/40 hover:text-fei-text"
+            className="rounded-full bg-fei-yellow px-5 py-2 text-sm font-bold text-fei-bg transition hover:bg-fei-yellow/90"
           >
             {lang === 'en' ? 'Register' : 'Registrarse'}
           </a>
@@ -135,7 +135,7 @@ export function Navbar() {
               <a
                 href="/login"
                 onClick={() => setMenuOpen(false)}
-                className="flex-1 rounded-full border border-fei-sky/40 px-4 py-3 text-center text-sm font-semibold text-fei-sky"
+                className="flex-1 rounded-full border border-fei-sky/45 px-4 py-3 text-center text-sm font-semibold text-fei-sky"
               >
                 {lang === 'en' ? 'Login' : 'Ingresar'}
               </a>

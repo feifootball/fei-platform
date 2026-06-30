@@ -165,8 +165,17 @@ export default function Home() {
             )}
           </div>
 
+          <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-semibold uppercase tracking-[0.2em] text-fei-sky/80">
+            <span>11 Roles</span>
+            <span className="text-fei-yellow">•</span>
+            <span>126 Scenarios</span>
+            <span className="text-fei-yellow">•</span>
+            <span>504 Real Tasks</span>
+          </div>
+
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <a href="/register" className="inline-flex items-center justify-center rounded-full bg-fei-yellow px-8 py-3 font-semibold text-fei-bg transition hover:bg-fei-yellow/90">{t.cta_start}</a>
+            <a href="#for-clubs" className="inline-flex items-center justify-center rounded-full border border-fei-sky/50 px-8 py-3 font-semibold text-fei-sky transition hover:bg-fei-sky/10">For Clubs</a>
           </div>
         </div>
       </section>
