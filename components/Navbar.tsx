@@ -89,9 +89,8 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-fei-text/10 bg-fei-bg/90 backdrop-blur-xl">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <a href="/" className="flex items-start">
+        <a href="/" className="flex items-center">
           <img src="/logo.svg" alt="FEI" className="h-9 w-auto" />
-          <span className="ml-1 mt-0 text-[10px] font-bold leading-none text-fei-sky">™</span>
         </a>
 
         <div className="hidden items-center md:flex">
