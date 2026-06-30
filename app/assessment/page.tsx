@@ -1356,6 +1356,229 @@ const scoutItems = {
 }
 
 
+
+const fitnessCoachItems = {
+  warmup: [
+    {
+      id: 'w1',
+      label: 'Item 1 — Primary Communication Focus',
+      context: 'You are completing the FEI diagnostic for the Fitness Coach — Strength & Conditioning role.',
+      question: 'Which communication situation is most central to your role?',
+      options: [
+        'A. Designing opposition analysis reports for the coaching staff.',
+        'B. Explaining contract priorities to the recruitment department.',
+        'C. Managing public comments after a difficult result.',
+        'D. Managing physical load and reducing injury risk.',
+      ],
+      correct: 'D',
+    },
+    {
+      id: 'w2',
+      label: 'Item 2 — Communication Priority',
+      context: 'The diagnostic personalizes the pathway based on your main communication demand.',
+      question: 'Which communication task matters most in your daily work?',
+      options: [
+        'A. Presenting tactical changes to the full squad.',
+        'B. Communicating load data clearly to coaches.',
+        'C. Writing formal transfer recommendations.',
+        'D. Handling media questions about selection.',
+      ],
+      correct: 'B',
+    },
+  ],
+  reading: [
+    {
+      id: 'r1',
+      level: 'A2',
+      label: 'Item 3 — Training Load Summary',
+      context: 'Daily report:\\n\\n"The team average was 8.2 km. Peak speed reached 32 kph. Two players exceeded their weekly high-speed threshold. Monitor both for soreness tomorrow."',
+      question: 'What should the fitness staff do tomorrow?',
+      options: [
+        'A. Monitor the two players who exceeded their threshold.',
+        'B. Reduce load for the whole squad immediately.',
+        'C. Focus only on the player with the highest speed.',
+        'D. Increase sprint volume because the team average is stable.',
+      ],
+      correct: 'A',
+    },
+    {
+      id: 'r2',
+      level: 'B1',
+      label: 'Item 4 — Fatigue Trend',
+      context: 'Player update:\\n\\n"High-intensity load has been trending up this week. Player A’s fatigue markers are down 12%, and his wellness score is 6/10. Reduce his Friday volume and monitor readiness for the weekend."',
+      question: 'What is the recommended action?',
+      options: [
+        'A. Remove Player A from the weekend squad immediately.',
+        'B. Increase Friday volume to test his readiness.',
+        'C. Reduce Friday volume and monitor weekend readiness.',
+        'D. Ignore the fatigue trend because wellness is above 5/10.',
+      ],
+      correct: 'C',
+    },
+    {
+      id: 'r3',
+      level: 'B2',
+      label: 'Item 5 — Tactical Demand vs Medical Risk',
+      context: 'Training plan note:\\n\\n"The head coach wants high-intensity work from Monday to Wednesday. Current accumulated load is already at 85% of the safe weekly threshold. Adding another full high-intensity day pushes several players above 110%. We need to protect tactical intensity while adjusting the structure."',
+      question: 'What is the main communication challenge?',
+      options: [
+        'A. Convincing the coach to cancel all tactical training.',
+        'B. Balancing tactical needs with physical risk management.',
+        'C. Explaining that the weekly threshold is not relevant.',
+        'D. Prioritizing volume because intensity has already been planned.',
+      ],
+      correct: 'B',
+    },
+  ],
+  listening: [
+    {
+      id: 'l1',
+      level: 'A2',
+      label: 'Item 6 — Recovery Protocol',
+      script: 'Post-match recovery today is simple: walk first, stretch after that, then ice. Within 30 minutes, take carbohydrates and start hydration. Replace 1.5 liters for each kilo lost.',
+      question: 'What is the speaker describing?',
+      options: [
+        'A. A sprint preparation routine before training.',
+        'B. A nutrition plan for matchday breakfast.',
+        'C. A strength session after the match.',
+        'D. A post-match recovery sequence.',
+      ],
+      correct: 'D',
+    },
+    {
+      id: 'l2',
+      level: 'B1',
+      label: 'Item 7 — Return-to-Play Progression',
+      script: 'The player has completed six weeks of rehab and reached 70% intensity. We should use a graduated return: 30 minutes in the friendly, assess response, then consider 60 minutes next match.',
+      question: 'What is the return plan?',
+      options: [
+        'A. Full match immediately because rehab is complete.',
+        'B. One more week of full rest before any football.',
+        'C. Gradual minutes with assessment between steps.',
+        'D. Training only until he reaches 100% intensity.',
+      ],
+      correct: 'C',
+    },
+    {
+      id: 'l3',
+      level: 'B2',
+      label: 'Item 8 — Seasonal Risk Communication',
+      script: 'The player reports fatigue, wellness is low, and the match is important. The coach needs him, but medical risk is elevated. We should frame this calmly: it is not about one match, it is about protecting availability across the season.',
+      question: 'What is the best summary of the message?',
+      options: [
+        'A. Use evidence calmly and frame the decision around seasonal availability.',
+        'B. Prioritize the match because the coach needs the player.',
+        'C. Hold the player out without explaining the evidence.',
+        'D. Tell the player the risk is too high to train again this month.',
+      ],
+      correct: 'A',
+    },
+  ],
+  vocabulary: [
+    {
+      id: 'v1',
+      level: 'A2',
+      label: 'Item 9 — Heart Rate Recovery',
+      context: 'The fitness report states: “Heart rate recovery was slower than usual after the final running block.”',
+      question: 'What does heart rate recovery refer to?',
+      options: [
+        'A. The highest heart rate reached during exercise.',
+        'B. How quickly the heart rate returns toward normal after exercise.',
+        'C. The total number of sprints completed in the session.',
+        'D. The amount of water lost during high-intensity work.',
+      ],
+      correct: 'B',
+    },
+    {
+      id: 'v2',
+      level: 'B1',
+      label: 'Item 10 — Load Management',
+      context: 'The coach asks why the staff is discussing load management before the next match.',
+      question: 'What does load management mean?',
+      options: [
+        'A. Choosing which players start based only on tactical preference.',
+        'B. Increasing training volume to improve match fitness quickly.',
+        'C. Recording all gym exercises after each training session.',
+        'D. Controlling physical demand to improve performance and reduce injury risk.',
+      ],
+      correct: 'D',
+    },
+    {
+      id: 'v3',
+      level: 'B2',
+      label: 'Item 11 — Acute to Chronic Ratio',
+      context: 'The report mentions: “His acute to chronic ratio is rising after three intense sessions.”',
+      question: 'What does this ratio compare?',
+      options: [
+        'A. Sprint speed with total passing accuracy.',
+        'B. Current wellness score with sleep quality.',
+        'C. Recent workload with the player’s average longer-term workload.',
+        'D. Injury history with current match availability.',
+      ],
+      correct: 'C',
+    },
+  ],
+  functional: [
+    {
+      id: 'f1',
+      level: 'B1',
+      label: 'Item 12 — Explaining an Individual Plan',
+      context: 'A player asks why his plan is lighter today. His weekly total is 18 km, with 4 km high-intensity work today, 5 km moderate work tomorrow and two lighter days before the match.',
+      question: 'Which explanation is clearest?',
+      options: [
+        'A. You have 18 km this week. Today is high intensity, tomorrow is moderate, then two lighter days to recover before the match.',
+        'B. Your plan is lighter because the match matters and we do not want unnecessary questions.',
+        'C. You already worked enough this week, so we are lowering everything until matchday.',
+        'D. The data is complicated, but the main idea is that you should trust the plan.',
+      ],
+      correct: 'A',
+    },
+    {
+      id: 'f2',
+      level: 'B2',
+      label: 'Item 13 — Player Resists Recovery',
+      context: 'A player says he does not want a recovery day because he feels he must prove fitness before selection.',
+      question: 'What is the best response?',
+      options: [
+        'A. If you want to prove fitness, we can increase today and see how you react.',
+        'B. The data shows fatigue. One recovery day now protects you from losing more time later.',
+        'C. Selection is not your decision, so the recovery plan should not be discussed.',
+        'D. You probably feel fine, but the medical staff should decide without you.',
+      ],
+      correct: 'B',
+    },
+    {
+      id: 'f3',
+      level: 'B2',
+      label: 'Item 14 — Coach Pressure Before Match',
+      context: 'The head coach wants to add another high-intensity block because the match is important. Current load is at 88% of the safe threshold; the extra block would push several players above 100%.',
+      question: 'What should you say?',
+      options: [
+        'A. The match is important, so we should accept the risk for one week.',
+        'B. The safest option is to remove intensity completely before the match.',
+        'C. We can add volume if players feel mentally ready for the session.',
+        'D. Keep intensity, but reduce volume so quality stays high without crossing the threshold.',
+      ],
+      correct: 'D',
+    },
+    {
+      id: 'f4',
+      level: 'C1',
+      label: 'Item 15 — Institutional Pressure',
+      context: 'A senior executive says: “We need our best players available now. Can’t we push through and manage the consequences later?”',
+      question: 'Which response is most strategic?',
+      options: [
+        'A. If the institution wants risk, we can document it and push the players.',
+        'B. The safest answer is to stop high-intensity work until the schedule improves.',
+        'C. Our role is to maximize availability intelligently, not trade short-term minutes for longer absences.',
+        'D. The coach should decide because performance responsibility sits with the first team.',
+      ],
+      correct: 'C',
+    },
+  ],
+}
+
+
 const insights = {
   A2: {
     level: 'A2',
@@ -1550,9 +1773,9 @@ function AssessmentContent() {
   const supabase = createClient()
 
   const selectedRole = searchParams.get('role') || 'Professional Player'
-  const assessmentAvailable = selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Academy Director' || selectedRole === 'Head of Scouting' || selectedRole === 'Scout'
-  const activeItems = selectedRole === 'Head Coach' ? headCoachItems : selectedRole === 'Assistant Coach' ? assistantCoachItems : selectedRole === 'Academy Director' ? academyDirectorItems : selectedRole === 'Head of Scouting' ? headOfScoutingItems : selectedRole === 'Scout' ? scoutItems : items
-  const roleSubtitle = selectedRole === 'Academy Director' ? 'Youth & Academy' : selectedRole === 'Head of Scouting' ? 'Recruitment Leadership' : selectedRole === 'Scout' ? 'First Team Recruitment' : selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' ? 'First Team' : 'Senior Squad'
+  const assessmentAvailable = selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Academy Director' || selectedRole === 'Head of Scouting' || selectedRole === 'Scout' || selectedRole === 'Fitness Coach'
+  const activeItems = selectedRole === 'Head Coach' ? headCoachItems : selectedRole === 'Assistant Coach' ? assistantCoachItems : selectedRole === 'Academy Director' ? academyDirectorItems : selectedRole === 'Head of Scouting' ? headOfScoutingItems : selectedRole === 'Scout' ? scoutItems : selectedRole === 'Fitness Coach' ? fitnessCoachItems : items
+  const roleSubtitle = selectedRole === 'Academy Director' ? 'Youth & Academy' : selectedRole === 'Head of Scouting' ? 'Recruitment Leadership' : selectedRole === 'Scout' ? 'First Team Recruitment' : selectedRole === 'Fitness Coach' ? 'Strength & Conditioning' : selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' ? 'First Team' : 'Senior Squad'
 
   const [section, setSection] = useState<Section>('intro')
   const [answers, setAnswers] = useState<Record<string, Answer>>({})
@@ -1622,6 +1845,7 @@ function AssessmentContent() {
     const academyDirectorKeywords = ['academy', 'readiness', 'standards', 'development', 'pathway', 'u16', 'progress', 'consistency', 'first-team']
     const headOfScoutingKeywords = ['recruitment', 'profile', 'market', 'shortlist', 'budget', 'strategy', 'scouts', 'fit', 'value', 'q4']
     const scoutKeywords = ['scout', 'scouting', 'player', 'technical', 'fit', 'risk', 'monitoring', 'market', 'value', 'recommendation']
+    const fitnessCoachKeywords = ['load', 'fitness', 'fatigue', 'recovery', 'threshold', 'volume', 'intensity', 'availability', 'risk', 'readiness']
 
     const keywords =
       selectedRole === 'Head Coach'
@@ -1634,7 +1858,9 @@ function AssessmentContent() {
               ? headOfScoutingKeywords
               : selectedRole === 'Scout'
                 ? scoutKeywords
-                : professionalPlayerKeywords
+                : selectedRole === 'Fitness Coach'
+                  ? fitnessCoachKeywords
+                  : professionalPlayerKeywords
 
     const hasKey = keywords.some((w) => lower.includes(w))
 
@@ -2366,7 +2592,9 @@ function AssessmentContent() {
                       ? 'You need to write a short Q4 recruitment memo for leadership. Include priority profiles, strategic logic, and the next decision step.'
                       : selectedRole === 'Scout'
                         ? 'You need to write a short scout report recommendation for a technically strong player with inconsistent form. Include profile fit, risk, and next step.'
-                        : "After training today, you developed tightness in your left hamstring during the second half. It started when you made a sharp turning movement while sprinting. The sensation increased slightly during the cool-down. You want to report this to the physiotherapist before tomorrow's session."}
+                        : selectedRole === 'Fitness Coach'
+                          ? 'You need to write a short weekly load report for the coaching staff. The squad average is 8.3 km, weekly load is up 3%, three players show emerging fatigue, and Friday volume may need to be reduced before the match.'
+                          : "After training today, you developed tightness in your left hamstring during the second half. It started when you made a sharp turning movement while sprinting. The sensation increased slightly during the cool-down. You want to report this to the physiotherapist before tomorrow's session."}
             </p>
           </div>
 
@@ -2382,7 +2610,9 @@ function AssessmentContent() {
                       ? 'Write 3–5 sentences for leadership with priority profiles, strategic logic, and next decision step.'
                       : selectedRole === 'Scout'
                         ? 'Write 3–5 sentences with player quality, profile fit, risk, and recommended next step.'
-                        : 'Write a message to the physiotherapist reporting this discomfort.'}
+                        : selectedRole === 'Fitness Coach'
+                          ? 'Write 3–5 sentences with the key load finding and recommendation.'
+                          : 'Write a message to the physiotherapist reporting this discomfort.'}
             </p>
             <p className="mt-1 text-sm text-fei-text/50">Write 3–5 sentences in professional English.</p>
           </div>
@@ -2444,7 +2674,9 @@ function AssessmentContent() {
                       ? 'The board prefers big-name signings, but your recruitment model prioritizes system fit, early identification, and sustainable value.'
                       : selectedRole === 'Scout'
                         ? 'You need to defend a recommendation to the Director of Recruitment. The player is technical, affordable now, and likely to become more expensive, but there are consistency concerns.'
-                        : 'You have just received feedback from the head coach about your last match. The coach said you were too slow in transition and needed to be more aggressive in pressing. You disagree slightly because the transition was fast and you were managing some discomfort.'}
+                        : selectedRole === 'Fitness Coach'
+                          ? 'You need to explain your load position to the head coach. The match is important, current load is close to threshold, and you need to protect performance without sounding negative or overly cautious.'
+                          : 'You have just received feedback from the head coach about your last match. The coach said you were too slow in transition and needed to be more aggressive in pressing. You disagree slightly because the transition was fast and you were managing some discomfort.'}
             </p>
           </div>
 
@@ -2460,7 +2692,9 @@ function AssessmentContent() {
                       ? 'Defend your recruitment strategy clearly and professionally to the board.'
                       : selectedRole === 'Scout'
                         ? 'Defend your recommendation clearly, including tactical fit, value, timing, and risk.'
-                        : 'Explain how you would respond to the coach professionally.'}
+                        : selectedRole === 'Fitness Coach'
+                          ? 'Explain your load recommendation clearly, balancing match performance, risk, and availability.'
+                          : 'Explain how you would respond to the coach professionally.'}
             </p>
             <p className="mt-1 text-sm text-fei-text/50">Recommended time: 45–60 seconds. Recording stops automatically at 75 seconds.</p>
           </div>
@@ -2680,7 +2914,14 @@ function AssessmentContent() {
                   B2: 'You communicate recruitment priorities clearly. Your pathway will develop market reasoning, profile-fit communication, and executive recommendations.',
                   C1: 'You demonstrate strategic recruitment leadership. Your pathway will refine board-level influence, high-stakes alignment, and long-term recruitment value communication.',
                 }
-              : selectedRole === 'Scout'
+              : selectedRole === 'Fitness Coach'
+                ? {
+                    A2: 'You understand basic fitness and recovery information. Your pathway will build confidence in explaining load, readiness, and simple risk decisions.',
+                    B1: 'You can communicate common load and recovery decisions. Your pathway will strengthen structure, data explanation, and coach-facing clarity.',
+                    B2: 'You communicate workload and availability with professional clarity. Your pathway will develop pressure communication, risk framing, and strategic influence.',
+                    C1: 'You demonstrate strategic performance communication. Your pathway will refine institutional influence, availability planning, and high-stakes load decisions.',
+                  }
+                : selectedRole === 'Scout'
                 ? {
                     A2: 'You can understand basic scouting information and identify simple player strengths. Your pathway will build confidence in writing clearer observations and recommendations.',
                     B1: 'You can manage common scouting communication and explain routine player observations. Your pathway will strengthen evidence, comparison, and recommendation language.',
@@ -2718,7 +2959,14 @@ function AssessmentContent() {
                   B2: 'Your result shows strong professional recruitment communication. You can communicate priorities, profile fit, and market reality with clarity. Your next step is to develop sharper market reasoning and executive recommendation language under pressure.',
                   C1: 'Your result shows strategic recruitment leadership. You can frame fit, value, risk, and long-term squad sustainability for senior decision-makers. Your next step is refinement: board-level influence, high-stakes alignment, and institutional recruitment strategy.',
                 }
-              : selectedRole === 'Scout'
+              : selectedRole === 'Fitness Coach'
+                ? {
+                    A2: 'Your result shows that you understand basic fitness and recovery information. Your next step is to build confidence explaining load, readiness, and simple risk decisions to players and staff.',
+                    B1: 'Your result shows that you can communicate common load and recovery decisions. Your next step is to strengthen structure, data explanation, and coach-facing clarity when discussing workload and readiness.',
+                    B2: 'Your result shows strong professional communication around workload, readiness, and risk. Your next step is to develop pressure communication, risk framing, and strategic influence with coaches and leadership.',
+                    C1: 'Your result shows strategic performance communication. You can frame short-term performance, injury risk, and squad availability with maturity. Your next step is refinement: institutional influence, availability planning, and high-stakes load decisions.',
+                  }
+                : selectedRole === 'Scout'
                 ? {
                     A2: 'Your result shows that you can understand basic scouting information and identify simple player strengths. Your next step is to build clearer observation language, stronger report structure, and more confident recommendation writing.',
                     B1: 'Your result shows that you can manage common scouting communication and explain routine player observations. Your next step is to strengthen evidence, comparison language, and clearer recommendation structure.',
@@ -2836,7 +3084,34 @@ function AssessmentContent() {
                     'Strategic risk and value framing',
                   ],
                 }
-              : selectedRole === 'Scout'
+              : selectedRole === 'Fitness Coach'
+                ? {
+                    A2: [
+                      'Basic recovery communication',
+                      'Load vocabulary foundations',
+                      'Simple readiness explanations',
+                      'Player support language',
+                    ],
+                    B1: [
+                      'Coach-facing load reports',
+                      'Recovery and return-to-play communication',
+                      'Wellness data explanation',
+                      'Clear workload recommendations',
+                    ],
+                    B2: [
+                      'Risk and availability framing',
+                      'Threshold communication',
+                      'Pressure conversations with coaches',
+                      'Quality over volume language',
+                    ],
+                    C1: [
+                      'Strategic performance protection',
+                      'Institutional availability planning',
+                      'High-stakes load decisions',
+                      'Executive-level risk communication',
+                    ],
+                  }
+                : selectedRole === 'Scout'
                 ? {
                     A2: [
                       'Basic player observation',
