@@ -51,7 +51,7 @@ export function Navbar() {
     <header className="border-b border-fei-text/10 bg-fei-bg/95">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <a href="/" className="flex items-center">
-          <img src="/logo.svg" alt="FEI" className="h-7 w-auto" />
+          <img src="/logo.svg" alt="FEI" className="h-9 w-auto" />
         </a>
 
         <div className="hidden items-center gap-7 md:flex">

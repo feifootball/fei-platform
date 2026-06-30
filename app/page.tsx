@@ -142,16 +142,66 @@ export default function Home() {
     <div className="flex min-h-full flex-col">
       <Navbar />
 
-      <section className="relative overflow-hidden px-6 py-20 sm:py-28 lg:py-32">
-        <div className="mx-auto max-w-7xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-fei-sky">{t.tagline}</p>
-          <h1 className="mt-6 text-5xl font-black leading-[1.05] text-fei-text sm:text-6xl lg:text-7xl xl:text-8xl">
-            Football English <span className="bg-gradient-to-r from-fei-yellow to-fei-sky bg-clip-text text-transparent">Intelligence.</span>
-          </h1>
-          <p className="mt-6 max-w-2xl whitespace-pre-line text-lg leading-8 text-fei-text/65">{t.hero_description}</p>
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <a href="/register" className="inline-flex items-center gap-2 rounded-full bg-fei-yellow px-8 py-3 font-semibold text-fei-bg transition hover:bg-fei-yellow/90">{t.cta_start} <span>→</span></a>
-            <a href="/login" className="inline-flex items-center justify-center rounded-full border border-fei-sky/50 px-8 py-3 font-semibold text-fei-sky transition hover:bg-fei-sky/10">{t.cta_login}</a>
+      <section className="relative overflow-hidden px-6 py-16 sm:py-20 lg:py-24">
+        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-fei-sky">{t.tagline}</p>
+            <h1 className="mt-6 text-5xl font-black leading-[1.05] text-fei-text sm:text-6xl lg:text-7xl xl:text-8xl">
+              Football English <span className="bg-gradient-to-r from-fei-yellow to-fei-sky bg-clip-text text-transparent">Intelligence.</span>
+            </h1>
+
+            <div className="mt-6 max-w-2xl text-lg leading-8 text-fei-text/65">
+              {lang === 'en' ? (
+                <>
+                  <p>The only English platform built for elite football.</p>
+                  <p><span className="font-bold text-fei-text">Communication</span> is your competitive advantage.</p>
+                </>
+              ) : (
+                <>
+                  <p>La única plataforma de inglés diseñada para el fútbol de élite.</p>
+                  <p><span className="font-bold text-fei-text">La comunicación</span> es tu ventaja competitiva.</p>
+                </>
+              )}
+            </div>
+
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+              <a href="/register" className="inline-flex items-center gap-2 rounded-full bg-fei-yellow px-8 py-3 font-semibold text-fei-bg transition hover:bg-fei-yellow/90">{t.cta_start} <span>→</span></a>
+              <a href="/login" className="inline-flex items-center justify-center rounded-full border border-fei-sky/50 px-8 py-3 font-semibold text-fei-sky transition hover:bg-fei-sky/10">{t.cta_login}</a>
+            </div>
+          </div>
+
+          <div className="rounded-3xl border border-fei-text/10 bg-fei-text/[0.03] p-7 shadow-[0_24px_80px_rgba(0,0,0,0.18)]">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-fei-yellow">
+              FEI Diagnostic Engine
+            </p>
+
+            <div className="mt-7 grid gap-4 sm:grid-cols-2">
+              <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/40 p-5">
+                <p className="text-4xl font-black text-fei-yellow">11</p>
+                <p className="mt-2 text-sm text-fei-text/55">football roles</p>
+              </div>
+
+              <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/40 p-5">
+                <p className="text-4xl font-black text-fei-sky">126</p>
+                <p className="mt-2 text-sm text-fei-text/55">real scenarios</p>
+              </div>
+
+              <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/40 p-5">
+                <p className="text-4xl font-black text-fei-yellow">A2→C1</p>
+                <p className="mt-2 text-sm text-fei-text/55">CEFR pathway</p>
+              </div>
+
+              <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/40 p-5">
+                <p className="text-4xl font-black text-fei-sky">AI</p>
+                <p className="mt-2 text-sm text-fei-text/55">insight report</p>
+              </div>
+            </div>
+
+            <div className="mt-5 rounded-2xl border border-fei-sky/15 bg-fei-sky/[0.05] p-5">
+              <p className="text-sm leading-6 text-fei-text/65">
+                Role-specific diagnostics for players, coaches, scouts, analysts, medical staff, and club professionals.
+              </p>
+            </div>
           </div>
         </div>
       </section>
