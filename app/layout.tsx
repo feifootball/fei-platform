@@ -9,6 +9,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/apple-icon.svg",
+  },
   title: "FEI — Football English Intelligence",
   description:
     "Professional English training for the elite football ecosystem. Players, coaches, and club staff.",
