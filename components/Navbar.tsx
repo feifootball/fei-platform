@@ -31,7 +31,7 @@ export function Navbar() {
   const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
-    const saved = localStorage.getItem("fei_lang") as Lang;
+    const saved = localStorage.getItem("fei_lang_v2") as Lang;
     if (saved === "en" || saved === "es") setLang(saved);
 
     function handleLangChange(e: Event) {
@@ -39,8 +39,8 @@ export function Navbar() {
       setLang(custom.detail);
     }
 
-    window.addEventListener("fei_lang_change", handleLangChange);
-    return () => window.removeEventListener("fei_lang_change", handleLangChange);
+    window.addEventListener("fei_lang_v2_v2_change", handleLangChange);
+    return () => window.removeEventListener("fei_lang_v2_v2_change", handleLangChange);
   }, []);
 
   useEffect(() => {
@@ -73,8 +73,8 @@ export function Navbar() {
   function toggleLang() {
     const next: Lang = lang === "en" ? "es" : "en";
     setLang(next);
-    localStorage.setItem("fei_lang", next);
-    window.dispatchEvent(new CustomEvent("fei_lang_change", { detail: next }));
+    localStorage.setItem("fei_lang_v2", next);
+    window.dispatchEvent(new CustomEvent("fei_lang_v2_v2_change", { detail: next }));
   }
 
   const links = navLinks[lang];

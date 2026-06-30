@@ -124,7 +124,7 @@ export default function Home() {
   const [lang, setLang] = useState<Lang>('en');
 
   useEffect(() => {
-    const saved = localStorage.getItem('fei_lang') as Lang;
+    const saved = localStorage.getItem('fei_lang_v2') as Lang;
     if (saved === 'en' || saved === 'es') setLang(saved);
 
     function handleLangChange(e: Event) {
@@ -132,8 +132,8 @@ export default function Home() {
       setLang(custom.detail);
     }
 
-    window.addEventListener('fei_lang_change', handleLangChange);
-    return () => window.removeEventListener('fei_lang_change', handleLangChange);
+    window.addEventListener('fei_lang_v2_v2_change', handleLangChange);
+    return () => window.removeEventListener('fei_lang_v2_v2_change', handleLangChange);
   }, []);
 
   const t = translations[lang];
