@@ -4275,7 +4275,7 @@ function AssessmentContent() {
       C1: 'You communicate with advanced professional control. Your pathway focuses on refinement, leadership influence, strategic communication, and elite-level pressure situations.',
     }
 
-    const rolePathwayModules: Record<string, string[]> =
+    const rolePathwayModules: string[] =
       selectedRole === 'Head Coach'
         ? [
             'Match Briefing Language',
