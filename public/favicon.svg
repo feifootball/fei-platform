@@ -1,16 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
-  <!-- Fondo Navy (opcional, pero recomendado) -->
-  <rect width="192" height="192" fill="#0F172A"/>
-  
-  <!-- Logo FEI en Amarillo - Scaled y centrado -->
-  <g transform="translate(96, 96) scale(0.85)">
-    <!-- F -->
-    <path d="M -60 -40 L -60 40 L -20 40 L -20 25 L -40 25 L -40 5 L -20 5 L -20 -10 L -60 -10 Z" fill="#FACC15"/>
-    
-    <!-- E -->
-    <path d="M 0 -40 L 40 -40 L 40 40 L 0 40 L 0 25 L 25 25 L 25 5 L 0 5 Z" fill="#FACC15"/>
-    
-    <!-- I -->
-    <path d="M 55 -40 L 75 -40 L 75 40 L 55 40 Z" fill="#FACC15"/>
-  </g>
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <rect width="64" height="64" rx="14" fill="#07111F"/>
+  <rect x="5" y="5" width="54" height="54" rx="11" fill="none" stroke="#F1C40F" stroke-width="2"/>
+  <text x="32" y="40" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="800" fill="#F1C40F">FEI</text>
 </svg>
