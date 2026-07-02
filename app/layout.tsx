@@ -24,6 +24,11 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} h-full font-sans antialiased`}
     >
+      <head>
+        <link rel="icon" href="/favicon.svg?v=13" type="image/svg+xml" />
+        <link rel="shortcut icon" href="/favicon.ico?v=13" />
+        <link rel="apple-touch-icon" href="/apple-icon.svg?v=13" />
+      </head>
       <body className="min-h-full flex flex-col bg-fei-bg text-fei-text">
         {children}
       </body>
