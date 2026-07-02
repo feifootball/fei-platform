@@ -10,9 +10,12 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
-    apple: "/apple-icon.svg",
+    icon: [
+      { url: "/favicon.ico?v=3", sizes: "any" },
+      { url: "/favicon.svg?v=3", type: "image/svg+xml" },
+    ],
+    shortcut: "/favicon.ico?v=3",
+    apple: "/apple-icon.svg?v=3",
   },
   title: "FEI — Football English Intelligence",
   description:
