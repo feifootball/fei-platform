@@ -25,9 +25,9 @@ export default function RootLayout({
       className={`${inter.variable} h-full font-sans antialiased`}
     >
       <head>
-        <link rel="icon" href="/favicon.svg?v=20" type="image/svg+xml" />
-        <link rel="shortcut icon" href="/favicon.ico?v=20" />
-        <link rel="apple-touch-icon" href="/apple-icon.svg?v=20" />
+        <link rel="icon" href="/favicon.svg?v=21" type="image/svg+xml" />
+        <link rel="shortcut icon" href="/favicon.ico?v=21" />
+        <link rel="apple-touch-icon" href="/apple-icon.svg?v=21" />
       </head>
       <body className="min-h-full flex flex-col bg-fei-bg text-fei-text">
         {children}
