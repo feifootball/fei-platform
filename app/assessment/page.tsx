@@ -4259,172 +4259,280 @@ function AssessmentContent() {
     const pathwayLabel = levelLabels[result.level] || 'Foundation'
     const pathwayColor = levelColors[result.level] || 'text-fei-sky'
     const overallEvidence = Math.round((result.score / result.maxScore) * 100)
-    const previewStrength = focusItems[0] || 'Role-specific communication foundations'
     const previewFocus = focusItems[1] || focusItems[0] || 'Professional football communication under pressure'
 
+    const nextLevels: Record<string, string> = {
+      A2: 'B1',
+      B1: 'B2',
+      B2: 'C1',
+      C1: 'Elite refinement',
+    }
+
+    const levelMeanings: Record<string, string> = {
+      A2: 'You can understand and use basic football communication in familiar situations, but you need more confidence with faster instructions, clarification, and pressure moments.',
+      B1: 'You can manage common football communication tasks, but you need more structure and precision when the situation becomes more tactical, detailed, or pressured.',
+      B2: 'You can communicate clearly in most professional football situations. Your next step is to gain more control in complex feedback, leadership, and high-pressure conversations.',
+      C1: 'You communicate with advanced professional control. Your pathway focuses on refinement, leadership influence, strategic communication, and elite-level pressure situations.',
+    }
+
+    const rolePathwayModules: Record<string, string[]> =
+      selectedRole === 'Head Coach'
+        ? [
+            'Match Briefing Language',
+            'Tactical Correction & Feedback',
+            'Pressure Communication with Players',
+            'Media and Leadership Communication',
+          ]
+        : selectedRole === 'Assistant Coach'
+          ? [
+              'Training Exercise Communication',
+              'Tactical Clarification',
+              'Player Correction Under Pressure',
+              'Staff Alignment Communication',
+            ]
+          : selectedRole === 'Academy Director'
+            ? [
+                'Academy Standards Communication',
+                'Player Pathway Conversations',
+                'Parent and Staff Alignment',
+                'First-Team Readiness Decisions',
+              ]
+            : selectedRole === 'Head of Scouting'
+              ? [
+                  'Recruitment Profile Language',
+                  'Scout Report Alignment',
+                  'Market and Value Communication',
+                  'Board-Level Recommendation Defense',
+                ]
+              : selectedRole === 'Scout'
+                ? [
+                    'Player Observation Language',
+                    'Evidence-Based Scout Reports',
+                    'Profile Fit and Risk Framing',
+                    'Recommendation Defense',
+                  ]
+                : selectedRole === 'Fitness Coach'
+                  ? [
+                      'Load and Readiness Communication',
+                      'Recovery and Risk Updates',
+                      'Coach-Facing Performance Reports',
+                      'Pressure Conversations Around Availability',
+                    ]
+                  : selectedRole === 'Performance Analyst'
+                    ? [
+                        'Tactical Pattern Communication',
+                        'Video and Data Explanation',
+                        'Coach-Facing Recommendations',
+                        'Player Analysis Under Pressure',
+                      ]
+                    : selectedRole === 'Nutritionist'
+                      ? [
+                          'Fueling and Hydration Communication',
+                          'Match-Day Nutrition Planning',
+                          'Player Behavior Change',
+                          'Performance Nutrition Under Pressure',
+                        ]
+                      : selectedRole === 'Physiotherapist'
+                        ? [
+                            'Injury Status Communication',
+                            'Rehabilitation Progress Updates',
+                            'Return-to-Play Conversations',
+                            'Coach and Player Risk Alignment',
+                          ]
+                        : selectedRole === 'Sports Psychologist'
+                          ? [
+                              'Confidence and Pressure Language',
+                              'Player Check-In Communication',
+                              'Mistake Reframing and Resilience',
+                              'Coach-Facing Mental Performance Support',
+                            ]
+                          : [
+                              'Matchday Communication Foundations',
+                              'Clarification and Feedback',
+                              'Medical and Physical Status Communication',
+                              'Pressure Interviews and Team Communication',
+                            ]
+
+    const nextLevel = nextLevels[result.level] || 'Next level'
+    const levelMeaning = levelMeanings[result.level] || levelMeanings.A2
+
     return (
-      <div className="min-h-screen bg-fei-bg px-6 py-12 lg:px-8">
-        <div className="mx-auto w-full max-w-7xl">
-          <div className="mb-10 flex items-center gap-3">
-            <img src="/logo.svg" alt="FEI" className="h-8 w-auto" />
-            <span className="text-xs font-medium text-fei-sky">Football English Intelligence</span>
-          </div>
-
-          <div className="mb-10 max-w-4xl">
-            <div className="inline-block rounded-full bg-fei-yellow/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-fei-yellow">
-              Assessment Complete
+      <div className="min-h-screen bg-fei-bg">
+        <header className="sticky top-0 z-50 border-b border-fei-text/10 bg-fei-bg/90 px-6 py-4 backdrop-blur-xl lg:px-8">
+          <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <img src="/logo.svg" alt="FEI" className="h-8 w-auto" />
+              <span className="text-sm font-medium text-fei-sky">
+                Football English Intelligence
+              </span>
             </div>
-            <h1 className="mt-4 text-4xl font-black leading-tight text-fei-text sm:text-5xl">
-              Your personalized FEI dashboard is ready.
-            </h1>
-            <p className="mt-4 max-w-3xl text-base leading-7 text-fei-text/58">
-              Based on your diagnostic, FEI prepared your starting level, priority focus, and first recommended step for your football communication pathway.
-            </p>
+
+            <button
+              onClick={() => router.push('/dashboard')}
+              className="rounded-full border border-fei-sky/25 px-5 py-2 text-sm font-semibold text-fei-sky transition hover:bg-fei-sky/10"
+            >
+              Dashboard
+            </button>
           </div>
+        </header>
 
-          <div className="grid gap-6 lg:grid-cols-12">
-            <section className="rounded-[2rem] border border-fei-yellow/20 bg-fei-yellow/[0.055] p-7 lg:col-span-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-fei-text/50">
-                Current Level
-              </p>
-
-              <p className={`mt-5 text-8xl font-black leading-none ${pathwayColor}`}>
-                {result.level}
-              </p>
-
-              <p className="mt-3 text-2xl font-bold text-fei-text">
-                {pathwayLabel}
-              </p>
-
-              <div className="mt-7 space-y-3 rounded-2xl border border-fei-sky/20 bg-fei-bg/35 p-5">
-                <div className="flex items-center justify-between gap-4">
-                  <span className="text-sm text-fei-text/50">Role</span>
-                  <span className="text-right text-sm font-semibold text-fei-text">{selectedRole}</span>
-                </div>
-                <div className="flex items-center justify-between gap-4">
-                  <span className="text-sm text-fei-text/50">Score</span>
-                  <span className="text-sm font-semibold text-fei-yellow">{overallEvidence}%</span>
-                </div>
-                <div className="flex items-center justify-between gap-4">
-                  <span className="text-sm text-fei-text/50">Pathway</span>
-                  <span className="text-sm font-semibold text-fei-sky">{result.level} → Next level</span>
-                </div>
-              </div>
-            </section>
-
-            <section className="rounded-[2rem] border border-fei-sky/20 bg-fei-sky/[0.04] p-7 lg:col-span-8">
-              <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">
-                    First Recommended Step
-                  </p>
-                  <h2 className="mt-3 text-3xl font-black text-fei-text">
-                    Matchday Communication Foundations
-                  </h2>
-                </div>
-                <span className="w-fit rounded-full border border-fei-yellow/30 bg-fei-yellow/[0.08] px-4 py-1.5 text-xs font-bold text-fei-yellow">
-                  Prepared for you
-                </span>
+        <main className="px-6 py-12 lg:px-8">
+          <div className="mx-auto w-full max-w-7xl">
+            <div className="mb-10 max-w-4xl">
+              <div className="inline-block rounded-full bg-fei-yellow/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-fei-yellow">
+                Assessment Complete
               </div>
 
-              <p className="max-w-3xl text-sm leading-7 text-fei-text/70">
-                Start here to build the language you need for basic instructions, clarification, role communication, and everyday football situations under pressure.
+              <h1 className="mt-4 text-4xl font-black leading-tight text-fei-text sm:text-5xl">
+                Your personalized <span className="text-fei-sky">FEI</span> dashboard is ready.
+              </h1>
+
+              <p className="mt-4 max-w-3xl text-base leading-7 text-fei-text/58">
+                Your diagnostic has prepared a role-specific pathway based on your current communication level, priority focus, and professional football context.
               </p>
+            </div>
 
-              <div className="mt-7 grid gap-3 sm:grid-cols-3">
-                <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-fei-text/40">Level</p>
-                  <p className="mt-2 text-sm font-bold text-fei-text">{result.level} · {pathwayLabel}</p>
-                </div>
-                <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-fei-text/40">Focus</p>
-                  <p className="mt-2 text-sm font-bold text-fei-text">{previewFocus}</p>
-                </div>
-                <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-fei-text/40">Time</p>
-                  <p className="mt-2 text-sm font-bold text-fei-text">15–20 min</p>
-                </div>
-              </div>
+            <div className="grid gap-6 lg:grid-cols-12">
+              <section className="rounded-[2rem] border border-fei-yellow/20 bg-fei-yellow/[0.055] p-7 lg:col-span-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-fei-text/50">
+                  Current Level
+                </p>
 
-              <button
-                onClick={() => router.push('/dashboard')}
-                className="mt-8 rounded-full bg-fei-yellow px-8 py-4 text-base font-bold text-fei-bg transition hover:bg-fei-yellow/90"
-              >
-                <span className="inline-flex items-center justify-center gap-2">
-                  Enter My Dashboard
-                  <ChevronRightIcon />
-                </span>
-              </button>
-            </section>
-
-            <section className="rounded-[2rem] border border-fei-text/10 bg-fei-text/[0.03] p-6 lg:col-span-7">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">
-                FEI Insight
-              </p>
-              <p className="text-sm leading-relaxed text-fei-text/80">
-                {aiInsight}
-              </p>
-            </section>
-
-            <section className="rounded-[2rem] border border-fei-text/10 bg-fei-text/[0.03] p-6 lg:col-span-5">
-              <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-fei-yellow">
-                Your Dashboard Includes
-              </p>
-
-              <div className="space-y-3">
-                {[
-                  'Diagnostic summary',
-                  'Starting communication level',
-                  'Priority focus area',
-                  'First recommended module',
-                ].map(item => (
-                  <div key={item} className="flex items-center gap-3 rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-4 text-sm font-medium text-fei-text/70">
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-fei-yellow/[0.12] text-xs font-black text-fei-yellow">
-                      ✓
-                    </span>
-                    <span>{item}</span>
+                <div className="mt-5 grid gap-6 xl:grid-cols-[0.7fr_1.3fr] xl:items-center">
+                  <div>
+                    <p className={`text-8xl font-black leading-none ${pathwayColor}`}>
+                      {result.level}
+                    </p>
+                    <p className="mt-3 text-2xl font-bold text-fei-text">
+                      {pathwayLabel}
+                    </p>
                   </div>
-                ))}
-              </div>
-            </section>
 
-            <section className="rounded-[2rem] border border-fei-yellow/15 bg-fei-text/[0.025] p-6 lg:col-span-12">
-              <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-yellow">
-                    Full FEI Access
-                  </p>
-                  <h2 className="mt-3 text-2xl font-black text-fei-text">
-                    Unlock the full playbook when you are ready to train.
-                  </h2>
-                  <p className="mt-3 max-w-xl text-sm leading-6 text-fei-text/60">
-                    Your dashboard is ready now. Full FEI access unlocks the complete playbook, all recommended modules, progress tracking, and downloadable reports.
-                  </p>
+                  <div className="rounded-2xl border border-fei-sky/20 bg-fei-bg/35 p-5">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-fei-sky">
+                      What this level means
+                    </p>
+                    <p className="mt-3 text-sm leading-6 text-fei-text/70">
+                      {levelMeaning}
+                    </p>
+                  </div>
                 </div>
 
-                <div className="grid gap-3 sm:grid-cols-2">
+                <div className="mt-7 space-y-3 rounded-2xl border border-fei-sky/20 bg-fei-bg/35 p-5">
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="text-sm text-fei-text/50">Role</span>
+                    <span className="text-right text-sm font-semibold text-fei-text">{selectedRole}</span>
+                  </div>
+
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="text-sm text-fei-text/50">Diagnostic evidence</span>
+                    <span className="text-sm font-semibold text-fei-yellow">{overallEvidence}%</span>
+                  </div>
+
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="text-sm text-fei-text/50">Primary focus</span>
+                    <span className="text-right text-sm font-semibold text-fei-sky">{previewFocus}</span>
+                  </div>
+                </div>
+              </section>
+
+              <section className="rounded-[2rem] border border-fei-sky/20 bg-fei-sky/[0.04] p-7 lg:col-span-7">
+                <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">
+                      Your Training Pathway
+                    </p>
+                    <h2 className="mt-3 text-3xl font-black text-fei-text">
+                      {result.level} to {nextLevel}
+                    </h2>
+                  </div>
+
+                  <span className="w-fit rounded-full border border-fei-yellow/30 bg-fei-yellow/[0.08] px-4 py-1.5 text-xs font-bold text-fei-yellow">
+                    Built from your diagnostic
+                  </span>
+                </div>
+
+                <p className="max-w-3xl text-sm leading-7 text-fei-text/70">
+                  This pathway shows the communication areas FEI would train first for your role. Each module is designed around real football situations, not general English content.
+                </p>
+
+                <div className="mt-7 grid gap-3 sm:grid-cols-2">
+                  {rolePathwayModules.map((module, index) => (
+                    <div key={module} className="rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-5">
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-fei-yellow">
+                        Module {index + 1}
+                      </p>
+                      <p className="mt-2 text-base font-bold text-fei-text">
+                        {module}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+                  <button
+                    onClick={() => router.push('/dashboard')}
+                    className="rounded-full bg-fei-yellow px-8 py-4 text-base font-bold text-fei-bg transition hover:bg-fei-yellow/90"
+                  >
+                    <span className="inline-flex items-center justify-center gap-2">
+                      Enter My Dashboard
+                      <ChevronRightIcon />
+                    </span>
+                  </button>
+
+                  <p className="text-sm leading-6 text-fei-text/45">
+                    Your dashboard will organize this pathway, progress, and next training steps.
+                  </p>
+                </div>
+              </section>
+
+              <section className="rounded-[2rem] border border-fei-text/10 bg-fei-text/[0.03] p-6 lg:col-span-7">
+                <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">
+                  FEI Insight
+                </p>
+                <p className="text-sm leading-relaxed text-fei-text/80">
+                  {aiInsight}
+                </p>
+              </section>
+
+              <section className="rounded-[2rem] border border-fei-yellow/15 bg-fei-text/[0.025] p-6 lg:col-span-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-yellow">
+                  Full Pathway View
+                </p>
+
+                <h2 className="mt-3 text-2xl font-black text-fei-text">
+                  What your dashboard will organize
+                </h2>
+
+                <div className="mt-5 space-y-3">
                   {[
-                    'Full strengths analysis',
-                    'Communication gaps',
-                    'All recommended modules',
-                    'Progress tracking',
+                    'Current level and target level',
+                    'Role-specific module sequence',
+                    'Priority communication focus',
+                    'Progress across your FEI pathway',
                   ].map(item => (
-                    <div key={item} className="flex items-center gap-3 rounded-2xl border border-fei-text/10 bg-fei-bg/30 p-4 text-sm font-medium text-fei-text/60">
-                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-fei-text/[0.06] text-fei-text/35">
-                        🔒
+                    <div key={item} className="flex items-center gap-3 rounded-2xl border border-fei-text/10 bg-fei-bg/30 p-4 text-sm font-medium text-fei-text/65">
+                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-fei-sky/[0.10] text-xs font-black text-fei-sky">
+                        →
                       </span>
                       <span>{item}</span>
                     </div>
                   ))}
                 </div>
-              </div>
-            </section>
-          </div>
 
-          <p className="mt-6 text-center text-xs text-fei-text/30">
-            Your diagnostic profile has been saved. Continue to your dashboard to review your personalized pathway.
-          </p>
-        </div>
+                <div className="mt-5 rounded-2xl border border-fei-yellow/20 bg-fei-yellow/[0.06] p-4">
+                  <p className="text-sm leading-6 text-fei-text/65">
+                    Full FEI access can later unlock the complete training content, downloadable reports, and detailed progress tracking inside this pathway.
+                  </p>
+                </div>
+              </section>
+            </div>
+
+            <p className="mt-6 text-center text-xs text-fei-text/30">
+              Your diagnostic profile has been saved. Continue to your dashboard to review your personalized pathway.
+            </p>
+          </div>
+        </main>
       </div>
     )
   }
