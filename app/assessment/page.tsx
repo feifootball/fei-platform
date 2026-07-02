@@ -2780,15 +2780,28 @@ function AssessmentContent() {
     setResult(res)
     setSaving(true)
 
-    const { data: { user } } = await supabase.auth.getUser()
-    if (user) {
-      await supabase.from('assessment_history').insert({
+    const { data: { user }, error: userError } = await supabase.auth.getUser()
+
+    if (userError) {
+      console.error('FEI assessment user error:', userError)
+    }
+
+    if (!user) {
+      console.error('FEI assessment was not saved because there is no authenticated user.')
+    } else {
+      const { error: saveError } = await supabase.from('assessment_history').insert({
         user_id: user.id,
         role: selectedRole,
         score: Math.round((res.score / res.maxScore) * 100),
         level: res.level,
         completed_at: new Date().toISOString(),
       })
+
+      if (saveError) {
+        console.error('FEI assessment save error:', saveError)
+      } else {
+        console.log('FEI assessment saved successfully.')
+      }
     }
 
     setSaving(false)
