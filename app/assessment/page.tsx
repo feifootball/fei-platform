@@ -4246,38 +4246,58 @@ function AssessmentContent() {
     const pathwayLabel = levelLabels[result.level] || 'Foundation'
     const pathwayColor = levelColors[result.level] || 'text-fei-sky'
     const overallEvidence = Math.round((result.score / result.maxScore) * 100)
+    const previewStrength = focusItems[0] || 'Role-specific communication foundations'
+    const previewFocus = focusItems[1] || focusItems[0] || 'Professional football communication under pressure'
 
     return (
       <div className="min-h-screen bg-fei-bg px-6 py-12 lg:px-8">
-        <div className="mx-auto w-full max-w-6xl">
+        <div className="mx-auto w-full max-w-7xl">
           <div className="mb-10 flex items-center gap-3">
             <img src="/logo.svg" alt="FEI" className="h-8 w-auto" />
             <span className="text-xs font-medium text-fei-sky">Football English Intelligence</span>
           </div>
 
-          <div className="mb-8 text-center">
+          <div className="mb-8">
             <div className="inline-block rounded-full bg-fei-yellow/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-fei-yellow">
               Assessment Complete
             </div>
-            <h1 className="mt-4 text-4xl font-black text-fei-text">Your FEI Profile</h1>
-            <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-fei-text/50">
-              This short profile gives you your recommended starting pathway. Your full diagnostic report and personalized training plan are unlocked inside your FEI pathway.
+            <h1 className="mt-4 text-4xl font-black text-fei-text sm:text-5xl">
+              Your FEI Communication Level
+            </h1>
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-fei-text/55 sm:text-base">
+              Your diagnostic is complete. This is your free result summary. Your full FEI Playbook unlocks the complete pathway, detailed priorities, and role-specific training plan.
             </p>
           </div>
 
           <div className="grid gap-6 lg:grid-cols-12">
-            <div className="rounded-3xl border border-fei-yellow/20 bg-fei-yellow/[0.05] p-8 text-center lg:col-span-7">
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-fei-text/50">
-                Recommended Pathway
-              </p>
-              <p className={`mt-5 text-8xl font-black ${pathwayColor}`}>
-                {result.level}
-              </p>
-              <p className="mt-2 text-2xl font-bold text-fei-text">
-                {pathwayLabel}
-              </p>
+            <section className="rounded-[2rem] border border-fei-yellow/20 bg-fei-yellow/[0.055] p-8 lg:col-span-7">
+              <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.25em] text-fei-text/50">
+                    Current Level
+                  </p>
+                  <p className={`mt-5 text-8xl font-black leading-none ${pathwayColor}`}>
+                    {result.level}
+                  </p>
+                  <p className="mt-3 text-2xl font-bold text-fei-text">
+                    {pathwayLabel}
+                  </p>
+                </div>
 
-              <div className="mx-auto mt-8 max-w-2xl rounded-2xl border border-fei-sky/20 bg-fei-bg/35 p-5 text-left">
+                <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-5 sm:min-w-[190px]">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">
+                    Score
+                  </p>
+                  <p className="mt-3 text-4xl font-black text-fei-yellow">
+                    {overallEvidence}%
+                  </p>
+                  <p className="mt-1 text-xs text-fei-text/45">
+                    Diagnostic evidence
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-8 rounded-2xl border border-fei-sky/20 bg-fei-bg/35 p-5">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">
                   {selectedRole}
                 </p>
@@ -4288,81 +4308,123 @@ function AssessmentContent() {
                   {pathwayDescription}
                 </p>
               </div>
-            </div>
+            </section>
 
-            <div className="rounded-3xl border border-fei-text/10 bg-fei-text/[0.03] p-6 lg:col-span-5">
+            <section className="rounded-[2rem] border border-fei-text/10 bg-fei-text/[0.03] p-6 lg:col-span-5">
               <p className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-fei-yellow">
-                Diagnostic Evidence
+                Free Result Summary
               </p>
 
               <div className="space-y-4">
-                <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-5 text-center">
-                  <p className="text-4xl font-black text-fei-yellow">{result.score} / {result.maxScore}</p>
-                  <p className="mt-2 text-xs text-fei-text/45">Diagnostic score</p>
+                <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-5">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-fei-sky">
+                    Preview Strength
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-fei-text/75">
+                    {previewStrength}
+                  </p>
                 </div>
 
-                <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-5 text-center">
-                  <p className="text-4xl font-black text-fei-yellow">{overallEvidence}%</p>
-                  <p className="mt-2 text-xs text-fei-text/45">Diagnostic evidence</p>
+                <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-5">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-fei-yellow">
+                    Main Focus Area
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-fei-text/75">
+                    {previewFocus}
+                  </p>
                 </div>
               </div>
 
               <p className="mt-5 text-sm leading-6 text-fei-text/55">
-                Your score helps FEI identify the most useful starting pathway for your football communication profile. It is not a pass/fail result.
+                This result is not pass or fail. It gives you the most useful starting point for your football communication training.
               </p>
-            </div>
+            </section>
 
-            <div className="rounded-3xl border border-fei-text/10 bg-fei-text/[0.03] p-6 lg:col-span-12">
+            <section className="rounded-[2rem] border border-fei-text/10 bg-fei-text/[0.03] p-6 lg:col-span-7">
               <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">
-                AI Insight
+                FEI Insight
               </p>
-              <p className="max-w-5xl text-sm leading-relaxed text-fei-text/80">
+              <p className="text-sm leading-relaxed text-fei-text/80">
                 {aiInsight}
               </p>
-            </div>
+            </section>
 
-            <div className="rounded-3xl border border-fei-text/10 bg-fei-text/[0.03] p-6 lg:col-span-7">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-fei-yellow">
-                Why this pathway?
-              </p>
-              <p className="text-sm leading-relaxed text-fei-text/70">
-                Your diagnostic evidence shows that <span className="font-semibold text-fei-text">{result.level}</span> is the best starting point for your football communication profile. This is not a pass/fail result; it helps FEI recommend the pathway where targeted training can create the fastest and most relevant progress for your role.
-              </p>
-            </div>
+            <section className="rounded-[2rem] border border-fei-sky/20 bg-fei-sky/[0.04] p-6 lg:col-span-5">
+              <div className="mb-5 flex items-center justify-between gap-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">
+                  Playbook Preview
+                </p>
+                <span className="rounded-full border border-fei-yellow/30 bg-fei-yellow/[0.08] px-3 py-1 text-xs font-bold text-fei-yellow">
+                  Ready
+                </span>
+              </div>
 
-            <div className="rounded-3xl border border-fei-sky/20 bg-fei-sky/[0.04] p-6 lg:col-span-5">
-              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">
-                Pathway Focus
-              </p>
               <ul className="space-y-3 text-sm text-fei-text/70">
-                {focusItems.map(item => (
+                {focusItems.slice(0, 3).map(item => (
                   <li key={item} className="flex items-start gap-3">
                     <span className="mt-2 h-1.5 w-1.5 rounded-full bg-fei-yellow" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
+            </section>
 
-              <div className="mt-5 rounded-2xl border border-fei-yellow/20 bg-fei-yellow/[0.06] p-4">
-                <p className="text-sm leading-6 text-fei-text/70">
-                  Unlock your complete FEI report to see detailed strengths, development priorities, and your personalized training plan.
-                </p>
+            <section className="rounded-[2rem] border border-fei-yellow/20 bg-fei-yellow/[0.055] p-6 lg:col-span-12">
+              <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-yellow">
+                    Unlock Full Playbook
+                  </p>
+                  <h2 className="mt-3 text-2xl font-black text-fei-text">
+                    Your personalized training pathway is ready.
+                  </h2>
+                  <p className="mt-3 max-w-xl text-sm leading-6 text-fei-text/65">
+                    Unlock the complete FEI Playbook to access your full strengths analysis, communication gaps, recommended modules, and progress tracking.
+                  </p>
+                </div>
+
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {[
+                    'Full strengths analysis',
+                    'Communication gaps',
+                    'Recommended modules',
+                    'Role-specific training plan',
+                    'Progress tracking',
+                    'Downloadable report',
+                  ].map(item => (
+                    <div key={item} className="flex items-center gap-3 rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-4 text-sm font-medium text-fei-text/70">
+                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-fei-text/[0.06] text-fei-text/40">
+                        🔒
+                      </span>
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            </section>
           </div>
 
-          <button
-            onClick={() => router.push('/learning')}
-            className="mt-8 w-full rounded-full bg-fei-yellow py-4 text-base font-bold text-fei-bg transition hover:bg-fei-yellow/90"
-          >
-            <span className="inline-flex items-center justify-center gap-2">
-              Start my FEI pathway
-              <ChevronRightIcon />
-            </span>
-          </button>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <button
+              onClick={() => router.push('/learning')}
+              className="flex-1 rounded-full bg-fei-yellow py-4 text-base font-bold text-fei-bg transition hover:bg-fei-yellow/90"
+            >
+              <span className="inline-flex items-center justify-center gap-2">
+                Unlock My Playbook
+                <ChevronRightIcon />
+              </span>
+            </button>
+
+            <button
+              onClick={() => router.push('/dashboard')}
+              className="rounded-full border border-fei-text/15 px-8 py-4 text-base font-bold text-fei-text/65 transition hover:border-fei-text/35 hover:text-fei-text"
+            >
+              Go to Dashboard
+            </button>
+          </div>
 
           <p className="mt-4 text-center text-xs text-fei-text/30">
-            Your short diagnostic profile has been saved. You can review your progress from your dashboard.
+            Your diagnostic profile has been saved. You can review your progress from your dashboard.
           </p>
         </div>
       </div>
