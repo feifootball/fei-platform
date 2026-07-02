@@ -4254,8 +4254,6 @@ function AssessmentContent() {
                 : pathwayFocus
 
     const focusItems = rolePathwayFocus[result.level] || rolePathwayFocus.A2
-    const pathwayDescription = rolePathwayDescriptions[result.level] || rolePathwayDescriptions.A2
-    const aiInsight = roleAiInsights[result.level] || roleAiInsights.A2
     const pathwayLabel = levelLabels[result.level] || 'Foundation'
     const pathwayColor = levelColors[result.level] || 'text-fei-sky'
     const overallEvidence = Math.round((result.score / result.maxScore) * 100)
@@ -4269,103 +4267,146 @@ function AssessmentContent() {
     }
 
     const levelMeanings: Record<string, string> = {
-      A2: 'You can understand and use basic football communication in familiar situations, but you need more confidence with faster instructions, clarification, and pressure moments.',
-      B1: 'You can manage common football communication tasks, but you need more structure and precision when the situation becomes more tactical, detailed, or pressured.',
-      B2: 'You can communicate clearly in most professional football situations. Your next step is to gain more control in complex feedback, leadership, and high-pressure conversations.',
-      C1: 'You communicate with advanced professional control. Your pathway focuses on refinement, leadership influence, strategic communication, and elite-level pressure situations.',
+      A2: 'At A2, you can handle basic football communication in familiar situations. You may understand simple instructions, but you still need support with speed, detail, clarification, and pressure moments.',
+      B1: 'At B1, you can manage common football communication tasks. Your next step is to speak with more structure, confidence, and precision when situations become tactical, detailed, or pressured.',
+      B2: 'At B2, you can communicate clearly in most professional football situations. Your next step is to improve strategic control in feedback, leadership, and high-pressure conversations.',
+      C1: 'At C1, you communicate with advanced professional control. Your pathway focuses on refinement, leadership influence, strategic communication, and elite-level pressure situations.',
     }
 
-    const rolePathwayModules: string[] =
+    const levelStrengths: Record<string, string[]> = {
+      A2: [
+        'Understands simple football instructions',
+        'Recognizes familiar role vocabulary',
+        'Can communicate basic needs in routine situations',
+      ],
+      B1: [
+        'Handles common football conversations',
+        'Responds to direct feedback',
+        'Explains familiar situations with some structure',
+      ],
+      B2: [
+        'Communicates clearly in professional contexts',
+        'Understands more complex football information',
+        'Can support decisions with relevant detail',
+      ],
+      C1: [
+        'Uses mature professional communication',
+        'Handles complex stakeholder conversations',
+        'Communicates with precision under pressure',
+      ],
+    }
+
+    const levelImprovements: Record<string, string[]> = {
+      A2: [
+        'Ask for clarification with more confidence',
+        'Build stronger football-specific vocabulary',
+        'Respond better when instructions are fast or pressured',
+      ],
+      B1: [
+        'Add more structure to explanations',
+        'Improve tactical and role-specific precision',
+        'Communicate more confidently under pressure',
+      ],
+      B2: [
+        'Refine leadership and feedback conversations',
+        'Improve strategic communication in complex situations',
+        'Control tone and detail in pressure moments',
+      ],
+      C1: [
+        'Refine influence across stakeholders',
+        'Strengthen executive and media-level communication',
+        'Sharpen elite decision-making language',
+      ],
+    }
+
+    const rolePathwayModules: { title: string; detail: string }[] =
       selectedRole === 'Head Coach'
         ? [
-            'Match Briefing Language',
-            'Tactical Correction & Feedback',
-            'Pressure Communication with Players',
-            'Media and Leadership Communication',
+            { title: 'Match Briefing Language', detail: 'Structure pre-match and half-time messages with clarity, tactical focus, and emotional control.' },
+            { title: 'Tactical Correction & Feedback', detail: 'Correct players without losing authority, confidence, or tactical precision.' },
+            { title: 'Pressure Communication with Players', detail: 'Handle difficult decisions, frustration, substitutions, and performance conversations.' },
+            { title: 'Media and Leadership Communication', detail: 'Represent decisions clearly to media, staff, leadership, and the squad.' },
           ]
         : selectedRole === 'Assistant Coach'
           ? [
-              'Training Exercise Communication',
-              'Tactical Clarification',
-              'Player Correction Under Pressure',
-              'Staff Alignment Communication',
+              { title: 'Training Exercise Communication', detail: 'Explain drills, objectives, timing, and corrections clearly during training.' },
+              { title: 'Tactical Clarification', detail: 'Translate tactical ideas into simple player-facing language.' },
+              { title: 'Player Correction Under Pressure', detail: 'Give useful corrections during repetition, fatigue, and live-play moments.' },
+              { title: 'Staff Alignment Communication', detail: 'Support the head coach message and maintain consistency across the staff.' },
             ]
           : selectedRole === 'Academy Director'
             ? [
-                'Academy Standards Communication',
-                'Player Pathway Conversations',
-                'Parent and Staff Alignment',
-                'First-Team Readiness Decisions',
+                { title: 'Academy Standards Communication', detail: 'Communicate development expectations clearly to coaches, players, and families.' },
+                { title: 'Player Pathway Conversations', detail: 'Explain progression, readiness, setbacks, and long-term development decisions.' },
+                { title: 'Parent and Staff Alignment', detail: 'Manage expectations and keep stakeholders aligned around development priorities.' },
+                { title: 'First-Team Readiness Decisions', detail: 'Frame readiness decisions with evidence, maturity, and institutional clarity.' },
               ]
             : selectedRole === 'Head of Scouting'
               ? [
-                  'Recruitment Profile Language',
-                  'Scout Report Alignment',
-                  'Market and Value Communication',
-                  'Board-Level Recommendation Defense',
+                  { title: 'Recruitment Profile Language', detail: 'Define player profiles, priorities, and fit with more precision.' },
+                  { title: 'Scout Report Alignment', detail: 'Create consistent language across reports, observations, and recommendations.' },
+                  { title: 'Market and Value Communication', detail: 'Explain timing, budget, value, availability, and risk to decision-makers.' },
+                  { title: 'Board-Level Recommendation Defense', detail: 'Defend recruitment logic with strategic clarity and evidence.' },
                 ]
               : selectedRole === 'Scout'
                 ? [
-                    'Player Observation Language',
-                    'Evidence-Based Scout Reports',
-                    'Profile Fit and Risk Framing',
-                    'Recommendation Defense',
+                    { title: 'Player Observation Language', detail: 'Describe strengths, weaknesses, role fit, and behavior with clear football language.' },
+                    { title: 'Evidence-Based Scout Reports', detail: 'Connect observations to evidence, context, and recruitment relevance.' },
+                    { title: 'Profile Fit and Risk Framing', detail: 'Compare players, explain uncertainty, and communicate value responsibly.' },
+                    { title: 'Recommendation Defense', detail: 'Present and defend recommendations to recruitment leaders with confidence.' },
                   ]
                 : selectedRole === 'Fitness Coach'
                   ? [
-                      'Load and Readiness Communication',
-                      'Recovery and Risk Updates',
-                      'Coach-Facing Performance Reports',
-                      'Pressure Conversations Around Availability',
+                      { title: 'Load and Readiness Communication', detail: 'Explain workload, fatigue, availability, and readiness in practical football language.' },
+                      { title: 'Recovery and Risk Updates', detail: 'Communicate recovery status and risk without sounding negative or unclear.' },
+                      { title: 'Coach-Facing Performance Reports', detail: 'Turn data into clear recommendations for coaching staff.' },
+                      { title: 'Pressure Conversations Around Availability', detail: 'Manage difficult conversations when performance and injury risk compete.' },
                     ]
                   : selectedRole === 'Performance Analyst'
                     ? [
-                        'Tactical Pattern Communication',
-                        'Video and Data Explanation',
-                        'Coach-Facing Recommendations',
-                        'Player Analysis Under Pressure',
+                        { title: 'Tactical Pattern Communication', detail: 'Explain patterns, threats, and opportunities with concise tactical language.' },
+                        { title: 'Video and Data Explanation', detail: 'Connect clips and data to coaching decisions without overloading the message.' },
+                        { title: 'Coach-Facing Recommendations', detail: 'Present clear recommendations for staff meetings and match preparation.' },
+                        { title: 'Player Analysis Under Pressure', detail: 'Communicate individual analysis with clarity, confidence, and useful detail.' },
                       ]
                     : selectedRole === 'Nutritionist'
                       ? [
-                          'Fueling and Hydration Communication',
-                          'Match-Day Nutrition Planning',
-                          'Player Behavior Change',
-                          'Performance Nutrition Under Pressure',
+                          { title: 'Fueling and Hydration Communication', detail: 'Explain fueling, hydration, recovery, and timing in practical player language.' },
+                          { title: 'Match-Day Nutrition Planning', detail: 'Guide players through pre-match, half-time, and post-match nutrition routines.' },
+                          { title: 'Player Behavior Change', detail: 'Support adherence with realistic, culturally aware communication.' },
+                          { title: 'Performance Nutrition Under Pressure', detail: 'Manage nutrition conversations around fatigue, recovery, and performance demands.' },
                         ]
                       : selectedRole === 'Physiotherapist'
                         ? [
-                            'Injury Status Communication',
-                            'Rehabilitation Progress Updates',
-                            'Return-to-Play Conversations',
-                            'Coach and Player Risk Alignment',
+                            { title: 'Injury Status Communication', detail: 'Explain pain, status, treatment, and short-term expectations clearly.' },
+                            { title: 'Rehabilitation Progress Updates', detail: 'Communicate rehab progress to players, coaches, and staff with precision.' },
+                            { title: 'Return-to-Play Conversations', detail: 'Frame readiness, risk, confidence, and next steps responsibly.' },
+                            { title: 'Coach and Player Risk Alignment', detail: 'Manage pressure around availability while protecting player welfare.' },
                           ]
                         : selectedRole === 'Sports Psychologist'
                           ? [
-                              'Confidence and Pressure Language',
-                              'Player Check-In Communication',
-                              'Mistake Reframing and Resilience',
-                              'Coach-Facing Mental Performance Support',
+                              { title: 'Confidence and Pressure Language', detail: 'Support players through anxiety, mistakes, pressure, and confidence dips.' },
+                              { title: 'Player Check-In Communication', detail: 'Use clear, safe, player-centered language in mental performance conversations.' },
+                              { title: 'Mistake Reframing and Resilience', detail: 'Help players reset after errors and build stronger performance routines.' },
+                              { title: 'Coach-Facing Mental Performance Support', detail: 'Communicate support needs to staff while protecting trust and confidentiality.' },
                             ]
                           : [
-                              'Matchday Communication Foundations',
-                              'Clarification and Feedback',
-                              'Medical and Physical Status Communication',
-                              'Pressure Interviews and Team Communication',
+                              { title: 'Matchday Communication Foundations', detail: 'Build confidence with basic instructions, clarification, and everyday matchday situations.' },
+                              { title: 'Clarification and Feedback', detail: 'Learn how to ask questions, confirm instructions, and respond to feedback professionally.' },
+                              { title: 'Medical and Physical Status Communication', detail: 'Explain discomfort, fatigue, recovery, and availability clearly to staff.' },
+                              { title: 'Pressure Interviews and Team Communication', detail: 'Prepare for short interviews, teammate communication, and pressure moments.' },
                             ]
 
     const nextLevel = nextLevels[result.level] || 'Next level'
     const levelMeaning = levelMeanings[result.level] || levelMeanings.A2
+    const strengths = levelStrengths[result.level] || levelStrengths.A2
+    const improvements = levelImprovements[result.level] || levelImprovements.A2
 
     return (
       <div className="min-h-screen bg-fei-bg">
         <header className="sticky top-0 z-50 border-b border-fei-text/10 bg-fei-bg/90 px-6 py-4 backdrop-blur-xl lg:px-8">
           <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <img src="/logo.svg" alt="FEI" className="h-8 w-auto" />
-              <span className="text-sm font-medium text-fei-sky">
-                Football English Intelligence
-              </span>
-            </div>
+            <img src="/logo.svg" alt="FEI" className="h-8 w-auto" />
 
             <button
               onClick={() => router.push('/dashboard')}
@@ -4378,17 +4419,17 @@ function AssessmentContent() {
 
         <main className="px-6 py-12 lg:px-8">
           <div className="mx-auto w-full max-w-7xl">
-            <div className="mb-10 max-w-4xl">
+            <div className="mb-10">
               <div className="inline-block rounded-full bg-fei-yellow/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-fei-yellow">
                 Assessment Complete
               </div>
 
-              <h1 className="mt-4 text-4xl font-black leading-tight text-fei-text sm:text-5xl">
+              <h1 className="mt-4 text-4xl font-black leading-tight text-fei-text sm:text-5xl lg:whitespace-nowrap">
                 Your personalized <span className="text-fei-sky">FEI</span> dashboard is ready.
               </h1>
 
               <p className="mt-4 max-w-3xl text-base leading-7 text-fei-text/58">
-                Your diagnostic has prepared a role-specific pathway based on your current communication level, priority focus, and professional football context.
+                Your diagnostic has generated a role-specific pathway from your current level toward the next stage of professional football communication.
               </p>
             </div>
 
@@ -4398,24 +4439,13 @@ function AssessmentContent() {
                   Current Level
                 </p>
 
-                <div className="mt-5 grid gap-6 xl:grid-cols-[0.7fr_1.3fr] xl:items-center">
-                  <div>
-                    <p className={`text-8xl font-black leading-none ${pathwayColor}`}>
-                      {result.level}
-                    </p>
-                    <p className="mt-3 text-2xl font-bold text-fei-text">
-                      {pathwayLabel}
-                    </p>
-                  </div>
-
-                  <div className="rounded-2xl border border-fei-sky/20 bg-fei-bg/35 p-5">
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-fei-sky">
-                      What this level means
-                    </p>
-                    <p className="mt-3 text-sm leading-6 text-fei-text/70">
-                      {levelMeaning}
-                    </p>
-                  </div>
+                <div className="mt-5">
+                  <p className={`text-8xl font-black leading-none ${pathwayColor}`}>
+                    {result.level}
+                  </p>
+                  <p className="mt-3 text-2xl font-bold text-fei-text">
+                    {pathwayLabel}
+                  </p>
                 </div>
 
                 <div className="mt-7 space-y-3 rounded-2xl border border-fei-sky/20 bg-fei-bg/35 p-5">
@@ -4437,92 +4467,109 @@ function AssessmentContent() {
               </section>
 
               <section className="rounded-[2rem] border border-fei-sky/20 bg-fei-sky/[0.04] p-7 lg:col-span-7">
-                <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">
+                  What this level means
+                </p>
+
+                <h2 className="mt-3 text-3xl font-black text-fei-text">
+                  {result.level} — {pathwayLabel}
+                </h2>
+
+                <p className="mt-4 max-w-3xl text-sm leading-7 text-fei-text/72">
+                  {levelMeaning}
+                </p>
+
+                <div className="mt-7 grid gap-4 sm:grid-cols-2">
+                  <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-5">
+                    <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-fei-yellow">
+                      Strengths
+                    </p>
+                    <ul className="space-y-3 text-sm text-fei-text/70">
+                      {strengths.map(item => (
+                        <li key={item} className="flex items-start gap-3">
+                          <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-fei-yellow/[0.12] text-xs font-black text-fei-yellow">
+                            ✓
+                          </span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-5">
+                    <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-fei-sky">
+                      Points to Improve
+                    </p>
+                    <ul className="space-y-3 text-sm text-fei-text/70">
+                      {improvements.map(item => (
+                        <li key={item} className="flex items-start gap-3">
+                          <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-fei-sky/[0.12] text-xs font-black text-fei-sky">
+                            →
+                          </span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </section>
+
+              <section className="rounded-[2rem] border border-fei-text/10 bg-fei-text/[0.03] p-7 lg:col-span-12">
+                <div className="mb-7 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-yellow">
                       Your Training Pathway
                     </p>
                     <h2 className="mt-3 text-3xl font-black text-fei-text">
-                      {result.level} to {nextLevel}
+                      Skills to develop from {result.level} to {nextLevel}
                     </h2>
                   </div>
 
-                  <span className="w-fit rounded-full border border-fei-yellow/30 bg-fei-yellow/[0.08] px-4 py-1.5 text-xs font-bold text-fei-yellow">
+                  <span className="w-fit rounded-full border border-fei-sky/25 bg-fei-sky/[0.08] px-4 py-1.5 text-xs font-bold text-fei-sky">
                     Built from your diagnostic
                   </span>
                 </div>
 
-                <p className="max-w-3xl text-sm leading-7 text-fei-text/70">
-                  This pathway shows the communication areas FEI would train first for your role. Each module is designed around real football situations, not general English content.
+                <p className="mb-7 max-w-3xl text-sm leading-7 text-fei-text/65">
+                  These are the communication areas your pathway would train at this level. Hover each module to preview what it develops.
                 </p>
 
-                <div className="mt-7 grid gap-3 sm:grid-cols-2">
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                   {rolePathwayModules.map((module, index) => (
-                    <div key={module} className="rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-5">
+                    <article
+                      key={module.title}
+                      className="group min-h-[190px] rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-5 transition duration-300 hover:-translate-y-1 hover:border-fei-yellow/35 hover:bg-fei-yellow/[0.055]"
+                    >
                       <p className="text-xs font-semibold uppercase tracking-[0.18em] text-fei-yellow">
                         Module {index + 1}
                       </p>
-                      <p className="mt-2 text-base font-bold text-fei-text">
-                        {module}
+                      <h3 className="mt-3 text-lg font-bold leading-6 text-fei-text">
+                        {module.title}
+                      </h3>
+                      <p className="mt-5 text-sm leading-6 text-fei-text/0 transition duration-300 group-hover:text-fei-text/68">
+                        {module.detail}
                       </p>
-                    </div>
+                    </article>
                   ))}
                 </div>
 
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
                   <button
-                    onClick={() => router.push('/dashboard')}
+                    onClick={() => router.push('/#pricing')}
                     className="rounded-full bg-fei-yellow px-8 py-4 text-base font-bold text-fei-bg transition hover:bg-fei-yellow/90"
                   >
-                    <span className="inline-flex items-center justify-center gap-2">
-                      Enter My Dashboard
-                      <ChevronRightIcon />
-                    </span>
+                    Download Full Report · Paid
                   </button>
 
-                  <p className="text-sm leading-6 text-fei-text/45">
-                    Your dashboard will organize this pathway, progress, and next training steps.
-                  </p>
-                </div>
-              </section>
+                  <button
+                    onClick={() => router.push('/dashboard')}
+                    className="rounded-full border border-fei-text/15 px-8 py-4 text-base font-bold text-fei-text/65 transition hover:border-fei-text/35 hover:text-fei-text"
+                  >
+                    Return to Dashboard
+                  </button>
 
-              <section className="rounded-[2rem] border border-fei-text/10 bg-fei-text/[0.03] p-6 lg:col-span-7">
-                <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">
-                  FEI Insight
-                </p>
-                <p className="text-sm leading-relaxed text-fei-text/80">
-                  {aiInsight}
-                </p>
-              </section>
-
-              <section className="rounded-[2rem] border border-fei-yellow/15 bg-fei-text/[0.025] p-6 lg:col-span-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-yellow">
-                  Full Pathway View
-                </p>
-
-                <h2 className="mt-3 text-2xl font-black text-fei-text">
-                  What your dashboard will organize
-                </h2>
-
-                <div className="mt-5 space-y-3">
-                  {[
-                    'Current level and target level',
-                    'Role-specific module sequence',
-                    'Priority communication focus',
-                    'Progress across your FEI pathway',
-                  ].map(item => (
-                    <div key={item} className="flex items-center gap-3 rounded-2xl border border-fei-text/10 bg-fei-bg/30 p-4 text-sm font-medium text-fei-text/65">
-                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-fei-sky/[0.10] text-xs font-black text-fei-sky">
-                        →
-                      </span>
-                      <span>{item}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-5 rounded-2xl border border-fei-yellow/20 bg-fei-yellow/[0.06] p-4">
-                  <p className="text-sm leading-6 text-fei-text/65">
-                    Full FEI access can later unlock the complete training content, downloadable reports, and detailed progress tracking inside this pathway.
+                  <p className="text-sm leading-6 text-fei-text/42">
+                    Your dashboard should now show this result and pathway as your starting point.
                   </p>
                 </div>
               </section>
