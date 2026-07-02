@@ -4512,6 +4512,24 @@ function AssessmentContent() {
                     </ul>
                   </div>
                 </div>
+
+                <div className="mt-6 flex flex-col gap-3 rounded-2xl border border-fei-yellow/20 bg-fei-yellow/[0.055] p-5 sm:flex-row sm:items-center sm:justify-between">
+                  <div>
+                    <p className="text-sm font-bold text-fei-text">
+                      Full diagnostic report
+                    </p>
+                    <p className="mt-1 text-sm leading-6 text-fei-text/55">
+                      Download the complete report with full strengths, gaps, and pathway details.
+                    </p>
+                  </div>
+
+                  <button
+                    onClick={() => router.push('/#pricing')}
+                    className="shrink-0 rounded-full bg-fei-yellow px-6 py-3 text-sm font-bold text-fei-bg transition hover:bg-fei-yellow/90"
+                  >
+                    Download Full Report · Paid
+                  </button>
+                </div>
               </section>
 
               <section className="rounded-[2rem] border border-fei-text/10 bg-fei-text/[0.03] p-7 lg:col-span-12">
@@ -4530,9 +4548,14 @@ function AssessmentContent() {
                   </span>
                 </div>
 
-                <p className="mb-7 max-w-3xl text-sm leading-7 text-fei-text/65">
-                  These are the communication areas your pathway would train at this level. Hover each module to preview what it develops.
-                </p>
+                <div className="mb-7 max-w-3xl space-y-2 text-sm leading-7 text-fei-text/65">
+                  <p>
+                    These are the communication areas your pathway would train at this level.
+                  </p>
+                  <p className="text-fei-sky/80">
+                    Hover each module to preview what it develops.
+                  </p>
+                </div>
 
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                   {rolePathwayModules.map((module, index) => (
@@ -4553,14 +4576,7 @@ function AssessmentContent() {
                   ))}
                 </div>
 
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-                  <button
-                    onClick={() => router.push('/#pricing')}
-                    className="rounded-full bg-fei-yellow px-8 py-4 text-base font-bold text-fei-bg transition hover:bg-fei-yellow/90"
-                  >
-                    Download Full Report · Paid
-                  </button>
-
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                   <button
                     onClick={() => router.push('/dashboard')}
                     className="rounded-full border border-fei-text/15 px-8 py-4 text-base font-bold text-fei-text/65 transition hover:border-fei-text/35 hover:text-fei-text"
@@ -4568,9 +4584,12 @@ function AssessmentContent() {
                     Return to Dashboard
                   </button>
 
-                  <p className="text-sm leading-6 text-fei-text/42">
-                    Your dashboard should now show this result and pathway as your starting point.
-                  </p>
+                  <button
+                    onClick={() => router.push('/#pricing')}
+                    className="rounded-full bg-fei-yellow px-8 py-4 text-base font-bold text-fei-bg transition hover:bg-fei-yellow/90"
+                  >
+                    View Full Access & Pricing
+                  </button>
                 </div>
               </section>
             </div>
