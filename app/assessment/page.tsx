@@ -4485,21 +4485,21 @@ function AssessmentContent() {
             </div>
 
             <div className="grid gap-6 lg:grid-cols-12">
-              <section className="rounded-[2rem] border border-fei-yellow/20 bg-fei-yellow/[0.055] p-7 lg:col-span-5">
+              <section className="rounded-[2rem] border border-fei-yellow/20 bg-fei-yellow/[0.055] p-6 lg:col-span-4">
                 <p className="text-xs font-semibold uppercase tracking-[0.25em] text-fei-text/50">
                   Current Level
                 </p>
 
                 <div className="mt-5">
-                  <p className={`text-8xl font-black leading-none ${pathwayColor}`}>
+                  <p className={`text-7xl font-black leading-none ${pathwayColor}`}>
                     {result.level}
                   </p>
-                  <p className="mt-3 text-2xl font-bold text-fei-text">
+                  <p className="mt-2 text-xl font-bold text-fei-text">
                     {pathwayLabel}
                   </p>
                 </div>
 
-                <div className="mt-7 space-y-3 rounded-2xl border border-fei-sky/20 bg-fei-bg/35 p-5">
+                <div className="mt-6 space-y-3 rounded-2xl border border-fei-sky/20 bg-fei-bg/35 p-4">
                   <div className="flex items-center justify-between gap-4">
                     <span className="text-sm text-fei-text/50">Role</span>
                     <span className="text-right text-sm font-semibold text-fei-text">{selectedRole}</span>
@@ -4517,7 +4517,7 @@ function AssessmentContent() {
                 </div>
               </section>
 
-              <section className="rounded-[2rem] border border-fei-sky/20 bg-fei-sky/[0.04] p-7 lg:col-span-7">
+              <section className="rounded-[2rem] border border-fei-sky/20 bg-fei-sky/[0.04] p-7 lg:col-span-8">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">
                   What this level means
                 </p>
