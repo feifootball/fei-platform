@@ -4518,13 +4518,24 @@ function AssessmentContent() {
               </section>
 
               <section className="rounded-[2rem] border border-fei-sky/20 bg-fei-sky/[0.04] p-7 lg:col-span-8">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">
-                  What this level means
-                </p>
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">
+                      What this level means
+                    </p>
 
-                <h2 className="mt-3 text-3xl font-black text-fei-text">
-                  {result.level} — {pathwayLabel}
-                </h2>
+                    <h2 className="mt-3 text-3xl font-black text-fei-text">
+                      {result.level} — {pathwayLabel}
+                    </h2>
+                  </div>
+
+                  <button
+                    onClick={() => router.push('/#pricing')}
+                    className="w-fit rounded-full border border-fei-yellow/25 px-4 py-2 text-xs font-bold text-fei-yellow transition hover:bg-fei-yellow/10"
+                  >
+                    Full report available · Paid
+                  </button>
+                </div>
 
                 <p className="mt-4 max-w-3xl text-sm leading-7 text-fei-text/72">
                   {levelMeaning}
@@ -4564,23 +4575,6 @@ function AssessmentContent() {
                   </div>
                 </div>
 
-                <div className="mt-6 flex flex-col gap-3 rounded-2xl border border-fei-yellow/20 bg-fei-yellow/[0.055] p-5 sm:flex-row sm:items-center sm:justify-between">
-                  <div>
-                    <p className="text-sm font-bold text-fei-text">
-                      Full diagnostic report
-                    </p>
-                    <p className="mt-1 text-sm leading-6 text-fei-text/55">
-                      Download the complete report with full strengths, gaps, and pathway details.
-                    </p>
-                  </div>
-
-                  <button
-                    onClick={() => router.push('/#pricing')}
-                    className="shrink-0 rounded-full bg-fei-yellow px-6 py-3 text-sm font-bold text-fei-bg transition hover:bg-fei-yellow/90"
-                  >
-                    Download Full Report · Paid
-                  </button>
-                </div>
               </section>
 
               <section className="rounded-[2rem] border border-fei-text/10 bg-fei-text/[0.03] p-7 lg:col-span-12">
