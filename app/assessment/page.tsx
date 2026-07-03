@@ -4530,51 +4530,14 @@ function AssessmentContent() {
                   </div>
                 </div>
 
-                <p className="mt-4 max-w-3xl text-sm leading-7 text-fei-text/72">
+                <p className="mt-4 max-w-4xl text-sm leading-7 text-fei-text/72">
                   {levelMeaning}
                 </p>
 
-                <div className="mt-4 max-w-3xl rounded-2xl border border-fei-yellow/15 bg-fei-yellow/[0.035] px-4 py-3">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-fei-yellow">
-                    Full access unlocks
+                <div className="mt-5 border-l-2 border-fei-yellow/45 pl-4">
+                  <p className="text-sm leading-7 text-fei-text/62">
+                    Full FEI access includes your complete diagnostic report, detailed pathway, full scenario practice and progress tracking.
                   </p>
-                  <p className="mt-2 text-sm leading-6 text-fei-text/58">
-                    The complete diagnostic report, detailed pathway, full scenario content and progress tracking become available with full FEI access.
-                  </p>
-                </div>
-
-                <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                  <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-5">
-                    <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-fei-yellow">
-                      Strengths
-                    </p>
-                    <ul className="space-y-3 text-sm text-fei-text/70">
-                      {strengths.map(item => (
-                        <li key={item} className="flex items-start gap-3">
-                          <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-fei-yellow/[0.12] text-xs font-black text-fei-yellow">
-                            ✓
-                          </span>
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-5">
-                    <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-fei-sky">
-                      Points to Improve
-                    </p>
-                    <ul className="space-y-3 text-sm text-fei-text/70">
-                      {improvements.map(item => (
-                        <li key={item} className="flex items-start gap-3">
-                          <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-fei-sky/[0.12] text-xs font-black text-fei-sky">
-                            →
-                          </span>
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
                 </div>
 
               </section>
@@ -4604,19 +4567,19 @@ function AssessmentContent() {
                     <div className="mb-7 grid gap-4 lg:grid-cols-[0.8fr_1.2fr]">
                       <div className="rounded-2xl border border-fei-yellow/20 bg-fei-yellow/[0.055] p-5">
                         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-fei-yellow">
-                          Programme Structure
+                          Pathway Overview
                         </p>
                         <p className="mt-3 text-2xl font-black text-fei-text">
-                          Foundations + 6 Domains + 14 Scenarios
+                          6 areas · 14 professional scenarios
                         </p>
                         <p className="mt-3 text-sm leading-6 text-fei-text/60">
-                          Around 37 hours per level. At 5 hours per week, each level takes approximately 7–8 weeks.
+                          Your pathway is designed to move you from your current level toward the next stage of professional football communication.
                         </p>
                       </div>
 
                       <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-5">
                         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-fei-sky">
-                          Foundations before domains
+                          Your starting focus
                         </p>
                         <div className="mt-4 flex flex-wrap gap-2">
                           {foundations.map(item => (
@@ -4630,10 +4593,10 @@ function AssessmentContent() {
 
                     <div className="mb-7 max-w-3xl space-y-2 text-sm leading-7 text-fei-text/65">
                       <p>
-                        These are the six communication domains your Professional Player pathway would train at this level.
+                        These are the six professional communication areas included in your pathway.
                       </p>
                       <p className="text-fei-sky/80">
-                        Hover each domain to preview its professional scenarios.
+                        Hover each area to preview the professional scenarios inside.
                       </p>
                     </div>
 
