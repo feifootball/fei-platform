@@ -4528,13 +4528,6 @@ function AssessmentContent() {
                       {result.level} — {pathwayLabel}
                     </h2>
                   </div>
-
-                  <button
-                    onClick={() => router.push('/#pricing')}
-                    className="w-fit rounded-full border border-fei-yellow/25 px-4 py-2 text-xs font-bold text-fei-yellow transition hover:bg-fei-yellow/10"
-                  >
-                    Full report available · Paid
-                  </button>
                 </div>
 
                 <p className="mt-4 max-w-3xl text-sm leading-7 text-fei-text/72">
