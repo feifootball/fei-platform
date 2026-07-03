@@ -4402,6 +4402,57 @@ function AssessmentContent() {
     const strengths = levelStrengths[result.level] || levelStrengths.A2
     const improvements = levelImprovements[result.level] || levelImprovements.A2
 
+    const foundations = [
+      'Building Professional Relationships',
+      'Giving & Receiving Feedback',
+      'Managing Difficult Conversations',
+      'Communicating Under Pressure',
+      'Influencing & Leading Communication',
+      'Explaining Decisions',
+      'Negotiating Professionally',
+    ]
+
+    const professionalPlayerDomains = [
+      {
+        domain: 'Domain 1',
+        title: 'On-Pitch Communication',
+        detail: 'Fast, directional and unambiguous communication during live football situations.',
+        scenarios: ['S1 Match Communication', 'S2 Tactical Communication & Clarification'],
+      },
+      {
+        domain: 'Domain 2',
+        title: 'Feedback, Staff & Availability',
+        detail: 'Feedback conversations, tactical clarification, injury reporting and staff communication.',
+        scenarios: ['S3 Receiving Feedback', 'S4 Feedback Delivery', 'S5 Communicating Injury or Discomfort'],
+      },
+      {
+        domain: 'Domain 3',
+        title: 'Dressing Room Leadership',
+        detail: 'Leadership, peer support and private conflict resolution inside the squad environment.',
+        scenarios: ['S6 Leadership Communication', 'S7 Peer Support Communication', 'S8 Conflict Resolution'],
+      },
+      {
+        domain: 'Domain 4',
+        title: 'Media & Public Communication',
+        detail: 'Media interviews, public statements and crisis communication where every word is visible.',
+        scenarios: ['S9 Media Interview Communication', 'S10 Apology or Crisis Statement', 'S11 Social Media Communication'],
+      },
+      {
+        domain: 'Domain 5',
+        title: 'Personal Brand',
+        detail: 'Personal narrative, sponsor communication and authentic public identity across platforms.',
+        scenarios: ['S12 Personal Branding Communication', 'S13 Sponsor Communication'],
+      },
+      {
+        domain: 'Domain 6',
+        title: 'Career Management',
+        detail: 'Role expectations, playing time, development conversations and professional negotiation.',
+        scenarios: ['S14 Contract & Role Expectation Conversation'],
+      },
+    ]
+
+    const isProfessionalPlayerPathway = selectedRole === 'Professional Player'
+
     return (
       <div className="min-h-screen bg-fei-bg">
         <header className="sticky top-0 z-50 border-b border-fei-text/10 bg-fei-bg/90 px-6 py-4 backdrop-blur-xl lg:px-8">
@@ -4539,7 +4590,11 @@ function AssessmentContent() {
                       Your Training Pathway
                     </p>
                     <h2 className="mt-3 text-3xl font-black text-fei-text">
-                      Skills to develop from {result.level} to {nextLevel}
+                      {isProfessionalPlayerPathway ? (
+                        <>Professional Player · {result.level} to {nextLevel}</>
+                      ) : (
+                        <>Skills to develop from {result.level} to {nextLevel}</>
+                      )}
                     </h2>
                   </div>
 
@@ -4548,33 +4603,102 @@ function AssessmentContent() {
                   </span>
                 </div>
 
-                <div className="mb-7 max-w-3xl space-y-2 text-sm leading-7 text-fei-text/65">
-                  <p>
-                    These are the communication areas your pathway would train at this level.
-                  </p>
-                  <p className="text-fei-sky/80">
-                    Hover each module to preview what it develops.
-                  </p>
-                </div>
+                {isProfessionalPlayerPathway ? (
+                  <>
+                    <div className="mb-7 grid gap-4 lg:grid-cols-[0.8fr_1.2fr]">
+                      <div className="rounded-2xl border border-fei-yellow/20 bg-fei-yellow/[0.055] p-5">
+                        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-fei-yellow">
+                          Programme Structure
+                        </p>
+                        <p className="mt-3 text-2xl font-black text-fei-text">
+                          Foundations + 6 Domains + 14 Scenarios
+                        </p>
+                        <p className="mt-3 text-sm leading-6 text-fei-text/60">
+                          Around 37 hours per level. At 5 hours per week, each level takes approximately 7–8 weeks.
+                        </p>
+                      </div>
 
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-                  {rolePathwayModules.map((module, index) => (
-                    <article
-                      key={module.title}
-                      className="group min-h-[190px] rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-5 transition duration-300 hover:-translate-y-1 hover:border-fei-yellow/35 hover:bg-fei-yellow/[0.055]"
-                    >
-                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-fei-yellow">
-                        Module {index + 1}
+                      <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-5">
+                        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-fei-sky">
+                          Foundations before domains
+                        </p>
+                        <div className="mt-4 flex flex-wrap gap-2">
+                          {foundations.map(item => (
+                            <span key={item} className="rounded-full border border-fei-text/10 bg-fei-text/[0.035] px-3 py-1.5 text-xs font-semibold text-fei-text/65">
+                              {item}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="mb-7 max-w-3xl space-y-2 text-sm leading-7 text-fei-text/65">
+                      <p>
+                        These are the six communication domains your Professional Player pathway would train at this level.
                       </p>
-                      <h3 className="mt-3 text-lg font-bold leading-6 text-fei-text">
-                        {module.title}
-                      </h3>
-                      <p className="mt-5 text-sm leading-6 text-fei-text/0 transition duration-300 group-hover:text-fei-text/68">
-                        {module.detail}
+                      <p className="text-fei-sky/80">
+                        Hover each domain to preview its professional scenarios.
                       </p>
-                    </article>
-                  ))}
-                </div>
+                    </div>
+
+                    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                      {professionalPlayerDomains.map(domain => (
+                        <article
+                          key={domain.domain}
+                          className="group min-h-[230px] rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-5 transition duration-300 hover:-translate-y-1 hover:border-fei-yellow/35 hover:bg-fei-yellow/[0.055]"
+                        >
+                          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-fei-yellow">
+                            {domain.domain}
+                          </p>
+                          <h3 className="mt-3 text-xl font-bold leading-6 text-fei-text">
+                            {domain.title}
+                          </h3>
+                          <p className="mt-3 text-sm leading-6 text-fei-text/55">
+                            {domain.detail}
+                          </p>
+
+                          <div className="mt-5 space-y-2 opacity-0 transition duration-300 group-hover:opacity-100">
+                            {domain.scenarios.map(scenario => (
+                              <p key={scenario} className="rounded-xl border border-fei-text/10 bg-fei-bg/45 px-3 py-2 text-xs font-semibold text-fei-text/70">
+                                {scenario}
+                              </p>
+                            ))}
+                          </div>
+                        </article>
+                      ))}
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="mb-7 max-w-3xl space-y-2 text-sm leading-7 text-fei-text/65">
+                      <p>
+                        These are the communication areas your pathway would train at this level.
+                      </p>
+                      <p className="text-fei-sky/80">
+                        Hover each module to preview what it develops.
+                      </p>
+                    </div>
+
+                    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                      {rolePathwayModules.map((module, index) => (
+                        <article
+                          key={module.title}
+                          className="group min-h-[190px] rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-5 transition duration-300 hover:-translate-y-1 hover:border-fei-yellow/35 hover:bg-fei-yellow/[0.055]"
+                        >
+                          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-fei-yellow">
+                            Module {index + 1}
+                          </p>
+                          <h3 className="mt-3 text-lg font-bold leading-6 text-fei-text">
+                            {module.title}
+                          </h3>
+                          <p className="mt-5 text-sm leading-6 text-fei-text/0 transition duration-300 group-hover:text-fei-text/68">
+                            {module.detail}
+                          </p>
+                        </article>
+                      ))}
+                    </div>
+                  </>
+                )}
 
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                   <button
@@ -4588,7 +4712,7 @@ function AssessmentContent() {
                     onClick={() => router.push('/#pricing')}
                     className="rounded-full bg-fei-yellow px-8 py-4 text-base font-bold text-fei-bg transition hover:bg-fei-yellow/90"
                   >
-                    View Full Access & Pricing
+                    View Full Pathway & Pricing
                   </button>
                 </div>
               </section>
