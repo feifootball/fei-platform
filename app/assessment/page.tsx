@@ -4591,37 +4591,52 @@ function AssessmentContent() {
                       </div>
                     </div>
 
-                    <div className="mb-7 max-w-3xl space-y-2 text-sm leading-7 text-fei-text/65">
+                    <div className="mb-6 max-w-3xl space-y-2 text-sm leading-7 text-fei-text/65">
                       <p>
-                        These are the six professional communication areas included in your pathway.
-                      </p>
-                      <p className="text-fei-sky/80">
-                        Hover each area to preview the professional scenarios inside.
+                        Your pathway is organized into six professional communication areas. Each area contains role-specific scenarios that train real football situations.
                       </p>
                     </div>
 
-                    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                      {professionalPlayerDomains.map(domain => (
+                    <div className="overflow-hidden rounded-3xl border border-fei-text/10">
+                      {professionalPlayerDomains.map((domain, index) => (
                         <article
                           key={domain.domain}
-                          className="group min-h-[230px] rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-5 transition duration-300 hover:-translate-y-1 hover:border-fei-yellow/35 hover:bg-fei-yellow/[0.055]"
+                          className="group border-b border-fei-text/10 bg-fei-bg/25 px-5 py-5 transition hover:bg-fei-yellow/[0.035] last:border-b-0 sm:px-6"
                         >
-                          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-fei-yellow">
-                            {domain.domain}
-                          </p>
-                          <h3 className="mt-3 text-xl font-bold leading-6 text-fei-text">
-                            {domain.title}
-                          </h3>
-                          <p className="mt-3 text-sm leading-6 text-fei-text/55">
-                            {domain.detail}
-                          </p>
+                          <div className="grid gap-4 lg:grid-cols-[80px_1fr_1.1fr] lg:items-start">
+                            <div className="flex items-center gap-3">
+                              <span className="text-3xl font-black text-fei-yellow/85">
+                                {String(index + 1).padStart(2, '0')}
+                              </span>
+                            </div>
 
-                          <div className="mt-5 space-y-2 opacity-0 transition duration-300 group-hover:opacity-100">
-                            {domain.scenarios.map(scenario => (
-                              <p key={scenario} className="rounded-xl border border-fei-text/10 bg-fei-bg/45 px-3 py-2 text-xs font-semibold text-fei-text/70">
-                                {scenario}
+                            <div>
+                              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-fei-yellow">
+                                {domain.domain}
                               </p>
-                            ))}
+                              <h3 className="mt-2 text-xl font-bold leading-6 text-fei-text">
+                                {domain.title}
+                              </h3>
+                              <p className="mt-3 text-sm leading-6 text-fei-text/55">
+                                {domain.detail}
+                              </p>
+                            </div>
+
+                            <div className="lg:pt-7">
+                              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-fei-sky">
+                                Professional scenarios
+                              </p>
+                              <div className="flex flex-wrap gap-2">
+                                {domain.scenarios.map(scenario => (
+                                  <span
+                                    key={scenario}
+                                    className="rounded-full border border-fei-sky/15 bg-fei-sky/[0.045] px-3 py-1.5 text-xs font-semibold text-fei-text/65"
+                                  >
+                                    {scenario}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
                           </div>
                         </article>
                       ))}
