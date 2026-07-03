@@ -4534,7 +4534,16 @@ function AssessmentContent() {
                   {levelMeaning}
                 </p>
 
-                <div className="mt-7 grid gap-4 sm:grid-cols-2">
+                <div className="mt-4 max-w-3xl rounded-2xl border border-fei-yellow/15 bg-fei-yellow/[0.035] px-4 py-3">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-fei-yellow">
+                    Full access unlocks
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-fei-text/58">
+                    The complete diagnostic report, detailed pathway, full scenario content and progress tracking become available with full FEI access.
+                  </p>
+                </div>
+
+                <div className="mt-6 grid gap-4 sm:grid-cols-2">
                   <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-5">
                     <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-fei-yellow">
                       Strengths
