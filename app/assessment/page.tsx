@@ -4485,61 +4485,51 @@ function AssessmentContent() {
             </div>
 
             <div className="grid items-start gap-6 lg:grid-cols-12">
-              <section className="rounded-[2rem] border border-fei-yellow/20 bg-fei-yellow/[0.055] p-5 lg:col-span-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-fei-text/50">
-                  Current Level
+              <section className="rounded-[2rem] border border-fei-yellow/20 bg-fei-yellow/[0.045] p-6 lg:col-span-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-fei-yellow">
+                  Your Test Result
                 </p>
 
-                <div className="mt-4">
-                  <p className={`text-6xl font-black leading-none ${pathwayColor}`}>
-                    {result.level}
+                <div className="mt-5 flex items-end gap-3">
+                  <p className="text-7xl font-black leading-none text-fei-yellow">
+                    {overallEvidence}%
                   </p>
-                  <p className="mt-2 text-xl font-bold text-fei-text">
-                    {pathwayLabel}
+                  <p className="pb-2 text-sm font-semibold uppercase tracking-[0.16em] text-fei-text/45">
+                    Score
                   </p>
                 </div>
 
-                <div className="mt-5 space-y-2 rounded-2xl border border-fei-sky/20 bg-fei-bg/35 p-4">
-                  <div className="flex items-center justify-between gap-4">
-                    <span className="text-sm text-fei-text/50">Role</span>
-                    <span className="text-right text-sm font-semibold text-fei-text">{selectedRole}</span>
-                  </div>
+                <div className="mt-6 border-t border-fei-text/10 pt-5">
+                  <p className="text-sm text-fei-text/48">Current level</p>
+                  <p className={`mt-1 text-3xl font-black ${pathwayColor}`}>
+                    {result.level} <span className="text-fei-text">{pathwayLabel}</span>
+                  </p>
+                </div>
 
-                  <div className="flex items-center justify-between gap-4">
-                    <span className="text-sm text-fei-text/50">Diagnostic evidence</span>
-                    <span className="text-sm font-semibold text-fei-yellow">{overallEvidence}%</span>
-                  </div>
-
-                  <div className="flex items-center justify-between gap-4">
-                    <span className="text-sm text-fei-text/50">Primary focus</span>
-                    <span className="text-right text-sm font-semibold text-fei-sky">{previewFocus}</span>
-                  </div>
+                <div className="mt-5 border-t border-fei-text/10 pt-5">
+                  <p className="text-sm text-fei-text/48">Role</p>
+                  <p className="mt-1 text-base font-bold text-fei-text">{selectedRole}</p>
                 </div>
               </section>
 
-              <section className="rounded-[2rem] border border-fei-sky/20 bg-fei-sky/[0.04] p-7 lg:col-span-8">
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">
-                      What this level means
-                    </p>
+              <section className="rounded-[2rem] border border-fei-sky/20 bg-fei-sky/[0.035] p-7 lg:col-span-8">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">
+                  What your result means
+                </p>
 
-                    <h2 className="mt-3 text-3xl font-black text-fei-text">
-                      {result.level} — {pathwayLabel}
-                    </h2>
-                  </div>
-                </div>
+                <h2 className="mt-3 text-3xl font-black text-fei-text">
+                  You are starting at {result.level} Foundation level.
+                </h2>
 
                 <p className="mt-4 max-w-4xl text-sm leading-7 text-fei-text/72">
                   {levelMeaning}
                 </p>
 
-                <div className="mt-5 border-l-2 border-fei-yellow/45 pl-4">
+                <div className="mt-6 border-l-2 border-fei-yellow/45 pl-4">
                   <p className="text-sm leading-7 text-fei-text/62">
-                    Full FEI access includes your complete diagnostic report, detailed pathway, full scenario practice and progress tracking.
+                    Full FEI access includes your complete diagnostic report, full training plan, scenario practice and progress tracking.
                   </p>
                 </div>
-
               </section>
 
               <section className="rounded-[2rem] border border-fei-text/10 bg-fei-text/[0.03] p-7 lg:col-span-12">
@@ -4567,19 +4557,19 @@ function AssessmentContent() {
                     <div className="mb-7 grid gap-4 lg:grid-cols-[0.8fr_1.2fr]">
                       <div className="rounded-2xl border border-fei-yellow/20 bg-fei-yellow/[0.055] p-5">
                         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-fei-yellow">
-                          Pathway Overview
+                          What you will train next
                         </p>
                         <p className="mt-3 text-2xl font-black text-fei-text">
-                          6 areas · 14 professional scenarios
+                          6 communication areas · 14 practice scenarios
                         </p>
                         <p className="mt-3 text-sm leading-6 text-fei-text/60">
-                          Your pathway is designed to move you from your current level toward the next stage of professional football communication.
+                          Your training plan focuses on the real communication situations a professional player faces on and off the pitch.
                         </p>
                       </div>
 
                       <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-5">
                         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-fei-sky">
-                          Your starting focus
+                          Core communication skills
                         </p>
                         <div className="mt-4 flex flex-wrap gap-2">
                           {foundations.map(item => (
@@ -4593,7 +4583,7 @@ function AssessmentContent() {
 
                     <div className="mb-6 max-w-3xl space-y-2 text-sm leading-7 text-fei-text/65">
                       <p>
-                        Your pathway is organized into six professional communication areas. Each area contains role-specific scenarios that train real football situations.
+                        Your full plan is organized around the real football situations you need to communicate in.
                       </p>
                     </div>
 
@@ -4624,7 +4614,7 @@ function AssessmentContent() {
 
                             <div className="lg:pt-7">
                               <p className="mb-3 text-xs font-semibold uppercase tracking-[0.16em] text-fei-sky">
-                                Professional scenarios
+                                Practice scenarios
                               </p>
                               <div className="flex flex-wrap gap-2">
                                 {domain.scenarios.map(scenario => (
