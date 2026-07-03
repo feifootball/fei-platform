@@ -4484,14 +4484,14 @@ function AssessmentContent() {
               </p>
             </div>
 
-            <div className="grid gap-6 lg:grid-cols-12">
-              <section className="rounded-[2rem] border border-fei-yellow/20 bg-fei-yellow/[0.055] p-6 lg:col-span-4">
+            <div className="grid items-start gap-6 lg:grid-cols-12">
+              <section className="rounded-[2rem] border border-fei-yellow/20 bg-fei-yellow/[0.055] p-5 lg:col-span-4">
                 <p className="text-xs font-semibold uppercase tracking-[0.25em] text-fei-text/50">
                   Current Level
                 </p>
 
-                <div className="mt-5">
-                  <p className={`text-7xl font-black leading-none ${pathwayColor}`}>
+                <div className="mt-4">
+                  <p className={`text-6xl font-black leading-none ${pathwayColor}`}>
                     {result.level}
                   </p>
                   <p className="mt-2 text-xl font-bold text-fei-text">
@@ -4499,7 +4499,7 @@ function AssessmentContent() {
                   </p>
                 </div>
 
-                <div className="mt-6 space-y-3 rounded-2xl border border-fei-sky/20 bg-fei-bg/35 p-4">
+                <div className="mt-5 space-y-2 rounded-2xl border border-fei-sky/20 bg-fei-bg/35 p-4">
                   <div className="flex items-center justify-between gap-4">
                     <span className="text-sm text-fei-text/50">Role</span>
                     <span className="text-right text-sm font-semibold text-fei-text">{selectedRole}</span>
