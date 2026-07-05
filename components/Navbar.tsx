@@ -48,16 +48,18 @@ export function Navbar() {
 
     function handleScroll() {
       let current = "";
+      let closestDistance = Number.POSITIVE_INFINITY;
 
       for (const id of sectionIds) {
         const element = document.getElementById(id);
         if (!element) continue;
 
         const rect = element.getBoundingClientRect();
+        const distance = Math.abs(rect.top - 96);
 
-        if (rect.top <= 120 && rect.bottom >= 120) {
+        if (rect.top <= window.innerHeight * 0.55 && rect.bottom >= 96 && distance < closestDistance) {
           current = id;
-          break;
+          closestDistance = distance;
         }
       }
 
@@ -66,8 +68,12 @@ export function Navbar() {
 
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("hashchange", handleScroll);
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("hashchange", handleScroll);
+    };
   }, []);
 
   function toggleLang() {
@@ -77,13 +83,22 @@ export function Navbar() {
     window.dispatchEvent(new CustomEvent("fei_lang_v2_v2_change", { detail: next }));
   }
 
+  function handleNavClick(sectionId: string) {
+    setActiveSection(sectionId);
+    setMenuOpen(false);
+
+    window.setTimeout(() => {
+      setActiveSection(sectionId);
+    }, 150);
+  }
+
   const links = navLinks[lang];
 
   const navLinkClass = (sectionId: string) =>
     `inline-flex rounded-full px-2.5 py-1.5 text-[15px] font-normal transition duration-300 ${
       activeSection === sectionId
-        ? "bg-white/[0.06] text-fei-text shadow-[0_0_22px_rgba(255,255,255,0.12)]"
-        : "text-fei-text/60 hover:bg-white/[0.04] hover:text-fei-text"
+        ? "bg-white/[0.035] text-fei-text/82 shadow-[0_0_14px_rgba(255,255,255,0.055)]"
+        : "text-fei-text/55 hover:bg-white/[0.03] hover:text-fei-text/82"
     }`;
 
   return (
@@ -96,7 +111,12 @@ export function Navbar() {
         <div className="hidden items-center md:flex">
           <div className="flex items-center gap-4">
             {links.map((link) => (
-              <a key={link.label} href={link.href} className={navLinkClass(link.sectionId)}>
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={() => handleNavClick(link.sectionId)}
+                className={navLinkClass(link.sectionId)}
+              >
                 {link.label}
               </a>
             ))}
@@ -168,11 +188,11 @@ export function Navbar() {
               <a
                 key={link.label}
                 href={link.href}
-                onClick={() => setMenuOpen(false)}
-                className={`text-sm font-medium transition ${
+                onClick={() => handleNavClick(link.sectionId)}
+                className={`text-sm font-normal transition ${
                   activeSection === link.sectionId
-                    ? "text-fei-yellow"
-                    : "text-fei-text/70 hover:text-fei-text"
+                    ? "text-fei-yellow/85"
+                    : "text-fei-text/65 hover:text-fei-text"
                 }`}
               >
                 {link.label}
