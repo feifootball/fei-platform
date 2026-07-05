@@ -49,11 +49,18 @@ const translations = {
     pricing_title: "Simple, transparent pricing",
     pricing_subtitle: "Coming soon. Get early access by signing up today.",
     pricing_cta: "Get Early Access",
+    footer_support: "Support",
     footer_faq: "FAQ",
-    footer_contact: "Contact",
+    footer_contact: "Contact FEI",
+    footer_legal: "Legal",
     footer_privacy: "Privacy",
     footer_terms: "Terms",
-    footer_rights: "All rights reserved.",
+    footer_gdpr: "GDPR",
+    footer_cookies: "Cookies",
+    footer_follow: "Follow",
+    footer_linkedin: "LinkedIn",
+    footer_instagram: "Instagram",
+    footer_rights: "Communication Creates Opportunity",
   },
   es: {
     tagline: "El fútbol es global.",
@@ -98,11 +105,18 @@ const translations = {
     pricing_title: "Precios simples y transparentes",
     pricing_subtitle: "Próximamente. Regístrate hoy para obtener acceso anticipado.",
     pricing_cta: "Acceso anticipado",
-    footer_faq: "Preguntas frecuentes",
-    footer_contact: "Contacto",
+    footer_support: "Soporte",
+    footer_faq: "FAQ",
+    footer_contact: "Contactar FEI",
+    footer_legal: "Legal",
     footer_privacy: "Privacidad",
     footer_terms: "Términos",
-    footer_rights: "Todos los derechos reservados.",
+    footer_gdpr: "GDPR",
+    footer_cookies: "Cookies",
+    footer_follow: "Redes",
+    footer_linkedin: "LinkedIn",
+    footer_instagram: "Instagram",
+    footer_rights: "Communication Creates Opportunity",
   },
 };
 
@@ -345,33 +359,87 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="mt-auto border-t border-fei-text/10 px-6 py-10">
+      <footer className="mt-auto border-t border-fei-text/10 bg-[#0F172A] px-6 py-14">
         <div className="mx-auto max-w-7xl">
-          <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
-            <div className="flex items-center gap-2.5">
-              <img src="/logo.svg" alt="FEI" className="h-6 w-auto" />
-              <span className="text-sm text-fei-text/50">Football English Intelligence</span>
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#FACC15]">
+                {t.footer_support}
+              </p>
+              <nav className="mt-5 flex flex-col gap-3">
+                <a href="/faq" className="text-sm text-[#94A3B8] transition hover:text-[#F8FAFC]">
+                  {t.footer_faq}
+                </a>
+                <a href="/contact" className="text-sm text-[#94A3B8] transition hover:text-[#F8FAFC]">
+                  {t.footer_contact}
+                </a>
+              </nav>
             </div>
-            <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-              <a href="/faq" className="text-sm text-fei-text/40 transition hover:text-fei-text">{t.footer_faq}</a>
-              <a href="mailto:info@feifootball.com" className="text-sm text-fei-text/40 transition hover:text-fei-text">{t.footer_contact}</a>
-              <a href="/privacy" className="text-sm text-fei-text/40 transition hover:text-fei-text">{t.footer_privacy}</a>
-              <a href="/terms" className="text-sm text-fei-text/40 transition hover:text-fei-text">{t.footer_terms}</a>
-            </nav>
-            <div className="flex items-center gap-3">
-              <a href="https://instagram.com/fei.football" target="_blank" rel="noopener noreferrer" className="text-fei-text/40 transition hover:text-fei-sky">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
-                </svg>
-              </a>
-              <a href="https://linkedin.com/company/football-english-intelligence" target="_blank" rel="noopener noreferrer" className="text-fei-text/40 transition hover:text-fei-sky">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
-                </svg>
-              </a>
+
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#FACC15]">
+                {t.footer_legal}
+              </p>
+              <nav className="mt-5 flex flex-col gap-3">
+                <a href="/privacy" className="text-sm text-[#94A3B8] transition hover:text-[#F8FAFC]">
+                  {t.footer_privacy}
+                </a>
+                <a href="/terms" className="text-sm text-[#94A3B8] transition hover:text-[#F8FAFC]">
+                  {t.footer_terms}
+                </a>
+                <a href="/gdpr" className="text-sm text-[#94A3B8] transition hover:text-[#F8FAFC]">
+                  {t.footer_gdpr}
+                </a>
+                <a href="/cookies" className="text-sm text-[#94A3B8] transition hover:text-[#F8FAFC]">
+                  {t.footer_cookies}
+                </a>
+              </nav>
+            </div>
+
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#FACC15]">
+                {t.footer_follow}
+              </p>
+              <nav className="mt-5 flex flex-col gap-3">
+                <a
+                  href="https://linkedin.com/company/football-english-intelligence"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-[#94A3B8] transition hover:text-[#F8FAFC]"
+                >
+                  {t.footer_linkedin}
+                </a>
+                <a
+                  href="https://instagram.com/fei.football"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-[#94A3B8] transition hover:text-[#F8FAFC]"
+                >
+                  {t.footer_instagram}
+                </a>
+              </nav>
+            </div>
+
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#FACC15]">
+                Contact
+              </p>
+              <nav className="mt-5 flex flex-col gap-3">
+                <a href="/contact" className="text-sm text-[#94A3B8] transition hover:text-[#F8FAFC]">
+                  {t.footer_contact}
+                </a>
+                <a href="mailto:info@feifootball.com" className="text-sm text-[#94A3B8] transition hover:text-[#F8FAFC]">
+                  info@feifootball.com
+                </a>
+              </nav>
             </div>
           </div>
-          <p className="mt-6 text-center text-xs text-fei-text/30">© {new Date().getFullYear()} Football English Intelligence. {t.footer_rights}</p>
+
+          <div className="mt-12 border-t border-white/10 pt-6">
+            <p className="text-center text-xs leading-6 text-[#94A3B8]">
+              FEI © {new Date().getFullYear()} | {t.footer_rights} | Crafted in Ecuador 🇪🇨
+            </p>
+          </div>
         </div>
       </footer>
     </div>
