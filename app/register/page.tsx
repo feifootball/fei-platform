@@ -44,7 +44,7 @@ export default function RegisterPage() {
     }
 
     if (!acceptedGdpr) {
-      setError('Please confirm that you understand your data is processed under GDPR.')
+      setError('Please confirm that you understand how your personal data is processed and protected.')
       setLoading(false)
       return
     }
@@ -318,9 +318,9 @@ export default function RegisterPage() {
                 className="mt-1 h-4 w-4 rounded border-fei-text/20 bg-fei-bg text-fei-yellow accent-fei-yellow focus:ring-fei-yellow"
               />
               <span>
-                I understand my data is processed under{' '}
-                <a href="/gdpr" className="font-medium text-fei-sky hover:underline">
-                  GDPR
+                I understand my personal data is processed and protected according to our{' '}
+                <a href="/privacy" className="font-medium text-fei-sky hover:underline">
+                  Privacy Policy
                 </a>
                 .
               </span>
