@@ -198,8 +198,8 @@ export default function Home() {
       </section>
 
       <section id="how-it-works" className="scroll-mt-24 flex min-h-[calc(100vh-73px)] items-center bg-white px-6 py-20 text-fei-bg sm:py-24">
-        <div className="mx-auto w-full max-w-[1500px]">
-          <div className="max-w-4xl">
+        <div className="mx-auto grid w-full max-w-[1500px] gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div className="max-w-2xl">
             <p className="mb-4 text-xs font-bold uppercase tracking-[0.28em] text-fei-sky">
               The FEI Method
             </p>
@@ -216,41 +216,52 @@ export default function Home() {
               )}
             </h2>
 
-            <p className="mt-5 max-w-3xl text-lg leading-8 text-fei-bg/60">
+            <p className="mt-6 text-lg leading-8 text-fei-bg/60">
               {t.how_subtitle}
             </p>
           </div>
 
-          <div className="mt-14 max-w-6xl">
-            <div className="grid gap-4 md:grid-cols-3">
-              {t.steps.map((item, index) => (
-                <article key={item.step} className="group rounded-[1.5rem] border border-fei-bg/10 bg-[#F7F8FA] p-5 transition hover:-translate-y-0.5 hover:border-fei-yellow/35 hover:bg-white hover:shadow-lg hover:shadow-fei-bg/5">
-                  <div className="mb-6 flex items-center justify-between">
-                    <span className="text-sm font-black tracking-tight text-fei-bg/35">
-                      {item.step}
-                    </span>
+          <div className="relative">
+            <div className="absolute left-6 top-8 hidden h-[calc(100%-4rem)] w-px bg-gradient-to-b from-fei-sky/35 via-fei-bg/10 to-fei-yellow/35 sm:block" />
 
-                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-fei-bg text-fei-yellow shadow-md shadow-fei-bg/10 transition group-hover:bg-fei-yellow group-hover:text-fei-bg">
-                      {index === 0 && (
-                        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                          <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                        </svg>
-                      )}
-                      {index === 1 && (
-                        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                          <path d="M5 7h14M5 12h9M5 17h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                        </svg>
-                      )}
-                      {index === 2 && (
-                        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                          <path d="M6 13l4 4L18 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      )}
-                    </div>
+            <div className="space-y-10">
+              {t.steps.map((item, index) => (
+                <article key={item.step} className="relative grid gap-5 sm:grid-cols-[3.5rem_1fr] sm:gap-7">
+                  <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-fei-bg text-fei-yellow shadow-lg shadow-fei-bg/10">
+                    {index === 0 && (
+                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <circle cx="11" cy="11" r="6" stroke="currentColor" strokeWidth="2" />
+                        <path d="M16 16l4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                      </svg>
+                    )}
+                    {index === 1 && (
+                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M5 7h14M5 12h9M5 17h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                      </svg>
+                    )}
+                    {index === 2 && (
+                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M6 13l4 4L18 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    )}
                   </div>
 
-                  <h3 className="text-xl font-black tracking-tight text-fei-bg">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-fei-bg/60">{item.description}</p>
+                  <div className="border-b border-fei-bg/10 pb-10 last:border-b-0 last:pb-0">
+                    <div className="mb-3 flex items-center gap-4">
+                      <span className="text-sm font-black tracking-[0.22em] text-fei-sky">
+                        {item.step}
+                      </span>
+                      <span className="h-px flex-1 bg-fei-bg/10" />
+                    </div>
+
+                    <h3 className="text-2xl font-black tracking-tight text-fei-bg sm:text-3xl">
+                      {item.title}
+                    </h3>
+
+                    <p className="mt-3 max-w-2xl text-base leading-7 text-fei-bg/60 sm:text-lg sm:leading-8">
+                      {item.description}
+                    </p>
+                  </div>
                 </article>
               ))}
             </div>
