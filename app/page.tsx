@@ -147,16 +147,21 @@ export default function Home() {
       <Navbar />
 
       <section className="relative flex min-h-[calc(100vh-73px)] overflow-hidden px-6 py-20 sm:py-24 lg:items-center lg:py-16">
-        <div className="pointer-events-none absolute right-[-12rem] top-[-4rem] h-[44rem] w-[44rem] rounded-full bg-fei-sky/[0.18] blur-3xl" />
-        <div className="pointer-events-none absolute right-[4rem] top-[10rem] hidden h-[28rem] w-[28rem] rounded-full border border-fei-sky/20 bg-fei-sky/[0.035] shadow-[0_0_120px_rgba(65,202,255,0.16)] lg:block" />
-        <div className="pointer-events-none absolute right-[10rem] top-[16rem] hidden h-[15rem] w-[15rem] rounded-full border border-fei-yellow/20 bg-fei-yellow/[0.045] shadow-[0_0_90px_rgba(255,210,64,0.14)] lg:block" />
-        <div className="pointer-events-none absolute bottom-[-14rem] left-[-10rem] h-[28rem] w-[28rem] rounded-full bg-fei-yellow/[0.09] blur-3xl" />
+        <div
+          className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 opacity-90 blur-3xl lg:block"
+          style={{
+            background:
+              'radial-gradient(ellipse at 70% 35%, rgba(65, 202, 255, 0.24), transparent 58%), radial-gradient(ellipse at 45% 65%, rgba(255, 210, 64, 0.14), transparent 62%), linear-gradient(135deg, transparent 18%, rgba(65, 202, 255, 0.08), transparent 72%)',
+          }}
+        />
 
-        <div className="pointer-events-none absolute right-10 top-1/2 hidden w-[34rem] -translate-y-1/2 lg:block">
-          <div className="h-px w-full bg-gradient-to-r from-transparent via-fei-sky/25 to-transparent" />
-          <div className="mt-16 h-px w-4/5 bg-gradient-to-r from-transparent via-fei-yellow/20 to-transparent" />
-          <div className="mt-16 h-px w-full bg-gradient-to-r from-transparent via-fei-sky/20 to-transparent" />
-        </div>
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-[-18rem] h-[28rem] opacity-70 blur-3xl"
+          style={{
+            background:
+              'linear-gradient(90deg, rgba(255, 210, 64, 0.08), transparent 35%, rgba(65, 202, 255, 0.1), transparent 75%)',
+          }}
+        />
 
         <div className="mx-auto w-full max-w-[1500px]">
           <div className="max-w-5xl">
@@ -200,7 +205,7 @@ export default function Home() {
       <section id="how-it-works" className="scroll-mt-24 flex min-h-[calc(100vh-73px)] items-center bg-white px-6 py-20 text-fei-bg sm:py-24">
         <div className="mx-auto grid w-full max-w-[1500px] gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div className="max-w-2xl">
-            <p className="mb-4 text-xs font-bold uppercase tracking-[0.28em] text-fei-sky">
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.28em] text-fei-bg/70">
               The FEI Method
             </p>
 
