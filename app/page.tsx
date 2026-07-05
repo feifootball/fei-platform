@@ -359,9 +359,9 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="mt-auto border-t border-fei-text/10 bg-[#0F172A] px-6 py-10">
+      <footer className="mt-auto border-t border-fei-text/10 bg-[#0F172A] px-6 py-7">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.4fr] lg:items-start">
+          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.4fr] lg:items-start">
             <div className="flex items-center gap-3">
               <img src="/logo.svg" alt="FEI" className="h-7 w-auto" />
               <span className="text-sm font-medium text-[#94A3B8]">
@@ -370,12 +370,12 @@ export default function Home() {
             </div>
 
             <div>
-              <div className="hidden grid-cols-4 gap-10 lg:grid">
+              <div className="hidden grid-cols-4 gap-8 lg:grid">
                 <div className="group">
                   <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#FACC15]/85 transition group-hover:text-[#FACC15]">
                     {t.footer_support}
                   </p>
-                  <nav className="mt-5 flex flex-col gap-3">
+                  <nav className="mt-4 flex flex-col gap-2.5">
                     <a href="/faq" className="inline-flex w-fit text-sm text-[#94A3B8]/80 transition duration-300 group-hover:text-[#F8FAFC] hover:translate-x-1">
                       {t.footer_faq}
                     </a>
@@ -386,7 +386,7 @@ export default function Home() {
                   <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#FACC15]/85 transition group-hover:text-[#FACC15]">
                     {t.footer_legal}
                   </p>
-                  <nav className="mt-5 flex flex-col gap-3">
+                  <nav className="mt-4 flex flex-col gap-2.5">
                     <a href="/privacy" className="inline-flex w-fit text-sm text-[#94A3B8]/80 transition duration-300 group-hover:text-[#F8FAFC] hover:translate-x-1">
                       {t.footer_privacy}
                     </a>
@@ -406,7 +406,7 @@ export default function Home() {
                   <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#FACC15]/85 transition group-hover:text-[#FACC15]">
                     {t.footer_follow}
                   </p>
-                  <nav className="mt-5 flex flex-col gap-3">
+                  <nav className="mt-4 flex flex-col gap-2.5">
                     <a
                       href="https://linkedin.com/company/football-english-intelligence"
                       target="_blank"
@@ -443,7 +443,7 @@ export default function Home() {
                   <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#FACC15]/85 transition group-hover:text-[#FACC15]">
                     Contact
                   </p>
-                  <nav className="mt-5 flex flex-col gap-3">
+                  <nav className="mt-4 flex flex-col gap-2.5">
                     <a href="/contact" className="inline-flex w-fit text-sm text-[#94A3B8]/80 transition duration-300 group-hover:text-[#F8FAFC] hover:translate-x-1">
                       {t.footer_contact}
                     </a>
@@ -509,7 +509,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-10 border-t border-white/10 pt-6">
+          <div className="mt-7 border-t border-white/10 pt-4">
             <p className="text-center text-xs leading-6 text-[#94A3B8]">
               © {new Date().getFullYear()} Football English Intelligence. {t.footer_rights}
             </p>
