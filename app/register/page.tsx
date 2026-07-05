@@ -25,6 +25,7 @@ export default function RegisterPage() {
   const [name, setName] = useState('')
   const [role, setRole] = useState('')
   const [customRole, setCustomRole] = useState('')
+  const [acceptedTerms, setAcceptedTerms] = useState(false)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
@@ -34,6 +35,12 @@ export default function RegisterPage() {
     e.preventDefault()
     setLoading(true)
     setError('')
+
+    if (!acceptedTerms) {
+      setError('Please accept the Terms and Conditions and Privacy Policy to create your FEI account.')
+      setLoading(false)
+      return
+    }
 
     if (!role) {
       setError('Please choose your football role.')
@@ -273,10 +280,31 @@ export default function RegisterPage() {
             </p>
           </div>
 
+          <label className="mb-6 flex cursor-pointer items-start gap-3 rounded-2xl border border-fei-text/10 bg-fei-text/[0.035] p-4 transition hover:border-fei-yellow/25 hover:bg-fei-yellow/[0.04]">
+            <input
+              type="checkbox"
+              checked={acceptedTerms}
+              onChange={e => setAcceptedTerms(e.target.checked)}
+              required
+              className="mt-1 h-4 w-4 rounded border-fei-text/20 bg-fei-bg text-fei-yellow accent-fei-yellow focus:ring-fei-yellow"
+            />
+            <span className="text-sm leading-6 text-fei-text/60">
+              I agree to the{' '}
+              <a href="/terms" className="font-medium text-fei-sky hover:underline">
+                Terms and Conditions
+              </a>{' '}
+              and{' '}
+              <a href="/privacy" className="font-medium text-fei-sky hover:underline">
+                Privacy Policy
+              </a>
+              .
+            </span>
+          </label>
+
           <button
             type="submit"
-            disabled={loading}
-            className="w-full rounded-full bg-fei-yellow py-3 font-semibold text-fei-bg transition-colors hover:bg-fei-yellow/90 disabled:opacity-50"
+            disabled={loading || !acceptedTerms}
+            className="w-full rounded-full bg-fei-yellow py-3 font-semibold text-fei-bg transition-colors hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {loading ? 'Creating account...' : 'Get Started'}
           </button>
