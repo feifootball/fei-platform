@@ -49,15 +49,10 @@ const translations = {
     pricing_title: "Simple, transparent pricing",
     pricing_subtitle: "Coming soon. Get early access by signing up today.",
     pricing_cta: "Get Early Access",
-    footer_support: "Support",
-    footer_faq: "FAQ",
-    footer_contact: "Contact FEI",
-    footer_legal: "Legal",
-    footer_privacy: "Privacy",
-    footer_terms: "Terms",
-    footer_gdpr: "GDPR",
-    footer_cookies: "Cookies",
-    footer_follow: "Follow",
+    footer_faq: "FAQs",
+    footer_contact: "Contact",
+    footer_privacy: "Privacy Policy",
+    footer_terms: "Terms of Use",
     footer_linkedin: "LinkedIn",
     footer_instagram: "Instagram",
     footer_rights: "All rights reserved.",
@@ -105,15 +100,10 @@ const translations = {
     pricing_title: "Precios simples y transparentes",
     pricing_subtitle: "Próximamente. Regístrate hoy para obtener acceso anticipado.",
     pricing_cta: "Acceso anticipado",
-    footer_support: "Soporte",
-    footer_faq: "FAQ",
-    footer_contact: "Contactar FEI",
-    footer_legal: "Legal",
-    footer_privacy: "Privacidad",
-    footer_terms: "Términos",
-    footer_gdpr: "GDPR",
-    footer_cookies: "Cookies",
-    footer_follow: "Redes",
+    footer_faq: "FAQs",
+    footer_contact: "Contacto",
+    footer_privacy: "Política de privacidad",
+    footer_terms: "Términos de uso",
     footer_linkedin: "LinkedIn",
     footer_instagram: "Instagram",
     footer_rights: "Todos los derechos reservados.",
@@ -359,159 +349,82 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="mt-auto border-t border-fei-text/10 bg-[#0F172A] px-6 py-5">
+      <footer className="mt-auto border-t border-fei-text/10 bg-[#0F172A] px-6 py-6">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-3 lg:grid-cols-[0.48fr_1.72fr] lg:items-start">
-            <div className="relative flex items-center gap-3 lg:pr-5 lg:after:absolute lg:after:right-0 lg:after:top-0 lg:after:h-24 lg:after:w-px lg:after:bg-white/[0.055] lg:after:content-['']">
-              <img src="/logo.svg" alt="FEI" className="h-7 w-auto" />
-              <span className="text-sm font-normal text-[#94A3B8]/80">
-                Football English Intelligence
-              </span>
-            </div>
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+            <a href="/" className="inline-flex items-center">
+              <img src="/logo.svg" alt="FEI" className="h-8 w-auto" />
+            </a>
 
-            <div>
-              <div className="hidden grid-cols-4 gap-0 lg:grid">
-                <div className="group pl-3">
-                  <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#FACC15]/85 transition group-hover:text-[#FACC15]">
-                    {t.footer_support}
-                  </p>
-                  <nav className="mt-3 flex flex-col gap-2">
-                    <a href="/faq" className="inline-flex w-fit text-sm font-normal text-[#94A3B8]/75 transition duration-300 group-hover:text-[#F8FAFC] hover:translate-x-1">
-                      {t.footer_faq}
-                    </a>
-                  </nav>
-                </div>
+            <nav className="flex flex-wrap items-center gap-2">
+              <a
+                href="/terms"
+                className="rounded-full border border-white/10 px-4 py-2 text-sm font-normal text-[#94A3B8] transition hover:border-fei-sky/40 hover:text-[#F8FAFC]"
+              >
+                {t.footer_terms}
+              </a>
 
-                <div className="group pl-3">
-                  <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#FACC15]/85 transition group-hover:text-[#FACC15]">
-                    {t.footer_legal}
-                  </p>
-                  <nav className="mt-3 flex flex-col gap-2">
-                    <a href="/privacy" className="inline-flex w-fit text-sm font-normal text-[#94A3B8]/75 transition duration-300 group-hover:text-[#F8FAFC] hover:translate-x-1">
-                      {t.footer_privacy}
-                    </a>
-                    <a href="/terms" className="inline-flex w-fit text-sm font-normal text-[#94A3B8]/75 transition duration-300 group-hover:text-[#F8FAFC] hover:translate-x-1">
-                      {t.footer_terms}
-                    </a>
-                    <a href="/gdpr" className="inline-flex w-fit text-sm font-normal text-[#94A3B8]/75 transition duration-300 group-hover:text-[#F8FAFC] hover:translate-x-1">
-                      {t.footer_gdpr}
-                    </a>
-                    <a href="/cookies" className="inline-flex w-fit text-sm font-normal text-[#94A3B8]/75 transition duration-300 group-hover:text-[#F8FAFC] hover:translate-x-1">
-                      {t.footer_cookies}
-                    </a>
-                  </nav>
-                </div>
+              <a
+                href="/privacy"
+                className="rounded-full border border-white/10 px-4 py-2 text-sm font-normal text-[#94A3B8] transition hover:border-fei-sky/40 hover:text-[#F8FAFC]"
+              >
+                {t.footer_privacy}
+              </a>
 
-                <div className="group pl-3">
-                  <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#FACC15]/85 transition group-hover:text-[#FACC15]">
-                    {t.footer_follow}
-                  </p>
-                  <nav className="mt-3 flex flex-col gap-2">
-                    <a
-                      href="https://linkedin.com/company/football-english-intelligence"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex w-fit items-center gap-2 text-sm text-[#94A3B8]/80 transition duration-300 group-hover:text-[#F8FAFC] hover:translate-x-1"
-                      aria-label="Follow FEI on LinkedIn"
-                    >
-                      <span className="flex h-5 w-5 items-center justify-center text-xs font-black text-[#FACC15]/80">
-                        in
-                      </span>
-                      <span>{t.footer_linkedin}</span>
-                    </a>
+              <a
+                href="/faq"
+                className="rounded-full border border-white/10 px-4 py-2 text-sm font-normal text-[#94A3B8] transition hover:border-fei-sky/40 hover:text-[#F8FAFC]"
+              >
+                {t.footer_faq}
+              </a>
 
-                    <a
-                      href="https://instagram.com/fei.football"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex w-fit items-center gap-2 text-sm text-[#94A3B8]/80 transition duration-300 group-hover:text-[#F8FAFC] hover:translate-x-1"
-                      aria-label="Follow FEI on Instagram"
-                    >
-                      <span className="flex h-5 w-5 items-center justify-center text-[#FACC15]/80">
-                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                          <rect x="3" y="3" width="18" height="18" rx="5" />
-                          <circle cx="12" cy="12" r="4" />
-                          <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
-                        </svg>
-                      </span>
-                      <span>{t.footer_instagram}</span>
-                    </a>
-                  </nav>
-                </div>
+              <a
+                href="/contact"
+                className="rounded-full border border-white/10 px-4 py-2 text-sm font-normal text-[#94A3B8] transition hover:border-fei-sky/40 hover:text-[#F8FAFC]"
+              >
+                {t.footer_contact}
+              </a>
+            </nav>
 
-                <div className="group pl-3">
-                  <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#FACC15]/85 transition group-hover:text-[#FACC15]">
-                    Contact
-                  </p>
-                  <nav className="mt-3 flex flex-col gap-2">
-                    <a href="/contact" className="inline-flex w-fit text-sm font-normal text-[#94A3B8]/75 transition duration-300 group-hover:text-[#F8FAFC] hover:translate-x-1">
-                      {t.footer_contact}
-                    </a>
-                  </nav>
-                </div>
-              </div>
+            <div className="flex items-center gap-3">
+              <a
+                href="https://linkedin.com/company/football-english-intelligence"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow FEI on LinkedIn"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-sm font-black text-fei-yellow/85 transition hover:border-fei-sky/40 hover:text-fei-sky"
+              >
+                in
+              </a>
 
-              <div className="space-y-3 lg:hidden">
-                {[
-                  {
-                    title: t.footer_support,
-                    links: [
-                      { label: t.footer_faq, href: '/faq' },
-                    ],
-                  },
-                  {
-                    title: t.footer_legal,
-                    links: [
-                      { label: t.footer_privacy, href: '/privacy' },
-                      { label: t.footer_terms, href: '/terms' },
-                      { label: t.footer_gdpr, href: '/gdpr' },
-                      { label: t.footer_cookies, href: '/cookies' },
-                    ],
-                  },
-                  {
-                    title: t.footer_follow,
-                    links: [
-                      { label: t.footer_linkedin, href: 'https://linkedin.com/company/football-english-intelligence', external: true },
-                      { label: t.footer_instagram, href: 'https://instagram.com/fei.football', external: true },
-                    ],
-                  },
-                  {
-                    title: 'Contact',
-                    links: [
-                      { label: t.footer_contact, href: '/contact' },
-                    ],
-                  },
-                ].map((section) => (
-                  <details key={section.title} className="group rounded-2xl border border-white/10 bg-white/[0.02] px-4 py-4">
-                    <summary className="flex cursor-pointer list-none items-center justify-between text-xs font-bold uppercase tracking-[0.24em] text-[#FACC15]">
-                      {section.title}
-                      <span className="text-base leading-none text-[#94A3B8] transition group-open:rotate-45 group-open:text-[#FACC15]">
-                        +
-                      </span>
-                    </summary>
-
-                    <nav className="mt-4 flex flex-col gap-3">
-                      {section.links.map((link) => (
-                        <a
-                          key={link.href}
-                          href={link.href}
-                          target={'external' in link && link.external ? '_blank' : undefined}
-                          rel={'external' in link && link.external ? 'noopener noreferrer' : undefined}
-                          className="text-sm text-[#94A3B8] transition hover:text-[#F8FAFC]"
-                        >
-                          {link.label}
-                        </a>
-                      ))}
-                    </nav>
-                  </details>
-                ))}
-              </div>
+              <a
+                href="https://instagram.com/fei.football"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow FEI on Instagram"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-fei-yellow/85 transition hover:border-fei-sky/40 hover:text-fei-sky"
+              >
+                <svg
+                  className="h-4 w-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
+                </svg>
+              </a>
             </div>
           </div>
 
-          <div className="mt-5 border-t border-white/10 pt-3">
+          <div className="mt-6 border-t border-white/10 pt-4">
             <p className="text-center text-xs leading-6 text-[#94A3B8]">
-              © {new Date().getFullYear()} Football English Intelligence. {t.footer_rights}
+              © 2026 Football English Intelligence. {t.footer_rights}
             </p>
           </div>
         </div>
