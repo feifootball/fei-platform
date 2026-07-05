@@ -375,7 +375,7 @@ export default function Home() {
               {
                 name: lang === 'en' ? 'Institutional Plans' : 'Planes Institucionales',
                 price: '$199',
-                detail: lang === 'en' ? 'USD / month' : 'USD / mes',
+                detail: lang === 'en' ? 'from USD / month' : 'desde USD / mes',
                 features: lang === 'en'
                   ? ['For clubs and academies', 'Multiple users and licenses', 'Reports and implementation options']
                   : ['Para clubes y academias', 'Múltiples usuarios y licencias', 'Reportes y opciones de implementación'],
