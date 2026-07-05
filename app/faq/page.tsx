@@ -531,60 +531,38 @@ export default function FAQPage() {
 
       <section className="px-6 py-12 sm:py-14">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
-            <aside className="lg:sticky lg:top-28">
-              <div className="rounded-3xl border border-fei-text/10 bg-white/[0.025] p-5">
-                <p className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-fei-yellow">
-                  {lang === 'en' ? 'Topics' : 'Temas'}
-                </p>
+          <div className="mx-auto max-w-5xl space-y-12">
+            {categories.map(category => (
+              <section
+                key={category.category}
+                id={category.category.toLowerCase().replaceAll(' ', '-')}
+                className="scroll-mt-28"
+              >
+                <h2 className="mb-5 text-2xl font-bold tracking-tight text-fei-text sm:text-3xl">
+                  {category.category}
+                </h2>
 
-                <nav className="flex flex-col gap-2">
-                  {categories.map(category => (
-                    <a
-                      key={category.category}
-                      href={`#${category.category.toLowerCase().replaceAll(' ', '-')}`}
-                      className="rounded-2xl px-3 py-2 text-sm text-fei-text/60 transition hover:bg-white/[0.04] hover:text-fei-text"
-                    >
-                      {category.category}
-                    </a>
+                <div className="divide-y divide-fei-text/10 rounded-3xl border border-fei-text/10 bg-white/[0.025]">
+                  {category.items.map(item => (
+                    <details key={item.question} className="group p-5 open:bg-white/[0.02]">
+                      <summary className="flex cursor-pointer list-none items-start justify-between gap-5">
+                        <span className="text-base font-medium leading-7 text-fei-text/85">
+                          {item.question}
+                        </span>
+
+                        <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-fei-text/10 text-sm leading-none text-fei-yellow transition group-open:rotate-45">
+                          +
+                        </span>
+                      </summary>
+
+                      <p className="mt-4 max-w-3xl text-sm leading-7 text-fei-text/65 sm:text-base sm:leading-8">
+                        {item.answer}
+                      </p>
+                    </details>
                   ))}
-                </nav>
-              </div>
-            </aside>
-
-            <div className="space-y-12">
-              {categories.map(category => (
-                <section
-                  key={category.category}
-                  id={category.category.toLowerCase().replaceAll(' ', '-')}
-                  className="scroll-mt-28"
-                >
-                  <h2 className="mb-5 text-2xl font-bold tracking-tight text-fei-text sm:text-3xl">
-                    {category.category}
-                  </h2>
-
-                  <div className="divide-y divide-fei-text/10 rounded-3xl border border-fei-text/10 bg-white/[0.025]">
-                    {category.items.map(item => (
-                      <details key={item.question} className="group p-5 open:bg-white/[0.02]">
-                        <summary className="flex cursor-pointer list-none items-start justify-between gap-5">
-                          <span className="text-base font-semibold leading-7 text-fei-text">
-                            {item.question}
-                          </span>
-
-                          <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-fei-text/10 text-sm leading-none text-fei-yellow transition group-open:rotate-45">
-                            +
-                          </span>
-                        </summary>
-
-                        <p className="mt-4 max-w-3xl text-sm leading-7 text-fei-text/65 sm:text-base sm:leading-8">
-                          {item.answer}
-                        </p>
-                      </details>
-                    ))}
-                  </div>
-                </section>
-              ))}
-            </div>
+                </div>
+              </section>
+            ))}
           </div>
 
           <div className="mt-14 max-w-5xl border-t border-fei-text/10 pt-8 text-sm leading-7 text-fei-text/60">
