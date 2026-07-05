@@ -168,7 +168,7 @@ export default function ContactPage() {
     <main className="min-h-screen bg-fei-bg text-fei-text">
       <Navbar hideSectionLinks />
 
-      <section className="border-b border-fei-text/10 px-6 py-10 sm:py-12 lg:py-14">
+      <section className="border-b border-fei-text/10 px-6 py-8 sm:py-10 lg:py-12">
         <div className="mx-auto max-w-7xl">
           <a
             href="/"
@@ -191,24 +191,16 @@ export default function ContactPage() {
           </a>
 
           <div className="max-w-4xl">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.28em] text-fei-sky">
+            <p className="mb-2 text-xs font-bold uppercase tracking-[0.28em] text-fei-sky">
               {t.label}
             </p>
 
-            <h1 className="text-4xl font-black tracking-tight text-fei-text sm:text-5xl lg:text-6xl">
+            <h1 className="text-3xl font-black tracking-tight text-fei-text sm:text-4xl lg:text-5xl">
               {t.title}
             </h1>
 
-            <p className="mt-4 text-lg font-semibold text-fei-text/75 sm:text-xl">
-              {t.subtitle}
-            </p>
-
             <p className="mt-6 max-w-3xl text-base leading-8 text-fei-text/60">
               {t.description}
-            </p>
-
-            <p className="mt-6 text-sm font-semibold text-fei-yellow">
-              {t.updated}
             </p>
           </div>
         </div>
@@ -315,7 +307,7 @@ export default function ContactPage() {
                   <select
                     value={values.reason}
                     onChange={(e) => updateField('reason', e.target.value)}
-                    className="mt-2 w-full rounded-2xl border border-fei-text/10 bg-fei-bg/70 px-4 py-3 text-sm text-fei-text outline-none transition focus:border-fei-sky/50"
+                    className="mt-2 min-h-[56px] w-full rounded-2xl border border-fei-text/10 bg-fei-bg/70 px-4 py-4 text-base text-fei-text outline-none transition focus:border-fei-sky/50"
                   >
                     <option value="">{lang === 'en' ? 'Select a reason' : 'Selecciona un motivo'}</option>
                     {t.reasons.map(reason => (

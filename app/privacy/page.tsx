@@ -455,7 +455,7 @@ export default function PrivacyPage() {
     <main className="min-h-screen bg-fei-bg text-fei-text">
       <Navbar hideSectionLinks />
 
-      <section className="border-b border-fei-text/10 px-6 py-10 sm:py-12 lg:py-14">
+      <section className="border-b border-fei-text/10 px-6 py-8 sm:py-10 lg:py-12">
         <div className="mx-auto max-w-7xl">
           <a
             href="/"
@@ -478,17 +478,13 @@ export default function PrivacyPage() {
           </a>
 
           <div className="max-w-4xl">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.28em] text-fei-sky">
+            <p className="mb-2 text-xs font-bold uppercase tracking-[0.28em] text-fei-sky">
               {t.legal}
             </p>
 
-            <h1 className="text-4xl font-black tracking-tight text-fei-text sm:text-5xl lg:text-6xl">
+            <h1 className="text-3xl font-black tracking-tight text-fei-text sm:text-4xl lg:text-5xl">
               {t.title}
             </h1>
-
-            <p className="mt-4 text-lg font-semibold text-fei-text/75 sm:text-xl">
-              {t.subtitle}
-            </p>
 
             <p className="mt-6 max-w-3xl text-base leading-8 text-fei-text/60">
               {t.description}
