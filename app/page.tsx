@@ -9,7 +9,7 @@ const translations = {
   en: {
     tagline: "Football is global.",
     hero_subtitle: "",
-    hero_description: "The only English platform built for elite football.\nCommunication is your competitive advantage.",
+    hero_description: "La plataforma de inglés especializada en fútbol que ayuda a jugadores, entrenadores, scouts y profesionales del fútbol a comunicarse con confianza en entrevistas, reuniones, reportes, entornos de equipo y oportunidades internacionales.",
     cta_start: "Start your diagnostic",
     cta_login: "Login",
     stats: [
