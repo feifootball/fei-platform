@@ -9,7 +9,7 @@ const translations = {
   en: {
     tagline: "Football is global.",
     hero_subtitle: "",
-    hero_description: "La plataforma de inglés especializada en fútbol que ayuda a jugadores, entrenadores, scouts y profesionales del fútbol a comunicarse con confianza en entrevistas, reuniones, reportes, entornos de equipo y oportunidades internacionales.",
+    hero_description: "The football-specific English platform that helps players, coaches, scouts and football professionals communicate with confidence in interviews, meetings, reports, team environments and international opportunities.",
     cta_start: "Start your diagnostic",
     cta_login: "Login",
     stats: [
@@ -60,7 +60,7 @@ const translations = {
   es: {
     tagline: "El fútbol es global.",
     hero_subtitle: "",
-    hero_description: "La única plataforma de inglés diseñada para el fútbol de élite.\nLa comunicación es tu ventaja competitiva.",
+    hero_description: "La plataforma de inglés especializada en fútbol que ayuda a jugadores, entrenadores, scouts y profesionales del fútbol a comunicarse con confianza en entrevistas, reuniones, reportes, entornos de equipo y oportunidades internacionales.",
     cta_start: "Comenzar diagnóstico",
     cta_login: "Ingresar",
     stats: [
@@ -159,12 +159,10 @@ export default function Home() {
             {lang === 'en' ? (
               <>
                 <p>The only English platform built for elite football.</p>
-                <p><span className="font-bold text-fei-text">Communication</span> is your competitive advantage.</p>
               </>
             ) : (
               <>
                 <p>La única plataforma de inglés diseñada para el fútbol de élite.</p>
-                <p><span className="font-bold text-fei-text">La comunicación</span> es tu ventaja competitiva.</p>
               </>
             )}
           </div>
