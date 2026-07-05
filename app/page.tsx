@@ -60,7 +60,7 @@ const translations = {
     footer_follow: "Follow",
     footer_linkedin: "LinkedIn",
     footer_instagram: "Instagram",
-    footer_rights: "Communication Creates Opportunity",
+    footer_rights: "All rights reserved.",
   },
   es: {
     tagline: "El fútbol es global.",
@@ -116,7 +116,7 @@ const translations = {
     footer_follow: "Redes",
     footer_linkedin: "LinkedIn",
     footer_instagram: "Instagram",
-    footer_rights: "Communication Creates Opportunity",
+    footer_rights: "Todos los derechos reservados.",
   },
 };
 
@@ -359,19 +359,24 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="mt-auto border-t border-fei-text/10 bg-[#0F172A] px-6 py-14">
+      <footer className="mt-auto border-t border-fei-text/10 bg-[#0F172A] px-6 py-10">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-10 lg:grid-cols-[0.55fr_1.45fr]">
-            <div className="hidden lg:block" />
+          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.4fr] lg:items-start">
+            <div className="flex items-center gap-3">
+              <img src="/logo.svg" alt="FEI" className="h-7 w-auto" />
+              <span className="text-sm font-medium text-[#94A3B8]">
+                Football English Intelligence
+              </span>
+            </div>
 
             <div>
-              <div className="hidden grid-cols-4 gap-12 lg:grid">
+              <div className="hidden grid-cols-4 gap-10 lg:grid">
                 <div className="group">
                   <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#FACC15]/85 transition group-hover:text-[#FACC15]">
                     {t.footer_support}
                   </p>
                   <nav className="mt-5 flex flex-col gap-3">
-                    <a href="/faq" className="text-sm text-[#94A3B8]/80 transition duration-300 group-hover:text-[#F8FAFC] hover:translate-x-1">
+                    <a href="/faq" className="inline-flex w-fit text-sm text-[#94A3B8]/80 transition duration-300 group-hover:text-[#F8FAFC] hover:translate-x-1">
                       {t.footer_faq}
                     </a>
                   </nav>
@@ -382,16 +387,16 @@ export default function Home() {
                     {t.footer_legal}
                   </p>
                   <nav className="mt-5 flex flex-col gap-3">
-                    <a href="/privacy" className="text-sm text-[#94A3B8]/80 transition duration-300 group-hover:text-[#F8FAFC] hover:translate-x-1">
+                    <a href="/privacy" className="inline-flex w-fit text-sm text-[#94A3B8]/80 transition duration-300 group-hover:text-[#F8FAFC] hover:translate-x-1">
                       {t.footer_privacy}
                     </a>
-                    <a href="/terms" className="text-sm text-[#94A3B8]/80 transition duration-300 group-hover:text-[#F8FAFC] hover:translate-x-1">
+                    <a href="/terms" className="inline-flex w-fit text-sm text-[#94A3B8]/80 transition duration-300 group-hover:text-[#F8FAFC] hover:translate-x-1">
                       {t.footer_terms}
                     </a>
-                    <a href="/gdpr" className="text-sm text-[#94A3B8]/80 transition duration-300 group-hover:text-[#F8FAFC] hover:translate-x-1">
+                    <a href="/gdpr" className="inline-flex w-fit text-sm text-[#94A3B8]/80 transition duration-300 group-hover:text-[#F8FAFC] hover:translate-x-1">
                       {t.footer_gdpr}
                     </a>
-                    <a href="/cookies" className="text-sm text-[#94A3B8]/80 transition duration-300 group-hover:text-[#F8FAFC] hover:translate-x-1">
+                    <a href="/cookies" className="inline-flex w-fit text-sm text-[#94A3B8]/80 transition duration-300 group-hover:text-[#F8FAFC] hover:translate-x-1">
                       {t.footer_cookies}
                     </a>
                   </nav>
@@ -439,7 +444,7 @@ export default function Home() {
                     Contact
                   </p>
                   <nav className="mt-5 flex flex-col gap-3">
-                    <a href="/contact" className="text-sm text-[#94A3B8]/80 transition duration-300 group-hover:text-[#F8FAFC] hover:translate-x-1">
+                    <a href="/contact" className="inline-flex w-fit text-sm text-[#94A3B8]/80 transition duration-300 group-hover:text-[#F8FAFC] hover:translate-x-1">
                       {t.footer_contact}
                     </a>
                   </nav>
@@ -504,9 +509,9 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-12 border-t border-white/10 pt-6">
-            <p className="text-left text-xs leading-6 text-[#94A3B8] sm:text-right">
-              FEI © {new Date().getFullYear()} | {t.footer_rights} | Crafted in Ecuador 🇪🇨
+          <div className="mt-10 border-t border-white/10 pt-6">
+            <p className="text-center text-xs leading-6 text-[#94A3B8]">
+              © {new Date().getFullYear()} Football English Intelligence. {t.footer_rights}
             </p>
           </div>
         </div>
