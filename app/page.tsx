@@ -47,8 +47,8 @@ const translations = {
     contact_us: "Contact us",
     pricing_label: "Pricing",
     pricing_title: "Simple, transparent pricing",
-    pricing_subtitle: "Coming soon. Get early access by signing up today.",
-    pricing_cta: "Get Early Access",
+    pricing_subtitle: "Choose the access that fits your football journey — from an initial diagnostic to premium role-based training and institutional plans.",
+    pricing_cta: "Start Free Diagnostic",
     footer_faq: "FAQs",
     footer_contact: "Contact",
     footer_privacy: "Privacy Policy",
@@ -98,8 +98,8 @@ const translations = {
     contact_us: "Contáctanos",
     pricing_label: "Precios",
     pricing_title: "Precios simples y transparentes",
-    pricing_subtitle: "Próximamente. Regístrate hoy para obtener acceso anticipado.",
-    pricing_cta: "Acceso anticipado",
+    pricing_subtitle: "Elige el acceso que se adapta a tu camino en el fútbol: desde un diagnóstico inicial hasta entrenamiento premium por rol y planes institucionales.",
+    pricing_cta: "Empezar diagnóstico gratis",
     footer_faq: "FAQs",
     footer_contact: "Contacto",
     footer_privacy: "Política de privacidad",
@@ -341,11 +341,101 @@ export default function Home() {
       </section>
 
       <section id="pricing" className="scroll-mt-32 border-t border-fei-text/10 px-6 py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-fei-sky">{t.pricing_label}</p>
-          <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">{t.pricing_title}</h2>
-          <p className="mx-auto mt-4 max-w-xl text-fei-text/60">{t.pricing_subtitle}</p>
-          <a href="/register" className="mt-8 inline-flex rounded-full bg-fei-yellow px-8 py-3 font-semibold text-fei-bg transition hover:bg-fei-yellow/90">{t.pricing_cta}</a>
+        <div className="mx-auto max-w-7xl">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-fei-sky">{t.pricing_label}</p>
+            <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">{t.pricing_title}</h2>
+            <p className="mx-auto mt-4 max-w-2xl text-fei-text/60">{t.pricing_subtitle}</p>
+          </div>
+
+          <div className="mt-12 grid gap-5 lg:grid-cols-3">
+            {[
+              {
+                name: lang === 'en' ? 'Free Access' : 'Acceso gratuito',
+                price: lang === 'en' ? 'Free' : 'Gratis',
+                detail: lang === 'en' ? 'Initial diagnostic + limited preview' : 'Diagnóstico inicial + vista previa limitada',
+                features: lang === 'en'
+                  ? ['Initial FEI diagnostic', 'Estimated communication level', 'Limited module preview']
+                  : ['Diagnóstico inicial FEI', 'Nivel estimado de comunicación', 'Vista previa limitada de módulos'],
+                cta: lang === 'en' ? 'Start Free' : 'Empezar gratis',
+                href: '/register',
+                highlight: false,
+              },
+              {
+                name: lang === 'en' ? 'Individual Premium' : 'Premium Individual',
+                price: '$49',
+                detail: lang === 'en' ? 'from / month or $399 / year' : 'desde / mes o $399 / año',
+                features: lang === 'en'
+                  ? ['Full role-based modules', 'Football-specific scenarios', 'Progress tracking and recommendations']
+                  : ['Módulos completos por rol', 'Escenarios específicos de fútbol', 'Seguimiento de progreso y recomendaciones'],
+                cta: lang === 'en' ? 'Unlock Premium' : 'Desbloquear Premium',
+                href: '/register',
+                highlight: true,
+              },
+              {
+                name: lang === 'en' ? 'Institutional Plans' : 'Planes Institucionales',
+                price: '$199',
+                detail: lang === 'en' ? 'from / month' : 'desde / mes',
+                features: lang === 'en'
+                  ? ['For clubs and academies', 'Multiple users and licenses', 'Reports and implementation options']
+                  : ['Para clubes y academias', 'Múltiples usuarios y licencias', 'Reportes y opciones de implementación'],
+                cta: lang === 'en' ? 'Contact FEI' : 'Contactar FEI',
+                href: '/contact',
+                highlight: false,
+              },
+            ].map((plan) => (
+              <article
+                key={plan.name}
+                className={`relative flex min-h-[430px] flex-col rounded-3xl border p-6 transition duration-300 hover:-translate-y-1 ${
+                  plan.highlight
+                    ? 'border-fei-yellow/45 bg-fei-yellow/[0.07] shadow-[0_24px_80px_rgba(250,204,21,0.10)]'
+                    : 'border-fei-text/10 bg-fei-text/[0.025] hover:border-fei-sky/30'
+                }`}
+              >
+                {plan.highlight && (
+                  <div className="absolute right-5 top-5 rounded-full border border-fei-yellow/30 bg-fei-yellow/[0.12] px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-fei-yellow">
+                    {lang === 'en' ? 'Popular' : 'Popular'}
+                  </div>
+                )}
+
+                <div>
+                  <h3 className="text-xl font-bold tracking-tight text-fei-text">{plan.name}</h3>
+                  <div className="mt-7 flex items-end gap-2">
+                    <span className="text-5xl font-black tracking-tight text-fei-text">{plan.price}</span>
+                    <span className="pb-2 text-sm font-medium text-fei-text/55">{plan.detail}</span>
+                  </div>
+                </div>
+
+                <ul className="mt-8 space-y-4">
+                  {plan.features.map((feature) => (
+                    <li key={feature} className="flex gap-3 text-sm leading-6 text-fei-text/70">
+                      <span className="mt-0.5 text-fei-yellow">✓</span>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-auto pt-8">
+                  <a
+                    href={plan.href}
+                    className={`inline-flex w-full items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition ${
+                      plan.highlight
+                        ? 'bg-fei-yellow text-fei-bg hover:bg-fei-yellow/90'
+                        : 'border border-fei-sky/40 text-fei-sky hover:bg-fei-sky/10'
+                    }`}
+                  >
+                    {plan.cta}
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <p className="mx-auto mt-8 max-w-3xl text-center text-xs leading-6 text-fei-text/45">
+            {lang === 'en'
+              ? 'Prices may vary by country, promotion, number of users, licenses, included features, support level, and institutional conditions. FEI will always show the applicable price before any payment.'
+              : 'Los precios pueden variar según país, promoción, número de usuarios, licencias, funciones incluidas, nivel de soporte y condiciones institucionales. FEI siempre mostrará el precio aplicable antes de cualquier pago.'}
+          </p>
         </div>
       </section>
 
