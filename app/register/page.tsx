@@ -32,6 +32,35 @@ export default function RegisterPage() {
   const [success, setSuccess] = useState(false)
   const supabase = createClient()
 
+  async function handleSocialRegister(provider: 'google' | 'facebook') {
+    setLoading(true)
+    setError('')
+
+    if (!acceptedTerms) {
+      setError('Please accept the Terms of Service and Privacy Policy to create your FEI account.')
+      setLoading(false)
+      return
+    }
+
+    if (!acceptedGdpr) {
+      setError('Please confirm that you understand how your personal data is processed and protected.')
+      setLoading(false)
+      return
+    }
+
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider,
+      options: {
+        redirectTo: `${window.location.origin}/auth/confirm`,
+      },
+    })
+
+    if (error) {
+      setError(error.message)
+      setLoading(false)
+    }
+  }
+
   async function handleRegister(e: React.FormEvent) {
     e.preventDefault()
     setLoading(true)
@@ -200,6 +229,34 @@ export default function RegisterPage() {
           </p>
 
           {error && <p className="mb-4 rounded-lg bg-red-500/10 px-4 py-3 text-sm text-red-400">{error}</p>}
+
+          <div className="mb-6 grid gap-3 sm:grid-cols-2">
+            <button
+              type="button"
+              onClick={() => handleSocialRegister('google')}
+              disabled={loading || !acceptedTerms || !acceptedGdpr}
+              className="flex items-center justify-center gap-3 rounded-full border border-fei-text/10 bg-fei-text/[0.05] px-5 py-3 text-sm font-semibold text-fei-text transition hover:border-fei-sky/40 hover:bg-fei-sky/[0.06] disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              <span className="text-lg">G</span>
+              Continue with Google
+            </button>
+
+            <button
+              type="button"
+              onClick={() => handleSocialRegister('facebook')}
+              disabled={loading || !acceptedTerms || !acceptedGdpr}
+              className="flex items-center justify-center gap-3 rounded-full border border-fei-text/10 bg-fei-text/[0.05] px-5 py-3 text-sm font-semibold text-fei-text transition hover:border-fei-sky/40 hover:bg-fei-sky/[0.06] disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              <span className="text-lg font-black text-fei-sky">f</span>
+              Continue with Facebook
+            </button>
+          </div>
+
+          <div className="mb-6 flex items-center gap-4">
+            <div className="h-px flex-1 bg-fei-text/10" />
+            <span className="text-xs uppercase tracking-[0.24em] text-fei-text/35">or</span>
+            <div className="h-px flex-1 bg-fei-text/10" />
+          </div>
 
           <div className="mb-4">
             <label className="mb-2 block text-sm font-medium text-fei-text/70">Full name</label>

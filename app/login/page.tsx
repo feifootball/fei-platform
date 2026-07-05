@@ -12,6 +12,23 @@ export default function LoginPage() {
   const router = useRouter()
   const supabase = createClient()
 
+  async function handleSocialLogin(provider: 'google' | 'facebook') {
+    setLoading(true)
+    setError('')
+
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider,
+      options: {
+        redirectTo: `${window.location.origin}/auth/confirm`,
+      },
+    })
+
+    if (error) {
+      setError(error.message)
+      setLoading(false)
+    }
+  }
+
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault()
     setLoading(true)
@@ -35,6 +52,34 @@ export default function LoginPage() {
         <form onSubmit={handleLogin} className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-8">
           <h1 className="mb-6 text-2xl font-bold text-fei-text">Welcome back</h1>
           {error && <p className="mb-4 rounded-lg bg-red-500/10 px-4 py-3 text-sm text-red-400">{error}</p>}
+
+          <div className="mb-6 grid gap-3 sm:grid-cols-2">
+            <button
+              type="button"
+              onClick={() => handleSocialLogin('google')}
+              disabled={loading}
+              className="flex items-center justify-center gap-3 rounded-full border border-fei-text/10 bg-fei-text/[0.05] px-5 py-3 text-sm font-semibold text-fei-text transition hover:border-fei-sky/40 hover:bg-fei-sky/[0.06] disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              <span className="text-lg">G</span>
+              Continue with Google
+            </button>
+
+            <button
+              type="button"
+              onClick={() => handleSocialLogin('facebook')}
+              disabled={loading}
+              className="flex items-center justify-center gap-3 rounded-full border border-fei-text/10 bg-fei-text/[0.05] px-5 py-3 text-sm font-semibold text-fei-text transition hover:border-fei-sky/40 hover:bg-fei-sky/[0.06] disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              <span className="text-lg font-black text-fei-sky">f</span>
+              Continue with Facebook
+            </button>
+          </div>
+
+          <div className="mb-6 flex items-center gap-4">
+            <div className="h-px flex-1 bg-fei-text/10" />
+            <span className="text-xs uppercase tracking-[0.24em] text-fei-text/35">or</span>
+            <div className="h-px flex-1 bg-fei-text/10" />
+          </div>
           <div className="mb-4">
             <label className="mb-2 block text-sm font-medium text-fei-text/70">Email</label>
             <input
