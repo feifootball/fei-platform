@@ -80,7 +80,7 @@ export function Navbar() {
   const links = navLinks[lang];
 
   const navLinkClass = (sectionId: string) =>
-    `inline-flex rounded-full px-2.5 py-1.5 text-[15px] font-semibold transition duration-300 ${
+    `inline-flex rounded-full px-2.5 py-1.5 text-[15px] font-normal transition duration-300 ${
       activeSection === sectionId
         ? "bg-white/[0.06] text-fei-text shadow-[0_0_22px_rgba(255,255,255,0.12)]"
         : "text-fei-text/60 hover:bg-white/[0.04] hover:text-fei-text"
@@ -105,7 +105,7 @@ export function Navbar() {
           <div className="ml-8 flex items-center gap-3">
             <button
               onClick={toggleLang}
-              className="inline-flex items-center gap-2 rounded-full border border-fei-text/20 px-4 py-2 text-sm font-semibold text-fei-text/60 transition hover:border-fei-text/40 hover:text-fei-text"
+              className="inline-flex items-center gap-2 rounded-full border border-fei-text/20 px-4 py-2 text-sm font-normal text-fei-text/60 transition hover:border-fei-text/40 hover:text-fei-text"
               aria-label="Change language"
             >
               <svg
@@ -128,14 +128,14 @@ export function Navbar() {
 
             <a
               href="/login"
-              className="rounded-full border border-fei-sky/45 px-5 py-2 text-sm font-semibold text-fei-sky transition hover:bg-fei-sky/10"
+              className="rounded-full border border-fei-sky/45 px-5 py-2 text-sm font-normal text-fei-sky transition hover:bg-fei-sky/10"
             >
               {lang === "en" ? "Login" : "Ingresar"}
             </a>
 
             <a
               href="/register"
-              className="rounded-full bg-fei-yellow px-5 py-2 text-sm font-bold text-fei-bg transition hover:bg-fei-yellow/90"
+              className="rounded-full bg-fei-yellow px-5 py-2 text-sm font-normal text-fei-bg transition hover:bg-fei-yellow/90"
             >
               {lang === "en" ? "Register" : "Registrarse"}
             </a>
@@ -145,7 +145,7 @@ export function Navbar() {
         <div className="flex items-center gap-2 md:hidden">
           <button
             onClick={toggleLang}
-            className="inline-flex items-center gap-1.5 rounded-full border border-fei-text/20 px-3 py-1.5 text-xs font-bold text-fei-text/60 transition hover:text-fei-text"
+            className="inline-flex items-center gap-1.5 rounded-full border border-fei-text/20 px-3 py-1.5 text-xs font-normal text-fei-text/60 transition hover:text-fei-text"
             aria-label="Change language"
           >
             {lang === "en" ? "ES" : "EN"}
@@ -153,7 +153,7 @@ export function Navbar() {
 
           <button
             onClick={() => setMenuOpen((open) => !open)}
-            className="rounded-full border border-fei-text/20 px-3 py-1.5 text-xs font-bold text-fei-text/70 transition hover:text-fei-text"
+            className="rounded-full border border-fei-text/20 px-3 py-1.5 text-xs font-normal text-fei-text/70 transition hover:text-fei-text"
             aria-label="Open menu"
           >
             Menu
@@ -182,14 +182,14 @@ export function Navbar() {
             <div className="flex gap-3 pt-2">
               <a
                 href="/login"
-                className="flex-1 rounded-full border border-fei-sky/45 px-4 py-2 text-center text-sm font-semibold text-fei-sky transition hover:bg-fei-sky/10"
+                className="flex-1 rounded-full border border-fei-sky/45 px-4 py-2 text-center text-sm font-normal text-fei-sky transition hover:bg-fei-sky/10"
               >
                 {lang === "en" ? "Login" : "Ingresar"}
               </a>
 
               <a
                 href="/register"
-                className="flex-1 rounded-full bg-fei-yellow px-4 py-2 text-center text-sm font-bold text-fei-bg transition hover:bg-fei-yellow/90"
+                className="flex-1 rounded-full bg-fei-yellow px-4 py-2 text-center text-sm font-normal text-fei-bg transition hover:bg-fei-yellow/90"
               >
                 {lang === "en" ? "Register" : "Registrarse"}
               </a>
