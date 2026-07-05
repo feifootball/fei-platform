@@ -159,11 +159,17 @@ export default function Home() {
               <span className="bg-gradient-to-r from-fei-yellow to-fei-sky bg-clip-text text-transparent">Intelligence.</span>
             </h1>
 
-            <div className="mt-7 max-w-3xl text-lg leading-8 text-fei-text/65 sm:text-xl sm:leading-9">
+            <div className="mt-7 max-w-4xl text-lg leading-8 text-fei-text/65 sm:text-xl sm:leading-9">
               {lang === 'en' ? (
-                <p>The only English platform built for elite football.</p>
+                <p>
+                  FEI is a football-specific English training platform that helps football professionals diagnose their level,
+                  train real communication scenarios, and build the confidence to perform in international environments.
+                </p>
               ) : (
-                <p>La única plataforma de inglés diseñada para el fútbol de élite.</p>
+                <p>
+                  FEI es una plataforma de entrenamiento en inglés especializada en fútbol que ayuda a profesionales del fútbol
+                  a diagnosticar su nivel, entrenar situaciones reales de comunicación y ganar confianza para desenvolverse en entornos internacionales.
+                </p>
               )}
             </div>
 
