@@ -146,20 +146,20 @@ export default function Home() {
     <div className="flex min-h-full flex-col">
       <Navbar />
 
-      <section className="relative flex min-h-[calc(100vh-73px)] overflow-hidden px-6 py-16 sm:py-20 lg:items-center lg:py-12">
-        <div className="pointer-events-none absolute right-[-12rem] top-16 h-96 w-96 rounded-full bg-fei-sky/[0.12] blur-3xl" />
-        <div className="pointer-events-none absolute bottom-[-10rem] left-[-8rem] h-80 w-80 rounded-full bg-fei-yellow/[0.08] blur-3xl" />
+      <section className="relative flex min-h-[calc(100vh-73px)] overflow-hidden px-6 py-20 sm:py-24 lg:items-center lg:py-16">
+        <div className="pointer-events-none absolute right-[-14rem] top-10 h-[34rem] w-[34rem] rounded-full bg-fei-sky/[0.11] blur-3xl" />
+        <div className="pointer-events-none absolute bottom-[-14rem] left-[-10rem] h-[28rem] w-[28rem] rounded-full bg-fei-yellow/[0.08] blur-3xl" />
 
-        <div className="mx-auto grid w-full max-w-[1500px] gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center xl:gap-20">
-          <div>
+        <div className="mx-auto w-full max-w-[1500px]">
+          <div className="max-w-5xl">
             <p className="text-sm font-semibold uppercase tracking-[0.25em] text-fei-sky">{t.tagline}</p>
 
-            <h1 className="mt-6 text-5xl font-black leading-[1.05] text-fei-text sm:text-6xl lg:text-7xl xl:text-8xl">
+            <h1 className="mt-6 text-5xl font-black leading-[1.03] text-fei-text sm:text-6xl lg:text-7xl xl:text-8xl">
               Football English<br />
               <span className="bg-gradient-to-r from-fei-yellow to-fei-sky bg-clip-text text-transparent">Intelligence.</span>
             </h1>
 
-            <div className="mt-7 max-w-2xl text-lg leading-8 text-fei-text/65 sm:text-xl sm:leading-9">
+            <div className="mt-7 max-w-3xl text-lg leading-8 text-fei-text/65 sm:text-xl sm:leading-9">
               {lang === 'en' ? (
                 <p>The only English platform built for elite football.</p>
               ) : (
@@ -172,110 +172,56 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative hidden lg:block">
-            <div className="absolute -inset-6 rounded-[2.5rem] border border-fei-sky/10 bg-fei-sky/[0.025]" />
-
-            <div className="relative overflow-hidden rounded-[2rem] border border-fei-text/10 bg-white/[0.035] p-6 shadow-2xl shadow-black/20 backdrop-blur">
-              <div className="mb-6 flex items-center justify-between border-b border-fei-text/10 pb-5">
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.25em] text-fei-sky">
-                    {lang === 'en' ? 'Diagnostic Snapshot' : 'Resumen diagnóstico'}
-                  </p>
-                  <h2 className="mt-2 text-2xl font-black tracking-tight text-fei-text">
-                    Professional Player
-                  </h2>
-                </div>
-
-                <div className="rounded-2xl border border-fei-yellow/30 bg-fei-yellow/[0.1] px-4 py-3 text-center">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-yellow/75">Level</p>
-                  <p className="text-3xl font-black text-fei-yellow">A2</p>
-                </div>
+          <div className="mt-16 grid max-w-6xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {t.stats.map((stat) => (
+              <div key={stat.label} className="rounded-3xl border border-fei-text/10 bg-white/[0.025] px-6 py-5 backdrop-blur">
+                <p className="text-3xl font-black tracking-tight text-fei-text">{stat.value}</p>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-fei-text/40">{stat.label}</p>
               </div>
-
-              <div className="grid gap-3">
-                {(lang === 'en'
-                  ? [
-                      ['Role focus', 'Match communication, interviews, team instructions'],
-                      ['AI insight', 'Needs more confidence when speaking under pressure'],
-                      ['Next step', 'Build clear answers for real football scenarios'],
-                    ]
-                  : [
-                      ['Enfoque del rol', 'Comunicación en partido, entrevistas e instrucciones de equipo'],
-                      ['Insight IA', 'Necesita más confianza al hablar bajo presión'],
-                      ['Siguiente paso', 'Construir respuestas claras para escenarios reales del fútbol'],
-                    ]
-                ).map(([label, value]) => (
-                  <div key={label} className="rounded-2xl border border-fei-text/10 bg-fei-bg/45 p-4">
-                    <p className="text-xs font-bold uppercase tracking-[0.22em] text-fei-text/35">{label}</p>
-                    <p className="mt-2 text-sm leading-6 text-fei-text/75">{value}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-6 grid grid-cols-4 gap-3 border-t border-fei-text/10 pt-5">
-                {t.stats.map((stat) => (
-                  <div key={stat.label} className="text-center">
-                    <p className="text-xl font-black text-fei-text">{stat.value}</p>
-                    <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.16em] text-fei-text/35">{stat.label}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section id="how-it-works" className="scroll-mt-28 px-6 py-14 sm:py-16">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-10 max-w-3xl">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.28em] text-fei-sky">
-              The FEI Method
+      <section id="how-it-works" className="scroll-mt-28 bg-white px-6 py-20 text-fei-bg sm:py-24">
+        <div className="mx-auto max-w-[1500px]">
+          <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+            <div>
+              <p className="mb-4 text-xs font-bold uppercase tracking-[0.28em] text-fei-sky">
+                The FEI Method
+              </p>
+
+              <h2 className="text-4xl font-black tracking-tight text-fei-bg sm:text-5xl">
+                {t.how_title.includes('FEI') ? (
+                  <>
+                    {t.how_title.split('FEI')[0]}
+                    <span className="text-fei-sky">FEI</span>
+                    {t.how_title.split('FEI').slice(1).join('FEI')}
+                  </>
+                ) : (
+                  t.how_title
+                )}
+              </h2>
+            </div>
+
+            <p className="max-w-3xl text-lg leading-8 text-fei-bg/60 lg:justify-self-end">
+              {t.how_subtitle}
             </p>
-            <h2 className="text-3xl font-black tracking-tight text-fei-text sm:text-4xl">
-              {t.how_title.includes('FEI') ? (
-                <>
-                  {t.how_title.split('FEI')[0]}
-                  <span className="text-fei-sky">FEI</span>
-                  {t.how_title.split('FEI').slice(1).join('FEI')}
-                </>
-              ) : (
-                t.how_title
-              )}
-            </h2>
-            <p className="mt-3 max-w-5xl text-base leading-7 text-fei-text/60 sm:text-lg lg:whitespace-nowrap">{t.how_subtitle}</p>
           </div>
 
-          <div className="grid gap-8 border-y border-fei-text/10 py-8 md:grid-cols-3 md:gap-0">
-            {t.steps.map((item, index) => (
-              <article key={item.step} className="group relative md:border-l md:border-fei-text/10 md:pl-8 md:first:border-l-0 md:first:pl-0">
-                <div className="pointer-events-none absolute -top-4 right-4 text-7xl font-black leading-none text-fei-sky/[0.09] transition duration-300 group-hover:text-fei-yellow/[0.16] sm:text-8xl">
-                  {item.step}
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
+            {t.steps.map((item) => (
+              <article key={item.step} className="rounded-[2rem] border border-fei-bg/10 bg-[#F7F8FA] p-8 transition hover:-translate-y-1 hover:border-fei-sky/25 hover:bg-white hover:shadow-xl hover:shadow-fei-bg/5">
+                <div className="mb-10 flex items-center justify-between">
+                  <span className="rounded-full border border-fei-bg/10 bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-fei-bg/45">
+                    Step {item.step}
+                  </span>
+
+                  <span className="h-2 w-2 rounded-full bg-fei-sky" />
                 </div>
 
-                <div className="mb-6 flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full border border-fei-yellow/25 bg-fei-yellow/[0.08] text-fei-yellow">
-                    {index === 0 && (
-                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                      </svg>
-                    )}
-                    {index === 1 && (
-                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M4 7h16M4 12h10M4 17h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                      </svg>
-                    )}
-                    {index === 2 && (
-                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M5 13l4 4L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    )}
-                  </div>
-
-                  <span className="text-2xl font-black tracking-tight text-fei-yellow sm:text-3xl">{item.step}</span>
-                </div>
-
-                <h3 className="text-xl font-bold text-fei-text">{item.title}</h3>
-                <p className="mt-3 max-w-sm text-base leading-7 text-fei-text/60">{item.description}</p>
+                <h3 className="text-2xl font-black tracking-tight text-fei-bg">{item.title}</h3>
+                <p className="mt-4 text-base leading-7 text-fei-bg/60">{item.description}</p>
               </article>
             ))}
           </div>
