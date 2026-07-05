@@ -146,29 +146,81 @@ export default function Home() {
     <div className="flex min-h-full flex-col">
       <Navbar />
 
-      <section className="relative overflow-hidden px-6 py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-7xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-fei-sky">{t.tagline}</p>
+      <section className="relative flex min-h-[calc(100vh-73px)] overflow-hidden px-6 py-16 sm:py-20 lg:items-center lg:py-12">
+        <div className="pointer-events-none absolute right-[-12rem] top-16 h-96 w-96 rounded-full bg-fei-sky/[0.12] blur-3xl" />
+        <div className="pointer-events-none absolute bottom-[-10rem] left-[-8rem] h-80 w-80 rounded-full bg-fei-yellow/[0.08] blur-3xl" />
 
-          <h1 className="mt-6 text-5xl font-black leading-[1.05] text-fei-text sm:text-6xl lg:text-7xl xl:text-8xl">
-            Football English<br />
-            <span className="bg-gradient-to-r from-fei-yellow to-fei-sky bg-clip-text text-transparent">Intelligence.</span>
-          </h1>
+        <div className="mx-auto grid w-full max-w-[1500px] gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center xl:gap-20">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-fei-sky">{t.tagline}</p>
 
-          <div className="mt-7 max-w-2xl text-lg leading-8 text-fei-text/65 sm:text-xl sm:leading-9">
-            {lang === 'en' ? (
-              <>
+            <h1 className="mt-6 text-5xl font-black leading-[1.05] text-fei-text sm:text-6xl lg:text-7xl xl:text-8xl">
+              Football English<br />
+              <span className="bg-gradient-to-r from-fei-yellow to-fei-sky bg-clip-text text-transparent">Intelligence.</span>
+            </h1>
+
+            <div className="mt-7 max-w-2xl text-lg leading-8 text-fei-text/65 sm:text-xl sm:leading-9">
+              {lang === 'en' ? (
                 <p>The only English platform built for elite football.</p>
-              </>
-            ) : (
-              <>
+              ) : (
                 <p>La única plataforma de inglés diseñada para el fútbol de élite.</p>
-              </>
-            )}
+              )}
+            </div>
+
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+              <a href="/register" className="inline-flex items-center justify-center rounded-full bg-fei-yellow px-8 py-3 font-semibold text-fei-bg transition hover:bg-fei-yellow/90">{t.cta_start}</a>
+            </div>
           </div>
 
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <a href="/register" className="inline-flex items-center justify-center rounded-full bg-fei-yellow px-8 py-3 font-semibold text-fei-bg transition hover:bg-fei-yellow/90">{t.cta_start}</a>
+          <div className="relative hidden lg:block">
+            <div className="absolute -inset-6 rounded-[2.5rem] border border-fei-sky/10 bg-fei-sky/[0.025]" />
+
+            <div className="relative overflow-hidden rounded-[2rem] border border-fei-text/10 bg-white/[0.035] p-6 shadow-2xl shadow-black/20 backdrop-blur">
+              <div className="mb-6 flex items-center justify-between border-b border-fei-text/10 pb-5">
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-[0.25em] text-fei-sky">
+                    {lang === 'en' ? 'Diagnostic Snapshot' : 'Resumen diagnóstico'}
+                  </p>
+                  <h2 className="mt-2 text-2xl font-black tracking-tight text-fei-text">
+                    Professional Player
+                  </h2>
+                </div>
+
+                <div className="rounded-2xl border border-fei-yellow/30 bg-fei-yellow/[0.1] px-4 py-3 text-center">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-yellow/75">Level</p>
+                  <p className="text-3xl font-black text-fei-yellow">A2</p>
+                </div>
+              </div>
+
+              <div className="grid gap-3">
+                {(lang === 'en'
+                  ? [
+                      ['Role focus', 'Match communication, interviews, team instructions'],
+                      ['AI insight', 'Needs more confidence when speaking under pressure'],
+                      ['Next step', 'Build clear answers for real football scenarios'],
+                    ]
+                  : [
+                      ['Enfoque del rol', 'Comunicación en partido, entrevistas e instrucciones de equipo'],
+                      ['Insight IA', 'Necesita más confianza al hablar bajo presión'],
+                      ['Siguiente paso', 'Construir respuestas claras para escenarios reales del fútbol'],
+                    ]
+                ).map(([label, value]) => (
+                  <div key={label} className="rounded-2xl border border-fei-text/10 bg-fei-bg/45 p-4">
+                    <p className="text-xs font-bold uppercase tracking-[0.22em] text-fei-text/35">{label}</p>
+                    <p className="mt-2 text-sm leading-6 text-fei-text/75">{value}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-6 grid grid-cols-4 gap-3 border-t border-fei-text/10 pt-5">
+                {t.stats.map((stat) => (
+                  <div key={stat.label} className="text-center">
+                    <p className="text-xl font-black text-fei-text">{stat.value}</p>
+                    <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.16em] text-fei-text/35">{stat.label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
