@@ -83,6 +83,32 @@ export function Navbar({ hideSectionLinks = false }: { hideSectionLinks?: boolea
     window.dispatchEvent(new CustomEvent("fei_lang_v2_v2_change", { detail: next }));
   }
 
+  function slowScrollTo(element: HTMLElement, duration = 950) {
+    const headerOffset = 88;
+    const startPosition = window.scrollY;
+    const targetPosition = element.getBoundingClientRect().top + window.scrollY - headerOffset;
+    const distance = targetPosition - startPosition;
+    const startTime = performance.now();
+
+    function easeInOutCubic(t: number) {
+      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    }
+
+    function animate(currentTime: number) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easedProgress = easeInOutCubic(progress);
+
+      window.scrollTo(0, startPosition + distance * easedProgress);
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    }
+
+    requestAnimationFrame(animate);
+  }
+
   function handleNavClick(event: MouseEvent<HTMLAnchorElement>, sectionId: string, href: string) {
     setActiveSection(sectionId);
     setMenuOpen(false);
@@ -92,13 +118,13 @@ export function Navbar({ hideSectionLinks = false }: { hideSectionLinks?: boolea
 
       const section = document.getElementById(sectionId);
       if (section) {
-        section.scrollIntoView({ behavior: "smooth", block: "start" });
+        slowScrollTo(section);
         window.history.pushState(null, "", href);
       }
 
       window.setTimeout(() => {
         setActiveSection(sectionId);
-      }, 350);
+      }, 1000);
     }
   }
 

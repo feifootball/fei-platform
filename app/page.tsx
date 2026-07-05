@@ -199,35 +199,56 @@ export default function Home() {
 
       <section id="how-it-works" className="scroll-mt-24 flex min-h-[calc(100vh-73px)] items-center bg-white px-6 py-20 text-fei-bg sm:py-24">
         <div className="mx-auto w-full max-w-[1500px]">
-          <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
-            <div>
-              <p className="mb-4 text-xs font-bold uppercase tracking-[0.28em] text-fei-sky">
-                The FEI Method
-              </p>
+          <div className="max-w-4xl">
+            <p className="mb-4 text-xs font-bold uppercase tracking-[0.28em] text-fei-sky">
+              The FEI Method
+            </p>
 
-              <h2 className="text-4xl font-black tracking-tight text-fei-bg sm:text-5xl lg:text-6xl">
-                {t.how_title.includes('FEI') ? (
-                  <>
-                    {t.how_title.split('FEI')[0]}
-                    <span className="text-fei-sky">FEI</span>
-                    {t.how_title.split('FEI').slice(1).join('FEI')}
-                  </>
-                ) : (
-                  t.how_title
-                )}
-              </h2>
-            </div>
+            <h2 className="text-4xl font-black tracking-tight text-fei-bg sm:text-5xl lg:text-6xl">
+              {t.how_title.includes('FEI') ? (
+                <>
+                  {t.how_title.split('FEI')[0]}
+                  <span className="text-fei-sky">FEI</span>
+                  {t.how_title.split('FEI').slice(1).join('FEI')}
+                </>
+              ) : (
+                t.how_title
+              )}
+            </h2>
 
-            <p className="max-w-3xl text-lg leading-8 text-fei-bg/60 lg:justify-self-end">
+            <p className="mt-5 max-w-3xl text-lg leading-8 text-fei-bg/60">
               {t.how_subtitle}
             </p>
           </div>
 
-          <div className="mt-16 grid gap-6 md:grid-cols-3">
-            {t.steps.map((item) => (
-              <article key={item.step} className="rounded-[2rem] border border-fei-bg/10 bg-[#F7F8FA] p-8 transition hover:-translate-y-1 hover:border-fei-sky/25 hover:bg-white hover:shadow-xl hover:shadow-fei-bg/5">
-                <div className="mb-10 flex h-14 w-14 items-center justify-center rounded-2xl bg-fei-bg text-2xl font-black text-white shadow-lg shadow-fei-bg/10">
-                  {item.step}
+          <div className="mt-14 grid gap-5 md:grid-cols-3">
+            {t.steps.map((item, index) => (
+              <article key={item.step} className="rounded-[1.75rem] border border-fei-bg/10 bg-[#F7F8FA] p-6 transition hover:-translate-y-1 hover:border-fei-sky/25 hover:bg-white hover:shadow-xl hover:shadow-fei-bg/5">
+                <div className="mb-8 flex items-start justify-between">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-fei-sky/20 bg-white text-fei-sky shadow-sm">
+                    {index === 0 && (
+                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <circle cx="11" cy="11" r="6" stroke="currentColor" strokeWidth="2" />
+                        <path d="M16 16l4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                      </svg>
+                    )}
+                    {index === 1 && (
+                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M5 6h14M5 12h10M5 18h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                        <path d="M17 15l2 2 3-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    )}
+                    {index === 2 && (
+                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M6 18V9M12 18V5M18 18v-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                        <path d="M4 18h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                      </svg>
+                    )}
+                  </div>
+
+                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-fei-bg text-lg font-black text-white shadow-lg shadow-fei-bg/10">
+                    {item.step}
+                  </div>
                 </div>
 
                 <h3 className="text-2xl font-black tracking-tight text-fei-bg">{item.title}</h3>
@@ -236,9 +257,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
-
-      <section id="roles" className="scroll-mt-28 border-t border-fei-text/10 px-6 py-16 sm:py-20">
+      </section>\n\n      <section id="roles" className="scroll-mt-28 border-t border-fei-text/10 px-6 py-16 sm:py-20">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
             <div>
