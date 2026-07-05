@@ -253,7 +253,7 @@ const pageCopy = {
     description:
       'Terms governing access, registration, platform use, plans, payments, diagnostics, educational content, and institutional services provided by FEI.',
     updated: 'Last updated: July 2026',
-    back: '← Back to FEI',
+    back: '< Back to Home',
     contactPrefix: 'For questions about these terms, contact',
   },
   es: {
@@ -263,7 +263,7 @@ const pageCopy = {
     description:
       'Términos que regulan el acceso, registro, uso de la plataforma, planes, pagos, diagnósticos, contenidos educativos y servicios institucionales de FEI.',
     updated: 'Última actualización: Julio 2026',
-    back: '← Volver a FEI',
+    back: '< Volver a inicio',
     contactPrefix: 'Para preguntas sobre estos términos, escribe a',
   },
 }
@@ -299,7 +299,7 @@ export default function TermsPage() {
         <div className="mx-auto max-w-7xl">
           <a
             href="/"
-            className="mb-8 inline-flex text-sm font-medium text-fei-sky transition hover:text-fei-yellow"
+            className="mb-8 inline-flex items-center rounded-full border border-fei-sky/35 px-4 py-2 text-sm font-medium text-fei-sky transition hover:border-fei-yellow/45 hover:text-fei-yellow"
           >
             {t.back}
           </a>
