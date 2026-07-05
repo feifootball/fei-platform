@@ -490,8 +490,8 @@ export default function Home() {
                         <a
                           key={link.href}
                           href={link.href}
-                          target={link.external ? '_blank' : undefined}
-                          rel={link.external ? 'noopener noreferrer' : undefined}
+                          target={'external' in link && link.external ? '_blank' : undefined}
+                          rel={'external' in link && link.external ? 'noopener noreferrer' : undefined}
                           className="text-sm text-[#94A3B8] transition hover:text-[#F8FAFC]"
                         >
                           {link.label}
