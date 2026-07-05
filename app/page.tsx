@@ -370,9 +370,6 @@ export default function Home() {
                 <a href="/faq" className="text-sm text-[#94A3B8] transition hover:text-[#F8FAFC]">
                   {t.footer_faq}
                 </a>
-                <a href="/contact" className="text-sm text-[#94A3B8] transition hover:text-[#F8FAFC]">
-                  {t.footer_contact}
-                </a>
               </nav>
             </div>
 
@@ -400,22 +397,38 @@ export default function Home() {
               <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#FACC15]">
                 {t.footer_follow}
               </p>
+
               <nav className="mt-5 flex flex-col gap-3">
                 <a
                   href="https://linkedin.com/company/football-english-intelligence"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-[#94A3B8] transition hover:text-[#F8FAFC]"
+                  className="group flex w-fit items-center gap-3 text-sm text-[#94A3B8] transition hover:text-[#F8FAFC]"
+                  aria-label="Follow FEI on LinkedIn"
                 >
-                  {t.footer_linkedin}
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-[#94A3B8] transition duration-300 group-hover:-translate-y-1 group-hover:border-[#FACC15]/45 group-hover:bg-[#FACC15]/10 group-hover:text-[#FACC15] group-hover:shadow-[0_10px_30px_rgba(250,204,21,0.12)]">
+                    <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0 4.88 0 3.5 1.12 1 2.48 1s2.5 1.12 2.5 2.5ZM.36 8.2h4.24V23H.36V8.2ZM7.4 8.2h4.06v2.02h.06c.56-1.06 1.94-2.18 4-2.18 4.28 0 5.08 2.82 5.08 6.48V23h-4.24v-7.52c0-1.8-.04-4.1-2.5-4.1-2.5 0-2.88 1.95-2.88 3.96V23H7.4V8.2Z"/>
+                    </svg>
+                  </span>
+                  <span>{t.footer_linkedin}</span>
                 </a>
+
                 <a
                   href="https://instagram.com/fei.football"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-[#94A3B8] transition hover:text-[#F8FAFC]"
+                  className="group flex w-fit items-center gap-3 text-sm text-[#94A3B8] transition hover:text-[#F8FAFC]"
+                  aria-label="Follow FEI on Instagram"
                 >
-                  {t.footer_instagram}
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.03] text-[#94A3B8] transition duration-300 group-hover:-translate-y-1 group-hover:rotate-3 group-hover:border-[#FACC15]/45 group-hover:bg-[#FACC15]/10 group-hover:text-[#FACC15] group-hover:shadow-[0_10px_30px_rgba(250,204,21,0.12)]">
+                    <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <rect x="3" y="3" width="18" height="18" rx="5"/>
+                      <circle cx="12" cy="12" r="4"/>
+                      <circle cx="17.5" cy="6.5" r="0.7" fill="currentColor" stroke="none"/>
+                    </svg>
+                  </span>
+                  <span>{t.footer_instagram}</span>
                 </a>
               </nav>
             </div>
