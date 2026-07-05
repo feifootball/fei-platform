@@ -226,13 +226,13 @@ export default function Home() {
 
             <div className="space-y-10">
               {t.steps.map((item, index) => (
-                <article key={item.step} className="relative grid gap-5 sm:grid-cols-[8rem_1fr] sm:gap-8">
+                <article key={item.step} className="group relative grid cursor-pointer gap-5 sm:grid-cols-[8rem_1fr] sm:gap-8">
                   <div className="relative z-10 flex items-center gap-3 sm:block">
-                    <span className="block text-6xl font-black leading-none tracking-tight text-fei-bg sm:text-7xl">
+                    <span className="block text-6xl font-black leading-none tracking-tight text-fei-bg transition duration-300 group-hover:scale-105 group-hover:text-fei-bg/90 sm:text-7xl">
                       {item.step}
                     </span>
 
-                    <div className="mt-0 flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-fei-yellow text-fei-bg shadow-lg shadow-fei-yellow/20 sm:mt-4">
+                    <div className="mt-0 flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-fei-yellow text-fei-bg shadow-lg shadow-fei-yellow/20 transition duration-300 group-hover:-translate-y-1 group-hover:rotate-3 group-hover:shadow-xl group-hover:shadow-fei-yellow/30 sm:mt-4">
                       {index === 0 && (
                         <svg className="h-7 w-7" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                           <circle cx="11" cy="11" r="6" stroke="currentColor" strokeWidth="2.2" />
@@ -256,15 +256,15 @@ export default function Home() {
 
                   <div className="border-b border-fei-bg/10 pb-10 last:border-b-0 last:pb-0">
                     <div className="mb-3 flex items-center gap-4">
-                      <span className="h-px w-20 bg-fei-yellow/70" />
+                      <span className="h-px w-20 bg-fei-yellow/70 transition-all duration-300 group-hover:w-28 group-hover:bg-fei-yellow" />
                       <span className="h-px flex-1 bg-fei-bg/10" />
                     </div>
 
-                    <h3 className="text-2xl font-black tracking-tight text-fei-bg sm:text-3xl">
+                    <h3 className="text-2xl font-black tracking-tight text-fei-bg transition duration-300 group-hover:text-fei-sky sm:text-3xl">
                       {item.title}
                     </h3>
 
-                    <p className="mt-3 max-w-2xl text-base leading-7 text-fei-bg/60 sm:text-lg sm:leading-8">
+                    <p className="mt-3 max-w-2xl text-base leading-7 text-fei-bg/60 transition duration-300 group-hover:text-fei-bg/75 sm:text-lg sm:leading-8">
                       {item.description}
                     </p>
                   </div>
