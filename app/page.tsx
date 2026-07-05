@@ -370,8 +370,8 @@ export default function Home() {
             </div>
 
             <div>
-              <div className="hidden grid-cols-4 gap-7 lg:grid">
-                <div className="group">
+              <div className="hidden grid-cols-4 gap-0 lg:grid">
+                <div className="group border-r border-white/[0.07] pr-7">
                   <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#FACC15]/85 transition group-hover:text-[#FACC15]">
                     {t.footer_support}
                   </p>
@@ -382,7 +382,7 @@ export default function Home() {
                   </nav>
                 </div>
 
-                <div className="group">
+                <div className="group border-r border-white/[0.07] px-7">
                   <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#FACC15]/85 transition group-hover:text-[#FACC15]">
                     {t.footer_legal}
                   </p>
@@ -402,7 +402,7 @@ export default function Home() {
                   </nav>
                 </div>
 
-                <div className="group">
+                <div className="group border-r border-white/[0.07] px-7">
                   <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#FACC15]/85 transition group-hover:text-[#FACC15]">
                     {t.footer_follow}
                   </p>
@@ -439,7 +439,7 @@ export default function Home() {
                   </nav>
                 </div>
 
-                <div className="group">
+                <div className="group pl-7">
                   <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#FACC15]/85 transition group-hover:text-[#FACC15]">
                     Contact
                   </p>
