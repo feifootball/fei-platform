@@ -226,25 +226,13 @@ export default function Home() {
 
             <div className="space-y-10">
               {t.steps.map((item, index) => (
-                <article key={item.step} className="relative grid gap-5 sm:grid-cols-[8.5rem_1fr] sm:gap-8">
+                <article key={item.step} className="relative grid gap-5 sm:grid-cols-[8rem_1fr] sm:gap-8">
                   <div className="relative z-10 flex items-center gap-3 sm:block">
-                    <span className={`block text-6xl font-black leading-none tracking-tight sm:text-7xl ${
-                      index === 0
-                        ? 'text-fei-sky'
-                        : index === 1
-                          ? 'text-fei-yellow'
-                          : 'text-fei-bg'
-                    }`}>
+                    <span className="block text-6xl font-black leading-none tracking-tight text-fei-bg sm:text-7xl">
                       {item.step}
                     </span>
 
-                    <div className={`mt-0 flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl shadow-lg sm:mt-4 ${
-                      index === 0
-                        ? 'bg-fei-sky text-fei-bg shadow-fei-sky/25'
-                        : index === 1
-                          ? 'bg-fei-yellow text-fei-bg shadow-fei-yellow/25'
-                          : 'border border-fei-sky/35 bg-fei-bg text-fei-yellow shadow-fei-bg/15'
-                    }`}>
+                    <div className="mt-0 flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-fei-yellow text-fei-bg shadow-lg shadow-fei-yellow/20 sm:mt-4">
                       {index === 0 && (
                         <svg className="h-7 w-7" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                           <circle cx="11" cy="11" r="6" stroke="currentColor" strokeWidth="2.2" />
@@ -268,13 +256,7 @@ export default function Home() {
 
                   <div className="border-b border-fei-bg/10 pb-10 last:border-b-0 last:pb-0">
                     <div className="mb-3 flex items-center gap-4">
-                      <span className={`h-px w-20 ${
-                        index === 0
-                          ? 'bg-fei-sky/70'
-                          : index === 1
-                            ? 'bg-fei-yellow/75'
-                            : 'bg-gradient-to-r from-fei-sky/70 to-fei-yellow/70'
-                      }`} />
+                      <span className="h-px w-20 bg-fei-yellow/70" />
                       <span className="h-px flex-1 bg-fei-bg/10" />
                     </div>
 
