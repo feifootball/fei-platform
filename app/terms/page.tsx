@@ -1,3 +1,7 @@
+'use client'
+
+import { useEffect, useState } from 'react'
+
 const sections = [
   {
     title: 'Introducción',
@@ -238,71 +242,146 @@ const sections = [
   },
 ]
 
+type Lang = 'en' | 'es'
+
+const pageCopy = {
+  en: {
+    legal: 'Legal',
+    title: 'Terms of Service',
+    subtitle: 'FEI — Football English Intelligence',
+    description:
+      'Terms governing access, registration, platform use, plans, payments, diagnostics, educational content, and institutional services provided by FEI.',
+    updated: 'Last updated: July 2026',
+    back: '← Back to FEI',
+    login: 'Login',
+    register: 'Start your diagnostic',
+    langLabel: 'Language',
+    note:
+      'The full legal text is currently shown in Spanish for review. The English legal version will be published after final approval.',
+    contactPrefix: 'For questions about these terms, contact',
+  },
+  es: {
+    legal: 'Legal',
+    title: 'Términos de Servicio',
+    subtitle: 'FEI — Football English Intelligence',
+    description:
+      'Términos que regulan el acceso, registro, uso de la plataforma, planes, pagos, diagnósticos, contenidos educativos y servicios institucionales de FEI.',
+    updated: 'Última actualización: Julio 2026',
+    back: '← Volver a FEI',
+    login: 'Ingresar',
+    register: 'Comenzar diagnóstico',
+    langLabel: 'Idioma',
+    note:
+      'Esta versión en español está preparada para revisión. Después de su aprobación final, se publicará la versión legal en inglés.',
+    contactPrefix: 'Para preguntas sobre estos términos, escribe a',
+  },
+}
+
 export default function TermsPage() {
+  const [lang, setLang] = useState<Lang>('en')
+
+  useEffect(() => {
+    const saved = localStorage.getItem('fei_lang_v2') as Lang | null
+
+    if (saved === 'en' || saved === 'es') {
+      setLang(saved)
+    } else {
+      localStorage.setItem('fei_lang_v2', 'en')
+    }
+  }, [])
+
+  function changeLanguage(nextLang: Lang) {
+    setLang(nextLang)
+    localStorage.setItem('fei_lang_v2', nextLang)
+    window.dispatchEvent(new CustomEvent('fei_lang_v2_v2_change', { detail: nextLang }))
+  }
+
+  const t = pageCopy[lang]
+
   return (
     <main className="min-h-screen bg-fei-bg text-fei-text">
       <nav className="border-b border-fei-text/10 px-6 py-5">
-        <div className="mx-auto flex max-w-5xl items-center justify-between">
+        <div className="mx-auto flex max-w-7xl items-center justify-between">
           <a href="/" className="text-xl font-black tracking-tight text-fei-yellow">
             FEI
           </a>
 
-          <div className="flex items-center gap-5 text-sm font-medium">
-            <div className="hidden items-center gap-2 text-fei-text/45 sm:flex">
-              <button className="text-fei-text transition hover:text-fei-sky">ES</button>
+          <div className="flex items-center gap-4 text-sm font-medium sm:gap-5">
+            <div className="flex items-center gap-2 text-fei-text/45" aria-label={t.langLabel}>
+              <button
+                type="button"
+                onClick={() => changeLanguage('en')}
+                className={`transition hover:text-fei-sky ${
+                  lang === 'en' ? 'text-fei-sky' : 'text-fei-text/45'
+                }`}
+              >
+                EN
+              </button>
               <span>/</span>
-              <button className="transition hover:text-fei-sky">EN</button>
+              <button
+                type="button"
+                onClick={() => changeLanguage('es')}
+                className={`transition hover:text-fei-sky ${
+                  lang === 'es' ? 'text-fei-sky' : 'text-fei-text/45'
+                }`}
+              >
+                ES
+              </button>
             </div>
 
-            <a href="/login" className="text-fei-text/60 transition hover:text-fei-sky">
-              Log in
+            <a href="/login" className="hidden text-fei-text/60 transition hover:text-fei-sky sm:inline-flex">
+              {t.login}
             </a>
 
             <a
               href="/register"
-              className="rounded-full bg-fei-yellow px-5 py-2 font-semibold text-fei-bg transition hover:bg-fei-yellow/90"
+              className="inline-flex items-center justify-center rounded-full bg-fei-yellow px-8 py-3 font-semibold text-fei-bg transition hover:bg-fei-yellow/90"
             >
-              Register
+              {t.register}
             </a>
           </div>
         </div>
       </nav>
 
-      <section className="border-b border-fei-text/10 px-6 py-14 sm:py-16">
-        <div className="mx-auto max-w-5xl">
+      <section className="border-b border-fei-text/10 px-6 py-10 sm:py-12">
+        <div className="mx-auto max-w-7xl">
           <a
             href="/"
-            className="mb-10 inline-flex text-sm font-medium text-fei-sky transition hover:text-fei-yellow"
+            className="mb-8 inline-flex text-sm font-medium text-fei-sky transition hover:text-fei-yellow"
           >
-            ← Back to FEI
+            {t.back}
           </a>
 
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.28em] text-fei-yellow">
-            Legal
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.28em] text-fei-sky">
+            {t.legal}
           </p>
 
-          <h1 className="text-4xl font-black tracking-tight text-fei-text sm:text-6xl">
-            Terms of Service
+          <h1 className="max-w-4xl text-4xl font-black tracking-tight text-fei-text sm:text-5xl lg:text-6xl">
+            {t.title}
           </h1>
 
-          <p className="mt-5 text-xl font-semibold text-fei-sky">
-            FEI — Football English Intelligence
+          <p className="mt-4 text-lg font-semibold text-fei-text/80 sm:text-xl">
+            {t.subtitle}
           </p>
 
-          <p className="mt-7 max-w-3xl text-base leading-8 text-fei-text/65">
-            Términos que regulan el acceso, registro, uso de la plataforma, planes,
-            pagos, diagnósticos, contenidos educativos y servicios institucionales de FEI.
+          <p className="mt-6 max-w-3xl text-base leading-8 text-fei-text/65">
+            {t.description}
           </p>
 
-          <p className="mt-8 text-sm font-semibold text-fei-yellow">
-            Última actualización: Julio 2026
-          </p>
+          <div className="mt-7 flex flex-col gap-3 text-sm sm:flex-row sm:items-center sm:gap-5">
+            <p className="font-semibold text-fei-yellow">
+              {t.updated}
+            </p>
+            <p className="max-w-3xl text-fei-text/45">
+              {t.note}
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="px-6 py-14 sm:py-16">
-        <div className="mx-auto max-w-5xl">
-          <div className="space-y-12">
+      <section className="px-6 py-12 sm:py-14">
+        <div className="mx-auto max-w-7xl">
+          <div className="max-w-5xl space-y-12">
             {sections.map(section => (
               <section
                 key={section.title}
@@ -317,7 +396,7 @@ export default function TermsPage() {
                   {section.paragraphs.map(paragraph => (
                     <p
                       key={paragraph}
-                      className="max-w-4xl text-sm leading-7 text-fei-text/65 sm:text-base sm:leading-8"
+                      className="max-w-5xl text-sm leading-7 text-fei-text/65 sm:text-base sm:leading-8"
                     >
                       {paragraph}
                     </p>
@@ -327,9 +406,9 @@ export default function TermsPage() {
             ))}
           </div>
 
-          <div className="mt-14 border-t border-fei-text/10 pt-8 text-sm leading-7 text-fei-text/60">
+          <div className="mt-14 max-w-5xl border-t border-fei-text/10 pt-8 text-sm leading-7 text-fei-text/60">
             <p>
-              Para preguntas sobre estos términos, escribe a{' '}
+              {t.contactPrefix}{' '}
               <a href="mailto:contact@feifootball.com" className="font-semibold text-fei-sky hover:underline">
                 contact@feifootball.com
               </a>
@@ -341,4 +420,5 @@ export default function TermsPage() {
     </main>
   )
 }
+
 
