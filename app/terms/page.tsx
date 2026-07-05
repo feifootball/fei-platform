@@ -293,7 +293,7 @@ export default function TermsPage() {
 
   return (
     <main className="min-h-screen bg-fei-bg text-fei-text">
-      <Navbar />
+      <Navbar hideSectionLinks />
 
       <section className="border-b border-fei-text/10 px-6 py-10 sm:py-12 lg:py-14">
         <div className="mx-auto max-w-7xl">

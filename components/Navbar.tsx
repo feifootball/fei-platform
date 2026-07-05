@@ -25,7 +25,7 @@ const navLinks: Record<Lang, NavLink[]> = {
   ],
 };
 
-export function Navbar() {
+export function Navbar({ hideSectionLinks = false }: { hideSectionLinks?: boolean } = {}) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [lang, setLang] = useState<Lang>("en");
   const [activeSection, setActiveSection] = useState("");
@@ -109,20 +109,22 @@ export function Navbar() {
         </a>
 
         <div className="hidden items-center md:flex">
-          <div className="flex items-center gap-4">
-            {links.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={() => handleNavClick(link.sectionId)}
-                className={navLinkClass(link.sectionId)}
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
+          {!hideSectionLinks && (
+            <div className="flex items-center gap-4">
+              {links.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => handleNavClick(link.sectionId)}
+                  className={navLinkClass(link.sectionId)}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          )}
 
-          <div className="ml-8 flex items-center gap-3">
+          <div className={`${hideSectionLinks ? '' : 'ml-8'} flex items-center gap-3`}>
             <button
               onClick={toggleLang}
               className="inline-flex items-center gap-2 rounded-full border border-fei-text/20 px-4 py-2 text-sm font-normal text-fei-text/60 transition hover:border-fei-text/40 hover:text-fei-text"
@@ -184,7 +186,7 @@ export function Navbar() {
       {menuOpen && (
         <div className="border-t border-fei-text/10 bg-fei-bg/95 px-6 py-4 md:hidden">
           <div className="flex flex-col gap-4">
-            {links.map((link) => (
+            {!hideSectionLinks && links.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
