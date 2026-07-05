@@ -241,8 +241,35 @@ const sections = [
 export default function TermsPage() {
   return (
     <main className="min-h-screen bg-fei-bg text-fei-text">
-      <section className="border-b border-fei-text/10 px-6 py-16 sm:py-20">
-        <div className="mx-auto max-w-4xl">
+      <nav className="border-b border-fei-text/10 px-6 py-5">
+        <div className="mx-auto flex max-w-5xl items-center justify-between">
+          <a href="/" className="text-xl font-black tracking-tight text-fei-yellow">
+            FEI
+          </a>
+
+          <div className="flex items-center gap-5 text-sm font-medium">
+            <div className="hidden items-center gap-2 text-fei-text/45 sm:flex">
+              <button className="text-fei-text transition hover:text-fei-sky">ES</button>
+              <span>/</span>
+              <button className="transition hover:text-fei-sky">EN</button>
+            </div>
+
+            <a href="/login" className="text-fei-text/60 transition hover:text-fei-sky">
+              Log in
+            </a>
+
+            <a
+              href="/register"
+              className="rounded-full bg-fei-yellow px-5 py-2 font-semibold text-fei-bg transition hover:bg-fei-yellow/90"
+            >
+              Register
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <section className="border-b border-fei-text/10 px-6 py-14 sm:py-16">
+        <div className="mx-auto max-w-5xl">
           <a
             href="/"
             className="mb-10 inline-flex text-sm font-medium text-fei-sky transition hover:text-fei-yellow"
@@ -254,79 +281,64 @@ export default function TermsPage() {
             Legal
           </p>
 
-          <h1 className="text-4xl font-black tracking-tight text-fei-text sm:text-5xl">
+          <h1 className="text-4xl font-black tracking-tight text-fei-text sm:text-6xl">
             Terms of Service
           </h1>
 
-          <p className="mt-4 text-xl font-semibold text-fei-sky">
+          <p className="mt-5 text-xl font-semibold text-fei-sky">
             FEI — Football English Intelligence
           </p>
 
-          <p className="mt-6 max-w-3xl text-base leading-8 text-fei-text/65">
+          <p className="mt-7 max-w-3xl text-base leading-8 text-fei-text/65">
             Términos que regulan el acceso, registro, uso de la plataforma, planes,
             pagos, diagnósticos, contenidos educativos y servicios institucionales de FEI.
           </p>
 
-          <div className="mt-8 rounded-2xl border border-fei-yellow/15 bg-fei-yellow/[0.06] px-5 py-4 text-sm font-medium text-fei-yellow">
+          <p className="mt-8 text-sm font-semibold text-fei-yellow">
             Última actualización: Julio 2026
-          </div>
+          </p>
         </div>
       </section>
 
-      <section className="px-6 py-12 sm:py-16">
-        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.32fr_0.68fr]">
-          <aside className="hidden lg:block">
-            <div className="sticky top-8 rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-5">
-              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.22em] text-fei-text/40">
-                Contents
-              </p>
-              <nav className="space-y-2">
-                {sections.slice(1, 10).map(section => (
-                  <a
-                    key={section.title}
-                    href={`#${section.title.toLowerCase().replaceAll(' ', '-').replaceAll('.', '')}`}
-                    className="block text-sm leading-6 text-fei-text/55 transition hover:text-fei-sky"
-                  >
-                    {section.title}
-                  </a>
-                ))}
-              </nav>
-            </div>
-          </aside>
-
-          <div className="space-y-10">
+      <section className="px-6 py-14 sm:py-16">
+        <div className="mx-auto max-w-5xl">
+          <div className="space-y-12">
             {sections.map(section => (
               <section
                 key={section.title}
                 id={section.title.toLowerCase().replaceAll(' ', '-').replaceAll('.', '')}
-                className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.025] p-6 sm:p-8"
+                className="border-b border-fei-text/10 pb-10 last:border-b-0 last:pb-0"
               >
-                <h2 className="mb-5 text-2xl font-bold tracking-tight text-fei-text">
+                <h2 className="mb-5 text-2xl font-bold tracking-tight text-fei-text sm:text-3xl">
                   {section.title}
                 </h2>
 
                 <div className="space-y-4">
                   {section.paragraphs.map(paragraph => (
-                    <p key={paragraph} className="text-sm leading-7 text-fei-text/65 sm:text-base sm:leading-8">
+                    <p
+                      key={paragraph}
+                      className="max-w-4xl text-sm leading-7 text-fei-text/65 sm:text-base sm:leading-8"
+                    >
                       {paragraph}
                     </p>
                   ))}
                 </div>
               </section>
             ))}
+          </div>
 
-            <div className="rounded-2xl border border-fei-sky/15 bg-fei-sky/[0.05] p-6 text-sm leading-7 text-fei-text/60 sm:p-8">
-              <p>
-                Para preguntas sobre estos términos, escribe a{' '}
-                <a href="mailto:contact@feifootball.com" className="font-semibold text-fei-sky hover:underline">
-                  contact@feifootball.com
-                </a>
-                .
-              </p>
-            </div>
+          <div className="mt-14 border-t border-fei-text/10 pt-8 text-sm leading-7 text-fei-text/60">
+            <p>
+              Para preguntas sobre estos términos, escribe a{' '}
+              <a href="mailto:contact@feifootball.com" className="font-semibold text-fei-sky hover:underline">
+                contact@feifootball.com
+              </a>
+              .
+            </p>
           </div>
         </div>
       </section>
     </main>
   )
 }
+
