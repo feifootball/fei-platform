@@ -103,7 +103,7 @@ export function Navbar({ hideSectionLinks = false }: { hideSectionLinks?: boolea
 
   return (
     <header className="sticky top-0 z-50 border-b border-fei-text/10 bg-fei-bg/90 backdrop-blur-xl">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+      <nav className="mx-auto flex w-full max-w-[1600px] items-center justify-between px-4 py-4 sm:px-6 lg:px-8 2xl:px-10">
         <a href="/" className="flex items-center">
           <img src="/logo.svg" alt="FEI" className="h-9 w-auto" />
         </a>
