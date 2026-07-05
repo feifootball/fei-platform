@@ -351,14 +351,7 @@ export default function Home() {
 
       <footer className="mt-auto border-t border-fei-text/10 bg-[#0F172A] px-6 py-5">
         <div className="mx-auto max-w-7xl">
-          <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
-            <a href="/" className="inline-flex w-fit items-center gap-3">
-              <img src="/logo.svg" alt="FEI" className="h-7 w-auto" />
-              <span className="text-sm font-medium tracking-tight text-[#CBD5E1]">
-                Football English Intelligence
-              </span>
-            </a>
-
+          <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-end">
             <div className="flex flex-wrap items-center gap-x-4 gap-y-3 lg:justify-end">
               <nav className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-[#94A3B8] lg:justify-end">
                 <a href="/terms" className="transition hover:text-[#F8FAFC]">
@@ -386,13 +379,13 @@ export default function Home() {
 
               <span className="hidden h-4 w-px bg-white/15 lg:block" aria-hidden="true" />
 
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2">
                 <a
                   href="https://linkedin.com/company/football-english-intelligence"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Follow FEI on LinkedIn"
-                  className="text-sm font-black text-fei-yellow/85 transition hover:text-fei-sky"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-sm font-black text-fei-yellow/85 transition hover:border-fei-sky/40 hover:text-fei-sky"
                 >
                   in
                 </a>
@@ -402,7 +395,7 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Follow FEI on Instagram"
-                  className="text-fei-yellow/85 transition hover:text-fei-sky"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-fei-yellow/85 transition hover:border-fei-sky/40 hover:text-fei-sky"
                 >
                   <svg
                     className="h-4 w-4"
