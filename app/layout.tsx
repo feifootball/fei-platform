@@ -1,37 +1,23 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["400", "600", "700", "900"],
-});
+import type { Metadata } from "next"
+import FooterDropdown from '@/components/Footer'
+import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "FEI — Football English Intelligence",
-  description:
-    "Professional English training for the elite football ecosystem. Players, coaches, and club staff.",
-};
+  title: "FEI - Football English Intelligence",
+  description: "Communication Creates Opportunity",
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} h-full font-sans antialiased`}
-    >
-      <head>
-        <link rel="icon" href="/favicon.svg?v=22" type="image/svg+xml" />
-        <link rel="shortcut icon" href="/favicon.ico?v=22" />
-        <link rel="apple-touch-icon" href="/apple-icon.svg?v=22" />
-      </head>
-      <body className="min-h-full flex flex-col bg-fei-bg text-fei-text">
+    <html lang="en">
+      <body>
         {children}
+        <FooterDropdown />
       </body>
     </html>
-  );
+  )
 }
