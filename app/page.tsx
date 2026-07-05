@@ -221,43 +221,44 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mt-14 grid gap-5 md:grid-cols-3">
-            {t.steps.map((item, index) => (
-              <article key={item.step} className="rounded-[1.75rem] border border-fei-bg/10 bg-[#F7F8FA] p-6 transition hover:-translate-y-1 hover:border-fei-sky/25 hover:bg-white hover:shadow-xl hover:shadow-fei-bg/5">
-                <div className="mb-8 flex items-start justify-between">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-fei-sky/20 bg-white text-fei-sky shadow-sm">
-                    {index === 0 && (
-                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <circle cx="11" cy="11" r="6" stroke="currentColor" strokeWidth="2" />
-                        <path d="M16 16l4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                      </svg>
-                    )}
-                    {index === 1 && (
-                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M5 6h14M5 12h10M5 18h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                        <path d="M17 15l2 2 3-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    )}
-                    {index === 2 && (
-                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M6 18V9M12 18V5M18 18v-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                        <path d="M4 18h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                      </svg>
-                    )}
+          <div className="mt-14 max-w-6xl">
+            <div className="grid gap-4 md:grid-cols-3">
+              {t.steps.map((item, index) => (
+                <article key={item.step} className="group rounded-[1.5rem] border border-fei-bg/10 bg-[#F7F8FA] p-5 transition hover:-translate-y-0.5 hover:border-fei-yellow/35 hover:bg-white hover:shadow-lg hover:shadow-fei-bg/5">
+                  <div className="mb-6 flex items-center justify-between">
+                    <span className="text-sm font-black tracking-tight text-fei-bg/35">
+                      {item.step}
+                    </span>
+
+                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-fei-bg text-fei-yellow shadow-md shadow-fei-bg/10 transition group-hover:bg-fei-yellow group-hover:text-fei-bg">
+                      {index === 0 && (
+                        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                          <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                        </svg>
+                      )}
+                      {index === 1 && (
+                        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                          <path d="M5 7h14M5 12h9M5 17h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                        </svg>
+                      )}
+                      {index === 2 && (
+                        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                          <path d="M6 13l4 4L18 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      )}
+                    </div>
                   </div>
 
-                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-fei-bg text-lg font-black text-white shadow-lg shadow-fei-bg/10">
-                    {item.step}
-                  </div>
-                </div>
-
-                <h3 className="text-2xl font-black tracking-tight text-fei-bg">{item.title}</h3>
-                <p className="mt-4 text-base leading-7 text-fei-bg/60">{item.description}</p>
-              </article>
-            ))}
+                  <h3 className="text-xl font-black tracking-tight text-fei-bg">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-fei-bg/60">{item.description}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
-      </section>\n\n      <section id="roles" className="scroll-mt-28 border-t border-fei-text/10 px-6 py-16 sm:py-20">
+      </section>
+
+      <section id="roles" className="scroll-mt-28 border-t border-fei-text/10 px-6 py-16 sm:py-20">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
             <div>
