@@ -364,7 +364,7 @@ export default function Home() {
               {
                 name: lang === 'en' ? 'Individual Premium' : 'Premium Individual',
                 price: '$49',
-                detail: lang === 'en' ? 'from / month or $399 / year' : 'desde / mes o $399 / año',
+                detail: lang === 'en' ? 'USD / month or $399 USD / year' : 'USD / mes o $399 USD / año',
                 features: lang === 'en'
                   ? ['Full role-based modules', 'Football-specific scenarios', 'Progress tracking and recommendations']
                   : ['Módulos completos por rol', 'Escenarios específicos de fútbol', 'Seguimiento de progreso y recomendaciones'],
@@ -375,7 +375,7 @@ export default function Home() {
               {
                 name: lang === 'en' ? 'Institutional Plans' : 'Planes Institucionales',
                 price: '$199',
-                detail: lang === 'en' ? 'from / month' : 'desde / mes',
+                detail: lang === 'en' ? 'USD / month' : 'USD / mes',
                 features: lang === 'en'
                   ? ['For clubs and academies', 'Multiple users and licenses', 'Reports and implementation options']
                   : ['Para clubes y academias', 'Múltiples usuarios y licencias', 'Reportes y opciones de implementación'],
