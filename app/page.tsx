@@ -361,10 +361,10 @@ export default function Home() {
 
       <footer className="mt-auto border-t border-fei-text/10 bg-[#0F172A] px-6 py-14">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-10 lg:grid-cols-[1fr_auto]">
+          <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr]">
             <div className="hidden lg:block" />
 
-            <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-14">
+            <div className="grid w-full gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
               <div>
                 <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#FACC15]">
                   {t.footer_support}
@@ -414,10 +414,17 @@ export default function Home() {
                     href="https://instagram.com/fei.football"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm text-[#94A3B8] transition hover:text-[#F8FAFC]"
+                    className="group inline-flex w-fit items-center gap-2 text-sm text-[#94A3B8] transition hover:text-[#F8FAFC]"
+                    aria-label="Follow FEI on Instagram"
                   >
-                    <span className="text-[#FACC15]/70">◎</span>
-                    {t.footer_instagram}
+                    <span className="flex h-5 w-5 items-center justify-center text-[#FACC15]/75 transition duration-300 group-hover:scale-110 group-hover:text-[#FACC15]">
+                      <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <rect x="3" y="3" width="18" height="18" rx="5" />
+                        <circle cx="12" cy="12" r="4" />
+                        <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
+                      </svg>
+                    </span>
+                    <span className="transition group-hover:translate-x-0.5">{t.footer_instagram}</span>
                   </a>
                 </nav>
               </div>
