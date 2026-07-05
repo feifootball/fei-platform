@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 
 type Lang = "en" | "es";
 
@@ -83,13 +83,23 @@ export function Navbar({ hideSectionLinks = false }: { hideSectionLinks?: boolea
     window.dispatchEvent(new CustomEvent("fei_lang_v2_v2_change", { detail: next }));
   }
 
-  function handleNavClick(sectionId: string) {
+  function handleNavClick(event: MouseEvent<HTMLAnchorElement>, sectionId: string, href: string) {
     setActiveSection(sectionId);
     setMenuOpen(false);
 
-    window.setTimeout(() => {
-      setActiveSection(sectionId);
-    }, 150);
+    if (window.location.pathname === "/") {
+      event.preventDefault();
+
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth", block: "start" });
+        window.history.pushState(null, "", href);
+      }
+
+      window.setTimeout(() => {
+        setActiveSection(sectionId);
+      }, 350);
+    }
   }
 
   const links = navLinks[lang];
@@ -115,7 +125,7 @@ export function Navbar({ hideSectionLinks = false }: { hideSectionLinks?: boolea
                 <a
                   key={link.label}
                   href={link.href}
-                  onClick={() => handleNavClick(link.sectionId)}
+                  onClick={(event) => handleNavClick(event, link.sectionId, link.href)}
                   className={navLinkClass(link.sectionId)}
                 >
                   {link.label}
@@ -190,7 +200,7 @@ export function Navbar({ hideSectionLinks = false }: { hideSectionLinks?: boolea
               <a
                 key={link.label}
                 href={link.href}
-                onClick={() => handleNavClick(link.sectionId)}
+                onClick={(event) => handleNavClick(event, link.sectionId, link.href)}
                 className={`text-sm font-normal transition ${
                   activeSection === link.sectionId
                     ? "text-fei-yellow/85"

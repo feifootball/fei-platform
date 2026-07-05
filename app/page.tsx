@@ -147,8 +147,16 @@ export default function Home() {
       <Navbar />
 
       <section className="relative flex min-h-[calc(100vh-73px)] overflow-hidden px-6 py-20 sm:py-24 lg:items-center lg:py-16">
-        <div className="pointer-events-none absolute right-[-14rem] top-10 h-[34rem] w-[34rem] rounded-full bg-fei-sky/[0.11] blur-3xl" />
-        <div className="pointer-events-none absolute bottom-[-14rem] left-[-10rem] h-[28rem] w-[28rem] rounded-full bg-fei-yellow/[0.08] blur-3xl" />
+        <div className="pointer-events-none absolute right-[-12rem] top-[-4rem] h-[44rem] w-[44rem] rounded-full bg-fei-sky/[0.18] blur-3xl" />
+        <div className="pointer-events-none absolute right-[4rem] top-[10rem] hidden h-[28rem] w-[28rem] rounded-full border border-fei-sky/20 bg-fei-sky/[0.035] shadow-[0_0_120px_rgba(65,202,255,0.16)] lg:block" />
+        <div className="pointer-events-none absolute right-[10rem] top-[16rem] hidden h-[15rem] w-[15rem] rounded-full border border-fei-yellow/20 bg-fei-yellow/[0.045] shadow-[0_0_90px_rgba(255,210,64,0.14)] lg:block" />
+        <div className="pointer-events-none absolute bottom-[-14rem] left-[-10rem] h-[28rem] w-[28rem] rounded-full bg-fei-yellow/[0.09] blur-3xl" />
+
+        <div className="pointer-events-none absolute right-10 top-1/2 hidden w-[34rem] -translate-y-1/2 lg:block">
+          <div className="h-px w-full bg-gradient-to-r from-transparent via-fei-sky/25 to-transparent" />
+          <div className="mt-16 h-px w-4/5 bg-gradient-to-r from-transparent via-fei-yellow/20 to-transparent" />
+          <div className="mt-16 h-px w-full bg-gradient-to-r from-transparent via-fei-sky/20 to-transparent" />
+        </div>
 
         <div className="mx-auto w-full max-w-[1500px]">
           <div className="max-w-5xl">
@@ -189,15 +197,15 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="how-it-works" className="scroll-mt-28 bg-white px-6 py-20 text-fei-bg sm:py-24">
-        <div className="mx-auto max-w-[1500px]">
+      <section id="how-it-works" className="scroll-mt-24 flex min-h-[calc(100vh-73px)] items-center bg-white px-6 py-20 text-fei-bg sm:py-24">
+        <div className="mx-auto w-full max-w-[1500px]">
           <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
             <div>
               <p className="mb-4 text-xs font-bold uppercase tracking-[0.28em] text-fei-sky">
                 The FEI Method
               </p>
 
-              <h2 className="text-4xl font-black tracking-tight text-fei-bg sm:text-5xl">
+              <h2 className="text-4xl font-black tracking-tight text-fei-bg sm:text-5xl lg:text-6xl">
                 {t.how_title.includes('FEI') ? (
                   <>
                     {t.how_title.split('FEI')[0]}
@@ -215,15 +223,11 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
+          <div className="mt-16 grid gap-6 md:grid-cols-3">
             {t.steps.map((item) => (
               <article key={item.step} className="rounded-[2rem] border border-fei-bg/10 bg-[#F7F8FA] p-8 transition hover:-translate-y-1 hover:border-fei-sky/25 hover:bg-white hover:shadow-xl hover:shadow-fei-bg/5">
-                <div className="mb-10 flex items-center justify-between">
-                  <span className="rounded-full border border-fei-bg/10 bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-fei-bg/45">
-                    Step {item.step}
-                  </span>
-
-                  <span className="h-2 w-2 rounded-full bg-fei-sky" />
+                <div className="mb-10 flex h-14 w-14 items-center justify-center rounded-2xl bg-fei-bg text-2xl font-black text-white shadow-lg shadow-fei-bg/10">
+                  {item.step}
                 </div>
 
                 <h3 className="text-2xl font-black tracking-tight text-fei-bg">{item.title}</h3>
