@@ -405,10 +405,13 @@ export default function Home() {
                     href="https://linkedin.com/company/football-english-intelligence"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm text-[#94A3B8] transition hover:text-[#F8FAFC]"
+                    className="group inline-flex w-fit items-center gap-2 text-sm text-[#94A3B8] transition hover:text-[#F8FAFC]"
+                    aria-label="Follow FEI on LinkedIn"
                   >
-                    <span className="text-[#FACC15]/70">in</span>
-                    {t.footer_linkedin}
+                    <span className="flex h-5 w-5 items-center justify-center text-xs font-black text-[#FACC15]/75 transition duration-300 group-hover:scale-110 group-hover:text-[#FACC15]">
+                      in
+                    </span>
+                    <span className="transition group-hover:translate-x-0.5">{t.footer_linkedin}</span>
                   </a>
                   <a
                     href="https://instagram.com/fei.football"
@@ -436,9 +439,6 @@ export default function Home() {
                 <nav className="mt-5 flex flex-col gap-3">
                   <a href="/contact" className="text-sm text-[#94A3B8] transition hover:text-[#F8FAFC]">
                     {t.footer_contact}
-                  </a>
-                  <a href="mailto:info@feifootball.com" className="text-sm text-[#94A3B8] transition hover:text-[#F8FAFC]">
-                    info@feifootball.com
                   </a>
                 </nav>
               </div>
