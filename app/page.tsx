@@ -361,8 +361,8 @@ export default function Home() {
 
       <footer className="mt-auto border-t border-fei-text/10 bg-[#0F172A] px-6 py-5">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-6 lg:grid-cols-[0.72fr_1.48fr] lg:items-start">
-            <div className="flex items-center gap-3 lg:border-r lg:border-white/[0.06] lg:pr-10">
+          <div className="grid gap-5 lg:grid-cols-[0.62fr_1.55fr] lg:items-start">
+            <div className="relative flex items-center gap-3 lg:pr-8 lg:after:absolute lg:after:right-0 lg:after:top-0 lg:after:h-32 lg:after:w-px lg:after:bg-white/[0.06] lg:after:content-['']">
               <img src="/logo.svg" alt="FEI" className="h-7 w-auto" />
               <span className="text-sm font-normal text-[#94A3B8]/80">
                 Football English Intelligence
@@ -371,7 +371,7 @@ export default function Home() {
 
             <div>
               <div className="hidden grid-cols-4 gap-0 lg:grid">
-                <div className="group pl-8">
+                <div className="group pl-6">
                   <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#FACC15]/85 transition group-hover:text-[#FACC15]">
                     {t.footer_support}
                   </p>
@@ -382,7 +382,7 @@ export default function Home() {
                   </nav>
                 </div>
 
-                <div className="group pl-8">
+                <div className="group pl-6">
                   <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#FACC15]/85 transition group-hover:text-[#FACC15]">
                     {t.footer_legal}
                   </p>
@@ -402,7 +402,7 @@ export default function Home() {
                   </nav>
                 </div>
 
-                <div className="group pl-8">
+                <div className="group pl-6">
                   <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#FACC15]/85 transition group-hover:text-[#FACC15]">
                     {t.footer_follow}
                   </p>
@@ -439,7 +439,7 @@ export default function Home() {
                   </nav>
                 </div>
 
-                <div className="group pl-8">
+                <div className="group pl-6">
                   <p className="text-xs font-bold uppercase tracking-[0.24em] text-[#FACC15]/85 transition group-hover:text-[#FACC15]">
                     Contact
                   </p>
