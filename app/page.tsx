@@ -226,37 +226,43 @@ export default function Home() {
 
             <div className="space-y-10">
               {t.steps.map((item, index) => (
-                <article key={item.step} className="relative grid gap-5 sm:grid-cols-[3.5rem_1fr] sm:gap-7">
-                  <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-fei-bg text-fei-yellow shadow-lg shadow-fei-bg/10">
-                    {index === 0 && (
-                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <circle cx="11" cy="11" r="6" stroke="currentColor" strokeWidth="2" />
-                        <path d="M16 16l4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                      </svg>
-                    )}
-                    {index === 1 && (
-                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M5 7h14M5 12h9M5 17h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                      </svg>
-                    )}
-                    {index === 2 && (
-                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M6 13l4 4L18 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    )}
+                <article key={item.step} className="relative grid gap-5 sm:grid-cols-[6rem_1fr] sm:gap-8">
+                  <div className="relative z-10">
+                    <span className="block text-6xl font-black leading-none tracking-tight text-fei-bg sm:text-7xl">
+                      {item.step}
+                    </span>
                   </div>
 
                   <div className="border-b border-fei-bg/10 pb-10 last:border-b-0 last:pb-0">
                     <div className="mb-3 flex items-center gap-4">
-                      <span className="text-sm font-black tracking-[0.22em] text-fei-sky">
-                        {item.step}
-                      </span>
+                      <span className="h-px w-14 bg-fei-sky/45" />
                       <span className="h-px flex-1 bg-fei-bg/10" />
                     </div>
 
-                    <h3 className="text-2xl font-black tracking-tight text-fei-bg sm:text-3xl">
-                      {item.title}
-                    </h3>
+                    <div className="flex items-center justify-between gap-5">
+                      <h3 className="text-2xl font-black tracking-tight text-fei-bg sm:text-3xl">
+                        {item.title}
+                      </h3>
+
+                      <div className="hidden h-11 w-11 shrink-0 items-center justify-center rounded-full bg-fei-yellow text-fei-bg shadow-md shadow-fei-yellow/20 sm:flex">
+                        {index === 0 && (
+                          <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <circle cx="11" cy="11" r="6" stroke="currentColor" strokeWidth="2" />
+                            <path d="M16 16l4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                          </svg>
+                        )}
+                        {index === 1 && (
+                          <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M5 7h14M5 12h9M5 17h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                          </svg>
+                        )}
+                        {index === 2 && (
+                          <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M6 13l4 4L18 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        )}
+                      </div>
+                    </div>
 
                     <p className="mt-3 max-w-2xl text-base leading-7 text-fei-bg/60 sm:text-lg sm:leading-8">
                       {item.description}
