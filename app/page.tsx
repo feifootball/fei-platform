@@ -351,68 +351,66 @@ export default function Home() {
 
       <footer className="mt-auto border-t border-fei-text/10 bg-[#0F172A] px-6 py-5">
         <div className="mx-auto max-w-7xl">
-          <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-end">
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-3 lg:justify-end">
-              <nav className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-[#94A3B8] lg:justify-end">
-                <a href="/terms" className="transition hover:text-[#F8FAFC]">
-                  {t.footer_terms}
-                </a>
+          <div className="grid gap-5 lg:grid-cols-[1fr_auto_1fr] lg:items-center">
+            <div className="hidden lg:block" aria-hidden="true" />
 
-                <span className="h-4 w-px bg-white/15" aria-hidden="true" />
+            <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-[#94A3B8]">
+              <a href="/terms" className="transition hover:text-[#F8FAFC]">
+                {t.footer_terms}
+              </a>
 
-                <a href="/privacy" className="transition hover:text-[#F8FAFC]">
-                  {t.footer_privacy}
-                </a>
+              <span className="h-4 w-px bg-white/15" aria-hidden="true" />
 
-                <span className="h-4 w-px bg-white/15" aria-hidden="true" />
+              <a href="/privacy" className="transition hover:text-[#F8FAFC]">
+                {t.footer_privacy}
+              </a>
 
-                <a href="/faq" className="transition hover:text-[#F8FAFC]">
-                  {t.footer_faq}
-                </a>
+              <span className="h-4 w-px bg-white/15" aria-hidden="true" />
 
-                <span className="h-4 w-px bg-white/15" aria-hidden="true" />
+              <a href="/faq" className="transition hover:text-[#F8FAFC]">
+                {t.footer_faq}
+              </a>
 
-                <a href="/contact" className="transition hover:text-[#F8FAFC]">
-                  {t.footer_contact}
-                </a>
-              </nav>
+              <span className="h-4 w-px bg-white/15" aria-hidden="true" />
 
-              <span className="hidden h-4 w-px bg-white/15 lg:block" aria-hidden="true" />
+              <a href="/contact" className="transition hover:text-[#F8FAFC]">
+                {t.footer_contact}
+              </a>
+            </nav>
 
-              <div className="flex items-center gap-2">
-                <a
-                  href="https://linkedin.com/company/football-english-intelligence"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Follow FEI on LinkedIn"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-sm font-black text-fei-yellow/85 transition hover:border-fei-sky/40 hover:text-fei-sky"
+            <div className="flex items-center justify-center gap-2 lg:justify-end">
+              <a
+                href="https://linkedin.com/company/football-english-intelligence"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow FEI on LinkedIn"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-sm font-black text-fei-yellow/85 transition hover:border-fei-sky/40 hover:text-fei-sky"
+              >
+                in
+              </a>
+
+              <a
+                href="https://instagram.com/fei.football"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow FEI on Instagram"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-fei-yellow/85 transition hover:border-fei-sky/40 hover:text-fei-sky"
+              >
+                <svg
+                  className="h-4 w-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
                 >
-                  in
-                </a>
-
-                <a
-                  href="https://instagram.com/fei.football"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Follow FEI on Instagram"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-fei-yellow/85 transition hover:border-fei-sky/40 hover:text-fei-sky"
-                >
-                  <svg
-                    className="h-4 w-4"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <rect x="3" y="3" width="18" height="18" rx="5" />
-                    <circle cx="12" cy="12" r="4" />
-                    <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
-                  </svg>
-                </a>
-              </div>
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
+                </svg>
+              </a>
             </div>
           </div>
 
