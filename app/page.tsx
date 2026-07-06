@@ -148,18 +148,18 @@ export default function Home() {
 
       <section className="relative flex min-h-[calc(100vh-73px)] overflow-hidden px-6 py-20 sm:py-24 lg:items-center lg:py-16">
         <div
-          className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 opacity-90 blur-3xl lg:block"
+          className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 opacity-45 blur-3xl lg:block"
           style={{
             background:
-              'radial-gradient(ellipse at 70% 35%, rgba(65, 202, 255, 0.24), transparent 58%), radial-gradient(ellipse at 45% 65%, rgba(255, 210, 64, 0.14), transparent 62%), linear-gradient(135deg, transparent 18%, rgba(65, 202, 255, 0.08), transparent 72%)',
+              'radial-gradient(ellipse at 72% 38%, rgba(65, 202, 255, 0.11), transparent 62%), radial-gradient(ellipse at 48% 66%, rgba(250, 204, 21, 0.06), transparent 65%), linear-gradient(135deg, transparent 25%, rgba(65, 202, 255, 0.035), transparent 78%)',
           }}
         />
 
         <div
-          className="pointer-events-none absolute inset-x-0 bottom-[-18rem] h-[28rem] opacity-70 blur-3xl"
+          className="pointer-events-none absolute inset-x-0 bottom-[-18rem] h-[28rem] opacity-35 blur-3xl"
           style={{
             background:
-              'linear-gradient(90deg, rgba(255, 210, 64, 0.08), transparent 35%, rgba(65, 202, 255, 0.1), transparent 75%)',
+              'linear-gradient(90deg, rgba(250, 204, 21, 0.035), transparent 38%, rgba(65, 202, 255, 0.045), transparent 78%)',
           }}
         />
 
