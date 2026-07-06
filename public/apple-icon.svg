@@ -1,13 +1,13 @@
 <svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
-  <rect width="180" height="180" rx="32" fill="#07111F"/>
+  <circle cx="90" cy="90" r="86" fill="#07111F"/>
   <text
     x="90"
-    y="112"
+    y="126"
     text-anchor="middle"
-    font-family="Arial, Helvetica, sans-serif"
-    font-size="58"
+    font-family="Arial Black, Arial, Helvetica, sans-serif"
+    font-size="112"
     font-weight="900"
-    letter-spacing="-2"
-    fill="#F1C40F"
-  >FEI</text>
+    letter-spacing="-6"
+    fill="#FACC15"
+  >F</text>
 </svg>
