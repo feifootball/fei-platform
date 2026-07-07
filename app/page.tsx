@@ -155,23 +155,15 @@ export default function Home() {
           }}
         />
 
-        <div
-          className="pointer-events-none absolute right-0 top-0 hidden h-full w-[48%] opacity-[0.15] lg:block"
-          style={{
-            backgroundImage:
-              'linear-gradient(rgba(7, 17, 31, 0.78) 1px, transparent 1px), linear-gradient(90deg, rgba(7, 17, 31, 0.78) 1px, transparent 1px), radial-gradient(circle at 72% 30%, rgba(125, 211, 252, 0.18), transparent 42%), radial-gradient(circle at 58% 68%, rgba(250, 204, 21, 0.14), transparent 40%)',
-            backgroundSize: '48px 48px, 48px 48px, auto, auto',
-            maskImage: 'linear-gradient(90deg, transparent 0%, black 34%, black 76%, transparent 100%)',
-          }}
-        />
+
 
         <div className="mx-auto w-full max-w-[1500px]">
           <div className="max-w-5xl">
             <p className="text-xs font-black uppercase tracking-[0.3em] text-fei-bg/55">{t.tagline}</p>
 
-            <h1 className="mt-6 text-5xl font-black leading-[1.03] text-fei-bg sm:text-6xl lg:text-7xl xl:text-8xl">
+            <h1 className="mt-6 text-5xl font-extrabold leading-[1.03] text-fei-bg sm:text-6xl lg:text-7xl xl:text-8xl">
               Football English<br />
-              <span className="bg-gradient-to-r from-fei-yellow to-fei-sky bg-clip-text text-transparent drop-shadow-[0_12px_22px_rgba(7,17,31,0.22)]">
+              <span className="bg-gradient-to-r from-[#facc15] via-[#fbbf24] to-[#38bdf8] bg-clip-text font-black text-transparent drop-shadow-[0_10px_16px_rgba(75,85,99,0.22)]">
                 Intelligence.
               </span>
             </h1>
@@ -179,13 +171,13 @@ export default function Home() {
             <div className="mt-8 max-w-2xl text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base sm:leading-8">
               {lang === 'en' ? (
                 <p>
-                  FEI is a football-specific English training platform that helps football professionals diagnose their level,
-                  train real communication scenarios, and build the confidence to perform in international environments.
+                  FEI is a football-specific English training platform that helps<br className="hidden sm:block" />
+                  football professionals diagnose their level, train real communication scenarios, and build the confidence to perform in international environments.
                 </p>
               ) : (
                 <p>
-                  FEI es una plataforma de entrenamiento en inglés especializada en fútbol que ayuda a profesionales del fútbol
-                  a diagnosticar su nivel, entrenar situaciones reales de comunicación y ganar confianza para desenvolverse en entornos internacionales.
+                  FEI es una plataforma de entrenamiento en inglés especializada en fútbol que ayuda<br className="hidden sm:block" />
+                  a profesionales del fútbol a diagnosticar su nivel, entrenar situaciones reales de comunicación y ganar confianza para desenvolverse en entornos internacionales.
                 </p>
               )}
             </div>
@@ -376,10 +368,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="for-clubs" className="scroll-mt-32 bg-white px-6 py-20 text-fei-bg sm:py-28">
+      <section id="for-clubs" className="scroll-mt-32 bg-white px-6 py-16 text-fei-bg sm:py-20">
         <div className="mx-auto max-w-[1500px]">
           <div className="overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-[#F7F8FA] shadow-sm">
-            <div className="grid lg:grid-cols-[1.05fr_0.95fr]">
+            <div className="grid lg:grid-cols-[0.95fr_1.05fr]">
               <div className="p-8 sm:p-10 lg:p-12">
                 <p className="text-xs font-black uppercase tracking-[0.28em] text-fei-sky">{t.clubs_label}</p>
 
@@ -391,19 +383,6 @@ export default function Home() {
                   {t.clubs_description}
                 </p>
 
-                <div className="mt-8 grid gap-3 sm:grid-cols-2">
-                  {t.clubs_features.map((item, index) => (
-                    <div key={item} className="group rounded-2xl border border-fei-bg/10 bg-white px-5 py-4 transition duration-300 hover:-translate-y-0.5 hover:border-fei-sky/45 hover:shadow-lg hover:shadow-fei-bg/5">
-                      <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-sky">
-                        0{index + 1}
-                      </p>
-                      <p className="mt-2 text-sm font-semibold leading-6 text-fei-bg/72">
-                        {item}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-
                 <a href="/contact" className="mt-9 inline-flex rounded-full bg-fei-bg px-8 py-3 font-bold text-white transition hover:bg-fei-bg/90">
                   {t.contact_us}
                 </a>
@@ -411,30 +390,40 @@ export default function Home() {
 
               <div className="relative border-t border-fei-bg/10 bg-fei-bg p-8 text-white sm:p-10 lg:border-l lg:border-t-0 lg:p-12">
                 <div
-                  className="pointer-events-none absolute inset-0 opacity-30"
+                  className="pointer-events-none absolute inset-0 opacity-35"
                   style={{
                     background:
-                      'radial-gradient(ellipse at 70% 28%, rgba(125,211,252,0.45), transparent 62%), radial-gradient(ellipse at 20% 80%, rgba(250,204,21,0.18), transparent 56%)',
+                      'radial-gradient(ellipse at 72% 22%, rgba(125,211,252,0.52), transparent 62%), radial-gradient(ellipse at 18% 86%, rgba(250,204,21,0.18), transparent 56%)',
                   }}
                 />
 
-                <div className="relative">
-                  <p className="text-xs font-black uppercase tracking-[0.28em] text-fei-yellow">{t.clubs_interested}</p>
+                <div className="relative flex min-h-[300px] flex-col justify-between">
+                  <div>
+                    <p className="text-xs font-black uppercase tracking-[0.28em] text-fei-yellow">{t.clubs_interested}</p>
 
-                  <h3 className="mt-5 text-3xl font-black tracking-tight text-white sm:text-4xl">
-                    {t.clubs_demo_title}
-                  </h3>
+                    <h3 className="mt-5 text-3xl font-black tracking-tight text-white sm:text-4xl">
+                      {t.clubs_demo_title}
+                    </h3>
 
-                  <p className="mt-4 text-sm leading-7 text-white/68 sm:text-base">
-                    {t.clubs_demo_description}
-                  </p>
-
-                  <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.04] p-5">
-                    <p className="text-sm font-semibold leading-6 text-white/78">
-                      {lang === 'en'
-                        ? 'Built for academies, professional clubs, and football organizations that need scalable English training.'
-                        : 'Diseñado para academias, clubes profesionales y organizaciones de fútbol que necesitan entrenamiento de inglés escalable.'}
+                    <p className="mt-4 max-w-xl text-base leading-8 text-white/68">
+                      {t.clubs_demo_description}
                     </p>
+                  </div>
+
+                  <div className="mt-10 grid gap-3 sm:grid-cols-2">
+                    <div className="rounded-2xl border border-white/10 bg-white/[0.045] p-5">
+                      <p className="text-3xl font-black text-fei-sky">11</p>
+                      <p className="mt-1 text-xs font-bold uppercase tracking-[0.18em] text-white/55">
+                        {lang === 'en' ? 'Role paths' : 'Rutas por rol'}
+                      </p>
+                    </div>
+
+                    <div className="rounded-2xl border border-white/10 bg-white/[0.045] p-5">
+                      <p className="text-3xl font-black text-fei-yellow">126</p>
+                      <p className="mt-1 text-xs font-bold uppercase tracking-[0.18em] text-white/55">
+                        {lang === 'en' ? 'Scenarios' : 'Escenarios'}
+                      </p>
+                    </div>
                   </div>
 
                   <a href="/contact" className="mt-8 inline-flex w-full items-center justify-center rounded-full border border-fei-yellow/45 px-6 py-3 text-sm font-bold text-fei-yellow transition hover:bg-fei-yellow hover:text-fei-bg">
@@ -447,7 +436,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="pricing" className="scroll-mt-32 bg-white px-6 py-20 text-fei-bg sm:py-28">
+      <section id="pricing" className="scroll-mt-32 bg-white px-6 pb-20 pt-10 text-fei-bg sm:pb-28 sm:pt-12">
         <div className="mx-auto max-w-[1500px]">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-xs font-black uppercase tracking-[0.28em] text-fei-sky">{t.pricing_label}</p>
