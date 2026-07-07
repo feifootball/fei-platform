@@ -144,35 +144,37 @@ export default function Home() {
 
   return (
     <div className="flex min-h-full flex-col">
-      <Navbar />
+      <Navbar variant="light" />
 
-      <section className="relative flex min-h-[calc(100vh-73px)] overflow-hidden px-6 py-20 sm:py-24 lg:items-center lg:py-16">
+      <section className="relative flex min-h-[calc(100vh-73px)] overflow-hidden bg-white px-6 py-20 text-fei-bg sm:py-24 lg:items-center lg:py-16">
         <div
-          className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 opacity-45 blur-3xl lg:block"
+          className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 opacity-70 blur-3xl lg:block"
           style={{
             background:
-              'radial-gradient(ellipse at 72% 38%, rgba(65, 202, 255, 0.11), transparent 62%), radial-gradient(ellipse at 48% 66%, rgba(250, 204, 21, 0.06), transparent 65%), linear-gradient(135deg, transparent 25%, rgba(65, 202, 255, 0.035), transparent 78%)',
+              'radial-gradient(ellipse at 75% 35%, rgba(125, 211, 252, 0.22), transparent 60%), radial-gradient(ellipse at 50% 68%, rgba(250, 204, 21, 0.13), transparent 64%)',
           }}
         />
 
         <div
-          className="pointer-events-none absolute inset-x-0 bottom-[-18rem] h-[28rem] opacity-35 blur-3xl"
+          className="pointer-events-none absolute right-0 top-0 hidden h-full w-[46%] opacity-[0.055] lg:block"
           style={{
-            background:
-              'linear-gradient(90deg, rgba(250, 204, 21, 0.035), transparent 38%, rgba(65, 202, 255, 0.045), transparent 78%)',
+            backgroundImage:
+              'linear-gradient(rgba(7, 17, 31, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(7, 17, 31, 0.5) 1px, transparent 1px)',
+            backgroundSize: '56px 56px',
+            maskImage: 'linear-gradient(90deg, transparent 0%, black 35%, black 72%, transparent 100%)',
           }}
         />
 
         <div className="mx-auto w-full max-w-[1500px]">
           <div className="max-w-5xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-fei-sky">{t.tagline}</p>
+            <p className="text-sm font-black uppercase tracking-[0.28em] text-fei-bg/65">{t.tagline}</p>
 
-            <h1 className="mt-6 text-5xl font-black leading-[1.03] text-fei-text sm:text-6xl lg:text-7xl xl:text-8xl">
+            <h1 className="mt-6 text-5xl font-black leading-[1.03] text-fei-bg sm:text-6xl lg:text-7xl xl:text-8xl">
               Football English<br />
               <span className="bg-gradient-to-r from-fei-yellow to-fei-sky bg-clip-text text-transparent">Intelligence.</span>
             </h1>
 
-            <div className="mt-7 max-w-4xl text-lg leading-8 text-fei-text/65 sm:text-xl sm:leading-9">
+            <div className="mt-7 max-w-3xl text-lg leading-8 text-fei-bg/62 sm:text-xl sm:leading-9">
               {lang === 'en' ? (
                 <p>
                   FEI is a football-specific English training platform that helps football professionals diagnose their level,
@@ -191,11 +193,11 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-16 grid max-w-6xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid max-w-5xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {t.stats.map((stat) => (
-              <div key={stat.label} className="rounded-3xl border border-fei-text/10 bg-white/[0.025] px-6 py-5 backdrop-blur">
-                <p className="text-3xl font-black tracking-tight text-fei-text">{stat.value}</p>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em] text-fei-text/40">{stat.label}</p>
+              <div key={stat.label} className="rounded-2xl border border-fei-bg/10 bg-[#F7F8FA] px-5 py-4 transition duration-300 hover:-translate-y-0.5 hover:border-fei-yellow/35 hover:bg-white hover:shadow-lg hover:shadow-fei-bg/5">
+                <p className="text-2xl font-black tracking-tight text-fei-bg sm:text-3xl">{stat.value}</p>
+                <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.18em] text-fei-bg/40">{stat.label}</p>
               </div>
             ))}
           </div>
