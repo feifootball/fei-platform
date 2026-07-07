@@ -10,7 +10,7 @@ const translations = {
     tagline: "Football is global.",
     hero_subtitle: "",
     hero_description: "The football-specific English platform that helps players, coaches, scouts and football professionals communicate with confidence in interviews, meetings, reports, team environments and international opportunities.",
-    cta_start: "Start your diagnostic",
+    cta_start: "Register now",
     cta_login: "Login",
     stats: [
       { value: "11", label: "Roles" },
@@ -61,7 +61,7 @@ const translations = {
     tagline: "El fútbol es global.",
     hero_subtitle: "",
     hero_description: "La plataforma de inglés especializada en fútbol que ayuda a jugadores, entrenadores, scouts y profesionales del fútbol a comunicarse con confianza en entrevistas, reuniones, reportes, entornos de equipo y oportunidades internacionales.",
-    cta_start: "Comenzar diagnóstico",
+    cta_start: "Regístrate ahora",
     cta_login: "Ingresar",
     stats: [
       { value: "11", label: "Roles" },
@@ -148,10 +148,20 @@ export default function Home() {
 
       <section className="relative flex min-h-[calc(100vh-73px)] overflow-hidden bg-white px-6 py-20 text-fei-bg sm:py-24 lg:items-center lg:py-16">
         <div
-          className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 opacity-65 blur-3xl lg:block"
+          className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 opacity-75 blur-3xl lg:block"
           style={{
             background:
-              'radial-gradient(ellipse at 76% 35%, rgba(125, 211, 252, 0.20), transparent 62%), radial-gradient(ellipse at 54% 68%, rgba(250, 204, 21, 0.12), transparent 66%)',
+              'radial-gradient(ellipse at 76% 35%, rgba(125, 211, 252, 0.24), transparent 62%), radial-gradient(ellipse at 54% 68%, rgba(250, 204, 21, 0.15), transparent 66%)',
+          }}
+        />
+
+        <div
+          className="pointer-events-none absolute right-0 top-0 hidden h-full w-[48%] opacity-[0.15] lg:block"
+          style={{
+            backgroundImage:
+              'linear-gradient(rgba(7, 17, 31, 0.78) 1px, transparent 1px), linear-gradient(90deg, rgba(7, 17, 31, 0.78) 1px, transparent 1px), radial-gradient(circle at 72% 30%, rgba(125, 211, 252, 0.18), transparent 42%), radial-gradient(circle at 58% 68%, rgba(250, 204, 21, 0.14), transparent 40%)',
+            backgroundSize: '48px 48px, 48px 48px, auto, auto',
+            maskImage: 'linear-gradient(90deg, transparent 0%, black 34%, black 76%, transparent 100%)',
           }}
         />
 
@@ -159,17 +169,14 @@ export default function Home() {
           <div className="max-w-5xl">
             <p className="text-xs font-black uppercase tracking-[0.3em] text-fei-bg/55">{t.tagline}</p>
 
-            <h1 className="mt-6 text-5xl leading-[1.03] text-fei-bg sm:text-6xl lg:text-7xl xl:text-8xl">
-              <span className="font-semibold tracking-[-0.045em]">Football English</span><br />
-              <span
-                className="bg-gradient-to-r from-fei-yellow to-fei-sky bg-clip-text font-black tracking-[-0.055em] text-transparent"
-                style={{ textShadow: '0 10px 34px rgba(7,17,31,0.16)' }}
-              >
+            <h1 className="mt-6 text-5xl font-black leading-[1.03] text-fei-bg sm:text-6xl lg:text-7xl xl:text-8xl">
+              Football English<br />
+              <span className="bg-gradient-to-r from-fei-yellow to-fei-sky bg-clip-text text-transparent drop-shadow-[0_12px_22px_rgba(7,17,31,0.22)]">
                 Intelligence.
               </span>
             </h1>
 
-            <div className="mt-8 max-w-2xl text-[16px] font-medium leading-8 text-fei-bg/58 sm:text-[17px]">
+            <div className="mt-8 max-w-2xl text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base sm:leading-8">
               {lang === 'en' ? (
                 <p>
                   FEI is a football-specific English training platform that helps football professionals diagnose their level,
@@ -190,7 +197,7 @@ export default function Home() {
 
           <div className="mt-12 grid max-w-5xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {t.stats.map((stat) => (
-              <div key={stat.label} className="rounded-2xl border border-fei-bg/10 bg-[#F7F8FA] px-5 py-4 transition duration-300 hover:-translate-y-0.5 hover:border-fei-yellow/35 hover:bg-white hover:shadow-lg hover:shadow-fei-bg/5">
+              <div key={stat.label} className="rounded-2xl border border-fei-bg/10 bg-[#F7F8FA] px-5 py-4 transition duration-300 hover:-translate-y-0.5 hover:border-fei-sky/35 hover:bg-white hover:shadow-lg hover:shadow-fei-bg/5">
                 <p className="text-2xl font-black tracking-tight text-fei-bg sm:text-3xl">{stat.value}</p>
                 <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.18em] text-fei-bg/40">{stat.label}</p>
               </div>
@@ -279,8 +286,8 @@ export default function Home() {
 
       <section id="roles" className="scroll-mt-28 bg-white px-6 py-20 text-fei-bg sm:py-24">
         <div className="mx-auto max-w-[1500px]">
-          <div className="mb-12 max-w-3xl">
-            <p className="mb-4 text-xs font-black uppercase tracking-[0.28em] text-fei-bg/65">
+          <div className="mb-10 max-w-3xl">
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.28em] text-fei-sky">
               Role Intelligence
             </p>
 
@@ -295,7 +302,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {[
               { role: 'Professional Player', esRole: 'Jugador profesional', text: 'Interviews, teammates and pressure moments.', esText: 'Entrevistas, compañeros y momentos de presión.' },
               { role: 'Head Coach', esRole: 'Entrenador principal', text: 'Tactics, media and staff leadership.', esText: 'Táctica, medios y liderazgo del staff.' },
@@ -316,27 +323,27 @@ export default function Home() {
                 <a
                   key={item.role}
                   href={`/register?role=${encodeURIComponent(item.role)}`}
-                  className="group relative min-h-[185px] overflow-hidden rounded-[1.6rem] border border-fei-bg/10 bg-[#F7F8FA] p-5 transition duration-500 hover:-translate-y-1.5 hover:border-fei-yellow/45 hover:bg-white hover:shadow-xl hover:shadow-fei-bg/8"
+                  className="group relative min-h-[142px] overflow-hidden rounded-[1.3rem] border border-fei-bg/10 bg-[#F7F8FA] p-4 transition duration-500 hover:-translate-y-1 hover:border-fei-sky/45 hover:bg-white hover:shadow-xl hover:shadow-fei-bg/7"
                 >
-                  <div className="pointer-events-none absolute -right-2 -top-5 text-7xl font-black leading-none text-fei-bg/[0.055] transition duration-500 group-hover:text-fei-yellow/20">
+                  <div className="pointer-events-none absolute -right-1 -top-4 text-6xl font-black leading-none text-fei-sky/[0.12] transition duration-500 group-hover:text-fei-yellow/25">
                     {String(index + 1).padStart(2, '0')}
                   </div>
 
-                  <div className="relative z-10 flex min-h-[145px] flex-col">
-                    <p className="mb-4 text-[11px] font-black uppercase tracking-[0.22em] text-fei-bg/40 transition duration-300 group-hover:text-fei-yellow">
+                  <div className="relative z-10 flex min-h-[110px] flex-col">
+                    <p className="mb-2 text-[10px] font-black uppercase tracking-[0.2em] text-fei-sky/85">
                       {lang === 'en' ? 'Role path' : 'Ruta por rol'}
                     </p>
 
-                    <h3 className="max-w-[13rem] text-xl font-black leading-6 text-fei-bg transition duration-300 group-hover:text-fei-bg">
+                    <h3 className="max-w-[13rem] text-lg font-black leading-6 text-fei-bg">
                       {displayRole}
                     </h3>
 
-                    <p className="mt-4 text-sm leading-6 text-fei-bg/58">
+                    <p className="mt-2 text-[13px] leading-5 text-fei-bg/58">
                       {displayText}
                     </p>
 
-                    <p className="mt-auto translate-y-2 pt-5 text-xs font-black uppercase tracking-[0.18em] text-fei-yellow opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-                      {lang === 'en' ? 'Start diagnostic →' : 'Comenzar diagnóstico →'}
+                    <p className="mt-auto translate-y-2 pt-3 text-[11px] font-black uppercase tracking-[0.15em] text-fei-yellow opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                      {lang === 'en' ? 'Register now →' : 'Regístrate ahora →'}
                     </p>
                   </div>
                 </a>
@@ -345,22 +352,22 @@ export default function Home() {
 
             <a
               href="/suggest-role"
-              className="group relative min-h-[185px] overflow-hidden rounded-[1.6rem] border border-fei-yellow/30 bg-fei-yellow/[0.10] p-5 transition duration-500 hover:-translate-y-1.5 hover:border-fei-yellow/55 hover:bg-fei-yellow/[0.16] hover:shadow-xl hover:shadow-fei-bg/8"
+              className="group relative min-h-[142px] overflow-hidden rounded-[1.3rem] border border-fei-yellow/30 bg-fei-yellow/[0.10] p-4 transition duration-500 hover:-translate-y-1 hover:border-fei-yellow/55 hover:bg-fei-yellow/[0.16] hover:shadow-xl hover:shadow-fei-bg/7"
             >
-              <div className="pointer-events-none absolute -right-1 -top-7 text-8xl font-black leading-none text-fei-yellow/25 transition duration-500 group-hover:text-fei-yellow/35">
+              <div className="pointer-events-none absolute -right-1 -top-7 text-6xl font-black leading-none text-fei-yellow/25 transition duration-500 group-hover:text-fei-yellow/35">
                 +
               </div>
 
-              <div className="relative z-10 flex min-h-[145px] flex-col">
-                <p className="mb-4 text-[11px] font-black uppercase tracking-[0.22em] text-fei-bg/45">
+              <div className="relative z-10 flex min-h-[110px] flex-col">
+                <p className="mb-2 text-[10px] font-black uppercase tracking-[0.2em] text-fei-bg/45">
                   {lang === 'en' ? 'Missing role' : 'Rol faltante'}
                 </p>
 
-                <h3 className="max-w-[13rem] text-xl font-black leading-6 text-fei-bg">
+                <h3 className="max-w-[13rem] text-lg font-black leading-6 text-fei-bg">
                   {lang === 'en' ? "Can't find your role?" : '¿No encuentras tu rol?'}
                 </h3>
 
-                <p className="mt-auto pt-5 text-xs font-black uppercase tracking-[0.18em] text-fei-bg/65 transition duration-300 group-hover:text-fei-bg">
+                <p className="mt-auto pt-3 text-[11px] font-black uppercase tracking-[0.15em] text-fei-bg/65 transition duration-300 group-hover:text-fei-bg">
                   {lang === 'en' ? 'Suggest a new role →' : 'Sugiere un nuevo rol →'}
                 </p>
               </div>
@@ -371,21 +378,28 @@ export default function Home() {
 
       <section id="for-clubs" className="scroll-mt-32 bg-white px-6 py-20 text-fei-bg sm:py-28">
         <div className="mx-auto max-w-[1500px]">
-          <div className="overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-[#F7F8FA]">
+          <div className="overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-[#F7F8FA] shadow-sm">
             <div className="grid lg:grid-cols-[1.05fr_0.95fr]">
               <div className="p-8 sm:p-10 lg:p-12">
-                <p className="text-xs font-black uppercase tracking-[0.28em] text-fei-bg/60">{t.clubs_label}</p>
+                <p className="text-xs font-black uppercase tracking-[0.28em] text-fei-sky">{t.clubs_label}</p>
+
                 <h2 className="mt-5 max-w-2xl text-4xl font-black tracking-tight text-fei-bg sm:text-5xl">
                   {t.clubs_title}
                 </h2>
-                <p className="mt-5 max-w-2xl text-base leading-8 text-fei-bg/60 sm:text-lg">
+
+                <p className="mt-5 max-w-2xl text-lg leading-8 text-fei-bg/62">
                   {t.clubs_description}
                 </p>
 
                 <div className="mt-8 grid gap-3 sm:grid-cols-2">
-                  {t.clubs_features.map((item) => (
-                    <div key={item} className="rounded-2xl border border-fei-bg/10 bg-white px-5 py-4 text-sm font-medium leading-6 text-fei-bg/70">
-                      <span className="mr-2 text-fei-yellow">✓</span>{item}
+                  {t.clubs_features.map((item, index) => (
+                    <div key={item} className="group rounded-2xl border border-fei-bg/10 bg-white px-5 py-4 transition duration-300 hover:-translate-y-0.5 hover:border-fei-sky/45 hover:shadow-lg hover:shadow-fei-bg/5">
+                      <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-sky">
+                        0{index + 1}
+                      </p>
+                      <p className="mt-2 text-sm font-semibold leading-6 text-fei-bg/72">
+                        {item}
+                      </p>
                     </div>
                   ))}
                 </div>
@@ -396,11 +410,33 @@ export default function Home() {
               </div>
 
               <div className="relative border-t border-fei-bg/10 bg-fei-bg p-8 text-white sm:p-10 lg:border-l lg:border-t-0 lg:p-12">
-                <div className="pointer-events-none absolute inset-0 opacity-20" style={{ background: 'radial-gradient(ellipse at 70% 30%, rgba(125,211,252,0.35), transparent 62%)' }} />
+                <div
+                  className="pointer-events-none absolute inset-0 opacity-30"
+                  style={{
+                    background:
+                      'radial-gradient(ellipse at 70% 28%, rgba(125,211,252,0.45), transparent 62%), radial-gradient(ellipse at 20% 80%, rgba(250,204,21,0.18), transparent 56%)',
+                  }}
+                />
+
                 <div className="relative">
                   <p className="text-xs font-black uppercase tracking-[0.28em] text-fei-yellow">{t.clubs_interested}</p>
-                  <h3 className="mt-5 text-3xl font-black tracking-tight">{t.clubs_demo_title}</h3>
-                  <p className="mt-4 text-sm leading-7 text-white/65">{t.clubs_demo_description}</p>
+
+                  <h3 className="mt-5 text-3xl font-black tracking-tight text-white sm:text-4xl">
+                    {t.clubs_demo_title}
+                  </h3>
+
+                  <p className="mt-4 text-sm leading-7 text-white/68 sm:text-base">
+                    {t.clubs_demo_description}
+                  </p>
+
+                  <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+                    <p className="text-sm font-semibold leading-6 text-white/78">
+                      {lang === 'en'
+                        ? 'Built for academies, professional clubs, and football organizations that need scalable English training.'
+                        : 'Diseñado para academias, clubes profesionales y organizaciones de fútbol que necesitan entrenamiento de inglés escalable.'}
+                    </p>
+                  </div>
+
                   <a href="/contact" className="mt-8 inline-flex w-full items-center justify-center rounded-full border border-fei-yellow/45 px-6 py-3 text-sm font-bold text-fei-yellow transition hover:bg-fei-yellow hover:text-fei-bg">
                     {lang === 'en' ? 'Book a demo' : 'Solicitar demo'}
                   </a>
@@ -414,9 +450,15 @@ export default function Home() {
       <section id="pricing" className="scroll-mt-32 bg-white px-6 py-20 text-fei-bg sm:py-28">
         <div className="mx-auto max-w-[1500px]">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-xs font-black uppercase tracking-[0.28em] text-fei-bg/60">{t.pricing_label}</p>
-            <h2 className="mt-5 text-4xl font-black tracking-tight text-fei-bg sm:text-5xl">{t.pricing_title}</h2>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-fei-bg/60">{t.pricing_subtitle}</p>
+            <p className="text-xs font-black uppercase tracking-[0.28em] text-fei-sky">{t.pricing_label}</p>
+
+            <h2 className="mt-5 text-4xl font-black tracking-tight text-fei-bg sm:text-5xl">
+              {t.pricing_title}
+            </h2>
+
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-fei-bg/60 sm:text-lg">
+              {t.pricing_subtitle}
+            </p>
           </div>
 
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
@@ -459,8 +501,8 @@ export default function Home() {
                 key={plan.name}
                 className={`relative flex min-h-[420px] flex-col rounded-[1.8rem] border p-6 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-fei-bg/6 ${
                   plan.highlight
-                    ? 'border-fei-yellow/55 bg-fei-yellow/[0.10]'
-                    : 'border-fei-bg/10 bg-[#F7F8FA] hover:border-fei-bg/18 hover:bg-white'
+                    ? 'border-fei-yellow/55 bg-fei-yellow/[0.11]'
+                    : 'border-fei-bg/10 bg-[#F7F8FA] hover:border-fei-sky/45 hover:bg-white'
                 }`}
               >
                 {plan.highlight && (
@@ -470,7 +512,14 @@ export default function Home() {
                 )}
 
                 <div>
-                  <h3 className="text-xl font-black tracking-tight text-fei-bg">{plan.name}</h3>
+                  <p className="text-xs font-black uppercase tracking-[0.22em] text-fei-sky">
+                    {plan.highlight ? (lang === 'en' ? 'Best value' : 'Mejor opción') : (lang === 'en' ? 'Plan' : 'Plan')}
+                  </p>
+
+                  <h3 className="mt-3 text-2xl font-black tracking-tight text-fei-bg">
+                    {plan.name}
+                  </h3>
+
                   <div className="mt-7">
                     <span className="text-5xl font-black tracking-tight text-fei-bg">{plan.price}</span>
                     <p className="mt-2 text-sm font-medium text-fei-bg/55">{plan.detail}</p>
@@ -480,7 +529,7 @@ export default function Home() {
                 <ul className="mt-8 space-y-4">
                   {plan.features.map((feature) => (
                     <li key={feature} className="flex gap-3 text-sm leading-6 text-fei-bg/68">
-                      <span className="mt-0.5 text-fei-yellow">✓</span>
+                      <span className="mt-0.5 text-fei-sky">✓</span>
                       <span>{feature}</span>
                     </li>
                   ))}
