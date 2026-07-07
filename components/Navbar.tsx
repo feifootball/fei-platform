@@ -3,6 +3,7 @@
 import { useEffect, useState, type MouseEvent } from "react";
 
 type Lang = "en" | "es";
+type NavbarVariant = "dark" | "light";
 
 type NavLink = {
   label: string;
@@ -25,8 +26,6 @@ const navLinks: Record<Lang, NavLink[]> = {
   ],
 };
 
-type NavbarVariant = "dark" | "light";
-
 export function Navbar({
   hideSectionLinks = false,
   variant = "dark",
@@ -37,6 +36,8 @@ export function Navbar({
   const [menuOpen, setMenuOpen] = useState(false);
   const [lang, setLang] = useState<Lang>("en");
   const [activeSection, setActiveSection] = useState("");
+
+  const isLight = variant === "light";
 
   useEffect(() => {
     const saved = localStorage.getItem("fei_lang_v2") as Lang;
@@ -109,9 +110,7 @@ export function Navbar({
 
       window.scrollTo(0, startPosition + distance * easedProgress);
 
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
+      if (progress < 1) requestAnimationFrame(animate);
     }
 
     requestAnimationFrame(animate);
@@ -137,29 +136,33 @@ export function Navbar({
   }
 
   const links = navLinks[lang];
-  const isLight = variant === "light";
 
   const navLinkClass = (sectionId: string) =>
-    `inline-flex rounded-full px-2.5 py-1.5 text-[15px] font-normal transition duration-300 ${
+    `inline-flex rounded-full px-4 py-2 text-sm font-medium transition duration-300 ${
       activeSection === sectionId
         ? isLight
-          ? "bg-fei-bg/[0.045] text-fei-bg shadow-sm"
-          : "bg-white/[0.035] text-fei-text/82 shadow-[0_0_14px_rgba(255,255,255,0.055)]"
+          ? "bg-fei-bg text-white shadow-sm"
+          : "bg-white/[0.06] text-fei-text shadow-[0_0_14px_rgba(255,255,255,0.055)]"
         : isLight
-          ? "text-fei-bg/55 hover:bg-fei-bg/[0.035] hover:text-fei-bg"
+          ? "text-fei-bg/55 hover:bg-fei-bg/[0.055] hover:text-fei-bg"
           : "text-fei-text/55 hover:bg-white/[0.03] hover:text-fei-text/82"
     }`;
 
   return (
-    <header className={`sticky top-0 z-50 border-b backdrop-blur-xl ${isLight ? "border-fei-bg/10 bg-white/92" : "border-fei-text/10 bg-fei-bg/90"}`}>
-      <nav className="mx-auto flex w-full max-w-[1600px] items-center justify-between px-4 py-4 sm:px-6 lg:px-8 2xl:px-10">
+    <header className={`sticky top-0 z-50 border-b backdrop-blur-xl ${isLight ? "border-fei-bg/10 bg-white/95" : "border-fei-text/10 bg-fei-bg/90"}`}>
+      <nav className="mx-auto flex w-full max-w-[1600px] items-center justify-between px-4 py-3.5 sm:px-6 lg:px-8 2xl:px-10">
         <a href="/" className="flex items-center">
-          <span className={`text-xl font-black tracking-tight ${isLight ? "text-fei-bg" : "text-fei-yellow"}`}>FEI</span>
+          <span className={`flex h-10 w-10 items-center justify-center rounded-full text-lg font-black tracking-tight ${isLight ? "bg-fei-bg text-fei-yellow" : "bg-fei-yellow text-fei-bg"}`}>
+            F
+          </span>
+          <span className={`ml-3 text-lg font-black tracking-tight ${isLight ? "text-fei-bg" : "text-fei-text"}`}>
+            FEI
+          </span>
         </a>
 
         <div className="hidden items-center md:flex">
           {!hideSectionLinks && (
-            <div className="flex items-center gap-4">
+            <div className={`flex items-center gap-1 rounded-full border p-1.5 ${isLight ? "border-fei-bg/10 bg-fei-bg/[0.025]" : "border-fei-text/10 bg-white/[0.025]"}`}>
               {links.map((link) => (
                 <a
                   key={link.label}
@@ -173,40 +176,33 @@ export function Navbar({
             </div>
           )}
 
-          <div className={`${hideSectionLinks ? '' : 'ml-8'} flex items-center gap-3`}>
+          <div className={`${hideSectionLinks ? "" : "ml-5"} flex items-center gap-3`}>
             <button
               onClick={toggleLang}
-              className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-normal transition ${isLight ? "border-fei-bg/15 text-fei-bg/60 hover:border-fei-bg/30 hover:text-fei-bg" : "border-fei-text/20 text-fei-text/60 hover:border-fei-text/40 hover:text-fei-text"}`}
+              className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition ${
+                isLight
+                  ? "border-fei-bg/15 text-fei-bg/60 hover:border-fei-bg/30 hover:text-fei-bg"
+                  : "border-fei-text/20 text-fei-text/60 hover:border-fei-text/40 hover:text-fei-text"
+              }`}
               aria-label="Change language"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 text-fei-sky"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <circle cx="12" cy="12" r="9" />
-                <path d="M3 12h18" />
-                <path d="M12 3c2.2 2.4 3.3 5.4 3.3 9S14.2 18.6 12 21" />
-                <path d="M12 3c-2.2 2.4-3.3 5.4-3.3 9S9.8 18.6 12 21" />
-              </svg>
               {lang === "en" ? "ES" : "EN"}
             </button>
 
             <a
               href="/login"
-              className={`rounded-full border px-5 py-2 text-sm font-normal transition ${isLight ? "border-fei-bg/20 text-fei-bg hover:bg-fei-bg/[0.04]" : "border-fei-sky/45 text-fei-sky hover:bg-fei-sky/10"}`}
+              className={`rounded-full border px-5 py-2 text-sm font-medium transition ${
+                isLight
+                  ? "border-fei-bg/18 text-fei-bg hover:bg-fei-bg/[0.04]"
+                  : "border-fei-sky/45 text-fei-sky hover:bg-fei-sky/10"
+              }`}
             >
               {lang === "en" ? "Login" : "Ingresar"}
             </a>
 
             <a
               href="/register"
-              className="rounded-full bg-fei-yellow px-5 py-2 text-sm font-normal text-fei-bg transition hover:bg-fei-yellow/90 hover:shadow-lg hover:shadow-fei-yellow/20"
+              className="rounded-full bg-fei-yellow px-5 py-2 text-sm font-bold text-fei-bg transition hover:bg-fei-yellow/90 hover:shadow-lg hover:shadow-fei-yellow/20"
             >
               {lang === "en" ? "Register" : "Registrarse"}
             </a>
@@ -216,7 +212,7 @@ export function Navbar({
         <div className="flex items-center gap-2 md:hidden">
           <button
             onClick={toggleLang}
-            className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-normal transition ${isLight ? "border-fei-bg/20 text-fei-bg/60 hover:text-fei-bg" : "border-fei-text/20 text-fei-text/60 hover:text-fei-text"}`}
+            className={`rounded-full border px-3 py-1.5 text-xs font-medium transition ${isLight ? "border-fei-bg/20 text-fei-bg/60 hover:text-fei-bg" : "border-fei-text/20 text-fei-text/60 hover:text-fei-text"}`}
             aria-label="Change language"
           >
             {lang === "en" ? "ES" : "EN"}
@@ -224,7 +220,7 @@ export function Navbar({
 
           <button
             onClick={() => setMenuOpen((open) => !open)}
-            className={`rounded-full border px-3 py-1.5 text-xs font-normal transition ${isLight ? "border-fei-bg/20 text-fei-bg/70 hover:text-fei-bg" : "border-fei-text/20 text-fei-text/70 hover:text-fei-text"}`}
+            className={`rounded-full border px-3 py-1.5 text-xs font-medium transition ${isLight ? "border-fei-bg/20 text-fei-bg/70 hover:text-fei-bg" : "border-fei-text/20 text-fei-text/70 hover:text-fei-text"}`}
             aria-label="Open menu"
           >
             Menu
@@ -240,14 +236,10 @@ export function Navbar({
                 key={link.label}
                 href={link.href}
                 onClick={(event) => handleNavClick(event, link.sectionId, link.href)}
-                className={`text-sm font-normal transition ${
+                className={`text-sm font-medium transition ${
                   activeSection === link.sectionId
-                    ? isLight
-                      ? "text-fei-bg"
-                      : "text-fei-yellow/85"
-                    : isLight
-                      ? "text-fei-bg/60 hover:text-fei-bg"
-                      : "text-fei-text/65 hover:text-fei-text"
+                    ? isLight ? "text-fei-bg" : "text-fei-yellow/85"
+                    : isLight ? "text-fei-bg/60 hover:text-fei-bg" : "text-fei-text/65 hover:text-fei-text"
                 }`}
               >
                 {link.label}
@@ -257,14 +249,14 @@ export function Navbar({
             <div className="flex gap-3 pt-2">
               <a
                 href="/login"
-                className={`flex-1 rounded-full border px-4 py-2 text-center text-sm font-normal transition ${isLight ? "border-fei-bg/20 text-fei-bg hover:bg-fei-bg/[0.04]" : "border-fei-sky/45 text-fei-sky hover:bg-fei-sky/10"}`}
+                className={`flex-1 rounded-full border px-4 py-2 text-center text-sm font-medium transition ${isLight ? "border-fei-bg/20 text-fei-bg hover:bg-fei-bg/[0.04]" : "border-fei-sky/45 text-fei-sky hover:bg-fei-sky/10"}`}
               >
                 {lang === "en" ? "Login" : "Ingresar"}
               </a>
 
               <a
                 href="/register"
-                className="flex-1 rounded-full bg-fei-yellow px-4 py-2 text-center text-sm font-normal text-fei-bg transition hover:bg-fei-yellow/90"
+                className="flex-1 rounded-full bg-fei-yellow px-4 py-2 text-center text-sm font-bold text-fei-bg transition hover:bg-fei-yellow/90"
               >
                 {lang === "en" ? "Register" : "Registrarse"}
               </a>

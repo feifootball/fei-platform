@@ -148,33 +148,28 @@ export default function Home() {
 
       <section className="relative flex min-h-[calc(100vh-73px)] overflow-hidden bg-white px-6 py-20 text-fei-bg sm:py-24 lg:items-center lg:py-16">
         <div
-          className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 opacity-70 blur-3xl lg:block"
+          className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 opacity-65 blur-3xl lg:block"
           style={{
             background:
-              'radial-gradient(ellipse at 75% 35%, rgba(125, 211, 252, 0.22), transparent 60%), radial-gradient(ellipse at 50% 68%, rgba(250, 204, 21, 0.13), transparent 64%)',
-          }}
-        />
-
-        <div
-          className="pointer-events-none absolute right-0 top-0 hidden h-full w-[46%] opacity-[0.055] lg:block"
-          style={{
-            backgroundImage:
-              'linear-gradient(rgba(7, 17, 31, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(7, 17, 31, 0.5) 1px, transparent 1px)',
-            backgroundSize: '56px 56px',
-            maskImage: 'linear-gradient(90deg, transparent 0%, black 35%, black 72%, transparent 100%)',
+              'radial-gradient(ellipse at 76% 35%, rgba(125, 211, 252, 0.20), transparent 62%), radial-gradient(ellipse at 54% 68%, rgba(250, 204, 21, 0.12), transparent 66%)',
           }}
         />
 
         <div className="mx-auto w-full max-w-[1500px]">
           <div className="max-w-5xl">
-            <p className="text-sm font-black uppercase tracking-[0.28em] text-fei-bg/65">{t.tagline}</p>
+            <p className="text-xs font-black uppercase tracking-[0.3em] text-fei-bg/55">{t.tagline}</p>
 
-            <h1 className="mt-6 text-5xl font-black leading-[1.03] text-fei-bg sm:text-6xl lg:text-7xl xl:text-8xl">
-              Football English<br />
-              <span className="bg-gradient-to-r from-fei-yellow to-fei-sky bg-clip-text text-transparent">Intelligence.</span>
+            <h1 className="mt-6 text-5xl leading-[1.03] text-fei-bg sm:text-6xl lg:text-7xl xl:text-8xl">
+              <span className="font-semibold tracking-[-0.045em]">Football English</span><br />
+              <span
+                className="bg-gradient-to-r from-fei-yellow to-fei-sky bg-clip-text font-black tracking-[-0.055em] text-transparent"
+                style={{ textShadow: '0 10px 34px rgba(7,17,31,0.16)' }}
+              >
+                Intelligence.
+              </span>
             </h1>
 
-            <div className="mt-7 max-w-3xl text-lg leading-8 text-fei-bg/62 sm:text-xl sm:leading-9">
+            <div className="mt-8 max-w-2xl text-[16px] font-medium leading-8 text-fei-bg/58 sm:text-[17px]">
               {lang === 'en' ? (
                 <p>
                   FEI is a football-specific English training platform that helps football professionals diagnose their level,
@@ -188,8 +183,8 @@ export default function Home() {
               )}
             </div>
 
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-              <a href="/register" className="inline-flex items-center justify-center rounded-full bg-fei-yellow px-8 py-3 font-semibold text-fei-bg transition hover:bg-fei-yellow/90">{t.cta_start}</a>
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <a href="/register" className="inline-flex items-center justify-center rounded-full bg-fei-yellow px-8 py-3 font-bold text-fei-bg transition hover:bg-fei-yellow/90 hover:shadow-lg hover:shadow-fei-yellow/25">{t.cta_start}</a>
             </div>
           </div>
 
@@ -282,240 +277,146 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="roles" className="scroll-mt-28 border-t border-fei-text/10 px-6 py-20 sm:py-24">
+      <section id="roles" className="scroll-mt-28 bg-white px-6 py-20 text-fei-bg sm:py-24">
         <div className="mx-auto max-w-[1500px]">
-          <div className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
-            <div className="lg:sticky lg:top-28">
-              <p className="mb-4 text-xs font-black uppercase tracking-[0.28em] text-fei-sky">
-                Role Intelligence
-              </p>
+          <div className="mb-12 max-w-3xl">
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.28em] text-fei-bg/65">
+              Role Intelligence
+            </p>
 
-              <h2 className="text-4xl font-black tracking-tight text-fei-text sm:text-5xl">
-                {lang === 'en' ? 'Built for every role in the club.' : 'Diseñado para cada rol del club.'}
-              </h2>
+            <h2 className="text-4xl font-black tracking-tight text-fei-bg sm:text-5xl">
+              {lang === 'en' ? 'Built for every role in the club.' : 'Diseñado para cada rol del club.'}
+            </h2>
 
-              <p className="mt-5 max-w-xl text-base leading-7 text-fei-text/60 sm:text-lg">
-                {lang === 'en' ? (
-                  <>
-                    <span className="font-semibold text-fei-sky">FEI</span> adapts communication training to the decisions,
-                    pressure, and language each football professional faces.
-                  </>
-                ) : (
-                  <>
-                    <span className="font-semibold text-fei-sky">FEI</span> adapta el entrenamiento de comunicación a las decisiones,
-                    presión y lenguaje que enfrenta cada profesional del fútbol.
-                  </>
-                )}
-              </p>
+            <p className="mt-5 text-base leading-7 text-fei-bg/60 sm:text-lg">
+              {lang === 'en'
+                ? 'Choose your football role and start a diagnostic designed around the communication situations you actually face.'
+                : 'Elige tu rol en el fútbol y comienza un diagnóstico diseñado alrededor de las situaciones de comunicación que realmente enfrentas.'}
+            </p>
+          </div>
 
-              <div className="mt-8 flex flex-wrap gap-3">
-                <span className="rounded-full border border-fei-yellow/30 bg-fei-yellow/[0.08] px-4 py-2 text-sm font-bold text-fei-yellow">
-                  11 Roles
-                </span>
-                <span className="rounded-full border border-fei-sky/25 bg-fei-sky/[0.07] px-4 py-2 text-sm font-bold text-fei-sky">
-                  126 Scenarios
-                </span>
-              </div>
-            </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {[
+              { role: 'Professional Player', esRole: 'Jugador profesional', text: 'Interviews, teammates and pressure moments.', esText: 'Entrevistas, compañeros y momentos de presión.' },
+              { role: 'Head Coach', esRole: 'Entrenador principal', text: 'Tactics, media and staff leadership.', esText: 'Táctica, medios y liderazgo del staff.' },
+              { role: 'Assistant Coach', esRole: 'Asistente técnico', text: 'Session delivery and player feedback.', esText: 'Sesiones de entrenamiento y feedback a jugadores.' },
+              { role: 'Scout', esRole: 'Scout', text: 'Reports, observations and player profiles.', esText: 'Reportes, observaciones y perfiles de jugador.' },
+              { role: 'Head of Scouting', esRole: 'Jefe de scouting', text: 'Strategy, recruitment and decision briefs.', esText: 'Estrategia, reclutamiento y reportes de decisión.' },
+              { role: 'Academy Director', esRole: 'Director de academia', text: 'Development, parents and staff alignment.', esText: 'Desarrollo, familias y alineación del staff.' },
+              { role: 'Performance Analyst', esRole: 'Analista de rendimiento', text: 'Data, clips and tactical communication.', esText: 'Datos, videos y comunicación táctica.' },
+              { role: 'Fitness Coach', esRole: 'Preparador físico', text: 'Load, recovery and physical plans.', esText: 'Carga, recuperación y planes físicos.' },
+              { role: 'Physiotherapist', esRole: 'Fisioterapeuta', text: 'Injury updates and return-to-play.', esText: 'Lesiones y retorno al juego.' },
+              { role: 'Sports Psychologist', esRole: 'Psicólogo deportivo', text: 'Confidence, pressure and mental routines.', esText: 'Confianza, presión y rutinas mentales.' },
+              { role: 'Nutritionist', esRole: 'Nutricionista', text: 'Meal plans, habits and performance fuel.', esText: 'Planes de alimentación, hábitos y rendimiento.' },
+            ].map((item, index) => {
+              const displayRole = lang === 'en' ? item.role : item.esRole;
+              const displayText = lang === 'en' ? item.text : item.esText;
 
-            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-              {[
-                {
-                  role: 'Professional Player',
-                  esRole: 'Jugador profesional',
-                  insight: 'Interviews, teammates, pressure moments.',
-                  esInsight: 'Entrevistas, compañeros y momentos de presión.',
-                  detail: 'Communicate clearly on and off the pitch.',
-                  esDetail: 'Comunícate con claridad dentro y fuera del campo.',
-                },
-                {
-                  role: 'Head Coach',
-                  esRole: 'Entrenador principal',
-                  insight: 'Tactics, media, staff leadership.',
-                  esInsight: 'Táctica, medios y liderazgo del staff.',
-                  detail: 'Lead ideas, meetings, and match communication.',
-                  esDetail: 'Lidera ideas, reuniones y comunicación de partido.',
-                },
-                {
-                  role: 'Assistant Coach',
-                  esRole: 'Asistente técnico',
-                  insight: 'Session delivery and player feedback.',
-                  esInsight: 'Sesiones de entrenamiento y feedback a jugadores.',
-                  detail: 'Turn tactical plans into clear instructions.',
-                  esDetail: 'Convierte planes tácticos en instrucciones claras.',
-                },
-                {
-                  role: 'Scout',
-                  esRole: 'Scout',
-                  insight: 'Reports, observations, player profiles.',
-                  esInsight: 'Reportes, observaciones y perfiles de jugador.',
-                  detail: 'Describe talent with precision and confidence.',
-                  esDetail: 'Describe talento con precisión y confianza.',
-                },
-                {
-                  role: 'Head of Scouting',
-                  esRole: 'Jefe de scouting',
-                  insight: 'Strategy, recruitment, decision briefs.',
-                  esInsight: 'Estrategia, reclutamiento y reportes de decisión.',
-                  detail: 'Present recruitment insight at club level.',
-                  esDetail: 'Presenta insights de reclutamiento a nivel club.',
-                },
-                {
-                  role: 'Academy Director',
-                  esRole: 'Director de academia',
-                  insight: 'Development, parents, staff alignment.',
-                  esInsight: 'Desarrollo, familias y alineación del staff.',
-                  detail: 'Communicate vision across the academy pathway.',
-                  esDetail: 'Comunica visión en todo el proceso formativo.',
-                },
-                {
-                  role: 'Performance Analyst',
-                  esRole: 'Analista de rendimiento',
-                  insight: 'Data, clips, tactical communication.',
-                  esInsight: 'Datos, videos y comunicación táctica.',
-                  detail: 'Explain analysis in language staff can act on.',
-                  esDetail: 'Explica análisis en lenguaje accionable para el staff.',
-                },
-                {
-                  role: 'Fitness Coach',
-                  esRole: 'Preparador físico',
-                  insight: 'Load, recovery, physical plans.',
-                  esInsight: 'Carga, recuperación y planes físicos.',
-                  detail: 'Communicate physical work with professional clarity.',
-                  esDetail: 'Comunica el trabajo físico con claridad profesional.',
-                },
-                {
-                  role: 'Physiotherapist',
-                  esRole: 'Fisioterapeuta',
-                  insight: 'Injury updates and return-to-play.',
-                  esInsight: 'Lesiones y retorno al juego.',
-                  detail: 'Explain medical progress with precision.',
-                  esDetail: 'Explica progreso médico con precisión.',
-                },
-                {
-                  role: 'Sports Psychologist',
-                  esRole: 'Psicólogo deportivo',
-                  insight: 'Confidence, pressure, mental routines.',
-                  esInsight: 'Confianza, presión y rutinas mentales.',
-                  detail: 'Support performance through better communication.',
-                  esDetail: 'Acompaña el rendimiento con mejor comunicación.',
-                },
-                {
-                  role: 'Nutritionist',
-                  esRole: 'Nutricionista',
-                  insight: 'Meal plans, habits, performance fuel.',
-                  esInsight: 'Planes de alimentación, hábitos y rendimiento.',
-                  detail: 'Make nutrition guidance clear and practical.',
-                  esDetail: 'Haz que la guía nutricional sea clara y práctica.',
-                },
-              ].map((item, index) => {
-                const displayRole = lang === 'en' ? item.role : item.esRole;
-                const displayInsight = lang === 'en' ? item.insight : item.esInsight;
-                const displayDetail = lang === 'en' ? item.detail : item.esDetail;
-                const offsetClass =
-                  index % 4 === 1
-                    ? 'lg:translate-y-8'
-                    : index % 4 === 2
-                      ? 'lg:-translate-y-2'
-                      : index % 4 === 3
-                        ? 'lg:translate-y-5'
-                        : '';
-
-                return (
-                  <a
-                    key={item.role}
-                    href={`/register?role=${encodeURIComponent(item.role)}`}
-                    className={`group relative min-h-[170px] overflow-hidden rounded-[1.7rem] border border-fei-text/10 bg-fei-text/[0.025] p-5 transition duration-500 hover:-translate-y-2 hover:border-fei-yellow/40 hover:bg-fei-yellow/[0.055] hover:shadow-[0_24px_70px_rgba(0,0,0,0.22)] ${offsetClass}`}
-                  >
-                    <div className="pointer-events-none absolute -right-2 -top-5 text-7xl font-black leading-none text-fei-sky/[0.10] transition duration-500 group-hover:scale-110 group-hover:text-fei-yellow/[0.22] sm:text-8xl">
-                      {String(index + 1).padStart(2, '0')}
-                    </div>
-
-                    <div className="relative z-10 flex min-h-[130px] flex-col">
-                      <div>
-                        <p className="mb-3 text-[11px] font-black uppercase tracking-[0.22em] text-fei-sky/70 transition duration-300 group-hover:text-fei-yellow">
-                          {lang === 'en' ? 'Role path' : 'Ruta por rol'}
-                        </p>
-
-                        <h3 className="max-w-[12rem] text-xl font-black leading-6 text-fei-text transition duration-300 group-hover:text-fei-yellow">
-                          {displayRole}
-                        </h3>
-
-                        <p className="mt-3 text-sm leading-6 text-fei-text/58">
-                          {displayInsight}
-                        </p>
-                      </div>
-
-                      <div className="mt-auto translate-y-4 border-t border-fei-text/10 pt-4 opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-                        <p className="text-xs leading-5 text-fei-text/65">
-                          {displayDetail}
-                        </p>
-                        <p className="mt-3 text-xs font-bold uppercase tracking-[0.18em] text-fei-yellow">
-                          {lang === 'en' ? 'Start diagnostic →' : 'Comenzar diagnóstico →'}
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                );
-              })}
-
-              <a
-                href="/suggest-role"
-                className="group relative min-h-[170px] overflow-hidden rounded-[1.7rem] border border-fei-yellow/25 bg-fei-yellow/[0.07] p-5 transition duration-500 hover:-translate-y-2 hover:border-fei-yellow/45 hover:bg-fei-yellow/[0.12] hover:shadow-[0_24px_70px_rgba(0,0,0,0.22)] lg:translate-y-3"
-              >
-                <div className="pointer-events-none absolute -right-2 -top-6 text-8xl font-black leading-none text-fei-yellow/[0.20] transition duration-500 group-hover:scale-110 group-hover:text-fei-yellow/[0.32]">
-                  +
-                </div>
-
-                <div className="relative z-10 flex min-h-[130px] flex-col justify-between">
-                  <div>
-                    <p className="mb-3 text-[11px] font-black uppercase tracking-[0.22em] text-fei-yellow/80">
-                      {lang === 'en' ? 'Missing role' : 'Rol faltante'}
-                    </p>
-
-                    <h3 className="max-w-[12rem] text-xl font-black leading-6 text-fei-yellow">
-                      {lang === 'en' ? "Can't find your role?" : '¿No encuentras tu rol?'}
-                    </h3>
+              return (
+                <a
+                  key={item.role}
+                  href={`/register?role=${encodeURIComponent(item.role)}`}
+                  className="group relative min-h-[185px] overflow-hidden rounded-[1.6rem] border border-fei-bg/10 bg-[#F7F8FA] p-5 transition duration-500 hover:-translate-y-1.5 hover:border-fei-yellow/45 hover:bg-white hover:shadow-xl hover:shadow-fei-bg/8"
+                >
+                  <div className="pointer-events-none absolute -right-2 -top-5 text-7xl font-black leading-none text-fei-bg/[0.055] transition duration-500 group-hover:text-fei-yellow/20">
+                    {String(index + 1).padStart(2, '0')}
                   </div>
 
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-fei-text/70 transition duration-300 group-hover:text-fei-yellow">
-                    {lang === 'en' ? 'Suggest a new role →' : 'Sugiere un nuevo rol →'}
-                  </p>
-                </div>
-              </a>
-            </div>
+                  <div className="relative z-10 flex min-h-[145px] flex-col">
+                    <p className="mb-4 text-[11px] font-black uppercase tracking-[0.22em] text-fei-bg/40 transition duration-300 group-hover:text-fei-yellow">
+                      {lang === 'en' ? 'Role path' : 'Ruta por rol'}
+                    </p>
+
+                    <h3 className="max-w-[13rem] text-xl font-black leading-6 text-fei-bg transition duration-300 group-hover:text-fei-bg">
+                      {displayRole}
+                    </h3>
+
+                    <p className="mt-4 text-sm leading-6 text-fei-bg/58">
+                      {displayText}
+                    </p>
+
+                    <p className="mt-auto translate-y-2 pt-5 text-xs font-black uppercase tracking-[0.18em] text-fei-yellow opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                      {lang === 'en' ? 'Start diagnostic →' : 'Comenzar diagnóstico →'}
+                    </p>
+                  </div>
+                </a>
+              );
+            })}
+
+            <a
+              href="/suggest-role"
+              className="group relative min-h-[185px] overflow-hidden rounded-[1.6rem] border border-fei-yellow/30 bg-fei-yellow/[0.10] p-5 transition duration-500 hover:-translate-y-1.5 hover:border-fei-yellow/55 hover:bg-fei-yellow/[0.16] hover:shadow-xl hover:shadow-fei-bg/8"
+            >
+              <div className="pointer-events-none absolute -right-1 -top-7 text-8xl font-black leading-none text-fei-yellow/25 transition duration-500 group-hover:text-fei-yellow/35">
+                +
+              </div>
+
+              <div className="relative z-10 flex min-h-[145px] flex-col">
+                <p className="mb-4 text-[11px] font-black uppercase tracking-[0.22em] text-fei-bg/45">
+                  {lang === 'en' ? 'Missing role' : 'Rol faltante'}
+                </p>
+
+                <h3 className="max-w-[13rem] text-xl font-black leading-6 text-fei-bg">
+                  {lang === 'en' ? "Can't find your role?" : '¿No encuentras tu rol?'}
+                </h3>
+
+                <p className="mt-auto pt-5 text-xs font-black uppercase tracking-[0.18em] text-fei-bg/65 transition duration-300 group-hover:text-fei-bg">
+                  {lang === 'en' ? 'Suggest a new role →' : 'Sugiere un nuevo rol →'}
+                </p>
+              </div>
+            </a>
           </div>
         </div>
-      </section>\n\n      <section id="for-clubs" className="scroll-mt-32 border-t border-fei-text/10 px-6 py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-fei-sky">{t.clubs_label}</p>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">{t.clubs_title}</h2>
-              <p className="mt-4 text-fei-text/60">{t.clubs_description}</p>
-              <ul className="mt-6 space-y-3">
-                {t.clubs_features.map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-sm text-fei-text/70"><span className="text-fei-yellow">✓</span> {item}</li>
-                ))}
-              </ul>
-              <a href="mailto:info@feifootball.com" className="mt-8 inline-flex rounded-full bg-fei-yellow px-8 py-3 font-semibold text-fei-bg transition hover:bg-fei-yellow/90">{t.contact_us}</a>
-            </div>
-            <div className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-fei-sky">{t.clubs_interested}</p>
-              <h3 className="mt-4 text-xl font-bold text-fei-text">{t.clubs_demo_title}</h3>
-              <p className="mt-2 text-sm text-fei-text/60">{t.clubs_demo_description}</p>
-              <a href="mailto:info@feifootball.com" className="mt-6 inline-flex w-full items-center justify-center rounded-full border border-fei-sky px-6 py-3 text-sm font-semibold text-fei-sky transition hover:bg-fei-sky/10">info@feifootball.com</a>
+      </section>
+
+      <section id="for-clubs" className="scroll-mt-32 bg-white px-6 py-20 text-fei-bg sm:py-28">
+        <div className="mx-auto max-w-[1500px]">
+          <div className="overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-[#F7F8FA]">
+            <div className="grid lg:grid-cols-[1.05fr_0.95fr]">
+              <div className="p-8 sm:p-10 lg:p-12">
+                <p className="text-xs font-black uppercase tracking-[0.28em] text-fei-bg/60">{t.clubs_label}</p>
+                <h2 className="mt-5 max-w-2xl text-4xl font-black tracking-tight text-fei-bg sm:text-5xl">
+                  {t.clubs_title}
+                </h2>
+                <p className="mt-5 max-w-2xl text-base leading-8 text-fei-bg/60 sm:text-lg">
+                  {t.clubs_description}
+                </p>
+
+                <div className="mt-8 grid gap-3 sm:grid-cols-2">
+                  {t.clubs_features.map((item) => (
+                    <div key={item} className="rounded-2xl border border-fei-bg/10 bg-white px-5 py-4 text-sm font-medium leading-6 text-fei-bg/70">
+                      <span className="mr-2 text-fei-yellow">✓</span>{item}
+                    </div>
+                  ))}
+                </div>
+
+                <a href="/contact" className="mt-9 inline-flex rounded-full bg-fei-bg px-8 py-3 font-bold text-white transition hover:bg-fei-bg/90">
+                  {t.contact_us}
+                </a>
+              </div>
+
+              <div className="relative border-t border-fei-bg/10 bg-fei-bg p-8 text-white sm:p-10 lg:border-l lg:border-t-0 lg:p-12">
+                <div className="pointer-events-none absolute inset-0 opacity-20" style={{ background: 'radial-gradient(ellipse at 70% 30%, rgba(125,211,252,0.35), transparent 62%)' }} />
+                <div className="relative">
+                  <p className="text-xs font-black uppercase tracking-[0.28em] text-fei-yellow">{t.clubs_interested}</p>
+                  <h3 className="mt-5 text-3xl font-black tracking-tight">{t.clubs_demo_title}</h3>
+                  <p className="mt-4 text-sm leading-7 text-white/65">{t.clubs_demo_description}</p>
+                  <a href="/contact" className="mt-8 inline-flex w-full items-center justify-center rounded-full border border-fei-yellow/45 px-6 py-3 text-sm font-bold text-fei-yellow transition hover:bg-fei-yellow hover:text-fei-bg">
+                    {lang === 'en' ? 'Book a demo' : 'Solicitar demo'}
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="pricing" className="scroll-mt-32 border-t border-fei-text/10 px-6 py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl">
+      <section id="pricing" className="scroll-mt-32 bg-white px-6 py-20 text-fei-bg sm:py-28">
+        <div className="mx-auto max-w-[1500px]">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-fei-sky">{t.pricing_label}</p>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">{t.pricing_title}</h2>
-            <p className="mx-auto mt-4 max-w-2xl text-fei-text/60">{t.pricing_subtitle}</p>
+            <p className="text-xs font-black uppercase tracking-[0.28em] text-fei-bg/60">{t.pricing_label}</p>
+            <h2 className="mt-5 text-4xl font-black tracking-tight text-fei-bg sm:text-5xl">{t.pricing_title}</h2>
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-fei-bg/60">{t.pricing_subtitle}</p>
           </div>
 
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
@@ -556,29 +457,29 @@ export default function Home() {
             ].map((plan) => (
               <article
                 key={plan.name}
-                className={`relative flex min-h-[430px] flex-col rounded-3xl border p-6 transition duration-300 hover:-translate-y-1 ${
+                className={`relative flex min-h-[420px] flex-col rounded-[1.8rem] border p-6 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-fei-bg/6 ${
                   plan.highlight
-                    ? 'border-fei-yellow/45 bg-fei-yellow/[0.07] shadow-[0_24px_80px_rgba(250,204,21,0.10)]'
-                    : 'border-fei-text/10 bg-fei-text/[0.025] hover:border-fei-sky/30'
+                    ? 'border-fei-yellow/55 bg-fei-yellow/[0.10]'
+                    : 'border-fei-bg/10 bg-[#F7F8FA] hover:border-fei-bg/18 hover:bg-white'
                 }`}
               >
                 {plan.highlight && (
-                  <div className="absolute right-5 top-5 rounded-full border border-fei-yellow/30 bg-fei-yellow/[0.12] px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-fei-yellow">
+                  <div className="absolute right-5 top-5 rounded-full bg-fei-bg px-3 py-1 text-xs font-black uppercase tracking-[0.18em] text-fei-yellow">
                     {lang === 'en' ? 'Popular' : 'Popular'}
                   </div>
                 )}
 
                 <div>
-                  <h3 className="text-xl font-bold tracking-tight text-fei-text">{plan.name}</h3>
-                  <div className="mt-7 flex items-end gap-2">
-                    <span className="text-5xl font-black tracking-tight text-fei-text">{plan.price}</span>
-                    <span className="pb-2 text-sm font-medium text-fei-text/55">{plan.detail}</span>
+                  <h3 className="text-xl font-black tracking-tight text-fei-bg">{plan.name}</h3>
+                  <div className="mt-7">
+                    <span className="text-5xl font-black tracking-tight text-fei-bg">{plan.price}</span>
+                    <p className="mt-2 text-sm font-medium text-fei-bg/55">{plan.detail}</p>
                   </div>
                 </div>
 
                 <ul className="mt-8 space-y-4">
                   {plan.features.map((feature) => (
-                    <li key={feature} className="flex gap-3 text-sm leading-6 text-fei-text/70">
+                    <li key={feature} className="flex gap-3 text-sm leading-6 text-fei-bg/68">
                       <span className="mt-0.5 text-fei-yellow">✓</span>
                       <span>{feature}</span>
                     </li>
@@ -588,10 +489,10 @@ export default function Home() {
                 <div className="mt-auto pt-8">
                   <a
                     href={plan.href}
-                    className={`inline-flex w-full items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition ${
+                    className={`inline-flex w-full items-center justify-center rounded-full px-6 py-3 text-sm font-bold transition ${
                       plan.highlight
-                        ? 'bg-fei-yellow text-fei-bg hover:bg-fei-yellow/90'
-                        : 'border border-fei-sky/40 text-fei-sky hover:bg-fei-sky/10'
+                        ? 'bg-fei-bg text-white hover:bg-fei-bg/90'
+                        : 'border border-fei-bg/20 text-fei-bg hover:bg-fei-bg hover:text-white'
                     }`}
                   >
                     {plan.cta}
@@ -601,7 +502,7 @@ export default function Home() {
             ))}
           </div>
 
-          <p className="mx-auto mt-8 max-w-3xl text-center text-xs leading-6 text-fei-text/45">
+          <p className="mx-auto mt-8 max-w-3xl text-center text-xs leading-6 text-fei-bg/45">
             {lang === 'en'
               ? 'Prices may vary by country, promotion, number of users, licenses, included features, support level, and institutional conditions. FEI will always show the applicable price before any payment.'
               : 'Los precios pueden variar según país, promoción, número de usuarios, licencias, funciones incluidas, nivel de soporte y condiciones institucionales. FEI siempre mostrará el precio aplicable antes de cualquier pago.'}
