@@ -146,7 +146,7 @@ export default function Home() {
     <div className="flex min-h-full flex-col">
       <Navbar variant="light" />
 
-      <section className="relative flex min-h-[calc(100vh-73px)] overflow-hidden bg-white px-6 py-20 text-fei-bg sm:py-24 lg:items-center lg:py-16">
+      <section className="relative flex min-h-[calc(100vh-73px)] overflow-hidden bg-white px-6 py-20 text-[#2B78C5] sm:py-24 lg:items-center lg:py-16">
         <div
           className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 opacity-75 blur-3xl lg:block"
           style={{
@@ -159,19 +159,19 @@ export default function Home() {
 
         <div className="mx-auto w-full max-w-[1500px]">
           <div className="max-w-5xl">
-            <p className="text-xs font-black uppercase tracking-[0.3em] text-fei-bg/55">{t.tagline}</p>
+            <p className="text-xs font-black uppercase tracking-[0.3em] text-[#2B78C5]/55">{t.tagline}</p>
 
-            <h1 className="mt-6 text-5xl font-extrabold leading-[1.03] text-fei-bg sm:text-6xl lg:text-7xl xl:text-8xl">
+            <h1 className="mt-6 text-5xl font-extrabold leading-[1.03] text-[#2B78C5] sm:text-6xl lg:text-7xl xl:text-8xl">
               Football English<br />
               <span className="relative inline-block">
-                <span className="pointer-events-none absolute inset-x-4 bottom-1 h-4 rounded-full bg-fei-sky/10 blur-xl" />
-                <span className="relative bg-gradient-to-r from-[#facc15] via-[#8fd8ee] to-[#7dd3fc] bg-clip-text font-black text-transparent">
+                <span className="pointer-events-none absolute inset-x-5 bottom-1.5 h-3 rounded-full bg-fei-sky/12 blur-lg" />
+                <span className="relative bg-gradient-to-r from-[#facc15] via-[#c6d988] to-[#8ccff6] bg-clip-text font-black text-transparent drop-shadow-[0_3px_10px_rgba(125,211,252,0.16)]">
                   Intelligence.
                 </span>
               </span>
             </h1>
 
-            <div className="mt-8 max-w-2xl text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base sm:leading-8">
+            <div className="mt-8 max-w-2xl text-[15px] font-normal leading-7 text-[#2B78C5]/62 sm:text-base sm:leading-8">
               {lang === 'en' ? (
                 <p>
                   FEI is a football-specific English training platform that helps<br className="hidden sm:block" />
@@ -186,29 +186,29 @@ export default function Home() {
             </div>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <a href="/register" className="inline-flex items-center justify-center rounded-full bg-fei-yellow px-8 py-3 font-bold text-fei-bg transition hover:bg-fei-yellow/90 hover:shadow-lg hover:shadow-fei-yellow/25">{t.cta_start}</a>
+              <a href="/register" className="inline-flex items-center justify-center rounded-full bg-fei-yellow px-8 py-3 font-bold text-[#2B78C5] transition hover:bg-fei-yellow/90 hover:shadow-lg hover:shadow-fei-yellow/25">{t.cta_start}</a>
             </div>
           </div>
 
           <div className="mt-12 grid max-w-5xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {t.stats.map((stat) => (
-              <div key={stat.label} className="rounded-2xl border border-fei-bg/10 bg-[#F7F8FA] px-5 py-4 transition duration-300 hover:-translate-y-0.5 hover:border-fei-sky/35 hover:bg-white hover:shadow-lg hover:shadow-fei-bg/5">
-                <p className="text-2xl font-black tracking-tight text-fei-bg sm:text-3xl">{stat.value}</p>
-                <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.18em] text-fei-bg/40">{stat.label}</p>
+              <div key={stat.label} className="rounded-2xl border border-[#2B78C5]/10 bg-[#F7F8FA] px-5 py-4 transition duration-300 hover:-translate-y-0.5 hover:border-fei-sky/35 hover:bg-white hover:shadow-lg hover:shadow-sky-100">
+                <p className="text-2xl font-black tracking-tight text-[#2B78C5] sm:text-3xl">{stat.value}</p>
+                <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.18em] text-[#2B78C5]/40">{stat.label}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="how-it-works" className="scroll-mt-24 flex min-h-[calc(100vh-73px)] items-center bg-white px-6 py-20 text-fei-bg sm:py-24">
+      <section id="how-it-works" className="scroll-mt-24 flex min-h-[calc(100vh-73px)] items-center bg-white px-6 py-20 text-[#2B78C5] sm:py-24">
         <div className="mx-auto grid w-full max-w-[1500px] gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div className="max-w-2xl">
-            <p className="mb-4 text-xs font-black uppercase tracking-[0.28em] text-fei-bg/70">
+            <p className="mb-4 text-xs font-black uppercase tracking-[0.28em] text-[#2B78C5]/70">
               The FEI Method
             </p>
 
-            <h2 className="text-4xl font-black tracking-tight text-fei-bg sm:text-5xl lg:text-6xl">
+            <h2 className="text-4xl font-black tracking-tight text-[#2B78C5] sm:text-5xl lg:text-6xl">
               {t.how_title.includes('FEI') ? (
                 <>
                   {t.how_title.split('FEI')[0]}
@@ -220,7 +220,7 @@ export default function Home() {
               )}
             </h2>
 
-            <p className="mt-6 text-lg leading-8 text-fei-bg/60">
+            <p className="mt-6 text-lg leading-8 text-[#2B78C5]/60">
               {t.how_subtitle}
             </p>
           </div>
@@ -232,11 +232,11 @@ export default function Home() {
               {t.steps.map((item, index) => (
                 <article key={item.step} className="group relative grid cursor-pointer gap-5 sm:grid-cols-[8rem_1fr] sm:gap-8">
                   <div className="relative z-10 flex items-center gap-3 sm:block">
-                    <span className="block text-6xl font-black leading-none tracking-tight text-fei-bg transition duration-300 group-hover:scale-105 group-hover:text-fei-bg/90 sm:text-7xl">
+                    <span className="block text-6xl font-black leading-none tracking-tight text-[#2B78C5] transition duration-300 group-hover:scale-105 group-hover:text-[#2B78C5]/90 sm:text-7xl">
                       {item.step}
                     </span>
 
-                    <div className="mt-0 flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-fei-yellow text-fei-bg shadow-lg shadow-fei-yellow/20 transition duration-300 group-hover:-translate-y-1 group-hover:rotate-3 group-hover:shadow-xl group-hover:shadow-fei-yellow/30 sm:mt-4">
+                    <div className="mt-0 flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-fei-yellow text-[#2B78C5] shadow-lg shadow-fei-yellow/20 transition duration-300 group-hover:-translate-y-1 group-hover:rotate-3 group-hover:shadow-xl group-hover:shadow-fei-yellow/30 sm:mt-4">
                       {index === 0 && (
                         <svg className="h-7 w-7" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                           <circle cx="11" cy="11" r="6" stroke="currentColor" strokeWidth="2.2" />
@@ -258,17 +258,17 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <div className="border-b border-fei-bg/10 pb-10 last:border-b-0 last:pb-0">
+                  <div className="border-b border-[#2B78C5]/10 pb-10 last:border-b-0 last:pb-0">
                     <div className="mb-3 flex items-center gap-4">
                       <span className="h-px w-20 bg-fei-yellow/70 transition-all duration-300 group-hover:w-28 group-hover:bg-fei-yellow" />
-                      <span className="h-px flex-1 bg-fei-bg/10" />
+                      <span className="h-px flex-1 bg-[#2B78C5]/10" />
                     </div>
 
-                    <h3 className="text-2xl font-black tracking-tight text-fei-bg transition duration-300 group-hover:text-fei-sky sm:text-3xl">
+                    <h3 className="text-2xl font-black tracking-tight text-[#2B78C5] transition duration-300 group-hover:text-fei-sky sm:text-3xl">
                       {item.title}
                     </h3>
 
-                    <p className="mt-3 max-w-2xl text-base leading-7 text-fei-bg/60 transition duration-300 group-hover:text-fei-bg/75 sm:text-lg sm:leading-8">
+                    <p className="mt-3 max-w-2xl text-base leading-7 text-[#2B78C5]/60 transition duration-300 group-hover:text-[#2B78C5]/75 sm:text-lg sm:leading-8">
                       {item.description}
                     </p>
                   </div>
@@ -279,18 +279,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="roles" className="scroll-mt-28 bg-white px-6 py-20 text-fei-bg sm:py-24">
+      <section id="roles" className="scroll-mt-28 bg-white px-6 py-20 text-[#2B78C5] sm:py-24">
         <div className="mx-auto max-w-[1500px]">
           <div className="mb-10 max-w-3xl">
             <p className="mb-4 text-xs font-black uppercase tracking-[0.28em] text-fei-sky">
               Role Intelligence
             </p>
 
-            <h2 className="text-4xl font-black tracking-tight text-fei-bg sm:text-5xl">
+            <h2 className="text-4xl font-black tracking-tight text-[#2B78C5] sm:text-5xl">
               {lang === 'en' ? 'Built for every role in the club.' : 'Diseñado para cada rol del club.'}
             </h2>
 
-            <p className="mt-5 text-base leading-7 text-fei-bg/60 sm:text-lg">
+            <p className="mt-5 text-base leading-7 text-[#2B78C5]/60 sm:text-lg">
               {lang === 'en'
                 ? 'Choose your football role and start a diagnostic designed around the communication situations you actually face.'
                 : 'Elige tu rol en el fútbol y comienza un diagnóstico diseñado alrededor de las situaciones de comunicación que realmente enfrentas.'}
@@ -318,7 +318,7 @@ export default function Home() {
                 <a
                   key={item.role}
                   href={`/register?role=${encodeURIComponent(item.role)}`}
-                  className="group relative min-h-[142px] overflow-hidden rounded-[1.3rem] border border-fei-bg/10 bg-[#F7F8FA] p-4 transition duration-500 hover:-translate-y-1 hover:border-fei-sky/45 hover:bg-white hover:shadow-xl hover:shadow-fei-bg/7"
+                  className="group relative min-h-[142px] overflow-hidden rounded-[1.3rem] border border-[#2B78C5]/10 bg-[#F7F8FA] p-4 transition duration-500 hover:-translate-y-1 hover:border-fei-sky/45 hover:bg-white hover:shadow-xl hover:shadow-sky-100"
                 >
                   <div className="pointer-events-none absolute -right-1 -top-4 text-6xl font-black leading-none text-fei-sky/[0.12] transition duration-500 group-hover:text-fei-yellow/25">
                     {String(index + 1).padStart(2, '0')}
@@ -329,11 +329,11 @@ export default function Home() {
                       {lang === 'en' ? 'Role path' : 'Ruta por rol'}
                     </p>
 
-                    <h3 className="max-w-[13rem] text-lg font-black leading-6 text-fei-bg">
+                    <h3 className="max-w-[13rem] text-lg font-black leading-6 text-[#2B78C5]">
                       {displayRole}
                     </h3>
 
-                    <p className="mt-2 text-[13px] leading-5 text-fei-bg/58">
+                    <p className="mt-2 text-[13px] leading-5 text-[#2B78C5]/58">
                       {displayText}
                     </p>
 
@@ -347,22 +347,22 @@ export default function Home() {
 
             <a
               href="/suggest-role"
-              className="group relative min-h-[142px] overflow-hidden rounded-[1.3rem] border border-fei-yellow/30 bg-fei-yellow/[0.10] p-4 transition duration-500 hover:-translate-y-1 hover:border-fei-yellow/55 hover:bg-fei-yellow/[0.16] hover:shadow-xl hover:shadow-fei-bg/7"
+              className="group relative min-h-[142px] overflow-hidden rounded-[1.3rem] border border-fei-yellow/30 bg-fei-yellow/[0.10] p-4 transition duration-500 hover:-translate-y-1 hover:border-fei-yellow/55 hover:bg-fei-yellow/[0.16] hover:shadow-xl hover:shadow-sky-100"
             >
               <div className="pointer-events-none absolute -right-1 -top-7 text-6xl font-black leading-none text-fei-yellow/25 transition duration-500 group-hover:text-fei-yellow/35">
                 +
               </div>
 
               <div className="relative z-10 flex min-h-[110px] flex-col">
-                <p className="mb-2 text-[10px] font-black uppercase tracking-[0.2em] text-fei-bg/45">
+                <p className="mb-2 text-[10px] font-black uppercase tracking-[0.2em] text-[#2B78C5]/45">
                   {lang === 'en' ? 'Missing role' : 'Rol faltante'}
                 </p>
 
-                <h3 className="max-w-[13rem] text-lg font-black leading-6 text-fei-bg">
+                <h3 className="max-w-[13rem] text-lg font-black leading-6 text-[#2B78C5]">
                   {lang === 'en' ? "Can't find your role?" : '¿No encuentras tu rol?'}
                 </h3>
 
-                <p className="mt-auto pt-3 text-[11px] font-black uppercase tracking-[0.15em] text-fei-bg/65 transition duration-300 group-hover:text-fei-bg">
+                <p className="mt-auto pt-3 text-[11px] font-black uppercase tracking-[0.15em] text-[#2B78C5]/65 transition duration-300 group-hover:text-[#2B78C5]">
                   {lang === 'en' ? 'Suggest a new role →' : 'Sugiere un nuevo rol →'}
                 </p>
               </div>
@@ -371,27 +371,27 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="for-clubs" className="scroll-mt-32 bg-white px-6 py-16 text-fei-bg sm:py-20">
+      <section id="for-clubs" className="scroll-mt-32 bg-white px-6 py-16 text-[#2B78C5] sm:py-20">
         <div className="mx-auto max-w-[1500px]">
-          <div className="overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-[#F7F8FA] shadow-sm">
+          <div className="overflow-hidden rounded-[2rem] border border-[#2B78C5]/10 bg-[#F7F8FA] shadow-sm">
             <div className="grid lg:grid-cols-[0.95fr_1.05fr]">
               <div className="p-8 sm:p-10 lg:p-12">
                 <p className="text-xs font-black uppercase tracking-[0.28em] text-fei-sky">{t.clubs_label}</p>
 
-                <h2 className="mt-5 max-w-2xl text-4xl font-black tracking-tight text-fei-bg sm:text-5xl">
+                <h2 className="mt-5 max-w-2xl text-4xl font-black tracking-tight text-[#2B78C5] sm:text-5xl">
                   {t.clubs_title}
                 </h2>
 
-                <p className="mt-5 max-w-2xl text-lg leading-8 text-fei-bg/62">
+                <p className="mt-5 max-w-2xl text-lg leading-8 text-[#2B78C5]/62">
                   {t.clubs_description}
                 </p>
 
-                <a href="/contact" className="mt-9 inline-flex rounded-full bg-fei-bg px-8 py-3 font-bold text-white transition hover:bg-fei-bg/90">
+                <a href="/contact" className="mt-9 inline-flex rounded-full bg-[#2B78C5] px-8 py-3 font-bold text-white transition hover:bg-[#2B78C5]/90">
                   {t.contact_us}
                 </a>
               </div>
 
-              <div className="relative border-t border-fei-bg/10 bg-fei-bg p-8 text-white sm:p-10 lg:border-l lg:border-t-0 lg:p-12">
+              <div className="relative border-t border-[#2B78C5]/10 bg-[#2B78C5] p-8 text-white sm:p-10 lg:border-l lg:border-t-0 lg:p-12">
                 <div
                   className="pointer-events-none absolute inset-0 opacity-35"
                   style={{
@@ -429,7 +429,7 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <a href="/contact" className="mt-8 inline-flex w-full items-center justify-center rounded-full border border-fei-yellow/45 px-6 py-3 text-sm font-bold text-fei-yellow transition hover:bg-fei-yellow hover:text-fei-bg">
+                  <a href="/contact" className="mt-8 inline-flex w-full items-center justify-center rounded-full border border-fei-yellow/45 px-6 py-3 text-sm font-bold text-fei-yellow transition hover:bg-fei-yellow hover:text-[#2B78C5]">
                     {lang === 'en' ? 'Book a demo' : 'Solicitar demo'}
                   </a>
                 </div>
@@ -439,16 +439,16 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="pricing" className="scroll-mt-32 bg-white px-6 pb-20 pt-10 text-fei-bg sm:pb-28 sm:pt-12">
+      <section id="pricing" className="scroll-mt-32 bg-white px-6 pb-20 pt-10 text-[#2B78C5] sm:pb-28 sm:pt-12">
         <div className="mx-auto max-w-[1500px]">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-xs font-black uppercase tracking-[0.28em] text-fei-sky">{t.pricing_label}</p>
 
-            <h2 className="mt-5 text-4xl font-black tracking-tight text-fei-bg sm:text-5xl">
+            <h2 className="mt-5 text-4xl font-black tracking-tight text-[#2B78C5] sm:text-5xl">
               {t.pricing_title}
             </h2>
 
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-fei-bg/60 sm:text-lg">
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-[#2B78C5]/60 sm:text-lg">
               {t.pricing_subtitle}
             </p>
           </div>
@@ -491,14 +491,14 @@ export default function Home() {
             ].map((plan) => (
               <article
                 key={plan.name}
-                className={`relative flex min-h-[420px] flex-col rounded-[1.8rem] border p-6 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-fei-bg/6 ${
+                className={`relative flex min-h-[420px] flex-col rounded-[1.8rem] border p-6 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-sky-100 ${
                   plan.highlight
                     ? 'border-fei-yellow/55 bg-fei-yellow/[0.11]'
-                    : 'border-fei-bg/10 bg-[#F7F8FA] hover:border-fei-sky/45 hover:bg-white'
+                    : 'border-[#2B78C5]/10 bg-[#F7F8FA] hover:border-fei-sky/45 hover:bg-white'
                 }`}
               >
                 {plan.highlight && (
-                  <div className="absolute right-5 top-5 rounded-full bg-fei-bg px-3 py-1 text-xs font-black uppercase tracking-[0.18em] text-fei-yellow">
+                  <div className="absolute right-5 top-5 rounded-full bg-[#2B78C5] px-3 py-1 text-xs font-black uppercase tracking-[0.18em] text-fei-yellow">
                     {lang === 'en' ? 'Popular' : 'Popular'}
                   </div>
                 )}
@@ -508,19 +508,19 @@ export default function Home() {
                     {plan.highlight ? (lang === 'en' ? 'Best value' : 'Mejor opción') : (lang === 'en' ? 'Plan' : 'Plan')}
                   </p>
 
-                  <h3 className="mt-3 text-2xl font-black tracking-tight text-fei-bg">
+                  <h3 className="mt-3 text-2xl font-black tracking-tight text-[#2B78C5]">
                     {plan.name}
                   </h3>
 
                   <div className="mt-7">
-                    <span className="text-5xl font-black tracking-tight text-fei-bg">{plan.price}</span>
-                    <p className="mt-2 text-sm font-medium text-fei-bg/55">{plan.detail}</p>
+                    <span className="text-5xl font-black tracking-tight text-[#2B78C5]">{plan.price}</span>
+                    <p className="mt-2 text-sm font-medium text-[#2B78C5]/55">{plan.detail}</p>
                   </div>
                 </div>
 
                 <ul className="mt-8 space-y-4">
                   {plan.features.map((feature) => (
-                    <li key={feature} className="flex gap-3 text-sm leading-6 text-fei-bg/68">
+                    <li key={feature} className="flex gap-3 text-sm leading-6 text-[#2B78C5]/68">
                       <span className="mt-0.5 text-fei-sky">✓</span>
                       <span>{feature}</span>
                     </li>
@@ -532,8 +532,8 @@ export default function Home() {
                     href={plan.href}
                     className={`inline-flex w-full items-center justify-center rounded-full px-6 py-3 text-sm font-bold transition ${
                       plan.highlight
-                        ? 'bg-fei-bg text-white hover:bg-fei-bg/90'
-                        : 'border border-fei-bg/20 text-fei-bg hover:bg-fei-bg hover:text-white'
+                        ? 'bg-[#2B78C5] text-white hover:bg-[#2B78C5]/90'
+                        : 'border border-[#2B78C5]/20 text-[#2B78C5] hover:bg-[#2B78C5] hover:text-white'
                     }`}
                   >
                     {plan.cta}
@@ -543,7 +543,7 @@ export default function Home() {
             ))}
           </div>
 
-          <p className="mx-auto mt-8 max-w-3xl text-center text-xs leading-6 text-fei-bg/45">
+          <p className="mx-auto mt-8 max-w-3xl text-center text-xs leading-6 text-[#2B78C5]/45">
             {lang === 'en'
               ? 'Prices may vary by country, promotion, number of users, licenses, included features, support level, and institutional conditions. FEI will always show the applicable price before any payment.'
               : 'Los precios pueden variar según país, promoción, número de usuarios, licencias, funciones incluidas, nivel de soporte y condiciones institucionales. FEI siempre mostrará el precio aplicable antes de cualquier pago.'}
