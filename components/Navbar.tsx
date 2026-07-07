@@ -152,7 +152,7 @@ export function Navbar({
     <header className={`sticky top-0 z-50 border-b backdrop-blur-xl ${isLight ? "border-fei-bg/10 bg-white/95" : "border-fei-text/10 bg-fei-bg/90"}`}>
       <nav className="mx-auto flex w-full max-w-[1600px] items-center justify-between px-4 py-3.5 sm:px-6 lg:px-8 2xl:px-10">
         <a href="/" className="flex items-center">
-          <img src="/logo-nav.svg" alt="FEI" className="h-10 w-auto" />
+          <img src="/fei-logo-navbar-vector.svg" alt="FEI" className="h-10 w-auto" />
         </a>
 
         <div className="hidden items-center md:flex">
