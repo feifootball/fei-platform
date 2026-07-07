@@ -152,7 +152,7 @@ export function Navbar({
     <header className={`sticky top-0 z-50 border-b backdrop-blur-xl ${isLight ? "border-fei-bg/10 bg-white/95" : "border-fei-text/10 bg-fei-bg/90"}`}>
       <nav className="mx-auto flex w-full max-w-[1600px] items-center justify-between px-4 py-3.5 sm:px-6 lg:px-8 2xl:px-10">
         <a href="/" className="flex items-center">
-          <img src="/logo-nav.svg" alt="FEI" className="h-11 w-auto" />
+          <img src="/logo.svg" alt="FEI" className="h-9 w-auto" />
         </a>
 
         <div className="hidden items-center md:flex">
@@ -207,9 +207,24 @@ export function Navbar({
         <div className="flex items-center gap-2 md:hidden">
           <button
             onClick={toggleLang}
-            className={`rounded-full border px-3 py-1.5 text-xs font-medium transition ${isLight ? "border-fei-bg/20 text-fei-bg/60 hover:text-fei-bg" : "border-fei-text/20 text-fei-text/60 hover:text-fei-text"}`}
+            className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition ${isLight ? "border-fei-bg/20 text-fei-bg/60 hover:text-fei-bg" : "border-fei-text/20 text-fei-text/60 hover:text-fei-text"}`}
             aria-label="Change language"
           >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-3.5 w-3.5 text-fei-sky"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="12" cy="12" r="9" />
+              <path d="M3 12h18" />
+              <path d="M12 3c2.2 2.4 3.3 5.4 3.3 9S14.2 18.6 12 21" />
+              <path d="M12 3c-2.2 2.4-3.3 5.4-3.3 9S9.8 18.6 12 21" />
+            </svg>
             {lang === "en" ? "ES" : "EN"}
           </button>
 
