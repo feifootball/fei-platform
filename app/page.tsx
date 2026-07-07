@@ -163,8 +163,11 @@ export default function Home() {
 
             <h1 className="mt-6 text-5xl font-extrabold leading-[1.03] text-fei-bg sm:text-6xl lg:text-7xl xl:text-8xl">
               Football English<br />
-              <span className="bg-gradient-to-r from-[#facc15] via-[#fbbf24] to-[#38bdf8] bg-clip-text font-black text-transparent drop-shadow-[0_10px_16px_rgba(75,85,99,0.22)]">
-                Intelligence.
+              <span className="relative inline-block">
+                <span className="pointer-events-none absolute inset-x-0 bottom-1 h-5 rounded-full bg-fei-sky/18 blur-xl" />
+                <span className="relative bg-gradient-to-r from-fei-yellow via-fei-sky to-[#38bdf8] bg-clip-text font-black text-transparent">
+                  Intelligence.
+                </span>
               </span>
             </h1>
 
