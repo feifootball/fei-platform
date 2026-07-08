@@ -543,6 +543,24 @@ export default function Home() {
                       : "Conoce cómo FEI puede fortalecer la comunicación de tu club con entrenamiento diseñado para roles reales del fútbol."}
                   </p>
 
+                  <div className="mt-8 rounded-[1.35rem] border border-white/10 bg-white/[0.045] p-5">
+                    <p className="text-xs font-black uppercase tracking-[0.22em] text-fei-yellow">
+                      {lang === "en" ? "Club license" : "Licencia institucional"}
+                    </p>
+
+                    <p className="mt-3 text-[15px] leading-7 text-white/72">
+                      {lang === "en"
+                        ? "Quoted based on the number of users, selected roles, and training needs."
+                        : "Cotización según el número de usuarios, roles seleccionados y necesidades de entrenamiento."}
+                    </p>
+
+                    <p className="mt-3 text-[15px] leading-7 text-white/56">
+                      {lang === "en"
+                        ? "Includes diagnostics, role-specific pathways, real scenarios, and progress tracking."
+                        : "Incluye diagnósticos, rutas por rol, escenarios reales y seguimiento de progreso."}
+                    </p>
+                  </div>
+
                   <a
                     href="/contact"
                     className="mt-8 inline-flex w-full items-center justify-center rounded-full border border-fei-yellow/60 px-7 py-3 text-sm font-bold text-fei-yellow transition duration-300 hover:-translate-y-0.5 hover:bg-fei-yellow hover:text-fei-bg"
