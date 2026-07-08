@@ -646,7 +646,7 @@ export default function Home() {
                 key={plan.name}
                 className={`group relative flex min-h-[365px] flex-col overflow-hidden rounded-[1.55rem] border p-5 transition duration-300 hover:-translate-y-1 ${
                   plan.featured
-                    ? "border-fei-sky/28 bg-[#FAFBFC] shadow-[0_14px_40px_rgba(7,17,31,0.055)] hover:border-fei-sky/40 hover:bg-white hover:shadow-[0_22px_55px_rgba(7,17,31,0.075)]"
+                    ? "border-fei-sky/35 bg-gradient-to-br from-fei-sky/[0.10] via-white to-fei-yellow/[0.06] shadow-[0_16px_45px_rgba(125,211,252,0.13)] hover:border-fei-sky/50 hover:shadow-[0_24px_60px_rgba(125,211,252,0.18)]"
                     : "border-fei-bg/[0.06] bg-[#FAFBFC] hover:border-fei-sky/28 hover:bg-white hover:shadow-[0_18px_45px_rgba(7,17,31,0.055)]"
                 }`}
               >
@@ -701,23 +701,23 @@ export default function Home() {
       </section>
 
       <footer className="bg-white px-5 pb-5 sm:px-8">
-        <div className="mx-auto max-w-[1600px] rounded-t-[2rem] border border-fei-bg/10 bg-white px-6 py-7 shadow-[0_-14px_45px_rgba(7,17,31,0.045)] sm:px-8">
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+        <div className="mx-auto max-w-[1600px] rounded-t-[1.75rem] border border-fei-bg/10 bg-white px-6 py-4 shadow-[0_-10px_32px_rgba(7,17,31,0.035)] sm:px-8">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div className="flex items-center gap-4">
               <img
                 src="/fei-logo-navbar-vector.svg"
                 alt="FEI"
-                className="h-10 w-auto"
+                className="h-9 w-auto"
               />
 
-              <p className="hidden max-w-xs text-sm leading-6 text-fei-bg/48 sm:block">
+              <p className="hidden max-w-xs text-sm leading-6 text-fei-bg/45 sm:block">
                 {lang === "en"
                   ? "Communication intelligence for global football."
                   : "Inteligencia comunicativa para el fútbol global."}
               </p>
             </div>
 
-            <nav className="flex flex-wrap items-center gap-x-5 gap-y-3 text-sm font-medium text-fei-bg/54">
+            <nav className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-medium text-fei-bg/54">
               <a href="/terms" className="transition hover:text-fei-bg">
                 {lang === "en" ? "Terms of Use" : "Términos de uso"}
               </a>
@@ -747,7 +747,7 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="LinkedIn"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-fei-bg/10 text-sm font-black text-fei-bg transition hover:-translate-y-0.5 hover:border-fei-sky/35 hover:bg-fei-sky/10"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-fei-bg/10 text-sm font-black text-fei-bg transition hover:-translate-y-0.5 hover:border-fei-sky/35 hover:bg-fei-sky/10"
               >
                 in
               </a>
@@ -757,17 +757,31 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Instagram"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-fei-bg/10 text-lg font-black text-fei-bg transition hover:-translate-y-0.5 hover:border-fei-yellow/45 hover:bg-fei-yellow/12"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-fei-bg/10 text-fei-bg transition hover:-translate-y-0.5 hover:border-fei-yellow/45 hover:bg-fei-yellow/12"
               >
-                ◎
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4.5 w-4.5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.9"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect x="4" y="4" width="16" height="16" rx="5" />
+                  <circle cx="12" cy="12" r="3.5" />
+                  <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
+                </svg>
               </a>
             </div>
           </div>
-
-          <div className="mt-6 border-t border-fei-bg/10 pt-5 text-center text-sm text-fei-bg/42">
-            © 2026 Football English Intelligence. {lang === "en" ? "All rights reserved." : "Todos los derechos reservados."}
-          </div>
         </div>
+
+        <p className="mx-auto mt-3 max-w-7xl text-center text-sm text-fei-bg/40">
+          © 2026 Football English Intelligence. {lang === "en" ? "All rights reserved." : "Todos los derechos reservados."}
+        </p>
       </footer>
     </div>
   );
