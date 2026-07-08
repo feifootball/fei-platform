@@ -138,24 +138,24 @@ export function Navbar({
   const links = navLinks[lang];
 
   const navLinkClass = (sectionId: string) =>
-    `rounded-full px-4 py-2 text-[14px] font-medium tracking-[-0.01em] transition duration-300 ${
+    `relative px-1 py-2 text-[15px] font-medium tracking-[-0.01em] transition duration-300 after:absolute after:bottom-0 after:left-0 after:h-px after:bg-fei-yellow after:transition-all after:duration-300 ${
       activeSection === sectionId
         ? isLight
-          ? "bg-fei-bg text-white"
-          : "bg-white text-fei-bg"
+          ? "text-fei-bg after:w-full"
+          : "text-fei-text after:w-full"
         : isLight
-          ? "text-fei-bg/58 hover:bg-fei-bg/[0.055] hover:text-fei-bg"
-          : "text-fei-text/58 hover:bg-white/[0.08] hover:text-fei-text"
+          ? "text-fei-bg/60 after:w-0 hover:text-fei-bg hover:after:w-full"
+          : "text-fei-text/60 after:w-0 hover:text-fei-text hover:after:w-full"
     }`;
 
   return (
     <header
-      className={`fixed inset-x-0 top-4 z-50 px-4 transition-all duration-300 sm:px-6 ${
+      className={`fixed inset-x-0 top-4 z-50 px-4 transition-all duration-300 sm:px-5 ${
         isLight ? "text-fei-bg" : "text-fei-text"
       }`}
     >
       <nav
-      className={`mx-auto flex h-[68px] max-w-[1320px] items-center justify-between rounded-full border px-5 shadow-[0_8px_24px_rgba(7,17,31,0.045)] backdrop-blur-2xl transition-all duration-300 sm:px-6 ${
+      className={`mx-auto flex h-[64px] max-w-[1180px] items-center justify-between rounded-full border px-4 shadow-[0_8px_24px_rgba(7,17,31,0.045)] backdrop-blur-2xl transition-all duration-300 sm:px-5 ${
         isLight
           ? "border-fei-bg/8 bg-white/18"
           : "border-white/10 bg-fei-bg/18"
@@ -165,9 +165,9 @@ export function Navbar({
           <img src="/fei-logo-navbar-vector.svg" alt="FEI" className="h-12 w-auto" />
         </a>
 
-        <div className="hidden items-center gap-6 md:flex">
+        <div className="hidden items-center gap-5 md:flex">
           {!hideSectionLinks && (
-            <div className={`flex items-center gap-1 rounded-full border p-1 ${isLight ? "border-fei-bg/8 bg-white/10" : "border-white/10 bg-white/[0.025]"}`}>
+            <div className="flex items-center gap-7">
               {links.map((link) => (
                 <a
                   key={link.label}
@@ -184,7 +184,7 @@ export function Navbar({
           <div className={`${hideSectionLinks ? "" : "ml-6"} flex items-center gap-3`}>
             <button
               onClick={toggleLang}
-              className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[14px] font-medium tracking-[-0.01em] transition ${
+              className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[15px] font-medium tracking-[-0.01em] transition ${
                 isLight
                   ? "border-fei-bg/8 bg-white/16 text-fei-bg/68 hover:border-fei-bg/18 hover:bg-white/28 hover:text-fei-bg"
                   : "border-white/12 bg-white/[0.03] text-fei-text/70 hover:border-white/20 hover:text-fei-text"
@@ -193,7 +193,7 @@ export function Navbar({
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 text-fei-sky"
+                className="h-5 w-5 text-fei-sky"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -211,7 +211,7 @@ export function Navbar({
 
             <a
               href="/login"
-              className={`rounded-full border px-5 py-2 text-base font-normal transition ${
+              className={`rounded-full border px-4 py-2 text-[15px] font-normal transition ${
                 isLight
                   ? "border-fei-bg/18 text-fei-bg hover:bg-fei-bg/[0.04]"
                   : "border-fei-sky/45 text-fei-sky hover:bg-fei-sky/10"
@@ -222,7 +222,7 @@ export function Navbar({
 
             <a
               href="/register"
-              className="rounded-full bg-fei-yellow px-5 py-2 text-base font-bold text-fei-bg transition hover:bg-fei-yellow/90 hover:shadow-lg hover:shadow-fei-yellow/20"
+              className="rounded-full bg-fei-yellow px-4 py-2 text-[15px] font-bold text-fei-bg transition hover:bg-fei-yellow/90 hover:shadow-lg hover:shadow-fei-yellow/20"
             >
               {lang === "en" ? "Register" : "Registrarse"}
             </a>
@@ -271,7 +271,7 @@ export function Navbar({
                 key={link.label}
                 href={link.href}
                 onClick={(event) => handleNavClick(event, link.sectionId, link.href)}
-                className={`text-base font-normal transition ${
+                className={`text-[15px] font-normal transition ${
                   activeSection === link.sectionId
                     ? isLight ? "text-fei-bg" : "text-fei-yellow/85"
                     : isLight ? "text-fei-bg/60 hover:text-fei-bg" : "text-fei-text/65 hover:text-fei-text"
@@ -284,14 +284,14 @@ export function Navbar({
             <div className="flex gap-3 pt-2">
               <a
                 href="/login"
-                className={`flex-1 rounded-full border px-4 py-2 text-center text-base font-normal transition ${isLight ? "border-fei-bg/20 text-fei-bg hover:bg-fei-bg/[0.04]" : "border-fei-sky/45 text-fei-sky hover:bg-fei-sky/10"}`}
+                className={`flex-1 rounded-full border px-4 py-2 text-center text-[15px] font-normal transition ${isLight ? "border-fei-bg/20 text-fei-bg hover:bg-fei-bg/[0.04]" : "border-fei-sky/45 text-fei-sky hover:bg-fei-sky/10"}`}
               >
                 {lang === "en" ? "Login" : "Ingresar"}
               </a>
 
               <a
                 href="/register"
-                className="flex-1 rounded-full bg-fei-yellow px-4 py-2 text-center text-base font-bold text-fei-bg transition hover:bg-fei-yellow/90"
+                className="flex-1 rounded-full bg-fei-yellow px-4 py-2 text-center text-[15px] font-bold text-fei-bg transition hover:bg-fei-yellow/90"
               >
                 {lang === "en" ? "Register" : "Registrarse"}
               </a>
