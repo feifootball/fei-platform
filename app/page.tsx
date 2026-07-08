@@ -237,7 +237,7 @@ export default function Home() {
                   key={stat.label}
                   className="group relative overflow-hidden rounded-[1.25rem] px-5 py-4 transition duration-300 hover:bg-[#F7F8FA]"
                 >
-                  <div className="absolute inset-x-5 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-90 transition duration-300 group-hover:h-[3px] group-hover:opacity-100" />
+                  <div className="absolute inset-x-5 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-90 transition duration-300 group-hover:inset-x-4 group-hover:h-[4px] group-hover:opacity-100" />
                   <div className="pointer-events-none absolute -right-8 -top-10 h-20 w-20 rounded-full bg-fei-sky/10 blur-2xl transition duration-300 group-hover:bg-fei-sky/18" />
 
                   <div className="relative">
@@ -644,16 +644,16 @@ export default function Home() {
             ].map((plan) => (
               <div
                 key={plan.name}
-                className={`group relative flex min-h-[365px] flex-col overflow-hidden rounded-[1.55rem] border p-5 transition duration-300 hover:-translate-y-1 ${
+                className={`group relative flex min-h-[365px] flex-col overflow-hidden rounded-[1.55rem] border p-5 transition duration-300 ${
                   plan.featured
-                    ? "border-fei-sky/50 bg-gradient-to-br from-fei-sky/[0.10] via-white to-fei-yellow/[0.06] shadow-[0_16px_45px_rgba(125,211,252,0.13)] hover:border-fei-sky/50 hover:shadow-[0_24px_60px_rgba(125,211,252,0.24)]"
-                    : "border-fei-bg/12 bg-[#FAFBFC] hover:border-fei-sky/40 hover:bg-white hover:shadow-[0_20px_48px_rgba(7,17,31,0.075)]"
+                    ? "border-fei-sky/60 bg-gradient-to-br from-fei-sky/[0.18] via-white to-fei-yellow/[0.14] shadow-[0_18px_50px_rgba(125,211,252,0.18)] hover:-translate-y-2 hover:scale-[1.025] hover:border-fei-yellow/70 hover:shadow-[0_30px_75px_rgba(125,211,252,0.28)]"
+                    : "border-fei-bg/12 bg-[#FAFBFC] hover:-translate-y-2 hover:scale-[1.015] hover:border-fei-sky/45 hover:bg-white hover:shadow-[0_26px_65px_rgba(7,17,31,0.10)]"
                 }`}
               >
-                <div className="absolute inset-x-5 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-90 transition duration-300 group-hover:h-[3px] group-hover:opacity-100" />
+                <div className="absolute inset-x-5 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-90 transition duration-300 group-hover:inset-x-4 group-hover:h-[4px] group-hover:opacity-100" />
 
                 {plan.badge && (
-                  <span className="absolute right-5 top-5 rounded-full bg-fei-bg px-3.5 py-1 text-[9px] font-black uppercase tracking-[0.2em] text-fei-sky">
+                  <span className="absolute right-5 top-5 rounded-full bg-fei-bg px-3.5 py-1 text-[9px] font-black uppercase tracking-[0.2em] text-fei-yellow shadow-[0_10px_24px_rgba(7,17,31,0.14)]">
                     {plan.badge}
                   </span>
                 )}
@@ -667,7 +667,7 @@ export default function Home() {
                 </h3>
 
                 <div className="mt-6">
-                  <p className="text-4xl font-black tracking-tight text-fei-bg">
+                  <p className="text-4xl font-black tracking-tight text-fei-bg transition duration-300 group-hover:text-fei-sky">
                     {plan.price}
                   </p>
                   <p className="mt-2 text-sm font-semibold leading-6 text-fei-bg/55">
@@ -688,7 +688,7 @@ export default function Home() {
                   href={plan.href}
                   className={`mt-auto inline-flex w-full items-center justify-center rounded-full px-5 py-2.5 text-sm font-bold transition duration-300 hover:-translate-y-0.5 ${
                     plan.featured
-                      ? "bg-fei-bg text-white hover:shadow-lg hover:shadow-fei-bg/15"
+                      ? "bg-fei-bg text-white hover:bg-fei-sky hover:text-fei-bg hover:shadow-lg hover:shadow-fei-sky/20"
                       : "border border-fei-bg/15 text-fei-bg hover:border-fei-bg/35 hover:bg-white"
                   }`}
                 >
