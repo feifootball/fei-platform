@@ -237,7 +237,7 @@ export default function Home() {
                   key={stat.label}
                   className="group relative overflow-hidden rounded-[1.25rem] px-5 py-4 transition duration-300 hover:bg-[#F7F8FA]"
                 >
-                  <div className="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-75 transition duration-300 group-hover:h-[2px] group-hover:opacity-100" />
+                  <div className="absolute inset-x-5 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-90 transition duration-300 group-hover:h-[3px] group-hover:opacity-100" />
                   <div className="pointer-events-none absolute -right-8 -top-10 h-20 w-20 rounded-full bg-fei-sky/10 blur-2xl transition duration-300 group-hover:bg-fei-sky/18" />
 
                   <div className="relative">
@@ -646,11 +646,11 @@ export default function Home() {
                 key={plan.name}
                 className={`group relative flex min-h-[365px] flex-col overflow-hidden rounded-[1.55rem] border p-5 transition duration-300 hover:-translate-y-1 ${
                   plan.featured
-                    ? "border-fei-sky/35 bg-gradient-to-br from-fei-sky/[0.10] via-white to-fei-yellow/[0.06] shadow-[0_16px_45px_rgba(125,211,252,0.13)] hover:border-fei-sky/50 hover:shadow-[0_24px_60px_rgba(125,211,252,0.18)]"
-                    : "border-fei-bg/[0.06] bg-[#FAFBFC] hover:border-fei-sky/28 hover:bg-white hover:shadow-[0_18px_45px_rgba(7,17,31,0.055)]"
+                    ? "border-fei-sky/50 bg-gradient-to-br from-fei-sky/[0.10] via-white to-fei-yellow/[0.06] shadow-[0_16px_45px_rgba(125,211,252,0.13)] hover:border-fei-sky/50 hover:shadow-[0_24px_60px_rgba(125,211,252,0.24)]"
+                    : "border-fei-bg/12 bg-[#FAFBFC] hover:border-fei-sky/40 hover:bg-white hover:shadow-[0_20px_48px_rgba(7,17,31,0.075)]"
                 }`}
               >
-                <div className="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-75 transition duration-300 group-hover:h-[2px] group-hover:opacity-100" />
+                <div className="absolute inset-x-5 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-90 transition duration-300 group-hover:h-[3px] group-hover:opacity-100" />
 
                 {plan.badge && (
                   <span className="absolute right-5 top-5 rounded-full bg-fei-bg px-3.5 py-1 text-[9px] font-black uppercase tracking-[0.2em] text-fei-sky">
