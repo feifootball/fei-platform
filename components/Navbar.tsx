@@ -138,7 +138,7 @@ export function Navbar({
   const links = navLinks[lang];
 
   const navLinkClass = (sectionId: string) =>
-    `relative px-1 py-2 text-[15px] font-medium tracking-[-0.01em] transition duration-300 after:absolute after:bottom-0 after:left-0 after:h-px after:bg-fei-yellow after:transition-all after:duration-300 ${
+    `relative px-1 py-1.5 text-[15px] font-medium tracking-[-0.01em] transition duration-300 after:absolute after:bottom-0 after:left-0 after:h-px after:bg-fei-yellow after:transition-all after:duration-300 ${
       activeSection === sectionId
         ? isLight
           ? "text-fei-bg after:w-full"
@@ -155,7 +155,7 @@ export function Navbar({
       }`}
     >
       <nav
-      className={`mx-auto flex h-[64px] max-w-[1180px] items-center justify-between rounded-full border px-4 shadow-[0_8px_24px_rgba(7,17,31,0.045)] backdrop-blur-2xl transition-all duration-300 sm:px-5 ${
+      className={`mx-auto flex h-[60px] max-w-[1280px] items-center justify-between rounded-full border px-4 shadow-[0_8px_24px_rgba(7,17,31,0.045)] backdrop-blur-2xl transition-all duration-300 sm:px-5 ${
         isLight
           ? "border-fei-bg/8 bg-white/18"
           : "border-white/10 bg-fei-bg/18"
@@ -184,7 +184,7 @@ export function Navbar({
           <div className={`${hideSectionLinks ? "" : "ml-6"} flex items-center gap-3`}>
             <button
               onClick={toggleLang}
-              className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[15px] font-medium tracking-[-0.01em] transition ${
+              className={`inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-[15px] font-medium tracking-[-0.01em] transition ${
                 isLight
                   ? "border-fei-bg/8 bg-white/16 text-fei-bg/68 hover:border-fei-bg/18 hover:bg-white/28 hover:text-fei-bg"
                   : "border-white/12 bg-white/[0.03] text-fei-text/70 hover:border-white/20 hover:text-fei-text"
@@ -211,7 +211,7 @@ export function Navbar({
 
             <a
               href="/login"
-              className={`rounded-full border px-4 py-2 text-[15px] font-normal transition ${
+              className={`rounded-full border px-4 py-1.5 text-[15px] font-normal transition ${
                 isLight
                   ? "border-fei-bg/18 text-fei-bg hover:bg-fei-bg/[0.04]"
                   : "border-fei-sky/45 text-fei-sky hover:bg-fei-sky/10"
@@ -222,7 +222,7 @@ export function Navbar({
 
             <a
               href="/register"
-              className="rounded-full bg-fei-yellow px-4 py-2 text-[15px] font-bold text-fei-bg transition hover:bg-fei-yellow/90 hover:shadow-lg hover:shadow-fei-yellow/20"
+              className="rounded-full bg-fei-yellow px-4 py-1.5 text-[15px] font-bold text-fei-bg transition hover:bg-fei-yellow/90 hover:shadow-lg hover:shadow-fei-yellow/20"
             >
               {lang === "en" ? "Register" : "Registrarse"}
             </a>

@@ -200,15 +200,15 @@ export default function Home() {
                   key={stat.label}
                   className="group relative overflow-hidden rounded-[1.25rem] px-5 py-4 transition duration-300 hover:bg-[#F7F8FA]"
                 >
-                  <div className="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-75" />
+                  <div className="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-75 transition duration-300 group-hover:h-[2px] group-hover:opacity-100" />
                   <div className="pointer-events-none absolute -right-8 -top-10 h-20 w-20 rounded-full bg-fei-sky/10 blur-2xl transition duration-300 group-hover:bg-fei-sky/18" />
 
                   <div className="relative">
                     <div>
-                      <p className="text-[2rem] font-black leading-none tracking-tight text-fei-bg sm:text-[2.25rem]">
+                      <p className="text-[2rem] font-black leading-none tracking-tight text-fei-bg transition duration-300 group-hover:text-fei-sky sm:text-[2.25rem]">
                         {stat.value}
                       </p>
-                      <p className="mt-3 text-xs font-bold uppercase tracking-[0.18em] text-fei-bg/50">
+                      <p className="mt-3 text-xs font-bold uppercase tracking-[0.18em] text-fei-bg/50 transition duration-300 group-hover:text-fei-bg/70">
                         {stat.label}
                       </p>
                     </div>
