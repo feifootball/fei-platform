@@ -646,14 +646,14 @@ export default function Home() {
                 key={plan.name}
                 className={`group relative flex min-h-[365px] flex-col overflow-hidden rounded-[1.55rem] border p-5 transition duration-300 hover:-translate-y-1 ${
                   plan.featured
-                    ? "border-fei-yellow/65 bg-fei-yellow/[0.08] shadow-[0_14px_40px_rgba(250,204,21,0.10)] hover:shadow-[0_22px_55px_rgba(250,204,21,0.16)]"
+                    ? "border-fei-sky/28 bg-[#FAFBFC] shadow-[0_14px_40px_rgba(7,17,31,0.055)] hover:border-fei-sky/40 hover:bg-white hover:shadow-[0_22px_55px_rgba(7,17,31,0.075)]"
                     : "border-fei-bg/[0.06] bg-[#FAFBFC] hover:border-fei-sky/28 hover:bg-white hover:shadow-[0_18px_45px_rgba(7,17,31,0.055)]"
                 }`}
               >
                 <div className="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-75 transition duration-300 group-hover:h-[2px] group-hover:opacity-100" />
 
                 {plan.badge && (
-                  <span className="absolute right-5 top-5 rounded-full bg-fei-bg px-3.5 py-1 text-[9px] font-black uppercase tracking-[0.2em] text-fei-yellow">
+                  <span className="absolute right-5 top-5 rounded-full bg-fei-bg px-3.5 py-1 text-[9px] font-black uppercase tracking-[0.2em] text-fei-sky">
                     {plan.badge}
                   </span>
                 )}
@@ -701,42 +701,42 @@ export default function Home() {
       </section>
 
       <footer className="bg-white px-5 pb-5 sm:px-8">
-        <div className="mx-auto max-w-7xl rounded-t-[1.75rem] border border-fei-bg/10 bg-fei-bg px-6 py-7 text-white shadow-[0_-12px_40px_rgba(7,17,31,0.07)] sm:px-8">
+        <div className="mx-auto max-w-[1600px] rounded-t-[2rem] border border-fei-bg/10 bg-white px-6 py-7 shadow-[0_-14px_45px_rgba(7,17,31,0.045)] sm:px-8">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div className="flex items-center gap-4">
               <img
                 src="/fei-logo-navbar-vector.svg"
                 alt="FEI"
-                className="h-10 w-auto brightness-0 invert"
+                className="h-10 w-auto"
               />
 
-              <p className="hidden max-w-xs text-sm leading-6 text-white/48 sm:block">
+              <p className="hidden max-w-xs text-sm leading-6 text-fei-bg/48 sm:block">
                 {lang === "en"
                   ? "Communication intelligence for global football."
                   : "Inteligencia comunicativa para el fútbol global."}
               </p>
             </div>
 
-            <nav className="flex flex-wrap items-center gap-x-5 gap-y-3 text-sm font-medium text-white/52">
-              <a href="/terms" className="transition hover:text-fei-yellow">
+            <nav className="flex flex-wrap items-center gap-x-5 gap-y-3 text-sm font-medium text-fei-bg/54">
+              <a href="/terms" className="transition hover:text-fei-bg">
                 {lang === "en" ? "Terms of Use" : "Términos de uso"}
               </a>
 
-              <span className="hidden h-4 w-px bg-white/14 sm:block" />
+              <span className="hidden h-4 w-px bg-fei-bg/12 sm:block" />
 
-              <a href="/privacy" className="transition hover:text-fei-yellow">
+              <a href="/privacy" className="transition hover:text-fei-bg">
                 {lang === "en" ? "Privacy Policy" : "Política de privacidad"}
               </a>
 
-              <span className="hidden h-4 w-px bg-white/14 sm:block" />
+              <span className="hidden h-4 w-px bg-fei-bg/12 sm:block" />
 
-              <a href="/faqs" className="transition hover:text-fei-yellow">
+              <a href="/faqs" className="transition hover:text-fei-bg">
                 FAQs
               </a>
 
-              <span className="hidden h-4 w-px bg-white/14 sm:block" />
+              <span className="hidden h-4 w-px bg-fei-bg/12 sm:block" />
 
-              <a href="/contact" className="transition hover:text-fei-yellow">
+              <a href="/contact" className="transition hover:text-fei-bg">
                 {lang === "en" ? "Contact" : "Contacto"}
               </a>
             </nav>
@@ -747,7 +747,7 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="LinkedIn"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/12 text-sm font-black text-fei-yellow transition hover:-translate-y-0.5 hover:border-fei-yellow/50 hover:bg-fei-yellow hover:text-fei-bg"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-fei-bg/10 text-sm font-black text-fei-bg transition hover:-translate-y-0.5 hover:border-fei-sky/35 hover:bg-fei-sky/10"
               >
                 in
               </a>
@@ -757,14 +757,14 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Instagram"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/12 text-lg font-black text-fei-yellow transition hover:-translate-y-0.5 hover:border-fei-yellow/50 hover:bg-fei-yellow hover:text-fei-bg"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-fei-bg/10 text-lg font-black text-fei-bg transition hover:-translate-y-0.5 hover:border-fei-yellow/45 hover:bg-fei-yellow/12"
               >
                 ◎
               </a>
             </div>
           </div>
 
-          <div className="mt-6 border-t border-white/10 pt-5 text-center text-sm text-white/42">
+          <div className="mt-6 border-t border-fei-bg/10 pt-5 text-center text-sm text-fei-bg/42">
             © 2026 Football English Intelligence. {lang === "en" ? "All rights reserved." : "Todos los derechos reservados."}
           </div>
         </div>
