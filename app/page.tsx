@@ -647,7 +647,7 @@ export default function Home() {
                 className={`group relative flex min-h-[365px] flex-col overflow-hidden rounded-[1.55rem] border p-5 transition duration-300 ${
                   plan.featured
                     ? "border-fei-sky/60 bg-gradient-to-br from-fei-sky/[0.18] via-white to-fei-yellow/[0.14] shadow-[0_18px_50px_rgba(125,211,252,0.18)] hover:-translate-y-2 hover:scale-[1.025] hover:border-fei-yellow/70 hover:shadow-[0_30px_75px_rgba(125,211,252,0.28)]"
-                    : "border-fei-bg/12 bg-[#FAFBFC] hover:-translate-y-2 hover:scale-[1.015] hover:border-fei-sky/45 hover:bg-white hover:shadow-[0_26px_65px_rgba(7,17,31,0.10)]"
+                    : "border-fei-bg/[0.055] bg-[#FAFBFC] hover:-translate-y-2 hover:scale-[1.015] hover:border-fei-sky/24 hover:bg-white hover:shadow-[0_26px_65px_rgba(7,17,31,0.08)]"
                 }`}
               >
                 <div className="absolute inset-x-5 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-90 transition duration-300 group-hover:inset-x-4 group-hover:h-[4px] group-hover:opacity-100" />
