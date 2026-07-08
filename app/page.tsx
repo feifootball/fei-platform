@@ -220,34 +220,32 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="how-it-works" className="bg-white px-5 py-12 sm:px-8 sm:py-16">
+      <section id="how-it-works" className="bg-white px-5 py-14 sm:px-8 sm:py-18">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 lg:grid-cols-[0.78fr_1.5fr] lg:items-start">
-            <div className="lg:-mt-4">
-              <p className="text-sm font-black uppercase tracking-[0.32em] text-fei-bg/55">
-                {lang === "en" ? "THE FEI METHOD" : "EL MÉTODO FEI"}
-              </p>
+          <div className="lg:-mt-5">
+            <p className="text-sm font-black uppercase tracking-[0.32em] text-fei-bg/55">
+              {lang === "en" ? "THE FEI METHOD" : "EL MÉTODO FEI"}
+            </p>
 
-              <h2 className="mt-6 text-4xl font-black tracking-tight text-fei-bg sm:text-5xl lg:text-6xl">
-                {lang === "en" ? (
-                  <>
-                    How <span className="text-fei-sky">FEI</span> works
-                  </>
-                ) : (
-                  <>
-                    Cómo funciona <span className="text-fei-sky">FEI</span>
-                  </>
-                )}
-              </h2>
+            <h2 className="mt-6 text-4xl font-black tracking-tight text-fei-bg sm:text-5xl lg:text-6xl">
+              {lang === "en" ? (
+                <>
+                  How <span className="text-fei-sky">FEI</span> works
+                </>
+              ) : (
+                <>
+                  Cómo funciona <span className="text-fei-sky">FEI</span>
+                </>
+              )}
+            </h2>
 
-              <p className="mt-6 max-w-md text-xl font-semibold leading-8 text-fei-bg/72 sm:text-2xl sm:leading-9">
-                {lang === "en"
-                  ? "Train the English football actually uses."
-                  : "Entrena el inglés que el fútbol realmente usa."}
-              </p>
-            </div>
+            <p className="mt-8 max-w-2xl text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base sm:leading-8">
+              {lang === "en"
+                ? "Train the English football actually uses."
+                : "Entrena el inglés que el fútbol realmente usa."}
+            </p>
 
-            <div className="rounded-[1.75rem] border border-fei-bg/10 bg-[#F7F8FA] p-4 shadow-[0_18px_50px_rgba(7,17,31,0.045)]">
+            <div className="mt-10 grid gap-3 lg:grid-cols-3">
               {[
                 {
                   number: "01",
@@ -273,30 +271,25 @@ export default function Home() {
                       ? "Train interviews, meetings, feedback, pressure moments, and real football communication tasks."
                       : "Entrena entrevistas, reuniones, feedback, presión competitiva y tareas reales de comunicación en fútbol.",
                 },
-              ].map((step, index) => (
+              ].map((step) => (
                 <div
                   key={step.number}
-                  className={`grid gap-5 rounded-[1.35rem] bg-white px-5 py-5 transition duration-200 hover:bg-white/90 sm:grid-cols-[95px_1fr] ${
-                    index !== 0 ? "mt-3" : ""
-                  }`}
+                  className="rounded-[1.5rem] border border-fei-bg/10 bg-[#F7F8FA] p-5"
                 >
-                  <div>
-                    <p className="text-4xl font-black leading-none tracking-tight text-fei-bg/90">
+                  <div className="flex items-center gap-4">
+                    <span className="text-sm font-black uppercase tracking-[0.22em] text-fei-sky">
                       {step.number}
-                    </p>
+                    </span>
+                    <div className="h-px flex-1 bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent" />
                   </div>
 
-                  <div>
-                    <div className="mb-4 h-px w-full bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-70" />
+                  <h3 className="mt-5 text-2xl font-black tracking-tight text-fei-bg">
+                    {step.title}
+                  </h3>
 
-                    <h3 className="text-2xl font-black tracking-tight text-fei-bg">
-                      {step.title}
-                    </h3>
-
-                    <p className="mt-3 max-w-2xl text-base leading-7 text-fei-bg/62">
-                      {step.description}
-                    </p>
-                  </div>
+                  <p className="mt-3 text-[15px] font-normal leading-7 text-fei-bg/62">
+                    {step.description}
+                  </p>
                 </div>
               ))}
             </div>
