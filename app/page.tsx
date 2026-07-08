@@ -1,5 +1,4 @@
 'use client';
-import Link from "next/link";
 
 import { useState, useEffect } from "react";
 import { Navbar } from "@/components/Navbar";
@@ -349,12 +348,12 @@ export default function Home() {
 
       <section id="roles" className="scroll-mt-28 bg-white px-5 py-10 sm:px-8 sm:py-12">
         <div className="mx-auto max-w-7xl">
-          <div className="max-w-3xl">
+          <div className="max-w-6xl">
             <p className="text-sm font-black uppercase tracking-[0.32em] text-fei-bg/55">
               {lang === "en" ? "ROLE INTELLIGENCE" : "INTELIGENCIA POR ROL"}
             </p>
 
-            <h2 className="mt-6 text-4xl font-black tracking-tight text-fei-bg sm:text-5xl lg:text-6xl">
+            <h2 className="mt-6 text-4xl font-black tracking-tight text-fei-bg sm:text-5xl lg:whitespace-nowrap lg:text-6xl">
               {lang === "en" ? (
                 <>
                   Built for every <span className="text-fei-sky">role</span> in the club
@@ -373,7 +372,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mt-9 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
                 number: "01",
@@ -436,7 +435,7 @@ export default function Home() {
                 role: "Physiotherapist",
                 description: lang === "en"
                   ? "Injury updates, rehab progress, and return-to-play."
-                  : "Lesiones, progreso de rehabilitación y retorno al juego.",
+                  : "Lesiones, rehabilitación y retorno al juego.",
               },
               {
                 number: "10",
@@ -453,12 +452,12 @@ export default function Home() {
                   : "Planes, hábitos, rutinas y apoyo al rendimiento.",
               },
             ].map((item) => (
-              <Link
+              <a
                 key={item.role}
                 href={`/register?role=${encodeURIComponent(item.role)}`}
-                className="group relative min-h-[118px] overflow-hidden rounded-[1.35rem] border border-fei-bg/10 bg-[#F7F8FA] px-5 py-4 transition duration-300 hover:-translate-y-0.5 hover:border-fei-sky/35 hover:bg-white hover:shadow-[0_18px_45px_rgba(7,17,31,0.07)]"
+                className="group relative min-h-[108px] overflow-hidden rounded-[1.3rem] border border-fei-bg/10 bg-[#F7F8FA] px-5 py-4 transition duration-300 hover:-translate-y-0.5 hover:border-fei-sky/35 hover:bg-white hover:shadow-[0_18px_45px_rgba(7,17,31,0.07)]"
               >
-                <span className="pointer-events-none absolute -right-1 -top-4 text-6xl font-black leading-none text-fei-sky/[0.10] transition duration-300 group-hover:text-fei-yellow/[0.18]">
+                <span className="pointer-events-none absolute -right-1 -top-5 text-6xl font-black leading-none text-fei-sky/[0.10] transition duration-300 group-hover:text-fei-yellow/[0.18]">
                   {item.number}
                 </span>
 
@@ -469,22 +468,22 @@ export default function Home() {
                     {item.role}
                   </h3>
 
-                  <p className="mt-2 max-w-[18rem] text-sm leading-6 text-fei-bg/58">
+                  <p className="mt-2 max-w-[18rem] text-sm leading-5 text-fei-bg/58">
                     {item.description}
                   </p>
 
-                  <p className="mt-3 text-xs font-bold uppercase tracking-[0.14em] text-fei-sky opacity-0 transition duration-300 group-hover:opacity-100">
+                  <p className="mt-2 text-xs font-bold uppercase tracking-[0.14em] text-fei-sky opacity-0 transition duration-300 group-hover:opacity-100">
                     Register now →
                   </p>
                 </div>
-              </Link>
+              </a>
             ))}
 
-            <Link
+            <a
               href="/register"
-              className="group relative min-h-[118px] overflow-hidden rounded-[1.35rem] border border-fei-yellow/35 bg-fei-yellow/[0.08] px-5 py-4 transition duration-300 hover:-translate-y-0.5 hover:bg-fei-yellow/15 hover:shadow-[0_18px_45px_rgba(250,204,21,0.12)]"
+              className="group relative min-h-[108px] overflow-hidden rounded-[1.3rem] border border-fei-yellow/35 bg-fei-yellow/[0.08] px-5 py-4 transition duration-300 hover:-translate-y-0.5 hover:bg-fei-yellow/15 hover:shadow-[0_18px_45px_rgba(250,204,21,0.12)]"
             >
-              <span className="pointer-events-none absolute -right-1 -top-4 text-6xl font-black leading-none text-fei-yellow/[0.18]">
+              <span className="pointer-events-none absolute -right-1 -top-5 text-6xl font-black leading-none text-fei-yellow/[0.18]">
                 +
               </span>
 
@@ -495,17 +494,17 @@ export default function Home() {
                   {lang === "en" ? "Can't find your role?" : "¿No encuentras tu rol?"}
                 </h3>
 
-                <p className="mt-2 max-w-[18rem] text-sm leading-6 text-fei-bg/58">
+                <p className="mt-2 max-w-[18rem] text-sm leading-5 text-fei-bg/58">
                   {lang === "en"
                     ? "Start with the closest path and personalize from there."
                     : "Empieza con la ruta más cercana y personaliza desde ahí."}
                 </p>
 
-                <p className="mt-3 text-xs font-bold uppercase tracking-[0.14em] text-fei-bg opacity-0 transition duration-300 group-hover:opacity-100">
+                <p className="mt-2 text-xs font-bold uppercase tracking-[0.14em] text-fei-bg opacity-0 transition duration-300 group-hover:opacity-100">
                   Register now →
                 </p>
               </div>
-            </Link>
+            </a>
           </div>
         </div>
       </section>
