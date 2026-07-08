@@ -220,103 +220,89 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="how-it-works" className="bg-white px-5 py-14 sm:px-8 sm:py-20">
+      <section id="how-it-works" className="bg-white px-5 py-14 sm:px-8 sm:py-18">
         <div className="mx-auto max-w-7xl">
-          <div className="lg:-mt-5">
-            <p className="text-sm font-black uppercase tracking-[0.32em] text-fei-bg/55">
-              {lang === "en" ? "THE FEI METHOD" : "EL MÉTODO FEI"}
-            </p>
+          <div className="rounded-[2rem] border border-fei-bg/10 bg-[#F7F8FA] p-6 shadow-[0_18px_55px_rgba(7,17,31,0.05)] sm:p-8 lg:p-10">
+            <div className="max-w-3xl">
+              <p className="text-sm font-black uppercase tracking-[0.32em] text-fei-bg/55">
+                {lang === "en" ? "THE FEI METHOD" : "EL MÉTODO FEI"}
+              </p>
 
-            <h2 className="mt-6 text-4xl font-black tracking-tight text-fei-bg sm:text-5xl lg:text-6xl">
-              {lang === "en" ? (
+              <h2 className="mt-6 text-4xl font-black tracking-tight text-fei-bg sm:text-5xl lg:text-6xl">
+                {lang === "en" ? (
+                  <>
+                    How <span className="text-fei-sky">FEI</span> works
+                  </>
+                ) : (
+                  <>
+                    Cómo funciona <span className="text-fei-sky">FEI</span>
+                  </>
+                )}
+              </h2>
+
+              <p className="mt-8 max-w-2xl text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base sm:leading-8">
+                {lang === "en"
+                  ? "Train the English football actually uses."
+                  : "Entrena el inglés que el fútbol realmente usa."}
+              </p>
+            </div>
+
+            <div className="mt-10 grid gap-4 lg:grid-cols-[1fr_auto_1fr_auto_1fr] lg:items-stretch">
+              {[
+                {
+                  number: "01",
+                  title: lang === "en" ? "Diagnose" : "Diagnostica",
+                  description:
+                    lang === "en"
+                      ? "Identify your level, strengths, and communication needs through a short role-based assessment."
+                      : "Identifica tu nivel, fortalezas y necesidades de comunicación con una evaluación breve por rol.",
+                },
+                {
+                  number: "02",
+                  title: lang === "en" ? "Personalize" : "Personaliza",
+                  description:
+                    lang === "en"
+                      ? "Follow a pathway shaped by your objectives, football context, and real communication situations."
+                      : "Sigue una ruta ajustada a tus objetivos, contexto futbolístico y situaciones reales de comunicación.",
+                },
+                {
+                  number: "03",
+                  title: lang === "en" ? "Practice" : "Practica",
+                  description:
+                    lang === "en"
+                      ? "Train interviews, meetings, feedback, pressure moments, and real football communication tasks."
+                      : "Entrena entrevistas, reuniones, feedback, presión competitiva y tareas reales de comunicación en fútbol.",
+                },
+              ].map((step, index) => (
                 <>
-                  How <span className="text-fei-sky">FEI</span> works
-                </>
-              ) : (
-                <>
-                  Cómo funciona <span className="text-fei-sky">FEI</span>
-                </>
-              )}
-            </h2>
-
-            <p className="mt-8 max-w-2xl text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base sm:leading-8">
-              {lang === "en"
-                ? "Train the English football actually uses."
-                : "Entrena el inglés que el fútbol realmente usa."}
-            </p>
-
-            <div className="mt-12 grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
-              <div className="hidden lg:block">
-                <div className="sticky top-32 rounded-[1.75rem] border border-fei-bg/10 bg-[#F7F8FA] p-6">
-                  <p className="text-xs font-black uppercase tracking-[0.24em] text-fei-bg/42">
-                    {lang === "en" ? "Scroll sequence" : "Secuencia"}
-                  </p>
-
-                  <p className="mt-4 text-[15px] leading-7 text-fei-bg/62">
-                    {lang === "en"
-                      ? "Move through the method step by step, from diagnosis to real practice."
-                      : "Avanza por el método paso a paso, desde el diagnóstico hasta la práctica real."}
-                  </p>
-                </div>
-              </div>
-
-              <div className="relative lg:min-h-[560px]">
-                {[
-                  {
-                    number: "01",
-                    title: lang === "en" ? "Diagnose" : "Diagnostica",
-                    description:
-                      lang === "en"
-                        ? "Short role-based assessment to identify your level, strengths, and communication needs."
-                        : "Evaluación breve por rol para identificar tu nivel, fortalezas y necesidades de comunicación.",
-                    top: "lg:top-28",
-                    margin: "",
-                  },
-                  {
-                    number: "02",
-                    title: lang === "en" ? "Personalize" : "Personaliza",
-                    description:
-                      lang === "en"
-                        ? "A pathway shaped by your objectives, football context, and real communication situations."
-                        : "Una ruta ajustada a tus objetivos, contexto futbolístico y situaciones reales de comunicación.",
-                    top: "lg:top-[13.5rem]",
-                    margin: "lg:mt-24",
-                  },
-                  {
-                    number: "03",
-                    title: lang === "en" ? "Practice" : "Practica",
-                    description:
-                      lang === "en"
-                        ? "Train interviews, meetings, feedback, pressure moments, and real football communication tasks."
-                        : "Entrena entrevistas, reuniones, feedback, presión competitiva y tareas reales de comunicación en fútbol.",
-                    top: "lg:top-[19rem]",
-                    margin: "lg:mt-24",
-                  },
-                ].map((step) => (
                   <div
                     key={step.number}
-                    className={`group relative max-h-[calc(100vh-9rem)] overflow-hidden rounded-[1.45rem] border border-fei-bg/10 bg-white p-5 shadow-[0_14px_42px_rgba(7,17,31,0.055)] transition-colors duration-300 lg:sticky ${step.top} ${step.margin}`}
+                    className="relative rounded-[1.45rem] border border-fei-bg/10 bg-white p-5"
                   >
-                    <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-80" />
+                    <div className="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-80" />
 
-                    <div className="grid gap-5 sm:grid-cols-[88px_1fr] sm:items-start">
-                      <p className="text-4xl font-black leading-none tracking-tight text-fei-bg">
-                        {step.number}
-                      </p>
+                    <p className="text-sm font-black uppercase tracking-[0.22em] text-fei-sky">
+                      {step.number}
+                    </p>
 
-                      <div>
-                        <h3 className="text-2xl font-black tracking-tight text-fei-bg">
-                          {step.title}
-                        </h3>
+                    <h3 className="mt-5 text-2xl font-black tracking-tight text-fei-bg">
+                      {step.title}
+                    </h3>
 
-                        <p className="mt-3 max-w-2xl text-[15px] font-normal leading-7 text-fei-bg/62">
-                          {step.description}
-                        </p>
+                    <p className="mt-3 text-[15px] font-normal leading-7 text-fei-bg/62">
+                      {step.description}
+                    </p>
+                  </div>
+
+                  {index < 2 && (
+                    <div className="hidden items-center justify-center lg:flex" aria-hidden="true">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full border border-fei-bg/10 bg-white text-fei-bg/45">
+                        →
                       </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  )}
+                </>
+              ))}
             </div>
           </div>
         </div>
