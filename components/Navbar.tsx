@@ -155,10 +155,10 @@ export function Navbar({
       }`}
     >
       <nav
-      className={`mx-auto flex h-[68px] max-w-[1320px] items-center justify-between rounded-full border px-5 shadow-[0_18px_50px_rgba(7,17,31,0.10)] backdrop-blur-xl transition-all duration-300 sm:px-6 ${
+      className={`mx-auto flex h-[68px] max-w-[1320px] items-center justify-between rounded-full border px-5 shadow-[0_10px_30px_rgba(7,17,31,0.06)] backdrop-blur-xl transition-all duration-300 sm:px-6 ${
         isLight
-          ? "border-fei-bg/10 bg-white/82"
-          : "border-white/10 bg-fei-bg/72"
+          ? "border-fei-bg/8 bg-white/38"
+          : "border-white/10 bg-fei-bg/35"
       }`}
     >
         <a href="/" className="flex items-center">
@@ -167,7 +167,7 @@ export function Navbar({
 
         <div className="hidden items-center gap-6 md:flex">
           {!hideSectionLinks && (
-            <div className={`flex items-center gap-1 rounded-full border p-1 ${isLight ? "border-fei-bg/10 bg-fei-bg/[0.025]" : "border-white/10 bg-white/[0.04]"}`}>
+            <div className={`flex items-center gap-1 rounded-full border p-1 ${isLight ? "border-fei-bg/8 bg-white/22" : "border-white/10 bg-white/[0.03]"}`}>
               {links.map((link) => (
                 <a
                   key={link.label}
@@ -186,8 +186,8 @@ export function Navbar({
               onClick={toggleLang}
               className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[14px] font-medium tracking-[-0.01em] transition ${
                 isLight
-                  ? "border-fei-bg/10 bg-white/45 text-fei-bg/65 hover:border-fei-bg/22 hover:text-fei-bg"
-                  : "border-white/12 bg-white/[0.04] text-fei-text/70 hover:border-white/24 hover:text-fei-text"
+                  ? "border-fei-bg/8 bg-white/28 text-fei-bg/65 hover:border-fei-bg/18 hover:text-fei-bg"
+                  : "border-white/12 bg-white/[0.03] text-fei-text/70 hover:border-white/20 hover:text-fei-text"
               }`}
               aria-label="Change language"
             >
