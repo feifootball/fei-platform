@@ -155,6 +155,77 @@ export default function Home() {
           }}
         />
 
+        <div className="pointer-events-none absolute right-[-7rem] top-[8rem] hidden h-[620px] w-[620px] opacity-[0.13] lg:block">
+          <svg
+            viewBox="0 0 620 620"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-full w-full"
+            aria-hidden="true"
+          >
+            <defs>
+              <linearGradient id="footballPatternGradient" x1="110" y1="80" x2="520" y2="540" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#7DD3FC" stopOpacity="0.75" />
+                <stop offset="0.45" stopColor="#07111F" stopOpacity="0.28" />
+                <stop offset="1" stopColor="#FACC15" stopOpacity="0.45" />
+              </linearGradient>
+            </defs>
+
+            <path
+              d="M310 70L414 130L414 250L310 310L206 250L206 130L310 70Z"
+              stroke="url(#footballPatternGradient)"
+              strokeWidth="1.2"
+            />
+            <path
+              d="M310 310L414 250L518 310L518 430L414 490L310 430V310Z"
+              stroke="url(#footballPatternGradient)"
+              strokeWidth="1.2"
+            />
+            <path
+              d="M310 310V430L206 490L102 430V310L206 250L310 310Z"
+              stroke="url(#footballPatternGradient)"
+              strokeWidth="1.2"
+            />
+            <path
+              d="M414 130L518 190L518 310L414 250V130Z"
+              stroke="url(#footballPatternGradient)"
+              strokeWidth="1.2"
+            />
+            <path
+              d="M206 130V250L102 310L102 190L206 130Z"
+              stroke="url(#footballPatternGradient)"
+              strokeWidth="1.2"
+            />
+            <path
+              d="M206 490L310 430L414 490L414 610L310 670L206 610V490Z"
+              stroke="url(#footballPatternGradient)"
+              strokeWidth="1.2"
+            />
+
+            <path
+              d="M310 70C443 92 548 197 570 330"
+              stroke="url(#footballPatternGradient)"
+              strokeWidth="1"
+              strokeLinecap="round"
+              opacity="0.6"
+            />
+            <path
+              d="M90 330C112 197 177 112 310 70"
+              stroke="url(#footballPatternGradient)"
+              strokeWidth="1"
+              strokeLinecap="round"
+              opacity="0.45"
+            />
+            <path
+              d="M102 430C156 534 238 590 360 594"
+              stroke="url(#footballPatternGradient)"
+              strokeWidth="1"
+              strokeLinecap="round"
+              opacity="0.4"
+            />
+          </svg>
+        </div>
+
 
 
         <div className="mx-auto w-full max-w-[1500px]">
