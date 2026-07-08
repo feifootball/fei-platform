@@ -187,14 +187,14 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-12 max-w-5xl rounded-[1.75rem] border border-fei-bg/10 bg-white/78 p-3 shadow-[0_18px_55px_rgba(7,17,31,0.07)] backdrop-blur">
+          <div className="mt-12 max-w-5xl rounded-[1.75rem] border border-fei-bg/10 bg-white/80 p-3 shadow-[0_18px_55px_rgba(7,17,31,0.07)] backdrop-blur">
             <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
               {t.stats.map((stat, index) => (
                 <div
                   key={stat.label}
                   className="group relative overflow-hidden rounded-[1.25rem] px-5 py-4 transition duration-300 hover:bg-[#F7F8FA]"
                 >
-                  <div className="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-70" />
+                  <div className="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-75" />
                   <div className="pointer-events-none absolute -right-8 -top-10 h-20 w-20 rounded-full bg-fei-sky/10 blur-2xl transition duration-300 group-hover:bg-fei-sky/18" />
 
                   <div className="relative flex items-end justify-between gap-4">
@@ -214,10 +214,6 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
