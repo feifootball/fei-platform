@@ -151,7 +151,11 @@ export default function Home() {
           className="pointer-events-none absolute inset-y-0 right-0 hidden w-[58%] opacity-90 blur-3xl lg:block"
           style={{
             background:
-              'radial-gradient(ellipse at 74% 34%, rgba(125, 211, 252, 0.32), transparent 64%), radial-gradient(ellipse at 54% 70%, rgba(250, 204, 21, 0.18), transparent 68%)',
+              'radial-gradient(ellipse at 74% 34%, rgba(125, 211, 252, 0.32), transparent 64%), radial-gradient(ellipse at 54% 62%, rgba(250, 204, 21, 0.14), transparent 72%)',
+            WebkitMaskImage:
+              'linear-gradient(to bottom, black 0%, black 68%, rgba(0,0,0,0.45) 84%, transparent 100%)',
+            maskImage:
+              'linear-gradient(to bottom, black 0%, black 68%, rgba(0,0,0,0.45) 84%, transparent 100%)',
           }}
         />
 
