@@ -251,27 +251,27 @@ export default function Home() {
               {[
                 {
                   number: "01",
-                  title: lang === "en" ? "Diagnose" : "Diagnostica",
+                  title: lang === "en" ? "Diagnostic" : "Diagnóstico",
                   description:
                     lang === "en"
-                      ? "Identify your level, strengths, and communication needs through a short role-based assessment."
-                      : "Identifica tu nivel, fortalezas y necesidades de comunicación con una evaluación breve por rol.",
+                      ? "Understand your current level and role-specific communication needs."
+                      : "Comprende tu nivel actual y tus necesidades de comunicación específicas por rol.",
                 },
                 {
                   number: "02",
-                  title: lang === "en" ? "Personalize" : "Personaliza",
+                  title: lang === "en" ? "Personalization" : "Personalización",
                   description:
                     lang === "en"
-                      ? "Follow a pathway shaped by your objectives, football context, and real communication situations."
-                      : "Sigue una ruta ajustada a tus objetivos, contexto futbolístico y situaciones reales de comunicación.",
+                      ? "Follow a training path shaped by your role, objectives, and football context."
+                      : "Sigue una ruta de entrenamiento ajustada a tu rol, objetivos y contexto futbolístico.",
                 },
                 {
                   number: "03",
-                  title: lang === "en" ? "Practice" : "Practica",
+                  title: lang === "en" ? "Practice" : "Práctica",
                   description:
                     lang === "en"
-                      ? "Train interviews, meetings, feedback, pressure moments, and real football communication tasks."
-                      : "Entrena entrevistas, reuniones, feedback, presión competitiva y tareas reales de comunicación en fútbol.",
+                      ? "Build confidence through interviews, meetings, feedback, and pressure moments."
+                      : "Gana confianza con entrevistas, reuniones, feedback y momentos de presión.",
                 },
               ].map((step, index) => (
                 <>
