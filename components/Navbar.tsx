@@ -138,26 +138,36 @@ export function Navbar({
   const links = navLinks[lang];
 
   const navLinkClass = (sectionId: string) =>
-    `relative px-1 py-2 text-base font-normal transition duration-300 after:absolute after:bottom-0 after:left-0 after:h-px after:bg-fei-yellow after:transition-all after:duration-300 ${
+    `rounded-full px-4 py-2 text-[14px] font-medium tracking-[-0.01em] transition duration-300 ${
       activeSection === sectionId
         ? isLight
-          ? "text-fei-bg after:w-full"
-          : "text-fei-text after:w-full"
+          ? "bg-fei-bg text-white"
+          : "bg-white text-fei-bg"
         : isLight
-          ? "text-fei-bg/58 after:w-0 hover:text-fei-bg hover:after:w-full"
-          : "text-fei-text/58 after:w-0 hover:text-fei-text hover:after:w-full"
+          ? "text-fei-bg/58 hover:bg-fei-bg/[0.055] hover:text-fei-bg"
+          : "text-fei-text/58 hover:bg-white/[0.08] hover:text-fei-text"
     }`;
 
   return (
-    <header className={`sticky top-0 z-50 border-b backdrop-blur-xl ${isLight ? "border-fei-bg/10 bg-white/95" : "border-fei-text/10 bg-fei-bg/90"}`}>
-      <nav className="mx-auto flex w-full max-w-[1600px] items-center justify-between px-4 py-3.5 sm:px-6 lg:px-8 2xl:px-10">
+    <header
+      className={`fixed inset-x-0 top-4 z-50 px-4 transition-all duration-300 sm:px-6 ${
+        isLight ? "text-fei-bg" : "text-fei-text"
+      }`}
+    >
+      <nav
+      className={`mx-auto flex h-[68px] max-w-[1320px] items-center justify-between rounded-full border px-5 shadow-[0_18px_50px_rgba(7,17,31,0.10)] backdrop-blur-xl transition-all duration-300 sm:px-6 ${
+        isLight
+          ? "border-fei-bg/10 bg-white/82"
+          : "border-white/10 bg-fei-bg/72"
+      }`}
+    >
         <a href="/" className="flex items-center">
           <img src="/fei-logo-navbar-vector.svg" alt="FEI" className="h-12 w-auto" />
         </a>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-6 md:flex">
           {!hideSectionLinks && (
-            <div className="flex items-center gap-8">
+            <div className={`flex items-center gap-1 rounded-full border p-1 ${isLight ? "border-fei-bg/10 bg-fei-bg/[0.025]" : "border-white/10 bg-white/[0.04]"}`}>
               {links.map((link) => (
                 <a
                   key={link.label}
@@ -174,10 +184,10 @@ export function Navbar({
           <div className={`${hideSectionLinks ? "" : "ml-6"} flex items-center gap-3`}>
             <button
               onClick={toggleLang}
-              className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-base font-normal transition ${
+              className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[14px] font-medium tracking-[-0.01em] transition ${
                 isLight
-                  ? "border-fei-bg/15 text-fei-bg/62 hover:border-fei-bg/30 hover:text-fei-bg"
-                  : "border-fei-text/20 text-fei-text/62 hover:border-fei-text/40 hover:text-fei-text"
+                  ? "border-fei-bg/10 bg-white/45 text-fei-bg/65 hover:border-fei-bg/22 hover:text-fei-bg"
+                  : "border-white/12 bg-white/[0.04] text-fei-text/70 hover:border-white/24 hover:text-fei-text"
               }`}
               aria-label="Change language"
             >
@@ -187,7 +197,7 @@ export function Navbar({
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="1.8"
+                strokeWidth="1.7"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               >
