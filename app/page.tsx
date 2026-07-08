@@ -220,10 +220,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="how-it-works" className="bg-white px-5 py-14 sm:px-8 sm:py-18">
+      <section id="how-it-works" className="bg-white px-5 py-12 sm:px-8 sm:py-16">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-10 lg:grid-cols-[0.75fr_1.55fr] lg:items-center">
-            <div>
+          <div className="grid gap-12 lg:grid-cols-[0.78fr_1.5fr] lg:items-start">
+            <div className="lg:-mt-4">
               <p className="text-sm font-black uppercase tracking-[0.32em] text-fei-bg/55">
                 {lang === "en" ? "THE FEI METHOD" : "EL MÉTODO FEI"}
               </p>
@@ -247,31 +247,23 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="rounded-[1.75rem] border border-fei-bg/10 bg-[#F7F8FA] p-4 shadow-[0_18px_50px_rgba(7,17,31,0.045)]">
               {[
                 {
                   number: "01",
                   title: lang === "en" ? "Diagnose" : "Diagnostica",
                   description:
                     lang === "en"
-                      ? "Start with a short role-based assessment that identifies your level, strengths, and communication needs."
-                      : "Empieza con una evaluación breve por rol que identifica tu nivel, fortalezas y necesidades de comunicación.",
-                  tag: lang === "en" ? "Assessment" : "Evaluación",
-                  icon: (
-                    <path d="M10.5 18a7.5 7.5 0 1 1 5.3-2.2L20 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                  ),
+                      ? "Short role-based assessment to identify your level, strengths, and communication needs."
+                      : "Evaluación breve por rol para identificar tu nivel, fortalezas y necesidades de comunicación.",
                 },
                 {
                   number: "02",
                   title: lang === "en" ? "Personalize" : "Personaliza",
                   description:
                     lang === "en"
-                      ? "Get a pathway shaped by your objectives, football context, and the situations you need to handle."
-                      : "Recibe una ruta ajustada a tus objetivos, tu contexto futbolístico y las situaciones que necesitas manejar.",
-                  tag: lang === "en" ? "Pathway" : "Ruta",
-                  icon: (
-                    <path d="M5 7h14M5 12h10M5 17h7M17 15l1.5 1.5L21 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  ),
+                      ? "A pathway shaped by your objectives, football context, and real communication situations."
+                      : "Una ruta ajustada a tus objetivos, contexto futbolístico y situaciones reales de comunicación.",
                 },
                 {
                   number: "03",
@@ -280,41 +272,28 @@ export default function Home() {
                     lang === "en"
                       ? "Train interviews, meetings, feedback, pressure moments, and real football communication tasks."
                       : "Entrena entrevistas, reuniones, feedback, presión competitiva y tareas reales de comunicación en fútbol.",
-                  tag: lang === "en" ? "Real tasks" : "Tareas reales",
-                  icon: (
-                    <path d="M6 15l4 4L20 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-                  ),
                 },
-              ].map((step) => (
+              ].map((step, index) => (
                 <div
                   key={step.number}
-                  className="group relative overflow-hidden rounded-[1.6rem] border border-fei-bg/10 bg-white p-5 shadow-[0_16px_45px_rgba(7,17,31,0.045)] transition duration-300 hover:-translate-y-1 hover:border-fei-sky/35 hover:shadow-[0_22px_60px_rgba(7,17,31,0.08)]"
+                  className={`grid gap-5 rounded-[1.35rem] bg-white px-5 py-5 transition duration-200 hover:bg-white/90 sm:grid-cols-[95px_1fr] ${
+                    index !== 0 ? "mt-3" : ""
+                  }`}
                 >
-                  <div className="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-80 transition duration-300 group-hover:h-[2px]" />
-                  <div className="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full bg-fei-sky/8 blur-2xl transition duration-300 group-hover:bg-fei-sky/16" />
-
-                  <div className="relative flex items-start justify-between gap-4">
-                    <p className="text-5xl font-black leading-none tracking-tight text-fei-bg transition duration-300 group-hover:text-fei-sky">
+                  <div>
+                    <p className="text-4xl font-black leading-none tracking-tight text-fei-bg/90">
                       {step.number}
                     </p>
-
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-fei-yellow text-fei-bg shadow-[0_12px_25px_rgba(250,204,21,0.22)] transition duration-300 group-hover:scale-105">
-                      <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        {step.icon}
-                      </svg>
-                    </div>
                   </div>
 
-                  <div className="relative mt-8">
-                    <span className="rounded-full border border-fei-sky/20 bg-fei-sky/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-fei-bg/58">
-                      {step.tag}
-                    </span>
+                  <div>
+                    <div className="mb-4 h-px w-full bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-70" />
 
-                    <h3 className="mt-4 text-2xl font-black tracking-tight text-fei-bg">
+                    <h3 className="text-2xl font-black tracking-tight text-fei-bg">
                       {step.title}
                     </h3>
 
-                    <p className="mt-4 text-sm leading-7 text-fei-bg/62">
+                    <p className="mt-3 max-w-2xl text-base leading-7 text-fei-bg/62">
                       {step.description}
                     </p>
                   </div>
