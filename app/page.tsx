@@ -148,10 +148,10 @@ export default function Home() {
 
       <section className="relative flex min-h-[calc(100vh-73px)] overflow-hidden bg-white px-6 py-20 text-fei-bg sm:py-24 lg:items-center lg:py-16">
         <div
-          className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/2 opacity-75 blur-3xl lg:block"
+          className="pointer-events-none absolute inset-y-0 right-0 hidden w-[58%] opacity-90 blur-3xl lg:block"
           style={{
             background:
-              'radial-gradient(ellipse at 76% 35%, rgba(125, 211, 252, 0.24), transparent 62%), radial-gradient(ellipse at 54% 68%, rgba(250, 204, 21, 0.15), transparent 66%)',
+              'radial-gradient(ellipse at 74% 34%, rgba(125, 211, 252, 0.32), transparent 64%), radial-gradient(ellipse at 54% 70%, rgba(250, 204, 21, 0.18), transparent 68%)',
           }}
         />
 
@@ -159,16 +159,12 @@ export default function Home() {
 
         <div className="mx-auto w-full max-w-[1500px]">
           <div className="max-w-5xl">
-            <p className="text-xs font-black uppercase tracking-[0.3em] text-fei-bg/55">{t.tagline}</p>
+            <p className="text-sm font-black uppercase tracking-[0.32em] text-fei-bg/55">{t.tagline}</p>
 
             <h1 className="mt-6 text-5xl font-extrabold leading-[1.03] text-fei-bg sm:text-6xl lg:text-7xl xl:text-8xl">
               Football English<br />
-              <span className="relative inline-block">
-                <span className="pointer-events-none absolute inset-x-3 bottom-2 h-5 rounded-full bg-fei-sky/16 blur-xl" />
-                <span className="pointer-events-none absolute inset-x-8 bottom-0 h-3 rounded-full bg-fei-yellow/10 blur-lg" />
-                <span className="relative bg-gradient-to-r from-[#facc15] via-[#bdd58f] to-[#7dd3fc] bg-clip-text font-black text-transparent drop-shadow-[0_8px_18px_rgba(125,211,252,0.20)]">
-                  Intelligence.
-                </span>
+              <span className="bg-gradient-to-r from-[#facc15] via-[#bdd58f] to-[#7dd3fc] bg-clip-text font-black text-transparent">
+                Intelligence.
               </span>
             </h1>
 

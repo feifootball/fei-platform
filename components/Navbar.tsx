@@ -138,14 +138,14 @@ export function Navbar({
   const links = navLinks[lang];
 
   const navLinkClass = (sectionId: string) =>
-    `relative px-1 py-2 text-sm font-semibold transition duration-300 after:absolute after:bottom-0 after:left-0 after:h-px after:bg-fei-yellow after:transition-all after:duration-300 ${
+    `relative px-1 py-2 text-base font-normal transition duration-300 after:absolute after:bottom-0 after:left-0 after:h-px after:bg-fei-yellow after:transition-all after:duration-300 ${
       activeSection === sectionId
         ? isLight
           ? "text-fei-bg after:w-full"
           : "text-fei-text after:w-full"
         : isLight
-          ? "text-fei-bg/55 after:w-0 hover:text-fei-bg hover:after:w-full"
-          : "text-fei-text/55 after:w-0 hover:text-fei-text hover:after:w-full"
+          ? "text-fei-bg/58 after:w-0 hover:text-fei-bg hover:after:w-full"
+          : "text-fei-text/58 after:w-0 hover:text-fei-text hover:after:w-full"
     }`;
 
   return (
@@ -155,9 +155,9 @@ export function Navbar({
           <img src="/fei-logo-navbar-vector.svg" alt="FEI" className="h-12 w-auto" />
         </a>
 
-        <div className="hidden items-center md:flex">
+        <div className="hidden flex-1 items-center justify-between pl-14 md:flex lg:pl-24">
           {!hideSectionLinks && (
-            <div className="flex items-center gap-7">
+            <div className="flex items-center gap-10">
               {links.map((link) => (
                 <a
                   key={link.label}
@@ -174,13 +174,28 @@ export function Navbar({
           <div className={`${hideSectionLinks ? "" : "ml-5"} flex items-center gap-3`}>
             <button
               onClick={toggleLang}
-              className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition ${
+              className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-base font-normal transition ${
                 isLight
-                  ? "border-fei-bg/15 text-fei-bg/60 hover:border-fei-bg/30 hover:text-fei-bg"
-                  : "border-fei-text/20 text-fei-text/60 hover:border-fei-text/40 hover:text-fei-text"
+                  ? "border-fei-bg/15 text-fei-bg/62 hover:border-fei-bg/30 hover:text-fei-bg"
+                  : "border-fei-text/20 text-fei-text/62 hover:border-fei-text/40 hover:text-fei-text"
               }`}
               aria-label="Change language"
             >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-4 w-4 text-fei-sky"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <circle cx="12" cy="12" r="9" />
+                <path d="M3 12h18" />
+                <path d="M12 3c2.2 2.4 3.3 5.4 3.3 9S14.2 18.6 12 21" />
+                <path d="M12 3c-2.2 2.4-3.3 5.4-3.3 9S9.8 18.6 12 21" />
+              </svg>
               {lang === "en" ? "ES" : "EN"}
             </button>
 
@@ -207,7 +222,7 @@ export function Navbar({
         <div className="flex items-center gap-2 md:hidden">
           <button
             onClick={toggleLang}
-            className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition ${isLight ? "border-fei-bg/20 text-fei-bg/60 hover:text-fei-bg" : "border-fei-text/20 text-fei-text/60 hover:text-fei-text"}`}
+            className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-normal transition ${isLight ? "border-fei-bg/20 text-fei-bg/65 hover:text-fei-bg" : "border-fei-text/20 text-fei-text/65 hover:text-fei-text"}`}
             aria-label="Change language"
           >
             <svg
