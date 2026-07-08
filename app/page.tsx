@@ -543,18 +543,6 @@ export default function Home() {
                       : "Conoce cómo FEI puede fortalecer la comunicación de tu club con entrenamiento diseñado para roles reales del fútbol."}
                   </p>
 
-                  <div className="mt-8 rounded-[1.35rem] border border-white/10 bg-white/[0.045] p-5">
-                    <p className="text-sm font-bold uppercase tracking-[0.18em] text-white/42">
-                      {lang === "en" ? "Best for" : "Ideal para"}
-                    </p>
-
-                    <p className="mt-3 text-xl font-black tracking-tight text-white">
-                      {lang === "en"
-                        ? "Teams that need consistent English communication across departments."
-                        : "Equipos que necesitan comunicación en inglés consistente entre áreas."}
-                    </p>
-                  </div>
-
                   <a
                     href="/contact"
                     className="mt-8 inline-flex w-full items-center justify-center rounded-full border border-fei-yellow/60 px-7 py-3 text-sm font-bold text-fei-yellow transition duration-300 hover:-translate-y-0.5 hover:bg-fei-yellow hover:text-fei-bg"
