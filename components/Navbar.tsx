@@ -138,14 +138,14 @@ export function Navbar({
   const links = navLinks[lang];
 
   const navLinkClass = (sectionId: string) =>
-    `inline-flex rounded-full px-4 py-2 text-sm font-medium transition duration-300 ${
+    `relative px-1 py-2 text-sm font-semibold transition duration-300 after:absolute after:bottom-0 after:left-0 after:h-px after:bg-fei-yellow after:transition-all after:duration-300 ${
       activeSection === sectionId
         ? isLight
-          ? "bg-fei-bg text-white shadow-sm"
-          : "bg-white/[0.06] text-fei-text shadow-[0_0_14px_rgba(255,255,255,0.055)]"
+          ? "text-fei-bg after:w-full"
+          : "text-fei-text after:w-full"
         : isLight
-          ? "text-fei-bg/55 hover:bg-fei-bg/[0.055] hover:text-fei-bg"
-          : "text-fei-text/55 hover:bg-white/[0.03] hover:text-fei-text/82"
+          ? "text-fei-bg/55 after:w-0 hover:text-fei-bg hover:after:w-full"
+          : "text-fei-text/55 after:w-0 hover:text-fei-text hover:after:w-full"
     }`;
 
   return (
@@ -157,7 +157,7 @@ export function Navbar({
 
         <div className="hidden items-center md:flex">
           {!hideSectionLinks && (
-            <div className={`flex items-center gap-1 rounded-full border p-1.5 ${isLight ? "border-fei-bg/10 bg-fei-bg/[0.025]" : "border-fei-text/10 bg-white/[0.025]"}`}>
+            <div className="flex items-center gap-7">
               {links.map((link) => (
                 <a
                   key={link.label}
