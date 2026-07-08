@@ -376,57 +376,57 @@ export default function Home() {
             {[
               {
                 number: "01",
-                role: "Professional Player",
+                role: lang === "en" ? "Professional Player" : "Jugador profesional",
                 description: lang === "en" ? "Interviews, teammates, pressure." : "Entrevistas, vestuario y momentos de presión.",
               },
               {
                 number: "02",
-                role: "Head Coach",
+                role: lang === "en" ? "Head Coach" : "Director técnico",
                 description: lang === "en" ? "Tactics, media, leadership." : "Táctica, medios y liderazgo de equipo.",
               },
               {
                 number: "03",
-                role: "Assistant Coach",
+                role: lang === "en" ? "Assistant Coach" : "Asistente técnico",
                 description: lang === "en" ? "Sessions, feedback, players." : "Sesiones, feedback y comunicación con jugadores.",
               },
               {
                 number: "04",
-                role: "Scout",
+                role: lang === "en" ? "Scout" : "Scout / Observador",
                 description: lang === "en" ? "Reports and player profiles." : "Observación, reportes y perfiles de jugadores.",
               },
               {
                 number: "05",
-                role: "Head of Scouting",
+                role: lang === "en" ? "Head of Scouting" : "Director de scouting",
                 description: lang === "en" ? "Recruitment and decisions." : "Estrategia de scouting y toma de decisiones.",
               },
               {
                 number: "06",
-                role: "Academy Director",
+                role: lang === "en" ? "Academy Director" : "Director de academia",
                 description: lang === "en" ? "Development and pathways." : "Desarrollo de jugadores y rutas formativas.",
               },
               {
                 number: "07",
-                role: "Performance Analyst",
+                role: lang === "en" ? "Performance Analyst" : "Analista de rendimiento",
                 description: lang === "en" ? "Data, clips, tactics." : "Datos, videoanálisis y comunicación táctica.",
               },
               {
                 number: "08",
-                role: "Fitness Coach",
+                role: lang === "en" ? "Fitness Coach" : "Preparador físico",
                 description: lang === "en" ? "Load, recovery, readiness." : "Carga, recuperación y preparación física.",
               },
               {
                 number: "09",
-                role: "Physiotherapist",
+                role: lang === "en" ? "Physiotherapist" : "Fisioterapeuta",
                 description: lang === "en" ? "Rehab and return-to-play." : "Rehabilitación, evolución y retorno al juego.",
               },
               {
                 number: "10",
-                role: "Sports Psychologist",
+                role: lang === "en" ? "Sports Psychologist" : "Psicólogo deportivo",
                 description: lang === "en" ? "Confidence and pressure." : "Confianza, presión y fortaleza mental.",
               },
               {
                 number: "11",
-                role: "Nutritionist",
+                role: lang === "en" ? "Nutritionist" : "Nutricionista",
                 description: lang === "en" ? "Habits and performance." : "Hábitos, nutrición y rendimiento.",
               },
             ].map((item) => (
