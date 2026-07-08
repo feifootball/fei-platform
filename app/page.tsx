@@ -220,78 +220,121 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="how-it-works" className="scroll-mt-24 flex min-h-[calc(100vh-73px)] items-center bg-white px-6 py-20 text-fei-bg sm:py-24">
-        <div className="mx-auto grid w-full max-w-[1500px] gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div className="max-w-2xl">
-            <p className="mb-4 text-xs font-black uppercase tracking-[0.28em] text-fei-bg/70">
-              The FEI Method
-            </p>
+      <section id="how-it-works" className="bg-white px-5 py-14 sm:px-8 sm:py-18">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.4fr] lg:items-center">
+            <div>
+              <p className="text-sm font-black uppercase tracking-[0.32em] text-fei-bg/55">
+                {lang === "en" ? "THE FEI METHOD" : "EL MÉTODO FEI"}
+              </p>
 
-            <h2 className="text-4xl font-black tracking-tight text-fei-bg sm:text-5xl lg:text-6xl">
-              {t.how_title.includes('FEI') ? (
-                <>
-                  {t.how_title.split('FEI')[0]}
-                  <span className="text-fei-sky">FEI</span>
-                  {t.how_title.split('FEI').slice(1).join('FEI')}
-                </>
-              ) : (
-                t.how_title
-              )}
-            </h2>
+              <h2 className="mt-6 text-4xl font-black tracking-tight text-fei-bg sm:text-5xl lg:text-6xl">
+                {lang === "en" ? (
+                  <>
+                    How <span className="text-fei-sky">FEI</span> works
+                  </>
+                ) : (
+                  <>
+                    Cómo funciona <span className="text-fei-sky">FEI</span>
+                  </>
+                )}
+              </h2>
 
-            <p className="mt-6 text-lg leading-8 text-fei-bg/60">
-              {t.how_subtitle}
-            </p>
-          </div>
+              <p className="mt-6 max-w-xl text-base leading-8 text-fei-bg/62 sm:text-lg">
+                {lang === "en"
+                  ? "A focused process for football professionals who need practical, role-specific English for real communication moments."
+                  : "Un proceso enfocado para profesionales del fútbol que necesitan inglés práctico, específico por rol y conectado con situaciones reales."}
+              </p>
 
-          <div className="relative">
-            <div className="absolute left-6 top-8 hidden h-[calc(100%-4rem)] w-px bg-gradient-to-b from-fei-sky/35 via-fei-bg/10 to-fei-yellow/35 sm:block" />
+              <div className="mt-8 grid max-w-xl gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+                {[
+                  lang === "en" ? "Your role" : "Tu rol",
+                  lang === "en" ? "Your level" : "Tu nivel",
+                  lang === "en" ? "Real scenarios" : "Escenarios reales",
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-2xl border border-fei-bg/10 bg-[#F7F8FA] px-4 py-3 text-sm font-semibold text-fei-bg/70"
+                  >
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
 
-            <div className="space-y-10">
-              {t.steps.map((item, index) => (
-                <article key={item.step} className="group relative grid cursor-pointer gap-5 sm:grid-cols-[8rem_1fr] sm:gap-8">
-                  <div className="relative z-10 flex items-center gap-3 sm:block">
-                    <span className="block text-6xl font-black leading-none tracking-tight text-fei-bg transition duration-300 group-hover:scale-105 group-hover:text-fei-bg/90 sm:text-7xl">
-                      {item.step}
-                    </span>
+            <div className="grid gap-4">
+              {[
+                {
+                  number: "01",
+                  title: lang === "en" ? "Diagnose" : "Diagnostica",
+                  description:
+                    lang === "en"
+                      ? "Start with a short role-based assessment that identifies your level, strengths, and communication needs."
+                      : "Empieza con una evaluación breve por rol que identifica tu nivel, fortalezas y necesidades de comunicación.",
+                  tag: lang === "en" ? "Assessment" : "Evaluación",
+                  icon: (
+                    <path d="M10.5 18a7.5 7.5 0 1 1 5.3-2.2L20 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  ),
+                },
+                {
+                  number: "02",
+                  title: lang === "en" ? "Personalize" : "Personaliza",
+                  description:
+                    lang === "en"
+                      ? "Get a pathway shaped by your objectives, football context, and the situations you need to handle."
+                      : "Recibe una ruta ajustada a tus objetivos, tu contexto futbolístico y las situaciones que necesitas manejar.",
+                  tag: lang === "en" ? "Pathway" : "Ruta",
+                  icon: (
+                    <path d="M5 7h14M5 12h10M5 17h7M17 15l1.5 1.5L21 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  ),
+                },
+                {
+                  number: "03",
+                  title: lang === "en" ? "Practice" : "Practica",
+                  description:
+                    lang === "en"
+                      ? "Train interviews, meetings, feedback, pressure moments, and real football communication tasks."
+                      : "Entrena entrevistas, reuniones, feedback, presión competitiva y tareas reales de comunicación en fútbol.",
+                  tag: lang === "en" ? "Real tasks" : "Tareas reales",
+                  icon: (
+                    <path d="M6 15l4 4L20 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                  ),
+                },
+              ].map((step) => (
+                <div
+                  key={step.number}
+                  className="group grid gap-5 rounded-[1.6rem] border border-fei-bg/10 bg-white p-5 shadow-[0_16px_45px_rgba(7,17,31,0.045)] transition duration-300 hover:-translate-y-0.5 hover:border-fei-sky/35 hover:shadow-[0_22px_60px_rgba(7,17,31,0.08)] sm:grid-cols-[140px_1fr]"
+                >
+                  <div className="flex items-center gap-4 sm:block">
+                    <p className="text-5xl font-black leading-none tracking-tight text-fei-bg transition duration-300 group-hover:text-fei-sky sm:text-6xl">
+                      {step.number}
+                    </p>
 
-                    <div className="mt-0 flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-fei-yellow text-fei-bg shadow-lg shadow-fei-yellow/20 transition duration-300 group-hover:-translate-y-1 group-hover:rotate-3 group-hover:shadow-xl group-hover:shadow-fei-yellow/30 sm:mt-4">
-                      {index === 0 && (
-                        <svg className="h-7 w-7" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                          <circle cx="11" cy="11" r="6" stroke="currentColor" strokeWidth="2.2" />
-                          <path d="M16 16l4 4" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
-                        </svg>
-                      )}
-                      {index === 1 && (
-                        <svg className="h-7 w-7" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                          <path d="M5 7h14M5 12h9M5 17h6" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
-                          <path d="M16.5 16.5l1.8 1.8 3.2-4.1" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      )}
-                      {index === 2 && (
-                        <svg className="h-7 w-7" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                          <path d="M6 13l4 4L18 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-                          <path d="M5 20h14" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
-                        </svg>
-                      )}
+                    <div className="mt-0 flex h-12 w-12 items-center justify-center rounded-2xl bg-fei-yellow text-fei-bg shadow-[0_12px_25px_rgba(250,204,21,0.25)] transition duration-300 group-hover:scale-105 sm:mt-5">
+                      <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        {step.icon}
+                      </svg>
                     </div>
                   </div>
 
-                  <div className="border-b border-fei-bg/10 pb-10 last:border-b-0 last:pb-0">
-                    <div className="mb-3 flex items-center gap-4">
-                      <span className="h-px w-20 bg-fei-yellow/70 transition-all duration-300 group-hover:w-28 group-hover:bg-fei-yellow" />
-                      <span className="h-px flex-1 bg-fei-bg/10" />
+                  <div>
+                    <div className="mb-5 h-px w-full bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent" />
+
+                    <div className="flex flex-wrap items-start justify-between gap-3">
+                      <h3 className="text-2xl font-black tracking-tight text-fei-bg sm:text-3xl">
+                        {step.title}
+                      </h3>
+
+                      <span className="rounded-full border border-fei-sky/20 bg-fei-sky/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-fei-bg/60">
+                        {step.tag}
+                      </span>
                     </div>
 
-                    <h3 className="text-2xl font-black tracking-tight text-fei-bg transition duration-300 group-hover:text-fei-sky sm:text-3xl">
-                      {item.title}
-                    </h3>
-
-                    <p className="mt-3 max-w-2xl text-base leading-7 text-fei-bg/60 transition duration-300 group-hover:text-fei-bg/75 sm:text-lg sm:leading-8">
-                      {item.description}
+                    <p className="mt-4 max-w-2xl text-base leading-7 text-fei-bg/62">
+                      {step.description}
                     </p>
                   </div>
-                </article>
+                </div>
               ))}
             </div>
           </div>
