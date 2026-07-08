@@ -580,115 +580,128 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="pricing" className="scroll-mt-32 bg-white px-6 pb-20 pt-10 text-fei-bg sm:pb-28 sm:pt-12">
-        <div className="mx-auto max-w-[1500px]">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="text-xs font-black uppercase tracking-[0.28em] text-fei-sky">{t.pricing_label}</p>
+      <section id="pricing" className="scroll-mt-24 bg-white px-5 py-10 sm:px-8 sm:py-12">
+        <div className="mx-auto max-w-7xl">
+          <div className="max-w-5xl">
+            <p className="text-sm font-black uppercase tracking-[0.32em] text-fei-bg/55">
+              {lang === "en" ? "PRICING" : "PRECIOS"}
+            </p>
 
-            <h2 className="mt-5 text-4xl font-black tracking-tight text-fei-bg sm:text-5xl">
-              {t.pricing_title}
+            <h2 className="mt-5 text-4xl font-black tracking-tight text-fei-bg sm:text-5xl lg:text-6xl">
+              {lang === "en" ? (
+                <>
+                  Simple, transparent <span className="text-fei-sky">pricing</span>
+                </>
+              ) : (
+                <>
+                  Precios simples y <span className="text-fei-sky">transparentes</span>
+                </>
+              )}
             </h2>
 
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-fei-bg/60 sm:text-lg">
-              {t.pricing_subtitle}
+            <p className="mt-5 max-w-2xl text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base">
+              {lang === "en"
+                ? "Choose the access that fits your football journey."
+                : "Elige el acceso que mejor se adapta a tu camino en el fútbol."}
             </p>
           </div>
 
-          <div className="mt-12 grid gap-5 lg:grid-cols-3">
+          <div className="mt-8 grid gap-4 lg:grid-cols-3">
             {[
               {
-                name: lang === 'en' ? 'Free Access' : 'Acceso gratuito',
-                price: lang === 'en' ? 'Free' : 'Gratis',
-                detail: lang === 'en' ? 'Initial diagnostic + limited preview' : 'Diagnóstico inicial + vista previa limitada',
-                features: lang === 'en'
-                  ? ['Initial FEI diagnostic', 'Estimated communication level', 'Limited module preview']
-                  : ['Diagnóstico inicial FEI', 'Nivel estimado de comunicación', 'Vista previa limitada de módulos'],
-                cta: lang === 'en' ? 'Start Free' : 'Empezar gratis',
-                href: '/register',
-                highlight: false,
+                label: lang === "en" ? "PLAN" : "PLAN",
+                name: lang === "en" ? "Free Access" : "Acceso gratuito",
+                price: lang === "en" ? "Free" : "Gratis",
+                note: lang === "en" ? "Initial diagnostic + limited preview" : "Diagnóstico inicial + vista limitada",
+                features:
+                  lang === "en"
+                    ? ["Initial FEI diagnostic", "Estimated communication level", "Limited module preview"]
+                    : ["Diagnóstico inicial FEI", "Nivel comunicativo estimado", "Vista limitada de módulos"],
+                button: lang === "en" ? "Start Free" : "Empezar gratis",
+                href: "/register",
+                featured: false,
               },
               {
-                name: lang === 'en' ? 'Individual Premium' : 'Premium Individual',
-                price: '$49',
-                detail: lang === 'en' ? 'USD / month or $399 USD / year' : 'USD / mes o $399 USD / año',
-                features: lang === 'en'
-                  ? ['Full role-based modules', 'Football-specific scenarios', 'Progress tracking and recommendations']
-                  : ['Módulos completos por rol', 'Escenarios específicos de fútbol', 'Seguimiento de progreso y recomendaciones'],
-                cta: lang === 'en' ? 'Unlock Premium' : 'Desbloquear Premium',
-                href: '/register',
-                highlight: true,
+                label: lang === "en" ? "BEST VALUE" : "MEJOR VALOR",
+                badge: lang === "en" ? "POPULAR" : "POPULAR",
+                name: lang === "en" ? "Individual Premium" : "Premium individual",
+                price: "$49",
+                note: lang === "en" ? "USD / month or $399 USD / year" : "USD / mes o $399 USD / año",
+                features:
+                  lang === "en"
+                    ? ["Full role-based modules", "Football-specific scenarios", "Progress recommendations"]
+                    : ["Módulos completos por rol", "Escenarios específicos de fútbol", "Recomendaciones de progreso"],
+                button: lang === "en" ? "Unlock Premium" : "Activar Premium",
+                href: "/register",
+                featured: true,
               },
               {
-                name: lang === 'en' ? 'Institutional Plans' : 'Planes Institucionales',
-                price: '$199',
-                detail: lang === 'en' ? 'from USD / month' : 'desde USD / mes',
-                features: lang === 'en'
-                  ? ['For clubs and academies', 'Multiple users and licenses', 'Reports and implementation options']
-                  : ['Para clubes y academias', 'Múltiples usuarios y licencias', 'Reportes y opciones de implementación'],
-                cta: lang === 'en' ? 'Contact FEI' : 'Contactar FEI',
-                href: '/contact',
-                highlight: false,
+                label: lang === "en" ? "PLAN" : "PLAN",
+                name: lang === "en" ? "Institutional Plans" : "Planes institucionales",
+                price: "$199",
+                note: lang === "en" ? "from USD / month" : "desde USD / mes",
+                features:
+                  lang === "en"
+                    ? ["For clubs and academies", "Multiple users and licenses", "Reports and implementation options"]
+                    : ["Para clubes y academias", "Múltiples usuarios y licencias", "Reportes e implementación"],
+                button: lang === "en" ? "Contact FEI" : "Contactar a FEI",
+                href: "/contact",
+                featured: false,
               },
             ].map((plan) => (
-              <article
+              <div
                 key={plan.name}
-                className={`relative flex min-h-[420px] flex-col rounded-[1.8rem] border p-6 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-fei-bg/6 ${
-                  plan.highlight
-                    ? 'border-fei-yellow/55 bg-fei-yellow/[0.11]'
-                    : 'border-fei-bg/10 bg-[#F7F8FA] hover:border-fei-sky/45 hover:bg-white'
+                className={`relative flex min-h-[430px] flex-col rounded-[1.75rem] border p-6 transition duration-300 ${
+                  plan.featured
+                    ? "border-fei-yellow/65 bg-fei-yellow/[0.08] shadow-[0_18px_55px_rgba(250,204,21,0.10)]"
+                    : "border-fei-bg/10 bg-[#F7F8FA]"
                 }`}
               >
-                {plan.highlight && (
-                  <div className="absolute right-5 top-5 rounded-full bg-fei-bg px-3 py-1 text-xs font-black uppercase tracking-[0.18em] text-fei-yellow">
-                    {lang === 'en' ? 'Popular' : 'Popular'}
-                  </div>
+                {plan.badge && (
+                  <span className="absolute right-5 top-5 rounded-full bg-fei-bg px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.22em] text-fei-yellow">
+                    {plan.badge}
+                  </span>
                 )}
 
-                <div>
-                  <p className="text-xs font-black uppercase tracking-[0.22em] text-fei-sky">
-                    {plan.highlight ? (lang === 'en' ? 'Best value' : 'Mejor opción') : (lang === 'en' ? 'Plan' : 'Plan')}
+                <p className="text-sm font-black uppercase tracking-[0.32em] text-fei-sky">
+                  {plan.label}
+                </p>
+
+                <h3 className="mt-4 text-2xl font-black tracking-tight text-fei-bg">
+                  {plan.name}
+                </h3>
+
+                <div className="mt-8">
+                  <p className="text-5xl font-black tracking-tight text-fei-bg">
+                    {plan.price}
                   </p>
-
-                  <h3 className="mt-3 text-2xl font-black tracking-tight text-fei-bg">
-                    {plan.name}
-                  </h3>
-
-                  <div className="mt-7">
-                    <span className="text-5xl font-black tracking-tight text-fei-bg">{plan.price}</span>
-                    <p className="mt-2 text-sm font-medium text-fei-bg/55">{plan.detail}</p>
-                  </div>
+                  <p className="mt-2 text-sm font-semibold leading-6 text-fei-bg/55">
+                    {plan.note}
+                  </p>
                 </div>
 
-                <ul className="mt-8 space-y-4">
+                <ul className="mt-7 grid gap-4">
                   {plan.features.map((feature) => (
-                    <li key={feature} className="flex gap-3 text-sm leading-6 text-fei-bg/68">
-                      <span className="mt-0.5 text-fei-sky">✓</span>
+                    <li key={feature} className="flex gap-3 text-[15px] leading-6 text-fei-bg/62">
+                      <span className="text-fei-sky">✓</span>
                       <span>{feature}</span>
                     </li>
                   ))}
                 </ul>
 
-                <div className="mt-auto pt-8">
-                  <a
-                    href={plan.href}
-                    className={`inline-flex w-full items-center justify-center rounded-full px-6 py-3 text-sm font-bold transition ${
-                      plan.highlight
-                        ? 'bg-fei-bg text-white hover:bg-fei-bg/90'
-                        : 'border border-fei-bg/20 text-fei-bg hover:bg-fei-bg hover:text-white'
-                    }`}
-                  >
-                    {plan.cta}
-                  </a>
-                </div>
-              </article>
+                <a
+                  href={plan.href}
+                  className={`mt-auto inline-flex w-full items-center justify-center rounded-full px-6 py-3 text-sm font-bold transition duration-300 hover:-translate-y-0.5 ${
+                    plan.featured
+                      ? "bg-fei-bg text-white hover:shadow-lg hover:shadow-fei-bg/15"
+                      : "border border-fei-bg/15 text-fei-bg hover:border-fei-bg/35 hover:bg-white"
+                  }`}
+                >
+                  {plan.button}
+                </a>
+              </div>
             ))}
           </div>
-
-          <p className="mx-auto mt-8 max-w-3xl text-center text-xs leading-6 text-fei-bg/45">
-            {lang === 'en'
-              ? 'Prices may vary by country, promotion, number of users, licenses, included features, support level, and institutional conditions. FEI will always show the applicable price before any payment.'
-              : 'Los precios pueden variar según país, promoción, número de usuarios, licencias, funciones incluidas, nivel de soporte y condiciones institucionales. FEI siempre mostrará el precio aplicable antes de cualquier pago.'}
-          </p>
         </div>
       </section>
 
