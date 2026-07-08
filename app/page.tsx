@@ -168,7 +168,7 @@ export default function Home() {
               </span>
             </h1>
 
-            <div className="mt-8 max-w-[920px] text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base sm:leading-8">
+            <div className="mt-8 max-w-[980px] text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base sm:leading-8">
               {lang === 'en' ? (
                 <p>
                   FEI is a football-specific English training platform that helps<br className="hidden sm:block" />
@@ -187,51 +187,34 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-12 grid max-w-5xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {t.stats.map((stat, index) => (
-              <div
-                key={stat.label}
-                className="group relative overflow-hidden rounded-2xl border border-fei-bg/10 bg-[#F7F8FA] px-5 py-4 transition duration-300 hover:-translate-y-0.5 hover:border-fei-sky/40 hover:bg-white hover:shadow-lg hover:shadow-sky-100"
-              >
-                <div className="pointer-events-none absolute -right-5 -top-8 h-20 w-20 rounded-full bg-fei-sky/10 blur-2xl transition duration-300 group-hover:bg-fei-sky/18" />
-                <div className="pointer-events-none absolute -bottom-8 -left-8 h-20 w-20 rounded-full bg-fei-yellow/10 blur-2xl transition duration-300 group-hover:bg-fei-yellow/16" />
+          <div className="mt-12 max-w-5xl rounded-[1.75rem] border border-fei-bg/10 bg-white/78 p-3 shadow-[0_18px_55px_rgba(7,17,31,0.07)] backdrop-blur">
+            <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+              {t.stats.map((stat, index) => (
+                <div
+                  key={stat.label}
+                  className="group relative overflow-hidden rounded-[1.25rem] px-5 py-4 transition duration-300 hover:bg-[#F7F8FA]"
+                >
+                  <div className="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-70" />
+                  <div className="pointer-events-none absolute -right-8 -top-10 h-20 w-20 rounded-full bg-fei-sky/10 blur-2xl transition duration-300 group-hover:bg-fei-sky/18" />
 
-                <div className="relative flex items-start justify-between gap-4">
-                  <div>
-                    <p className="text-2xl font-black tracking-tight text-fei-bg sm:text-3xl">{stat.value}</p>
-                    <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.18em] text-fei-bg/42">{stat.label}</p>
+                  <div className="relative flex items-end justify-between gap-4">
+                    <div>
+                      <p className="text-[2rem] font-black leading-none tracking-tight text-fei-bg sm:text-[2.25rem]">
+                        {stat.value}
+                      </p>
+                      <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.2em] text-fei-bg/42">
+                        {stat.label}
+                      </p>
+                    </div>
+
+                    <div className="mb-1 flex h-8 w-8 items-center justify-center rounded-full border border-fei-sky/20 bg-fei-sky/10 text-[11px] font-black text-fei-bg/70 transition duration-300 group-hover:border-fei-yellow/40 group-hover:bg-fei-yellow/20">
+                      {String(index + 1).padStart(2, "0")}
+                    </div>
                   </div>
-
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-fei-sky/20 bg-fei-sky/10 text-fei-bg transition duration-300 group-hover:border-fei-yellow/35 group-hover:bg-fei-yellow/18">
-                    {index === 0 && (
-                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M8 19v-5.5M16 19v-5.5" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" />
-                        <path d="M5.5 10.5c0-2 1.6-3.5 3.5-3.5s3.5 1.5 3.5 3.5S10.9 14 9 14s-3.5-1.5-3.5-3.5Z" stroke="currentColor" strokeWidth="1.9" />
-                        <path d="M11.5 10.5c0-2 1.6-3.5 3.5-3.5s3.5 1.5 3.5 3.5S16.9 14 15 14s-3.5-1.5-3.5-3.5Z" stroke="currentColor" strokeWidth="1.9" />
-                      </svg>
-                    )}
-
-                    {index === 1 && (
-                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M5 7h14M5 12h10M5 17h7" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" />
-                        <path d="M17 15.5l1.4 1.4 2.6-3.4" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    )}
-
-                    {index === 2 && (
-                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M4 6.5h16M7 6.5v11M17 6.5v11M7 17.5h10" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" />
-                        <path d="M10 10h4M10 14h4" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" />
-                      </svg>
-                    )}
-
-                    {index === 3 && (
-                      <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M7 7h10v10H7z" stroke="currentColor" strokeWidth="1.9" />
-                        <path d="M4 10V6a2 2 0 0 1 2-2h4M20 14v4a2 2 0 0 1-2 2h-4" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" />
-                      </svg>
-                    )}
-                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
                 </div>
               </div>
             ))}
