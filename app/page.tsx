@@ -213,8 +213,8 @@ export default function Home() {
                 </p>
               ) : (
                 <p>
-                  FEI es una plataforma de entrenamiento en inglés especializada en fútbol que ayuda<br className="hidden sm:block" />
-                  a profesionales del fútbol a diagnosticar su nivel, entrenar situaciones reales de comunicación y ganar confianza para desenvolverse en entornos internacionales.
+                  <span className="block sm:whitespace-nowrap">FEI es una plataforma de entrenamiento en inglés especializada en fútbol que ayuda a profesionales del fútbol a diagnosticar su nivel,</span>
+                  <span className="block sm:whitespace-nowrap">entrenar situaciones reales de comunicación y ganar confianza para desenvolverse en entornos internacionales.</span>
                 </p>
               )}
             </div>
