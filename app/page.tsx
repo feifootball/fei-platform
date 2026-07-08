@@ -296,8 +296,9 @@ export default function Home() {
 
                   {index < 2 && (
                     <div className="hidden items-center justify-center lg:flex" aria-hidden="true">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full border border-fei-bg/10 bg-white text-fei-bg/45">
-                        →
+                      <div className="relative flex h-12 w-12 items-center justify-center rounded-full border border-fei-sky/25 bg-gradient-to-br from-fei-yellow/18 to-fei-sky/18 text-xl font-black text-fei-bg shadow-[0_12px_28px_rgba(125,211,252,0.16)]">
+                        <span className="absolute h-px w-10 bg-gradient-to-r from-fei-yellow/70 to-fei-sky/70" />
+                        <span className="relative bg-white px-1">→</span>
                       </div>
                     </div>
                   )}
