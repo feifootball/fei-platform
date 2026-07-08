@@ -487,66 +487,79 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="for-clubs" className="scroll-mt-32 bg-white px-6 py-16 text-fei-bg sm:py-20">
-        <div className="mx-auto max-w-[1500px]">
-          <div className="overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-[#F7F8FA] shadow-sm">
-            <div className="grid lg:grid-cols-[0.95fr_1.05fr]">
-              <div className="p-8 sm:p-10 lg:p-12">
-                <p className="text-xs font-black uppercase tracking-[0.28em] text-fei-sky">{t.clubs_label}</p>
+      <section id="for-clubs" className="scroll-mt-24 bg-white px-5 py-14 sm:px-8 sm:py-18">
+        <div className="mx-auto max-w-7xl">
+          <div className="rounded-[2rem] border border-fei-bg/10 bg-[#F7F8FA] p-6 shadow-[0_18px_55px_rgba(7,17,31,0.05)] sm:p-8 lg:p-10">
+            <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch">
+              <div className="flex flex-col justify-between">
+                <div>
+                  <p className="text-sm font-black uppercase tracking-[0.32em] text-fei-bg/55">
+                    {lang === "en" ? "FOR CLUBS" : "PARA CLUBES"}
+                  </p>
 
-                <h2 className="mt-5 max-w-2xl text-4xl font-black tracking-tight text-fei-bg sm:text-5xl">
-                  {t.clubs_title}
-                </h2>
+                  <h2 className="mt-6 text-4xl font-black tracking-tight text-fei-bg sm:text-5xl lg:text-6xl">
+                    {lang === "en" ? (
+                      <>
+                        Train your entire <span className="text-fei-sky">squad</span> and staff
+                      </>
+                    ) : (
+                      <>
+                        Entrena a todo tu <span className="text-fei-sky">plantel</span> y staff
+                      </>
+                    )}
+                  </h2>
 
-                <p className="mt-5 max-w-2xl text-lg leading-8 text-fei-bg/62">
-                  {t.clubs_description}
-                </p>
+                  <p className="mt-5 max-w-2xl text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base sm:leading-8">
+                    {lang === "en"
+                      ? "One club license. Role-specific English training for players, coaches, analysts, and staff."
+                      : "Una licencia institucional. Entrenamiento de inglés por rol para jugadores, entrenadores, analistas y staff."}
+                  </p>
+                </div>
 
-                <a href="/contact" className="mt-9 inline-flex rounded-full bg-fei-bg px-8 py-3 font-bold text-white transition hover:bg-fei-bg/90">
-                  {t.contact_us}
+                <a
+                  href="/contact"
+                  className="mt-8 inline-flex w-fit items-center justify-center rounded-full bg-fei-bg px-7 py-3 text-sm font-bold text-white transition duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-fei-bg/15"
+                >
+                  {lang === "en" ? "Contact us" : "Contáctanos"}
                 </a>
               </div>
 
-              <div className="relative border-t border-fei-bg/10 bg-fei-bg p-8 text-white sm:p-10 lg:border-l lg:border-t-0 lg:p-12">
-                <div
-                  className="pointer-events-none absolute inset-0 opacity-35"
-                  style={{
-                    background:
-                      'radial-gradient(ellipse at 72% 22%, rgba(125,211,252,0.52), transparent 62%), radial-gradient(ellipse at 18% 86%, rgba(250,204,21,0.18), transparent 56%)',
-                  }}
-                />
+              <div className="relative overflow-hidden rounded-[1.75rem] bg-fei-bg p-6 text-white shadow-[0_18px_55px_rgba(7,17,31,0.12)] sm:p-8">
+                <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-fei-sky/12 blur-3xl" />
+                <div className="pointer-events-none absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-fei-yellow/10 blur-3xl" />
 
-                <div className="relative flex min-h-[300px] flex-col justify-between">
-                  <div>
-                    <p className="text-xs font-black uppercase tracking-[0.28em] text-fei-yellow">{t.clubs_interested}</p>
+                <div className="relative">
+                  <p className="text-sm font-black uppercase tracking-[0.32em] text-fei-yellow">
+                    {lang === "en" ? "INTERESTED?" : "¿TE INTERESA?"}
+                  </p>
 
-                    <h3 className="mt-5 text-3xl font-black tracking-tight text-white sm:text-4xl">
-                      {t.clubs_demo_title}
-                    </h3>
+                  <h3 className="mt-6 text-3xl font-black tracking-tight text-white sm:text-4xl">
+                    {lang === "en" ? "Book a demo for your club" : "Agenda una demo para tu club"}
+                  </h3>
 
-                    <p className="mt-4 max-w-xl text-base leading-8 text-white/68">
-                      {t.clubs_demo_description}
+                  <p className="mt-5 max-w-xl text-[15px] leading-7 text-white/68 sm:text-base sm:leading-8">
+                    {lang === "en"
+                      ? "See how FEI can support communication across your club with training designed for real football roles."
+                      : "Conoce cómo FEI puede fortalecer la comunicación de tu club con entrenamiento diseñado para roles reales del fútbol."}
+                  </p>
+
+                  <div className="mt-8 rounded-[1.35rem] border border-white/10 bg-white/[0.045] p-5">
+                    <p className="text-sm font-bold uppercase tracking-[0.18em] text-white/42">
+                      {lang === "en" ? "Best for" : "Ideal para"}
+                    </p>
+
+                    <p className="mt-3 text-xl font-black tracking-tight text-white">
+                      {lang === "en"
+                        ? "Teams that need consistent English communication across departments."
+                        : "Equipos que necesitan comunicación en inglés consistente entre áreas."}
                     </p>
                   </div>
 
-                  <div className="mt-10 grid gap-3 sm:grid-cols-2">
-                    <div className="rounded-2xl border border-white/10 bg-white/[0.045] p-5">
-                      <p className="text-3xl font-black text-fei-sky">11</p>
-                      <p className="mt-1 text-xs font-bold uppercase tracking-[0.18em] text-white/55">
-                        {lang === 'en' ? 'Role paths' : 'Rutas por rol'}
-                      </p>
-                    </div>
-
-                    <div className="rounded-2xl border border-white/10 bg-white/[0.045] p-5">
-                      <p className="text-3xl font-black text-fei-yellow">126</p>
-                      <p className="mt-1 text-xs font-bold uppercase tracking-[0.18em] text-white/55">
-                        {lang === 'en' ? 'Scenarios' : 'Escenarios'}
-                      </p>
-                    </div>
-                  </div>
-
-                  <a href="/contact" className="mt-8 inline-flex w-full items-center justify-center rounded-full border border-fei-yellow/45 px-6 py-3 text-sm font-bold text-fei-yellow transition hover:bg-fei-yellow hover:text-fei-bg">
-                    {lang === 'en' ? 'Book a demo' : 'Solicitar demo'}
+                  <a
+                    href="/contact"
+                    className="mt-8 inline-flex w-full items-center justify-center rounded-full border border-fei-yellow/60 px-7 py-3 text-sm font-bold text-fei-yellow transition duration-300 hover:-translate-y-0.5 hover:bg-fei-yellow hover:text-fei-bg"
+                  >
+                    {lang === "en" ? "Book a demo" : "Agendar demo"}
                   </a>
                 </div>
               </div>
