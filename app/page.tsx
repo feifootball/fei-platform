@@ -451,7 +451,7 @@ export default function Home() {
                   </p>
 
                   <p className="mt-2 text-xs font-bold uppercase tracking-[0.14em] text-fei-sky opacity-0 transition duration-300 group-hover:opacity-100">
-                    Register now →
+                    {lang === "en" ? "Register now →" : "Regístrate ahora →"}
                   </p>
                 </div>
               </a>
@@ -479,7 +479,7 @@ export default function Home() {
                 </p>
 
                 <p className="mt-2 text-xs font-bold uppercase tracking-[0.14em] text-fei-bg opacity-0 transition duration-300 group-hover:opacity-100">
-                  Suggest a role →
+                  {lang === "en" ? "Suggest a role →" : "Sugerir un rol →"}
                 </p>
               </div>
             </a>
