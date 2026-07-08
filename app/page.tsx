@@ -165,64 +165,49 @@ export default function Home() {
           >
             <defs>
               <linearGradient id="footballPatternGradient" x1="110" y1="80" x2="520" y2="540" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#7DD3FC" stopOpacity="0.75" />
-                <stop offset="0.45" stopColor="#07111F" stopOpacity="0.28" />
-                <stop offset="1" stopColor="#FACC15" stopOpacity="0.45" />
+                <stop stopColor="#7DD3FC" stopOpacity="0.72" />
+                <stop offset="0.48" stopColor="#07111F" stopOpacity="0.24" />
+                <stop offset="1" stopColor="#FACC15" stopOpacity="0.36" />
               </linearGradient>
             </defs>
 
-            <path
-              d="M310 70L414 130L414 250L310 310L206 250L206 130L310 70Z"
-              stroke="url(#footballPatternGradient)"
-              strokeWidth="1.2"
-            />
-            <path
-              d="M310 310L414 250L518 310L518 430L414 490L310 430V310Z"
-              stroke="url(#footballPatternGradient)"
-              strokeWidth="1.2"
-            />
-            <path
-              d="M310 310V430L206 490L102 430V310L206 250L310 310Z"
-              stroke="url(#footballPatternGradient)"
-              strokeWidth="1.2"
-            />
-            <path
-              d="M414 130L518 190L518 310L414 250V130Z"
-              stroke="url(#footballPatternGradient)"
-              strokeWidth="1.2"
-            />
-            <path
-              d="M206 130V250L102 310L102 190L206 130Z"
-              stroke="url(#footballPatternGradient)"
-              strokeWidth="1.2"
-            />
-            <path
-              d="M206 490L310 430L414 490L414 610L310 670L206 610V490Z"
-              stroke="url(#footballPatternGradient)"
-              strokeWidth="1.2"
-            />
+            <g stroke="url(#footballPatternGradient)" strokeWidth="1.15" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M310 80L410 138" />
+              <path d="M410 138L410 248" />
+              <path d="M410 248L310 306" />
+              <path d="M310 306L210 248" />
+              <path d="M210 248L210 138" />
+              <path d="M210 138L310 80" />
 
-            <path
-              d="M310 70C443 92 548 197 570 330"
-              stroke="url(#footballPatternGradient)"
-              strokeWidth="1"
-              strokeLinecap="round"
-              opacity="0.6"
-            />
-            <path
-              d="M90 330C112 197 177 112 310 70"
-              stroke="url(#footballPatternGradient)"
-              strokeWidth="1"
-              strokeLinecap="round"
-              opacity="0.45"
-            />
-            <path
-              d="M102 430C156 534 238 590 360 594"
-              stroke="url(#footballPatternGradient)"
-              strokeWidth="1"
-              strokeLinecap="round"
-              opacity="0.4"
-            />
+              <path d="M410 248L510 306" />
+              <path d="M510 306L510 418" />
+              <path d="M510 418L410 476" />
+              <path d="M410 476L310 418" />
+              <path d="M310 418L310 306" />
+
+              <path d="M310 306L310 418" />
+              <path d="M310 418L210 476" />
+              <path d="M210 476L110 418" />
+              <path d="M110 418L110 306" />
+              <path d="M110 306L210 248" />
+
+              <path d="M410 138L510 196" />
+              <path d="M510 196L510 306" />
+
+              <path d="M210 138L110 196" />
+              <path d="M110 196L110 306" />
+
+              <path d="M210 476L310 534" opacity="0.65" />
+              <path d="M310 534L410 476" opacity="0.65" />
+
+              <path d="M510 196L565 164" opacity="0.45" />
+              <path d="M510 418L568 452" opacity="0.4" />
+              <path d="M410 476L446 560" opacity="0.38" />
+              <path d="M210 476L166 548" opacity="0.34" />
+              <path d="M110 418L52 452" opacity="0.32" />
+              <path d="M110 196L54 162" opacity="0.28" />
+              <path d="M310 80L310 18" opacity="0.32" />
+            </g>
           </svg>
         </div>
 
