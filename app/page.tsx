@@ -512,27 +512,17 @@ export default function Home() {
                   <div className="mt-5 max-w-2xl">
                     <p className="text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base sm:leading-8">
                       {lang === "en"
-                        ? "Flexible club licenses for teams and staff."
-                        : "Licencias institucionales flexibles para equipos y staff."}
+                        ? "Flexible club licenses for teams that want role-specific English training across the whole organization."
+                        : "Licencias institucionales flexibles para equipos que buscan entrenamiento de inglés por rol en toda la organización."}
                     </p>
 
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {[
-                        lang === "en" ? "Level assessment" : "Evaluación de nivel",
-                        lang === "en" ? "Training by role" : "Entrenamiento por rol",
-                        lang === "en" ? "Real football situations" : "Situaciones reales de fútbol",
-                        lang === "en" ? "Progress reports" : "Reportes de progreso",
-                      ].map((item) => (
-                        <span
-                          key={item}
-                          className="rounded-full border border-fei-bg/10 bg-white px-3 py-1.5 text-xs font-bold uppercase tracking-[0.12em] text-fei-bg/55"
-                        >
-                          {item}
-                        </span>
-                      ))}
-                    </div>
+                    <p className="mt-3 text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base sm:leading-8">
+                      {lang === "en"
+                        ? "Includes level assessment, training by role, real football situations, and progress reports."
+                        : "Incluye evaluación de nivel, entrenamiento por rol, situaciones reales de fútbol y reportes de progreso."}
+                    </p>
 
-                    <p className="mt-4 text-[15px] font-normal leading-7 text-fei-bg/62">
+                    <p className="mt-3 text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base sm:leading-8">
                       {lang === "en"
                         ? "Quoted by users, roles, and training needs."
                         : "Cotización según usuarios, roles y necesidades de entrenamiento."}
