@@ -168,11 +168,11 @@ export default function Home() {
               </span>
             </h1>
 
-            <div className="mt-8 max-w-[980px] text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base sm:leading-8">
+            <div className="mt-8 max-w-[1320px] text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base sm:leading-8">
               {lang === 'en' ? (
                 <p>
-                  FEI is a football-specific English training platform that helps<br className="hidden sm:block" />
-                  football professionals diagnose their level, train real communication scenarios, and build the confidence to perform in international environments.
+                  <span className="block sm:whitespace-nowrap">FEI is a football-specific English training platform that helps football professionals diagnose their level,</span>
+                  <span className="block sm:whitespace-nowrap">train real communication scenarios, and build the confidence to perform in international environments.</span>
                 </p>
               ) : (
                 <p>
