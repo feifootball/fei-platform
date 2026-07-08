@@ -159,7 +159,7 @@ export default function Home() {
 
         <div className="mx-auto w-full max-w-[1500px]">
           <div className="max-w-5xl">
-            <p className="text-sm font-black uppercase tracking-[0.32em] text-fei-bg/55">{t.tagline}</p>
+            <p className="mt-[1.5cm] text-sm font-black uppercase tracking-[0.32em] text-fei-bg/55">{t.tagline}</p>
 
             <h1 className="mt-6 text-5xl font-extrabold leading-[1.03] text-fei-bg sm:text-6xl lg:text-7xl xl:text-8xl">
               Football English<br />
