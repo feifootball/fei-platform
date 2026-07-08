@@ -509,24 +509,27 @@ export default function Home() {
                     )}
                   </h2>
 
-                  <div className="mt-5 max-w-2xl">
-                    <p className="text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base sm:leading-8">
-                      {lang === "en"
-                        ? "Flexible club licenses for teams that want role-specific English training across the whole organization."
-                        : "Licencias institucionales flexibles para equipos que buscan entrenamiento de inglés por rol en toda la organización."}
-                    </p>
-
-                    <p className="mt-3 text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base sm:leading-8">
-                      {lang === "en"
-                        ? "Includes level assessment, training by role, real football situations, and progress reports."
-                        : "Incluye evaluación de nivel, entrenamiento por rol, situaciones reales de fútbol y reportes de progreso."}
-                    </p>
-
-                    <p className="mt-3 text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base sm:leading-8">
-                      {lang === "en"
+                  <div className="mt-6 grid max-w-2xl gap-4">
+                    {[
+                      lang === "en"
+                        ? "Flexible club licenses for teams and staff."
+                        : "Licencias institucionales flexibles para equipos y staff.",
+                      lang === "en"
+                        ? "Diagnostics, training by role, real football situations, and progress reports."
+                        : "Diagnósticos, entrenamiento por rol, situaciones reales de fútbol y reportes de progreso.",
+                      lang === "en"
                         ? "Quoted by users, roles, and training needs."
-                        : "Cotización según usuarios, roles y necesidades de entrenamiento."}
-                    </p>
+                        : "Cotización según usuarios, roles y necesidades de entrenamiento.",
+                    ].map((item) => (
+                      <div key={item} className="flex items-start gap-3">
+                        <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-fei-sky/14 text-xs font-black text-fei-bg">
+                          ✓
+                        </span>
+                        <p className="text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base">
+                          {item}
+                        </p>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
