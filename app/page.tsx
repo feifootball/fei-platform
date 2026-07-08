@@ -187,7 +187,13 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-8 max-w-5xl rounded-[1.75rem] border border-fei-bg/10 bg-white/80 p-3 shadow-[0_18px_55px_rgba(7,17,31,0.07)] backdrop-blur">
+          <div
+            className="mt-8 max-w-5xl rounded-[1.75rem] border border-fei-bg/10 bg-white/80 p-3 shadow-[0_18px_55px_rgba(7,17,31,0.07)] backdrop-blur relative overflow-hidden"
+            style={{
+              WebkitMaskImage: "linear-gradient(to right, black 0%, black 84%, rgba(0,0,0,0.7) 92%, transparent 100%)",
+              maskImage: "linear-gradient(to right, black 0%, black 84%, rgba(0,0,0,0.7) 92%, transparent 100%)",
+            }}
+          >
             <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
               {t.stats.map((stat, index) => (
                 <div
