@@ -518,10 +518,10 @@ export default function Home() {
 
                     <div className="mt-4 flex flex-wrap gap-2">
                       {[
-                        lang === "en" ? "Diagnostics" : "Diagnósticos",
-                        lang === "en" ? "Role-specific pathways" : "Rutas por rol",
-                        lang === "en" ? "Real scenarios" : "Escenarios reales",
-                        lang === "en" ? "Progress tracking" : "Seguimiento de progreso",
+                        lang === "en" ? "Level assessment" : "Evaluación de nivel",
+                        lang === "en" ? "Training by role" : "Entrenamiento por rol",
+                        lang === "en" ? "Real football situations" : "Situaciones reales de fútbol",
+                        lang === "en" ? "Progress reports" : "Reportes de progreso",
                       ].map((item) => (
                         <span
                           key={item}
