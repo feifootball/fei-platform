@@ -377,7 +377,7 @@ export default function Home() {
               {
                 number: "01",
                 role: "Professional Player",
-                description: lang === "en" ? "Interviews, media, pressure." : "Entrevistas, medios, presión.",
+                description: lang === "en" ? "Interviews, teammates, pressure." : "Entrevistas, compañeros, presión.",
               },
               {
                 number: "02",
@@ -435,7 +435,7 @@ export default function Home() {
                 href={`/register?role=${encodeURIComponent(item.role)}`}
                 className="group relative min-h-[92px] overflow-hidden rounded-[1.25rem] border border-fei-bg/10 bg-[#F7F8FA] px-5 py-3.5 transition duration-300 hover:-translate-y-0.5 hover:border-fei-sky/35 hover:bg-white hover:shadow-[0_18px_45px_rgba(7,17,31,0.07)]"
               >
-                <span className="pointer-events-none absolute -right-1 -top-5 text-6xl font-black leading-none text-fei-sky/[0.10] transition duration-300 group-hover:text-fei-yellow/[0.18]">
+                <span className="pointer-events-none absolute -right-1 -top-5 text-6xl font-black leading-none text-fei-sky/[0.10] transition duration-300 group-hover:text-fei-yellow/[0.34]">
                   {item.number}
                 </span>
 
@@ -458,7 +458,7 @@ export default function Home() {
             ))}
 
             <a
-              href="/register"
+              href="/role-request"
               className="group relative min-h-[92px] overflow-hidden rounded-[1.25rem] border border-fei-yellow/35 bg-fei-yellow/[0.08] px-5 py-3.5 transition duration-300 hover:-translate-y-0.5 hover:bg-fei-yellow/15 hover:shadow-[0_18px_45px_rgba(250,204,21,0.12)]"
             >
               <span className="pointer-events-none absolute -right-1 -top-5 text-6xl font-black leading-none text-fei-yellow/[0.18]">
@@ -479,7 +479,7 @@ export default function Home() {
                 </p>
 
                 <p className="mt-2 text-xs font-bold uppercase tracking-[0.14em] text-fei-bg opacity-0 transition duration-300 group-hover:opacity-100">
-                  Register now →
+                  Suggest a role →
                 </p>
               </div>
             </a>
