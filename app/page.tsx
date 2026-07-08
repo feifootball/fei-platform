@@ -187,7 +187,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-12 max-w-5xl rounded-[1.75rem] border border-fei-bg/10 bg-white/80 p-3 shadow-[0_18px_55px_rgba(7,17,31,0.07)] backdrop-blur">
+          <div className="mt-8 max-w-5xl rounded-[1.75rem] border border-fei-bg/10 bg-white/80 p-3 shadow-[0_18px_55px_rgba(7,17,31,0.07)] backdrop-blur">
             <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
               {t.stats.map((stat, index) => (
                 <div
@@ -197,18 +197,14 @@ export default function Home() {
                   <div className="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-75" />
                   <div className="pointer-events-none absolute -right-8 -top-10 h-20 w-20 rounded-full bg-fei-sky/10 blur-2xl transition duration-300 group-hover:bg-fei-sky/18" />
 
-                  <div className="relative flex items-end justify-between gap-4">
+                  <div className="relative">
                     <div>
                       <p className="text-[2rem] font-black leading-none tracking-tight text-fei-bg sm:text-[2.25rem]">
                         {stat.value}
                       </p>
-                      <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.2em] text-fei-bg/42">
+                      <p className="mt-3 text-xs font-bold uppercase tracking-[0.18em] text-fei-bg/50">
                         {stat.label}
                       </p>
-                    </div>
-
-                    <div className="mb-1 flex h-8 w-8 items-center justify-center rounded-full border border-fei-sky/20 bg-fei-sky/10 text-[11px] font-black text-fei-bg/70 transition duration-300 group-hover:border-fei-yellow/40 group-hover:bg-fei-yellow/20">
-                      {String(index + 1).padStart(2, "0")}
                     </div>
                   </div>
                 </div>
