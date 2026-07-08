@@ -511,8 +511,8 @@ export default function Home() {
 
                   <p className="mt-5 max-w-2xl text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base sm:leading-8">
                     {lang === "en"
-                      ? "One club license. Role-specific English training for players, coaches, analysts, and staff."
-                      : "Una licencia institucional. Entrenamiento de inglés por rol para jugadores, entrenadores, analistas y staff."}
+                      ? "Flexible club licenses for teams that want to train players, coaches, analysts, and staff with diagnostics, role-specific pathways, real scenarios, and progress tracking — quoted by users, roles, and training needs."
+                      : "Licencias institucionales flexibles para equipos que quieren entrenar a jugadores, entrenadores, analistas y staff con diagnósticos, rutas por rol, escenarios reales y seguimiento de progreso — cotizadas según usuarios, roles y necesidades de entrenamiento."}
                   </p>
                 </div>
 
@@ -542,24 +542,6 @@ export default function Home() {
                       ? "See how FEI can support communication across your club with training designed for real football roles."
                       : "Conoce cómo FEI puede fortalecer la comunicación de tu club con entrenamiento diseñado para roles reales del fútbol."}
                   </p>
-
-                  <div className="mt-8 rounded-[1.35rem] border border-white/10 bg-white/[0.045] p-5">
-                    <p className="text-xs font-black uppercase tracking-[0.22em] text-fei-yellow">
-                      {lang === "en" ? "Club license" : "Licencia institucional"}
-                    </p>
-
-                    <p className="mt-3 text-[15px] leading-7 text-white/72">
-                      {lang === "en"
-                        ? "Quoted based on the number of users, selected roles, and training needs."
-                        : "Cotización según el número de usuarios, roles seleccionados y necesidades de entrenamiento."}
-                    </p>
-
-                    <p className="mt-3 text-[15px] leading-7 text-white/56">
-                      {lang === "en"
-                        ? "Includes diagnostics, role-specific pathways, real scenarios, and progress tracking."
-                        : "Incluye diagnósticos, rutas por rol, escenarios reales y seguimiento de progreso."}
-                    </p>
-                  </div>
 
                   <a
                     href="/contact"
