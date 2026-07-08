@@ -697,75 +697,71 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="mt-auto border-t border-fei-text/10 bg-[#0F172A] px-6 py-5">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-5 lg:grid-cols-[1fr_auto_1fr] lg:items-center">
-            <div className="hidden lg:block" aria-hidden="true" />
+      <footer className="bg-white px-5 pb-5 sm:px-8">
+        <div className="mx-auto max-w-7xl overflow-hidden rounded-t-[2rem] border border-fei-bg/10 bg-fei-bg text-white shadow-[0_-18px_55px_rgba(7,17,31,0.08)]">
+          <div className="px-6 py-8 sm:px-8">
+            <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+              <div>
+                <img
+                  src="/fei-logo-navbar-vector.svg"
+                  alt="FEI"
+                  className="h-11 w-auto brightness-0 invert"
+                />
 
-            <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm text-[#94A3B8]">
-              <a href="/terms" className="transition hover:text-[#F8FAFC]">
-                {t.footer_terms}
-              </a>
+                <p className="mt-4 max-w-md text-sm leading-6 text-white/52">
+                  {lang === "en"
+                    ? "Football-specific English training for players, coaches, clubs, and football professionals."
+                    : "Entrenamiento de inglés específico para jugadores, entrenadores, clubes y profesionales del fútbol."}
+                </p>
+              </div>
 
-              <span className="h-4 w-px bg-white/15" aria-hidden="true" />
+              <nav className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-medium text-white/54">
+                <a href="/terms" className="transition hover:text-fei-yellow">
+                  {lang === "en" ? "Terms of Use" : "Términos de uso"}
+                </a>
+                <span className="hidden h-4 w-px bg-white/14 sm:block" />
 
-              <a href="/privacy" className="transition hover:text-[#F8FAFC]">
-                {t.footer_privacy}
-              </a>
+                <a href="/privacy" className="transition hover:text-fei-yellow">
+                  {lang === "en" ? "Privacy Policy" : "Política de privacidad"}
+                </a>
+                <span className="hidden h-4 w-px bg-white/14 sm:block" />
 
-              <span className="h-4 w-px bg-white/15" aria-hidden="true" />
+                <a href="/faqs" className="transition hover:text-fei-yellow">
+                  FAQs
+                </a>
+                <span className="hidden h-4 w-px bg-white/14 sm:block" />
 
-              <a href="/faq" className="transition hover:text-[#F8FAFC]">
-                {t.footer_faq}
-              </a>
+                <a href="/contact" className="transition hover:text-fei-yellow">
+                  {lang === "en" ? "Contact" : "Contacto"}
+                </a>
+              </nav>
 
-              <span className="h-4 w-px bg-white/15" aria-hidden="true" />
-
-              <a href="/contact" className="transition hover:text-[#F8FAFC]">
-                {t.footer_contact}
-              </a>
-            </nav>
-
-            <div className="flex items-center justify-center gap-2 lg:justify-end">
-              <a
-                href="https://linkedin.com/company/football-english-intelligence"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Follow FEI on LinkedIn"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-sm font-black text-fei-yellow/85 transition hover:border-fei-sky/40 hover:text-fei-sky"
-              >
-                in
-              </a>
-
-              <a
-                href="https://instagram.com/fei.football"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Follow FEI on Instagram"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-fei-yellow/85 transition hover:border-fei-sky/40 hover:text-fei-sky"
-              >
-                <svg
-                  className="h-4 w-4"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
+              <div className="flex items-center gap-3">
+                <a
+                  href="https://www.linkedin.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="LinkedIn"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/12 text-sm font-black text-fei-yellow transition hover:-translate-y-0.5 hover:border-fei-yellow/50 hover:bg-fei-yellow hover:text-fei-bg"
                 >
-                  <rect x="3" y="3" width="18" height="18" rx="5" />
-                  <circle cx="12" cy="12" r="4" />
-                  <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
-                </svg>
-              </a>
-            </div>
-          </div>
+                  in
+                </a>
 
-          <div className="mt-5 border-t border-white/10 pt-3">
-            <p className="text-center text-xs leading-6 text-[#94A3B8]">
-              © 2026 Football English Intelligence. {t.footer_rights}
-            </p>
+                <a
+                  href="https://www.instagram.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Instagram"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/12 text-sm font-black text-fei-yellow transition hover:-translate-y-0.5 hover:border-fei-yellow/50 hover:bg-fei-yellow hover:text-fei-bg"
+                >
+                  ◎
+                </a>
+              </div>
+            </div>
+
+            <div className="mt-8 border-t border-white/10 pt-6 text-center text-sm text-white/46">
+              © 2026 Football English Intelligence. {lang === "en" ? "All rights reserved." : "Todos los derechos reservados."}
+            </div>
           </div>
         </div>
       </footer>
