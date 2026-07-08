@@ -155,9 +155,9 @@ export function Navbar({
           <img src="/fei-logo-navbar-vector.svg" alt="FEI" className="h-12 w-auto" />
         </a>
 
-        <div className="hidden flex-1 items-center justify-between pl-14 md:flex lg:pl-24">
+        <div className="hidden items-center gap-8 md:flex">
           {!hideSectionLinks && (
-            <div className="flex items-center gap-10">
+            <div className="flex items-center gap-8">
               {links.map((link) => (
                 <a
                   key={link.label}
@@ -171,7 +171,7 @@ export function Navbar({
             </div>
           )}
 
-          <div className={`${hideSectionLinks ? "" : "ml-5"} flex items-center gap-3`}>
+          <div className={`${hideSectionLinks ? "" : "ml-6"} flex items-center gap-3`}>
             <button
               onClick={toggleLang}
               className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-base font-normal transition ${
@@ -201,7 +201,7 @@ export function Navbar({
 
             <a
               href="/login"
-              className={`rounded-full border px-5 py-2 text-sm font-medium transition ${
+              className={`rounded-full border px-5 py-2 text-base font-normal transition ${
                 isLight
                   ? "border-fei-bg/18 text-fei-bg hover:bg-fei-bg/[0.04]"
                   : "border-fei-sky/45 text-fei-sky hover:bg-fei-sky/10"
@@ -212,7 +212,7 @@ export function Navbar({
 
             <a
               href="/register"
-              className="rounded-full bg-fei-yellow px-5 py-2 text-sm font-bold text-fei-bg transition hover:bg-fei-yellow/90 hover:shadow-lg hover:shadow-fei-yellow/20"
+              className="rounded-full bg-fei-yellow px-5 py-2 text-base font-bold text-fei-bg transition hover:bg-fei-yellow/90 hover:shadow-lg hover:shadow-fei-yellow/20"
             >
               {lang === "en" ? "Register" : "Registrarse"}
             </a>
@@ -261,7 +261,7 @@ export function Navbar({
                 key={link.label}
                 href={link.href}
                 onClick={(event) => handleNavClick(event, link.sectionId, link.href)}
-                className={`text-sm font-medium transition ${
+                className={`text-base font-normal transition ${
                   activeSection === link.sectionId
                     ? isLight ? "text-fei-bg" : "text-fei-yellow/85"
                     : isLight ? "text-fei-bg/60 hover:text-fei-bg" : "text-fei-text/65 hover:text-fei-text"
@@ -274,14 +274,14 @@ export function Navbar({
             <div className="flex gap-3 pt-2">
               <a
                 href="/login"
-                className={`flex-1 rounded-full border px-4 py-2 text-center text-sm font-medium transition ${isLight ? "border-fei-bg/20 text-fei-bg hover:bg-fei-bg/[0.04]" : "border-fei-sky/45 text-fei-sky hover:bg-fei-sky/10"}`}
+                className={`flex-1 rounded-full border px-4 py-2 text-center text-base font-normal transition ${isLight ? "border-fei-bg/20 text-fei-bg hover:bg-fei-bg/[0.04]" : "border-fei-sky/45 text-fei-sky hover:bg-fei-sky/10"}`}
               >
                 {lang === "en" ? "Login" : "Ingresar"}
               </a>
 
               <a
                 href="/register"
-                className="flex-1 rounded-full bg-fei-yellow px-4 py-2 text-center text-sm font-bold text-fei-bg transition hover:bg-fei-yellow/90"
+                className="flex-1 rounded-full bg-fei-yellow px-4 py-2 text-center text-base font-bold text-fei-bg transition hover:bg-fei-yellow/90"
               >
                 {lang === "en" ? "Register" : "Registrarse"}
               </a>
