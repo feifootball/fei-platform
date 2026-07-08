@@ -651,28 +651,30 @@ export default function Home() {
             ].map((plan) => (
               <div
                 key={plan.name}
-                className={`relative flex min-h-[430px] flex-col rounded-[1.75rem] border p-6 transition duration-300 ${
+                className={`group relative flex min-h-[365px] flex-col overflow-hidden rounded-[1.55rem] border p-5 transition duration-300 hover:-translate-y-1 ${
                   plan.featured
-                    ? "border-fei-yellow/65 bg-fei-yellow/[0.08] shadow-[0_18px_55px_rgba(250,204,21,0.10)]"
-                    : "border-fei-bg/10 bg-[#F7F8FA]"
+                    ? "border-fei-yellow/65 bg-fei-yellow/[0.08] shadow-[0_14px_40px_rgba(250,204,21,0.10)] hover:shadow-[0_22px_55px_rgba(250,204,21,0.16)]"
+                    : "border-fei-bg/[0.06] bg-[#FAFBFC] hover:border-fei-sky/28 hover:bg-white hover:shadow-[0_18px_45px_rgba(7,17,31,0.055)]"
                 }`}
               >
+                <div className="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-75 transition duration-300 group-hover:h-[2px] group-hover:opacity-100" />
+
                 {plan.badge && (
-                  <span className="absolute right-5 top-5 rounded-full bg-fei-bg px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.22em] text-fei-yellow">
+                  <span className="absolute right-5 top-5 rounded-full bg-fei-bg px-3.5 py-1 text-[9px] font-black uppercase tracking-[0.2em] text-fei-yellow">
                     {plan.badge}
                   </span>
                 )}
 
-                <p className="text-sm font-black uppercase tracking-[0.32em] text-fei-sky">
+                <p className="text-xs font-black uppercase tracking-[0.28em] text-fei-sky">
                   {plan.label}
                 </p>
 
-                <h3 className="mt-4 text-2xl font-black tracking-tight text-fei-bg">
+                <h3 className="mt-3 text-[1.35rem] font-black tracking-tight text-fei-bg">
                   {plan.name}
                 </h3>
 
-                <div className="mt-8">
-                  <p className="text-5xl font-black tracking-tight text-fei-bg">
+                <div className="mt-6">
+                  <p className="text-4xl font-black tracking-tight text-fei-bg">
                     {plan.price}
                   </p>
                   <p className="mt-2 text-sm font-semibold leading-6 text-fei-bg/55">
@@ -680,9 +682,9 @@ export default function Home() {
                   </p>
                 </div>
 
-                <ul className="mt-7 grid gap-4">
+                <ul className="mt-6 grid gap-3">
                   {plan.features.map((feature) => (
-                    <li key={feature} className="flex gap-3 text-[15px] leading-6 text-fei-bg/62">
+                    <li key={feature} className="flex gap-3 text-sm leading-6 text-fei-bg/62">
                       <span className="text-fei-sky">✓</span>
                       <span>{feature}</span>
                     </li>
@@ -691,7 +693,7 @@ export default function Home() {
 
                 <a
                   href={plan.href}
-                  className={`mt-auto inline-flex w-full items-center justify-center rounded-full px-6 py-3 text-sm font-bold transition duration-300 hover:-translate-y-0.5 ${
+                  className={`mt-auto inline-flex w-full items-center justify-center rounded-full px-5 py-2.5 text-sm font-bold transition duration-300 hover:-translate-y-0.5 ${
                     plan.featured
                       ? "bg-fei-bg text-white hover:shadow-lg hover:shadow-fei-bg/15"
                       : "border border-fei-bg/15 text-fei-bg hover:border-fei-bg/35 hover:bg-white"
