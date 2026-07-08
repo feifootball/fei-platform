@@ -168,49 +168,58 @@ export default function Home() {
             aria-hidden="true"
           >
             <defs>
-              <linearGradient id="footballPatternGradient" x1="110" y1="80" x2="520" y2="540" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#7DD3FC" stopOpacity="0.72" />
-                <stop offset="0.48" stopColor="#07111F" stopOpacity="0.24" />
-                <stop offset="1" stopColor="#FACC15" stopOpacity="0.36" />
+              <linearGradient id="footballPatternGradient" x1="120" y1="90" x2="540" y2="540" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#7DD3FC" stopOpacity="0.7" />
+                <stop offset="0.52" stopColor="#07111F" stopOpacity="0.18" />
+                <stop offset="1" stopColor="#FACC15" stopOpacity="0.32" />
               </linearGradient>
             </defs>
 
-            <g stroke="url(#footballPatternGradient)" strokeWidth="1.15" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M310 80L410 138" />
-              <path d="M410 138L410 248" />
-              <path d="M410 248L310 306" />
-              <path d="M310 306L210 248" />
-              <path d="M210 248L210 138" />
-              <path d="M210 138L310 80" />
+            <g
+              stroke="url(#footballPatternGradient)"
+              strokeWidth="1.1"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M364 78L468 138" />
+              <path d="M468 138L468 248" />
+              <path d="M468 248L364 308" />
 
-              <path d="M410 248L510 306" />
-              <path d="M510 306L510 418" />
-              <path d="M510 418L410 476" />
-              <path d="M410 476L310 418" />
-              <path d="M310 418L310 306" />
+              <path d="M364 78L266 138" />
+              <path d="M266 138L266 248" />
+              <path d="M266 248L364 308" />
 
-              <path d="M310 306L310 418" />
-              <path d="M310 418L210 476" />
-              <path d="M210 476L110 418" />
-              <path d="M110 418L110 306" />
-              <path d="M110 306L210 248" />
+              <path d="M468 138L570 196" />
+              <path d="M570 196L570 310" />
+              <path d="M570 310L468 370" />
 
-              <path d="M410 138L510 196" />
-              <path d="M510 196L510 306" />
+              <path d="M266 138L164 196" />
+              <path d="M164 196L164 310" />
+              <path d="M164 310L266 370" />
 
-              <path d="M210 138L110 196" />
-              <path d="M110 196L110 306" />
+              <path d="M364 308L468 370" />
+              <path d="M468 370L468 486" />
+              <path d="M468 486L364 548" />
 
-              <path d="M210 476L310 534" opacity="0.65" />
-              <path d="M310 534L410 476" opacity="0.65" />
+              <path d="M364 308L266 370" />
+              <path d="M266 370L266 486" />
+              <path d="M266 486L364 548" />
 
-              <path d="M510 196L565 164" opacity="0.45" />
-              <path d="M510 418L568 452" opacity="0.4" />
-              <path d="M410 476L446 560" opacity="0.38" />
-              <path d="M210 476L166 548" opacity="0.34" />
-              <path d="M110 418L52 452" opacity="0.32" />
-              <path d="M110 196L54 162" opacity="0.28" />
-              <path d="M310 80L310 18" opacity="0.32" />
+              <path d="M468 370L570 430" opacity="0.72" />
+              <path d="M570 430L570 548" opacity="0.6" />
+
+              <path d="M266 370L164 430" opacity="0.58" />
+              <path d="M164 430L164 548" opacity="0.46" />
+
+              <path d="M364 78L364 18" opacity="0.34" />
+              <path d="M570 196L616 170" opacity="0.36" />
+              <path d="M570 430L618 456" opacity="0.34" />
+              <path d="M468 486L504 586" opacity="0.3" />
+              <path d="M266 486L232 586" opacity="0.24" />
+
+              <path d="M468 248L570 310" opacity="0.52" />
+              <path d="M266 248L164 310" opacity="0.42" />
+              <path d="M364 548L364 606" opacity="0.22" />
             </g>
           </svg>
         </div>
