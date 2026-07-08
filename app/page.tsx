@@ -280,7 +280,7 @@ export default function Home() {
               <p className="mt-5 max-w-2xl text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base sm:leading-8">
                 {lang === "en"
                   ? "From level check to real football communication."
-                  : "Del diagnóstico inicial a la comunicación real del fútbol."}
+                  : "Del diagnóstico inicial a la comunicación que exige el fútbol real."}
               </p>
             </div>
 
@@ -292,7 +292,7 @@ export default function Home() {
                   description:
                     lang === "en"
                       ? "Understand your current level and role-specific communication needs."
-                      : "Comprende tu nivel actual y tus necesidades de comunicación específicas por rol.",
+                      : "Identifica tu nivel actual y lo que necesitas comunicar mejor según tu rol.",
                 },
                 {
                   number: "02",
@@ -300,7 +300,7 @@ export default function Home() {
                   description:
                     lang === "en"
                       ? "Follow a training path shaped by your role, objectives, and football context."
-                      : "Sigue una ruta de entrenamiento ajustada a tu rol, objetivos y contexto futbolístico.",
+                      : "Recibe una ruta de entrenamiento alineada con tu rol, tus objetivos y tu contexto futbolístico.",
                 },
                 {
                   number: "03",
@@ -308,7 +308,7 @@ export default function Home() {
                   description:
                     lang === "en"
                       ? "Build confidence through interviews, meetings, feedback, and pressure moments."
-                      : "Gana confianza con entrevistas, reuniones, feedback y momentos de presión.",
+                      : "Entrena entrevistas, reuniones, feedback y momentos de presión con lenguaje real del fútbol.",
                 },
               ].map((step, index) => (
                 <>
@@ -368,7 +368,7 @@ export default function Home() {
             <p className="mt-5 max-w-2xl text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base">
               {lang === "en"
                 ? "Choose your role. Train the communication you actually use."
-                : "Elige tu rol. Entrena la comunicación que realmente usas."}
+                : "Elige tu rol y entrena el inglés que necesitas en situaciones reales."}
             </p>
           </div>
 
@@ -377,57 +377,57 @@ export default function Home() {
               {
                 number: "01",
                 role: "Professional Player",
-                description: lang === "en" ? "Interviews, teammates, pressure." : "Entrevistas, compañeros, presión.",
+                description: lang === "en" ? "Interviews, teammates, pressure." : "Entrevistas, vestuario y momentos de presión.",
               },
               {
                 number: "02",
                 role: "Head Coach",
-                description: lang === "en" ? "Tactics, media, leadership." : "Táctica, medios, liderazgo.",
+                description: lang === "en" ? "Tactics, media, leadership." : "Táctica, medios y liderazgo de equipo.",
               },
               {
                 number: "03",
                 role: "Assistant Coach",
-                description: lang === "en" ? "Sessions, feedback, players." : "Sesiones, feedback, jugadores.",
+                description: lang === "en" ? "Sessions, feedback, players." : "Sesiones, feedback y comunicación con jugadores.",
               },
               {
                 number: "04",
                 role: "Scout",
-                description: lang === "en" ? "Reports and player profiles." : "Reportes y perfiles.",
+                description: lang === "en" ? "Reports and player profiles." : "Observación, reportes y perfiles de jugadores.",
               },
               {
                 number: "05",
                 role: "Head of Scouting",
-                description: lang === "en" ? "Recruitment and decisions." : "Reclutamiento y decisiones.",
+                description: lang === "en" ? "Recruitment and decisions." : "Estrategia de scouting y toma de decisiones.",
               },
               {
                 number: "06",
                 role: "Academy Director",
-                description: lang === "en" ? "Development and pathways." : "Desarrollo y rutas.",
+                description: lang === "en" ? "Development and pathways." : "Desarrollo de jugadores y rutas formativas.",
               },
               {
                 number: "07",
                 role: "Performance Analyst",
-                description: lang === "en" ? "Data, clips, tactics." : "Datos, clips, táctica.",
+                description: lang === "en" ? "Data, clips, tactics." : "Datos, videoanálisis y comunicación táctica.",
               },
               {
                 number: "08",
                 role: "Fitness Coach",
-                description: lang === "en" ? "Load, recovery, readiness." : "Carga, recuperación, preparación.",
+                description: lang === "en" ? "Load, recovery, readiness." : "Carga, recuperación y preparación física.",
               },
               {
                 number: "09",
                 role: "Physiotherapist",
-                description: lang === "en" ? "Rehab and return-to-play." : "Rehabilitación y retorno.",
+                description: lang === "en" ? "Rehab and return-to-play." : "Rehabilitación, evolución y retorno al juego.",
               },
               {
                 number: "10",
                 role: "Sports Psychologist",
-                description: lang === "en" ? "Confidence and pressure." : "Confianza y presión.",
+                description: lang === "en" ? "Confidence and pressure." : "Confianza, presión y fortaleza mental.",
               },
               {
                 number: "11",
                 role: "Nutritionist",
-                description: lang === "en" ? "Habits and performance." : "Hábitos y rendimiento.",
+                description: lang === "en" ? "Habits and performance." : "Hábitos, nutrición y rendimiento.",
               },
             ].map((item) => (
               <a
@@ -475,7 +475,7 @@ export default function Home() {
                 <p className="mt-1.5 max-w-[18rem] text-sm leading-5 text-fei-bg/58">
                   {lang === "en"
                     ? "Start with the closest path."
-                    : "Empieza con la ruta más cercana."}
+                    : "Cuéntanos qué rol deberíamos añadir."}
                 </p>
 
                 <p className="mt-2 text-xs font-bold uppercase tracking-[0.14em] text-fei-bg opacity-0 transition duration-300 group-hover:opacity-100">
@@ -516,10 +516,10 @@ export default function Home() {
                         : "Licencias institucionales flexibles para equipos y staff.",
                       lang === "en"
                         ? "Diagnostics, training by role, real football situations, and progress reports."
-                        : "Diagnósticos, entrenamiento por rol, situaciones reales de fútbol y reportes de progreso.",
+                        : "Incluye diagnóstico de nivel, entrenamiento por rol, situaciones reales del fútbol y reportes de progreso.",
                       lang === "en"
                         ? "Quoted by users, roles, and training needs."
-                        : "Cotización según usuarios, roles y necesidades de entrenamiento.",
+                        : "La cotización se adapta al número de usuarios, roles seleccionados y necesidades del club.",
                     ].map((item) => (
                       <div key={item} className="flex items-start gap-3">
                         <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-fei-sky/14 text-xs font-black text-fei-bg">
@@ -557,7 +557,7 @@ export default function Home() {
                   <p className="mt-5 max-w-xl text-[15px] leading-7 text-white/68 sm:text-base sm:leading-8">
                     {lang === "en"
                       ? "See how FEI can support communication across your club with training designed for real football roles."
-                      : "Conoce cómo FEI puede fortalecer la comunicación de tu club con entrenamiento diseñado para roles reales del fútbol."}
+                      : "Te mostramos cómo FEI puede ayudar a tu club a comunicarse mejor dentro y fuera de la cancha."}
                   </p>
 
                   <a
@@ -595,7 +595,7 @@ export default function Home() {
             <p className="mt-5 max-w-2xl text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base">
               {lang === "en"
                 ? "Choose the access that fits your football journey."
-                : "Elige el acceso que mejor se adapta a tu camino en el fútbol."}
+                : "Elige el plan que mejor se adapta a tu etapa y a tus objetivos."}
             </p>
           </div>
 
@@ -605,11 +605,11 @@ export default function Home() {
                 label: lang === "en" ? "PLAN" : "PLAN",
                 name: lang === "en" ? "Free Access" : "Acceso gratuito",
                 price: lang === "en" ? "Free" : "Gratis",
-                note: lang === "en" ? "Initial diagnostic + limited preview" : "Diagnóstico inicial + vista limitada",
+                note: lang === "en" ? "Initial diagnostic + limited preview" : "Diagnóstico inicial + vista previa limitada",
                 features:
                   lang === "en"
                     ? ["Initial FEI diagnostic", "Estimated communication level", "Limited module preview"]
-                    : ["Diagnóstico inicial FEI", "Nivel comunicativo estimado", "Vista limitada de módulos"],
+                    : ["Diagnóstico inicial FEI", "Nivel comunicativo estimado", "Vista previa limitada de módulos"],
                 button: lang === "en" ? "Start Free" : "Empezar gratis",
                 href: "/register",
                 featured: false,
@@ -623,7 +623,7 @@ export default function Home() {
                 features:
                   lang === "en"
                     ? ["Full role-based modules", "Football-specific scenarios", "Progress recommendations"]
-                    : ["Módulos completos por rol", "Escenarios específicos de fútbol", "Recomendaciones de progreso"],
+                    : ["Módulos completos por rol", "Escenarios reales del fútbol", "Recomendaciones de progreso"],
                 button: lang === "en" ? "Unlock Premium" : "Activar Premium",
                 href: "/register",
                 featured: true,
