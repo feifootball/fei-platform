@@ -222,7 +222,7 @@ export default function Home() {
 
       <section id="how-it-works" className="bg-white px-5 py-14 sm:px-8 sm:py-18">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.4fr] lg:items-center">
+          <div className="grid gap-10 lg:grid-cols-[0.75fr_1.55fr] lg:items-center">
             <div>
               <p className="text-sm font-black uppercase tracking-[0.32em] text-fei-bg/55">
                 {lang === "en" ? "THE FEI METHOD" : "EL MÉTODO FEI"}
@@ -240,29 +240,14 @@ export default function Home() {
                 )}
               </h2>
 
-              <p className="mt-6 max-w-xl text-base leading-8 text-fei-bg/62 sm:text-lg">
+              <p className="mt-6 max-w-md text-xl font-semibold leading-8 text-fei-bg/72 sm:text-2xl sm:leading-9">
                 {lang === "en"
-                  ? "A focused process for football professionals who need practical, role-specific English for real communication moments."
-                  : "Un proceso enfocado para profesionales del fútbol que necesitan inglés práctico, específico por rol y conectado con situaciones reales."}
+                  ? "Train the English football actually uses."
+                  : "Entrena el inglés que el fútbol realmente usa."}
               </p>
-
-              <div className="mt-8 grid max-w-xl gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-                {[
-                  lang === "en" ? "Your role" : "Tu rol",
-                  lang === "en" ? "Your level" : "Tu nivel",
-                  lang === "en" ? "Real scenarios" : "Escenarios reales",
-                ].map((item) => (
-                  <div
-                    key={item}
-                    className="rounded-2xl border border-fei-bg/10 bg-[#F7F8FA] px-4 py-3 text-sm font-semibold text-fei-bg/70"
-                  >
-                    {item}
-                  </div>
-                ))}
-              </div>
             </div>
 
-            <div className="grid gap-4">
+            <div className="grid gap-4 md:grid-cols-3">
               {[
                 {
                   number: "01",
@@ -303,34 +288,33 @@ export default function Home() {
               ].map((step) => (
                 <div
                   key={step.number}
-                  className="group grid gap-5 rounded-[1.6rem] border border-fei-bg/10 bg-white p-5 shadow-[0_16px_45px_rgba(7,17,31,0.045)] transition duration-300 hover:-translate-y-0.5 hover:border-fei-sky/35 hover:shadow-[0_22px_60px_rgba(7,17,31,0.08)] sm:grid-cols-[140px_1fr]"
+                  className="group relative overflow-hidden rounded-[1.6rem] border border-fei-bg/10 bg-white p-5 shadow-[0_16px_45px_rgba(7,17,31,0.045)] transition duration-300 hover:-translate-y-1 hover:border-fei-sky/35 hover:shadow-[0_22px_60px_rgba(7,17,31,0.08)]"
                 >
-                  <div className="flex items-center gap-4 sm:block">
-                    <p className="text-5xl font-black leading-none tracking-tight text-fei-bg transition duration-300 group-hover:text-fei-sky sm:text-6xl">
+                  <div className="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-80 transition duration-300 group-hover:h-[2px]" />
+                  <div className="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full bg-fei-sky/8 blur-2xl transition duration-300 group-hover:bg-fei-sky/16" />
+
+                  <div className="relative flex items-start justify-between gap-4">
+                    <p className="text-5xl font-black leading-none tracking-tight text-fei-bg transition duration-300 group-hover:text-fei-sky">
                       {step.number}
                     </p>
 
-                    <div className="mt-0 flex h-12 w-12 items-center justify-center rounded-2xl bg-fei-yellow text-fei-bg shadow-[0_12px_25px_rgba(250,204,21,0.25)] transition duration-300 group-hover:scale-105 sm:mt-5">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-fei-yellow text-fei-bg shadow-[0_12px_25px_rgba(250,204,21,0.22)] transition duration-300 group-hover:scale-105">
                       <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                         {step.icon}
                       </svg>
                     </div>
                   </div>
 
-                  <div>
-                    <div className="mb-5 h-px w-full bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent" />
+                  <div className="relative mt-8">
+                    <span className="rounded-full border border-fei-sky/20 bg-fei-sky/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-fei-bg/58">
+                      {step.tag}
+                    </span>
 
-                    <div className="flex flex-wrap items-start justify-between gap-3">
-                      <h3 className="text-2xl font-black tracking-tight text-fei-bg sm:text-3xl">
-                        {step.title}
-                      </h3>
+                    <h3 className="mt-4 text-2xl font-black tracking-tight text-fei-bg">
+                      {step.title}
+                    </h3>
 
-                      <span className="rounded-full border border-fei-sky/20 bg-fei-sky/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-fei-bg/60">
-                        {step.tag}
-                      </span>
-                    </div>
-
-                    <p className="mt-4 max-w-2xl text-base leading-7 text-fei-bg/62">
+                    <p className="mt-4 text-sm leading-7 text-fei-bg/62">
                       {step.description}
                     </p>
                   </div>
