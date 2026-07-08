@@ -260,7 +260,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="relative lg:min-h-[760px]">
+              <div className="relative lg:min-h-[560px]">
                 {[
                   {
                     number: "01",
@@ -279,8 +279,8 @@ export default function Home() {
                       lang === "en"
                         ? "A pathway shaped by your objectives, football context, and real communication situations."
                         : "Una ruta ajustada a tus objetivos, contexto futbolístico y situaciones reales de comunicación.",
-                    top: "lg:top-44",
-                    margin: "lg:mt-36",
+                    top: "lg:top-[13.5rem]",
+                    margin: "lg:mt-24",
                   },
                   {
                     number: "03",
@@ -289,27 +289,27 @@ export default function Home() {
                       lang === "en"
                         ? "Train interviews, meetings, feedback, pressure moments, and real football communication tasks."
                         : "Entrena entrevistas, reuniones, feedback, presión competitiva y tareas reales de comunicación en fútbol.",
-                    top: "lg:top-60",
-                    margin: "lg:mt-36",
+                    top: "lg:top-[19rem]",
+                    margin: "lg:mt-24",
                   },
                 ].map((step) => (
                   <div
                     key={step.number}
-                    className={`group relative rounded-[1.6rem] border border-fei-bg/10 bg-white p-6 shadow-[0_18px_55px_rgba(7,17,31,0.06)] transition-colors duration-300 lg:sticky ${step.top} ${step.margin}`}
+                    className={`group relative max-h-[calc(100vh-9rem)] overflow-hidden rounded-[1.45rem] border border-fei-bg/10 bg-white p-5 shadow-[0_14px_42px_rgba(7,17,31,0.055)] transition-colors duration-300 lg:sticky ${step.top} ${step.margin}`}
                   >
                     <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-80" />
 
-                    <div className="grid gap-6 sm:grid-cols-[120px_1fr] sm:items-start">
-                      <p className="text-5xl font-black leading-none tracking-tight text-fei-bg">
+                    <div className="grid gap-5 sm:grid-cols-[88px_1fr] sm:items-start">
+                      <p className="text-4xl font-black leading-none tracking-tight text-fei-bg">
                         {step.number}
                       </p>
 
                       <div>
-                        <h3 className="text-2xl font-black tracking-tight text-fei-bg sm:text-3xl">
+                        <h3 className="text-2xl font-black tracking-tight text-fei-bg">
                           {step.title}
                         </h3>
 
-                        <p className="mt-4 max-w-2xl text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base sm:leading-8">
+                        <p className="mt-3 max-w-2xl text-[15px] font-normal leading-7 text-fei-bg/62">
                           {step.description}
                         </p>
                       </div>
