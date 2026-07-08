@@ -433,7 +433,7 @@ export default function Home() {
               <a
                 key={item.role}
                 href={`/register?role=${encodeURIComponent(item.role)}`}
-                className="group relative min-h-[92px] overflow-hidden rounded-[1.25rem] border border-fei-bg/10 bg-[#F7F8FA] px-5 py-3.5 transition duration-300 hover:-translate-y-0.5 hover:border-fei-sky/35 hover:bg-white hover:shadow-[0_18px_45px_rgba(7,17,31,0.07)]"
+                className="group relative min-h-[92px] overflow-hidden rounded-[1.25rem] border border-fei-bg/[0.055] bg-[#FAFBFC] px-5 py-3.5 transition duration-300 hover:-translate-y-0.5 hover:border-fei-sky/24 hover:bg-white hover:shadow-[0_14px_34px_rgba(7,17,31,0.045)]"
               >
                 <span className="pointer-events-none absolute -right-1 -top-5 text-6xl font-black leading-none text-fei-sky/[0.10] transition duration-300 group-hover:text-fei-yellow/[0.34]">
                   {item.number}
