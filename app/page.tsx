@@ -279,8 +279,8 @@ export default function Home() {
 
               <p className="mt-8 max-w-2xl text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base sm:leading-8">
                 {lang === "en"
-                  ? "Train the English football actually uses."
-                  : "Entrena el inglés que el fútbol realmente usa."}
+                  ? "From level check to real football communication."
+                  : "Del diagnóstico inicial a la comunicación real del fútbol."}
               </p>
             </div>
 
