@@ -346,14 +346,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="roles" className="scroll-mt-28 bg-white px-5 py-10 sm:px-8 sm:py-12">
+      <section id="roles" className="scroll-mt-24 bg-white px-5 py-8 sm:px-8 sm:py-10">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-6xl">
             <p className="text-sm font-black uppercase tracking-[0.32em] text-fei-bg/55">
               {lang === "en" ? "ROLE INTELLIGENCE" : "INTELIGENCIA POR ROL"}
             </p>
 
-            <h2 className="mt-6 text-4xl font-black tracking-tight text-fei-bg sm:text-5xl lg:whitespace-nowrap lg:text-6xl">
+            <h2 className="mt-5 text-4xl font-black tracking-tight text-fei-bg sm:text-5xl lg:whitespace-nowrap lg:text-6xl">
               {lang === "en" ? (
                 <>
                   Built for every <span className="text-fei-sky">role</span> in the club
@@ -365,97 +365,75 @@ export default function Home() {
               )}
             </h2>
 
-            <p className="mt-8 max-w-2xl text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base sm:leading-8">
+            <p className="mt-5 max-w-2xl text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base">
               {lang === "en"
                 ? "Choose your role. Train the communication you actually use."
                 : "Elige tu rol. Entrena la comunicación que realmente usas."}
             </p>
           </div>
 
-          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
                 number: "01",
                 role: "Professional Player",
-                description: lang === "en"
-                  ? "Interviews, teammates, media, and pressure moments."
-                  : "Entrevistas, compañeros, medios y momentos de presión.",
+                description: lang === "en" ? "Interviews, media, pressure." : "Entrevistas, medios, presión.",
               },
               {
                 number: "02",
                 role: "Head Coach",
-                description: lang === "en"
-                  ? "Team talks, tactics, media, and staff leadership."
-                  : "Charlas de equipo, táctica, medios y liderazgo del staff.",
+                description: lang === "en" ? "Tactics, media, leadership." : "Táctica, medios, liderazgo.",
               },
               {
                 number: "03",
                 role: "Assistant Coach",
-                description: lang === "en"
-                  ? "Session instructions, feedback, and daily communication."
-                  : "Instrucciones de sesión, feedback y comunicación diaria.",
+                description: lang === "en" ? "Sessions, feedback, players." : "Sesiones, feedback, jugadores.",
               },
               {
                 number: "04",
                 role: "Scout",
-                description: lang === "en"
-                  ? "Reports, observations, and player profiles."
-                  : "Reportes, observaciones y perfiles de jugadores.",
+                description: lang === "en" ? "Reports and player profiles." : "Reportes y perfiles.",
               },
               {
                 number: "05",
                 role: "Head of Scouting",
-                description: lang === "en"
-                  ? "Recruitment strategy, player evidence, and decision briefs."
-                  : "Estrategia de reclutamiento, evidencia y decisiones.",
+                description: lang === "en" ? "Recruitment and decisions." : "Reclutamiento y decisiones.",
               },
               {
                 number: "06",
                 role: "Academy Director",
-                description: lang === "en"
-                  ? "Development plans, parents, staff, and player pathways."
-                  : "Planes de desarrollo, familias, staff y rutas de jugadores.",
+                description: lang === "en" ? "Development and pathways." : "Desarrollo y rutas.",
               },
               {
                 number: "07",
                 role: "Performance Analyst",
-                description: lang === "en"
-                  ? "Data, clips, tactical insights, and match communication."
-                  : "Datos, clips, análisis táctico y comunicación de partido.",
+                description: lang === "en" ? "Data, clips, tactics." : "Datos, clips, táctica.",
               },
               {
                 number: "08",
                 role: "Fitness Coach",
-                description: lang === "en"
-                  ? "Load, recovery, physical plans, and player readiness."
-                  : "Carga, recuperación, planes físicos y preparación del jugador.",
+                description: lang === "en" ? "Load, recovery, readiness." : "Carga, recuperación, preparación.",
               },
               {
                 number: "09",
                 role: "Physiotherapist",
-                description: lang === "en"
-                  ? "Injury updates, rehab progress, and return-to-play."
-                  : "Lesiones, rehabilitación y retorno al juego.",
+                description: lang === "en" ? "Rehab and return-to-play." : "Rehabilitación y retorno.",
               },
               {
                 number: "10",
                 role: "Sports Psychologist",
-                description: lang === "en"
-                  ? "Confidence, pressure, mindset, and private support."
-                  : "Confianza, presión, mentalidad y apoyo individual.",
+                description: lang === "en" ? "Confidence and pressure." : "Confianza y presión.",
               },
               {
                 number: "11",
                 role: "Nutritionist",
-                description: lang === "en"
-                  ? "Meal plans, habits, routines, and performance support."
-                  : "Planes, hábitos, rutinas y apoyo al rendimiento.",
+                description: lang === "en" ? "Habits and performance." : "Hábitos y rendimiento.",
               },
             ].map((item) => (
               <a
                 key={item.role}
                 href={`/register?role=${encodeURIComponent(item.role)}`}
-                className="group relative min-h-[108px] overflow-hidden rounded-[1.3rem] border border-fei-bg/10 bg-[#F7F8FA] px-5 py-4 transition duration-300 hover:-translate-y-0.5 hover:border-fei-sky/35 hover:bg-white hover:shadow-[0_18px_45px_rgba(7,17,31,0.07)]"
+                className="group relative min-h-[92px] overflow-hidden rounded-[1.25rem] border border-fei-bg/10 bg-[#F7F8FA] px-5 py-3.5 transition duration-300 hover:-translate-y-0.5 hover:border-fei-sky/35 hover:bg-white hover:shadow-[0_18px_45px_rgba(7,17,31,0.07)]"
               >
                 <span className="pointer-events-none absolute -right-1 -top-5 text-6xl font-black leading-none text-fei-sky/[0.10] transition duration-300 group-hover:text-fei-yellow/[0.18]">
                   {item.number}
@@ -464,11 +442,11 @@ export default function Home() {
                 <div className="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-80 transition duration-300 group-hover:h-[2px] group-hover:opacity-100" />
 
                 <div className="relative">
-                  <h3 className="text-lg font-black tracking-tight text-fei-bg">
+                  <h3 className="text-[17px] font-black tracking-tight text-fei-bg">
                     {item.role}
                   </h3>
 
-                  <p className="mt-2 max-w-[18rem] text-sm leading-5 text-fei-bg/58">
+                  <p className="mt-1.5 max-w-[18rem] text-sm leading-5 text-fei-bg/58">
                     {item.description}
                   </p>
 
@@ -481,7 +459,7 @@ export default function Home() {
 
             <a
               href="/register"
-              className="group relative min-h-[108px] overflow-hidden rounded-[1.3rem] border border-fei-yellow/35 bg-fei-yellow/[0.08] px-5 py-4 transition duration-300 hover:-translate-y-0.5 hover:bg-fei-yellow/15 hover:shadow-[0_18px_45px_rgba(250,204,21,0.12)]"
+              className="group relative min-h-[92px] overflow-hidden rounded-[1.25rem] border border-fei-yellow/35 bg-fei-yellow/[0.08] px-5 py-3.5 transition duration-300 hover:-translate-y-0.5 hover:bg-fei-yellow/15 hover:shadow-[0_18px_45px_rgba(250,204,21,0.12)]"
             >
               <span className="pointer-events-none absolute -right-1 -top-5 text-6xl font-black leading-none text-fei-yellow/[0.18]">
                 +
@@ -490,14 +468,14 @@ export default function Home() {
               <div className="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-90" />
 
               <div className="relative">
-                <h3 className="text-lg font-black tracking-tight text-fei-bg">
+                <h3 className="text-[17px] font-black tracking-tight text-fei-bg">
                   {lang === "en" ? "Can't find your role?" : "¿No encuentras tu rol?"}
                 </h3>
 
-                <p className="mt-2 max-w-[18rem] text-sm leading-5 text-fei-bg/58">
+                <p className="mt-1.5 max-w-[18rem] text-sm leading-5 text-fei-bg/58">
                   {lang === "en"
-                    ? "Start with the closest path and personalize from there."
-                    : "Empieza con la ruta más cercana y personaliza desde ahí."}
+                    ? "Start with the closest path."
+                    : "Empieza con la ruta más cercana."}
                 </p>
 
                 <p className="mt-2 text-xs font-bold uppercase tracking-[0.14em] text-fei-bg opacity-0 transition duration-300 group-hover:opacity-100">
