@@ -277,7 +277,7 @@ export default function Home() {
                 )}
               </h2>
 
-              <p className="mt-8 max-w-2xl text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base sm:leading-8">
+              <p className="mt-5 max-w-2xl text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base sm:leading-8">
                 {lang === "en"
                   ? "From level check to real football communication."
                   : "Del diagnóstico inicial a la comunicación real del fútbol."}
