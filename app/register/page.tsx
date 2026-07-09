@@ -21,12 +21,30 @@ const roles = [
   "I'll choose later",
 ]
 
+const countries = [
+  'Argentina',
+  'Brazil',
+  'Canada',
+  'Chile',
+  'Colombia',
+  'Ecuador',
+  'France',
+  'Germany',
+  'Italy',
+  'Mexico',
+  'Portugal',
+  'Spain',
+  'United Kingdom',
+  'United States',
+  'Other',
+]
+
 const copy = {
   en: {
     createLabel: 'Create your account',
     titlePrefix: 'Join',
     description:
-      'Choose the football role that best matches your pathway. FEI uses this to personalize your diagnostic.',
+      'Create your account to start your FEI diagnostic and begin your football English training journey.',
     fullName: 'Full name',
     fullNamePlaceholder: 'Your name',
     role: 'Football role',
@@ -36,6 +54,8 @@ const copy = {
     customRolePlaceholder: 'Tell us your football role',
     customRoleNote:
       'FEI diagnostics are currently built around specific football roles. Tell us your role, then choose the closest available role later to begin your diagnostic.',
+    country: 'Country',
+    chooseCountry: 'Choose your country',
     email: 'Email',
     password: 'Password',
     passwordHelp: 'Use at least 8 characters with uppercase, lowercase, and a number.',
@@ -61,7 +81,7 @@ const copy = {
     createLabel: 'Crea tu cuenta',
     titlePrefix: 'Únete a',
     description:
-      'Elige el rol de fútbol que mejor se adapta a tu camino. FEI usará esta información para personalizar tu diagnóstico.',
+      'Crea tu cuenta para iniciar tu diagnóstico FEI y empezar tu entrenamiento de inglés para fútbol.',
     fullName: 'Nombre completo',
     fullNamePlaceholder: 'Tu nombre',
     role: 'Rol en el fútbol',
@@ -71,6 +91,8 @@ const copy = {
     customRolePlaceholder: 'Cuéntanos cuál es tu rol',
     customRoleNote:
       'Los diagnósticos FEI están construidos alrededor de roles específicos del fútbol. Cuéntanos tu rol y luego elige el rol más cercano para iniciar tu diagnóstico.',
+    country: 'País',
+    chooseCountry: 'Elige tu país',
     email: 'Correo electrónico',
     password: 'Contraseña',
     passwordHelp: 'Usa al menos 8 caracteres con mayúscula, minúscula y un número.',
@@ -100,6 +122,7 @@ export default function RegisterPage() {
   const [password, setPassword] = useState('')
   const [name, setName] = useState('')
   const [role, setRole] = useState('')
+  const [country, setCountry] = useState('')
   const [customRole, setCustomRole] = useState('')
   const [acceptedTerms, setAcceptedTerms] = useState(false)
   const [acceptedGdpr, setAcceptedGdpr] = useState(false)
@@ -175,7 +198,9 @@ export default function RegisterPage() {
         data: {
           full_name: name,
           role,
+          country,
           custom_role: role === 'Other football role' ? customRole.trim() : null,
+          country,
         },
       },
     })
@@ -213,6 +238,7 @@ export default function RegisterPage() {
           user_id: data.user.id,
           full_name: name,
           role,
+          country,
         },
         { onConflict: 'user_id' }
       )
@@ -424,6 +450,32 @@ export default function RegisterPage() {
 
             <div className="mb-4">
               <label className="mb-2 block text-sm font-bold text-fei-bg/78">
+                {t.country}
+              </label>
+              <select
+                value={country}
+                onChange={e => setCountry(e.target.value)}
+                required
+                className="h-[54px] w-full appearance-none rounded-2xl border border-fei-bg/10 bg-white px-4 pr-12 text-base text-fei-bg outline-none transition focus:border-fei-sky/45"
+                style={{
+                  backgroundImage:
+                    "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%237dd3fc' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M6 9l6 6 6-6'/%3E%3C/svg%3E\")",
+                  backgroundRepeat: 'no-repeat',
+                  backgroundPosition: 'right 1rem center',
+                  backgroundSize: '1.25rem',
+                }}
+              >
+                <option value="">{t.chooseCountry}</option>
+                {countries.map(item => (
+                  <option key={item} value={item}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="mb-4">
+              <label className="mb-2 block text-sm font-bold text-fei-bg/78">
                 {t.email}
               </label>
               <input
@@ -465,11 +517,11 @@ export default function RegisterPage() {
                 />
                 <span>
                   {t.termsStart}{' '}
-                  <a href="/terms" className="font-bold text-fei-sky hover:underline">
+                  <a href="/terms" className="font-black text-[#0369a1] hover:text-fei-bg hover:underline">
                     {t.terms}
                   </a>{' '}
                   {t.and}{' '}
-                  <a href="/privacy" className="font-bold text-fei-sky hover:underline">
+                  <a href="/privacy" className="font-black text-[#0369a1] hover:text-fei-bg hover:underline">
                     {t.privacy}
                   </a>
                   .
@@ -486,7 +538,7 @@ export default function RegisterPage() {
                 />
                 <span>
                   {t.gdprStart}{' '}
-                  <a href="/privacy" className="font-bold text-fei-sky hover:underline">
+                  <a href="/privacy" className="font-black text-[#0369a1] hover:text-fei-bg hover:underline">
                     {t.privacy}
                   </a>
                   .
@@ -504,7 +556,7 @@ export default function RegisterPage() {
 
             <p className="mt-4 text-center text-sm text-fei-bg/62">
               {t.already}{' '}
-              <a href="/login" className="font-bold text-fei-sky hover:underline">
+              <a href="/login" className="font-black text-[#0369a1] hover:text-fei-bg hover:underline">
                 {t.signIn}
               </a>
             </p>
