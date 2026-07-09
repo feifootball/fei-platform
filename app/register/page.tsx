@@ -200,7 +200,6 @@ export default function RegisterPage() {
           role,
           country,
           custom_role: role === 'Other football role' ? customRole.trim() : null,
-          country,
         },
       },
     })
