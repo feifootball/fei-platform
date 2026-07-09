@@ -386,7 +386,7 @@ export default function RegisterPage() {
             )}
 
             <div className="mb-4">
-              <label className="mb-2 block text-sm font-bold text-[#0369a1]">
+              <label className="mb-2 block text-sm font-bold text-fei-bg">
                 {t.fullName}
               </label>
               <input
@@ -400,7 +400,7 @@ export default function RegisterPage() {
             </div>
 
             <div className="mb-4">
-              <label className="mb-2 block text-sm font-bold text-[#0369a1]">
+              <label className="mb-2 block text-sm font-bold text-fei-bg">
                 {t.role}
               </label>
               <select
@@ -448,7 +448,7 @@ export default function RegisterPage() {
             </div>
 
             <div className="mb-4">
-              <label className="mb-2 block text-sm font-bold text-[#0369a1]">
+              <label className="mb-2 block text-sm font-bold text-fei-bg">
                 {t.country}
               </label>
               <select
@@ -474,7 +474,7 @@ export default function RegisterPage() {
             </div>
 
             <div className="mb-4">
-              <label className="mb-2 block text-sm font-bold text-[#0369a1]">
+              <label className="mb-2 block text-sm font-bold text-fei-bg">
                 {t.email}
               </label>
               <input
@@ -488,7 +488,7 @@ export default function RegisterPage() {
             </div>
 
             <div className="mb-6">
-              <label className="mb-2 block text-sm font-bold text-[#0369a1]">
+              <label className="mb-2 block text-sm font-bold text-fei-bg">
                 {t.password}
               </label>
               <input
@@ -516,11 +516,11 @@ export default function RegisterPage() {
                 />
                 <span>
                   {t.termsStart}{' '}
-                  <a href="/terms" className="font-black text-[#0284c7] hover:text-fei-bg hover:underline">
+                  <a href="/terms" className="font-black text-[#38bdf8] hover:text-fei-bg hover:underline">
                     {t.terms}
                   </a>{' '}
                   {t.and}{' '}
-                  <a href="/privacy" className="font-black text-[#0284c7] hover:text-fei-bg hover:underline">
+                  <a href="/privacy" className="font-black text-[#38bdf8] hover:text-fei-bg hover:underline">
                     {t.privacy}
                   </a>
                   .
@@ -537,7 +537,7 @@ export default function RegisterPage() {
                 />
                 <span>
                   {t.gdprStart}{' '}
-                  <a href="/privacy" className="font-black text-[#0284c7] hover:text-fei-bg hover:underline">
+                  <a href="/privacy" className="font-black text-[#38bdf8] hover:text-fei-bg hover:underline">
                     {t.privacy}
                   </a>
                   .
@@ -555,7 +555,7 @@ export default function RegisterPage() {
 
             <p className="mt-4 text-center text-sm text-fei-bg/62">
               {t.already}{' '}
-              <a href="/login" className="font-black text-[#0284c7] hover:text-fei-bg hover:underline">
+              <a href="/login" className="font-black text-[#38bdf8] hover:text-fei-bg hover:underline">
                 {t.signIn}
               </a>
             </p>
