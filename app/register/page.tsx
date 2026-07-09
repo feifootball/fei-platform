@@ -386,7 +386,7 @@ export default function RegisterPage() {
             )}
 
             <div className="mb-4">
-              <label className="mb-2 block text-sm font-bold text-fei-bg/78">
+              <label className="mb-2 block text-sm font-bold text-[#0369a1]">
                 {t.fullName}
               </label>
               <input
@@ -400,7 +400,7 @@ export default function RegisterPage() {
             </div>
 
             <div className="mb-4">
-              <label className="mb-2 block text-sm font-bold text-fei-bg/78">
+              <label className="mb-2 block text-sm font-bold text-[#0369a1]">
                 {t.role}
               </label>
               <select
@@ -448,7 +448,7 @@ export default function RegisterPage() {
             </div>
 
             <div className="mb-4">
-              <label className="mb-2 block text-sm font-bold text-fei-bg/78">
+              <label className="mb-2 block text-sm font-bold text-[#0369a1]">
                 {t.country}
               </label>
               <select
@@ -474,7 +474,7 @@ export default function RegisterPage() {
             </div>
 
             <div className="mb-4">
-              <label className="mb-2 block text-sm font-bold text-fei-bg/78">
+              <label className="mb-2 block text-sm font-bold text-[#0369a1]">
                 {t.email}
               </label>
               <input
@@ -488,7 +488,7 @@ export default function RegisterPage() {
             </div>
 
             <div className="mb-6">
-              <label className="mb-2 block text-sm font-bold text-fei-bg/78">
+              <label className="mb-2 block text-sm font-bold text-[#0369a1]">
                 {t.password}
               </label>
               <input
