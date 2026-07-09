@@ -3,6 +3,8 @@
 import { FormEvent, useEffect, useState } from 'react'
 import { createClient } from '@/lib/supabase'
 
+type Lang = 'en' | 'es'
+
 const roles = [
   'Professional Player',
   'Head Coach',
@@ -19,7 +21,81 @@ const roles = [
   "I'll choose later",
 ]
 
+const copy = {
+  en: {
+    createLabel: 'Create your account',
+    titlePrefix: 'Join',
+    description:
+      'Choose the football role that best matches your pathway. FEI uses this to personalize your diagnostic.',
+    fullName: 'Full name',
+    fullNamePlaceholder: 'Your name',
+    role: 'Football role',
+    chooseRole: 'Choose your role',
+    chooseLaterNote:
+      'You can create your account now, but you will need to choose a football role before starting your FEI Diagnostic.',
+    customRolePlaceholder: 'Tell us your football role',
+    customRoleNote:
+      'FEI diagnostics are currently built around specific football roles. Tell us your role, then choose the closest available role later to begin your diagnostic.',
+    email: 'Email',
+    password: 'Password',
+    passwordHelp: 'Use at least 8 characters with uppercase, lowercase, and a number.',
+    termsStart: 'I accept the',
+    terms: 'Terms of Service',
+    and: 'and',
+    privacy: 'Privacy Policy',
+    gdprStart: 'I understand my personal data is processed and protected according to our',
+    loading: 'Creating account...',
+    submit: 'Get Started',
+    already: 'Already have an account?',
+    signIn: 'Sign in',
+    login: 'Login',
+    almost: 'Almost there',
+    confirmTitle: 'Confirm your FEI account',
+    sentTo: 'We sent a confirmation link to:',
+    confirmBody:
+      'Open the email and click the confirmation link to activate your FEI profile and continue to your diagnostic.',
+    spam: 'Can’t find it? Check your spam or promotions folder.',
+    goLogin: 'Go to Sign in',
+  },
+  es: {
+    createLabel: 'Crea tu cuenta',
+    titlePrefix: 'Únete a',
+    description:
+      'Elige el rol de fútbol que mejor se adapta a tu camino. FEI usará esta información para personalizar tu diagnóstico.',
+    fullName: 'Nombre completo',
+    fullNamePlaceholder: 'Tu nombre',
+    role: 'Rol en el fútbol',
+    chooseRole: 'Elige tu rol',
+    chooseLaterNote:
+      'Puedes crear tu cuenta ahora, pero deberás elegir un rol antes de iniciar tu Diagnóstico FEI.',
+    customRolePlaceholder: 'Cuéntanos cuál es tu rol',
+    customRoleNote:
+      'Los diagnósticos FEI están construidos alrededor de roles específicos del fútbol. Cuéntanos tu rol y luego elige el rol más cercano para iniciar tu diagnóstico.',
+    email: 'Correo electrónico',
+    password: 'Contraseña',
+    passwordHelp: 'Usa al menos 8 caracteres con mayúscula, minúscula y un número.',
+    termsStart: 'Acepto los',
+    terms: 'Términos de uso',
+    and: 'y la',
+    privacy: 'Política de privacidad',
+    gdprStart: 'Entiendo que mis datos personales serán procesados y protegidos según nuestra',
+    loading: 'Creando cuenta...',
+    submit: 'Empezar',
+    already: '¿Ya tienes una cuenta?',
+    signIn: 'Ingresar',
+    login: 'Ingresar',
+    almost: 'Casi listo',
+    confirmTitle: 'Confirma tu cuenta FEI',
+    sentTo: 'Enviamos un enlace de confirmación a:',
+    confirmBody:
+      'Abre el correo y haz clic en el enlace de confirmación para activar tu perfil FEI y continuar con tu diagnóstico.',
+    spam: '¿No lo encuentras? Revisa spam o promociones.',
+    goLogin: 'Ir a ingresar',
+  },
+}
+
 export default function RegisterPage() {
+  const [lang, setLang] = useState<Lang>('en')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [name, setName] = useState('')
@@ -31,8 +107,12 @@ export default function RegisterPage() {
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
   const supabase = createClient()
+  const t = copy[lang]
 
   useEffect(() => {
+    const saved = localStorage.getItem('fei_lang_v2') as Lang
+    if (saved === 'en' || saved === 'es') setLang(saved)
+
     const params = new URLSearchParams(window.location.search)
     const selectedRole = params.get('role')
 
@@ -40,6 +120,13 @@ export default function RegisterPage() {
       setRole(selectedRole)
     }
   }, [])
+
+  function toggleLang() {
+    const next: Lang = lang === 'en' ? 'es' : 'en'
+    setLang(next)
+    localStorage.setItem('fei_lang_v2', next)
+    window.dispatchEvent(new CustomEvent('fei_lang_v2_v2_change', { detail: next }))
+  }
 
   async function handleRegister(e: FormEvent) {
     e.preventDefault()
@@ -135,21 +222,55 @@ export default function RegisterPage() {
     setLoading(false)
   }
 
+  const AuthNav = () => (
+    <header className="mx-auto w-full max-w-[1280px] px-4 pt-4 sm:px-5">
+      <nav className="flex h-[60px] items-center justify-between rounded-full border border-fei-bg/8 bg-white/70 px-4 shadow-[0_8px_24px_rgba(7,17,31,0.045)] backdrop-blur-2xl sm:px-5">
+        <a href="/" className="flex items-center">
+          <img src="/fei-logo-navbar-vector.svg" alt="FEI" className="h-12 w-auto" />
+        </a>
+
+        <div className="flex items-center gap-3">
+          <button
+            onClick={toggleLang}
+            className="inline-flex items-center gap-2 rounded-full border border-fei-bg/10 bg-white px-4 py-1.5 text-[15px] font-medium tracking-[-0.01em] text-fei-bg/75 transition hover:border-fei-bg/18 hover:text-fei-bg"
+            aria-label="Change language"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5 text-fei-sky"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.7"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="12" cy="12" r="9" />
+              <path d="M3 12h18" />
+              <path d="M12 3c2.2 2.4 3.3 5.4 3.3 9S14.2 18.6 12 21" />
+              <path d="M12 3c-2.2 2.4-3.3 5.4-3.3 9S9.8 18.6 12 21" />
+            </svg>
+            {lang === 'en' ? 'ES' : 'EN'}
+          </button>
+
+          <a
+            href="/login"
+            className="rounded-full border border-fei-bg/18 px-4 py-1.5 text-[15px] font-medium text-fei-bg transition hover:bg-fei-bg/[0.04]"
+          >
+            {t.login}
+          </a>
+        </div>
+      </nav>
+    </header>
+  )
+
   if (success) {
     return (
-      <main className="min-h-screen bg-white px-5 py-10 text-fei-bg sm:px-8">
-        <section className="mx-auto flex min-h-[calc(100vh-5rem)] max-w-7xl items-center justify-center">
-          <div className="w-full max-w-md">
-            <div className="mb-8 text-center">
-              <a href="/" className="inline-flex items-center justify-center">
-                <img
-                  src="/fei-logo-navbar-vector.svg"
-                  alt="FEI"
-                  className="h-12 w-auto"
-                />
-              </a>
-            </div>
+      <main className="min-h-screen bg-white text-fei-bg">
+        <AuthNav />
 
+        <section className="mx-auto flex min-h-[calc(100vh-76px)] max-w-7xl items-center justify-center px-5 py-10 sm:px-8">
+          <div className="w-full max-w-md">
             <div className="relative overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-[#F7F8FA] p-7 text-center shadow-[0_18px_55px_rgba(7,17,31,0.05)] sm:p-8">
               <div className="absolute inset-x-6 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-90" />
 
@@ -170,36 +291,35 @@ export default function RegisterPage() {
                 </svg>
               </div>
 
-              <p className="text-xs font-black uppercase tracking-[0.28em] text-fei-bg/55">
-                Almost there
+              <p className="text-xs font-black uppercase tracking-[0.28em] text-fei-bg/65">
+                {t.almost}
               </p>
 
               <h1 className="mt-4 text-3xl font-black tracking-tight text-fei-bg">
-                Confirm your FEI account
+                {t.confirmTitle}
               </h1>
 
-              <p className="mt-4 text-sm leading-6 text-fei-bg/62">
-                We sent a confirmation link to:
+              <p className="mt-4 text-sm leading-6 text-fei-bg/70">
+                {t.sentTo}
               </p>
 
               <div className="mx-auto mt-4 max-w-full rounded-full border border-fei-bg/10 bg-white px-4 py-2 text-sm font-bold text-fei-bg">
                 {email}
               </div>
 
-              <p className="mt-5 text-sm leading-6 text-fei-bg/55">
-                Open the email and click the confirmation link to activate your FEI profile
-                and continue to your diagnostic.
+              <p className="mt-5 text-sm leading-6 text-fei-bg/68">
+                {t.confirmBody}
               </p>
 
-              <p className="mt-4 text-xs leading-5 text-fei-bg/40">
-                Can’t find it? Check your spam or promotions folder.
+              <p className="mt-4 text-xs leading-5 text-fei-bg/55">
+                {t.spam}
               </p>
 
               <a
                 href="/login"
                 className="mt-7 inline-flex w-full justify-center rounded-full bg-fei-yellow px-6 py-3 font-bold text-fei-bg transition hover:bg-fei-yellow/90 hover:shadow-lg hover:shadow-fei-yellow/20"
               >
-                Go to Sign in
+                {t.goLogin}
               </a>
             </div>
           </div>
@@ -209,19 +329,11 @@ export default function RegisterPage() {
   }
 
   return (
-    <main className="min-h-screen bg-white px-5 py-10 text-fei-bg sm:px-8">
-      <section className="mx-auto flex min-h-[calc(100vh-5rem)] max-w-7xl items-center justify-center">
-        <div className="w-full max-w-xl">
-          <div className="mb-8 text-center">
-            <a href="/" className="inline-flex items-center justify-center">
-              <img
-                src="/fei-logo-navbar-vector.svg"
-                alt="FEI"
-                className="h-12 w-auto"
-              />
-            </a>
-          </div>
+    <main className="min-h-screen bg-white text-fei-bg">
+      <AuthNav />
 
+      <section className="mx-auto flex min-h-[calc(100vh-76px)] max-w-7xl items-center justify-center px-5 py-10 sm:px-8">
+        <div className="w-full max-w-xl">
           <form
             onSubmit={handleRegister}
             className="relative overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-[#F7F8FA] p-6 shadow-[0_18px_55px_rgba(7,17,31,0.05)] sm:p-8"
@@ -229,16 +341,16 @@ export default function RegisterPage() {
             <div className="absolute inset-x-6 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-90" />
 
             <div className="mb-7">
-              <p className="text-xs font-black uppercase tracking-[0.28em] text-fei-bg/55">
-                Create your account
+              <p className="text-xs font-black uppercase tracking-[0.28em] text-fei-bg/65">
+                {t.createLabel}
               </p>
 
               <h1 className="mt-4 text-4xl font-black tracking-tight text-fei-bg">
-                Join FEI
+                {t.titlePrefix} <span className="text-fei-sky">FEI</span>
               </h1>
 
-              <p className="mt-4 text-sm leading-6 text-fei-bg/62">
-                Choose the football role that best matches your pathway. FEI uses this to personalize your diagnostic.
+              <p className="mt-4 text-sm leading-6 text-fei-bg/70">
+                {t.description}
               </p>
             </div>
 
@@ -249,22 +361,22 @@ export default function RegisterPage() {
             )}
 
             <div className="mb-4">
-              <label className="mb-2 block text-sm font-bold text-fei-bg/70">
-                Full name
+              <label className="mb-2 block text-sm font-bold text-fei-bg/78">
+                {t.fullName}
               </label>
               <input
                 type="text"
                 value={name}
                 onChange={e => setName(e.target.value)}
                 required
-                className="w-full rounded-2xl border border-fei-bg/10 bg-white px-4 py-3 text-fei-bg placeholder-fei-bg/30 outline-none transition focus:border-fei-sky/45"
-                placeholder="Your name"
+                className="w-full rounded-2xl border border-fei-bg/10 bg-white px-4 py-3 text-fei-bg placeholder-fei-bg/40 outline-none transition focus:border-fei-sky/45"
+                placeholder={t.fullNamePlaceholder}
               />
             </div>
 
             <div className="mb-4">
-              <label className="mb-2 block text-sm font-bold text-fei-bg/70">
-                Football role
+              <label className="mb-2 block text-sm font-bold text-fei-bg/78">
+                {t.role}
               </label>
               <select
                 value={role}
@@ -279,7 +391,7 @@ export default function RegisterPage() {
                   backgroundSize: '1.25rem',
                 }}
               >
-                <option value="">Choose your role</option>
+                <option value="">{t.chooseRole}</option>
                 {roles.map(item => (
                   <option key={item} value={item}>
                     {item}
@@ -288,8 +400,8 @@ export default function RegisterPage() {
               </select>
 
               {role === "I'll choose later" && (
-                <p className="mt-3 rounded-2xl border border-fei-sky/20 bg-fei-sky/[0.06] px-4 py-3 text-sm leading-6 text-fei-bg/62">
-                  You can create your account now, but you will need to choose a football role before starting your FEI Diagnostic.
+                <p className="mt-3 rounded-2xl border border-fei-sky/20 bg-fei-sky/[0.06] px-4 py-3 text-sm leading-6 text-fei-bg/70">
+                  {t.chooseLaterNote}
                 </p>
               )}
 
@@ -300,33 +412,33 @@ export default function RegisterPage() {
                     value={customRole}
                     onChange={e => setCustomRole(e.target.value)}
                     required
-                    className="w-full rounded-2xl border border-fei-bg/10 bg-white px-4 py-3 text-fei-bg placeholder-fei-bg/30 outline-none transition focus:border-fei-sky/45"
-                    placeholder="Tell us your football role"
+                    className="w-full rounded-2xl border border-fei-bg/10 bg-white px-4 py-3 text-fei-bg placeholder-fei-bg/40 outline-none transition focus:border-fei-sky/45"
+                    placeholder={t.customRolePlaceholder}
                   />
-                  <p className="mt-3 rounded-2xl border border-fei-yellow/30 bg-fei-yellow/[0.08] px-4 py-3 text-sm leading-6 text-fei-bg/62">
-                    FEI diagnostics are currently built around specific football roles. Tell us your role, then choose the closest available role later to begin your diagnostic.
+                  <p className="mt-3 rounded-2xl border border-fei-yellow/30 bg-fei-yellow/[0.08] px-4 py-3 text-sm leading-6 text-fei-bg/70">
+                    {t.customRoleNote}
                   </p>
                 </div>
               )}
             </div>
 
             <div className="mb-4">
-              <label className="mb-2 block text-sm font-bold text-fei-bg/70">
-                Email
+              <label className="mb-2 block text-sm font-bold text-fei-bg/78">
+                {t.email}
               </label>
               <input
                 type="email"
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 required
-                className="w-full rounded-2xl border border-fei-bg/10 bg-white px-4 py-3 text-fei-bg placeholder-fei-bg/30 outline-none transition focus:border-fei-sky/45"
+                className="w-full rounded-2xl border border-fei-bg/10 bg-white px-4 py-3 text-fei-bg placeholder-fei-bg/40 outline-none transition focus:border-fei-sky/45"
                 placeholder="you@club.com"
               />
             </div>
 
             <div className="mb-6">
-              <label className="mb-2 block text-sm font-bold text-fei-bg/70">
-                Password
+              <label className="mb-2 block text-sm font-bold text-fei-bg/78">
+                {t.password}
               </label>
               <input
                 type="password"
@@ -334,16 +446,16 @@ export default function RegisterPage() {
                 onChange={e => setPassword(e.target.value)}
                 required
                 minLength={8}
-                className="w-full rounded-2xl border border-fei-bg/10 bg-white px-4 py-3 text-fei-bg placeholder-fei-bg/30 outline-none transition focus:border-fei-sky/45"
+                className="w-full rounded-2xl border border-fei-bg/10 bg-white px-4 py-3 text-fei-bg placeholder-fei-bg/40 outline-none transition focus:border-fei-sky/45"
                 placeholder="••••••••"
               />
-              <p className="mt-2 text-xs leading-5 text-fei-bg/40">
-                Use at least 8 characters with uppercase, lowercase, and a number.
+              <p className="mt-2 text-xs leading-5 text-fei-bg/58">
+                {t.passwordHelp}
               </p>
             </div>
 
             <div className="mb-6 space-y-3">
-              <label className="flex cursor-pointer items-start gap-3 rounded-2xl border border-fei-bg/10 bg-white p-4 text-sm leading-6 text-fei-bg/62">
+              <label className="flex cursor-pointer items-start gap-3 rounded-2xl border border-fei-bg/10 bg-white p-4 text-sm leading-6 text-fei-bg/70">
                 <input
                   type="checkbox"
                   checked={acceptedTerms}
@@ -352,19 +464,19 @@ export default function RegisterPage() {
                   className="mt-1 h-4 w-4 rounded border-fei-bg/20 bg-white text-fei-yellow accent-fei-yellow focus:ring-fei-yellow"
                 />
                 <span>
-                  I accept the{' '}
+                  {t.termsStart}{' '}
                   <a href="/terms" className="font-bold text-fei-sky hover:underline">
-                    Terms of Service
+                    {t.terms}
                   </a>{' '}
-                  and{' '}
+                  {t.and}{' '}
                   <a href="/privacy" className="font-bold text-fei-sky hover:underline">
-                    Privacy Policy
+                    {t.privacy}
                   </a>
                   .
                 </span>
               </label>
 
-              <label className="flex cursor-pointer items-start gap-3 rounded-2xl border border-fei-bg/10 bg-white p-4 text-sm leading-6 text-fei-bg/62">
+              <label className="flex cursor-pointer items-start gap-3 rounded-2xl border border-fei-bg/10 bg-white p-4 text-sm leading-6 text-fei-bg/70">
                 <input
                   type="checkbox"
                   checked={acceptedGdpr}
@@ -373,9 +485,9 @@ export default function RegisterPage() {
                   className="mt-1 h-4 w-4 rounded border-fei-bg/20 bg-white text-fei-yellow accent-fei-yellow focus:ring-fei-yellow"
                 />
                 <span>
-                  I understand my personal data is processed and protected according to our{' '}
+                  {t.gdprStart}{' '}
                   <a href="/privacy" className="font-bold text-fei-sky hover:underline">
-                    Privacy Policy
+                    {t.privacy}
                   </a>
                   .
                 </span>
@@ -387,13 +499,13 @@ export default function RegisterPage() {
               disabled={loading || !acceptedTerms || !acceptedGdpr}
               className="w-full rounded-full bg-fei-yellow py-3 font-bold text-fei-bg transition hover:bg-fei-yellow/90 hover:shadow-lg hover:shadow-fei-yellow/25 disabled:cursor-not-allowed disabled:opacity-50"
             >
-              {loading ? 'Creating account...' : 'Get Started'}
+              {loading ? t.loading : t.submit}
             </button>
 
-            <p className="mt-4 text-center text-sm text-fei-bg/50">
-              Already have an account?{' '}
+            <p className="mt-4 text-center text-sm text-fei-bg/62">
+              {t.already}{' '}
               <a href="/login" className="font-bold text-fei-sky hover:underline">
-                Sign in
+                {t.signIn}
               </a>
             </p>
           </form>
