@@ -81,7 +81,7 @@ const copy = {
     createLabel: 'Crea tu cuenta',
     titlePrefix: 'Únete a',
     description:
-      'Crea tu cuenta para iniciar tu diagnóstico FEI y empezar tu entrenamiento de inglés para fútbol.',
+      'Crea tu cuenta para iniciar tu diagnóstico FEI y empezar tu entrenamiento en inglés especializado en fútbol.',
     fullName: 'Nombre completo',
     fullNamePlaceholder: 'Tu nombre',
     role: 'Rol en el fútbol',
@@ -516,11 +516,11 @@ export default function RegisterPage() {
                 />
                 <span>
                   {t.termsStart}{' '}
-                  <a href="/terms" className="font-black text-[#0369a1] hover:text-fei-bg hover:underline">
+                  <a href="/terms" className="font-black text-[#0284c7] hover:text-fei-bg hover:underline">
                     {t.terms}
                   </a>{' '}
                   {t.and}{' '}
-                  <a href="/privacy" className="font-black text-[#0369a1] hover:text-fei-bg hover:underline">
+                  <a href="/privacy" className="font-black text-[#0284c7] hover:text-fei-bg hover:underline">
                     {t.privacy}
                   </a>
                   .
@@ -537,7 +537,7 @@ export default function RegisterPage() {
                 />
                 <span>
                   {t.gdprStart}{' '}
-                  <a href="/privacy" className="font-black text-[#0369a1] hover:text-fei-bg hover:underline">
+                  <a href="/privacy" className="font-black text-[#0284c7] hover:text-fei-bg hover:underline">
                     {t.privacy}
                   </a>
                   .
@@ -555,7 +555,7 @@ export default function RegisterPage() {
 
             <p className="mt-4 text-center text-sm text-fei-bg/62">
               {t.already}{' '}
-              <a href="/login" className="font-black text-[#0369a1] hover:text-fei-bg hover:underline">
+              <a href="/login" className="font-black text-[#0284c7] hover:text-fei-bg hover:underline">
                 {t.signIn}
               </a>
             </p>
