@@ -678,7 +678,7 @@ export default function Home() {
                 </h3>
 
                 <div className="mt-6">
-                  <p className="text-4xl font-black tracking-tight text-fei-bg transition duration-300 group-hover:text-fei-sky">
+                  <p className="text-4xl font-black tracking-tight text-fei-bg transition duration-300 group-hover:text-fei-bg">
                     {plan.price}
                   </p>
                   <p className="mt-2 text-sm font-semibold leading-6 text-fei-bg/55">
