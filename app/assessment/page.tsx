@@ -2942,107 +2942,182 @@ function AssessmentContent() {
   // INTRO
   if (section === 'intro') {
     return (
-      <div className="min-h-screen bg-fei-bg px-6 py-12 lg:px-8">
-        <div className="mx-auto w-full max-w-6xl">
-          <div className="mb-12 flex items-center gap-3">
-            <img src="/logo.svg" alt="FEI" className="h-8 w-auto" />
-            <span className="text-xs font-medium text-fei-sky">Football English Intelligence</span>
-          </div>
+      <div className="min-h-screen bg-[#F6F7F9] text-fei-bg">
+        <header className="sticky top-0 z-50 border-b border-fei-bg/[0.08] bg-white/85 backdrop-blur-xl">
+          <div className="mx-auto flex min-h-[72px] w-full max-w-7xl items-center px-6 sm:px-8 lg:px-10">
+            <button
+              type="button"
+              onClick={() => router.push('/dashboard')}
+              className="flex items-center"
+              aria-label="Return to dashboard"
+            >
+              <img src="/logo.svg" alt="FEI" className="h-8 w-auto" />
 
-          <div className="mb-8">
-            <div className="inline-block rounded-full bg-fei-yellow/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-fei-yellow">
-              Diagnostic Assessment
-            </div>
-            <h1 className="mt-4 text-4xl font-black text-fei-text sm:text-5xl">{selectedRole}</h1>
-            <p className="mt-3 text-fei-text/60">{roleSubtitle} · FEI Communication Intelligence</p>
-          </div>
+              <span className="mx-4 hidden h-5 w-px bg-fei-bg/10 sm:block" />
 
-          <div className="mb-8 grid gap-4 sm:grid-cols-2">
-            <div className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-5 text-center">
-              <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full border border-fei-sky/20 bg-fei-sky/[0.08] text-fei-sky">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={1.8}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-5 w-5"
-                  aria-hidden
-                >
-                  <circle cx="12" cy="12" r="8.5" />
-                  <path d="M12 7.5v5l3 2" />
-                </svg>
+              <span className="hidden text-sm font-medium text-fei-bg/55 sm:inline">
+                Football English Intelligence
+              </span>
+            </button>
+          </div>
+        </header>
+
+        <main className="mx-auto w-full max-w-7xl px-6 py-10 sm:px-8 lg:px-10 lg:py-14">
+          <section className="grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-start">
+            <div className="rounded-[2rem] border border-fei-bg/[0.08] bg-white p-7 shadow-[0_20px_60px_rgba(7,17,31,0.05)] sm:p-9 lg:p-10">
+              <div className="inline-flex rounded-full border border-fei-yellow/25 bg-fei-yellow/[0.08] px-4 py-2 text-[11px] font-bold uppercase tracking-[0.24em] text-fei-yellow">
+                Diagnostic Assessment
               </div>
-              <p className="text-xs text-fei-text/50">Duration</p>
-              <p className="mt-1 font-semibold text-fei-text">10–12 minutes</p>
-            </div>
 
-            <div className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-5 text-center">
-              <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full border border-fei-yellow/20 bg-fei-yellow/[0.08] text-fei-yellow">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={1.8}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-5 w-5"
-                  aria-hidden
-                >
-                  <path d="M12 3.5 19 7.5v5c0 4.5-3 7.5-7 8-4-.5-7-3.5-7-8v-5l7-4Z" />
-                  <path d="M9 12.5 11 14.5 15.5 9.5" />
-                </svg>
+              <h1 className="mt-6 max-w-3xl text-4xl font-black tracking-[-0.035em] text-fei-bg sm:text-5xl lg:text-[3.5rem] lg:leading-[1.05]">
+                {selectedRole}
+              </h1>
+
+              <p className="mt-4 text-base font-medium text-fei-sky">
+                {roleSubtitle}
+              </p>
+
+              <p className="mt-5 max-w-2xl text-base leading-7 text-fei-bg/58">
+                This diagnostic evaluates how you understand and use English in real football communication situations related to your role.
+              </p>
+
+              <div className="mt-8 grid gap-3 sm:grid-cols-2">
+                <div className="rounded-2xl border border-fei-bg/[0.08] bg-[#F7F8FA] p-5">
+                  <div className="flex items-center gap-4">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-fei-sky/[0.10] text-fei-sky">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={1.8}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="h-5 w-5"
+                        aria-hidden
+                      >
+                        <circle cx="12" cy="12" r="8.5" />
+                        <path d="M12 7.5v5l3 2" />
+                      </svg>
+                    </div>
+
+                    <div>
+                      <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-fei-bg/35">
+                        Duration
+                      </p>
+                      <p className="mt-1 font-bold text-fei-bg">
+                        10–12 minutes
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="rounded-2xl border border-fei-bg/[0.08] bg-[#F7F8FA] p-5">
+                  <div className="flex items-center gap-4">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-fei-yellow/[0.12] text-fei-yellow">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={1.8}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="h-5 w-5"
+                        aria-hidden
+                      >
+                        <path d="M12 3.5 19 7.5v5c0 4.5-3 7.5-7 8-4-.5-7-3.5-7-8v-5l7-4Z" />
+                        <path d="M9 12.5 11 14.5 15.5 9.5" />
+                      </svg>
+                    </div>
+
+                    <div>
+                      <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-fei-bg/35">
+                        Result
+                      </p>
+                      <p className="mt-1 font-bold text-fei-bg">
+                        FEI Pathway + AI Insight
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <p className="text-xs text-fei-text/50">Result</p>
-              <p className="mt-1 font-semibold text-fei-text">FEI Pathway + AI Insight</p>
+
+              <button
+                type="button"
+                onClick={() => setSection('audio-check')}
+                className="mt-8 inline-flex min-h-[52px] items-center justify-center rounded-full bg-fei-yellow px-8 text-sm font-bold text-fei-bg transition hover:bg-fei-yellow/90"
+              >
+                <span className="inline-flex items-center gap-2">
+                  Begin assessment
+                  <ChevronRightIcon />
+                </span>
+              </button>
             </div>
-          </div>
 
-          <div className="mb-8 rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-6">
-            <h2 className="mb-4 font-bold text-fei-text">Before you begin</h2>
-            <ul className="space-y-4 text-sm text-fei-text/70">
-              {[
-                'Use headphones or speakers for listening items.',
-                'Enable your microphone for the final spoken response.',
-                'Stay on this page until the assessment is complete.',
-                'Find a quiet place with a stable internet connection.',
-                'Answer every item. There is no penalty for incorrect answers.',
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-fei-yellow/25 bg-fei-yellow/[0.08] text-fei-yellow">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="h-3 w-3"
-                      aria-hidden
-                    >
-                      <path d="m6 12 4 4 8-8" />
-                    </svg>
-                  </span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+            <aside className="rounded-[2rem] border border-fei-bg/[0.08] bg-white p-7 shadow-[0_18px_55px_rgba(7,17,31,0.04)] sm:p-8">
+              <div className="flex items-start gap-4">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-fei-yellow/[0.10] text-fei-yellow">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={1.8}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-5 w-5"
+                    aria-hidden
+                  >
+                    <path d="M9 11.5 11 13.5 15.5 9" />
+                    <circle cx="12" cy="12" r="8.5" />
+                  </svg>
+                </div>
 
-          <button
-            onClick={() => setSection('audio-check')}
-            className="w-full rounded-full bg-fei-yellow py-4 text-base font-bold text-fei-bg transition hover:bg-fei-yellow/90"
-          >
-            <span className="inline-flex items-center justify-center gap-2">
-              Begin assessment
-              <ChevronRightIcon />
-            </span>
-          </button>
-        </div>
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-[0.22em] text-fei-yellow">
+                    Preparation
+                  </p>
+                  <h2 className="mt-2 text-2xl font-bold tracking-tight text-fei-bg">
+                    Before you begin
+                  </h2>
+                </div>
+              </div>
+
+              <ul className="mt-7 divide-y divide-fei-bg/[0.07]">
+                {[
+                  'Use headphones or speakers for listening items.',
+                  'Enable your microphone for the final spoken response.',
+                  'Stay on this page until the assessment is complete.',
+                  'Find a quiet place with a stable internet connection.',
+                  'Answer every item. There is no penalty for incorrect answers.',
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3 py-4 first:pt-0 last:pb-0">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-fei-yellow/[0.12] text-fei-yellow">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={2.2}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="h-3 w-3"
+                        aria-hidden
+                      >
+                        <path d="m6 12 4 4 8-8" />
+                      </svg>
+                    </span>
+
+                    <span className="text-sm leading-6 text-fei-bg/60">
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </aside>
+          </section>
+        </main>
       </div>
     )
   }
