@@ -9,9 +9,9 @@ type Lang = 'en' | 'es'
 const copy = {
   en: {
     navRegister: 'Register',
-    label: 'Welcome back',
+    label: 'Account access',
     title: 'Sign in to FEI',
-    description: 'Access your FEI account and continue your football English training.',
+    description: 'Continue to your FEI dashboard.',
     email: 'Email',
     password: 'Password',
     loading: 'Signing in...',
@@ -22,9 +22,9 @@ const copy = {
   },
   es: {
     navRegister: 'Registrarse',
-    label: 'Bienvenido de nuevo',
+    label: 'Acceso a cuenta',
     title: 'Ingresa a FEI',
-    description: 'Accede a tu cuenta FEI y continúa tu entrenamiento en inglés especializado en fútbol.',
+    description: 'Continúa a tu panel FEI.',
     email: 'Correo electrónico',
     password: 'Contraseña',
     loading: 'Ingresando...',
