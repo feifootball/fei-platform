@@ -145,7 +145,7 @@ export default function LoginPage() {
               </h1>
 
               {t.description && (
-                <p className="mt-3 text-sm leading-6 text-fei-bg/58 mb-6">
+                <p className="mt-3 text-sm leading-6 text-fei-bg/58 mb-9">
                   {t.description}
                 </p>
               )}
