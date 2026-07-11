@@ -10,7 +10,7 @@ const pageCopy = {
     legal: 'Legal',
     title: 'Terms of Use',
     description:
-      'These terms explain how FEI accounts, diagnostics, learning content, plans, institutional access, payments, and platform services may be used.',
+      'Please read these Terms carefully before accessing or using FEI.',
     updated: 'Last updated: July 2026',
     back: 'Back to Home',
     contactPrefix: 'For questions about these terms, contact',
@@ -19,7 +19,7 @@ const pageCopy = {
     legal: 'Legal',
     title: 'Términos de uso',
     description:
-      'Estos términos explican cómo pueden utilizarse las cuentas, diagnósticos, contenidos, planes, accesos institucionales, pagos y servicios de FEI.',
+      'Lee estos Términos cuidadosamente antes de acceder o utilizar FEI.',
     updated: 'Última actualización: julio de 2026',
     back: 'Volver a inicio',
     contactPrefix: 'Para preguntas sobre estos términos, escribe a',
@@ -326,7 +326,7 @@ export default function TermsPage() {
       <Navbar hideSectionLinks variant="light" />
 
       <section className="px-5 pb-14 pt-28 sm:px-8 sm:pt-32">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-6xl">
           <a
             href="/"
             className="mb-6 inline-flex items-center gap-2 rounded-full border border-fei-bg/12 bg-white px-4 py-2 text-sm font-semibold text-fei-bg/70 shadow-[0_10px_30px_rgba(7,17,31,0.04)] transition hover:border-fei-sky/35 hover:text-fei-bg"
