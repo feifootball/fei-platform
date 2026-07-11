@@ -572,5 +572,4 @@ export default function FAQPage() {
       </section>
     </main>
   )
-  )
 }
