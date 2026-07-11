@@ -10,12 +10,12 @@ const copy = {
   en: {
     navRegister: 'Register',
     label: 'Account access',
-    title: 'Sign in to FEI',
-    description: 'Continue to your FEI dashboard.',
+    title: 'Login to FEI',
+    description: ''
     email: 'Email',
     password: 'Password',
-    loading: 'Signing in...',
-    submit: 'Sign in',
+    loading: 'Logging in...',
+    submit: 'Login',
     noAccount: "Don’t have an account?",
     register: 'Register',
     forgot: 'Forgot your password?',
@@ -24,7 +24,7 @@ const copy = {
     navRegister: 'Registrarse',
     label: 'Acceso a cuenta',
     title: 'Ingresa a FEI',
-    description: 'Continúa a tu panel FEI.',
+    description: ''
     email: 'Correo electrónico',
     password: 'Contraseña',
     loading: 'Ingresando...',
@@ -135,7 +135,7 @@ export default function LoginPage() {
               <h1 className="mt-3 text-4xl font-black tracking-tight text-fei-bg/92">
                 {lang === 'en' ? (
                   <>
-                    Sign in to <span className="text-fei-sky">FEI</span>
+                    Login to <span className="text-fei-sky">FEI</span>
                   </>
                 ) : (
                   <>
@@ -144,9 +144,11 @@ export default function LoginPage() {
                 )}
               </h1>
 
-              <p className="mt-3 text-sm leading-6 text-fei-bg/58">
-                {t.description}
-              </p>
+              {t.description && (
+                <p className="mt-3 text-sm leading-6 text-fei-bg/58">
+                  {t.description}
+                </p>
+              )}
             </div>
 
             {error && (
