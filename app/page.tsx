@@ -552,7 +552,7 @@ export default function Home() {
                 </a>
               </div>
 
-              <div className="relative overflow-hidden rounded-[1.75rem] bg-fei-bg p-6 text-white shadow-[0_18px_55px_rgba(7,17,31,0.12)] sm:p-8">
+              <div className="relative overflow-hidden rounded-[1.75rem] bg-fei-bg p-5 text-white shadow-[0_18px_55px_rgba(7,17,31,0.12)] sm:p-6">
                 <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-fei-sky/12 blur-3xl" />
                 <div className="pointer-events-none absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-fei-yellow/10 blur-3xl" />
 
@@ -561,11 +561,11 @@ export default function Home() {
                     {lang === "en" ? "INTERESTED?" : "¿TE INTERESA?"}
                   </p>
 
-                  <h3 className="mt-6 text-3xl font-black tracking-tight text-white sm:text-4xl">
+                  <h3 className="mt-5 text-3xl font-black tracking-tight text-white sm:text-[2rem]">
                     {lang === "en" ? "Book a demo for your club" : "Agenda una demo para tu club"}
                   </h3>
 
-                  <p className="mt-5 max-w-xl text-[15px] leading-7 text-white/68 sm:text-base sm:leading-8">
+                  <p className="mt-4 max-w-xl text-[15px] leading-7 text-white/68 sm:text-base">
                     {lang === "en"
                       ? "See how FEI can support communication across your club with training designed for real football roles."
                       : "Te mostramos cómo FEI puede ayudar a tu club a comunicarse mejor dentro y fuera de la cancha."}
@@ -573,7 +573,7 @@ export default function Home() {
 
                   <a
                     href="/contact"
-                    className="mt-8 inline-flex w-full items-center justify-center rounded-full border border-fei-yellow/60 px-7 py-3 text-sm font-bold text-fei-yellow transition duration-300 hover:-translate-y-0.5 hover:bg-fei-yellow hover:text-fei-bg"
+                    className="mt-7 inline-flex w-full items-center justify-center rounded-full border border-fei-yellow/60 px-7 py-2.5 text-sm font-bold text-fei-yellow transition duration-300 hover:-translate-y-0.5 hover:bg-fei-yellow hover:text-fei-bg"
                   >
                     {lang === "en" ? "Book a demo" : "Agendar demo"}
                   </a>
