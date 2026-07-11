@@ -24,7 +24,7 @@ const copy = {
     navRegister: 'Registrarse',
     label: 'Acceso a cuenta',
     title: 'Ingresa a FEI',
-    description: 'Accede a tu cuenta FEI y continúa tu progreso.',
+    description: 'Accede a tu cuenta y continúa tu progreso.',
     email: 'Correo electrónico',
     password: 'Contraseña',
     loading: 'Ingresando...',
