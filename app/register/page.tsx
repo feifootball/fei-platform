@@ -324,11 +324,11 @@ export default function RegisterPage() {
                 {t.confirmTitle}
               </h1>
 
-              <p className="mt-4 text-sm leading-6 text-fei-bg/70">
+              <p className="mt-4 text-sm leading-6 text-fei-bg/58">
                 {t.sentTo}
               </p>
 
-              <div className="mx-auto mt-4 max-w-full rounded-full border border-fei-bg/10 bg-white px-4 py-2 text-sm font-bold text-fei-bg/76">
+              <div className="mx-auto mt-4 max-w-full rounded-full border border-fei-bg/10 bg-white px-4 py-2 text-sm font-bold text-fei-bg/62">
                 {email}
               </div>
 
@@ -374,7 +374,7 @@ export default function RegisterPage() {
                 {t.titlePrefix} <span className="text-fei-sky">FEI</span>
               </h1>
 
-              <p className="mt-4 text-sm leading-6 text-fei-bg/70">
+              <p className="mt-4 text-sm leading-6 text-fei-bg/58">
                 {t.description}
               </p>
             </div>
@@ -386,7 +386,7 @@ export default function RegisterPage() {
             )}
 
             <div className="mb-4">
-              <label className="mb-2 block text-sm font-bold text-fei-bg/76">
+              <label className="mb-2 block text-sm font-bold text-fei-bg/62">
                 {t.fullName}
               </label>
               <input
@@ -400,7 +400,7 @@ export default function RegisterPage() {
             </div>
 
             <div className="mb-4">
-              <label className="mb-2 block text-sm font-bold text-fei-bg/76">
+              <label className="mb-2 block text-sm font-bold text-fei-bg/62">
                 {t.role}
               </label>
               <select
@@ -448,7 +448,7 @@ export default function RegisterPage() {
             </div>
 
             <div className="mb-4">
-              <label className="mb-2 block text-sm font-bold text-fei-bg/76">
+              <label className="mb-2 block text-sm font-bold text-fei-bg/62">
                 {t.country}
               </label>
               <select
@@ -474,7 +474,7 @@ export default function RegisterPage() {
             </div>
 
             <div className="mb-4">
-              <label className="mb-2 block text-sm font-bold text-fei-bg/76">
+              <label className="mb-2 block text-sm font-bold text-fei-bg/62">
                 {t.email}
               </label>
               <input
@@ -488,7 +488,7 @@ export default function RegisterPage() {
             </div>
 
             <div className="mb-6">
-              <label className="mb-2 block text-sm font-bold text-fei-bg/76">
+              <label className="mb-2 block text-sm font-bold text-fei-bg/62">
                 {t.password}
               </label>
               <input
