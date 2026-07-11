@@ -348,8 +348,6 @@ export default function TermsPage() {
           </a>
 
           <article className="relative overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-white p-6 shadow-[0_26px_70px_rgba(7,17,31,0.065)] sm:p-8 lg:p-10">
-            <div className="absolute inset-x-8 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-80" />
-
             <header className="mb-10 border-b border-fei-bg/10 pb-8">
               <p className="text-sm font-black uppercase tracking-[0.32em] text-fei-bg/55">
                 {t.legal}
