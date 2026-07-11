@@ -328,7 +328,7 @@ export default function RegisterPage() {
                 {t.sentTo}
               </p>
 
-              <div className="mx-auto mt-4 max-w-full rounded-full border border-fei-bg/10 bg-white px-4 py-2 text-sm font-bold text-fei-bg">
+              <div className="mx-auto mt-4 max-w-full rounded-full border border-fei-bg/10 bg-white px-4 py-2 text-sm font-bold text-fei-bg/76">
                 {email}
               </div>
 
@@ -386,7 +386,7 @@ export default function RegisterPage() {
             )}
 
             <div className="mb-4">
-              <label className="mb-2 block text-sm font-bold text-fei-bg">
+              <label className="mb-2 block text-sm font-bold text-fei-bg/76">
                 {t.fullName}
               </label>
               <input
@@ -400,7 +400,7 @@ export default function RegisterPage() {
             </div>
 
             <div className="mb-4">
-              <label className="mb-2 block text-sm font-bold text-fei-bg">
+              <label className="mb-2 block text-sm font-bold text-fei-bg/76">
                 {t.role}
               </label>
               <select
@@ -448,7 +448,7 @@ export default function RegisterPage() {
             </div>
 
             <div className="mb-4">
-              <label className="mb-2 block text-sm font-bold text-fei-bg">
+              <label className="mb-2 block text-sm font-bold text-fei-bg/76">
                 {t.country}
               </label>
               <select
@@ -474,7 +474,7 @@ export default function RegisterPage() {
             </div>
 
             <div className="mb-4">
-              <label className="mb-2 block text-sm font-bold text-fei-bg">
+              <label className="mb-2 block text-sm font-bold text-fei-bg/76">
                 {t.email}
               </label>
               <input
@@ -488,7 +488,7 @@ export default function RegisterPage() {
             </div>
 
             <div className="mb-6">
-              <label className="mb-2 block text-sm font-bold text-fei-bg">
+              <label className="mb-2 block text-sm font-bold text-fei-bg/76">
                 {t.password}
               </label>
               <input
