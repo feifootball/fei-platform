@@ -486,7 +486,7 @@ export default function RegisterPage() {
                 value={role}
                 onChange={e => setRole(e.target.value)}
                 required
-                className="h-[48px] w-full appearance-none rounded-2xl border border-fei-bg/10 bg-white px-4 pr-12 text-base text-fei-bg outline-none transition focus:border-fei-sky/45"
+                className={`h-[48px] w-full appearance-none rounded-2xl border border-fei-bg/10 bg-white px-4 pr-12 text-[15px] outline-none transition focus:border-fei-sky/45 ${role ? "text-fei-bg" : "text-fei-bg/40"}`}
                 style={{
                   backgroundImage:
                     "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%237dd3fc' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M6 9l6 6 6-6'/%3E%3C/svg%3E\")",
@@ -495,9 +495,9 @@ export default function RegisterPage() {
                   backgroundSize: '1.25rem',
                 }}
               >
-                <option value="">{t.chooseRole}</option>
+                <option value="" className="text-fei-bg/40">{t.chooseRole}</option>
                 {roles.map(item => (
-                  <option key={item} value={item}>
+                  <option key={item} value={item} className="text-fei-bg">
                     {roleLabels[lang][item]}
                   </option>
                 ))}
@@ -534,7 +534,7 @@ export default function RegisterPage() {
                 value={country}
                 onChange={e => setCountry(e.target.value)}
                 required
-                className="h-[48px] w-full appearance-none rounded-2xl border border-fei-bg/10 bg-white px-4 pr-12 text-base text-fei-bg outline-none transition focus:border-fei-sky/45"
+                className={`h-[48px] w-full appearance-none rounded-2xl border border-fei-bg/10 bg-white px-4 pr-12 text-[15px] outline-none transition focus:border-fei-sky/45 ${country ? "text-fei-bg" : "text-fei-bg/40"}`}
                 style={{
                   backgroundImage:
                     "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%237dd3fc' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M6 9l6 6 6-6'/%3E%3C/svg%3E\")",
@@ -543,9 +543,9 @@ export default function RegisterPage() {
                   backgroundSize: '1.25rem',
                 }}
               >
-                <option value="">{t.chooseCountry}</option>
+                <option value="" className="text-fei-bg/40">{t.chooseCountry}</option>
                 {countries.map(item => (
-                  <option key={item} value={item}>
+                  <option key={item} value={item} className="text-fei-bg">
                     {countryLabels[lang][item]}
                   </option>
                 ))}
