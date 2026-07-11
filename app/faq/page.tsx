@@ -12,7 +12,6 @@ const pageCopy = {
     subtitle: 'FEI — Football English Intelligence',
     description:
       'Answers to common questions about FEI, accounts, diagnostics, plans, privacy, institutional access, and technical requirements.',
-    updated: 'Last updated: July 2026',
     back: 'Back to Home',
     contactPrefix: 'Did not find your answer? Contact',
   },
@@ -22,7 +21,6 @@ const pageCopy = {
     subtitle: 'FEI — Football English Intelligence',
     description:
       'Respuestas a preguntas comunes sobre FEI, cuentas, diagnósticos, planes, privacidad, acceso institucional y requisitos técnicos.',
-    updated: 'Última actualización: Julio 2026',
     back: 'Volver a inicio',
     contactPrefix: '¿No encontraste tu respuesta? Escribe a',
   },
@@ -517,10 +515,6 @@ export default function FAQPage() {
 
               <p className="mt-5 max-w-3xl text-[15px] leading-7 text-fei-bg/64 sm:text-base sm:leading-8">
                 {t.description}
-              </p>
-
-              <p className="mt-5 inline-flex rounded-full border border-fei-bg/10 bg-[#F7F8FA] px-4 py-2 text-sm font-semibold text-fei-bg/72">
-                {t.updated}
               </p>
             </header>
 
