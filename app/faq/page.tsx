@@ -46,12 +46,7 @@ const faqByLang = {
           answer:
             'The process is simple: the user creates an account, completes a diagnostic, receives personalized results, and then follows recommended modules based on role, level, and communication needs. FEI helps users practice with football-specific situations such as interviews, team talks, scouting reports, contract conversations, tactical meetings, player feedback, and professional communication scenarios.',
         },
-        {
-          question: 'Where is FEI based?',
-          answer:
-            'FEI operates from Ecuador and is designed for an international football audience. The project combines expertise in education, football, communication, technology, and professional English for global football environments.',
-        },
-      ],
+],
     },
     {
       category: 'Accounts and registration',
