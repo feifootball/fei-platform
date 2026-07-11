@@ -323,7 +323,7 @@ export default function PrivacyPage() {
                 {t.title}
               </h1>
 
-              <p className="mt-5 max-w-3xl text-[15px] leading-7 text-fei-bg/64 sm:text-base sm:leading-8">
+              <p className="mt-5 max-w-none text-[15px] leading-7 text-fei-bg/64 sm:whitespace-nowrap sm:text-base sm:leading-8">
                 {t.description}
               </p>
 
