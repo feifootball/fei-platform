@@ -165,14 +165,14 @@ export default function ContactPage() {
   }
 
   return (
-    <main className="min-h-screen bg-fei-bg text-fei-text">
-      <Navbar hideSectionLinks />
+    <main className="min-h-screen bg-[radial-gradient(circle_at_50%_10%,rgba(125,211,252,0.08),transparent_30%),linear-gradient(to_bottom,#ffffff_0%,#ffffff_34%,#F7F8FA_100%)] text-fei-bg">
+      <Navbar hideSectionLinks variant="light" />
 
-      <section className="border-b border-fei-text/10 px-6 py-8 sm:py-10 lg:py-12">
-        <div className="mx-auto max-w-7xl">
+      <section className="px-5 pb-14 pt-28 sm:px-8 sm:pt-32">
+        <div className="mx-auto max-w-6xl">
           <a
             href="/"
-            className="mb-8 inline-flex items-center gap-2 rounded-full border border-fei-sky/35 px-4 py-2 text-sm font-medium text-fei-sky transition hover:border-fei-yellow/45 hover:text-fei-yellow"
+            className="mb-6 inline-flex items-center gap-2 rounded-full border border-fei-bg/12 bg-white px-4 py-2 text-sm font-semibold text-fei-bg/70 shadow-[0_10px_30px_rgba(7,17,31,0.04)] transition hover:border-fei-sky/35 hover:text-fei-bg"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -182,7 +182,7 @@ export default function ContactPage() {
               strokeWidth="1.8"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="h-4 w-4"
+              className="h-4 w-4 text-fei-sky"
               aria-hidden="true"
             >
               <path d="M15 18l-6-6 6-6" />
@@ -190,189 +190,189 @@ export default function ContactPage() {
             {t.back}
           </a>
 
-          <div className="max-w-4xl">
-            <p className="mb-2 text-xs font-bold uppercase tracking-[0.28em] text-fei-sky">
-              {t.label}
-            </p>
-
-            <h1 className="text-3xl font-black tracking-tight text-fei-text sm:text-4xl lg:text-5xl">
-              {t.title}
-            </h1>
-
-            <p className="mt-6 max-w-3xl text-base leading-8 text-fei-text/60">
-              {t.description}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="px-6 py-12 sm:py-14">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
-          <aside className="rounded-3xl border border-fei-text/10 bg-white/[0.025] p-6">
-            <p className="text-sm leading-7 text-fei-text/65">
-              {t.faqText}
-            </p>
-
-            <a
-              href="/faq"
-              className="mt-5 inline-flex rounded-full border border-fei-sky/40 px-5 py-2.5 text-sm font-semibold text-fei-sky transition hover:bg-fei-sky/10"
-            >
-              {t.faqLink}
-            </a>
-
-            <div className="mt-8 border-t border-fei-text/10 pt-6">
-              <h2 className="text-xl font-bold tracking-tight text-fei-text">
-                {t.otherWays}
-              </h2>
-
-              <p className="mt-3 text-sm leading-7 text-fei-text/60">
-                {t.direct}
+          <article className="relative overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-white p-6 shadow-[0_26px_70px_rgba(7,17,31,0.065)] sm:p-8 lg:p-10">
+            <header className="mb-10 border-b border-fei-bg/10 pb-8">
+              <p className="text-xs font-bold uppercase tracking-[0.28em] text-fei-bg/50">
+                {t.label}
               </p>
 
-              <a
-                href="mailto:contact@feifootball.com"
-                className="mt-5 inline-flex font-semibold text-fei-sky hover:underline"
-              >
-                contact@feifootball.com
-              </a>
-            </div>
-          </aside>
+              <h1 className="mt-5 text-3xl font-bold tracking-tight text-fei-bg sm:text-4xl">
+                {t.title}
+              </h1>
 
-          <div className="rounded-3xl border border-fei-text/10 bg-white/[0.025] p-5 sm:p-7">
-            {submitted ? (
-              <div className="flex min-h-[460px] flex-col items-center justify-center text-center">
-                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full border border-fei-yellow/30 bg-fei-yellow/[0.10] text-2xl text-fei-yellow">
-                  ✓
-                </div>
+              <p className="mt-5 max-w-3xl text-[15px] leading-7 text-fei-bg/64 sm:text-base sm:leading-8">
+                {t.description}
+              </p>
+            </header>
 
-                <h2 className="text-3xl font-bold tracking-tight text-fei-text">
-                  {t.successTitle}
-                </h2>
-
-                <p className="mt-4 max-w-lg text-sm leading-7 text-fei-text/60">
-                  {t.successMessage}
+            <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
+              <aside className="rounded-[1.5rem] border border-fei-bg/10 bg-[#F7F8FA] p-5 sm:p-6">
+                <p className="text-sm leading-7 text-fei-bg/62">
+                  {t.faqText}
                 </p>
 
-                <button
-                  type="button"
-                  onClick={() => {
-                    setSubmitted(false)
-                    setValues({
-                      fullName: '',
-                      email: '',
-                      reason: '',
-                      message: '',
-                      phone: '',
-                      organization: '',
-                    })
-                    setErrors({})
-                  }}
-                  className="mt-8 rounded-full bg-fei-yellow px-7 py-3 text-sm font-semibold text-fei-bg transition hover:bg-fei-yellow/90"
+                <a
+                  href="/faq"
+                  className="mt-5 inline-flex rounded-full border border-fei-bg/12 bg-white px-5 py-2.5 text-sm font-semibold text-fei-bg/72 transition hover:border-fei-sky/35 hover:text-fei-bg"
                 >
-                  {t.another}
-                </button>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid gap-5 sm:grid-cols-2">
-                  <label className="block">
-                    <span className="text-sm font-medium text-fei-text/80">{t.fullName}</span>
-                    <input
-                      value={values.fullName}
-                      onChange={(e) => updateField('fullName', e.target.value)}
-                      placeholder={t.fullNamePlaceholder}
-                      className="mt-2 w-full rounded-2xl border border-fei-text/10 bg-fei-bg/70 px-4 py-3 text-sm text-fei-text outline-none transition placeholder:text-fei-text/30 focus:border-fei-sky/50"
-                    />
-                    {errors.fullName && <p className="mt-2 text-xs text-fei-yellow">{errors.fullName}</p>}
-                  </label>
+                  {t.faqLink}
+                </a>
 
-                  <label className="block">
-                    <span className="text-sm font-medium text-fei-text/80">{t.email}</span>
-                    <input
-                      value={values.email}
-                      onChange={(e) => updateField('email', e.target.value)}
-                      placeholder={t.emailPlaceholder}
-                      className="mt-2 w-full rounded-2xl border border-fei-text/10 bg-fei-bg/70 px-4 py-3 text-sm text-fei-text outline-none transition placeholder:text-fei-text/30 focus:border-fei-sky/50"
-                    />
-                    {errors.email ? (
-                      <p className="mt-2 text-xs text-fei-yellow">{errors.email}</p>
-                    ) : (
-                      <p className="mt-2 text-xs text-fei-text/40">{t.emailHelp}</p>
-                    )}
-                  </label>
-                </div>
+                <div className="mt-8 border-t border-fei-bg/10 pt-6">
+                  <h2 className="text-xl font-bold tracking-tight text-fei-bg">
+                    {t.otherWays}
+                  </h2>
 
-                <label className="block">
-                  <span className="text-sm font-medium text-fei-text/80">{t.reason}</span>
-                  <select
-                    value={values.reason}
-                    onChange={(e) => updateField('reason', e.target.value)}
-                    className="mt-2 min-h-[56px] w-full rounded-2xl border border-fei-text/10 bg-fei-bg/70 px-4 py-4 text-base text-fei-text outline-none transition focus:border-fei-sky/50"
+                  <p className="mt-3 text-sm leading-7 text-fei-bg/60">
+                    {t.direct}
+                  </p>
+
+                  <a
+                    href="mailto:contact@feifootball.com"
+                    className="mt-5 inline-flex font-semibold text-[#38bdf8] hover:text-fei-bg hover:underline"
                   >
-                    <option value="">{lang === 'en' ? 'Select a reason' : 'Selecciona un motivo'}</option>
-                    {t.reasons.map(reason => (
-                      <option key={reason} value={reason}>{reason}</option>
-                    ))}
-                  </select>
-                  {errors.reason && <p className="mt-2 text-xs text-fei-yellow">{errors.reason}</p>}
-                </label>
-
-                <label className="block">
-                  <span className="text-sm font-medium text-fei-text/80">{t.message}</span>
-                  <textarea
-                    value={values.message}
-                    onChange={(e) => updateField('message', e.target.value)}
-                    placeholder={t.messagePlaceholder}
-                    rows={7}
-                    maxLength={5000}
-                    className="mt-2 w-full resize-none rounded-2xl border border-fei-text/10 bg-fei-bg/70 px-4 py-3 text-sm leading-7 text-fei-text outline-none transition placeholder:text-fei-text/30 focus:border-fei-sky/50"
-                  />
-                  <div className="mt-2 flex items-center justify-between gap-4">
-                    <p className="text-xs text-fei-yellow">{errors.message || ''}</p>
-                    <p className="text-xs text-fei-text/40">{values.message.length}/5000</p>
-                  </div>
-                </label>
-
-                <div className="grid gap-5 sm:grid-cols-2">
-                  <label className="block">
-                    <span className="text-sm font-medium text-fei-text/80">{t.phone}</span>
-                    <input
-                      value={values.phone}
-                      onChange={(e) => updateField('phone', e.target.value)}
-                      placeholder={t.phonePlaceholder}
-                      className="mt-2 w-full rounded-2xl border border-fei-text/10 bg-fei-bg/70 px-4 py-3 text-sm text-fei-text outline-none transition placeholder:text-fei-text/30 focus:border-fei-sky/50"
-                    />
-                  </label>
-
-                  <label className="block">
-                    <span className="text-sm font-medium text-fei-text/80">{t.organization}</span>
-                    <input
-                      value={values.organization}
-                      onChange={(e) => updateField('organization', e.target.value)}
-                      placeholder={t.organizationPlaceholder}
-                      className="mt-2 w-full rounded-2xl border border-fei-text/10 bg-fei-bg/70 px-4 py-3 text-sm text-fei-text outline-none transition placeholder:text-fei-text/30 focus:border-fei-sky/50"
-                    />
-                  </label>
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="inline-flex w-full items-center justify-center rounded-full bg-fei-yellow px-8 py-3.5 text-sm font-semibold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:opacity-60"
-                >
-                  {isSubmitting ? t.sending : t.send}
-                </button>
-
-                <p className="text-center text-xs leading-6 text-fei-text/45">
-                  {t.privacy}{' '}
-                  <a href="/privacy" className="font-semibold text-fei-sky hover:underline">
-                    {lang === 'en' ? 'Privacy Policy' : 'Política de Privacidad'}
+                    contact@feifootball.com
                   </a>
-                  .
-                </p>
-              </form>
-            )}
-          </div>
+                </div>
+              </aside>
+
+              <div className="rounded-[1.5rem] border border-fei-bg/10 bg-white p-5 shadow-[0_18px_55px_rgba(7,17,31,0.04)] sm:p-7">
+                {submitted ? (
+                  <div className="flex min-h-[460px] flex-col items-center justify-center text-center">
+                    <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full border border-fei-yellow/35 bg-fei-yellow/[0.10] text-2xl text-fei-bg">
+                      ✓
+                    </div>
+
+                    <h2 className="text-2xl font-bold tracking-tight text-fei-bg sm:text-3xl">
+                      {t.successTitle}
+                    </h2>
+
+                    <p className="mt-4 max-w-lg text-sm leading-7 text-fei-bg/62">
+                      {t.successMessage}
+                    </p>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSubmitted(false)
+                        setValues({
+                          fullName: '',
+                          email: '',
+                          reason: '',
+                          message: '',
+                          phone: '',
+                          organization: '',
+                        })
+                        setErrors({})
+                      }}
+                      className="mt-8 rounded-full bg-fei-yellow px-7 py-3 text-sm font-semibold text-fei-bg transition hover:bg-fei-yellow/90"
+                    >
+                      {t.another}
+                    </button>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div className="grid gap-5 sm:grid-cols-2">
+                      <label className="block">
+                        <span className="text-sm font-medium text-fei-bg/70">{t.fullName}</span>
+                        <input
+                          value={values.fullName}
+                          onChange={(e) => updateField('fullName', e.target.value)}
+                          placeholder={t.fullNamePlaceholder}
+                          className="mt-2 w-full rounded-2xl border border-fei-bg/10 bg-[#F7F8FA] px-4 py-3 text-sm text-fei-bg outline-none transition placeholder:text-fei-bg/35 focus:border-fei-sky/50 focus:bg-white"
+                        />
+                        {errors.fullName && <p className="mt-2 text-xs font-medium text-fei-bg">{errors.fullName}</p>}
+                      </label>
+
+                      <label className="block">
+                        <span className="text-sm font-medium text-fei-bg/70">{t.email}</span>
+                        <input
+                          value={values.email}
+                          onChange={(e) => updateField('email', e.target.value)}
+                          placeholder={t.emailPlaceholder}
+                          className="mt-2 w-full rounded-2xl border border-fei-bg/10 bg-[#F7F8FA] px-4 py-3 text-sm text-fei-bg outline-none transition placeholder:text-fei-bg/35 focus:border-fei-sky/50 focus:bg-white"
+                        />
+                        {errors.email ? (
+                          <p className="mt-2 text-xs font-medium text-fei-bg">{errors.email}</p>
+                        ) : (
+                          <p className="mt-2 text-xs text-fei-bg/45">{t.emailHelp}</p>
+                        )}
+                      </label>
+                    </div>
+
+                    <label className="block">
+                      <span className="text-sm font-medium text-fei-bg/70">{t.reason}</span>
+                      <select
+                        value={values.reason}
+                        onChange={(e) => updateField('reason', e.target.value)}
+                        className="mt-2 min-h-[52px] w-full rounded-2xl border border-fei-bg/10 bg-[#F7F8FA] px-4 py-3 text-sm text-fei-bg outline-none transition focus:border-fei-sky/50 focus:bg-white"
+                      >
+                        <option value="">{lang === 'en' ? 'Select a reason' : 'Selecciona un motivo'}</option>
+                        {t.reasons.map(reason => (
+                          <option key={reason} value={reason}>{reason}</option>
+                        ))}
+                      </select>
+                      {errors.reason && <p className="mt-2 text-xs font-medium text-fei-bg">{errors.reason}</p>}
+                    </label>
+
+                    <label className="block">
+                      <span className="text-sm font-medium text-fei-bg/70">{t.message}</span>
+                      <textarea
+                        value={values.message}
+                        onChange={(e) => updateField('message', e.target.value)}
+                        placeholder={t.messagePlaceholder}
+                        rows={7}
+                        maxLength={5000}
+                        className="mt-2 w-full resize-none rounded-2xl border border-fei-bg/10 bg-[#F7F8FA] px-4 py-3 text-sm leading-7 text-fei-bg outline-none transition placeholder:text-fei-bg/35 focus:border-fei-sky/50 focus:bg-white"
+                      />
+                      <div className="mt-2 flex items-center justify-between gap-4">
+                        <p className="text-xs font-medium text-fei-bg">{errors.message || ''}</p>
+                        <p className="text-xs text-fei-bg/40">{values.message.length}/5000</p>
+                      </div>
+                    </label>
+
+                    <div className="grid gap-5 sm:grid-cols-2">
+                      <label className="block">
+                        <span className="text-sm font-medium text-fei-bg/70">{t.phone}</span>
+                        <input
+                          value={values.phone}
+                          onChange={(e) => updateField('phone', e.target.value)}
+                          placeholder={t.phonePlaceholder}
+                          className="mt-2 w-full rounded-2xl border border-fei-bg/10 bg-[#F7F8FA] px-4 py-3 text-sm text-fei-bg outline-none transition placeholder:text-fei-bg/35 focus:border-fei-sky/50 focus:bg-white"
+                        />
+                      </label>
+
+                      <label className="block">
+                        <span className="text-sm font-medium text-fei-bg/70">{t.organization}</span>
+                        <input
+                          value={values.organization}
+                          onChange={(e) => updateField('organization', e.target.value)}
+                          placeholder={t.organizationPlaceholder}
+                          className="mt-2 w-full rounded-2xl border border-fei-bg/10 bg-[#F7F8FA] px-4 py-3 text-sm text-fei-bg outline-none transition placeholder:text-fei-bg/35 focus:border-fei-sky/50 focus:bg-white"
+                        />
+                      </label>
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="inline-flex w-full items-center justify-center rounded-full bg-fei-yellow px-8 py-3.5 text-sm font-semibold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:opacity-60"
+                    >
+                      {isSubmitting ? t.sending : t.send}
+                    </button>
+
+                    <p className="text-center text-xs leading-6 text-fei-bg/48">
+                      {t.privacy}{' '}
+                      <a href="/privacy" className="font-semibold text-[#38bdf8] hover:text-fei-bg hover:underline">
+                        {lang === 'en' ? 'Privacy Policy' : 'Política de Privacidad'}
+                      </a>
+                      .
+                    </p>
+                  </form>
+                )}
+              </div>
+            </div>
+          </article>
         </div>
       </section>
     </main>
