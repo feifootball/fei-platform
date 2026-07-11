@@ -2944,15 +2944,15 @@ function AssessmentContent() {
     return (
       <div className="relative min-h-screen overflow-hidden bg-white text-fei-bg">
         <div
-          className="pointer-events-none absolute right-[-12rem] top-[4rem] h-[540px] w-[680px] opacity-60 blur-3xl"
+          className="pointer-events-none absolute right-[-10rem] top-[3rem] h-[420px] w-[520px] opacity-45 blur-3xl"
           style={{
             background:
-              'radial-gradient(ellipse at 66% 34%, rgba(125,211,252,0.18), transparent 64%), radial-gradient(ellipse at 46% 68%, rgba(250,204,21,0.07), transparent 72%)',
+              'radial-gradient(ellipse at 65% 35%, rgba(125,211,252,0.16), transparent 64%), radial-gradient(ellipse at 45% 65%, rgba(250,204,21,0.05), transparent 72%)',
           }}
         />
 
-        <header className="sticky top-0 z-50 border-b border-fei-bg/[0.07] bg-white/88 backdrop-blur-xl">
-          <div className="mx-auto flex min-h-[68px] w-full max-w-[1320px] items-center px-6 sm:px-8">
+        <header className="sticky top-0 z-50 border-b border-fei-bg/[0.07] bg-white/90 backdrop-blur-xl">
+          <div className="mx-auto flex h-[58px] w-full max-w-[1080px] items-center px-5 sm:px-6">
             <button
               type="button"
               onClick={() => router.push('/dashboard')}
@@ -2962,48 +2962,44 @@ function AssessmentContent() {
               <img
                 src="/fei-logo-navbar-vector.svg"
                 alt="FEI"
-                className="h-11 w-auto"
+                className="h-9 w-auto"
               />
 
-              <span className="mx-4 hidden h-5 w-px bg-fei-bg/10 sm:block" />
+              <span className="mx-3 hidden h-4 w-px bg-fei-bg/10 sm:block" />
 
-              <span className="hidden text-sm font-medium text-fei-bg/55 sm:inline">
+              <span className="hidden text-xs font-medium text-fei-bg/50 sm:inline">
                 Football English Intelligence
               </span>
             </button>
           </div>
         </header>
 
-        <main className="relative mx-auto flex min-h-[calc(100vh-68px)] w-full max-w-[1320px] items-center px-6 py-6 sm:px-8 lg:py-8">
-          <section className="relative w-full overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-white shadow-[0_22px_65px_rgba(7,17,31,0.065)]">
-            <div className="absolute inset-x-8 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-90" />
+        <main className="relative mx-auto flex min-h-[calc(100vh-58px)] w-full max-w-[1080px] items-center px-5 py-4 sm:px-6">
+          <section className="relative w-full overflow-hidden rounded-[1.5rem] border border-fei-bg/10 bg-white shadow-[0_14px_38px_rgba(7,17,31,0.05)]">
+            <div className="absolute inset-x-6 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-85" />
 
             <div className="grid lg:grid-cols-[1.08fr_0.92fr]">
-              <div className="flex min-h-[560px] flex-col p-8 sm:p-10 lg:p-11">
-                <p className="text-sm font-black uppercase tracking-[0.30em] text-fei-bg/50">
+              <div className="p-6 sm:p-7 lg:p-8">
+                <p className="text-[11px] font-black uppercase tracking-[0.26em] text-fei-bg/45">
                   Diagnostic Assessment
                 </p>
 
-                <h1 className="mt-5 max-w-3xl text-4xl font-black tracking-[-0.04em] text-fei-bg sm:text-5xl lg:text-[3.45rem] lg:leading-[1.04]">
+                <h1 className="mt-3 text-3xl font-black tracking-[-0.035em] text-fei-bg sm:text-[2.35rem] lg:text-[2.55rem] lg:leading-[1.04]">
                   {selectedRole}
                 </h1>
 
-                <p className="mt-4 text-base font-medium text-fei-bg/58">
+                <p className="mt-2 text-sm font-medium text-fei-bg/55">
                   {roleSubtitle}
                 </p>
 
-                <p className="mt-6 max-w-2xl text-base leading-7 text-fei-bg/62">
+                <p className="mt-4 max-w-xl text-sm leading-6 text-fei-bg/60">
                   Discover how you understand and use English in real football situations connected to your role.
                 </p>
 
-                <div className="mt-8 border-y border-fei-bg/[0.08] py-5">
-                  <p className="text-[11px] font-black uppercase tracking-[0.22em] text-fei-bg/40">
-                    Assessment overview
-                  </p>
-
-                  <div className="mt-4 grid gap-5 sm:grid-cols-2">
-                    <div className="flex items-center gap-4 sm:border-r sm:border-fei-bg/[0.08] sm:pr-5">
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-fei-sky/25 bg-fei-sky/[0.045] text-fei-sky">
+                <div className="mt-5 border-y border-fei-bg/[0.08] py-4">
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div className="flex items-center gap-3 sm:border-r sm:border-fei-bg/[0.08]">
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-fei-sky/20 bg-fei-sky/[0.04] text-fei-sky">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
@@ -3012,7 +3008,7 @@ function AssessmentContent() {
                           strokeWidth={1.8}
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          className="h-4.5 w-4.5"
+                          className="h-3.5 w-3.5"
                           aria-hidden
                         >
                           <circle cx="12" cy="12" r="8.5" />
@@ -3021,17 +3017,17 @@ function AssessmentContent() {
                       </div>
 
                       <div>
-                        <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-fei-bg/40">
+                        <p className="text-[9px] font-bold uppercase tracking-[0.15em] text-fei-bg/38">
                           Duration
                         </p>
-                        <p className="mt-1 text-base font-normal text-fei-bg/72">
+                        <p className="mt-0.5 text-sm text-fei-bg/68">
                           10–12 minutes
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-4">
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-fei-sky/25 bg-fei-sky/[0.045] text-fei-sky">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-fei-sky/20 bg-fei-sky/[0.04] text-fei-sky">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
@@ -3040,7 +3036,7 @@ function AssessmentContent() {
                           strokeWidth={1.8}
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          className="h-4.5 w-4.5"
+                          className="h-3.5 w-3.5"
                           aria-hidden
                         >
                           <path d="M12 3.5 19 7.5v5c0 4.5-3 7.5-7 8-4-.5-7-3.5-7-8v-5l7-4Z" />
@@ -3049,10 +3045,10 @@ function AssessmentContent() {
                       </div>
 
                       <div>
-                        <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-fei-bg/40">
+                        <p className="text-[9px] font-bold uppercase tracking-[0.15em] text-fei-bg/38">
                           What you’ll receive
                         </p>
-                        <p className="mt-1 text-base font-normal text-fei-bg/72">
+                        <p className="mt-0.5 text-sm text-fei-bg/68">
                           Level and next steps
                         </p>
                       </div>
@@ -3060,82 +3056,75 @@ function AssessmentContent() {
                   </div>
                 </div>
 
-                <div className="mt-auto pt-8">
-                  <button
-                    type="button"
-                    onClick={() => setSection('audio-check')}
-                    className="inline-flex min-h-[50px] items-center justify-center rounded-full bg-fei-yellow px-8 text-sm font-bold text-fei-bg transition duration-300 hover:-translate-y-0.5 hover:bg-fei-yellow/90 hover:shadow-lg hover:shadow-fei-yellow/20"
-                  >
-                    <span className="inline-flex items-center gap-2">
-                      Begin assessment
-                      <ChevronRightIcon />
-                    </span>
-                  </button>
-                </div>
+                <button
+                  type="button"
+                  onClick={() => setSection('audio-check')}
+                  className="mt-5 inline-flex h-[44px] items-center justify-center rounded-full bg-fei-yellow px-6 text-sm font-bold text-fei-bg transition hover:bg-fei-yellow/90"
+                >
+                  <span className="inline-flex items-center gap-2">
+                    Begin assessment
+                    <ChevronRightIcon />
+                  </span>
+                </button>
               </div>
 
-              <aside className="relative flex min-h-[560px] flex-col border-t border-fei-bg/[0.08] bg-[#F7F8FA] p-8 sm:p-10 lg:border-l lg:border-t-0 lg:p-11">
-                <p className="text-sm font-black uppercase tracking-[0.30em] text-fei-bg/50">
+              <aside className="border-t border-fei-bg/[0.08] bg-[#F7F8FA] p-6 sm:p-7 lg:border-l lg:border-t-0 lg:p-8">
+                <p className="text-[11px] font-black uppercase tracking-[0.26em] text-fei-bg/45">
                   Before you begin
                 </p>
 
-                <h2 className="mt-4 text-3xl font-black tracking-tight text-fei-bg">
+                <h2 className="mt-3 text-2xl font-black tracking-tight text-fei-bg">
                   Prepare your <span className="text-fei-sky">setup</span>
                 </h2>
 
-                <p className="mt-3 max-w-xl text-base leading-7 text-fei-bg/60">
+                <p className="mt-2 text-sm leading-6 text-fei-bg/58">
                   Make sure you can complete the diagnostic without interruptions.
                 </p>
 
-                <div className="mt-9 space-y-7">
+                <div className="mt-6 space-y-5">
                   {[
                     'Do not close or refresh the page until the assessment is complete.',
                     'Find a quiet place with a reliable internet connection.',
                   ].map((item, index) => (
-                    <div
-                      key={item}
-                      className="flex items-start gap-4"
-                    >
-                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-fei-bg text-xs font-black text-white">
+                    <div key={item} className="flex items-start gap-3">
+                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-fei-bg text-[10px] font-black text-white">
                         {index + 1}
                       </span>
 
-                      <p className="pt-0.5 text-[15px] leading-7 text-fei-bg/68">
+                      <p className="text-sm leading-6 text-fei-bg/64">
                         {item}
                       </p>
                     </div>
                   ))}
                 </div>
 
-                <div className="mt-auto pt-8">
-                  <div className="border-t border-fei-bg/[0.09] pt-6">
-                    <div className="flex items-start gap-4">
-                      <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-fei-bg/10 bg-white text-fei-bg">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth={1.8}
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="h-4.5 w-4.5"
-                          aria-hidden
-                        >
-                          <path d="M9 12.5 11 14.5 15.5 9.5" />
-                          <circle cx="12" cy="12" r="8.5" />
-                        </svg>
-                      </div>
+                <div className="mt-6 border-t border-fei-bg/[0.08] pt-5">
+                  <div className="flex items-start gap-3">
+                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-fei-bg/10 bg-white text-fei-bg">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={1.8}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="h-3.5 w-3.5"
+                        aria-hidden
+                      >
+                        <path d="M9 12.5 11 14.5 15.5 9.5" />
+                        <circle cx="12" cy="12" r="8.5" />
+                      </svg>
+                    </div>
 
-                      <div>
-                        <p className="text-sm font-bold text-fei-bg">
-                          Audio and microphone required
-                        </p>
+                    <div>
+                      <p className="text-sm font-semibold text-fei-bg">
+                        Audio and microphone required
+                      </p>
 
-                        <p className="mt-1 text-sm leading-6 text-fei-bg/58">
-                          You will check both on the next screen before the diagnostic begins.
-                        </p>
-                      </div>
+                      <p className="mt-1 text-xs leading-5 text-fei-bg/55">
+                        You will check both on the next screen before the diagnostic begins.
+                      </p>
                     </div>
                   </div>
                 </div>
