@@ -741,7 +741,7 @@ export default function Home() {
 
               <span className="hidden h-4 w-px bg-fei-bg/12 sm:block" />
 
-              <a href="/faqs" className="transition hover:text-fei-bg">
+              <a href="/faq" className="transition hover:text-fei-bg">
                 FAQs
               </a>
 
