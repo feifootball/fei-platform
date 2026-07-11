@@ -370,7 +370,7 @@ export default function RegisterPage() {
                 {t.createLabel}
               </p>
 
-              <h1 className="mt-4 text-4xl font-black tracking-tight text-fei-bg">
+              <h1 className="mt-4 text-4xl font-black tracking-tight text-fei-bg/92">
                 {t.titlePrefix} <span className="text-fei-sky">FEI</span>
               </h1>
 
