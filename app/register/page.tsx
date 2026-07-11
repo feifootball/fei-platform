@@ -294,7 +294,7 @@ export default function RegisterPage() {
       <main className="min-h-screen bg-white text-fei-bg">
         <AuthNav />
 
-        <section className="mx-auto flex min-h-[calc(100vh-76px)] max-w-7xl items-center justify-center px-5 py-10 sm:px-8">
+        <section className="mx-auto flex min-h-[calc(100vh-76px)] max-w-7xl items-center justify-center px-5 py-6 sm:px-8">
           <div className="w-full max-w-md">
             <div className="relative overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-[#F7F8FA] p-7 text-center shadow-[0_18px_55px_rgba(7,17,31,0.05)] sm:p-8">
               <div className="absolute inset-x-6 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-90" />
@@ -324,7 +324,7 @@ export default function RegisterPage() {
                 {t.confirmTitle}
               </h1>
 
-              <p className="mt-4 text-sm leading-6 text-fei-bg/58">
+              <p className="mt-3 text-sm leading-6 text-fei-bg/58">
                 {t.sentTo}
               </p>
 
@@ -342,7 +342,7 @@ export default function RegisterPage() {
 
               <a
                 href="/login"
-                className="mt-7 inline-flex w-full justify-center rounded-full bg-fei-yellow px-6 py-3 font-bold text-fei-bg transition hover:bg-fei-yellow/90 hover:shadow-lg hover:shadow-fei-yellow/20"
+                className="mt-7 inline-flex w-full justify-center rounded-full bg-fei-yellow px-6 py-2.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 hover:shadow-lg hover:shadow-fei-yellow/20"
               >
                 {t.goLogin}
               </a>
@@ -357,35 +357,35 @@ export default function RegisterPage() {
     <main className="min-h-screen bg-white text-fei-bg">
       <AuthNav />
 
-      <section className="mx-auto flex min-h-[calc(100vh-76px)] max-w-7xl items-center justify-center px-5 py-10 sm:px-8">
+      <section className="mx-auto flex min-h-[calc(100vh-76px)] max-w-7xl items-center justify-center px-5 py-6 sm:px-8">
         <div className="w-full max-w-xl">
           <form
             onSubmit={handleRegister}
-            className="relative overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-[#F7F8FA] p-6 shadow-[0_18px_55px_rgba(7,17,31,0.05)] sm:p-8"
+            className="relative overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-[#F7F8FA] p-5 shadow-[0_18px_55px_rgba(7,17,31,0.05)] sm:p-7"
           >
             <div className="absolute inset-x-6 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-90" />
 
-            <div className="mb-7">
+            <div className="mb-5">
               <p className="text-xs font-black uppercase tracking-[0.28em] text-fei-bg/65">
                 {t.createLabel}
               </p>
 
-              <h1 className="mt-4 text-4xl font-black tracking-tight text-fei-bg/92">
+              <h1 className="mt-3 text-4xl font-black tracking-tight text-fei-bg/92">
                 {t.titlePrefix} <span className="text-fei-sky">FEI</span>
               </h1>
 
-              <p className="mt-4 text-sm leading-6 text-fei-bg/58">
+              <p className="mt-3 text-sm leading-6 text-fei-bg/58">
                 {t.description}
               </p>
             </div>
 
             {error && (
-              <p className="mb-5 rounded-2xl border border-red-400/20 bg-red-500/10 px-4 py-3 text-sm leading-6 text-red-500">
+              <p className="mb-5 rounded-2xl border border-red-400/20 bg-red-500/10 px-4 py-2.5 text-sm leading-6 text-red-500">
                 {error}
               </p>
             )}
 
-            <div className="mb-4">
+            <div className="mb-3">
               <label className="mb-2 block text-sm font-bold text-fei-bg/62">
                 {t.fullName}
               </label>
@@ -394,12 +394,12 @@ export default function RegisterPage() {
                 value={name}
                 onChange={e => setName(e.target.value)}
                 required
-                className="w-full rounded-2xl border border-fei-bg/10 bg-white px-4 py-3 text-fei-bg placeholder-fei-bg/40 outline-none transition focus:border-fei-sky/45"
+                className="w-full rounded-2xl border border-fei-bg/10 bg-white px-4 py-2.5 text-fei-bg placeholder-fei-bg/40 outline-none transition focus:border-fei-sky/45"
                 placeholder={t.fullNamePlaceholder}
               />
             </div>
 
-            <div className="mb-4">
+            <div className="mb-3">
               <label className="mb-2 block text-sm font-bold text-fei-bg/62">
                 {t.role}
               </label>
@@ -407,7 +407,7 @@ export default function RegisterPage() {
                 value={role}
                 onChange={e => setRole(e.target.value)}
                 required
-                className="h-[54px] w-full appearance-none rounded-2xl border border-fei-bg/10 bg-white px-4 pr-12 text-base text-fei-bg outline-none transition focus:border-fei-sky/45"
+                className="h-[48px] w-full appearance-none rounded-2xl border border-fei-bg/10 bg-white px-4 pr-12 text-base text-fei-bg outline-none transition focus:border-fei-sky/45"
                 style={{
                   backgroundImage:
                     "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%237dd3fc' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M6 9l6 6 6-6'/%3E%3C/svg%3E\")",
@@ -425,7 +425,7 @@ export default function RegisterPage() {
               </select>
 
               {role === "I'll choose later" && (
-                <p className="mt-3 rounded-2xl border border-fei-sky/20 bg-fei-sky/[0.06] px-4 py-3 text-sm leading-6 text-fei-bg/70">
+                <p className="mt-3 rounded-2xl border border-fei-sky/20 bg-fei-sky/[0.06] px-4 py-2.5 text-sm leading-6 text-fei-bg/70">
                   {t.chooseLaterNote}
                 </p>
               )}
@@ -437,17 +437,17 @@ export default function RegisterPage() {
                     value={customRole}
                     onChange={e => setCustomRole(e.target.value)}
                     required
-                    className="w-full rounded-2xl border border-fei-bg/10 bg-white px-4 py-3 text-fei-bg placeholder-fei-bg/40 outline-none transition focus:border-fei-sky/45"
+                    className="w-full rounded-2xl border border-fei-bg/10 bg-white px-4 py-2.5 text-fei-bg placeholder-fei-bg/40 outline-none transition focus:border-fei-sky/45"
                     placeholder={t.customRolePlaceholder}
                   />
-                  <p className="mt-3 rounded-2xl border border-fei-yellow/30 bg-fei-yellow/[0.08] px-4 py-3 text-sm leading-6 text-fei-bg/70">
+                  <p className="mt-3 rounded-2xl border border-fei-yellow/30 bg-fei-yellow/[0.08] px-4 py-2.5 text-sm leading-6 text-fei-bg/70">
                     {t.customRoleNote}
                   </p>
                 </div>
               )}
             </div>
 
-            <div className="mb-4">
+            <div className="mb-3">
               <label className="mb-2 block text-sm font-bold text-fei-bg/62">
                 {t.country}
               </label>
@@ -455,7 +455,7 @@ export default function RegisterPage() {
                 value={country}
                 onChange={e => setCountry(e.target.value)}
                 required
-                className="h-[54px] w-full appearance-none rounded-2xl border border-fei-bg/10 bg-white px-4 pr-12 text-base text-fei-bg outline-none transition focus:border-fei-sky/45"
+                className="h-[48px] w-full appearance-none rounded-2xl border border-fei-bg/10 bg-white px-4 pr-12 text-base text-fei-bg outline-none transition focus:border-fei-sky/45"
                 style={{
                   backgroundImage:
                     "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%237dd3fc' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M6 9l6 6 6-6'/%3E%3C/svg%3E\")",
@@ -473,7 +473,7 @@ export default function RegisterPage() {
               </select>
             </div>
 
-            <div className="mb-4">
+            <div className="mb-3">
               <label className="mb-2 block text-sm font-bold text-fei-bg/62">
                 {t.email}
               </label>
@@ -482,12 +482,12 @@ export default function RegisterPage() {
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 required
-                className="w-full rounded-2xl border border-fei-bg/10 bg-white px-4 py-3 text-fei-bg placeholder-fei-bg/40 outline-none transition focus:border-fei-sky/45"
+                className="w-full rounded-2xl border border-fei-bg/10 bg-white px-4 py-2.5 text-fei-bg placeholder-fei-bg/40 outline-none transition focus:border-fei-sky/45"
                 placeholder="you@club.com"
               />
             </div>
 
-            <div className="mb-6">
+            <div className="mb-4">
               <label className="mb-2 block text-sm font-bold text-fei-bg/62">
                 {t.password}
               </label>
@@ -497,7 +497,7 @@ export default function RegisterPage() {
                 onChange={e => setPassword(e.target.value)}
                 required
                 minLength={8}
-                className="w-full rounded-2xl border border-fei-bg/10 bg-white px-4 py-3 text-fei-bg placeholder-fei-bg/40 outline-none transition focus:border-fei-sky/45"
+                className="w-full rounded-2xl border border-fei-bg/10 bg-white px-4 py-2.5 text-fei-bg placeholder-fei-bg/40 outline-none transition focus:border-fei-sky/45"
                 placeholder="••••••••"
               />
               <p className="mt-2 text-xs leading-5 text-fei-bg/58">
@@ -506,7 +506,7 @@ export default function RegisterPage() {
             </div>
 
             <div className="mb-6 space-y-3">
-              <label className="flex cursor-pointer items-start gap-3 rounded-2xl border border-fei-bg/10 bg-white p-4 text-sm leading-6 text-fei-bg/70">
+              <label className="flex cursor-pointer items-start gap-3 rounded-2xl border border-fei-bg/10 bg-white p-3 text-sm leading-6 text-fei-bg/70">
                 <input
                   type="checkbox"
                   checked={acceptedTerms}
@@ -527,7 +527,7 @@ export default function RegisterPage() {
                 </span>
               </label>
 
-              <label className="flex cursor-pointer items-start gap-3 rounded-2xl border border-fei-bg/10 bg-white p-4 text-sm leading-6 text-fei-bg/70">
+              <label className="flex cursor-pointer items-start gap-3 rounded-2xl border border-fei-bg/10 bg-white p-3 text-sm leading-6 text-fei-bg/70">
                 <input
                   type="checkbox"
                   checked={acceptedGdpr}
@@ -548,12 +548,12 @@ export default function RegisterPage() {
             <button
               type="submit"
               disabled={loading || !acceptedTerms || !acceptedGdpr}
-              className="w-full rounded-full bg-fei-yellow py-3 font-bold text-fei-bg transition hover:bg-fei-yellow/90 hover:shadow-lg hover:shadow-fei-yellow/25 disabled:cursor-not-allowed disabled:opacity-50"
+              className="w-full rounded-full bg-fei-yellow py-2.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 hover:shadow-lg hover:shadow-fei-yellow/25 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {loading ? t.loading : t.submit}
             </button>
 
-            <p className="mt-4 text-center text-sm text-fei-bg/62">
+            <p className="mt-3 text-center text-sm text-fei-bg/62">
               {t.already}{' '}
               <a href="/login" className="font-semibold text-[#38bdf8] hover:text-fei-bg hover:underline">
                 {t.signIn}
