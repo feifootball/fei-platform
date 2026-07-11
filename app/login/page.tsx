@@ -120,7 +120,7 @@ export default function LoginPage() {
       <AuthNav />
 
       <section className="mx-auto flex min-h-[calc(100vh-76px)] max-w-7xl items-center justify-center px-5 py-6 sm:px-8">
-        <div className="w-full max-w-xl">
+        <div className="w-full max-w-md">
           <form
             onSubmit={handleLogin}
             className="relative overflow-hidden rounded-[2rem] border border-fei-bg/12 bg-white p-5 shadow-[0_26px_70px_rgba(7,17,31,0.10)] sm:p-7"
