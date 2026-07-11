@@ -158,7 +158,7 @@ export default function DashboardPage() {
 
   if (loading) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-fei-bg text-fei-text">
+      <main className="flex min-h-screen items-center justify-center bg-[#F7F8FA] text-fei-bg">
         <div className="h-10 w-10 animate-spin rounded-full border-2 border-fei-yellow border-t-transparent" />
       </main>
     )
@@ -169,24 +169,24 @@ export default function DashboardPage() {
   const currentResult = lastAssessment ? getResultLabel(lastAssessment.level) : '—'
 
   return (
-    <main className="min-h-screen bg-fei-bg text-fei-text">
-      <nav className="border-b border-fei-text/8 bg-fei-bg/95">
+    <main className="min-h-screen bg-[radial-gradient(circle_at_50%_10%,rgba(125,211,252,0.08),transparent_30%),linear-gradient(to_bottom,#ffffff_0%,#ffffff_34%,#F7F8FA_100%)] text-fei-bg">
+      <nav className="sticky top-0 z-50 border-b border-fei-bg/10 bg-white/82 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-8">
           <Link href="/" className="flex items-center gap-3">
             <span className="text-lg font-black text-fei-yellow">FEI</span>
             <span className="hidden text-sm font-medium text-fei-sky/90 sm:inline">Football English Intelligence</span>
           </Link>
 
-          <div className="flex items-center gap-5 text-sm font-medium text-fei-text/55">
-            <Link href="/learning" className="transition hover:text-fei-text">
+          <div className="flex items-center gap-5 text-sm font-medium text-fei-bg/55">
+            <Link href="/learning" className="transition hover:text-fei-bg">
               Learning Path
             </Link>
-            <Link href="/settings" className="transition hover:text-fei-text">
+            <Link href="/settings" className="transition hover:text-fei-bg">
               Settings
             </Link>
             <button
               onClick={handleLogout}
-              className="rounded-full border border-fei-text/15 px-5 py-2 text-fei-text/70 transition hover:border-fei-yellow hover:text-fei-yellow"
+              className="rounded-full border border-fei-bg/15 px-5 py-2 text-fei-bg/70 transition hover:border-fei-yellow hover:text-fei-yellow"
             >
               Sign out
             </button>
@@ -199,7 +199,7 @@ export default function DashboardPage() {
           <p className="mb-3 text-xs font-bold uppercase tracking-[0.38em] text-fei-sky/90">
             Welcome back
           </p>
-          <h1 className="text-4xl font-black tracking-tight text-fei-text sm:text-5xl">
+          <h1 className="text-4xl font-black tracking-tight text-fei-bg sm:text-5xl">
             {displayName}
           </h1>
 
@@ -207,7 +207,7 @@ export default function DashboardPage() {
             Role: {userRole || 'Not selected'}
           </div>
 
-          <p className="mt-4 max-w-3xl text-base leading-7 text-fei-text/55">
+          <p className="mt-4 max-w-3xl text-base leading-7 text-fei-bg/55">
             FEI adapts your diagnostic and learning path to your role in football, so your English training feels practical, contextual, and career-focused.
           </p>
         </div>
@@ -218,15 +218,15 @@ export default function DashboardPage() {
               <p className="text-xs font-bold uppercase tracking-[0.28em] text-fei-yellow">
                 Choose your role
               </p>
-              <h2 className="mt-4 text-3xl font-bold text-fei-text">
+              <h2 className="mt-4 text-3xl font-bold text-fei-bg">
                 Select a football role to start your diagnostic
               </h2>
-              <p className="mx-auto mt-4 max-w-xl text-fei-text/60">
+              <p className="mx-auto mt-4 max-w-xl text-fei-bg/60">
                 FEI diagnostics are role-specific. Choose the closest available role so your assessment matches your football context.
               </p>
 
               {userRole === 'Other football role' && (
-                <p className="mt-5 rounded-2xl border border-fei-sky/20 bg-fei-sky/[0.06] px-4 py-3 text-sm leading-6 text-fei-text/60">
+                <p className="mt-5 rounded-2xl border border-fei-sky/20 bg-fei-sky/[0.06] px-4 py-3 text-sm leading-6 text-fei-bg/60">
                   Thanks for telling us your role. For now, please choose the closest available FEI role to begin your diagnostic.
                 </p>
               )}
@@ -234,7 +234,7 @@ export default function DashboardPage() {
               <select
                 value={selectedRole}
                 onChange={e => setSelectedRole(e.target.value)}
-                className="mt-7 h-[60px] w-full appearance-none rounded-xl border border-fei-text/10 bg-fei-text/[0.05] px-4 pr-12 text-base text-fei-text focus:border-fei-yellow focus:outline-none"
+                className="mt-7 h-[60px] w-full appearance-none rounded-xl border border-fei-bg/10 bg-white px-4 pr-12 text-base text-fei-bg shadow-sm focus:border-fei-yellow focus:outline-none"
                 style={{
                   backgroundImage:
                     "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%237dd3fc' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M6 9l6 6 6-6'/%3E%3C/svg%3E\")",
@@ -245,7 +245,7 @@ export default function DashboardPage() {
               >
                 <option value="">Choose your closest role</option>
                 {diagnosticRoles.map(role => (
-                  <option key={role} value={role} className="bg-fei-bg text-fei-text">
+                  <option key={role} value={role} className="bg-white text-fei-bg">
                     {role}
                   </option>
                 ))}
@@ -263,29 +263,29 @@ export default function DashboardPage() {
           </section>
         ) : (
           <section className="mb-10 grid gap-6 lg:grid-cols-[1.18fr_0.82fr] lg:items-stretch">
-            <div className="relative overflow-hidden rounded-[2rem] border border-fei-text/10 bg-fei-text/[0.035] p-7 shadow-[0_24px_70px_rgba(0,0,0,0.14)] md:p-9">
+            <div className="relative overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-white p-7 shadow-[0_24px_70px_rgba(0,0,0,0.14)] md:p-9">
               <p className="text-xs font-bold uppercase tracking-[0.34em] text-fei-sky">
                 FEI Diagnostic
               </p>
-              <h2 className="mt-4 max-w-2xl text-3xl font-bold leading-tight text-fei-text md:text-[2.35rem]">
+              <h2 className="mt-4 max-w-2xl text-3xl font-bold leading-tight text-fei-bg md:text-[2.35rem]">
                 Start your {userRole} diagnostic assessment
               </h2>
-              <p className="mt-4 max-w-2xl text-base leading-8 text-fei-text/58">
+              <p className="mt-4 max-w-2xl text-base leading-8 text-fei-bg/58">
                 Complete a short role-specific diagnostic and receive one recommended FEI pathway based on your football communication profile.
               </p>
 
               <div className="mt-7 grid gap-3 sm:grid-cols-3">
-                <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-4">
-                  <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-fei-text/35">Time</p>
-                  <p className="mt-2 font-bold text-fei-text">10–12 min</p>
+                <div className="rounded-2xl border border-fei-bg/10 bg-[#F7F8FA] p-4">
+                  <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-fei-bg/35">Time</p>
+                  <p className="mt-2 font-bold text-fei-bg">10–12 min</p>
                 </div>
-                <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-4">
-                  <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-fei-text/35">Result</p>
-                  <p className="mt-2 font-bold text-fei-text">FEI Pathway</p>
+                <div className="rounded-2xl border border-fei-bg/10 bg-[#F7F8FA] p-4">
+                  <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-fei-bg/35">Result</p>
+                  <p className="mt-2 font-bold text-fei-bg">FEI Pathway</p>
                 </div>
-                <div className="rounded-2xl border border-fei-text/10 bg-fei-bg/35 p-4">
-                  <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-fei-text/35">Type</p>
-                  <p className="mt-2 font-bold text-fei-text">Role diagnostic</p>
+                <div className="rounded-2xl border border-fei-bg/10 bg-[#F7F8FA] p-4">
+                  <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-fei-bg/35">Type</p>
+                  <p className="mt-2 font-bold text-fei-bg">Role diagnostic</p>
                 </div>
               </div>
 
@@ -300,7 +300,7 @@ export default function DashboardPage() {
               </Link>
             </div>
 
-            <div className="rounded-[2rem] border border-fei-text/10 bg-fei-text/[0.025] p-7 md:p-8">
+            <div className="rounded-[2rem] border border-fei-bg/10 bg-white p-7 shadow-[0_20px_60px_rgba(7,17,31,0.06)] md:p-8">
               <p className="text-xs font-bold uppercase tracking-[0.28em] text-fei-yellow">
                 What it measures
               </p>
@@ -314,7 +314,7 @@ export default function DashboardPage() {
                   'Communicating under match and workplace pressure',
                   'Using professional English in real football situations',
                 ].map(item => (
-                  <div key={item} className="flex items-start gap-3 text-sm leading-6 text-fei-text/62">
+                  <div key={item} className="flex items-start gap-3 text-sm leading-6 text-fei-bg/62">
                     <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-fei-yellow" />
                     <span>{item}</span>
                   </div>
@@ -325,36 +325,36 @@ export default function DashboardPage() {
         )}
 
         <section className="mb-10 grid gap-5 md:grid-cols-4">
-          <div className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-6 text-center">
+          <div className="rounded-2xl border border-fei-bg/10 bg-white p-6 text-center shadow-[0_16px_45px_rgba(7,17,31,0.045)]">
             <p className="text-2xl font-black text-fei-yellow">{diagnosticStatus}</p>
-            <p className="mt-2 text-sm text-fei-text/45">Diagnostic status</p>
+            <p className="mt-2 text-sm text-fei-bg/45">Diagnostic status</p>
           </div>
 
-          <div className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-6 text-center">
+          <div className="rounded-2xl border border-fei-bg/10 bg-white p-6 text-center shadow-[0_16px_45px_rgba(7,17,31,0.045)]">
             <p className="text-4xl font-black text-fei-yellow">{assessmentCount}</p>
-            <p className="mt-2 text-sm text-fei-text/45">Assessments taken</p>
+            <p className="mt-2 text-sm text-fei-bg/45">Assessments taken</p>
           </div>
 
-          <div className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-6 text-center">
+          <div className="rounded-2xl border border-fei-bg/10 bg-white p-6 text-center shadow-[0_16px_45px_rgba(7,17,31,0.045)]">
             <p className="text-4xl font-black text-fei-yellow">{currentResult}</p>
-            <p className="mt-2 text-sm text-fei-text/45">Current level</p>
+            <p className="mt-2 text-sm text-fei-bg/45">Current level</p>
           </div>
 
-          <div className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-6 text-center">
+          <div className="rounded-2xl border border-fei-bg/10 bg-white p-6 text-center shadow-[0_16px_45px_rgba(7,17,31,0.045)]">
             <p className="text-4xl font-black text-fei-yellow">0h</p>
-            <p className="mt-2 text-sm text-fei-text/45">Learning time</p>
+            <p className="mt-2 text-sm text-fei-bg/45">Learning time</p>
           </div>
         </section>
 
         <section className="grid gap-6 lg:grid-cols-3">
-          <div className="rounded-3xl border border-fei-text/10 bg-fei-text/[0.03] p-7">
+          <div className="rounded-3xl border border-fei-bg/10 bg-white p-7 shadow-[0_18px_55px_rgba(7,17,31,0.045)]">
             <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-fei-sky/15 text-fei-sky">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.5v13m0-13C10.8 5.4 9.2 5 7.5 5H5v13h2.5c1.7 0 3.3.4 4.5 1.5m0-13C13.2 5.4 14.8 5 16.5 5H19v13h-2.5c-1.7 0-3.3.4-4.5 1.5" />
               </svg>
             </div>
-            <h3 className="text-xl font-bold text-fei-text">Learning Path</h3>
-            <p className="mt-3 text-sm leading-6 text-fei-text/55">
+            <h3 className="text-xl font-bold text-fei-bg">Learning Path</h3>
+            <p className="mt-3 text-sm leading-6 text-fei-bg/55">
               Your personalized training path will appear here after your diagnostic results are ready.
             </p>
             <Link href="/learning" className="mt-6 inline-flex text-sm font-semibold text-fei-sky hover:underline">
@@ -365,33 +365,33 @@ export default function DashboardPage() {
             </Link>
           </div>
 
-          <div className="rounded-3xl border border-fei-text/10 bg-fei-text/[0.03] p-7">
+          <div className="rounded-3xl border border-fei-bg/10 bg-white p-7 shadow-[0_18px_55px_rgba(7,17,31,0.045)]">
             <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-fei-yellow/15 text-fei-yellow">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.5 11 14.5 15.5 9.5M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" />
               </svg>
             </div>
-            <h3 className="text-xl font-bold text-fei-text">Diagnostic Report</h3>
-            <p className="mt-3 text-sm leading-6 text-fei-text/55">
+            <h3 className="text-xl font-bold text-fei-bg">Diagnostic Report</h3>
+            <p className="mt-3 text-sm leading-6 text-fei-bg/55">
               Once completed, your report will show your level, strengths, gaps, and recommended next steps.
             </p>
-            <p className="mt-6 text-sm font-semibold text-fei-text/35">
+            <p className="mt-6 text-sm font-semibold text-fei-bg/35">
               Available after assessment
             </p>
           </div>
 
-          <div className="rounded-3xl border border-fei-text/10 bg-fei-text/[0.03] p-7">
+          <div className="rounded-3xl border border-fei-bg/10 bg-white p-7 shadow-[0_18px_55px_rgba(7,17,31,0.045)]">
             <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-fei-sky/15 text-fei-sky">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 3.5 19 7.5v5c0 4.5-3 7.5-7 8-4-.5-7-3.5-7-8v-5l7-4Z" />
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9.5 12h5M12 9.5v5" />
               </svg>
             </div>
-            <h3 className="text-xl font-bold text-fei-text">Role Profile</h3>
-            <p className="mt-3 text-sm leading-6 text-fei-text/55">
-              Your current FEI role is <span className="font-semibold text-fei-text">{userRole || 'not selected'}</span>. This controls your diagnostic context and learning recommendations.
+            <h3 className="text-xl font-bold text-fei-bg">Role Profile</h3>
+            <p className="mt-3 text-sm leading-6 text-fei-bg/55">
+              Your current FEI role is <span className="font-semibold text-fei-bg">{userRole || 'not selected'}</span>. This controls your diagnostic context and learning recommendations.
             </p>
-            <p className="mt-6 text-sm font-semibold text-fei-text/35">
+            <p className="mt-6 text-sm font-semibold text-fei-bg/35">
               Role-based intelligence
             </p>
           </div>
