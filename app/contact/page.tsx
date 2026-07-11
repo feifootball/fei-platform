@@ -14,8 +14,8 @@ const pageCopy = {
       'Have a question about FEI, diagnostics, institutional access, privacy, or technical support? Send us a message and we will get back to you as soon as possible.',
     updated: 'Contact FEI',
     back: 'Back to Home',
-    faqText: 'Before contacting us, check our FAQ — you might find your answer there.',
-    faqLink: 'Visit FAQ',
+    faqText: 'You may find a faster answer in our FAQ.',
+    faqLink: 'View FAQs',
     fullName: 'Full Name',
     fullNamePlaceholder: 'John Doe',
     email: 'Email Address',
@@ -53,7 +53,7 @@ const pageCopy = {
       '¿Tienes una pregunta sobre FEI, diagnósticos, acceso institucional, privacidad o soporte técnico? Envíanos un mensaje y te responderemos lo antes posible.',
     updated: 'Contactar FEI',
     back: 'Volver a inicio',
-    faqText: 'Antes de contactarnos, revisa nuestras FAQs — puede que encuentres tu respuesta allí.',
+    faqText: 'Puede que encuentres una respuesta más rápida en nuestras FAQs.',
     faqLink: 'Ver FAQs',
     fullName: 'Nombre completo',
     fullNamePlaceholder: 'Juan Pérez',
@@ -129,7 +129,6 @@ export default function ContactPage() {
     } else if (!/^\S+@\S+\.\S+$/.test(values.email)) {
       nextErrors.email = t.invalidEmail
     }
-    if (!values.reason.trim()) nextErrors.reason = t.required
     if (!values.message.trim()) {
       nextErrors.message = t.required
     } else if (values.message.trim().length < 10) {
@@ -206,20 +205,27 @@ export default function ContactPage() {
             </header>
 
             <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
-              <aside className="rounded-[1.5rem] border border-fei-bg/10 bg-[#F7F8FA] p-5 sm:p-6">
-                <p className="text-sm leading-7 text-fei-bg/62">
-                  {t.faqText}
-                </p>
+              <aside className="space-y-5">
+                <div className="rounded-[1.5rem] border border-fei-bg/10 bg-[#F7F8FA] p-5 sm:p-6">
+                  <h2 className="text-lg font-bold tracking-tight text-fei-bg">
+                    FAQs
+                  </h2>
 
-                <a
-                  href="/faq"
-                  className="mt-5 inline-flex rounded-full border border-fei-bg/12 bg-white px-5 py-2.5 text-sm font-semibold text-fei-bg/72 transition hover:border-fei-sky/35 hover:text-fei-bg"
-                >
-                  {t.faqLink}
-                </a>
+                  <p className="mt-3 text-sm leading-7 text-fei-bg/60">
+                    {t.faqText}
+                  </p>
 
-                <div className="mt-8 border-t border-fei-bg/10 pt-6">
-                  <h2 className="text-xl font-bold tracking-tight text-fei-bg">
+                  <a
+                    href="/faq"
+                    className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#38bdf8] transition hover:text-fei-bg"
+                  >
+                    {t.faqLink}
+                    <span aria-hidden="true">→</span>
+                  </a>
+                </div>
+
+                <div className="rounded-[1.5rem] border border-fei-bg/10 bg-white p-5 shadow-[0_18px_55px_rgba(7,17,31,0.035)] sm:p-6">
+                  <h2 className="text-lg font-bold tracking-tight text-fei-bg">
                     {t.otherWays}
                   </h2>
 
@@ -299,23 +305,7 @@ export default function ContactPage() {
                         )}
                       </label>
                     </div>
-
-                    <label className="block">
-                      <span className="text-sm font-medium text-fei-bg/70">{t.reason}</span>
-                      <select
-                        value={values.reason}
-                        onChange={(e) => updateField('reason', e.target.value)}
-                        className="mt-2 min-h-[52px] w-full rounded-2xl border border-fei-bg/10 bg-[#F7F8FA] px-4 py-3 text-sm text-fei-bg outline-none transition focus:border-fei-sky/50 focus:bg-white"
-                      >
-                        <option value="">{lang === 'en' ? 'Select a reason' : 'Selecciona un motivo'}</option>
-                        {t.reasons.map(reason => (
-                          <option key={reason} value={reason}>{reason}</option>
-                        ))}
-                      </select>
-                      {errors.reason && <p className="mt-2 text-xs font-medium text-fei-bg">{errors.reason}</p>}
-                    </label>
-
-                    <label className="block">
+<label className="block">
                       <span className="text-sm font-medium text-fei-bg/70">{t.message}</span>
                       <textarea
                         value={values.message}
