@@ -2896,7 +2896,7 @@ function AssessmentContent() {
       <div className="min-h-screen bg-fei-bg px-6 py-12 lg:px-8">
         <div className="mx-auto flex min-h-[70vh] w-full max-w-3xl flex-col justify-center">
           <div className="mb-10 flex items-center gap-3">
-            <img src="/logo.svg" alt="FEI" className="h-8 w-auto" />
+            <img src="/fei-logo-navbar-vector.svg" alt="FEI" className="h-8 w-auto" />
             <span className="text-xs font-medium text-fei-sky">Football English Intelligence</span>
           </div>
 
@@ -2951,7 +2951,7 @@ function AssessmentContent() {
               className="flex items-center"
               aria-label="Return to dashboard"
             >
-              <img src="/logo.svg" alt="FEI" className="h-8 w-auto" />
+              <img src="/fei-logo-navbar-vector.svg" alt="FEI" className="h-8 w-auto" />
 
               <span className="mx-4 hidden h-5 w-px bg-fei-bg/10 sm:block" />
 
@@ -3128,7 +3128,7 @@ function AssessmentContent() {
       <div className="min-h-screen bg-fei-bg px-6 py-12 lg:px-8">
         <div className="mx-auto w-full max-w-6xl">
           <div className="mb-10 flex items-center gap-3">
-            <img src="/logo.svg" alt="FEI" className="h-8 w-auto" />
+            <img src="/fei-logo-navbar-vector.svg" alt="FEI" className="h-8 w-auto" />
             <span className="text-xs font-medium text-fei-sky">Football English Intelligence</span>
           </div>
 
@@ -3237,7 +3237,7 @@ function AssessmentContent() {
         <div className="mx-auto max-w-2xl">
           <div className="mb-8 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <img src="/logo.svg" alt="FEI" className="h-7 w-auto" />
+              <img src="/fei-logo-navbar-vector.svg" alt="FEI" className="h-7 w-auto" />
             </div>
           </div>
 
@@ -3300,7 +3300,7 @@ function AssessmentContent() {
         <div className="mx-auto max-w-2xl">
           <div className="mb-8 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <img src="/logo.svg" alt="FEI" className="h-7 w-auto" />
+              <img src="/fei-logo-navbar-vector.svg" alt="FEI" className="h-7 w-auto" />
             </div>
           </div>
 
@@ -3366,7 +3366,7 @@ function AssessmentContent() {
         <div className="mx-auto max-w-2xl">
           <div className="mb-8 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <img src="/logo.svg" alt="FEI" className="h-7 w-auto" />
+              <img src="/fei-logo-navbar-vector.svg" alt="FEI" className="h-7 w-auto" />
             </div>
           </div>
 
@@ -3432,7 +3432,7 @@ function AssessmentContent() {
         <div className="mx-auto max-w-2xl">
           <div className="mb-8 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <img src="/logo.svg" alt="FEI" className="h-7 w-auto" />
+              <img src="/fei-logo-navbar-vector.svg" alt="FEI" className="h-7 w-auto" />
             </div>
           </div>
 
@@ -3497,7 +3497,7 @@ function AssessmentContent() {
         <div className="mx-auto max-w-2xl">
           <div className="mb-8 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <img src="/logo.svg" alt="FEI" className="h-7 w-auto" />
+              <img src="/fei-logo-navbar-vector.svg" alt="FEI" className="h-7 w-auto" />
             </div>
           </div>
 
@@ -3561,7 +3561,7 @@ function AssessmentContent() {
         <div className="mx-auto max-w-2xl">
           <div className="mb-8 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <img src="/logo.svg" alt="FEI" className="h-7 w-auto" />
+              <img src="/fei-logo-navbar-vector.svg" alt="FEI" className="h-7 w-auto" />
             </div>
           </div>
 
@@ -3659,7 +3659,7 @@ function AssessmentContent() {
         <div className="mx-auto max-w-2xl">
           <div className="mb-8 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <img src="/logo.svg" alt="FEI" className="h-7 w-auto" />
+              <img src="/fei-logo-navbar-vector.svg" alt="FEI" className="h-7 w-auto" />
             </div>
           </div>
 
@@ -4532,7 +4532,7 @@ function AssessmentContent() {
       <div className="min-h-screen bg-fei-bg">
         <header className="sticky top-0 z-50 border-b border-fei-text/10 bg-fei-bg/90 px-6 py-4 backdrop-blur-xl lg:px-8">
           <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4">
-            <img src="/logo.svg" alt="FEI" className="h-8 w-auto" />
+            <img src="/fei-logo-navbar-vector.svg" alt="FEI" className="h-8 w-auto" />
 
             <button
               onClick={() => router.push('/dashboard')}

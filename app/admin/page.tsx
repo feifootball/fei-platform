@@ -171,7 +171,7 @@ function AccessDenied() {
     <div className="flex min-h-screen items-center justify-center bg-fei-bg px-6">
       <div className="w-full max-w-md rounded-2xl border border-fei-text/10 bg-fei-text/[0.03] p-8 text-center">
         <Link href="/" className="inline-flex items-center justify-center gap-2.5">
-          <Image src="/logo.svg" alt="FEI" width={32} height={32} className="h-8 w-auto" />
+          <Image src="/fei-logo-navbar-vector.svg" alt="FEI" width={32} height={32} className="h-8 w-auto" />
           <span className="text-sm font-medium text-fei-sky">Football English Intelligence</span>
         </Link>
         <h1 className="mt-8 text-3xl font-bold text-fei-text">Access denied</h1>
@@ -263,7 +263,7 @@ export default async function AdminPage() {
       <div className="mx-auto max-w-6xl">
         <div className="mb-10 flex items-center justify-between gap-4">
           <Link href="/dashboard" className="flex items-center gap-2.5">
-            <Image src="/logo.svg" alt="FEI" width={32} height={32} className="h-8 w-auto" />
+            <Image src="/fei-logo-navbar-vector.svg" alt="FEI" width={32} height={32} className="h-8 w-auto" />
             <span className="text-xs font-medium text-fei-sky sm:text-sm">
               Football English Intelligence
             </span>

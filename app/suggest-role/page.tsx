@@ -51,7 +51,7 @@ export default function SuggestRolePage() {
     <div className="min-h-screen bg-fei-bg px-6 py-12">
       <div className="mx-auto max-w-2xl">
         <Link href="/" className="inline-flex items-center gap-2.5 mb-10">
-          <img src="/logo.svg" alt="FEI" className="h-8 w-auto" />
+          <img src="/fei-logo-navbar-vector.svg" alt="FEI" className="h-8 w-auto" />
           <span className="text-xs font-medium text-fei-sky">
             Football English Intelligence
           </span>

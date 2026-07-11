@@ -233,7 +233,7 @@ function OnboardingContent() {
         <div className="mx-auto max-w-2xl">
           <div className="mb-10">
             <a href="/" className="flex items-center gap-2.5">
-              <img src="/logo.svg" alt="FEI" className="h-8 w-auto" />
+              <img src="/fei-logo-navbar-vector.svg" alt="FEI" className="h-8 w-auto" />
               <span className="text-xs font-medium text-fei-sky sm:text-sm">
                 Football English Intelligence
               </span>
@@ -295,7 +295,7 @@ function OnboardingContent() {
       <div className="mx-auto max-w-2xl">
         <div className="mb-10 flex items-center justify-between">
           <a href="/" className="flex items-center gap-2.5">
-            <img src="/logo.svg" alt="FEI" className="h-8 w-auto" />
+            <img src="/fei-logo-navbar-vector.svg" alt="FEI" className="h-8 w-auto" />
             <span className="text-xs font-medium text-fei-sky sm:text-sm">
               Football English Intelligence
             </span>
