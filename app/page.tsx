@@ -501,7 +501,7 @@ export default function Home() {
       <section id="for-clubs" className="scroll-mt-24 bg-white px-5 py-14 sm:px-8 sm:py-18">
         <div className="mx-auto max-w-7xl">
           <div className="rounded-[2rem] border border-fei-bg/10 bg-[#F7F8FA] p-6 shadow-[0_18px_55px_rgba(7,17,31,0.05)] sm:p-8 lg:p-10">
-            <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch">
+            <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
               <div className="flex flex-col justify-between">
                 <div>
                   <p className="text-sm font-black uppercase tracking-[0.32em] text-fei-bg/55">
@@ -552,7 +552,7 @@ export default function Home() {
                 </a>
               </div>
 
-              <div className="relative overflow-hidden rounded-[1.75rem] bg-fei-bg p-5 text-white shadow-[0_18px_55px_rgba(7,17,31,0.12)] sm:p-6">
+              <div className="relative mx-auto w-full max-w-[620px] overflow-hidden rounded-[1.75rem] bg-fei-bg p-5 text-white shadow-[0_18px_55px_rgba(7,17,31,0.12)] sm:p-6 lg:mr-0">
                 <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-fei-sky/12 blur-3xl" />
                 <div className="pointer-events-none absolute -bottom-20 -left-20 h-56 w-56 rounded-full bg-fei-yellow/10 blur-3xl" />
 
@@ -561,7 +561,7 @@ export default function Home() {
                     {lang === "en" ? "INTERESTED?" : "¿TE INTERESA?"}
                   </p>
 
-                  <h3 className="mt-5 text-3xl font-black tracking-tight text-white sm:text-[2rem]">
+                  <h3 className="mt-5 text-2xl font-black tracking-tight text-white sm:text-[1.85rem]">
                     {lang === "en" ? "Book a demo for your club" : "Agenda una demo para tu club"}
                   </h3>
 
