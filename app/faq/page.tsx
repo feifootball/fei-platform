@@ -528,7 +528,7 @@ export default function FAQPage() {
                     {category.items.map(item => (
                       <details key={item.question} className="group bg-white/60 p-5 transition open:bg-white">
                         <summary className="flex cursor-pointer list-none items-start justify-between gap-5">
-                          <span className="text-[15px] font-semibold leading-7 text-fei-bg/82 sm:text-base">
+                          <span className="text-[15px] font-medium leading-7 text-fei-bg/72 sm:text-base">
                             {item.question}
                           </span>
 
