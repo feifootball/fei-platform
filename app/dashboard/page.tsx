@@ -169,24 +169,40 @@ export default function DashboardPage() {
   const currentResult = lastAssessment ? getResultLabel(lastAssessment.level) : '—'
 
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_50%_10%,rgba(125,211,252,0.08),transparent_30%),linear-gradient(to_bottom,#ffffff_0%,#ffffff_34%,#F7F8FA_100%)] text-fei-bg">
-      <nav className="sticky top-0 z-50 border-b border-fei-bg/10 bg-white/82 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-8">
-          <Link href="/" className="flex items-center gap-3">
-            <span className="text-lg font-black text-fei-yellow">FEI</span>
-            <span className="hidden text-sm font-medium text-fei-sky/90 sm:inline">Football English Intelligence</span>
+    <main className="min-h-screen bg-[#F6F7F9] text-fei-bg">
+      <nav className="sticky top-0 z-50 w-full border-b border-fei-bg/[0.08] bg-white/85 backdrop-blur-xl">
+        <div className="flex min-h-[72px] w-full items-center justify-between px-6 sm:px-8 lg:px-10">
+          <Link href="/" className="flex items-center">
+            <span className="text-lg font-black tracking-tight text-fei-yellow">
+              FEI
+            </span>
+
+            <span className="mx-4 hidden h-5 w-px bg-fei-bg/10 sm:block" />
+
+            <span className="hidden text-sm font-medium text-fei-bg/55 sm:inline">
+              Football English Intelligence
+            </span>
           </Link>
 
-          <div className="flex items-center gap-5 text-sm font-medium text-fei-bg/55">
-            <Link href="/learning" className="transition hover:text-fei-bg">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <Link
+              href="/learning"
+              className="hidden rounded-lg px-3 py-2 text-sm font-medium text-fei-bg/55 transition hover:bg-fei-bg/[0.04] hover:text-fei-bg sm:inline-flex"
+            >
               Learning Path
             </Link>
-            <Link href="/settings" className="transition hover:text-fei-bg">
+
+            <Link
+              href="/settings"
+              className="hidden rounded-lg px-3 py-2 text-sm font-medium text-fei-bg/55 transition hover:bg-fei-bg/[0.04] hover:text-fei-bg sm:inline-flex"
+            >
               Settings
             </Link>
+
             <button
+              type="button"
               onClick={handleLogout}
-              className="rounded-full border border-fei-bg/15 px-5 py-2 text-fei-bg/70 transition hover:border-fei-yellow hover:text-fei-yellow"
+              className="rounded-lg border border-fei-bg/10 bg-white px-4 py-2 text-sm font-medium text-fei-bg/60 transition hover:border-fei-bg/20 hover:bg-fei-bg/[0.03] hover:text-fei-bg"
             >
               Sign out
             </button>
