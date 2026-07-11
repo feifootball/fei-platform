@@ -534,117 +534,128 @@ export default function TermsPage() {
   const sections = sectionsByLang[lang]
 
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_50%_14%,rgba(125,211,252,0.10),transparent_30%),linear-gradient(to_bottom,#ffffff_0%,#ffffff_34%,#F7F8FA_100%)] text-fei-bg">
+    <main className="min-h-screen bg-[radial-gradient(circle_at_50%_10%,rgba(125,211,252,0.08),transparent_30%),linear-gradient(to_bottom,#ffffff_0%,#ffffff_34%,#F7F8FA_100%)] text-fei-bg">
       <Navbar hideSectionLinks variant="light" />
 
-      <section className="px-5 pb-8 pt-28 sm:px-8 sm:pb-10 sm:pt-32">
+      <section className="px-5 pb-14 pt-28 sm:px-8 sm:pt-32">
         <div className="mx-auto max-w-7xl">
-          <div className="relative overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-white p-6 shadow-[0_26px_70px_rgba(7,17,31,0.08)] sm:p-8 lg:p-10">
-            <div className="absolute inset-x-8 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-90" />
-
-            <a
-              href="/"
-              className="mb-8 inline-flex items-center gap-2 rounded-full border border-fei-bg/12 bg-white px-4 py-2 text-sm font-semibold text-fei-bg/70 transition hover:border-fei-sky/35 hover:text-fei-bg"
+          <a
+            href="/"
+            className="mb-6 inline-flex items-center gap-2 rounded-full border border-fei-bg/12 bg-white px-4 py-2 text-sm font-semibold text-fei-bg/70 shadow-[0_10px_30px_rgba(7,17,31,0.04)] transition hover:border-fei-sky/35 hover:text-fei-bg"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-4 w-4 text-fei-sky"
+              aria-hidden="true"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-4 w-4 text-fei-sky"
-                aria-hidden="true"
-              >
-                <path d="M15 18l-6-6 6-6" />
-              </svg>
-              {t.back}
-            </a>
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+            {t.back}
+          </a>
 
-            <div className="max-w-4xl">
-              <p className="text-sm font-black uppercase tracking-[0.32em] text-fei-bg/55">
-                {t.legal}
-              </p>
+          <div className="grid gap-8 lg:grid-cols-[320px_1fr] lg:items-start">
+            <aside className="lg:sticky lg:top-28">
+              <div className="rounded-[1.75rem] border border-fei-bg/10 bg-white p-5 shadow-[0_18px_55px_rgba(7,17,31,0.055)]">
+                <p className="text-xs font-black uppercase tracking-[0.28em] text-fei-bg/50">
+                  {t.legal}
+                </p>
 
-              <h1 className="mt-5 text-4xl font-black tracking-tight text-fei-bg sm:text-5xl lg:text-6xl">
-                {t.title}
-              </h1>
+                <h1 className="mt-4 text-3xl font-black tracking-tight text-fei-bg">
+                  {t.title}
+                </h1>
 
-              <p className="mt-5 max-w-3xl text-[15px] font-normal leading-7 text-fei-bg/64 sm:text-base sm:leading-8">
-                {t.description}
-              </p>
+                <p className="mt-4 text-sm leading-6 text-fei-bg/60">
+                  {t.updated}
+                </p>
 
-              <p className="mt-6 inline-flex rounded-full border border-fei-yellow/35 bg-fei-yellow/[0.08] px-4 py-2 text-sm font-bold text-fei-bg">
-                {t.updated}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+                <div className="mt-6 h-px bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-80" />
 
-      <section className="px-5 pb-14 sm:px-8 sm:pb-18">
-        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[280px_1fr] lg:items-start">
-          <aside className="hidden lg:sticky lg:top-28 lg:block">
-            <div className="rounded-[1.5rem] border border-fei-bg/10 bg-white p-5 shadow-[0_18px_55px_rgba(7,17,31,0.045)]">
-              <p className="text-xs font-black uppercase tracking-[0.24em] text-fei-bg/50">
-                {lang === 'en' ? 'On this page' : 'En esta página'}
-              </p>
+                <div className="mt-6">
+                  <p className="text-xs font-black uppercase tracking-[0.24em] text-fei-bg/48">
+                    {lang === 'en' ? 'Contents' : 'Contenido'}
+                  </p>
 
-              <nav className="mt-4 grid max-h-[64vh] gap-2 overflow-auto pr-1 text-sm">
-                {sections.slice(0, 12).map(section => (
-                  <a
-                    key={section.title}
-                    href={`#${section.title.toLowerCase().replaceAll(' ', '-').replaceAll('.', '')}`}
-                    className="rounded-xl px-3 py-2 font-medium text-fei-bg/58 transition hover:bg-fei-sky/10 hover:text-fei-bg"
-                  >
-                    {section.title}
-                  </a>
-                ))}
-              </nav>
-            </div>
-          </aside>
-
-          <div className="relative overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-white p-6 shadow-[0_26px_70px_rgba(7,17,31,0.06)] sm:p-8 lg:p-10">
-            <div className="absolute inset-x-8 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-75" />
-
-            <div className="space-y-10">
-              {sections.map(section => (
-                <section
-                  key={section.title}
-                  id={section.title.toLowerCase().replaceAll(' ', '-').replaceAll('.', '')}
-                  className="scroll-mt-28 border-b border-fei-bg/10 pb-9 last:border-b-0 last:pb-0"
-                >
-                  <h2 className="mb-5 text-2xl font-black tracking-tight text-fei-bg sm:text-3xl">
-                    {section.title}
-                  </h2>
-
-                  <div className="space-y-4">
-                    {section.paragraphs.map(paragraph => (
-                      <p
-                        key={paragraph}
-                        className="text-sm leading-7 text-fei-bg/66 sm:text-[15px] sm:leading-8"
+                  <nav className="mt-4 grid max-h-[58vh] gap-1 overflow-auto pr-1 text-sm">
+                    {sections.map(section => (
+                      <a
+                        key={section.title}
+                        href={`#${section.title.toLowerCase().replaceAll(' ', '-').replaceAll('.', '')}`}
+                        className="rounded-xl px-3 py-2 font-medium leading-5 text-fei-bg/56 transition hover:bg-fei-sky/10 hover:text-fei-bg"
                       >
-                        {paragraph}
-                      </p>
+                        {section.title}
+                      </a>
                     ))}
-                  </div>
-                </section>
-              ))}
-            </div>
+                  </nav>
+                </div>
+              </div>
+            </aside>
 
-            <div className="mt-12 rounded-[1.5rem] border border-fei-bg/10 bg-[#F7F8FA] p-5 text-sm leading-7 text-fei-bg/66">
-              <p>
-                {t.contactPrefix}{' '}
-                <a href="mailto:contact@feifootball.com" className="font-semibold text-[#38bdf8] hover:text-fei-bg hover:underline">
-                  contact@feifootball.com
-                </a>
-                .
-              </p>
-            </div>
+            <article className="relative overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-white p-6 shadow-[0_26px_70px_rgba(7,17,31,0.065)] sm:p-8 lg:p-10">
+              <div className="absolute inset-x-8 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-80" />
+
+              <header className="mb-10 border-b border-fei-bg/10 pb-8">
+                <p className="text-sm font-black uppercase tracking-[0.32em] text-fei-bg/55">
+                  {t.legal}
+                </p>
+
+                <h2 className="mt-5 text-4xl font-black tracking-tight text-fei-bg sm:text-5xl">
+                  {t.title}
+                </h2>
+
+                <p className="mt-5 max-w-3xl text-[15px] leading-7 text-fei-bg/64 sm:text-base sm:leading-8">
+                  {t.description}
+                </p>
+
+                <p className="mt-5 inline-flex rounded-full border border-fei-yellow/35 bg-fei-yellow/[0.08] px-4 py-2 text-sm font-bold text-fei-bg">
+                  {t.updated}
+                </p>
+              </header>
+
+              <div className="space-y-10">
+                {sections.map(section => (
+                  <section
+                    key={section.title}
+                    id={section.title.toLowerCase().replaceAll(' ', '-').replaceAll('.', '')}
+                    className="scroll-mt-28 border-b border-fei-bg/10 pb-9 last:border-b-0 last:pb-0"
+                  >
+                    <h3 className="mb-5 text-2xl font-black tracking-tight text-fei-bg sm:text-3xl">
+                      {section.title}
+                    </h3>
+
+                    <div className="space-y-4">
+                      {section.paragraphs.map(paragraph => (
+                        <p
+                          key={paragraph}
+                          className="text-sm leading-7 text-fei-bg/66 sm:text-[15px] sm:leading-8"
+                        >
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
+                  </section>
+                ))}
+              </div>
+
+              <div className="mt-12 rounded-[1.5rem] border border-fei-bg/10 bg-[#F7F8FA] p-5 text-sm leading-7 text-fei-bg/66">
+                <p>
+                  {t.contactPrefix}{' '}
+                  <a href="mailto:contact@feifootball.com" className="font-semibold text-[#38bdf8] hover:text-fei-bg hover:underline">
+                    contact@feifootball.com
+                  </a>
+                  .
+                </p>
+              </div>
+            </article>
           </div>
         </div>
       </section>
     </main>
+  )
   )
 }
