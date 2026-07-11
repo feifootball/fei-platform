@@ -657,5 +657,4 @@ export default function TermsPage() {
       </section>
     </main>
   )
-  )
 }
