@@ -44,7 +44,7 @@ const copy = {
     createLabel: 'Create your account',
     titlePrefix: 'Join',
     description:
-      'Create your account to start your FEI diagnostic and begin your football English training journey.',
+      'Register and start developing the communication skills football demands.',
     fullName: 'Full name',
     fullNamePlaceholder: 'Your name',
     role: 'Football role',
@@ -81,7 +81,7 @@ const copy = {
     createLabel: 'Crea tu cuenta',
     titlePrefix: 'Únete a',
     description:
-      'Crea tu cuenta para iniciar tu diagnóstico FEI y empezar tu entrenamiento en inglés especializado en fútbol.',
+      'Regístrate y empieza a desarrollar las habilidades de comunicación que exige el fútbol.',
     fullName: 'Nombre completo',
     fullNamePlaceholder: 'Tu nombre',
     role: 'Rol en el fútbol',
