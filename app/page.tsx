@@ -453,7 +453,7 @@ export default function Home() {
                 <div className="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-80 transition duration-300 group-hover:h-[2px] group-hover:opacity-100" />
 
                 <div className="relative">
-                  <h3 className="text-[17px] font-black tracking-tight text-fei-bg">
+                  <h3 className="text-[17px] font-bold tracking-tight text-fei-bg">
                     {item.role}
                   </h3>
 
@@ -479,7 +479,7 @@ export default function Home() {
               <div className="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-90" />
 
               <div className="relative">
-                <h3 className="text-[17px] font-black tracking-tight text-fei-bg">
+                <h3 className="text-[17px] font-bold tracking-tight text-fei-bg">
                   {lang === "en" ? "Can't find your role?" : "¿No encuentras tu rol?"}
                 </h3>
 
