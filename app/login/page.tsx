@@ -116,14 +116,14 @@ export default function LoginPage() {
   )
 
   return (
-    <main className="min-h-screen bg-white text-fei-bg">
+    <main className="min-h-screen bg-[radial-gradient(circle_at_50%_18%,rgba(125,211,252,0.10),transparent_34%),linear-gradient(to_bottom,#ffffff_0%,#ffffff_38%,#F7F8FA_100%)] text-fei-bg">
       <AuthNav />
 
       <section className="mx-auto flex min-h-[calc(100vh-76px)] max-w-7xl items-center justify-center px-5 py-6 sm:px-8">
         <div className="w-full max-w-xl">
           <form
             onSubmit={handleLogin}
-            className="relative overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-[#F7F8FA] p-5 shadow-[0_18px_55px_rgba(7,17,31,0.05)] sm:p-7"
+            className="relative overflow-hidden rounded-[2rem] border border-fei-bg/12 bg-white p-5 shadow-[0_26px_70px_rgba(7,17,31,0.10)] sm:p-7"
           >
             <div className="absolute inset-x-6 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-90" />
 
