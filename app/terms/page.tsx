@@ -349,11 +349,11 @@ export default function TermsPage() {
 
           <article className="relative overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-white p-6 shadow-[0_26px_70px_rgba(7,17,31,0.065)] sm:p-8 lg:p-10">
             <header className="mb-10 border-b border-fei-bg/10 pb-8">
-              <p className="text-sm font-black uppercase tracking-[0.32em] text-fei-bg/55">
+              <p className="text-xs font-bold uppercase tracking-[0.28em] text-fei-bg/50">
                 {t.legal}
               </p>
 
-              <h1 className="mt-5 text-4xl font-black tracking-tight text-fei-bg sm:text-5xl">
+              <h1 className="mt-5 text-3xl font-bold tracking-tight text-fei-bg sm:text-4xl">
                 {t.title}
               </h1>
 
@@ -373,7 +373,7 @@ export default function TermsPage() {
                   id={section.title.toLowerCase().replaceAll(' ', '-').replaceAll('.', '')}
                   className="scroll-mt-28 border-b border-fei-bg/10 pb-9 last:border-b-0 last:pb-0"
                 >
-                  <h2 className="mb-5 text-2xl font-black tracking-tight text-fei-bg sm:text-3xl">
+                  <h2 className="mb-4 text-xl font-bold tracking-tight text-fei-bg sm:text-2xl">
                     {section.title}
                   </h2>
 
