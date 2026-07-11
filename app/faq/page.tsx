@@ -480,14 +480,14 @@ export default function FAQPage() {
   const categories = faqByLang[lang]
 
   return (
-    <main className="min-h-screen bg-fei-bg text-fei-text">
-      <Navbar hideSectionLinks />
+    <main className="min-h-screen bg-[radial-gradient(circle_at_50%_10%,rgba(125,211,252,0.08),transparent_30%),linear-gradient(to_bottom,#ffffff_0%,#ffffff_34%,#F7F8FA_100%)] text-fei-bg">
+      <Navbar hideSectionLinks variant="light" />
 
-      <section className="border-b border-fei-text/10 px-6 py-8 sm:py-10 lg:py-12">
-        <div className="mx-auto max-w-7xl">
+      <section className="px-5 pb-14 pt-28 sm:px-8 sm:pt-32">
+        <div className="mx-auto max-w-6xl">
           <a
             href="/"
-            className="mb-8 inline-flex items-center gap-2 rounded-full border border-fei-sky/35 px-4 py-2 text-sm font-medium text-fei-sky transition hover:border-fei-yellow/45 hover:text-fei-yellow"
+            className="mb-6 inline-flex items-center gap-2 rounded-full border border-fei-bg/12 bg-white px-4 py-2 text-sm font-semibold text-fei-bg/70 shadow-[0_10px_30px_rgba(7,17,31,0.04)] transition hover:border-fei-sky/35 hover:text-fei-bg"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -497,7 +497,7 @@ export default function FAQPage() {
               strokeWidth="1.8"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="h-4 w-4"
+              className="h-4 w-4 text-fei-sky"
               aria-hidden="true"
             >
               <path d="M15 18l-6-6 6-6" />
@@ -505,73 +505,72 @@ export default function FAQPage() {
             {t.back}
           </a>
 
-          <div className="max-w-4xl">
-            <p className="mb-2 text-xs font-bold uppercase tracking-[0.28em] text-fei-sky">
-              {t.legal}
-            </p>
+          <article className="relative overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-white p-6 shadow-[0_26px_70px_rgba(7,17,31,0.065)] sm:p-8 lg:p-10">
+            <header className="mb-10 border-b border-fei-bg/10 pb-8">
+              <p className="text-xs font-bold uppercase tracking-[0.28em] text-fei-bg/50">
+                {t.legal}
+              </p>
 
-            <h1 className="text-3xl font-black tracking-tight text-fei-text sm:text-4xl lg:text-5xl">
-              {t.title}
-            </h1>
+              <h1 className="mt-5 text-3xl font-bold tracking-tight text-fei-bg sm:text-4xl">
+                {t.title}
+              </h1>
 
-            <p className="mt-6 max-w-3xl text-base leading-8 text-fei-text/60">
-              {t.description}
-            </p>
+              <p className="mt-5 max-w-3xl text-[15px] leading-7 text-fei-bg/64 sm:text-base sm:leading-8">
+                {t.description}
+              </p>
 
-            <p className="mt-6 text-sm font-semibold text-fei-yellow">
-              {t.updated}
-            </p>
-          </div>
-        </div>
-      </section>
+              <p className="mt-5 inline-flex rounded-full border border-fei-bg/10 bg-[#F7F8FA] px-4 py-2 text-sm font-semibold text-fei-bg/72">
+                {t.updated}
+              </p>
+            </header>
 
-      <section className="px-6 py-12 sm:py-14">
-        <div className="mx-auto max-w-7xl">
-          <div className="mx-auto max-w-5xl space-y-12">
-            {categories.map(category => (
-              <section
-                key={category.category}
-                id={category.category.toLowerCase().replaceAll(' ', '-')}
-                className="scroll-mt-28"
-              >
-                <h2 className="mb-5 text-2xl font-bold tracking-tight text-fei-text sm:text-3xl">
-                  {category.category}
-                </h2>
+            <div className="space-y-10">
+              {categories.map(category => (
+                <section
+                  key={category.category}
+                  id={category.category.toLowerCase().replaceAll(' ', '-')}
+                  className="scroll-mt-28 border-b border-fei-bg/10 pb-9 last:border-b-0 last:pb-0"
+                >
+                  <h2 className="mb-5 text-xl font-bold tracking-tight text-fei-bg sm:text-2xl">
+                    {category.category}
+                  </h2>
 
-                <div className="divide-y divide-fei-text/10 rounded-3xl border border-fei-text/10 bg-white/[0.025]">
-                  {category.items.map(item => (
-                    <details key={item.question} className="group p-5 open:bg-white/[0.02]">
-                      <summary className="flex cursor-pointer list-none items-start justify-between gap-5">
-                        <span className="text-base font-medium leading-7 text-fei-text/85">
-                          {item.question}
-                        </span>
+                  <div className="divide-y divide-fei-bg/10 overflow-hidden rounded-[1.5rem] border border-fei-bg/10 bg-[#F7F8FA]">
+                    {category.items.map(item => (
+                      <details key={item.question} className="group bg-white/60 p-5 transition open:bg-white">
+                        <summary className="flex cursor-pointer list-none items-start justify-between gap-5">
+                          <span className="text-[15px] font-semibold leading-7 text-fei-bg/82 sm:text-base">
+                            {item.question}
+                          </span>
 
-                        <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-fei-text/10 text-sm leading-none text-fei-yellow transition group-open:rotate-45">
-                          +
-                        </span>
-                      </summary>
+                          <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-fei-bg/12 bg-white text-sm leading-none text-fei-bg/58 transition group-open:rotate-45 group-open:border-fei-sky/35 group-open:text-fei-bg">
+                            +
+                          </span>
+                        </summary>
 
-                      <p className="mt-4 max-w-3xl text-sm leading-7 text-fei-text/65 sm:text-base sm:leading-8">
-                        {item.answer}
-                      </p>
-                    </details>
-                  ))}
-                </div>
-              </section>
-            ))}
-          </div>
+                        <p className="mt-4 max-w-4xl text-sm leading-7 text-fei-bg/64 sm:text-[15px] sm:leading-8">
+                          {item.answer}
+                        </p>
+                      </details>
+                    ))}
+                  </div>
+                </section>
+              ))}
+            </div>
 
-          <div className="mt-14 max-w-5xl border-t border-fei-text/10 pt-8 text-sm leading-7 text-fei-text/60">
-            <p>
-              {t.contactPrefix}{' '}
-              <a href="mailto:contact@feifootball.com" className="font-semibold text-fei-sky hover:underline">
-                contact@feifootball.com
-              </a>
-              .
-            </p>
-          </div>
+            <div className="mt-12 rounded-[1.5rem] border border-fei-bg/10 bg-[#F7F8FA] p-5 text-sm leading-7 text-fei-bg/66">
+              <p>
+                {t.contactPrefix}{' '}
+                <a href="mailto:contact@feifootball.com" className="font-semibold text-[#38bdf8] hover:text-fei-bg hover:underline">
+                  contact@feifootball.com
+                </a>
+                .
+              </p>
+            </div>
+          </article>
         </div>
       </section>
     </main>
+  )
   )
 }
