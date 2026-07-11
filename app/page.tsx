@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Navbar } from "@/components/Navbar";
+import { CookieBanner } from "@/components/CookieBanner";
 
 type Lang = 'en' | 'es';
 
@@ -794,6 +795,8 @@ export default function Home() {
           © 2026 Football English Intelligence. {lang === "en" ? "All rights reserved." : "Todos los derechos reservados."}
         </p>
       </footer>
+
+      <CookieBanner />
     </div>
   );
 }
