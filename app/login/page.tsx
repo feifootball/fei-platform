@@ -11,7 +11,7 @@ const copy = {
     navRegister: 'Register',
     label: 'Account access',
     title: 'Login to FEI',
-    description: 'Access your FEI account and continue your progress.',
+    description: 'Access your account and continue your progress.',
     email: 'Email',
     password: 'Password',
     loading: 'Logging in...',
