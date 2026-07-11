@@ -39,6 +39,76 @@ const countries = [
   'Other',
 ]
 
+const roleLabels: Record<Lang, Record<string, string>> = {
+  en: {
+    'Professional Player': 'Professional Player',
+    'Head Coach': 'Head Coach',
+    'Assistant Coach': 'Assistant Coach',
+    Scout: 'Scout',
+    'Head of Scouting': 'Head of Scouting',
+    'Academy Director': 'Academy Director',
+    'Performance Analyst': 'Performance Analyst',
+    'Fitness Coach': 'Fitness Coach',
+    Physiotherapist: 'Physiotherapist',
+    'Sports Psychologist': 'Sports Psychologist',
+    Nutritionist: 'Nutritionist',
+    'Other football role': 'Other football role',
+    "I'll choose later": "I'll choose later",
+  },
+  es: {
+    'Professional Player': 'Jugador profesional',
+    'Head Coach': 'Director técnico',
+    'Assistant Coach': 'Asistente técnico',
+    Scout: 'Scout / Observador',
+    'Head of Scouting': 'Director de scouting',
+    'Academy Director': 'Director de academia',
+    'Performance Analyst': 'Analista de rendimiento',
+    'Fitness Coach': 'Preparador físico',
+    Physiotherapist: 'Fisioterapeuta',
+    'Sports Psychologist': 'Psicólogo deportivo',
+    Nutritionist: 'Nutricionista',
+    'Other football role': 'Otro rol en el fútbol',
+    "I'll choose later": 'Lo elegiré después',
+  },
+}
+
+const countryLabels: Record<Lang, Record<string, string>> = {
+  en: {
+    Argentina: 'Argentina',
+    Brazil: 'Brazil',
+    Canada: 'Canada',
+    Chile: 'Chile',
+    Colombia: 'Colombia',
+    Ecuador: 'Ecuador',
+    France: 'France',
+    Germany: 'Germany',
+    Italy: 'Italy',
+    Mexico: 'Mexico',
+    Portugal: 'Portugal',
+    Spain: 'Spain',
+    'United Kingdom': 'United Kingdom',
+    'United States': 'United States',
+    Other: 'Other',
+  },
+  es: {
+    Argentina: 'Argentina',
+    Brazil: 'Brasil',
+    Canada: 'Canadá',
+    Chile: 'Chile',
+    Colombia: 'Colombia',
+    Ecuador: 'Ecuador',
+    France: 'Francia',
+    Germany: 'Alemania',
+    Italy: 'Italia',
+    Mexico: 'México',
+    Portugal: 'Portugal',
+    Spain: 'España',
+    'United Kingdom': 'Reino Unido',
+    'United States': 'Estados Unidos',
+    Other: 'Otro',
+  },
+}
+
 const copy = {
   en: {
     createLabel: 'Create your account',
@@ -139,8 +209,17 @@ export default function RegisterPage() {
     const params = new URLSearchParams(window.location.search)
     const selectedRole = params.get('role')
 
-    if (selectedRole && roles.includes(selectedRole)) {
-      setRole(selectedRole)
+    if (selectedRole) {
+      const normalizedRole = roles.find(
+        item =>
+          item === selectedRole ||
+          roleLabels.en[item] === selectedRole ||
+          roleLabels.es[item] === selectedRole
+      )
+
+      if (normalizedRole) {
+        setRole(normalizedRole)
+      }
     }
   }, [])
 
@@ -419,7 +498,7 @@ export default function RegisterPage() {
                 <option value="">{t.chooseRole}</option>
                 {roles.map(item => (
                   <option key={item} value={item}>
-                    {item}
+                    {roleLabels[lang][item]}
                   </option>
                 ))}
               </select>
@@ -467,7 +546,7 @@ export default function RegisterPage() {
                 <option value="">{t.chooseCountry}</option>
                 {countries.map(item => (
                   <option key={item} value={item}>
-                    {item}
+                    {countryLabels[lang][item]}
                   </option>
                 ))}
               </select>
