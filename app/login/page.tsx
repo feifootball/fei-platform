@@ -22,7 +22,7 @@ const copy = {
   },
   es: {
     navRegister: 'Registrarse',
-    label: 'Acceso a cuenta',
+    label: 'Acceso a tu cuenta',
     title: 'Ingresa a FEI',
     description: 'Accede a tu cuenta y continúa tu progreso.',
     email: 'Correo electrónico',
