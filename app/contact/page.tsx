@@ -225,11 +225,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="rounded-[1.5rem] border border-fei-bg/10 bg-white p-5 shadow-[0_18px_55px_rgba(7,17,31,0.035)] sm:p-6">
-                  <h2 className="text-lg font-bold tracking-tight text-fei-bg">
-                    {t.otherWays}
-                  </h2>
-
-                  <p className="mt-3 text-sm leading-7 text-fei-bg/60">
+                  <p className="text-sm leading-7 text-fei-bg/60">
                     {t.direct}
                   </p>
 
