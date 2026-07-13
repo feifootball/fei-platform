@@ -2975,11 +2975,9 @@ function AssessmentContent() {
         </header>
 
         <main className="relative mx-auto flex min-h-[calc(100vh-72px)] w-full max-w-[1280px] items-center px-6 py-6 sm:px-8 lg:py-8">
-          <section className="relative w-full overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-white shadow-[0_18px_55px_rgba(7,17,31,0.06)]">
-            <div className="absolute inset-x-8 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent opacity-90" />
-
-            <div className="grid lg:grid-cols-[1.08fr_0.92fr]">
-              <div className="flex flex-col p-8 sm:p-10 lg:p-11">
+          <div className="grid w-full gap-5 lg:grid-cols-12 lg:grid-rows-[1fr_auto]">
+            <section className="rounded-[2rem] border border-fei-bg/10 bg-white shadow-[0_18px_55px_rgba(7,17,31,0.05)] lg:col-span-7 lg:row-span-2">
+              <div className="flex h-full flex-col p-8 sm:p-10 lg:p-11">
                 <p className="text-sm font-black uppercase tracking-[0.32em] text-fei-bg/55">
                   Diagnostic Assessment
                 </p>
@@ -2988,7 +2986,7 @@ function AssessmentContent() {
                   {selectedRole}
                 </h1>
 
-                <p className="mt-4 text-base font-semibold text-fei-bg/58">
+                <p className="mt-5 text-base font-semibold text-fei-bg/58">
                   {roleSubtitle}
                 </p>
 
@@ -2996,14 +2994,14 @@ function AssessmentContent() {
                   Discover how you understand and use English in real football situations connected to your role.
                 </p>
 
-                <div className="mt-8 rounded-[1.45rem] border border-fei-bg/10 bg-[#F7F8FA] p-5">
+                <div className="mt-9 border-t border-fei-bg/10 pt-7">
                   <p className="text-sm font-black uppercase tracking-[0.22em] text-fei-bg/50">
                     Assessment overview
                   </p>
 
-                  <div className="mt-5 grid gap-5 sm:grid-cols-2">
-                    <div className="flex items-center gap-4 sm:border-r sm:border-fei-bg/10 sm:pr-5">
-                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-fei-sky/30 bg-white text-fei-bg shadow-[0_10px_24px_rgba(125,211,252,0.10)]">
+                  <div className="mt-6 grid gap-6 sm:grid-cols-2">
+                    <div className="flex items-center gap-4 sm:border-r sm:border-fei-bg/10 sm:pr-6">
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-fei-sky/30 bg-fei-sky/[0.05] text-fei-bg">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
@@ -3031,7 +3029,7 @@ function AssessmentContent() {
                     </div>
 
                     <div className="flex items-center gap-4">
-                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-fei-sky/30 bg-white text-fei-bg shadow-[0_10px_24px_rgba(125,211,252,0.10)]">
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-fei-sky/30 bg-fei-sky/[0.05] text-fei-bg">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
@@ -3060,38 +3058,42 @@ function AssessmentContent() {
                   </div>
                 </div>
 
-                <button
-                  type="button"
-                  onClick={() => setSection('audio-check')}
-                  className="mt-8 inline-flex w-fit items-center justify-center rounded-full bg-fei-yellow px-8 py-3 text-base font-bold text-fei-bg transition duration-300 hover:-translate-y-0.5 hover:bg-fei-yellow/90 hover:shadow-lg hover:shadow-fei-yellow/25"
-                >
-                  <span className="inline-flex items-center gap-2">
-                    Begin assessment
-                    <ChevronRightIcon />
-                  </span>
-                </button>
+                <div className="mt-auto pt-10">
+                  <button
+                    type="button"
+                    onClick={() => setSection('audio-check')}
+                    className="inline-flex w-fit items-center justify-center rounded-full bg-fei-yellow px-8 py-3 text-base font-bold text-fei-bg transition duration-300 hover:-translate-y-0.5 hover:bg-fei-yellow/90 hover:shadow-lg hover:shadow-fei-yellow/25"
+                  >
+                    <span className="inline-flex items-center gap-2">
+                      Begin assessment
+                      <ChevronRightIcon />
+                    </span>
+                  </button>
+                </div>
               </div>
+            </section>
 
-              <aside className="border-t border-fei-bg/10 bg-[#F7F8FA] p-8 sm:p-10 lg:border-l lg:border-t-0 lg:p-11">
+            <section className="rounded-[2rem] border border-fei-bg/10 bg-[#F7F8FA] shadow-[0_18px_55px_rgba(7,17,31,0.04)] lg:col-span-5">
+              <div className="p-8 sm:p-10 lg:p-11">
                 <p className="text-sm font-black uppercase tracking-[0.32em] text-fei-bg/55">
                   Before you begin
                 </p>
 
-                <h2 className="mt-5 text-4xl font-black tracking-tight text-fei-bg sm:text-5xl">
+                <h2 className="mt-4 text-3xl font-black tracking-tight text-fei-bg sm:text-4xl">
                   Prepare your <span className="text-fei-sky">setup</span>
                 </h2>
 
-                <p className="mt-5 max-w-xl text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base sm:leading-8">
+                <p className="mt-4 max-w-xl text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base sm:leading-8">
                   Make sure you can complete the diagnostic without interruptions.
                 </p>
 
-                <div className="mt-8 space-y-6">
+                <div className="mt-7 space-y-5">
                   {[
                     'Do not close or refresh the page until the assessment is complete.',
                     'Find a quiet place with a reliable internet connection.',
                   ].map((item, index) => (
                     <div key={item} className="flex items-start gap-4">
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-fei-bg text-sm font-black text-white">
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-fei-sky/30 bg-white text-sm font-black text-fei-bg">
                         {index + 1}
                       </span>
 
@@ -3101,40 +3103,42 @@ function AssessmentContent() {
                     </div>
                   ))}
                 </div>
+              </div>
+            </section>
 
-                <div className="mt-8 border-t border-fei-bg/10 pt-6">
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-fei-bg/10 bg-white text-fei-bg shadow-[0_10px_24px_rgba(7,17,31,0.04)]">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={1.8}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="h-5 w-5"
-                        aria-hidden
-                      >
-                        <path d="M9 12.5 11 14.5 15.5 9.5" />
-                        <circle cx="12" cy="12" r="8.5" />
-                      </svg>
-                    </div>
+            <section className="rounded-[2rem] border border-fei-bg/10 bg-white shadow-[0_18px_55px_rgba(7,17,31,0.04)] lg:col-span-5">
+              <div className="p-7 sm:p-8">
+                <div className="flex items-start gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-fei-sky/30 bg-white text-fei-bg">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={1.8}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="h-5 w-5"
+                      aria-hidden
+                    >
+                      <path d="M9 12.5 11 14.5 15.5 9.5" />
+                      <circle cx="12" cy="12" r="8.5" />
+                    </svg>
+                  </div>
 
-                    <div>
-                      <p className="text-base font-bold text-fei-bg">
-                        Audio and microphone required
-                      </p>
+                  <div>
+                    <p className="text-base font-bold text-fei-bg">
+                      Audio and microphone required
+                    </p>
 
-                      <p className="mt-2 text-[15px] leading-7 text-fei-bg/60">
-                        You will check both on the next screen before the diagnostic begins.
-                      </p>
-                    </div>
+                    <p className="mt-2 text-[15px] leading-7 text-fei-bg/60">
+                      You will check both on the next screen before the diagnostic begins.
+                    </p>
                   </div>
                 </div>
-              </aside>
-            </div>
-          </section>
+              </div>
+            </section>
+          </div>
         </main>
       </div>
     )
