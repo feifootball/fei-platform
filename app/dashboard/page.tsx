@@ -212,9 +212,6 @@ export default function DashboardPage() {
 
       <section className="mx-auto max-w-7xl px-6 py-10 sm:px-8 lg:py-12">
         <div className="mb-9 max-w-4xl">
-          <p className="mb-3 text-xs font-bold uppercase tracking-[0.38em] text-fei-sky/90">
-            Welcome back
-          </p>
           <h1 className="text-4xl font-black tracking-tight text-fei-bg sm:text-5xl">
             {displayName}
           </h1>
