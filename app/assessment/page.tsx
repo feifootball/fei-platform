@@ -2975,14 +2975,15 @@ function AssessmentContent() {
         </header>
 
         <main className="relative mx-auto flex min-h-[calc(100vh-72px)] w-full max-w-[1280px] items-center px-6 py-6 sm:px-8 lg:py-8">
-          <div className="grid w-full items-stretch gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-14">
+          <div className="w-full">
+            <p className="mb-6 text-sm font-black uppercase tracking-[0.32em] text-fei-bg/50 sm:mb-7">
+              Diagnostic Assessment
+            </p>
+
+            <div className="grid items-stretch gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-14">
             <div className="flex flex-col justify-center py-6 sm:py-8 lg:py-10 lg:pl-2">
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.3em] text-fei-sky">
-                  Diagnostic Assessment
-                </p>
-
-                <h1 className="mt-5 text-4xl font-black tracking-[-0.04em] text-fei-bg sm:text-5xl">
+                <h1 className="text-4xl font-black tracking-[-0.04em] text-fei-bg sm:text-5xl">
                   {selectedRole}
                 </h1>
 
@@ -2996,7 +2997,7 @@ function AssessmentContent() {
               </div>
 
               <div className="mt-9 border-t border-fei-sky/20 pt-7">
-                <p className="text-xs font-black uppercase tracking-[0.26em] text-fei-sky">
+                <p className="text-xs font-black uppercase tracking-[0.26em] text-fei-bg/45">
                   Before you begin
                 </p>
 
@@ -3022,7 +3023,7 @@ function AssessmentContent() {
             <div className="relative flex flex-col overflow-hidden rounded-[2rem] border border-fei-sky/20 bg-gradient-to-br from-white via-white to-fei-sky/[0.07] p-8 shadow-[0_22px_70px_rgba(7,17,31,0.08)] sm:p-10 lg:p-11">
               <div className="absolute inset-x-8 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent" />
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.3em] text-fei-sky">
+                <p className="text-xs font-black uppercase tracking-[0.3em] text-fei-bg/48">
                   Audio & microphone check
                 </p>
 
@@ -3091,7 +3092,7 @@ function AssessmentContent() {
               </div>
 
               <div className="mt-8 border-t border-fei-sky/20 pt-7">
-                <p className="text-xs font-black uppercase tracking-[0.26em] text-fei-sky">
+                <p className="text-xs font-black uppercase tracking-[0.26em] text-fei-bg/45">
                   Assessment overview
                 </p>
 
@@ -3171,6 +3172,7 @@ function AssessmentContent() {
                 </button>
               </div>
             </div>
+          </div>
           </div>
         </main>
       </div>
