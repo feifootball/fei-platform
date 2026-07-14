@@ -2980,7 +2980,7 @@ function AssessmentContent() {
               Diagnostic Assessment
             </p>
 
-            <div className="grid items-stretch gap-8 lg:grid-cols-2 lg:gap-12">
+            <div className="grid items-start gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12">
             <div className="flex h-full flex-col px-2 py-8 sm:px-4 sm:py-10 lg:px-11 lg:py-11">
               <div>
                 <h1 className="text-4xl font-black tracking-[-0.04em] text-fei-bg sm:text-5xl">
@@ -3020,7 +3020,7 @@ function AssessmentContent() {
               </div>
             </div>
 
-            <div className="relative flex h-full flex-col overflow-hidden rounded-[2rem] border border-fei-sky/20 bg-gradient-to-br from-white via-white to-fei-sky/[0.07] p-8 shadow-[0_22px_70px_rgba(7,17,31,0.08)] sm:p-10 lg:p-11">
+            <div className="relative flex flex-col overflow-hidden rounded-[1.75rem] border border-fei-sky/20 bg-gradient-to-br from-white via-white to-fei-sky/[0.07] p-7 shadow-[0_20px_58px_rgba(7,17,31,0.07)] sm:p-8 lg:p-9">
               <div className="absolute inset-x-8 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent" />
               <div>
                 <p className="text-xs font-black uppercase tracking-[0.3em] text-fei-bg/48">
@@ -3091,7 +3091,7 @@ function AssessmentContent() {
                 )}
               </div>
 
-              <div className="mt-8 border-t border-fei-sky/20 pt-7">
+              <div className="mt-7 border-t border-fei-sky/20 pt-6">
                 <p className="text-xs font-black uppercase tracking-[0.26em] text-fei-bg/45">
                   Assessment overview
                 </p>
@@ -3155,7 +3155,7 @@ function AssessmentContent() {
                 </div>
               </div>
 
-              <div className="mt-auto pt-9">
+              <div className="mt-7 pt-1">
                 <button
                   type="button"
                   onClick={() => {
