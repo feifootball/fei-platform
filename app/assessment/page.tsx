@@ -3248,9 +3248,6 @@ function AssessmentContent() {
                 Role Warm-Up
               </p>
 
-              <p className="mt-5 max-w-sm text-base leading-7 text-fei-bg/58">
-                These questions help personalize your pathway. There are no wrong answers here.
-              </p>
             </aside>
 
             <section>
@@ -3324,7 +3321,7 @@ function AssessmentContent() {
                     }
                   }}
                   disabled={!selected}
-                  className="inline-flex min-h-[56px] min-w-[250px] items-center justify-center rounded-full bg-fei-yellow px-8 py-3.5 text-base font-black text-fei-bg shadow-[0_14px_34px_rgba(250,204,21,0.25)] transition duration-300 hover:-translate-y-0.5 hover:bg-fei-yellow/90 hover:shadow-[0_18px_42px_rgba(250,204,21,0.34)] disabled:cursor-not-allowed disabled:bg-fei-bg/[0.07] disabled:text-fei-bg/30 disabled:shadow-none disabled:hover:translate-y-0"
+                  className="inline-flex min-h-[56px] min-w-[250px] items-center justify-center rounded-full bg-fei-yellow px-8 py-3.5 text-base font-black text-fei-bg transition duration-300 hover:-translate-y-0.5 hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-bg/[0.07] disabled:text-fei-bg/30 disabled:hover:translate-y-0"
                 >
                   {!selected ? (
                     'Select an option to continue'
