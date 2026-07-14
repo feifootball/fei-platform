@@ -3062,7 +3062,7 @@ function AssessmentContent() {
 
               </section>
 
-              <div className="grid gap-4">
+              <div className="grid gap-4 lg:-mt-10">
                 <section className="rounded-[1.75rem] border border-fei-bg/[0.16] bg-white p-6 shadow-[0_22px_60px_rgba(7,17,31,0.10)] sm:p-7 lg:p-8">
                   <p className="text-xs font-black uppercase tracking-[0.26em] text-fei-bg/48">
                     Before you begin
