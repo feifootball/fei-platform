@@ -3183,61 +3183,164 @@ function AssessmentContent() {
   if (section === 'warm-up') {
     const item = activeItems.warmup[warmupStep]
     const selected = answers[item.id]
+    const currentItem = getItemNumber('warm-up', warmupStep)
+    const progress = Math.round((currentItem / totalItems) * 100)
 
     return (
-      <div className="min-h-screen bg-fei-bg px-6 py-12">
-        <div className="mx-auto max-w-2xl">
-          <div className="mb-8 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <img src="/fei-logo-navbar-vector.svg" alt="FEI" className="h-7 w-auto" />
+      <div className="min-h-screen bg-[#F6F7F9] text-fei-bg">
+        <header className="border-b border-fei-bg/[0.08] bg-white/90 backdrop-blur-xl">
+          <div className="mx-auto flex h-[72px] w-full max-w-[1280px] items-center justify-between px-6 sm:px-8">
+            <button
+              type="button"
+              onClick={() => router.push('/')}
+              className="flex items-center"
+              aria-label="Go to FEI home"
+            >
+              <img
+                src="/fei-logo-navbar-vector.svg"
+                alt="FEI"
+                className="h-11 w-auto"
+              />
+
+              <span className="mx-4 hidden h-5 w-px bg-fei-bg/10 sm:block" />
+
+              <span className="hidden text-sm font-medium text-fei-bg/55 sm:inline">
+                Football English Intelligence
+              </span>
+            </button>
+
+            <div className="text-right">
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-fei-bg/38">
+                Diagnostic assessment
+              </p>
+              <p className="mt-1 text-sm font-semibold text-fei-bg/65">
+                {currentItem} of {totalItems}
+              </p>
+            </div>
+          </div>
+        </header>
+
+        <main className="mx-auto w-full max-w-[1280px] px-6 py-8 sm:px-8 lg:py-10">
+          <div className="mb-10">
+            <div className="flex items-center justify-between gap-4">
+              <p className="text-sm font-semibold text-fei-bg/55">
+                Item {currentItem} of {totalItems}
+              </p>
+
+              <p className="text-sm font-bold text-fei-bg">
+                {progress}%
+              </p>
+            </div>
+
+            <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-fei-bg/[0.08]">
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-fei-yellow to-fei-sky transition-all duration-500"
+                style={{ width: `${(currentItem / totalItems) * 100}%` }}
+              />
             </div>
           </div>
 
-          <ProgressBar current={getItemNumber('warm-up', warmupStep)} total={totalItems} />
+          <div className="grid items-start gap-10 lg:grid-cols-[0.62fr_1.38fr] lg:gap-16">
+            <aside className="lg:sticky lg:top-10">
+              <div className="h-1 w-20 rounded-full bg-fei-sky" />
 
-          <div className="mb-6">
-            <SectionBadge label="Role Warm-Up" />
-            <p className="mt-2 text-xs text-fei-text/40">These questions help personalize your pathway. There are no wrong answers here.</p>
+              <p className="mt-6 text-xs font-black uppercase tracking-[0.3em] text-fei-bg/45">
+                Role Warm-Up
+              </p>
+
+              <p className="mt-5 max-w-sm text-base leading-7 text-fei-bg/58">
+                These questions help personalize your pathway. There are no wrong answers here.
+              </p>
+            </aside>
+
+            <section>
+              <div className="border-l-4 border-fei-sky pl-5 sm:pl-7">
+                <h1 className="max-w-3xl text-3xl font-black leading-[1.15] tracking-[-0.035em] text-fei-bg sm:text-4xl">
+                  {item.context}
+                </h1>
+
+                <p className="mt-5 max-w-3xl text-base font-semibold leading-7 text-fei-sky sm:text-lg">
+                  {item.question}
+                </p>
+              </div>
+
+              <div className="mt-9 overflow-hidden border-y border-fei-bg/10">
+                {item.options.map((option, index) => (
+                  <button
+                    key={option}
+                    type="button"
+                    aria-pressed={selected === option}
+                    onClick={() => setAnswer(item.id, option)}
+                    className={`group flex w-full items-center justify-between gap-5 border-b border-fei-bg/10 px-1 py-5 text-left transition last:border-b-0 sm:px-3 sm:py-6 ${
+                      selected === option
+                        ? 'bg-fei-sky/[0.09]'
+                        : 'hover:bg-white/75'
+                    }`}
+                  >
+                    <span
+                      className={`text-[15px] font-semibold leading-7 transition sm:text-base ${
+                        selected === option
+                          ? 'text-fei-bg'
+                          : 'text-fei-bg/68 group-hover:text-fei-bg'
+                      }`}
+                    >
+                      {option}
+                    </span>
+
+                    <span
+                      className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border transition ${
+                        selected === option
+                          ? 'border-fei-yellow bg-fei-yellow text-fei-bg'
+                          : 'border-fei-bg/15 bg-white text-transparent group-hover:border-fei-sky/60'
+                      }`}
+                      aria-hidden
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={2.3}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="h-4 w-4"
+                      >
+                        <path d="m7 12 3 3 7-7" />
+                      </svg>
+                    </span>
+                  </button>
+                ))}
+              </div>
+
+              <div className="mt-8 flex justify-end">
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (!selected) return
+                    if (warmupStep < activeItems.warmup.length - 1) {
+                      setWarmupStep(warmupStep + 1)
+                    } else {
+                      setSection('reading')
+                    }
+                  }}
+                  disabled={!selected}
+                  className="inline-flex min-h-[56px] min-w-[250px] items-center justify-center rounded-full bg-fei-yellow px-8 py-3.5 text-base font-black text-fei-bg shadow-[0_14px_34px_rgba(250,204,21,0.25)] transition duration-300 hover:-translate-y-0.5 hover:bg-fei-yellow/90 hover:shadow-[0_18px_42px_rgba(250,204,21,0.34)] disabled:cursor-not-allowed disabled:bg-fei-bg/[0.07] disabled:text-fei-bg/30 disabled:shadow-none disabled:hover:translate-y-0"
+                >
+                  {!selected ? (
+                    'Select an option to continue'
+                  ) : (
+                    <span className="inline-flex items-center justify-center gap-2">
+                      {warmupStep < activeItems.warmup.length - 1
+                        ? 'Next'
+                        : 'Continue to Reading'}
+                      <ChevronRightIcon />
+                    </span>
+                  )}
+                </button>
+              </div>
+            </section>
           </div>
-
-            <div className="mb-6 rounded-3xl border border-fei-text/10 bg-fei-text/[0.03] p-6 lg:col-span-5">
-            <p className="mb-3 text-sm text-fei-text/60">{item.context}</p>
-            <p className="font-semibold text-fei-sky select-none">{item.question}</p>
-          </div>
-
-          <div className="mb-8 space-y-3">
-            {item.options.map((option) => (
-              <OptionButton
-                key={option}
-                option={option}
-                selected={selected === option}
-                onSelect={() => setAnswer(item.id, option)}
-              />
-            ))}
-          </div>
-
-          <button
-            onClick={() => {
-              if (!selected) return
-              if (warmupStep < activeItems.warmup.length - 1) {
-                setWarmupStep(warmupStep + 1)
-              } else {
-                setSection('reading')
-              }
-            }}
-            disabled={!selected}
-            className="w-full rounded-full bg-fei-yellow py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-yellow/20 disabled:text-fei-yellow/50 disabled:opacity-100"
-          >
-            {!selected ? (
-              'Select an option to continue'
-            ) : (
-              <span className="inline-flex items-center justify-center gap-2">
-                {warmupStep < activeItems.warmup.length - 1 ? 'Next' : 'Continue to Reading'}
-                <ChevronRightIcon />
-              </span>
-            )}
-          </button>
-        </div>
+        </main>
       </div>
     )
   }
