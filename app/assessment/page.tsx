@@ -2975,14 +2975,14 @@ function AssessmentContent() {
         </header>
 
         <main className="relative mx-auto flex min-h-[calc(100vh-72px)] w-full max-w-[1280px] items-start px-6 py-5 sm:px-8 lg:py-6">
-          <div className="w-full">
+          <div className="mt-5 w-full">
             <p className="mb-4 text-sm font-black uppercase tracking-[0.32em] text-fei-bg/50 sm:mb-5">
               Diagnostic Assessment
             </p>
 
             <div className="grid items-start gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12">
               <section className="flex flex-col px-2 py-3 sm:px-4 sm:py-5 lg:px-8 lg:py-6">
-                <div>
+                <div className="border-l-4 border-fei-sky pl-5 sm:pl-6">
                   <h1 className="text-4xl font-black tracking-[-0.04em] text-fei-bg sm:text-5xl lg:text-6xl">
                     {selectedRole}
                   </h1>
