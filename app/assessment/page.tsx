@@ -2975,10 +2975,11 @@ function AssessmentContent() {
         </header>
 
         <main className="relative mx-auto flex min-h-[calc(100vh-72px)] w-full max-w-[1280px] items-center px-6 py-6 sm:px-8 lg:py-8">
-          <section className="grid w-full overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-white shadow-[0_18px_60px_rgba(7,17,31,0.06)] lg:grid-cols-[0.88fr_1.12fr]">
-            <div className="flex flex-col border-b border-fei-bg/10 bg-[#F7F9FA] p-8 sm:p-10 lg:border-b-0 lg:border-r lg:p-11">
+          <section className="relative grid w-full overflow-hidden rounded-[2rem] border border-fei-sky/20 bg-white shadow-[0_18px_60px_rgba(7,17,31,0.07)] lg:grid-cols-[0.88fr_1.12fr]">
+            <div className="absolute inset-x-8 top-0 z-10 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent" />
+            <div className="flex flex-col border-b border-fei-sky/15 bg-gradient-to-br from-fei-sky/[0.11] via-fei-sky/[0.035] to-white p-8 sm:p-10 lg:border-b-0 lg:border-r lg:border-fei-sky/15 lg:p-11">
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.3em] text-fei-bg/48">
+                <p className="text-xs font-black uppercase tracking-[0.3em] text-fei-sky">
                   Diagnostic Assessment
                 </p>
 
@@ -2995,8 +2996,8 @@ function AssessmentContent() {
                 </p>
               </div>
 
-              <div className="mt-9 border-t border-fei-bg/10 pt-7">
-                <p className="text-xs font-black uppercase tracking-[0.26em] text-fei-bg/45">
+              <div className="mt-9 border-t border-fei-sky/20 pt-7">
+                <p className="text-xs font-black uppercase tracking-[0.26em] text-fei-sky">
                   Before you begin
                 </p>
 
@@ -3006,7 +3007,7 @@ function AssessmentContent() {
                     'Find a quiet place with a reliable internet connection.',
                   ].map((item, index) => (
                     <div key={item} className="flex items-start gap-4">
-                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-fei-sky/35 bg-white text-xs font-black text-fei-bg">
+                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-fei-sky/40 bg-fei-sky/[0.09] text-xs font-black text-fei-bg">
                         {index + 1}
                       </span>
 
@@ -3019,9 +3020,9 @@ function AssessmentContent() {
               </div>
             </div>
 
-            <div className="flex flex-col p-8 sm:p-10 lg:p-11">
+            <div className="flex flex-col bg-gradient-to-br from-white via-white to-fei-sky/[0.045] p-8 sm:p-10 lg:p-11">
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.3em] text-fei-bg/48">
+                <p className="text-xs font-black uppercase tracking-[0.3em] text-fei-sky">
                   Audio & microphone check
                 </p>
 
@@ -3038,7 +3039,7 @@ function AssessmentContent() {
                     type="button"
                     onClick={playAudioTest}
                     disabled={audioTestPlaying}
-                    className="inline-flex min-h-12 items-center justify-center rounded-full border border-fei-bg/15 bg-white px-5 py-3 text-sm font-bold text-fei-bg transition hover:border-fei-sky/60 hover:bg-fei-sky/[0.04] disabled:cursor-not-allowed disabled:opacity-50"
+                    className="inline-flex min-h-12 items-center justify-center rounded-full border border-fei-sky/45 bg-fei-sky/[0.045] px-5 py-3 text-sm font-bold text-fei-bg transition hover:-translate-y-0.5 hover:border-fei-sky/70 hover:bg-fei-sky/[0.09] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0"
                   >
                     {audioTestPlaying ? 'Playing...' : 'Play test audio'}
                   </button>
@@ -3089,14 +3090,14 @@ function AssessmentContent() {
                 )}
               </div>
 
-              <div className="mt-8 border-t border-fei-bg/10 pt-7">
-                <p className="text-xs font-black uppercase tracking-[0.26em] text-fei-bg/45">
+              <div className="mt-8 border-t border-fei-sky/20 pt-7">
+                <p className="text-xs font-black uppercase tracking-[0.26em] text-fei-sky">
                   Assessment overview
                 </p>
 
                 <div className="mt-5 grid gap-5 sm:grid-cols-2">
                   <div className="flex items-center gap-4 sm:border-r sm:border-fei-bg/10 sm:pr-5">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-fei-sky/30 bg-fei-sky/[0.04] text-fei-bg">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-fei-sky/35 bg-fei-sky/[0.10] text-fei-bg">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
@@ -3124,7 +3125,7 @@ function AssessmentContent() {
                   </div>
 
                   <div className="flex items-center gap-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-fei-sky/30 bg-fei-sky/[0.04] text-fei-bg">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-fei-sky/35 bg-fei-sky/[0.10] text-fei-bg">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
