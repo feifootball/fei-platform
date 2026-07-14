@@ -87,7 +87,7 @@ export default function LearningPage() {
       <div className="min-h-screen bg-fei-bg px-6 py-12">
         <div className="mx-auto max-w-2xl">
           <div className="mb-10 flex items-center justify-between">
-            <Link href="/dashboard" className="flex items-center gap-2.5">
+            <Link href="/" className="flex items-center gap-2.5" aria-label="Go to FEI home">
               <img src="/fei-logo-navbar-vector.svg" alt="FEI" className="h-8 w-auto" />
               <span className="text-xs font-medium text-fei-sky sm:text-sm">
                 Football English Intelligence
@@ -120,7 +120,7 @@ export default function LearningPage() {
     <div className="min-h-screen bg-fei-bg px-6 py-12">
       <div className="mx-auto max-w-4xl">
         <div className="mb-10 flex items-center justify-between">
-          <Link href="/dashboard" className="flex items-center gap-2.5">
+          <Link href="/" className="flex items-center gap-2.5" aria-label="Go to FEI home">
             <img src="/fei-logo-navbar-vector.svg" alt="FEI" className="h-8 w-auto" />
             <span className="text-xs font-medium text-fei-sky sm:text-sm">
               Football English Intelligence

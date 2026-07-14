@@ -170,12 +170,18 @@ export default function DashboardPage() {
 
   return (
     <main className="min-h-screen bg-[#F6F7F9] text-fei-bg">
-      <nav className="sticky top-0 z-50 w-full border-b border-fei-bg/[0.08] bg-white/85 backdrop-blur-xl">
-        <div className="flex min-h-[72px] w-full items-center justify-between px-6 sm:px-8 lg:px-10">
-          <Link href="/" className="flex items-center">
-            <span className="text-lg font-black tracking-tight text-fei-yellow">
-              FEI
-            </span>
+      <nav className="sticky top-0 z-50 w-full border-b border-fei-bg/[0.08] bg-white/90 backdrop-blur-xl">
+        <div className="mx-auto flex min-h-[72px] w-full max-w-[1440px] items-center justify-between px-6 sm:px-8 lg:px-10">
+          <Link
+            href="/"
+            className="flex items-center"
+            aria-label="Go to FEI home"
+          >
+            <img
+              src="/fei-logo-navbar-vector.svg"
+              alt="FEI"
+              className="h-11 w-auto"
+            />
 
             <span className="mx-4 hidden h-5 w-px bg-fei-bg/10 sm:block" />
 
@@ -184,7 +190,14 @@ export default function DashboardPage() {
             </span>
           </Link>
 
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-1 sm:gap-2">
+            <Link
+              href="/dashboard"
+              className="relative hidden px-3 py-2 text-sm font-semibold text-fei-bg after:absolute after:inset-x-3 after:-bottom-[17px] after:h-0.5 after:bg-fei-yellow sm:inline-flex"
+            >
+              Dashboard
+            </Link>
+
             <Link
               href="/learning"
               className="hidden rounded-lg px-3 py-2 text-sm font-medium text-fei-bg/55 transition hover:bg-fei-bg/[0.04] hover:text-fei-bg sm:inline-flex"
@@ -199,10 +212,12 @@ export default function DashboardPage() {
               Settings
             </Link>
 
+            <span className="mx-2 hidden h-5 w-px bg-fei-bg/10 sm:block" />
+
             <button
               type="button"
               onClick={handleLogout}
-              className="rounded-lg border border-fei-bg/10 bg-white px-4 py-2 text-sm font-medium text-fei-bg/60 transition hover:border-fei-bg/20 hover:bg-fei-bg/[0.03] hover:text-fei-bg"
+              className="rounded-lg px-3 py-2 text-sm font-medium text-fei-bg/50 transition hover:bg-fei-bg/[0.04] hover:text-fei-bg"
             >
               Sign out
             </button>
@@ -211,16 +226,17 @@ export default function DashboardPage() {
       </nav>
 
       <section className="mx-auto max-w-7xl px-6 py-10 sm:px-8 lg:py-12">
-        <div className="mb-9 max-w-4xl">
-          <h1 className="text-4xl font-black tracking-tight text-fei-bg sm:text-5xl">
+        <div className="mb-10 max-w-5xl">
+          <h1 className="text-4xl font-black tracking-[-0.04em] text-fei-bg sm:text-5xl">
             {displayName}
           </h1>
 
-          <div className="mt-5 inline-flex rounded-full border border-fei-sky/20 bg-fei-sky/[0.06] px-4 py-2 text-sm font-semibold text-fei-sky">
-            Role: {userRole || 'Not selected'}
+          <div className="mt-5 flex items-center gap-3 text-sm font-semibold text-fei-bg/58">
+            <span className="h-2.5 w-2.5 rounded-full bg-fei-sky" />
+            <span>{userRole || 'Role not selected'}</span>
           </div>
 
-          <p className="mt-4 max-w-3xl text-base leading-7 text-fei-bg/55">
+          <p className="mt-5 max-w-3xl text-base leading-7 text-fei-bg/55">
             FEI adapts your diagnostic and learning path to your role in football, so your English training feels practical, contextual, and career-focused.
           </p>
         </div>
@@ -275,63 +291,93 @@ export default function DashboardPage() {
             </div>
           </section>
         ) : (
-          <section className="mb-10 grid gap-6 lg:grid-cols-[1.18fr_0.82fr] lg:items-stretch">
-            <div className="relative overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-white p-7 shadow-[0_24px_70px_rgba(0,0,0,0.14)] md:p-9">
-              <p className="text-xs font-bold uppercase tracking-[0.34em] text-fei-sky">
-                FEI Diagnostic
-              </p>
-              <h2 className="mt-4 max-w-2xl text-3xl font-bold leading-tight text-fei-bg md:text-[2.35rem]">
-                Start your {userRole} diagnostic assessment
-              </h2>
-              <p className="mt-4 max-w-2xl text-base leading-8 text-fei-bg/58">
-                Complete a short role-specific diagnostic and receive one recommended FEI pathway based on your football communication profile.
-              </p>
+          <section className="mb-14 border-y border-fei-bg/10 py-10 lg:py-12">
+            <div className="grid items-start gap-12 lg:grid-cols-[1.12fr_0.88fr] lg:gap-16">
+              <div className="relative">
+                <div className="mb-7 h-1 w-24 rounded-full bg-fei-sky" />
 
-              <div className="mt-7 grid gap-3 sm:grid-cols-3">
-                <div className="rounded-2xl border border-fei-bg/10 bg-[#F7F8FA] p-4">
-                  <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-fei-bg/35">Time</p>
-                  <p className="mt-2 font-bold text-fei-bg">10–12 min</p>
+                <p className="text-xs font-black uppercase tracking-[0.32em] text-fei-bg/45">
+                  FEI Diagnostic
+                </p>
+
+                <h2 className="mt-5 max-w-3xl text-4xl font-black leading-[1.08] tracking-[-0.04em] text-fei-bg sm:text-5xl">
+                  Start your {userRole} diagnostic assessment
+                </h2>
+
+                <p className="mt-6 max-w-2xl text-base leading-8 text-fei-bg/58">
+                  Complete a short role-specific diagnostic and receive one recommended FEI pathway based on your football communication profile.
+                </p>
+
+                <div className="mt-9 grid gap-6 border-t border-fei-bg/10 pt-7 sm:grid-cols-3">
+                  <div>
+                    <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-fei-bg/38">
+                      Time
+                    </p>
+                    <p className="mt-2 text-base font-bold text-fei-bg">
+                      10–12 min
+                    </p>
+                  </div>
+
+                  <div className="sm:border-l sm:border-fei-bg/10 sm:pl-6">
+                    <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-fei-bg/38">
+                      Result
+                    </p>
+                    <p className="mt-2 text-base font-bold text-fei-bg">
+                      FEI Pathway
+                    </p>
+                  </div>
+
+                  <div className="sm:border-l sm:border-fei-bg/10 sm:pl-6">
+                    <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-fei-bg/38">
+                      Type
+                    </p>
+                    <p className="mt-2 text-base font-bold text-fei-bg">
+                      Role diagnostic
+                    </p>
+                  </div>
                 </div>
-                <div className="rounded-2xl border border-fei-bg/10 bg-[#F7F8FA] p-4">
-                  <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-fei-bg/35">Result</p>
-                  <p className="mt-2 font-bold text-fei-bg">FEI Pathway</p>
-                </div>
-                <div className="rounded-2xl border border-fei-bg/10 bg-[#F7F8FA] p-4">
-                  <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-fei-bg/35">Type</p>
-                  <p className="mt-2 font-bold text-fei-bg">Role diagnostic</p>
-                </div>
+
+                <Link
+                  href={`/assessment?role=${encodeURIComponent(userRole)}`}
+                  className="mt-9 inline-flex min-h-[54px] items-center justify-center rounded-full bg-fei-yellow px-8 py-3.5 text-base font-black text-fei-bg shadow-[0_14px_34px_rgba(250,204,21,0.24)] transition duration-300 hover:-translate-y-0.5 hover:bg-fei-yellow/90 hover:shadow-[0_18px_40px_rgba(250,204,21,0.32)]"
+                >
+                  <span className="inline-flex items-center gap-2">
+                    Start Assessment
+                    <ChevronRightIcon />
+                  </span>
+                </Link>
               </div>
 
-              <Link
-                href={`/assessment?role=${encodeURIComponent(userRole)}`}
-                className="mt-8 inline-flex rounded-full bg-fei-yellow px-7 py-3 text-sm font-bold text-fei-bg transition hover:bg-fei-yellow/90"
-              >
-                <span className="inline-flex items-center gap-2">
-                  Start Assessment
-                  <ChevronRightIcon />
-                </span>
-              </Link>
-            </div>
+              <div className="relative lg:border-l lg:border-fei-bg/10 lg:pl-12">
+                <div className="absolute -left-px top-0 hidden h-24 w-px bg-fei-sky lg:block" />
 
-            <div className="rounded-[2rem] border border-fei-bg/10 bg-white p-7 shadow-[0_20px_60px_rgba(7,17,31,0.06)] md:p-8">
-              <p className="text-xs font-bold uppercase tracking-[0.28em] text-fei-yellow">
-                What it measures
-              </p>
+                <p className="text-xs font-black uppercase tracking-[0.3em] text-fei-bg/45">
+                  What it measures
+                </p>
 
-              <div className="mt-6 space-y-4">
-                {[
-                  'Understanding role-specific football communication',
-                  'Reading tactical and professional information',
-                  'Responding to feedback with clarity',
-                  'Explaining decisions, observations, or recommendations',
-                  'Communicating under match and workplace pressure',
-                  'Using professional English in real football situations',
-                ].map(item => (
-                  <div key={item} className="flex items-start gap-3 text-sm leading-6 text-fei-bg/62">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-fei-yellow" />
-                    <span>{item}</span>
-                  </div>
-                ))}
+                <div className="mt-7 space-y-5">
+                  {[
+                    'Understanding role-specific football communication',
+                    'Reading tactical and professional information',
+                    'Responding to feedback with clarity',
+                    'Explaining decisions, observations, or recommendations',
+                    'Communicating under match and workplace pressure',
+                    'Using professional English in real football situations',
+                  ].map((item, index) => (
+                    <div
+                      key={item}
+                      className="grid grid-cols-[34px_1fr] items-start gap-3"
+                    >
+                      <span className="flex h-7 w-7 items-center justify-center rounded-full border border-fei-sky/35 bg-fei-sky/[0.08] text-xs font-black text-fei-bg">
+                        {index + 1}
+                      </span>
+
+                      <span className="pt-0.5 text-[15px] leading-6 text-fei-bg/62">
+                        {item}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </section>
