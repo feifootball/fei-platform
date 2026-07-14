@@ -3386,9 +3386,9 @@ function AssessmentContent() {
     const selected = answers[item.id]
 
     return (
-      <div className="min-h-screen bg-[#F6F7F9] px-6 py-8 text-fei-bg sm:px-8 lg:py-10">
+      <div className="min-h-screen bg-[#F6F7F9] px-6 py-5 text-fei-bg sm:px-8 lg:py-6">
         <div className="mx-auto max-w-[1080px]">
-          <div className="mb-8 flex min-h-[52px] items-center justify-between border-b border-fei-bg/[0.08] pb-5">
+          <div className="mb-5 flex min-h-[48px] items-center justify-between border-b border-fei-bg/[0.08] pb-3">
             <button
               type="button"
               onClick={() => router.push('/')}
@@ -3418,29 +3418,29 @@ function AssessmentContent() {
             total={totalItems}
           />
 
-          <div className="grid items-start gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12">
+          <div className="grid items-start gap-7 lg:grid-cols-[0.43fr_1.57fr] lg:gap-9">
             <aside className="lg:sticky lg:top-10">
               <SectionBadge label="Professional Reading" />
             </aside>
 
             <section>
-              <div className="mb-8 rounded-[1.5rem] border border-fei-bg/[0.14] bg-white p-6 shadow-[0_16px_42px_rgba(7,17,31,0.06)] sm:p-8">
+              <div className="mb-5 rounded-[1.25rem] border border-fei-bg/[0.14] bg-white p-5 sm:p-6">
                 <p className="text-xs font-black uppercase tracking-[0.22em] text-fei-bg/45">
                   Read carefully
                 </p>
 
-                <p className="mt-5 whitespace-pre-line text-base leading-8 text-fei-bg/72 select-none">
+                <p className="mt-4 whitespace-pre-line text-[15px] leading-7 text-fei-bg/72 select-none sm:text-base">
                   {item.context}
                 </p>
               </div>
 
-              <div className="mb-8 border-l-4 border-fei-sky pl-5 sm:pl-7">
+              <div className="mb-5 border-l-4 border-fei-sky pl-5 sm:pl-6">
                 <h1 className="text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl">
                   {item.question}
                 </h1>
               </div>
 
-              <div className="mb-8 overflow-hidden border-y border-fei-bg/10">
+              <div className="mb-5 overflow-hidden border-y border-fei-bg/10">
                 {item.options.map((option) => (
                   <OptionButton
                     key={option}
@@ -3490,9 +3490,9 @@ function AssessmentContent() {
     const selected = answers[item.id]
 
     return (
-      <div className="min-h-screen bg-[#F6F7F9] px-6 py-8 text-fei-bg sm:px-8 lg:py-10">
+      <div className="min-h-screen bg-[#F6F7F9] px-6 py-5 text-fei-bg sm:px-8 lg:py-6">
         <div className="mx-auto max-w-[1080px]">
-          <div className="mb-8 flex min-h-[52px] items-center justify-between border-b border-fei-bg/[0.08] pb-5">
+          <div className="mb-5 flex min-h-[48px] items-center justify-between border-b border-fei-bg/[0.08] pb-3">
             <button
               type="button"
               onClick={() => router.push('/')}
@@ -3522,27 +3522,27 @@ function AssessmentContent() {
             total={totalItems}
           />
 
-          <div className="grid items-start gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12">
+          <div className="grid items-start gap-7 lg:grid-cols-[0.43fr_1.57fr] lg:gap-9">
             <aside className="lg:sticky lg:top-10">
               <SectionBadge label="Listening in Context" />
 
-              <p className="mt-5 max-w-xs text-sm leading-6 text-fei-bg/55">
+              <p className="mt-3 max-w-xs text-sm leading-6 text-fei-bg/55">
                 Use headphones for best results.
               </p>
             </aside>
 
             <section>
-              <div className="mb-8">
+              <div className="mb-5">
                 <AudioPlayer script={item.script} itemId={item.id} />
               </div>
 
-              <div className="mb-8 border-l-4 border-fei-sky pl-5 sm:pl-7">
+              <div className="mb-5 border-l-4 border-fei-sky pl-5 sm:pl-6">
                 <h1 className="text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl">
                   {item.question}
                 </h1>
               </div>
 
-              <div className="mb-8 overflow-hidden border-y border-fei-bg/10">
+              <div className="mb-5 overflow-hidden border-y border-fei-bg/10">
                 {item.options.map((option) => (
                   <OptionButton
                     key={option}
