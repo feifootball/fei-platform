@@ -2652,6 +2652,21 @@ function AudioPlayer({ script, itemId }: { script: string; itemId: string }) {
   const [played, setPlayed] = useState(false)
   const [playing, setPlaying] = useState(false)
 
+  useEffect(() => {
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel()
+    }
+
+    setPlayed(false)
+    setPlaying(false)
+
+    return () => {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel()
+      }
+    }
+  }, [itemId])
+
   function handlePlay() {
     if (!('speechSynthesis' in window)) return
     window.speechSynthesis.cancel()
@@ -3558,6 +3573,11 @@ function AssessmentContent() {
                   type="button"
                   onClick={() => {
                     if (!selected) return
+
+                    if ('speechSynthesis' in window) {
+                      window.speechSynthesis.cancel()
+                    }
+
                     if (listeningStep < activeItems.listening.length - 1) {
                       setListeningStep(listeningStep + 1)
                     } else {
@@ -3888,7 +3908,6 @@ function AssessmentContent() {
 
           <button
             onClick={() => setSection('speaking')}
-            disabled={wordCount < 10}
             className="ml-auto flex min-h-[54px] min-w-[240px] items-center justify-center rounded-full bg-fei-yellow px-8 py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-bg/[0.07] disabled:text-fei-bg/30 disabled:opacity-100"
           >
             <span className="inline-flex items-center justify-center gap-2">
@@ -4012,16 +4031,16 @@ function AssessmentContent() {
 
           {recordingDone && (
             <div
-              className={`mb-6 rounded-2xl border p-5 text-center ${
+              className={`mb-5 rounded-xl border px-4 py-3 text-center ${
                 recordingTime < 45
-                  ? 'border-fei-yellow/25 bg-fei-yellow/[0.06]'
-                  : 'border-green-500/20 bg-green-500/5'
+                  ? 'border-fei-yellow/20 bg-fei-yellow/[0.045]'
+                  : 'border-green-500/15 bg-green-500/[0.035]'
               }`}
             >
-              <p className={`text-sm font-semibold ${recordingTime < 45 ? 'text-fei-yellow' : 'text-green-400'}`}>
-                {recordingTime < 45 ? `Recording saved (${recordingTime}s)` : `✓ Recording saved (${recordingTime}s)`}
+              <p className={`text-xs font-semibold ${recordingTime < 45 ? 'text-fei-bg/65' : 'text-green-700'}`}>
+                {recordingTime < 45 ? `Recording saved · ${recordingTime}s` : `✓ Recording saved · ${recordingTime}s`}
               </p>
-              <p className="mt-1 text-xs leading-5 text-fei-text/45">
+              <p className="mt-1 text-[11px] leading-4 text-fei-bg/42">
                 {recordingTime < 45
                   ? 'Your response is shorter than recommended. For a stronger AI Insight, try to speak for 45–60 seconds.'
                   : 'Your speaking sample has been captured.'}
