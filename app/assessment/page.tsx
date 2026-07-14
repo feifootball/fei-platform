@@ -2974,205 +2974,206 @@ function AssessmentContent() {
           </div>
         </header>
 
-        <main className="relative mx-auto flex min-h-[calc(100vh-72px)] w-full max-w-[1280px] items-center px-6 py-6 sm:px-8 lg:py-8">
+        <main className="relative mx-auto flex min-h-[calc(100vh-72px)] w-full max-w-[1280px] items-center px-6 py-8 sm:px-8 lg:py-10">
           <div className="w-full">
             <p className="mb-6 text-sm font-black uppercase tracking-[0.32em] text-fei-bg/50 sm:mb-7">
               Diagnostic Assessment
             </p>
 
-            <div className="grid items-start gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12">
-            <div className="flex h-full flex-col px-2 py-8 sm:px-4 sm:py-10 lg:px-11 lg:py-11">
-              <div>
-                <h1 className="text-4xl font-black tracking-[-0.04em] text-fei-bg sm:text-5xl">
-                  {selectedRole}
-                </h1>
+            <div className="grid items-stretch gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12">
+              <section className="flex flex-col px-2 py-5 sm:px-4 sm:py-7 lg:px-8 lg:py-8">
+                <div>
+                  <h1 className="text-4xl font-black tracking-[-0.04em] text-fei-bg sm:text-5xl lg:text-6xl">
+                    {selectedRole}
+                  </h1>
 
-                <p className="mt-4 text-base font-semibold text-fei-bg/58">
-                  {roleSubtitle}
-                </p>
+                  <p className="mt-4 text-base font-semibold text-fei-bg/58">
+                    {roleSubtitle}
+                  </p>
 
-                <p className="mt-6 max-w-lg text-[15px] leading-7 text-fei-bg/62 sm:text-base sm:leading-8">
-                  Discover how you understand and use English in real football situations connected to your role.
-                </p>
-              </div>
-
-              <div className="mt-8 border-t border-fei-sky/20 pt-6">
-                <p className="text-xs font-black uppercase tracking-[0.26em] text-fei-bg/45">
-                  Before you begin
-                </p>
-
-                <div className="mt-5 space-y-4">
-                  {[
-                    'Do not close or refresh the page until the assessment is complete.',
-                    'Find a quiet place with a reliable internet connection.',
-                  ].map((item, index) => (
-                    <div key={item} className="flex items-start gap-4">
-                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-fei-sky/40 bg-fei-sky/[0.09] text-xs font-black text-fei-bg">
-                        {index + 1}
-                      </span>
-
-                      <p className="text-[14px] leading-6 text-fei-bg/65 sm:text-[15px]">
-                        {item}
-                      </p>
-                    </div>
-                  ))}
+                  <p className="mt-6 max-w-lg text-[15px] leading-7 text-fei-bg/62 sm:text-base sm:leading-8">
+                    Discover how you understand and use English in real football situations connected to your role.
+                  </p>
                 </div>
-              </div>
-            </div>
 
-            <div className="relative flex flex-col overflow-hidden rounded-[1.75rem] border border-fei-sky/20 bg-gradient-to-br from-white via-white to-fei-sky/[0.07] p-7 shadow-[0_20px_58px_rgba(7,17,31,0.07)] sm:p-8 lg:p-9">
-              <div className="absolute inset-x-8 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent" />
-              <div>
-                <p className="text-xs font-black uppercase tracking-[0.3em] text-fei-bg/48">
-                  Audio & microphone check
-                </p>
+                <div className="mt-10 border-t border-fei-bg/10 pt-7">
+                  <p className="text-xs font-black uppercase tracking-[0.26em] text-fei-bg/45">
+                    Assessment overview
+                  </p>
 
-                <h2 className="mt-4 text-3xl font-black tracking-[-0.035em] text-fei-bg sm:text-4xl">
-                  Check your setup
-                </h2>
+                  <div className="mt-6 grid gap-6 sm:grid-cols-2">
+                    <div className="flex items-center gap-4 sm:border-r sm:border-fei-bg/10 sm:pr-6">
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-fei-sky/40 bg-white text-fei-bg shadow-[0_8px_24px_rgba(7,17,31,0.05)]">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth={1.8}
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="h-5 w-5"
+                          aria-hidden
+                        >
+                          <circle cx="12" cy="12" r="8.5" />
+                          <path d="M12 7.5v5l3 2" />
+                        </svg>
+                      </div>
 
-                <p className="mt-3 max-w-xl text-[15px] leading-7 text-fei-bg/60">
-                  Check your audio and enable your microphone before starting the diagnostic.
-                </p>
+                      <div>
+                        <p className="text-xs font-bold uppercase tracking-[0.16em] text-fei-bg/45">
+                          Duration
+                        </p>
+                        <p className="mt-1.5 text-base text-fei-bg/70">
+                          10–12 minutes
+                        </p>
+                      </div>
+                    </div>
 
-                <div className="mt-7 grid gap-3 sm:grid-cols-2">
+                    <div className="flex items-center gap-4">
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-fei-sky/40 bg-white text-fei-bg shadow-[0_8px_24px_rgba(7,17,31,0.05)]">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth={1.8}
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="h-5 w-5"
+                          aria-hidden
+                        >
+                          <path d="M12 3.5 19 7.5v5c0 4.5-3 7.5-7 8-4-.5-7-3.5-7-8v-5l7-4Z" />
+                          <path d="M9 12.5 11 14.5 15.5 9.5" />
+                        </svg>
+                      </div>
+
+                      <div>
+                        <p className="text-xs font-bold uppercase tracking-[0.16em] text-fei-bg/45">
+                          What you’ll receive
+                        </p>
+                        <p className="mt-1.5 text-base text-fei-bg/70">
+                          Level and next steps
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-auto pt-10">
                   <button
                     type="button"
-                    onClick={playAudioTest}
-                    disabled={audioTestPlaying}
-                    className="inline-flex min-h-12 items-center justify-center rounded-full border border-fei-sky/45 bg-fei-sky/[0.045] px-5 py-3 text-sm font-bold text-fei-bg transition hover:-translate-y-0.5 hover:border-fei-sky/70 hover:bg-fei-sky/[0.09] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0"
+                    onClick={() => {
+                      if (micPermission !== 'granted') return
+                      setSection('warm-up')
+                    }}
+                    disabled={micPermission !== 'granted'}
+                    className="inline-flex min-w-[210px] items-center justify-center rounded-full bg-fei-yellow px-8 py-3 text-base font-bold text-fei-bg transition hover:-translate-y-0.5 hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-bg/[0.06] disabled:text-fei-bg/30 disabled:hover:translate-y-0"
                   >
-                    {audioTestPlaying ? 'Playing...' : 'Play test audio'}
+                    <span className="inline-flex items-center gap-2">
+                      Begin assessment
+                      <ChevronRightIcon />
+                    </span>
                   </button>
-
-                  {micPermission === 'granted' ? (
-                    <div className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-green-500/20 bg-green-500/[0.08] px-5 py-3 text-sm font-bold text-green-700">
-                      ✓ Microphone ready
-                    </div>
-                  ) : micPermission === 'denied' ? (
-                    <button
-                      type="button"
-                      onClick={requestMic}
-                      className="inline-flex min-h-12 items-center justify-center rounded-full border border-red-500/20 bg-red-500/[0.06] px-5 py-3 text-sm font-bold text-red-700 transition hover:bg-red-500/10"
-                    >
-                      Microphone access denied
-                    </button>
-                  ) : (
-                    <button
-                      type="button"
-                      onClick={requestMic}
-                      className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-fei-yellow px-5 py-3 text-sm font-bold text-fei-bg transition hover:-translate-y-0.5 hover:bg-fei-yellow/90"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={1.9}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="h-5 w-5"
-                        aria-hidden
-                      >
-                        <path d="M12 14.5a3.5 3.5 0 0 0 3.5-3.5V6a3.5 3.5 0 0 0-7 0v5a3.5 3.5 0 0 0 3.5 3.5Z" />
-                        <path d="M5.5 10.5a6.5 6.5 0 0 0 13 0" />
-                        <path d="M12 17v3.5" />
-                        <path d="M9 20.5h6" />
-                      </svg>
-                      Enable microphone
-                    </button>
-                  )}
                 </div>
+              </section>
 
-                {micPermission === 'denied' && (
-                  <p className="mt-3 text-sm leading-6 text-red-700">
-                    Please allow microphone access in your browser settings and refresh the page.
+              <div className="grid gap-5">
+                <section className="rounded-[1.75rem] border border-fei-bg/[0.16] bg-white p-7 shadow-[0_22px_60px_rgba(7,17,31,0.10)] sm:p-8 lg:p-9">
+                  <p className="text-xs font-black uppercase tracking-[0.26em] text-fei-bg/48">
+                    Before you begin
                   </p>
-                )}
-              </div>
 
-              <div className="mt-7 border-t border-fei-sky/20 pt-6">
-                <p className="text-xs font-black uppercase tracking-[0.26em] text-fei-bg/45">
-                  Assessment overview
-                </p>
+                  <div className="mt-6 space-y-5">
+                    {[
+                      'Do not close or refresh the page until the assessment is complete.',
+                      'Find a quiet place with a reliable internet connection.',
+                    ].map((item, index) => (
+                      <div key={item} className="flex items-start gap-4">
+                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-fei-sky/50 bg-fei-sky/[0.10] text-xs font-black text-fei-bg">
+                          {index + 1}
+                        </span>
 
-                <div className="mt-5 grid gap-5 sm:grid-cols-2">
-                  <div className="flex items-center gap-4 sm:border-r sm:border-fei-bg/10 sm:pr-5">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-fei-sky/35 bg-fei-sky/[0.10] text-fei-bg">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={1.8}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="h-5 w-5"
-                        aria-hidden
+                        <p className="pt-0.5 text-[14px] leading-6 text-fei-bg/68 sm:text-[15px]">
+                          {item}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+
+                <section className="relative overflow-hidden rounded-[1.75rem] border border-fei-bg/[0.16] bg-white p-7 shadow-[0_22px_60px_rgba(7,17,31,0.10)] sm:p-8 lg:p-9">
+                  <div className="absolute inset-x-8 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent" />
+
+                  <p className="text-xs font-black uppercase tracking-[0.3em] text-fei-bg/48">
+                    Audio & microphone check
+                  </p>
+
+                  <h2 className="mt-4 text-3xl font-black tracking-[-0.035em] text-fei-bg sm:text-4xl">
+                    Check your setup
+                  </h2>
+
+                  <p className="mt-3 max-w-xl text-[15px] leading-7 text-fei-bg/60">
+                    Check your audio and enable your microphone before starting the diagnostic.
+                  </p>
+
+                  <div className="mt-7 grid gap-3 sm:grid-cols-2">
+                    <button
+                      type="button"
+                      onClick={playAudioTest}
+                      disabled={audioTestPlaying}
+                      className="inline-flex min-h-12 items-center justify-center rounded-full border border-fei-sky/50 bg-fei-sky/[0.06] px-5 py-3 text-sm font-bold text-fei-bg transition hover:-translate-y-0.5 hover:border-fei-sky/70 hover:bg-fei-sky/[0.11] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0"
+                    >
+                      {audioTestPlaying ? 'Playing...' : 'Play test audio'}
+                    </button>
+
+                    {micPermission === 'granted' ? (
+                      <div className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-green-500/20 bg-green-500/[0.08] px-5 py-3 text-sm font-bold text-green-700">
+                        ✓ Microphone ready
+                      </div>
+                    ) : micPermission === 'denied' ? (
+                      <button
+                        type="button"
+                        onClick={requestMic}
+                        className="inline-flex min-h-12 items-center justify-center rounded-full border border-red-500/20 bg-red-500/[0.06] px-5 py-3 text-sm font-bold text-red-700 transition hover:bg-red-500/10"
                       >
-                        <circle cx="12" cy="12" r="8.5" />
-                        <path d="M12 7.5v5l3 2" />
-                      </svg>
-                    </div>
-
-                    <div>
-                      <p className="text-xs font-bold uppercase tracking-[0.16em] text-fei-bg/45">
-                        Duration
-                      </p>
-                      <p className="mt-1.5 text-base text-fei-bg/70">
-                        10–12 minutes
-                      </p>
-                    </div>
+                        Microphone access denied
+                      </button>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={requestMic}
+                        className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-fei-yellow px-5 py-3 text-sm font-bold text-fei-bg transition hover:-translate-y-0.5 hover:bg-fei-yellow/90"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth={1.9}
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="h-5 w-5"
+                          aria-hidden
+                        >
+                          <path d="M12 14.5a3.5 3.5 0 0 0 3.5-3.5V6a3.5 3.5 0 0 0-7 0v5a3.5 3.5 0 0 0 3.5 3.5Z" />
+                          <path d="M5.5 10.5a6.5 6.5 0 0 0 13 0" />
+                          <path d="M12 17v3.5" />
+                          <path d="M9 20.5h6" />
+                        </svg>
+                        Enable microphone
+                      </button>
+                    )}
                   </div>
 
-                  <div className="flex items-center gap-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-fei-sky/35 bg-fei-sky/[0.10] text-fei-bg">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={1.8}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="h-5 w-5"
-                        aria-hidden
-                      >
-                        <path d="M12 3.5 19 7.5v5c0 4.5-3 7.5-7 8-4-.5-7-3.5-7-8v-5l7-4Z" />
-                        <path d="M9 12.5 11 14.5 15.5 9.5" />
-                      </svg>
-                    </div>
-
-                    <div>
-                      <p className="text-xs font-bold uppercase tracking-[0.16em] text-fei-bg/45">
-                        What you’ll receive
-                      </p>
-                      <p className="mt-1.5 text-base text-fei-bg/70">
-                        Level and next steps
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-7 pt-1">
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (micPermission !== 'granted') return
-                    setSection('warm-up')
-                  }}
-                  disabled={micPermission !== 'granted'}
-                  className="inline-flex min-w-[210px] items-center justify-center rounded-full bg-fei-yellow px-8 py-3 text-base font-bold text-fei-bg transition hover:-translate-y-0.5 hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-bg/[0.06] disabled:text-fei-bg/30 disabled:hover:translate-y-0"
-                >
-                  <span className="inline-flex items-center gap-2">
-                    Begin assessment
-                    <ChevronRightIcon />
-                  </span>
-                </button>
+                  {micPermission === 'denied' && (
+                    <p className="mt-3 text-sm leading-6 text-red-700">
+                      Please allow microphone access in your browser settings and refresh the page.
+                    </p>
+                  )}
+                </section>
               </div>
             </div>
-          </div>
           </div>
         </main>
       </div>
