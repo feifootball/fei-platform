@@ -2974,14 +2974,14 @@ function AssessmentContent() {
           </div>
         </header>
 
-        <main className="relative mx-auto flex min-h-[calc(100vh-72px)] w-full max-w-[1280px] items-center px-6 py-8 sm:px-8 lg:py-10">
+        <main className="relative mx-auto flex min-h-[calc(100vh-72px)] w-full max-w-[1280px] items-start px-6 py-5 sm:px-8 lg:py-6">
           <div className="w-full">
-            <p className="mb-6 text-sm font-black uppercase tracking-[0.32em] text-fei-bg/50 sm:mb-7">
+            <p className="mb-4 text-sm font-black uppercase tracking-[0.32em] text-fei-bg/50 sm:mb-5">
               Diagnostic Assessment
             </p>
 
-            <div className="grid items-stretch gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12">
-              <section className="flex flex-col px-2 py-5 sm:px-4 sm:py-7 lg:px-8 lg:py-8">
+            <div className="grid items-start gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12">
+              <section className="flex flex-col px-2 py-3 sm:px-4 sm:py-5 lg:px-8 lg:py-6">
                 <div>
                   <h1 className="text-4xl font-black tracking-[-0.04em] text-fei-bg sm:text-5xl lg:text-6xl">
                     {selectedRole}
@@ -3060,31 +3060,15 @@ function AssessmentContent() {
                   </div>
                 </div>
 
-                <div className="mt-auto pt-10">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (micPermission !== 'granted') return
-                      setSection('warm-up')
-                    }}
-                    disabled={micPermission !== 'granted'}
-                    className="inline-flex min-w-[210px] items-center justify-center rounded-full bg-fei-yellow px-8 py-3 text-base font-bold text-fei-bg transition hover:-translate-y-0.5 hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-bg/[0.06] disabled:text-fei-bg/30 disabled:hover:translate-y-0"
-                  >
-                    <span className="inline-flex items-center gap-2">
-                      Begin assessment
-                      <ChevronRightIcon />
-                    </span>
-                  </button>
-                </div>
               </section>
 
-              <div className="grid gap-5">
-                <section className="rounded-[1.75rem] border border-fei-bg/[0.16] bg-white p-7 shadow-[0_22px_60px_rgba(7,17,31,0.10)] sm:p-8 lg:p-9">
+              <div className="grid gap-4">
+                <section className="rounded-[1.75rem] border border-fei-bg/[0.16] bg-white p-6 shadow-[0_22px_60px_rgba(7,17,31,0.10)] sm:p-7 lg:p-8">
                   <p className="text-xs font-black uppercase tracking-[0.26em] text-fei-bg/48">
                     Before you begin
                   </p>
 
-                  <div className="mt-6 space-y-5">
+                  <div className="mt-5 space-y-4">
                     {[
                       'Do not close or refresh the page until the assessment is complete.',
                       'Find a quiet place with a reliable internet connection.',
@@ -3102,7 +3086,7 @@ function AssessmentContent() {
                   </div>
                 </section>
 
-                <section className="relative overflow-hidden rounded-[1.75rem] border border-fei-bg/[0.16] bg-white p-7 shadow-[0_22px_60px_rgba(7,17,31,0.10)] sm:p-8 lg:p-9">
+                <section className="relative overflow-hidden rounded-[1.75rem] border border-fei-bg/[0.16] bg-white p-6 shadow-[0_22px_60px_rgba(7,17,31,0.10)] sm:p-7 lg:p-8">
                   <div className="absolute inset-x-8 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent" />
 
                   <p className="text-xs font-black uppercase tracking-[0.3em] text-fei-bg/48">
@@ -3117,7 +3101,7 @@ function AssessmentContent() {
                     Check your audio and enable your microphone before starting the diagnostic.
                   </p>
 
-                  <div className="mt-7 grid gap-3 sm:grid-cols-2">
+                  <div className="mt-5 grid gap-3 sm:grid-cols-2">
                     <button
                       type="button"
                       onClick={playAudioTest}
@@ -3172,6 +3156,21 @@ function AssessmentContent() {
                     </p>
                   )}
                 </section>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (micPermission !== 'granted') return
+                    setSection('warm-up')
+                  }}
+                  disabled={micPermission !== 'granted'}
+                  className="inline-flex min-h-[58px] w-full items-center justify-center rounded-full bg-fei-yellow px-8 py-4 text-base font-black text-fei-bg shadow-[0_16px_36px_rgba(250,204,21,0.28)] transition duration-300 hover:-translate-y-0.5 hover:bg-fei-yellow/90 hover:shadow-[0_20px_42px_rgba(250,204,21,0.36)] disabled:cursor-not-allowed disabled:bg-fei-bg/[0.07] disabled:text-fei-bg/30 disabled:shadow-none disabled:hover:translate-y-0"
+                >
+                  <span className="inline-flex items-center gap-2">
+                    Begin assessment
+                    <ChevronRightIcon />
+                  </span>
+                </button>
               </div>
             </div>
           </div>
