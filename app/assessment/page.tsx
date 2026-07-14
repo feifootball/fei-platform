@@ -2975,9 +2975,8 @@ function AssessmentContent() {
         </header>
 
         <main className="relative mx-auto flex min-h-[calc(100vh-72px)] w-full max-w-[1280px] items-center px-6 py-6 sm:px-8 lg:py-8">
-          <section className="relative grid w-full overflow-hidden rounded-[2rem] border border-fei-sky/20 bg-white shadow-[0_18px_60px_rgba(7,17,31,0.07)] lg:grid-cols-[0.88fr_1.12fr]">
-            <div className="absolute inset-x-8 top-0 z-10 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent" />
-            <div className="flex flex-col border-b border-fei-sky/15 bg-gradient-to-br from-fei-sky/[0.11] via-fei-sky/[0.035] to-white p-8 sm:p-10 lg:border-b-0 lg:border-r lg:border-fei-sky/15 lg:p-11">
+          <div className="grid w-full items-stretch gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-14">
+            <div className="flex flex-col justify-center py-6 sm:py-8 lg:py-10 lg:pl-2">
               <div>
                 <p className="text-xs font-black uppercase tracking-[0.3em] text-fei-sky">
                   Diagnostic Assessment
@@ -3020,7 +3019,8 @@ function AssessmentContent() {
               </div>
             </div>
 
-            <div className="flex flex-col bg-gradient-to-br from-white via-white to-fei-sky/[0.045] p-8 sm:p-10 lg:p-11">
+            <div className="relative flex flex-col overflow-hidden rounded-[2rem] border border-fei-sky/20 bg-gradient-to-br from-white via-white to-fei-sky/[0.07] p-8 shadow-[0_22px_70px_rgba(7,17,31,0.08)] sm:p-10 lg:p-11">
+              <div className="absolute inset-x-8 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent" />
               <div>
                 <p className="text-xs font-black uppercase tracking-[0.3em] text-fei-sky">
                   Audio & microphone check
@@ -3171,7 +3171,7 @@ function AssessmentContent() {
                 </button>
               </div>
             </div>
-          </section>
+          </div>
         </main>
       </div>
     )
