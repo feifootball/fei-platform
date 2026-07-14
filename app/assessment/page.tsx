@@ -3074,14 +3074,14 @@ function AssessmentContent() {
                         <ChevronRightIcon />
                       </span>
                     ) : (
-                      'Enable microphone to start'
+                      'Begin assessment'
                     )}
                   </button>
                 </div>
               </div>
             </section>
 
-            <section className="rounded-[2rem] border border-fei-sky/30 bg-[#F2F8FB] shadow-[0_20px_60px_rgba(7,17,31,0.09)] lg:col-span-5 lg:col-start-1 lg:row-start-1">
+            <section className="rounded-[2rem] border border-fei-sky/30 bg-[#F2F8FB] shadow-[0_20px_60px_rgba(7,17,31,0.09)] lg:col-span-5 lg:col-start-1 lg:row-start-2">
               <div className="p-7 sm:p-8 lg:p-9">
                 <p className="text-sm font-black uppercase tracking-[0.32em] text-fei-bg/55">
                   Before you begin
@@ -3114,7 +3114,7 @@ function AssessmentContent() {
               </div>
             </section>
 
-            <section className="rounded-[2rem] border border-fei-bg/15 bg-white shadow-[0_20px_60px_rgba(7,17,31,0.09)] lg:col-span-5 lg:col-start-1 lg:row-start-2">
+            <section className="rounded-[2rem] border border-fei-bg/15 bg-white shadow-[0_20px_60px_rgba(7,17,31,0.09)] lg:col-span-5 lg:col-start-1 lg:row-start-1">
               <div className="p-7 sm:p-8">
                 <div className="flex items-center justify-between gap-4">
                   <div>
