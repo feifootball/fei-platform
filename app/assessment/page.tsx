@@ -3036,8 +3036,8 @@ function AssessmentContent() {
               Diagnostic Assessment
             </p>
 
-            <div className="grid items-start gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:gap-12">
-              <section className="order-2 flex flex-col px-2 py-3 sm:px-4 sm:py-5 lg:px-8 lg:py-6">
+            <div className="grid items-start gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12">
+              <section className="flex flex-col px-2 py-3 sm:px-4 sm:py-5 lg:px-8 lg:py-6">
                 <div className="border-l-4 border-fei-sky pl-5 sm:pl-6">
                   <h1 className="text-4xl font-black tracking-[-0.04em] text-fei-bg sm:text-5xl lg:text-6xl">
                     {selectedRole}
@@ -3118,9 +3118,8 @@ function AssessmentContent() {
 
               </section>
 
-              <div className="order-1 grid gap-4 lg:-mt-10">
-                <section className="relative overflow-hidden rounded-[1.75rem] border border-fei-bg/[0.22] bg-white p-6 shadow-[0_26px_70px_rgba(7,17,31,0.14)] sm:p-7 lg:p-8">
-                  <div className="absolute inset-x-8 top-0 h-[2px] bg-gradient-to-r from-fei-sky to-transparent opacity-90" />
+              <div className="grid gap-4 lg:-mt-10">
+                <section className="rounded-[1.75rem] border border-fei-bg/[0.16] bg-white p-6 shadow-[0_22px_60px_rgba(7,17,31,0.10)] sm:p-7 lg:p-8">
                   <p className="text-xs font-black uppercase tracking-[0.26em] text-fei-bg/48">
                     Before you begin
                   </p>
@@ -3143,7 +3142,7 @@ function AssessmentContent() {
                   </div>
                 </section>
 
-                <section className="relative overflow-hidden rounded-[1.75rem] border border-fei-bg/[0.22] bg-white p-6 shadow-[0_26px_70px_rgba(7,17,31,0.14)] sm:p-7 lg:p-8">
+                <section className="relative overflow-hidden rounded-[1.75rem] border border-fei-bg/[0.16] bg-white p-6 shadow-[0_22px_60px_rgba(7,17,31,0.10)] sm:p-7 lg:p-8">
                   <div className="absolute inset-x-8 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent" />
 
                   <p className="text-xs font-black uppercase tracking-[0.3em] text-fei-bg/48">
