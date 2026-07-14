@@ -2976,7 +2976,7 @@ function AssessmentContent() {
 
         <main className="relative mx-auto flex min-h-[calc(100vh-72px)] w-full max-w-[1280px] items-center px-6 py-6 sm:px-8 lg:py-8">
           <div className="grid w-full gap-5 lg:grid-cols-12 lg:grid-rows-[1fr_auto]">
-            <section className="rounded-[2rem] border border-fei-bg/10 bg-white shadow-[0_18px_55px_rgba(7,17,31,0.05)] lg:col-span-7 lg:row-span-2">
+            <section className="rounded-[2rem] border border-fei-bg/15 bg-white shadow-[0_24px_70px_rgba(7,17,31,0.10)] lg:col-span-7 lg:col-start-6 lg:row-span-2 lg:row-start-1">
               <div className="flex h-full flex-col p-8 sm:p-10 lg:p-11">
                 <p className="text-sm font-black uppercase tracking-[0.32em] text-fei-bg/55">
                   Diagnostic Assessment
@@ -3073,7 +3073,7 @@ function AssessmentContent() {
               </div>
             </section>
 
-            <section className="rounded-[2rem] border border-fei-bg/10 bg-[#F7F8FA] shadow-[0_18px_55px_rgba(7,17,31,0.04)] lg:col-span-5">
+            <section className="rounded-[2rem] border border-fei-sky/30 bg-[#F2F8FB] shadow-[0_20px_60px_rgba(7,17,31,0.09)] lg:col-span-5 lg:col-start-1 lg:row-start-1">
               <div className="p-8 sm:p-10 lg:p-11">
                 <p className="text-sm font-black uppercase tracking-[0.32em] text-fei-bg/55">
                   Before you begin
@@ -3106,7 +3106,7 @@ function AssessmentContent() {
               </div>
             </section>
 
-            <section className="rounded-[2rem] border border-fei-bg/10 bg-white shadow-[0_18px_55px_rgba(7,17,31,0.04)] lg:col-span-5">
+            <section className="rounded-[2rem] border border-fei-bg/15 bg-white shadow-[0_20px_60px_rgba(7,17,31,0.09)] lg:col-span-5 lg:col-start-1 lg:row-start-2">
               <div className="p-7 sm:p-8">
                 <div className="flex items-start gap-4">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-fei-sky/30 bg-white text-fei-bg">
