@@ -3168,7 +3168,7 @@ function AssessmentContent() {
                       <button
                         type="button"
                         onClick={requestMic}
-                        className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-fei-yellow px-5 py-3 text-sm font-bold text-fei-bg transition hover:-translate-y-0.5 hover:bg-fei-yellow/90"
+                        className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-fei-yellow px-5 py-3 text-sm font-bold text-fei-bg transition hover:bg-fei-yellow/90"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -3205,7 +3205,7 @@ function AssessmentContent() {
                     setSection('warm-up')
                   }}
                   disabled={micPermission !== 'granted'}
-                  className="inline-flex min-h-[58px] w-full items-center justify-center rounded-full bg-fei-yellow px-8 py-4 text-base font-black text-fei-bg shadow-[0_16px_36px_rgba(250,204,21,0.28)] transition duration-300 hover:-translate-y-0.5 hover:bg-fei-yellow/90 hover:shadow-[0_20px_42px_rgba(250,204,21,0.36)] disabled:cursor-not-allowed disabled:bg-fei-bg/[0.07] disabled:text-fei-bg/30 disabled:shadow-none disabled:hover:translate-y-0"
+                  className="inline-flex min-h-[58px] w-full items-center justify-center rounded-full bg-fei-yellow px-8 py-4 text-base font-black text-fei-bg transition duration-300 hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-bg/[0.07] disabled:text-fei-bg/30"
                 >
                   <span className="inline-flex items-center gap-2">
                     Begin assessment
@@ -3359,7 +3359,7 @@ function AssessmentContent() {
                     }
                   }}
                   disabled={!selected}
-                  className="inline-flex min-h-[56px] min-w-[250px] items-center justify-center rounded-full bg-fei-yellow px-8 py-3.5 text-base font-black text-fei-bg transition duration-300 hover:-translate-y-0.5 hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-bg/[0.07] disabled:text-fei-bg/30 disabled:hover:translate-y-0"
+                  className="inline-flex min-h-[56px] min-w-[250px] items-center justify-center rounded-full bg-fei-yellow px-8 py-3.5 text-base font-black text-fei-bg transition duration-300 hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-bg/[0.07] disabled:text-fei-bg/30"
                 >
                   {!selected ? (
                     'Select an option to continue'
@@ -3413,58 +3413,72 @@ function AssessmentContent() {
             </p>
           </div>
 
-          <ProgressBar current={getItemNumber('reading', readingStep)} total={totalItems} />
+          <ProgressBar
+            current={getItemNumber('reading', readingStep)}
+            total={totalItems}
+          />
 
-          <div className="mb-8">
-            <SectionBadge label="Professional Reading" />
+          <div className="grid items-start gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12">
+            <aside className="lg:sticky lg:top-10">
+              <SectionBadge label="Professional Reading" />
+            </aside>
+
+            <section>
+              <div className="mb-8 rounded-[1.5rem] border border-fei-bg/[0.14] bg-white p-6 shadow-[0_16px_42px_rgba(7,17,31,0.06)] sm:p-8">
+                <p className="text-xs font-black uppercase tracking-[0.22em] text-fei-bg/45">
+                  Read carefully
+                </p>
+
+                <p className="mt-5 whitespace-pre-line text-base leading-8 text-fei-bg/72 select-none">
+                  {item.context}
+                </p>
+              </div>
+
+              <div className="mb-8 border-l-4 border-fei-sky pl-5 sm:pl-7">
+                <h1 className="text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl">
+                  {item.question}
+                </h1>
+              </div>
+
+              <div className="mb-8 overflow-hidden border-y border-fei-bg/10">
+                {item.options.map((option) => (
+                  <OptionButton
+                    key={option}
+                    option={option}
+                    selected={selected === option}
+                    onSelect={() => setAnswer(item.id, option)}
+                  />
+                ))}
+              </div>
+
+              <div className="flex justify-end">
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (!selected) return
+                    if (readingStep < activeItems.reading.length - 1) {
+                      setReadingStep(readingStep + 1)
+                    } else {
+                      setSection('listening')
+                    }
+                  }}
+                  disabled={!selected}
+                  className="inline-flex min-h-[54px] min-w-[240px] items-center justify-center rounded-full bg-fei-yellow px-8 py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-bg/[0.07] disabled:text-fei-bg/30"
+                >
+                  {!selected ? (
+                    'Select an option to continue'
+                  ) : (
+                    <span className="inline-flex items-center justify-center gap-2">
+                      {readingStep < activeItems.reading.length - 1
+                        ? 'Next'
+                        : 'Continue to Listening'}
+                      <ChevronRightIcon />
+                    </span>
+                  )}
+                </button>
+              </div>
+            </section>
           </div>
-
-          <div className="mb-8 border-l-4 border-fei-sky pl-5 sm:pl-7">
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-fei-bg/45">
-              Read carefully
-            </p>
-
-            <p className="mt-5 whitespace-pre-line text-base leading-8 text-fei-bg/70 select-none">
-              {item.context}
-            </p>
-
-            <h1 className="mt-7 text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl">
-              {item.question}
-            </h1>
-          </div>
-
-          <div className="mb-8 overflow-hidden border-y border-fei-bg/10">
-            {item.options.map((option) => (
-              <OptionButton
-                key={option}
-                option={option}
-                selected={selected === option}
-                onSelect={() => setAnswer(item.id, option)}
-              />
-            ))}
-          </div>
-
-          <button
-            onClick={() => {
-              if (!selected) return
-              if (readingStep < activeItems.reading.length - 1) {
-                setReadingStep(readingStep + 1)
-              } else {
-                setSection('listening')
-              }
-            }}
-            disabled={!selected}
-            className="ml-auto flex min-h-[54px] min-w-[240px] items-center justify-center rounded-full bg-fei-yellow px-8 py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-bg/[0.07] disabled:text-fei-bg/30 disabled:opacity-100"
-          >
-            {!selected ? (
-              'Select an option to continue'
-            ) : (
-              <span className="inline-flex items-center justify-center gap-2">
-                {readingStep < activeItems.reading.length - 1 ? 'Next' : 'Continue to Listening'}
-                <ChevronRightIcon />
-              </span>
-            )}
-          </button>
         </div>
       </div>
     )
@@ -3503,55 +3517,70 @@ function AssessmentContent() {
             </p>
           </div>
 
-          <ProgressBar current={getItemNumber('listening', listeningStep)} total={totalItems} />
+          <ProgressBar
+            current={getItemNumber('listening', listeningStep)}
+            total={totalItems}
+          />
 
-          <div className="mb-8">
-            <SectionBadge label="Listening in Context" />
-            <p className="mt-4 text-sm leading-6 text-fei-bg/58">Use headphones for best results.</p>
+          <div className="grid items-start gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12">
+            <aside className="lg:sticky lg:top-10">
+              <SectionBadge label="Listening in Context" />
+
+              <p className="mt-5 max-w-xs text-sm leading-6 text-fei-bg/55">
+                Use headphones for best results.
+              </p>
+            </aside>
+
+            <section>
+              <div className="mb-8">
+                <AudioPlayer script={item.script} itemId={item.id} />
+              </div>
+
+              <div className="mb-8 border-l-4 border-fei-sky pl-5 sm:pl-7">
+                <h1 className="text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl">
+                  {item.question}
+                </h1>
+              </div>
+
+              <div className="mb-8 overflow-hidden border-y border-fei-bg/10">
+                {item.options.map((option) => (
+                  <OptionButton
+                    key={option}
+                    option={option}
+                    selected={selected === option}
+                    onSelect={() => setAnswer(item.id, option)}
+                  />
+                ))}
+              </div>
+
+              <div className="flex justify-end">
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (!selected) return
+                    if (listeningStep < activeItems.listening.length - 1) {
+                      setListeningStep(listeningStep + 1)
+                    } else {
+                      setSection('vocabulary')
+                    }
+                  }}
+                  disabled={!selected}
+                  className="inline-flex min-h-[54px] min-w-[240px] items-center justify-center rounded-full bg-fei-yellow px-8 py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-bg/[0.07] disabled:text-fei-bg/30"
+                >
+                  {!selected ? (
+                    'Select an option to continue'
+                  ) : (
+                    <span className="inline-flex items-center justify-center gap-2">
+                      {listeningStep < activeItems.listening.length - 1
+                        ? 'Next'
+                        : 'Continue to Vocabulary'}
+                      <ChevronRightIcon />
+                    </span>
+                  )}
+                </button>
+              </div>
+            </section>
           </div>
-
-          <div className="mb-6">
-            <AudioPlayer script={item.script} itemId={item.id} />
-          </div>
-
-          <div className="mb-8 border-l-4 border-fei-sky pl-5 sm:pl-7">
-            <h1 className="text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl">
-              {item.question}
-            </h1>
-          </div>
-
-          <div className="mb-8 overflow-hidden border-y border-fei-bg/10">
-            {item.options.map((option) => (
-              <OptionButton
-                key={option}
-                option={option}
-                selected={selected === option}
-                onSelect={() => setAnswer(item.id, option)}
-              />
-            ))}
-          </div>
-
-          <button
-            onClick={() => {
-              if (!selected) return
-              if (listeningStep < activeItems.listening.length - 1) {
-                setListeningStep(listeningStep + 1)
-              } else {
-                setSection('vocabulary')
-              }
-            }}
-            disabled={!selected}
-            className="ml-auto flex min-h-[54px] min-w-[240px] items-center justify-center rounded-full bg-fei-yellow px-8 py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-bg/[0.07] disabled:text-fei-bg/30 disabled:opacity-100"
-          >
-            {!selected ? (
-              'Select an option to continue'
-            ) : (
-              <span className="inline-flex items-center justify-center gap-2">
-                {listeningStep < activeItems.listening.length - 1 ? 'Next' : 'Continue to Vocabulary'}
-                <ChevronRightIcon />
-              </span>
-            )}
-          </button>
         </div>
       </div>
     )
@@ -3590,54 +3619,66 @@ function AssessmentContent() {
             </p>
           </div>
 
-          <ProgressBar current={getItemNumber('vocabulary', vocabStep)} total={totalItems} />
+          <ProgressBar
+            current={getItemNumber('vocabulary', vocabStep)}
+            total={totalItems}
+          />
 
-          <div className="mb-8">
-            <SectionBadge label="Football Vocabulary" />
+          <div className="grid items-start gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12">
+            <aside className="lg:sticky lg:top-10">
+              <SectionBadge label="Football Vocabulary" />
+            </aside>
+
+            <section>
+              <div className="mb-8 border-l-4 border-fei-sky pl-5 sm:pl-7">
+                <p className="text-base leading-8 text-fei-bg/70 select-none">
+                  {item.context}
+                </p>
+
+                <h1 className="mt-6 text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl">
+                  {item.question}
+                </h1>
+              </div>
+
+              <div className="mb-8 overflow-hidden border-y border-fei-bg/10">
+                {item.options.map((option) => (
+                  <OptionButton
+                    key={option}
+                    option={option}
+                    selected={selected === option}
+                    onSelect={() => setAnswer(item.id, option)}
+                  />
+                ))}
+              </div>
+
+              <div className="flex justify-end">
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (!selected) return
+                    if (vocabStep < activeItems.vocabulary.length - 1) {
+                      setVocabStep(vocabStep + 1)
+                    } else {
+                      setSection('functional')
+                    }
+                  }}
+                  disabled={!selected}
+                  className="inline-flex min-h-[54px] min-w-[240px] items-center justify-center rounded-full bg-fei-yellow px-8 py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-bg/[0.07] disabled:text-fei-bg/30"
+                >
+                  {!selected ? (
+                    'Select an option to continue'
+                  ) : (
+                    <span className="inline-flex items-center justify-center gap-2">
+                      {vocabStep < activeItems.vocabulary.length - 1
+                        ? 'Next'
+                        : 'Continue to Functional Communication'}
+                      <ChevronRightIcon />
+                    </span>
+                  )}
+                </button>
+              </div>
+            </section>
           </div>
-
-          <div className="mb-8 border-l-4 border-fei-sky pl-5 sm:pl-7">
-            <p className="text-base leading-8 text-fei-bg/70 select-none">
-              {item.context}
-            </p>
-
-            <h1 className="mt-6 text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl">
-              {item.question}
-            </h1>
-          </div>
-
-          <div className="mb-8 overflow-hidden border-y border-fei-bg/10">
-            {item.options.map((option) => (
-              <OptionButton
-                key={option}
-                option={option}
-                selected={selected === option}
-                onSelect={() => setAnswer(item.id, option)}
-              />
-            ))}
-          </div>
-
-          <button
-            onClick={() => {
-              if (!selected) return
-              if (vocabStep < activeItems.vocabulary.length - 1) {
-                setVocabStep(vocabStep + 1)
-              } else {
-                setSection('functional')
-              }
-            }}
-            disabled={!selected}
-            className="ml-auto flex min-h-[54px] min-w-[240px] items-center justify-center rounded-full bg-fei-yellow px-8 py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-bg/[0.07] disabled:text-fei-bg/30 disabled:opacity-100"
-          >
-            {!selected ? (
-              'Select an option to continue'
-            ) : (
-              <span className="inline-flex items-center justify-center gap-2">
-                {vocabStep < activeItems.vocabulary.length - 1 ? 'Next' : 'Continue to Functional Communication'}
-                <ChevronRightIcon />
-              </span>
-            )}
-          </button>
         </div>
       </div>
     )
@@ -3676,54 +3717,66 @@ function AssessmentContent() {
             </p>
           </div>
 
-          <ProgressBar current={getItemNumber('functional', functionalStep)} total={totalItems} />
+          <ProgressBar
+            current={getItemNumber('functional', functionalStep)}
+            total={totalItems}
+          />
 
-          <div className="mb-8">
-            <SectionBadge label="Functional Communication" />
+          <div className="grid items-start gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12">
+            <aside className="lg:sticky lg:top-10">
+              <SectionBadge label="Functional Communication" />
+            </aside>
+
+            <section>
+              <div className="mb-8 border-l-4 border-fei-sky pl-5 sm:pl-7">
+                <p className="text-base leading-8 text-fei-bg/70 select-none">
+                  {item.context}
+                </p>
+
+                <h1 className="mt-6 text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl">
+                  {item.question}
+                </h1>
+              </div>
+
+              <div className="mb-8 overflow-hidden border-y border-fei-bg/10">
+                {item.options.map((option) => (
+                  <OptionButton
+                    key={option}
+                    option={option}
+                    selected={selected === option}
+                    onSelect={() => setAnswer(item.id, option)}
+                  />
+                ))}
+              </div>
+
+              <div className="flex justify-end">
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (!selected) return
+                    if (functionalStep < activeItems.functional.length - 1) {
+                      setFunctionalStep(functionalStep + 1)
+                    } else {
+                      setSection('writing')
+                    }
+                  }}
+                  disabled={!selected}
+                  className="inline-flex min-h-[54px] min-w-[240px] items-center justify-center rounded-full bg-fei-yellow px-8 py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-bg/[0.07] disabled:text-fei-bg/30"
+                >
+                  {!selected ? (
+                    'Select an option to continue'
+                  ) : (
+                    <span className="inline-flex items-center justify-center gap-2">
+                      {functionalStep < activeItems.functional.length - 1
+                        ? 'Next'
+                        : 'Continue to Writing'}
+                      <ChevronRightIcon />
+                    </span>
+                  )}
+                </button>
+              </div>
+            </section>
           </div>
-
-          <div className="mb-8 border-l-4 border-fei-sky pl-5 sm:pl-7">
-            <p className="text-base leading-8 text-fei-bg/70 select-none">
-              {item.context}
-            </p>
-
-            <h1 className="mt-6 text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl">
-              {item.question}
-            </h1>
-          </div>
-
-          <div className="mb-8 overflow-hidden border-y border-fei-bg/10">
-            {item.options.map((option) => (
-              <OptionButton
-                key={option}
-                option={option}
-                selected={selected === option}
-                onSelect={() => setAnswer(item.id, option)}
-              />
-            ))}
-          </div>
-
-          <button
-            onClick={() => {
-              if (!selected) return
-              if (functionalStep < activeItems.functional.length - 1) {
-                setFunctionalStep(functionalStep + 1)
-              } else {
-                setSection('writing')
-              }
-            }}
-            disabled={!selected}
-            className="ml-auto flex min-h-[54px] min-w-[240px] items-center justify-center rounded-full bg-fei-yellow px-8 py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-bg/[0.07] disabled:text-fei-bg/30 disabled:opacity-100"
-          >
-            {!selected ? (
-              'Select an option to continue'
-            ) : (
-              <span className="inline-flex items-center justify-center gap-2">
-                {functionalStep < activeItems.functional.length - 1 ? 'Next' : 'Continue to Writing'}
-                <ChevronRightIcon />
-              </span>
-            )}
-          </button>
         </div>
       </div>
     )
