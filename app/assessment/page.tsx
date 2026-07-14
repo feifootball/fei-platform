@@ -2942,7 +2942,7 @@ function AssessmentContent() {
   // INTRO
   if (section === 'intro') {
     return (
-      <div className="relative min-h-screen overflow-hidden bg-white text-fei-bg">
+      <div className="relative min-h-screen overflow-x-hidden bg-white text-fei-bg">
         <div
           className="pointer-events-none absolute right-[-9rem] top-[4rem] h-[560px] w-[680px] opacity-55 blur-3xl"
           style={{
@@ -2974,7 +2974,7 @@ function AssessmentContent() {
           </div>
         </header>
 
-        <main className="relative mx-auto flex min-h-[calc(100vh-72px)] w-full max-w-[1280px] items-center px-6 py-6 sm:px-8 lg:py-8">
+        <main className="relative mx-auto flex min-h-[calc(100vh-72px)] w-full max-w-[1280px] items-center px-6 py-6 sm:px-8 lg:py-7">
           <div className="grid w-full gap-5 lg:grid-cols-12 lg:grid-rows-[1fr_auto]">
             <section className="rounded-[2rem] border border-fei-bg/15 bg-white shadow-[0_24px_70px_rgba(7,17,31,0.10)] lg:col-span-7 lg:col-start-6 lg:row-span-2 lg:row-start-1">
               <div className="flex h-full flex-col p-8 sm:p-10 lg:p-11">
@@ -3058,46 +3058,54 @@ function AssessmentContent() {
                   </div>
                 </div>
 
-                <div className="mt-auto pt-10">
+                <div className="mt-auto pt-9">
                   <button
                     type="button"
-                    onClick={() => setSection('audio-check')}
-                    className="inline-flex w-fit items-center justify-center rounded-full bg-fei-yellow px-8 py-3 text-base font-bold text-fei-bg transition duration-300 hover:-translate-y-0.5 hover:bg-fei-yellow/90 hover:shadow-lg hover:shadow-fei-yellow/25"
+                    onClick={() => {
+                      if (micPermission !== 'granted') return
+                      setSection('warm-up')
+                    }}
+                    disabled={micPermission !== 'granted'}
+                    className="inline-flex w-fit items-center justify-center rounded-full bg-fei-yellow px-8 py-3 text-base font-bold text-fei-bg transition duration-300 hover:-translate-y-0.5 hover:bg-fei-yellow/90 hover:shadow-lg hover:shadow-fei-yellow/25 disabled:cursor-not-allowed disabled:bg-fei-bg/[0.07] disabled:text-fei-bg/35 disabled:hover:translate-y-0 disabled:hover:shadow-none"
                   >
-                    <span className="inline-flex items-center gap-2">
-                      Begin assessment
-                      <ChevronRightIcon />
-                    </span>
+                    {micPermission === 'granted' ? (
+                      <span className="inline-flex items-center gap-2">
+                        Begin assessment
+                        <ChevronRightIcon />
+                      </span>
+                    ) : (
+                      'Enable microphone to start'
+                    )}
                   </button>
                 </div>
               </div>
             </section>
 
             <section className="rounded-[2rem] border border-fei-sky/30 bg-[#F2F8FB] shadow-[0_20px_60px_rgba(7,17,31,0.09)] lg:col-span-5 lg:col-start-1 lg:row-start-1">
-              <div className="p-8 sm:p-10 lg:p-11">
+              <div className="p-7 sm:p-8 lg:p-9">
                 <p className="text-sm font-black uppercase tracking-[0.32em] text-fei-bg/55">
                   Before you begin
                 </p>
 
-                <h2 className="mt-4 text-3xl font-black tracking-tight text-fei-bg sm:text-4xl">
+                <h2 className="mt-3 text-3xl font-black tracking-tight text-fei-bg sm:text-4xl">
                   Prepare your <span className="text-fei-sky">setup</span>
                 </h2>
 
-                <p className="mt-4 max-w-xl text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base sm:leading-8">
+                <p className="mt-3 max-w-xl text-[15px] leading-7 text-fei-bg/62">
                   Make sure you can complete the diagnostic without interruptions.
                 </p>
 
-                <div className="mt-7 space-y-5">
+                <div className="mt-6 space-y-4">
                   {[
                     'Do not close or refresh the page until the assessment is complete.',
                     'Find a quiet place with a reliable internet connection.',
                   ].map((item, index) => (
                     <div key={item} className="flex items-start gap-4">
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-fei-sky/30 bg-white text-sm font-black text-fei-bg">
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-fei-sky/35 bg-white text-sm font-black text-fei-bg">
                         {index + 1}
                       </span>
 
-                      <p className="pt-1 text-[15px] font-normal leading-7 text-fei-bg/68 sm:text-base">
+                      <p className="text-[15px] leading-7 text-fei-bg/68">
                         {item}
                       </p>
                     </div>
@@ -3108,160 +3116,51 @@ function AssessmentContent() {
 
             <section className="rounded-[2rem] border border-fei-bg/15 bg-white shadow-[0_20px_60px_rgba(7,17,31,0.09)] lg:col-span-5 lg:col-start-1 lg:row-start-2">
               <div className="p-7 sm:p-8">
-                <div className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-fei-sky/30 bg-white text-fei-bg">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth={1.8}
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="h-5 w-5"
-                      aria-hidden
-                    >
-                      <path d="M9 12.5 11 14.5 15.5 9.5" />
-                      <circle cx="12" cy="12" r="8.5" />
-                    </svg>
-                  </div>
-
+                <div className="flex items-center justify-between gap-4">
                   <div>
-                    <p className="text-base font-bold text-fei-bg">
-                      Audio and microphone required
+                    <p className="text-xs font-black uppercase tracking-[0.24em] text-fei-bg/50">
+                      Audio & microphone check
                     </p>
 
-                    <p className="mt-2 text-[15px] leading-7 text-fei-bg/60">
-                      You will check both on the next screen before the diagnostic begins.
+                    <p className="mt-2 text-lg font-black tracking-tight text-fei-bg">
+                      Check your setup
                     </p>
                   </div>
-                </div>
-              </div>
-            </section>
-          </div>
-        </main>
-      </div>
-    )
-  }
 
-  // AUDIO CHECK
-  if (section === 'audio-check') {
-    return (
-      <div className="relative min-h-screen overflow-hidden bg-white text-fei-bg">
-        <div
-          className="pointer-events-none absolute right-[-10rem] top-[5rem] h-[560px] w-[680px] opacity-55 blur-3xl"
-          style={{
-            background:
-              'radial-gradient(ellipse at 70% 34%, rgba(125,211,252,0.22), transparent 64%), radial-gradient(ellipse at 48% 68%, rgba(250,204,21,0.07), transparent 72%)',
-          }}
-        />
-
-        <header className="sticky top-0 z-50 border-b border-fei-bg/[0.07] bg-white/90 backdrop-blur-xl">
-          <div className="mx-auto flex h-[72px] w-full max-w-[1280px] items-center px-6 sm:px-8">
-            <button
-              type="button"
-              onClick={() => setSection('intro')}
-              className="flex items-center"
-              aria-label="Return to assessment introduction"
-            >
-              <img
-                src="/fei-logo-navbar-vector.svg"
-                alt="FEI"
-                className="h-12 w-auto"
-              />
-
-              <span className="mx-4 hidden h-5 w-px bg-fei-bg/10 sm:block" />
-
-              <span className="hidden text-sm font-medium text-fei-bg/55 sm:inline">
-                Football English Intelligence
-              </span>
-            </button>
-          </div>
-        </header>
-
-        <main className="relative mx-auto w-full max-w-[1280px] px-6 py-10 sm:px-8 lg:py-14">
-          <div className="mb-10 max-w-3xl">
-            <p className="text-sm font-black uppercase tracking-[0.32em] text-fei-bg/55">
-              Audio & Microphone Check
-            </p>
-
-            <h1 className="mt-5 text-4xl font-black tracking-tight text-fei-bg sm:text-5xl lg:text-6xl">
-              Check your setup
-            </h1>
-
-            <p className="mt-5 text-[15px] font-normal leading-7 text-fei-bg/62 sm:text-base sm:leading-8">
-              Check your audio and enable your microphone before starting the diagnostic.
-            </p>
-          </div>
-
-          <div className="grid gap-5 lg:grid-cols-12 lg:grid-rows-[1fr_auto]">
-            <section className="rounded-[2rem] border border-fei-bg/15 bg-white shadow-[0_24px_70px_rgba(7,17,31,0.09)] lg:col-span-7 lg:row-span-2">
-              <div className="flex h-full flex-col p-8 sm:p-10 lg:p-11">
-                <div className="flex items-center gap-4">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-fei-sky/35 bg-fei-sky/[0.07] text-sm font-black text-fei-bg">
-                    1
-                  </div>
-
-                  <div>
-                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-fei-bg/45">
-                      Listening equipment
-                    </p>
-                    <h2 className="mt-1 text-2xl font-black tracking-tight text-fei-bg sm:text-3xl">
-                      Audio test
-                    </h2>
-                  </div>
+                  {micPermission === 'granted' && (
+                    <span className="shrink-0 rounded-full border border-green-500/20 bg-green-500/10 px-3 py-1.5 text-xs font-bold text-green-700">
+                      Microphone ready
+                    </span>
+                  )}
                 </div>
 
-                <p className="mt-7 max-w-xl text-[15px] leading-7 text-fei-bg/62 sm:text-base sm:leading-8">
-                  Play the sample audio to confirm you can hear the listening items.
-                </p>
-
-                <div className="mt-auto pt-10">
+                <div className="mt-6 grid gap-3 sm:grid-cols-2">
                   <button
+                    type="button"
                     onClick={playAudioTest}
                     disabled={audioTestPlaying}
-                    className="inline-flex items-center justify-center rounded-full border border-fei-sky/70 bg-white px-7 py-3 text-sm font-bold text-fei-bg transition duration-300 hover:-translate-y-0.5 hover:bg-fei-sky/[0.07] disabled:cursor-not-allowed disabled:opacity-50"
+                    className="inline-flex min-h-12 items-center justify-center rounded-full border border-fei-sky/60 bg-white px-5 py-3 text-sm font-bold text-fei-bg transition hover:-translate-y-0.5 hover:bg-fei-sky/[0.06] disabled:cursor-not-allowed disabled:opacity-50"
                   >
                     {audioTestPlaying ? 'Playing...' : 'Play test audio'}
                   </button>
-                </div>
-              </div>
-            </section>
 
-            <section className="rounded-[2rem] border border-fei-sky/30 bg-[#F2F8FB] shadow-[0_20px_60px_rgba(7,17,31,0.08)] lg:col-span-5">
-              <div className="p-8 sm:p-10">
-                <div className="flex items-center gap-4">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-fei-sky/35 bg-white text-sm font-black text-fei-bg">
-                    2
-                  </div>
-
-                  <div>
-                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-fei-bg/45">
-                      Speaking equipment
-                    </p>
-                    <h2 className="mt-1 text-2xl font-black tracking-tight text-fei-bg sm:text-3xl">
-                      Speaking setup
-                    </h2>
-                  </div>
-                </div>
-
-                <p className="mt-7 text-[15px] leading-7 text-fei-bg/62 sm:text-base">
-                  Enable your microphone now to start the assessment.
-                </p>
-
-                <div className="mt-7">
                   {micPermission === 'granted' ? (
-                    <div className="inline-flex items-center gap-2 rounded-full border border-green-500/20 bg-green-500/10 px-5 py-3 text-sm font-bold text-green-700">
+                    <div className="inline-flex min-h-12 items-center justify-center rounded-full border border-green-500/20 bg-green-500/10 px-5 py-3 text-sm font-bold text-green-700">
                       ✓ Microphone ready
                     </div>
                   ) : micPermission === 'denied' ? (
-                    <div className="rounded-2xl border border-red-500/20 bg-red-500/[0.07] p-4 text-sm leading-6 text-red-700">
-                      ⚠ Microphone access denied. Please allow microphone access in your browser settings and refresh the page.
-                    </div>
+                    <button
+                      type="button"
+                      onClick={requestMic}
+                      className="inline-flex min-h-12 items-center justify-center rounded-full border border-red-500/25 bg-red-500/[0.07] px-5 py-3 text-sm font-bold text-red-700 transition hover:bg-red-500/10"
+                    >
+                      Microphone access denied
+                    </button>
                   ) : (
                     <button
+                      type="button"
                       onClick={requestMic}
-                      className="inline-flex items-center gap-2 rounded-full bg-fei-yellow px-6 py-3 text-sm font-bold text-fei-bg transition duration-300 hover:-translate-y-0.5 hover:bg-fei-yellow/90 hover:shadow-lg hover:shadow-fei-yellow/20"
+                      className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-fei-yellow px-5 py-3 text-sm font-bold text-fei-bg transition hover:-translate-y-0.5 hover:bg-fei-yellow/90 hover:shadow-lg hover:shadow-fei-yellow/20"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -3283,47 +3182,12 @@ function AssessmentContent() {
                     </button>
                   )}
                 </div>
-              </div>
-            </section>
 
-            <section className="rounded-[2rem] border border-fei-bg/15 bg-white shadow-[0_20px_60px_rgba(7,17,31,0.08)] lg:col-span-5">
-              <div className="flex flex-col gap-5 p-7 sm:p-8">
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-fei-bg/45">
-                    Final step
+                {micPermission === 'denied' && (
+                  <p className="mt-4 text-sm leading-6 text-red-700">
+                    Please allow microphone access in your browser settings and refresh the page.
                   </p>
-
-                  <p className="mt-2 text-base font-bold text-fei-bg">
-                    Your diagnostic is ready
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap items-center gap-3">
-                  <button
-                    onClick={() => setSection('intro')}
-                    className="rounded-full border border-fei-bg/20 bg-white px-6 py-3 text-sm font-semibold text-fei-bg/65 transition hover:border-fei-bg/35 hover:text-fei-bg"
-                  >
-                    ← Back
-                  </button>
-
-                  <button
-                    onClick={() => {
-                      if (micPermission !== 'granted') return
-                      setSection('warm-up')
-                    }}
-                    disabled={micPermission !== 'granted'}
-                    className="rounded-full bg-fei-yellow px-7 py-3 text-sm font-bold text-fei-bg transition duration-300 hover:-translate-y-0.5 hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-bg/[0.06] disabled:text-fei-bg/35 disabled:hover:translate-y-0"
-                  >
-                    {micPermission === 'granted' ? (
-                      <span className="inline-flex items-center justify-center gap-2">
-                        Start assessment
-                        <ChevronRightIcon />
-                      </span>
-                    ) : (
-                      'Enable microphone to start'
-                    )}
-                  </button>
-                </div>
+                )}
               </div>
             </section>
           </div>
