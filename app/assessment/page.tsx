@@ -2980,9 +2980,9 @@ function AssessmentContent() {
               Diagnostic Assessment
             </p>
 
-            <div className="grid items-stretch gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-14">
-            <div className="flex flex-col justify-center py-6 sm:py-8 lg:py-10 lg:pl-2">
-              <div>
+            <div className="grid items-start gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-14">
+            <div className="flex flex-col py-2 sm:py-3 lg:py-4 lg:pl-2">
+              <div className="pt-1">
                 <h1 className="text-4xl font-black tracking-[-0.04em] text-fei-bg sm:text-5xl">
                   {selectedRole}
                 </h1>
@@ -2996,7 +2996,7 @@ function AssessmentContent() {
                 </p>
               </div>
 
-              <div className="mt-9 border-t border-fei-sky/20 pt-7">
+              <div className="mt-8 border-t border-fei-sky/20 pt-6">
                 <p className="text-xs font-black uppercase tracking-[0.26em] text-fei-bg/45">
                   Before you begin
                 </p>
