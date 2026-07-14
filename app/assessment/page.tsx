@@ -3240,7 +3240,7 @@ function AssessmentContent() {
             </div>
           </div>
 
-          <div className="grid items-start gap-10 lg:grid-cols-[0.62fr_1.38fr] lg:gap-16">
+          <div className="grid items-start gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12">
             <aside className="lg:sticky lg:top-10">
               <div className="h-1 w-20 rounded-full bg-fei-sky" />
 
@@ -3259,7 +3259,7 @@ function AssessmentContent() {
                   {item.context}
                 </h1>
 
-                <p className="mt-5 max-w-3xl text-base font-semibold leading-7 text-fei-sky sm:text-lg">
+                <p className="mt-5 max-w-3xl text-base font-medium leading-7 text-fei-bg/72 sm:text-lg">
                   {item.question}
                 </p>
               </div>
@@ -3278,7 +3278,7 @@ function AssessmentContent() {
                     }`}
                   >
                     <span
-                      className={`text-[15px] font-semibold leading-7 transition sm:text-base ${
+                      className={`text-[15px] font-normal leading-7 transition sm:text-base ${
                         selected === option
                           ? 'text-fei-bg'
                           : 'text-fei-bg/68 group-hover:text-fei-bg'
