@@ -4855,7 +4855,7 @@ function AssessmentContent() {
                 </h1>
 
                 <p className="mt-5 max-w-3xl text-base leading-8 text-fei-text/58">
-                  Your result identifies how effectively you communicate in the real situations connected to your role in professional football.
+                  See how effectively you communicate in the situations that matter in your football role.
                 </p>
               </div>
 
@@ -4869,7 +4869,7 @@ function AssessmentContent() {
 
             <section className="mt-8 overflow-hidden rounded-[2rem] border border-fei-text/10 bg-fei-text/[0.035]">
               <div className="grid lg:grid-cols-[1.25fr_0.75fr]">
-                <div className="p-7 sm:p-9 lg:p-11">
+                <div className="p-7 sm:p-9 lg:p-10">
                   <p className="text-xs font-black uppercase tracking-[0.24em] text-fei-sky">
                     Your Current Communication Level
                   </p>
@@ -4889,20 +4889,12 @@ function AssessmentContent() {
                     </div>
                   </div>
 
-                  <div className="mt-8 flex flex-wrap gap-3">
-                    <span className="rounded-full border border-fei-text/10 bg-fei-bg/35 px-4 py-2 text-sm font-semibold text-fei-text/72">
-                      {selectedRole}
-                    </span>
-
-                    {selectedRole === 'Professional Player' && (
-                      <span className="rounded-full border border-fei-text/10 bg-fei-bg/35 px-4 py-2 text-sm font-semibold text-fei-text/72">
-                        Senior Squad
-                      </span>
-                    )}
-                  </div>
+                  <p className="mt-7 text-base font-bold text-fei-text/68">
+                    {selectedRole}
+                  </p>
                 </div>
 
-                <div className="border-t border-fei-text/10 bg-fei-yellow/[0.045] p-7 sm:p-9 lg:border-l lg:border-t-0 lg:p-11">
+                <div className="border-t border-fei-text/10 bg-fei-yellow/[0.045] p-7 sm:p-9 lg:border-l lg:border-t-0 lg:p-10">
                   <p className="text-xs font-black uppercase tracking-[0.24em] text-fei-yellow">
                     Diagnostic Evidence
                   </p>
@@ -4914,7 +4906,7 @@ function AssessmentContent() {
                   </div>
 
                   <p className="mt-5 max-w-sm text-sm leading-7 text-fei-text/55">
-                    Your assessment performance was used to determine your current communication level and recommended training direction.
+                    Based on your performance across the diagnostic.
                   </p>
 
                   <div className="mt-7 h-2 overflow-hidden rounded-full bg-fei-text/10">
