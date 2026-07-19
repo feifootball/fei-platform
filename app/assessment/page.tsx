@@ -2766,20 +2766,30 @@ function AssessmentContent() {
 
     setAnimatedEvidence(0)
 
-    const totalDuration = 2000
-    const stepDuration = totalDuration / targetEvidence
+    const initialPause = 180
+    const countingDuration = 1820
+    const stepDuration = countingDuration / targetEvidence
     let currentValue = 0
+    let interval: number | undefined
 
-    const interval = window.setInterval(() => {
-      currentValue += 1
-      setAnimatedEvidence(currentValue)
+    const timeout = window.setTimeout(() => {
+      interval = window.setInterval(() => {
+        currentValue += 1
+        setAnimatedEvidence(currentValue)
 
-      if (currentValue >= targetEvidence) {
+        if (currentValue >= targetEvidence && interval) {
+          window.clearInterval(interval)
+        }
+      }, stepDuration)
+    }, initialPause)
+
+    return () => {
+      window.clearTimeout(timeout)
+
+      if (interval) {
         window.clearInterval(interval)
       }
-    }, stepDuration)
-
-    return () => window.clearInterval(interval)
+    }
   }, [section, result])
 
   // ── Security: block navigation ───────────────────────────────────────────────
@@ -4944,7 +4954,7 @@ function AssessmentContent() {
 
         <main className="px-6 pb-6 pt-12 sm:px-8 lg:pb-7 lg:pt-16">
           <div className="mx-auto w-full max-w-[1280px]">
-            <section className="pb-5">
+            <section className="pb-1">
               <h1 className="max-w-5xl text-4xl leading-[1.02] tracking-[-0.045em] text-fei-bg sm:text-5xl lg:text-[3.35rem]">
                 <span className="font-normal">
                   Your
@@ -5002,14 +5012,14 @@ function AssessmentContent() {
                         Diagnostic Evidence
                       </p>
 
-                      <p className="text-xl font-black text-fei-bg">
+                      <p className="min-w-[76px] text-right text-3xl font-black tabular-nums tracking-[-0.04em] text-fei-bg">
                         {animatedEvidence}%
                       </p>
                     </div>
 
-                    <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-fei-bg/10">
+                    <div className="mt-3 h-2.5 overflow-hidden rounded-full bg-fei-bg/10">
                       <div
-                        className="h-full rounded-full bg-gradient-to-r from-fei-sky to-fei-yellow"
+                        className="h-full rounded-full bg-gradient-to-r from-fei-sky to-fei-yellow transition-[width] duration-75 ease-linear"
                         style={{ width: `${animatedEvidence}%` }}
                       />
                     </div>
