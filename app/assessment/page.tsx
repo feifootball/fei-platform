@@ -2743,11 +2743,39 @@ function AssessmentContent() {
   const [result, setResult] = useState<Result | null>(null)
   const [saving, setSaving] = useState(false)
   const [animatedEvidence, setAnimatedEvidence] = useState(0)
+  const resultStorageKey = `fei-diagnostic-result:${selectedRole}`
 
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
   const mediaStreamRef = useRef<MediaStream | null>(null)
   const timerRef = useRef<NodeJS.Timeout | null>(null)
   const totalItems = 17
+
+  useEffect(() => {
+    try {
+      const savedResult = window.localStorage.getItem(resultStorageKey)
+
+      if (!savedResult) return
+
+      const parsedResult = JSON.parse(savedResult) as {
+        role: string
+        result: Result
+      }
+
+      if (
+        parsedResult.role === selectedRole &&
+        parsedResult.result &&
+        typeof parsedResult.result.score === 'number' &&
+        typeof parsedResult.result.maxScore === 'number' &&
+        typeof parsedResult.result.level === 'string'
+      ) {
+        setResult(parsedResult.result)
+        setSection('result')
+      }
+    } catch (error) {
+      console.error('FEI saved diagnostic result could not be restored:', error)
+      window.localStorage.removeItem(resultStorageKey)
+    }
+  }, [resultStorageKey, selectedRole])
 
   useEffect(() => {
     if (section !== 'result' || !result) {
@@ -2902,6 +2930,18 @@ function AssessmentContent() {
       } else {
         console.log('FEI assessment saved successfully.')
       }
+    }
+
+    try {
+      window.localStorage.setItem(
+        resultStorageKey,
+        JSON.stringify({
+          role: selectedRole,
+          result: res,
+        })
+      )
+    } catch (error) {
+      console.error('FEI diagnostic result could not be saved locally:', error)
     }
 
     setSaving(false)
@@ -4952,9 +4992,9 @@ function AssessmentContent() {
           </div>
         </header>
 
-        <main className="px-6 pb-6 pt-12 sm:px-8 lg:pb-7 lg:pt-16">
+        <main className="px-6 pb-6 pt-7 sm:px-8 lg:pb-7 lg:pt-9">
           <div className="mx-auto w-full max-w-[1280px]">
-            <section className="pb-1">
+            <section className="pb-5">
               <h1 className="max-w-5xl text-4xl leading-[1.02] tracking-[-0.045em] text-fei-bg sm:text-5xl lg:text-[3.35rem]">
                 <span className="font-normal">
                   Your
