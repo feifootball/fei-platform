@@ -4908,7 +4908,7 @@ function AssessmentContent() {
           </div>
         </header>
 
-        <main className="px-6 py-6 sm:px-8 lg:py-7">
+        <main className="px-6 pb-6 pt-12 sm:px-8 lg:pb-7 lg:pt-16">
           <div className="mx-auto w-full max-w-[1280px]">
             <section className="pb-5">
               <h1 className="max-w-5xl text-4xl leading-[1.02] tracking-[-0.045em] text-fei-bg sm:text-5xl lg:text-[3.35rem]">
@@ -5097,7 +5097,7 @@ function AssessmentContent() {
 
                   <div className="flex flex-col justify-between border-t border-fei-bg/10 p-7 sm:p-9 lg:border-t-0">
                     <div>
-                      <p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/38">
+                      <p className="text-center text-xs font-black uppercase tracking-[0.18em] text-fei-bg/38">
                         Complete pathway
                       </p>
 
