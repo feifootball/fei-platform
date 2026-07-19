@@ -4905,7 +4905,6 @@ function AssessmentContent() {
             'Turn tactical patterns into clear messages coaches can act on.',
             'Present video and data insights without overloading the conversation.',
             'Defend recommendations with confidence in staff meetings and match preparation.',
-            'Give players concise, useful analysis under pressure.',
           ]
         : improvements
 
@@ -5130,7 +5129,7 @@ function AssessmentContent() {
 
               <div className="mt-6 grid gap-8 lg:grid-cols-2 lg:gap-14">
                 <div className="lg:pr-8">
-                  <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/52">
+                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-fei-bg/52">
                     Your Current Base
                   </p>
 
@@ -5151,7 +5150,7 @@ function AssessmentContent() {
                 </div>
 
                 <div className="border-t border-fei-bg/10 pt-7 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
-                  <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/52">
+                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-fei-bg/52">
                     What FEI Will Help You Deliver
                   </p>
 
@@ -5163,7 +5162,7 @@ function AssessmentContent() {
                       >
                         <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-fei-yellow" />
 
-                        <p className="text-sm font-medium leading-6 text-fei-bg/70">
+                        <p className="text-sm font-normal leading-6 text-fei-bg/66">
                           {item}
                         </p>
                       </div>
