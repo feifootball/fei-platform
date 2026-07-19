@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useEffect, useState, useRef, useCallback } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { createClient } from '@/lib/supabase'
@@ -2850,6 +2851,11 @@ function AssessmentContent() {
     }
   }, [section])
 
+  async function handleLogout() {
+    await supabase.auth.signOut()
+    router.push('/')
+  }
+
   function setAnswer(id: string, value: string) {
     setAnswers((prev) => ({ ...prev, [id]: value }))
   }
@@ -4961,18 +4967,17 @@ function AssessmentContent() {
 
     return (
       <div className="min-h-screen bg-[#F7F8FA] text-fei-bg">
-        <header className="sticky top-0 z-50 border-b border-fei-bg/[0.07] bg-white/90 backdrop-blur-xl">
-          <div className="mx-auto flex h-[72px] w-full max-w-[1280px] items-center justify-between px-6 sm:px-8">
-            <button
-              type="button"
-              onClick={() => router.push('/')}
+        <nav className="sticky top-0 z-50 w-full border-b border-fei-bg/[0.08] bg-white/90 backdrop-blur-xl">
+          <div className="mx-auto flex min-h-[60px] w-full max-w-[1440px] items-center justify-between px-6 sm:px-8 lg:px-10">
+            <Link
+              href="/"
               className="flex items-center"
               aria-label="Go to FEI home"
             >
               <img
                 src="/fei-logo-navbar-vector.svg"
                 alt="FEI"
-                className="h-11 w-auto"
+                className="h-9 w-auto"
               />
 
               <span className="mx-4 hidden h-5 w-px bg-fei-bg/10 sm:block" />
@@ -4980,17 +4985,42 @@ function AssessmentContent() {
               <span className="hidden text-sm font-medium text-fei-bg/55 sm:inline">
                 Football English Intelligence
               </span>
-            </button>
+            </Link>
 
-            <button
-              type="button"
-              onClick={() => router.push('/dashboard')}
-              className="rounded-full border border-fei-bg/12 px-5 py-1.5 text-sm font-semibold text-fei-bg/60 transition hover:border-fei-sky/50 hover:text-fei-bg"
-            >
-              Dashboard
-            </button>
+            <div className="flex items-center gap-1 sm:gap-2">
+              <Link
+                href="/dashboard"
+                className="relative hidden px-3 py-2 text-sm font-semibold text-fei-bg after:absolute after:inset-x-3 after:-bottom-[11px] after:h-0.5 after:bg-fei-yellow sm:inline-flex"
+              >
+                Dashboard
+              </Link>
+
+              <Link
+                href="/learning"
+                className="hidden rounded-lg px-3 py-2 text-sm font-medium text-fei-bg/55 transition hover:bg-fei-bg/[0.04] hover:text-fei-bg sm:inline-flex"
+              >
+                Learning Path
+              </Link>
+
+              <Link
+                href="/settings"
+                className="hidden rounded-lg px-3 py-2 text-sm font-medium text-fei-bg/55 transition hover:bg-fei-bg/[0.04] hover:text-fei-bg sm:inline-flex"
+              >
+                Settings
+              </Link>
+
+              <span className="mx-2 hidden h-5 w-px bg-fei-bg/10 sm:block" />
+
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="rounded-lg px-3 py-2 text-sm font-medium text-fei-bg/50 transition hover:bg-fei-bg/[0.04] hover:text-fei-bg"
+              >
+                Sign out
+              </button>
+            </div>
           </div>
-        </header>
+        </nav>
 
         <main className="px-6 pb-6 pt-7 sm:px-8 lg:pb-7 lg:pt-9">
           <div className="mx-auto w-full max-w-[1280px]">
