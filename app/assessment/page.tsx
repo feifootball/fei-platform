@@ -3245,7 +3245,7 @@ function AssessmentContent() {
     return (
       <div className="min-h-screen bg-[#F6F7F9] text-fei-bg">
         <header className="border-b border-fei-bg/[0.08] bg-white/90 backdrop-blur-xl">
-          <div className="mx-auto flex h-[72px] w-full max-w-[1280px] items-center justify-between px-6 sm:px-8">
+          <div className="mx-auto flex h-[58px] w-full max-w-[1280px] items-center justify-between px-6 sm:px-8">
             <button
               type="button"
               onClick={() => router.push('/')}
@@ -3255,7 +3255,7 @@ function AssessmentContent() {
               <img
                 src="/fei-logo-navbar-vector.svg"
                 alt="FEI"
-                className="h-11 w-auto"
+                className="h-9 w-auto"
               />
 
               <span className="mx-4 hidden h-5 w-px bg-fei-bg/10 sm:block" />
@@ -4901,17 +4901,17 @@ function AssessmentContent() {
             <button
               type="button"
               onClick={() => router.push('/dashboard')}
-              className="rounded-full border border-fei-bg/12 px-5 py-2 text-sm font-semibold text-fei-bg/60 transition hover:border-fei-sky/50 hover:text-fei-bg"
+              className="rounded-full border border-fei-bg/12 px-5 py-1.5 text-sm font-semibold text-fei-bg/60 transition hover:border-fei-sky/50 hover:text-fei-bg"
             >
               Dashboard
             </button>
           </div>
         </header>
 
-        <main className="px-6 py-8 sm:px-8 lg:py-11">
+        <main className="px-6 py-4 sm:px-8 lg:py-5">
           <div className="mx-auto w-full max-w-[1280px]">
-            <section className="pb-7">
-              <h1 className="max-w-5xl text-4xl leading-[1.04] tracking-[-0.045em] text-fei-bg sm:text-5xl lg:text-6xl">
+            <section className="pb-4">
+              <h1 className="max-w-5xl text-4xl leading-[1.02] tracking-[-0.045em] text-fei-bg sm:text-5xl lg:text-[3.35rem]">
                 <span className="font-normal">
                   Your
                 </span>{' '}
@@ -4927,13 +4927,13 @@ function AssessmentContent() {
 
             <section className="overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-white shadow-[0_18px_55px_rgba(7,17,31,0.05)]">
               <div className="grid lg:grid-cols-[0.78fr_1.22fr]">
-                <div className="p-6 sm:p-7 lg:border-r lg:border-fei-bg/10 lg:px-8 lg:py-7">
+                <div className="p-5 sm:p-6 lg:border-r lg:border-fei-bg/10 lg:px-8 lg:py-5">
                   <p className="text-xs font-black uppercase tracking-[0.23em] text-fei-bg/55">
                     Your Current Level
                   </p>
 
                   <div className="mt-4 flex items-end gap-4">
-                    <p className="text-7xl font-black leading-none tracking-[-0.07em] text-fei-sky sm:text-8xl">
+                    <p className="text-6xl font-black leading-none tracking-[-0.07em] text-fei-sky sm:text-7xl">
                       {result.level}
                     </p>
 
@@ -4953,7 +4953,7 @@ function AssessmentContent() {
                   </p>
                 </div>
 
-                <div className="border-t border-fei-bg/10 p-6 sm:p-7 lg:border-t-0 lg:px-8 lg:py-7">
+                <div className="border-t border-fei-bg/10 p-5 sm:p-6 lg:border-t-0 lg:px-8 lg:py-5">
                   <p className="text-xs font-black uppercase tracking-[0.23em] text-fei-bg/40">
                     What This Means
                   </p>
@@ -4984,28 +4984,28 @@ function AssessmentContent() {
               </div>
             </section>
 
-            <section className="mt-9 border-y border-fei-bg/10 py-7">
+            <section className="mt-5 border-y border-fei-bg/10 py-5">
               <div>
                 <p className="text-xs font-black uppercase tracking-[0.23em] text-fei-bg/55">
                   Your Diagnostic Insight
                 </p>
 
-                <h2 className="mt-3 text-2xl font-black tracking-[-0.035em] text-fei-bg sm:text-3xl">
+                <h2 className="mt-2 text-2xl font-black tracking-[-0.035em] text-fei-bg sm:text-[1.7rem]">
                   What you can use now—and what to improve next.
                 </h2>
               </div>
 
-              <div className="mt-7 grid gap-8 lg:grid-cols-2 lg:gap-14">
+              <div className="mt-5 grid gap-7 lg:grid-cols-2 lg:gap-14">
                 <div className="lg:pr-8">
                   <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/52">
                     Current Strengths
                   </p>
 
-                  <div className="mt-4 border-t border-fei-bg/10">
+                  <div className="mt-3 border-t border-fei-bg/10">
                     {strengths.map((item) => (
                       <div
                         key={item}
-                        className="flex items-start gap-3 border-b border-fei-bg/[0.08] py-3.5"
+                        className="flex items-start gap-3 border-b border-fei-bg/[0.08] py-2.5"
                       >
                         <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-fei-sky" />
 
@@ -5022,11 +5022,11 @@ function AssessmentContent() {
                     Next Priorities
                   </p>
 
-                  <div className="mt-4 border-t border-fei-bg/10">
+                  <div className="mt-3 border-t border-fei-bg/10">
                     {improvements.map((item) => (
                       <div
                         key={item}
-                        className="flex items-start gap-3 border-b border-fei-bg/[0.08] py-3.5"
+                        className="flex items-start gap-3 border-b border-fei-bg/[0.08] py-2.5"
                       >
                         <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-fei-yellow" />
 
