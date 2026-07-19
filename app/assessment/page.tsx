@@ -5274,7 +5274,7 @@ function AssessmentContent() {
                                   </p>
                                 </div>
 
-                                {scenarioIndex < module.scenarios.length - 1 && (
+                                {scenarioIndex < module.scenarios!.length - 1 && (
                                   <span className="text-base font-black text-fei-sky">
                                     →
                                   </span>
