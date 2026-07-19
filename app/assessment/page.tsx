@@ -4890,6 +4890,25 @@ function AssessmentContent() {
     const strengths = levelStrengths[result.level] || levelStrengths.A2
     const improvements = levelImprovements[result.level] || levelImprovements.A2
 
+    const communicationBase =
+      selectedRole === 'Performance Analyst'
+        ? [
+            'You can follow the main message in familiar football and analysis conversations.',
+            'You recognize essential language used around video, data and tactical preparation.',
+            'You can share straightforward observations when the context is clear.',
+          ]
+        : strengths
+
+    const pathwayOutcomes =
+      selectedRole === 'Performance Analyst'
+        ? [
+            'Turn tactical patterns into clear messages coaches can act on.',
+            'Present video and data insights without overloading the conversation.',
+            'Defend recommendations with confidence in staff meetings and match preparation.',
+            'Give players concise, useful analysis under pressure.',
+          ]
+        : improvements
+
     const foundations = [
       'Building Professional Relationships',
       'Giving & Receiving Feedback',
@@ -5101,22 +5120,22 @@ function AssessmentContent() {
             <section className="mt-7 border-y border-fei-bg/10 py-6">
               <div>
                 <p className="text-xs font-black uppercase tracking-[0.23em] text-fei-bg/55">
-                  Your Diagnostic Insight
+                  Your Communication Opportunity
                 </p>
 
                 <h2 className="mt-2 text-2xl font-black tracking-[-0.035em] text-fei-bg sm:text-[1.7rem]">
-                  What you can use now—and what to improve next.
+                  What you already bring—and what FEI will help you deliver.
                 </h2>
               </div>
 
               <div className="mt-6 grid gap-8 lg:grid-cols-2 lg:gap-14">
                 <div className="lg:pr-8">
                   <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/52">
-                    Current Strengths
+                    Your Current Base
                   </p>
 
                   <div className="mt-3 border-t border-fei-bg/10">
-                    {strengths.map((item) => (
+                    {communicationBase.map((item) => (
                       <div
                         key={item}
                         className="flex items-start gap-3 border-b border-fei-bg/[0.08] py-3"
@@ -5133,11 +5152,11 @@ function AssessmentContent() {
 
                 <div className="border-t border-fei-bg/10 pt-7 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
                   <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/52">
-                    Next Priorities
+                    What FEI Will Help You Deliver
                   </p>
 
                   <div className="mt-3 border-t border-fei-bg/10">
-                    {improvements.map((item) => (
+                    {pathwayOutcomes.map((item) => (
                       <div
                         key={item}
                         className="flex items-start gap-3 border-b border-fei-bg/[0.08] py-3"
