@@ -4873,17 +4873,17 @@ function AssessmentContent() {
           <div className="mx-auto w-full max-w-[1280px]">
             <section className="pb-7">
               <h1 className="max-w-5xl text-4xl leading-[1.04] tracking-[-0.045em] text-fei-bg sm:text-5xl lg:text-6xl">
+                <span className="font-normal">
+                  Your
+                </span>{' '}
                 <span className="font-black">
-                  Your FEI diagnostic result
+                  FEI diagnostic result
                 </span>{' '}
                 <span className="font-normal">
                   is ready.
                 </span>
               </h1>
 
-              <p className="mt-4 text-sm font-semibold text-fei-bg/45">
-                {selectedRole} · Diagnostic completed
-              </p>
             </section>
 
             <section className="overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-white shadow-[0_18px_55px_rgba(7,17,31,0.05)]">
@@ -4936,7 +4936,7 @@ function AssessmentContent() {
 
                     <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-fei-bg/10">
                       <div
-                        className="h-full rounded-full bg-fei-sky"
+                        className="h-full rounded-full bg-gradient-to-r from-fei-sky via-fei-yellow to-emerald-400"
                         style={{ width: `${overallEvidence}%` }}
                       />
                     </div>
@@ -4945,88 +4945,94 @@ function AssessmentContent() {
               </div>
             </section>
 
-            <section className="mt-8">
-              <div className="mb-5">
+            <section className="mt-9">
+              <div className="border-b border-fei-bg/10 pb-6">
                 <p className="text-xs font-black uppercase tracking-[0.23em] text-fei-sky">
                   Your Communication Profile
                 </p>
 
-                <h2 className="mt-3 max-w-3xl text-3xl font-black leading-tight tracking-[-0.035em] text-fei-bg sm:text-4xl">
+                <h2 className="mt-3 whitespace-nowrap text-2xl font-black tracking-[-0.035em] text-fei-bg sm:text-3xl lg:text-4xl">
                   What is already working—and where progress begins.
                 </h2>
               </div>
 
-              <div className="overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-white shadow-[0_14px_42px_rgba(7,17,31,0.035)]">
-                <div className="grid lg:grid-cols-2">
-                  <div className="p-7 sm:p-8 lg:border-r lg:border-fei-bg/10">
-                    <div className="flex items-center gap-3">
-                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-fei-sky/15 text-sm font-black text-fei-sky">
-                        ✓
-                      </span>
+              <div className="grid gap-10 py-8 lg:grid-cols-2 lg:gap-16">
+                <div className="lg:pr-8">
+                  <div className="flex items-baseline gap-4">
+                    <span className="text-3xl font-black text-fei-sky">
+                      01
+                    </span>
 
+                    <div>
                       <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/46">
                         Already Working
                       </p>
-                    </div>
 
-                    <div className="mt-6 space-y-4">
-                      {strengths.map((item, index) => (
-                        <div
-                          key={item}
-                          className="grid grid-cols-[28px_1fr] gap-3 border-b border-fei-bg/[0.08] pb-4 last:border-b-0 last:pb-0"
-                        >
-                          <span className="text-xs font-black text-fei-sky">
-                            {String(index + 1).padStart(2, '0')}
-                          </span>
-
-                          <p className="text-sm leading-6 text-fei-bg/64">
-                            {item}
-                          </p>
-                        </div>
-                      ))}
+                      <p className="mt-2 text-sm leading-6 text-fei-bg/48">
+                        Communication strengths already visible in your diagnostic performance.
+                      </p>
                     </div>
                   </div>
 
-                  <div className="bg-fei-sky/[0.06] p-7 sm:p-8">
-                    <div className="flex items-center gap-3">
-                      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-fei-bg text-sm font-black text-white">
-                        →
-                      </span>
+                  <div className="mt-7 border-t border-fei-bg/10">
+                    {strengths.map((item, index) => (
+                      <div
+                        key={item}
+                        className="grid grid-cols-[34px_1fr] gap-4 border-b border-fei-bg/[0.08] py-4"
+                      >
+                        <span className="text-xs font-black text-fei-sky">
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
 
+                        <p className="text-sm leading-6 text-fei-bg/66">
+                          {item}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="border-t border-fei-bg/10 pt-8 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
+                  <div className="flex items-baseline gap-4">
+                    <span className="text-3xl font-black text-fei-bg">
+                      02
+                    </span>
+
+                    <div>
                       <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-sky">
                         Next-Level Focus
                       </p>
+
+                      <p className="mt-2 max-w-lg text-sm leading-6 text-fei-bg/48">
+                        The communication shifts that will create the greatest professional impact.
+                      </p>
                     </div>
+                  </div>
 
-                    <p className="mt-5 max-w-md text-lg font-bold leading-7 text-fei-bg">
-                      The communication shifts that will create the greatest professional impact.
-                    </p>
+                  <div className="mt-7 border-t border-fei-bg/10">
+                    {improvements.map((item, index) => (
+                      <div
+                        key={item}
+                        className="grid grid-cols-[34px_1fr] gap-4 border-b border-fei-bg/[0.08] py-4"
+                      >
+                        <span className="text-xs font-black text-fei-sky">
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
 
-                    <div className="mt-6 space-y-4">
-                      {improvements.map((item, index) => (
-                        <div
-                          key={item}
-                          className="grid grid-cols-[28px_1fr] gap-3 border-b border-fei-bg/[0.08] pb-4 last:border-b-0 last:pb-0"
-                        >
-                          <span className="text-xs font-black text-fei-sky">
-                            {String(index + 1).padStart(2, '0')}
-                          </span>
-
-                          <p className="text-sm font-medium leading-6 text-fei-bg/70">
-                            {item}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
+                        <p className="text-sm font-medium leading-6 text-fei-bg/70">
+                          {item}
+                        </p>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
             </section>
 
-            <section className="mt-9">
-              <div className="border-b border-fei-bg/10 pb-7">
-                <div className="grid gap-7 lg:grid-cols-[1fr_auto] lg:items-end">
-                  <div>
+            <section className="mt-10">
+              <div className="overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-white shadow-[0_18px_55px_rgba(7,17,31,0.045)]">
+                <div className="grid lg:grid-cols-[1fr_340px]">
+                  <div className="p-7 sm:p-9 lg:border-r lg:border-fei-bg/10">
                     <p className="text-xs font-black uppercase tracking-[0.23em] text-fei-bg/42">
                       Your Personalized Training Pathway
                     </p>
@@ -5040,80 +5046,82 @@ function AssessmentContent() {
                         ? `${professionalPlayerDomains.length} domains · ${pathwayScenarioCount} real football scenarios`
                         : `${rolePathwayModules.length} role-specific modules`}
                     </p>
-                  </div>
 
-                  <div className="flex flex-col gap-3 sm:min-w-[285px]">
-                    <div className="flex items-end justify-between gap-5 border-b border-fei-bg/10 pb-3">
-                      <div>
-                        <p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/38">
-                          Complete pathway
-                        </p>
+                    <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-4 border-t border-fei-bg/10 pt-6">
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-xs font-black uppercase tracking-[0.16em] text-fei-bg/36">
+                          Current
+                        </span>
 
-                        <p className="mt-1 text-sm font-medium text-fei-bg/48">
-                          Role-specific professional training
-                        </p>
+                        <span className="text-2xl font-black text-fei-sky">
+                          {result.level}
+                        </span>
+
+                        <span className="text-base font-bold text-fei-bg/65">
+                          {pathwayLabel}
+                        </span>
                       </div>
 
-                      <p className="text-4xl font-black tracking-[-0.04em] text-fei-bg">
-                        $49
+                      <span className="text-xl font-black text-fei-bg/20">
+                        →
+                      </span>
+
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-xs font-black uppercase tracking-[0.16em] text-fei-sky">
+                          Next
+                        </span>
+
+                        <span className="text-2xl font-black text-fei-bg">
+                          {nextLevel}
+                        </span>
+
+                        <span className="text-base font-bold text-fei-bg/65">
+                          {nextLevelLabels[result.level] || 'Next milestone'}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col justify-between border-t border-fei-bg/10 p-7 sm:p-9 lg:border-t-0">
+                    <div>
+                      <p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/38">
+                        Complete pathway
                       </p>
+
+                      <div className="mt-4 flex items-end justify-between gap-5">
+                        <p className="max-w-[160px] text-sm font-medium leading-6 text-fei-bg/48">
+                          Role-specific professional training
+                        </p>
+
+                        <p className="text-5xl font-black leading-none tracking-[-0.05em] text-fei-bg">
+                          $49
+                        </p>
+                      </div>
                     </div>
 
-                    <button
-                      type="button"
-                      onClick={() => router.push('/#pricing')}
-                      className="rounded-full bg-fei-yellow px-7 py-3.5 text-sm font-black text-fei-bg transition hover:-translate-y-0.5 hover:bg-fei-yellow/90"
-                    >
-                      Unlock My Pathway · $49
-                    </button>
+                    <div className="mt-7">
+                      <button
+                        type="button"
+                        onClick={() => router.push('/#pricing')}
+                        className="w-full rounded-full bg-fei-yellow px-7 py-3.5 text-sm font-black text-fei-bg transition hover:-translate-y-0.5 hover:bg-fei-yellow/90"
+                      >
+                        Unlock My Pathway · $49
+                      </button>
 
-                    <button
-                      type="button"
-                      onClick={() => router.push('/dashboard')}
-                      className="text-sm font-bold text-fei-bg/48 transition hover:text-fei-bg"
-                    >
-                      Review My Dashboard
-                    </button>
-                  </div>
-                </div>
-
-                <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-3">
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-xs font-black uppercase tracking-[0.16em] text-fei-bg/36">
-                      Current
-                    </span>
-
-                    <span className="text-2xl font-black text-fei-sky">
-                      {result.level}
-                    </span>
-
-                    <span className="text-base font-bold text-fei-bg/65">
-                      {pathwayLabel}
-                    </span>
-                  </div>
-
-                  <span className="text-xl font-black text-fei-bg/20">
-                    →
-                  </span>
-
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-xs font-black uppercase tracking-[0.16em] text-fei-sky">
-                      Next
-                    </span>
-
-                    <span className="text-2xl font-black text-fei-bg">
-                      {nextLevel}
-                    </span>
-
-                    <span className="text-base font-bold text-fei-bg/65">
-                      {nextLevelLabels[result.level] || 'Next milestone'}
-                    </span>
+                      <button
+                        type="button"
+                        onClick={() => router.push('/dashboard')}
+                        className="mt-4 w-full text-center text-sm font-bold text-fei-bg/44 transition hover:text-fei-bg"
+                      >
+                        Review My Dashboard
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
 
               {isProfessionalPlayerPathway ? (
-                <div className="mt-2">
+                <div className="mt-3 lg:ml-10">
                   {professionalPlayerDomains.map((domain, index) => (
                     <article
                       key={domain.domain}
@@ -5175,7 +5183,7 @@ function AssessmentContent() {
                   ))}
                 </div>
               ) : (
-                <div className="mt-2">
+                <div className="mt-3 lg:ml-10">
                   {rolePathwayModules.map((module, index) => (
                     <article
                       key={module.title}
@@ -5198,6 +5206,7 @@ function AssessmentContent() {
                   ))}
                 </div>
               )}
+              </div>
             </section>
 
             <p className="mt-5 text-center text-xs text-fei-bg/35">
