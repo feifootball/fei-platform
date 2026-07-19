@@ -4975,7 +4975,7 @@ function AssessmentContent() {
 
                     <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-fei-bg/10">
                       <div
-                        className="h-full rounded-full bg-gradient-to-r from-fei-sky via-fei-yellow to-fei-bg"
+                        className="h-full rounded-full bg-gradient-to-r from-fei-sky to-fei-yellow"
                         style={{ width: `${overallEvidence}%` }}
                       />
                     </div>
@@ -5101,7 +5101,7 @@ function AssessmentContent() {
                         Complete pathway
                       </p>
 
-                      <div className="mt-4 flex items-end gap-2">
+                      <div className="mt-4 flex items-end justify-center gap-2 text-center">
                         <p className="text-5xl font-black leading-none tracking-[-0.05em] text-fei-bg">
                           $49
                         </p>
@@ -5216,7 +5216,7 @@ function AssessmentContent() {
                       </div>
 
                       {module.scenarios && module.scenarios.length > 0 && (
-                        <div className="lg:pl-5">
+                        <div className="lg:pl-14">
                           <p className="mb-4 text-xs font-black uppercase tracking-[0.18em] text-fei-sky">
                             Professional Scenarios
                           </p>
