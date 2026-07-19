@@ -3245,7 +3245,7 @@ function AssessmentContent() {
     return (
       <div className="min-h-screen bg-[#F6F7F9] text-fei-bg">
         <header className="border-b border-fei-bg/[0.08] bg-white/90 backdrop-blur-xl">
-          <div className="mx-auto flex h-[58px] w-full max-w-[1280px] items-center justify-between px-6 sm:px-8">
+          <div className="mx-auto flex h-[64px] w-full max-w-[1280px] items-center justify-between px-6 sm:px-8">
             <button
               type="button"
               onClick={() => router.push('/')}
@@ -4908,9 +4908,9 @@ function AssessmentContent() {
           </div>
         </header>
 
-        <main className="px-6 py-4 sm:px-8 lg:py-5">
+        <main className="px-6 py-6 sm:px-8 lg:py-7">
           <div className="mx-auto w-full max-w-[1280px]">
-            <section className="pb-4">
+            <section className="pb-5">
               <h1 className="max-w-5xl text-4xl leading-[1.02] tracking-[-0.045em] text-fei-bg sm:text-5xl lg:text-[3.35rem]">
                 <span className="font-normal">
                   Your
@@ -4927,7 +4927,7 @@ function AssessmentContent() {
 
             <section className="overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-white shadow-[0_18px_55px_rgba(7,17,31,0.05)]">
               <div className="grid lg:grid-cols-[0.78fr_1.22fr]">
-                <div className="p-5 sm:p-6 lg:border-r lg:border-fei-bg/10 lg:px-8 lg:py-5">
+                <div className="p-6 sm:p-6 lg:border-r lg:border-fei-bg/10 lg:px-8 lg:py-6">
                   <p className="text-xs font-black uppercase tracking-[0.23em] text-fei-bg/55">
                     Your Current Level
                   </p>
@@ -4953,7 +4953,7 @@ function AssessmentContent() {
                   </p>
                 </div>
 
-                <div className="border-t border-fei-bg/10 p-5 sm:p-6 lg:border-t-0 lg:px-8 lg:py-5">
+                <div className="border-t border-fei-bg/10 p-6 sm:p-6 lg:border-t-0 lg:px-8 lg:py-6">
                   <p className="text-xs font-black uppercase tracking-[0.23em] text-fei-bg/40">
                     What This Means
                   </p>
@@ -4984,7 +4984,7 @@ function AssessmentContent() {
               </div>
             </section>
 
-            <section className="mt-5 border-y border-fei-bg/10 py-5">
+            <section className="mt-7 border-y border-fei-bg/10 py-6">
               <div>
                 <p className="text-xs font-black uppercase tracking-[0.23em] text-fei-bg/55">
                   Your Diagnostic Insight
@@ -4995,7 +4995,7 @@ function AssessmentContent() {
                 </h2>
               </div>
 
-              <div className="mt-5 grid gap-7 lg:grid-cols-2 lg:gap-14">
+              <div className="mt-6 grid gap-8 lg:grid-cols-2 lg:gap-14">
                 <div className="lg:pr-8">
                   <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/52">
                     Current Strengths
@@ -5005,7 +5005,7 @@ function AssessmentContent() {
                     {strengths.map((item) => (
                       <div
                         key={item}
-                        className="flex items-start gap-3 border-b border-fei-bg/[0.08] py-2.5"
+                        className="flex items-start gap-3 border-b border-fei-bg/[0.08] py-3"
                       >
                         <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-fei-sky" />
 
@@ -5026,7 +5026,7 @@ function AssessmentContent() {
                     {improvements.map((item) => (
                       <div
                         key={item}
-                        className="flex items-start gap-3 border-b border-fei-bg/[0.08] py-2.5"
+                        className="flex items-start gap-3 border-b border-fei-bg/[0.08] py-3"
                       >
                         <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-fei-yellow" />
 
