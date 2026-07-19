@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "FEI - Football English Intelligence",
+  title: "Football English Intelligence",
   description: "Communication Creates Opportunity",
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
