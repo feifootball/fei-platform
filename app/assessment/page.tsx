@@ -5288,7 +5288,6 @@ function AssessmentContent() {
                   ))}
                 </div>
               )}
-              </div>
             </section>
 
             <p className="mt-5 text-center text-xs text-fei-bg/35">
