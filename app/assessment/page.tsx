@@ -4928,7 +4928,7 @@ function AssessmentContent() {
             <section className="overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-white shadow-[0_18px_55px_rgba(7,17,31,0.05)]">
               <div className="grid lg:grid-cols-[0.78fr_1.22fr]">
                 <div className="p-6 sm:p-7 lg:border-r lg:border-fei-bg/10 lg:px-8 lg:py-7">
-                  <p className="text-xs font-black uppercase tracking-[0.23em] text-fei-sky">
+                  <p className="text-xs font-black uppercase tracking-[0.23em] text-fei-bg/55">
                     Your Current Level
                   </p>
 
@@ -4975,7 +4975,7 @@ function AssessmentContent() {
 
                     <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-fei-bg/10">
                       <div
-                        className="h-full rounded-full bg-gradient-to-r from-fei-sky via-fei-yellow to-emerald-400"
+                        className="h-full rounded-full bg-gradient-to-r from-fei-sky via-fei-yellow to-fei-bg"
                         style={{ width: `${overallEvidence}%` }}
                       />
                     </div>
@@ -4984,36 +4984,40 @@ function AssessmentContent() {
               </div>
             </section>
 
-            <section className="mt-9">
-              <div className="border-b border-fei-bg/10 pb-6">
-                <p className="text-xs font-black uppercase tracking-[0.23em] text-fei-sky">
-                  Your Communication Profile
+            <section className="mt-9 border-y border-fei-bg/10 py-8">
+              <div className="max-w-4xl">
+                <p className="text-xs font-black uppercase tracking-[0.23em] text-fei-bg/55">
+                  Your Diagnostic Insight
                 </p>
 
-                <h2 className="mt-3 whitespace-nowrap text-2xl font-black tracking-[-0.035em] text-fei-bg sm:text-3xl lg:text-4xl">
-                  What is already working—and where progress begins.
+                <h2 className="mt-3 text-2xl font-black tracking-[-0.035em] text-fei-bg sm:text-3xl">
+                  Your result shows where you are ready—and what will unlock your next professional level.
                 </h2>
+
+                <p className="mt-4 max-w-3xl text-sm leading-7 text-fei-bg/52">
+                  This is not only a language score. It identifies the communication habits already supporting your role and the specific areas that will create the greatest professional progress.
+                </p>
               </div>
 
-              <div className="grid gap-10 py-8 lg:grid-cols-2 lg:gap-16">
+              <div className="mt-8 grid gap-10 lg:grid-cols-2 lg:gap-16">
                 <div className="lg:pr-8">
-                  <div className="flex items-baseline gap-4">
-                    <span className="text-3xl font-black text-fei-sky">
+                  <div className="flex items-start gap-4">
+                    <span className="text-3xl font-black leading-none text-fei-sky">
                       01
                     </span>
 
                     <div>
-                      <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/46">
-                        Already Working
+                      <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/52">
+                        What You Can Already Do
                       </p>
 
                       <p className="mt-2 text-sm leading-6 text-fei-bg/48">
-                        Communication strengths already visible in your diagnostic performance.
+                        These are the communication strengths already visible in your diagnostic performance.
                       </p>
                     </div>
                   </div>
 
-                  <div className="mt-7 border-t border-fei-bg/10">
+                  <div className="mt-6 border-t border-fei-bg/10">
                     {strengths.map((item, index) => (
                       <div
                         key={item}
@@ -5032,23 +5036,23 @@ function AssessmentContent() {
                 </div>
 
                 <div className="border-t border-fei-bg/10 pt-8 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
-                  <div className="flex items-baseline gap-4">
-                    <span className="text-3xl font-black text-fei-bg">
+                  <div className="flex items-start gap-4">
+                    <span className="text-3xl font-black leading-none text-fei-bg">
                       02
                     </span>
 
                     <div>
-                      <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-sky">
-                        Next-Level Focus
+                      <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/52">
+                        What Will Move You Forward
                       </p>
 
                       <p className="mt-2 max-w-lg text-sm leading-6 text-fei-bg/48">
-                        The communication shifts that will create the greatest professional impact.
+                        These are the priorities that will help you communicate with more confidence, precision and professional impact.
                       </p>
                     </div>
                   </div>
 
-                  <div className="mt-7 border-t border-fei-bg/10">
+                  <div className="mt-6 border-t border-fei-bg/10">
                     {improvements.map((item, index) => (
                       <div
                         key={item}
@@ -5129,13 +5133,13 @@ function AssessmentContent() {
                         Complete pathway
                       </p>
 
-                      <div className="mt-4 flex items-end justify-between gap-5">
-                        <p className="max-w-[160px] text-sm font-medium leading-6 text-fei-bg/48">
-                          Role-specific professional training
-                        </p>
-
+                      <div className="mt-4 flex items-end gap-2">
                         <p className="text-5xl font-black leading-none tracking-[-0.05em] text-fei-bg">
                           $49
+                        </p>
+
+                        <p className="pb-1 text-sm font-bold text-fei-bg/42">
+                          / month
                         </p>
                       </div>
                     </div>
@@ -5146,7 +5150,7 @@ function AssessmentContent() {
                         onClick={() => router.push('/#pricing')}
                         className="w-full rounded-full bg-fei-yellow px-7 py-3.5 text-sm font-black text-fei-bg transition hover:-translate-y-0.5 hover:bg-fei-yellow/90"
                       >
-                        Unlock My Pathway · $49
+                        Unlock My Pathway
                       </button>
 
                       <button
@@ -5195,7 +5199,7 @@ function AssessmentContent() {
                           {domain.scenarios.map((scenario, scenarioIndex) => (
                             <div
                               key={scenario}
-                              className="grid grid-cols-[34px_1fr_auto] items-center gap-3 border-b border-fei-bg/[0.07] py-3 first:pt-0 last:border-b-0 last:pb-0"
+                              className="grid grid-cols-[34px_1fr] items-center gap-3 border-b border-fei-bg/[0.07] py-3 first:pt-0 last:border-b-0 last:pb-0"
                             >
                               <span className="text-xs font-black text-fei-sky">
                                 {String(scenarioIndex + 1).padStart(2, '0')}
@@ -5211,11 +5215,6 @@ function AssessmentContent() {
                                 </p>
                               </div>
 
-                              {scenarioIndex < domain.scenarios.length - 1 && (
-                                <span className="text-base font-black text-fei-sky">
-                                  →
-                                </span>
-                              )}
                             </div>
                           ))}
                         </div>
@@ -5258,7 +5257,7 @@ function AssessmentContent() {
                             {module.scenarios.map((scenario, scenarioIndex) => (
                               <div
                                 key={scenario}
-                                className="grid grid-cols-[34px_1fr_auto] items-center gap-3 border-b border-fei-bg/[0.07] py-3 first:pt-0 last:border-b-0 last:pb-0"
+                                className="grid grid-cols-[34px_1fr] items-center gap-3 border-b border-fei-bg/[0.07] py-3 first:pt-0 last:border-b-0 last:pb-0"
                               >
                                 <span className="text-xs font-black text-fei-sky">
                                   {String(scenarioIndex + 1).padStart(2, '0')}
@@ -5274,11 +5273,6 @@ function AssessmentContent() {
                                   </p>
                                 </div>
 
-                                {scenarioIndex < module.scenarios!.length - 1 && (
-                                  <span className="text-base font-black text-fei-sky">
-                                    →
-                                  </span>
-                                )}
                               </div>
                             ))}
                           </div>
