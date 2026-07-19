@@ -4994,7 +4994,7 @@ function AssessmentContent() {
 
         <main className="px-6 pb-6 pt-7 sm:px-8 lg:pb-7 lg:pt-9">
           <div className="mx-auto w-full max-w-[1280px]">
-            <section className="pb-5">
+            <section className="pb-10">
               <h1 className="max-w-5xl text-4xl leading-[1.02] tracking-[-0.045em] text-fei-bg sm:text-5xl lg:text-[3.35rem]">
                 <span className="font-normal">
                   Your
