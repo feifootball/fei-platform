@@ -4984,48 +4984,30 @@ function AssessmentContent() {
               </div>
             </section>
 
-            <section className="mt-9 border-y border-fei-bg/10 py-8">
-              <div className="max-w-4xl">
+            <section className="mt-9 border-y border-fei-bg/10 py-7">
+              <div>
                 <p className="text-xs font-black uppercase tracking-[0.23em] text-fei-bg/55">
                   Your Diagnostic Insight
                 </p>
 
                 <h2 className="mt-3 text-2xl font-black tracking-[-0.035em] text-fei-bg sm:text-3xl">
-                  Your result shows where you are ready—and what will unlock your next professional level.
+                  What you can use now—and what to improve next.
                 </h2>
-
-                <p className="mt-4 max-w-3xl text-sm leading-7 text-fei-bg/52">
-                  This is not only a language score. It identifies the communication habits already supporting your role and the specific areas that will create the greatest professional progress.
-                </p>
               </div>
 
-              <div className="mt-8 grid gap-10 lg:grid-cols-2 lg:gap-16">
+              <div className="mt-7 grid gap-8 lg:grid-cols-2 lg:gap-14">
                 <div className="lg:pr-8">
-                  <div className="flex items-start gap-4">
-                    <span className="text-3xl font-black leading-none text-fei-sky">
-                      01
-                    </span>
+                  <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/52">
+                    Current Strengths
+                  </p>
 
-                    <div>
-                      <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/52">
-                        What You Can Already Do
-                      </p>
-
-                      <p className="mt-2 text-sm leading-6 text-fei-bg/48">
-                        These are the communication strengths already visible in your diagnostic performance.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="mt-6 border-t border-fei-bg/10">
-                    {strengths.map((item, index) => (
+                  <div className="mt-4 border-t border-fei-bg/10">
+                    {strengths.map((item) => (
                       <div
                         key={item}
-                        className="grid grid-cols-[34px_1fr] gap-4 border-b border-fei-bg/[0.08] py-4"
+                        className="flex items-start gap-3 border-b border-fei-bg/[0.08] py-3.5"
                       >
-                        <span className="text-xs font-black text-fei-sky">
-                          {String(index + 1).padStart(2, '0')}
-                        </span>
+                        <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-fei-sky" />
 
                         <p className="text-sm leading-6 text-fei-bg/66">
                           {item}
@@ -5035,32 +5017,18 @@ function AssessmentContent() {
                   </div>
                 </div>
 
-                <div className="border-t border-fei-bg/10 pt-8 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
-                  <div className="flex items-start gap-4">
-                    <span className="text-3xl font-black leading-none text-fei-bg">
-                      02
-                    </span>
+                <div className="border-t border-fei-bg/10 pt-7 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
+                  <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/52">
+                    Next Priorities
+                  </p>
 
-                    <div>
-                      <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/52">
-                        What Will Move You Forward
-                      </p>
-
-                      <p className="mt-2 max-w-lg text-sm leading-6 text-fei-bg/48">
-                        These are the priorities that will help you communicate with more confidence, precision and professional impact.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="mt-6 border-t border-fei-bg/10">
-                    {improvements.map((item, index) => (
+                  <div className="mt-4 border-t border-fei-bg/10">
+                    {improvements.map((item) => (
                       <div
                         key={item}
-                        className="grid grid-cols-[34px_1fr] gap-4 border-b border-fei-bg/[0.08] py-4"
+                        className="flex items-start gap-3 border-b border-fei-bg/[0.08] py-3.5"
                       >
-                        <span className="text-xs font-black text-fei-sky">
-                          {String(index + 1).padStart(2, '0')}
-                        </span>
+                        <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-fei-yellow" />
 
                         <p className="text-sm font-medium leading-6 text-fei-bg/70">
                           {item}
