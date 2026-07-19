@@ -4681,7 +4681,11 @@ function AssessmentContent() {
       ],
     }
 
-    const rolePathwayModules: { title: string; detail: string }[] =
+    const rolePathwayModules: {
+      title: string
+      detail: string
+      scenarios?: string[]
+    }[] =
       selectedRole === 'Head Coach'
         ? [
             { title: 'Match Briefing Language', detail: 'Structure pre-match and half-time messages with clarity, tactical focus, and emotional control.' },
@@ -4726,10 +4730,42 @@ function AssessmentContent() {
                     ]
                   : selectedRole === 'Performance Analyst'
                     ? [
-                        { title: 'Tactical Pattern Communication', detail: 'Explain patterns, threats, and opportunities with concise tactical language.' },
-                        { title: 'Video and Data Explanation', detail: 'Connect clips and data to coaching decisions without overloading the message.' },
-                        { title: 'Coach-Facing Recommendations', detail: 'Present clear recommendations for staff meetings and match preparation.' },
-                        { title: 'Player Analysis Under Pressure', detail: 'Communicate individual analysis with clarity, confidence, and useful detail.' },
+                        {
+                          title: 'Tactical Pattern Communication',
+                          detail: 'Explain patterns, threats, and opportunities with concise tactical language.',
+                          scenarios: [
+                            'Identify an opponent build-up pattern',
+                            'Explain a recurring defensive weakness',
+                            'Highlight a transition opportunity',
+                          ],
+                        },
+                        {
+                          title: 'Video and Data Explanation',
+                          detail: 'Connect clips and data to coaching decisions without overloading the message.',
+                          scenarios: [
+                            'Introduce a video sequence to coaching staff',
+                            'Connect performance data to match evidence',
+                            'Prioritize the most relevant analytical insight',
+                          ],
+                        },
+                        {
+                          title: 'Coach-Facing Recommendations',
+                          detail: 'Present clear recommendations for staff meetings and match preparation.',
+                          scenarios: [
+                            'Recommend a tactical adjustment',
+                            'Defend an analysis during a staff meeting',
+                            'Summarize opposition priorities before the match',
+                          ],
+                        },
+                        {
+                          title: 'Player Analysis Under Pressure',
+                          detail: 'Communicate individual analysis with clarity, confidence, and useful detail.',
+                          scenarios: [
+                            'Deliver concise individual video feedback',
+                            'Explain a mistake without undermining confidence',
+                            'Respond to player disagreement or clarification',
+                          ],
+                        },
                       ]
                     : selectedRole === 'Nutritionist'
                       ? [
@@ -4834,7 +4870,10 @@ function AssessmentContent() {
           (total, domain) => total + domain.scenarios.length,
           0
         )
-      : rolePathwayModules.length
+      : rolePathwayModules.reduce(
+          (total, module) => total + (module.scenarios?.length || 0),
+          0
+        )
 
     return (
       <div className="min-h-screen bg-[#F7F8FA] text-fei-bg">
@@ -5044,7 +5083,9 @@ function AssessmentContent() {
                     <p className="mt-3 text-sm font-semibold text-fei-bg/48">
                       {isProfessionalPlayerPathway
                         ? `${professionalPlayerDomains.length} domains · ${pathwayScenarioCount} real football scenarios`
-                        : `${rolePathwayModules.length} role-specific modules`}
+                        : pathwayScenarioCount > 0
+                          ? `${rolePathwayModules.length} role-specific modules · ${pathwayScenarioCount} professional scenarios`
+                          : `${rolePathwayModules.length} role-specific modules`}
                     </p>
 
                     <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-4 border-t border-fei-bg/10 pt-6">
@@ -5183,25 +5224,66 @@ function AssessmentContent() {
                   ))}
                 </div>
               ) : (
-                <div className="mt-3 lg:ml-10">
+                <div className="mt-3 lg:ml-12">
                   {rolePathwayModules.map((module, index) => (
                     <article
                       key={module.title}
-                      className="grid gap-4 border-b border-fei-bg/10 py-7 sm:grid-cols-[72px_1fr] sm:items-start"
+                      className="grid gap-5 border-b border-fei-bg/10 py-8 lg:grid-cols-[72px_0.82fr_1.18fr] lg:items-start"
                     >
                       <p className="text-3xl font-black text-fei-sky">
                         {String(index + 1).padStart(2, '0')}
                       </p>
 
                       <div>
-                        <h3 className="text-xl font-black text-fei-bg">
+                        <p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/38">
+                          Module {String(index + 1).padStart(2, '0')}
+                        </p>
+
+                        <h3 className="mt-2 text-xl font-black text-fei-bg">
                           {module.title}
                         </h3>
 
-                        <p className="mt-2 max-w-3xl text-sm leading-7 text-fei-bg/52">
+                        <p className="mt-3 max-w-md text-sm leading-7 text-fei-bg/52">
                           {module.detail}
                         </p>
                       </div>
+
+                      {module.scenarios && module.scenarios.length > 0 && (
+                        <div className="lg:pl-5">
+                          <p className="mb-4 text-xs font-black uppercase tracking-[0.18em] text-fei-sky">
+                            Professional Scenarios
+                          </p>
+
+                          <div className="flex flex-col">
+                            {module.scenarios.map((scenario, scenarioIndex) => (
+                              <div
+                                key={scenario}
+                                className="grid grid-cols-[34px_1fr_auto] items-center gap-3 border-b border-fei-bg/[0.07] py-3 first:pt-0 last:border-b-0 last:pb-0"
+                              >
+                                <span className="text-xs font-black text-fei-sky">
+                                  {String(scenarioIndex + 1).padStart(2, '0')}
+                                </span>
+
+                                <div>
+                                  <p className="text-sm font-bold leading-5 text-fei-bg/72">
+                                    {scenario}
+                                  </p>
+
+                                  <p className="mt-1 text-xs leading-5 text-fei-bg/40">
+                                    Applied communication practice in a real performance environment
+                                  </p>
+                                </div>
+
+                                {scenarioIndex < module.scenarios.length - 1 && (
+                                  <span className="text-base font-black text-fei-sky">
+                                    →
+                                  </span>
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </article>
                   ))}
                 </div>
