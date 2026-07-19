@@ -171,7 +171,7 @@ export default function DashboardPage() {
   return (
     <main className="min-h-screen bg-[#F6F7F9] text-fei-bg">
       <nav className="sticky top-0 z-50 w-full border-b border-fei-bg/[0.08] bg-white/90 backdrop-blur-xl">
-        <div className="mx-auto flex min-h-[72px] w-full max-w-[1440px] items-center justify-between px-6 sm:px-8 lg:px-10">
+        <div className="mx-auto flex min-h-[60px] w-full max-w-[1440px] items-center justify-between px-6 sm:px-8 lg:px-10">
           <Link
             href="/"
             className="flex items-center"
@@ -180,7 +180,7 @@ export default function DashboardPage() {
             <img
               src="/fei-logo-navbar-vector.svg"
               alt="FEI"
-              className="h-11 w-auto"
+              className="h-9 w-auto"
             />
 
             <span className="mx-4 hidden h-5 w-px bg-fei-bg/10 sm:block" />
@@ -193,7 +193,7 @@ export default function DashboardPage() {
           <div className="flex items-center gap-1 sm:gap-2">
             <Link
               href="/dashboard"
-              className="relative hidden px-3 py-2 text-sm font-semibold text-fei-bg after:absolute after:inset-x-3 after:-bottom-[17px] after:h-0.5 after:bg-fei-yellow sm:inline-flex"
+              className="relative hidden px-3 py-2 text-sm font-semibold text-fei-bg after:absolute after:inset-x-3 after:-bottom-[11px] after:h-0.5 after:bg-fei-yellow sm:inline-flex"
             >
               Dashboard
             </Link>
