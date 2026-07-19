@@ -34,15 +34,15 @@ export function CookieBanner() {
   if (!visible) return null;
 
   return (
-    <div className="fixed inset-x-4 bottom-4 z-[100] ml-auto max-w-[620px] sm:bottom-5 sm:right-5 sm:left-auto sm:w-[calc(100%-2.5rem)]">
-      <div className="relative overflow-hidden rounded-[1.5rem] border border-fei-bg/10 bg-white p-5 shadow-[0_24px_70px_rgba(7,17,31,0.18)] sm:p-6">
+    <div className="fixed inset-x-4 bottom-4 z-[100] ml-auto max-w-[520px] sm:bottom-5 sm:right-5 sm:left-auto sm:w-[calc(100%-2.5rem)]">
+      <div className="relative overflow-hidden rounded-[1.25rem] border border-fei-bg/10 bg-white p-4 shadow-[0_24px_70px_rgba(7,17,31,0.18)] sm:p-5">
         <div className="absolute inset-x-6 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent" />
 
         <button
           type="button"
           onClick={() => setVisible(false)}
           aria-label="Close cookie notice"
-          className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full border border-fei-bg/10 text-fei-bg/45 transition hover:border-fei-bg/20 hover:bg-fei-bg/[0.04] hover:text-fei-bg"
+          className="absolute right-3.5 top-3.5 flex h-7 w-7 items-center justify-center rounded-full border border-fei-bg/10 text-fei-bg/45 transition hover:border-fei-bg/20 hover:bg-fei-bg/[0.04] hover:text-fei-bg"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +52,7 @@ export function CookieBanner() {
             strokeWidth={1.8}
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="h-4 w-4"
+            className="h-3.5 w-3.5"
             aria-hidden
           >
             <path d="m7 7 10 10" />
@@ -60,23 +60,23 @@ export function CookieBanner() {
           </svg>
         </button>
 
-        <div className="pr-10">
+        <div className="pr-8">
           <p className="text-xs font-black uppercase tracking-[0.24em] text-fei-bg/45">
             Privacy
           </p>
 
-          <h2 className="mt-3 text-2xl font-black tracking-tight text-fei-bg">
+          <h2 className="mt-2.5 text-xl font-black tracking-tight text-fei-bg">
             This website uses cookies
           </h2>
 
-          <p className="mt-3 text-sm leading-6 text-fei-bg/60">
+          <p className="mt-2 text-sm leading-5 text-fei-bg/60">
             We use essential cookies to keep FEI secure and working properly.
             Optional cookies may help us understand how the platform is used.
           </p>
         </div>
 
         {settingsOpen && (
-          <div className="mt-5 rounded-[1.15rem] border border-fei-bg/10 bg-[#F7F8FA] p-4">
+          <div className="mt-4 rounded-[1rem] border border-fei-bg/10 bg-[#F7F8FA] p-3.5">
             <div className="flex items-start justify-between gap-5">
               <div>
                 <p className="text-sm font-bold text-fei-bg">
@@ -104,11 +104,11 @@ export function CookieBanner() {
           </div>
         )}
 
-        <div className="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:items-center sm:justify-end">
+        <div className="mt-4 flex flex-col-reverse gap-2 sm:flex-row sm:items-center sm:justify-end">
           <button
             type="button"
             onClick={() => setSettingsOpen((open) => !open)}
-            className="rounded-full px-4 py-2.5 text-sm font-semibold text-fei-bg/58 transition hover:bg-fei-bg/[0.04] hover:text-fei-bg"
+            className="rounded-full px-3.5 py-2 text-sm font-semibold text-fei-bg/58 transition hover:bg-fei-bg/[0.04] hover:text-fei-bg"
           >
             {settingsOpen ? "Hide settings" : "Cookie settings"}
           </button>
@@ -116,7 +116,7 @@ export function CookieBanner() {
           <button
             type="button"
             onClick={() => saveChoice("rejected")}
-            className="rounded-full border border-fei-bg/15 px-5 py-2.5 text-sm font-semibold text-fei-bg transition hover:border-fei-bg/30 hover:bg-fei-bg/[0.035]"
+            className="rounded-full border border-fei-bg/15 px-4 py-2 text-sm font-semibold text-fei-bg transition hover:border-fei-bg/30 hover:bg-fei-bg/[0.035]"
           >
             Reject all
           </button>
@@ -124,13 +124,13 @@ export function CookieBanner() {
           <button
             type="button"
             onClick={() => saveChoice("accepted")}
-            className="rounded-full bg-fei-yellow px-5 py-2.5 text-sm font-bold text-fei-bg transition hover:-translate-y-0.5 hover:bg-fei-yellow/90 hover:shadow-lg hover:shadow-fei-yellow/20"
+            className="rounded-full bg-fei-yellow px-4 py-2 text-sm font-bold text-fei-bg transition hover:-translate-y-0.5 hover:bg-fei-yellow/90 hover:shadow-lg hover:shadow-fei-yellow/20"
           >
             Accept all cookies
           </button>
         </div>
 
-        <p className="mt-4 text-xs leading-5 text-fei-bg/42">
+        <p className="mt-3 text-xs leading-5 text-fei-bg/42">
           Learn more in our{" "}
           <a
             href="/privacy"
