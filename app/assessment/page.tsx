@@ -2742,11 +2742,45 @@ function AssessmentContent() {
   const [audioTestPlaying, setAudioTestPlaying] = useState(false)
   const [result, setResult] = useState<Result | null>(null)
   const [saving, setSaving] = useState(false)
+  const [animatedEvidence, setAnimatedEvidence] = useState(0)
 
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
   const mediaStreamRef = useRef<MediaStream | null>(null)
   const timerRef = useRef<NodeJS.Timeout | null>(null)
   const totalItems = 17
+
+  useEffect(() => {
+    if (section !== 'result' || !result) {
+      setAnimatedEvidence(0)
+      return
+    }
+
+    const targetEvidence = Math.round(
+      (result.score / result.maxScore) * 100
+    )
+
+    if (targetEvidence <= 0) {
+      setAnimatedEvidence(0)
+      return
+    }
+
+    setAnimatedEvidence(0)
+
+    const totalDuration = 2000
+    const stepDuration = totalDuration / targetEvidence
+    let currentValue = 0
+
+    const interval = window.setInterval(() => {
+      currentValue += 1
+      setAnimatedEvidence(currentValue)
+
+      if (currentValue >= targetEvidence) {
+        window.clearInterval(interval)
+      }
+    }, stepDuration)
+
+    return () => window.clearInterval(interval)
+  }, [section, result])
 
   // ── Security: block navigation ───────────────────────────────────────────────
   useEffect(() => {
@@ -4969,14 +5003,14 @@ function AssessmentContent() {
                       </p>
 
                       <p className="text-xl font-black text-fei-bg">
-                        {overallEvidence}%
+                        {animatedEvidence}%
                       </p>
                     </div>
 
                     <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-fei-bg/10">
                       <div
                         className="h-full rounded-full bg-gradient-to-r from-fei-sky to-fei-yellow"
-                        style={{ width: `${overallEvidence}%` }}
+                        style={{ width: `${animatedEvidence}%` }}
                       />
                     </div>
                   </div>
