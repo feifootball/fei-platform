@@ -14,6 +14,8 @@ const copy = {
     description: 'Access your account and continue your progress.',
     email: 'Email',
     password: 'Password',
+    showPassword: 'Show password',
+    hidePassword: 'Hide password',
     loading: 'Logging in...',
     submit: 'Login',
     noAccount: "Don’t have an account?",
@@ -27,6 +29,8 @@ const copy = {
     description: 'Accede a tu cuenta y continúa tu progreso.',
     email: 'Correo electrónico',
     password: 'Contraseña',
+    showPassword: 'Mostrar contraseña',
+    hidePassword: 'Ocultar contraseña',
     loading: 'Ingresando...',
     submit: 'Ingresar',
     noAccount: '¿No tienes una cuenta?',
@@ -39,6 +43,7 @@ export default function LoginPage() {
   const [lang, setLang] = useState<Lang>('en')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const router = useRouter()
@@ -175,14 +180,57 @@ export default function LoginPage() {
               <label className="mb-2 block text-sm font-bold text-fei-bg/70">
                 {t.password}
               </label>
-              <input
-                type="password"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-                required
-                className="w-full rounded-2xl border border-fei-bg/10 bg-white px-4 py-2.5 text-fei-bg placeholder-fei-bg/40 outline-none transition focus:border-fei-sky/45"
-                placeholder="••••••••"
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                  required
+                  className="w-full rounded-2xl border border-fei-bg/10 bg-white py-2.5 pl-4 pr-12 text-fei-bg placeholder-fei-bg/40 outline-none transition focus:border-fei-sky/45"
+                  placeholder="••••••••"
+                />
+
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(current => !current)}
+                  aria-label={showPassword ? t.hidePassword : t.showPassword}
+                  title={showPassword ? t.hidePassword : t.showPassword}
+                  className="absolute inset-y-0 right-0 flex w-12 items-center justify-center text-fei-bg/40 transition hover:text-fei-bg/70 focus:outline-none"
+                >
+                  {showPassword ? (
+                    <svg
+                      aria-hidden="true"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      className="h-5 w-5"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M3 3l18 18M10.6 10.7a2 2 0 002.7 2.7M9.9 4.3A10.8 10.8 0 0112 4c5.2 0 8.8 4.4 9.7 5.7a.5.5 0 010 .6 16.7 16.7 0 01-3 3.3M6.6 6.6A16.2 16.2 0 002.3 9.7a.5.5 0 000 .6C3.2 11.6 6.8 16 12 16c.9 0 1.8-.1 2.6-.4"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      aria-hidden="true"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      className="h-5 w-5"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M2.3 9.7a.5.5 0 000 .6C3.2 11.6 6.8 16 12 16s8.8-4.4 9.7-5.7a.5.5 0 000-.6C20.8 8.4 17.2 4 12 4S3.2 8.4 2.3 9.7z"
+                      />
+                      <circle cx="12" cy="10" r="2.5" />
+                    </svg>
+                  )}
+                </button>
+              </div>
             </div>
 
             <button
