@@ -5209,18 +5209,19 @@ function AssessmentContent() {
                     </div>
                   </div>
 
-                  <div className="flex flex-col justify-between border-t border-fei-bg/10 p-7 sm:p-9 lg:border-t-0">
+                  <div className="relative flex flex-col justify-between overflow-hidden border-t border-fei-bg/10 bg-fei-sky/[0.055] p-7 sm:p-9 lg:border-t-0">
+                    <div className="absolute inset-x-0 top-0 h-1 bg-fei-yellow" />
                     <div>
-                      <p className="text-center text-xs font-black uppercase tracking-[0.18em] text-fei-bg/38">
+                      <p className="text-center text-xs font-black uppercase tracking-[0.22em] text-fei-bg/52">
                         Complete pathway
                       </p>
 
-                      <div className="mt-4 flex items-end justify-center gap-2 text-center">
-                        <p className="text-5xl font-black leading-none tracking-[-0.05em] text-fei-bg">
+                      <div className="mt-5 flex items-end justify-center gap-2 text-center">
+                        <p className="text-6xl font-black leading-none tracking-[-0.06em] text-fei-bg">
                           $49
                         </p>
 
-                        <p className="pb-1 text-sm font-bold text-fei-bg/42">
+                        <p className="pb-1.5 text-base font-bold text-fei-bg/48">
                           / month
                         </p>
                       </div>
@@ -5230,7 +5231,7 @@ function AssessmentContent() {
                       <button
                         type="button"
                         onClick={() => router.push('/#pricing')}
-                        className="w-full rounded-full bg-fei-yellow px-7 py-3.5 text-sm font-black text-fei-bg transition hover:-translate-y-0.5 hover:bg-fei-yellow/90"
+                        className="w-full rounded-full bg-fei-yellow px-7 py-4 text-base font-black text-fei-bg shadow-[0_12px_30px_rgba(255,204,0,0.22)] transition hover:-translate-y-0.5 hover:bg-fei-yellow/90"
                       >
                         Unlock My Pathway
                       </button>
