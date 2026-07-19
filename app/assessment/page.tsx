@@ -5123,7 +5123,7 @@ function AssessmentContent() {
                 </p>
 
                 <h2 className="mt-2 text-2xl font-black tracking-[-0.035em] text-fei-bg sm:text-[1.7rem]">
-                  What you already bring—and what FEI will help you deliver.
+                  Your communication potential—and how FEI develops it.
                 </h2>
               </div>
 
