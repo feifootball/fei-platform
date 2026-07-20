@@ -3621,27 +3621,74 @@ function AssessmentContent() {
             total={totalItems}
           />
 
-          <div className="grid items-start gap-7 lg:grid-cols-[0.43fr_1.57fr] lg:gap-9">
+          <div
+            className={`grid items-start ${
+              selectedRole === 'Professional Player'
+                ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-7'
+                : 'gap-7 lg:grid-cols-[0.43fr_1.57fr] lg:gap-9'
+            }`}
+          >
             <aside className="lg:sticky lg:top-10">
               <SectionBadge label="Professional Reading" />
             </aside>
 
-            <section>
-              <div className="mb-5 rounded-[1.25rem] border border-fei-bg/[0.14] bg-white p-5 sm:p-6">
-                <p className="text-xs font-black uppercase tracking-[0.22em] text-fei-bg/45">
-                  Read carefully
-                </p>
+            <section className={selectedRole === 'Professional Player' ? 'max-w-[720px]' : undefined}>
+              {selectedRole === 'Professional Player' ? (
+                <>
+                  <div className="mb-5">
+                    <div className="mb-3 flex items-center gap-3">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-full border border-fei-sky/25 bg-fei-sky/[0.08]">
+                        <span className="text-xs font-black text-fei-sky">CS</span>
+                      </div>
 
-                <p className="mt-4 whitespace-pre-line text-[15px] leading-7 text-fei-bg/72 select-none sm:text-base">
-                  {item.context}
-                </p>
-              </div>
+                      <div>
+                        <p className="text-sm font-bold text-fei-bg/75">
+                          Coaching Staff
+                        </p>
+                        <p className="text-xs text-fei-bg/38">
+                          Professional football communication
+                        </p>
+                      </div>
+                    </div>
 
-              <div className="mb-5 border-l-4 border-fei-sky pl-5 sm:pl-6">
-                <h1 className="text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl">
-                  {item.question}
-                </h1>
-              </div>
+                    <div className="relative rounded-[1.15rem] border border-fei-bg/[0.11] bg-white px-5 py-4 shadow-[0_10px_30px_rgba(15,23,42,0.035)] sm:px-6 sm:py-5">
+                      <span className="absolute -left-2 top-6 h-4 w-4 rotate-45 border-b border-l border-fei-bg/[0.11] bg-white" />
+
+                      <p className="whitespace-pre-line text-[15px] leading-7 text-fei-bg/68 select-none">
+                        {item.context}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mb-4">
+                    <p className="mb-2 text-xs font-black uppercase tracking-[0.2em] text-fei-sky">
+                      Your decision
+                    </p>
+
+                    <h1 className="max-w-[650px] text-lg font-semibold leading-7 tracking-[-0.015em] text-fei-bg sm:text-xl sm:leading-8">
+                      {item.question}
+                    </h1>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="mb-5 rounded-[1.25rem] border border-fei-bg/[0.14] bg-white p-5 sm:p-6">
+                    <p className="text-xs font-black uppercase tracking-[0.22em] text-fei-bg/45">
+                      Read carefully
+                    </p>
+
+                    <p className="mt-4 whitespace-pre-line text-[15px] leading-7 text-fei-bg/72 select-none sm:text-base">
+                      {item.context}
+                    </p>
+                  </div>
+
+                  <div className="mb-5 border-l-4 border-fei-sky pl-5 sm:pl-6">
+                    <h1 className="text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl">
+                      {item.question}
+                    </h1>
+                  </div>
+                </>
+              )}
 
               <div className="mb-5 overflow-hidden border-y border-fei-bg/10">
                 {item.options.map((option) => (
