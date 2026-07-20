@@ -3648,7 +3648,7 @@ function AssessmentContent() {
                   </div>
 
                   <div className="mb-2.5">
-                    <h1 className="max-w-[780px] text-lg font-medium leading-7 tracking-[-0.012em] text-fei-bg sm:text-[1.18rem] sm:leading-8">
+                    <h1 className="max-w-[780px] text-[1.05rem] font-medium leading-7 tracking-[-0.01em] text-fei-bg/82 sm:text-[1.12rem] sm:leading-7">
                       {item.question}
                     </h1>
                   </div>
