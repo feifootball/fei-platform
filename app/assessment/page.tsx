@@ -2965,14 +2965,23 @@ function AssessmentContent() {
   }
 
   function playAudioTest() {
-    if (!('speechSynthesis' in window)) return
-    window.speechSynthesis.cancel()
-    const utterance = new SpeechSynthesisUtterance('Audio test. If you can hear this clearly, your audio is working correctly.')
-    utterance.lang = 'en-GB'
-    utterance.rate = 0.9
-    utterance.onstart = () => setAudioTestPlaying(true)
-    utterance.onend = () => setAudioTestPlaying(false)
-    window.speechSynthesis.speak(utterance)
+    const audio = new Audio('/audio/audio-check.mp3')
+
+    setAudioTestPlaying(true)
+
+    audio.onended = () => {
+      setAudioTestPlaying(false)
+    }
+
+    audio.onerror = () => {
+      console.error('FEI audio check could not be played.')
+      setAudioTestPlaying(false)
+    }
+
+    audio.play().catch((error) => {
+      console.error('FEI audio check playback error:', error)
+      setAudioTestPlaying(false)
+    })
   }
 
   async function startRecording() {
