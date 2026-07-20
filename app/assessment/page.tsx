@@ -2649,64 +2649,153 @@ function ChevronRightIcon() {
   )
 }
 
-function AudioPlayer({ script, itemId }: { script: string; itemId: string }) {
-  const [played, setPlayed] = useState(false)
+function AudioPlayer({
+  script,
+  itemId,
+  audioSrc,
+}: {
+  script: string
+  itemId: string
+  audioSrc?: string
+}) {
+  const [playCount, setPlayCount] = useState(0)
   const [playing, setPlaying] = useState(false)
+  const audioRef = useRef<HTMLAudioElement | null>(null)
 
   useEffect(() => {
     if ('speechSynthesis' in window) {
       window.speechSynthesis.cancel()
     }
 
-    setPlayed(false)
+    if (audioRef.current) {
+      audioRef.current.pause()
+      audioRef.current.currentTime = 0
+      audioRef.current = null
+    }
+
+    setPlayCount(0)
     setPlaying(false)
 
     return () => {
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel()
       }
+
+      if (audioRef.current) {
+        audioRef.current.pause()
+        audioRef.current.currentTime = 0
+        audioRef.current = null
+      }
     }
-  }, [itemId])
+  }, [itemId, audioSrc])
 
   function handlePlay() {
+    if (playing || playCount >= 2) return
+
+    if (audioSrc) {
+      const audio = new Audio(audioSrc)
+      audioRef.current = audio
+
+      audio.onended = () => {
+        setPlaying(false)
+        audioRef.current = null
+      }
+
+      audio.onerror = () => {
+        console.error(`FEI diagnostic audio could not be played: ${audioSrc}`)
+        setPlaying(false)
+        audioRef.current = null
+      }
+
+      setPlaying(true)
+
+      audio.play()
+        .then(() => {
+          setPlayCount((count) => count + 1)
+        })
+        .catch((error) => {
+          console.error('FEI diagnostic audio playback error:', error)
+          setPlaying(false)
+          audioRef.current = null
+        })
+
+      return
+    }
+
     if (!('speechSynthesis' in window)) return
+
     window.speechSynthesis.cancel()
+
     const utterance = new SpeechSynthesisUtterance(script)
     utterance.lang = 'en-GB'
     utterance.rate = 0.9
-    utterance.onstart = () => { setPlaying(true); setPlayed(true) }
+    utterance.onstart = () => {
+      setPlaying(true)
+      setPlayCount((count) => count + 1)
+    }
     utterance.onend = () => setPlaying(false)
+    utterance.onerror = () => setPlaying(false)
+
     window.speechSynthesis.speak(utterance)
   }
+
+  const limitReached = playCount >= 2
 
   return (
     <div className="border-y border-fei-bg/10 py-6">
       <div className="mb-4 flex items-center gap-2">
         <div className="h-2 w-2 rounded-full bg-fei-sky" />
-        <span className="text-xs font-black uppercase tracking-[0.22em] text-fei-bg/48">Audio</span>
-        {played && <span className="text-xs text-fei-bg/45">— You can listen again</span>}
+        <span className="text-xs font-black uppercase tracking-[0.22em] text-fei-bg/48">
+          Audio
+        </span>
+        {playCount === 1 && (
+          <span className="text-xs text-fei-bg/45">— 1 replay remaining</span>
+        )}
+        {limitReached && (
+          <span className="text-xs text-fei-bg/45">— Listening limit reached</span>
+        )}
       </div>
-      <p className="mb-5 text-sm leading-6 text-fei-bg/55">Click play to hear the audio clip. You may listen up to 2 times.</p>
+
+      <p className="mb-5 text-sm leading-6 text-fei-bg/55">
+        Click play to hear the audio clip. You may listen up to 2 times.
+      </p>
+
       <button
+        type="button"
         onClick={handlePlay}
-        disabled={playing}
-        className="inline-flex min-h-12 items-center gap-2 rounded-full border border-fei-sky/45 bg-fei-sky/[0.08] px-6 py-3 text-sm font-bold text-fei-bg transition hover:border-fei-sky/70 hover:bg-fei-sky/[0.13] disabled:opacity-50"
+        disabled={playing || limitReached}
+        className="inline-flex min-h-12 items-center gap-2 rounded-full border border-fei-sky/45 bg-fei-sky/[0.08] px-6 py-3 text-sm font-bold text-fei-bg transition hover:border-fei-sky/70 hover:bg-fei-sky/[0.13] disabled:cursor-not-allowed disabled:opacity-50"
       >
         {playing ? (
           <>
             <span className="flex h-3 w-3 items-center gap-0.5">
               <span className="block h-3 w-0.5 animate-pulse bg-fei-bg" />
-              <span className="block h-2 w-0.5 animate-pulse bg-fei-bg" style={{ animationDelay: '0.1s' }} />
-              <span className="block h-3 w-0.5 animate-pulse bg-fei-bg" style={{ animationDelay: '0.2s' }} />
+              <span
+                className="block h-2 w-0.5 animate-pulse bg-fei-bg"
+                style={{ animationDelay: '0.1s' }}
+              />
+              <span
+                className="block h-3 w-0.5 animate-pulse bg-fei-bg"
+                style={{ animationDelay: '0.2s' }}
+              />
             </span>
             Playing...
           </>
         ) : (
           <>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="h-4 w-4"
+            >
               <path d="M8 5v14l11-7z" />
             </svg>
-            {played ? 'Play again' : 'Play audio'}
+            {limitReached
+              ? 'Listening complete'
+              : playCount === 1
+                ? 'Play again'
+                : 'Play audio'}
           </>
         )}
       </button>
@@ -3647,7 +3736,15 @@ function AssessmentContent() {
 
             <section>
               <div className="mb-5">
-                <AudioPlayer script={item.script} itemId={item.id} />
+                <AudioPlayer
+                  script={item.script}
+                  itemId={item.id}
+                  audioSrc={
+                    selectedRole === 'Professional Player'
+                      ? `/audio/diagnostics/professional-player/professional-player-listening-${listeningStep + 1}.mp3`
+                      : undefined
+                  }
+                />
               </div>
 
               <div className="mb-5 border-l-4 border-fei-sky pl-5 sm:pl-6">
