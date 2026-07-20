@@ -2580,10 +2580,12 @@ function OptionButton({
   option,
   selected,
   onSelect,
+  refined = false,
 }: {
   option: string
   selected: boolean
   onSelect: () => void
+  refined?: boolean
 }) {
   return (
     <button
@@ -2597,7 +2599,11 @@ function OptionButton({
       }`}
     >
       <span
-        className={`text-[15px] font-normal leading-7 transition sm:text-base ${
+        className={`transition ${
+          refined
+            ? 'text-[15px] font-medium leading-6 tracking-[-0.005em] sm:text-[1.01rem]'
+            : 'text-[15px] font-normal leading-7 sm:text-base'
+        } ${
           selected
             ? 'text-fei-bg'
             : 'text-fei-bg/68 group-hover:text-fei-bg'
@@ -3637,18 +3643,18 @@ function AssessmentContent() {
                 <>
                   <div className="mb-4 overflow-hidden rounded-[1rem] border border-fei-sky/20 bg-gradient-to-br from-white to-fei-sky/[0.035] shadow-[0_8px_24px_rgba(15,23,42,0.035)]">
                     <div className="border-l-4 border-fei-sky px-5 py-4 sm:px-6 sm:py-5">
-                      <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-fei-bg/42">
+                      <p className="mb-2 text-xs font-medium uppercase tracking-[0.1em] text-fei-bg/44">
                         {item.context.split('\n\n')[0]}
                       </p>
 
-                      <p className="whitespace-pre-line text-[1.05rem] font-normal leading-7 text-fei-bg/78 select-none sm:text-[1.12rem] sm:leading-8">
+                      <p className="whitespace-pre-line text-[1.06rem] font-normal leading-[1.65] tracking-[-0.006em] text-fei-bg/76 select-none sm:text-[1.13rem]">
                         {item.context.split('\n\n').slice(1).join('\n\n')}
                       </p>
                     </div>
                   </div>
 
                   <div className="mb-2.5">
-                    <h1 className="max-w-[780px] text-[1.05rem] font-medium leading-7 tracking-[-0.01em] text-fei-bg/82 sm:text-[1.12rem] sm:leading-7">
+                    <h1 className="max-w-[780px] text-base font-semibold leading-6 tracking-[-0.008em] text-fei-bg/84 sm:text-[1.04rem] sm:leading-7">
                       {item.question}
                     </h1>
                   </div>
@@ -3680,6 +3686,7 @@ function AssessmentContent() {
                     option={option}
                     selected={selected === option}
                     onSelect={() => setAnswer(item.id, option)}
+                    refined={selectedRole === 'Professional Player'}
                   />
                 ))}
               </div>
