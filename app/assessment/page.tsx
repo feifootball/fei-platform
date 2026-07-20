@@ -5063,6 +5063,37 @@ function AssessmentContent() {
       },
     ]
 
+    const professionalPlayerScenarioDescriptions: Record<string, string> = {
+      'S1 Match Communication':
+        'Give and respond to clear, immediate instructions during live match situations.',
+      'S2 Tactical Communication & Clarification':
+        'Understand tactical detail and ask precise questions when instructions are unclear.',
+      'S3 Receiving Feedback':
+        'Process coaching feedback professionally and confirm the action required.',
+      'S4 Feedback Delivery':
+        'Give constructive feedback to teammates with clarity, respect and purpose.',
+      'S5 Communicating Injury or Discomfort':
+        'Describe pain, discomfort and physical limitations accurately to medical staff.',
+      'S6 Leadership Communication':
+        'Guide teammates with calm, credible communication during demanding moments.',
+      'S7 Peer Support Communication':
+        'Support teammates through setbacks, pressure and difficult performance moments.',
+      'S8 Conflict Resolution':
+        'Address disagreement privately and protect trust within the squad.',
+      'S9 Media Interview Communication':
+        'Respond to media questions clearly while protecting the team and club.',
+      'S10 Apology or Crisis Statement':
+        'Take responsibility and communicate appropriately after a sensitive incident.',
+      'S11 Social Media Communication':
+        'Communicate publicly with awareness of audience, tone and professional risk.',
+      'S12 Personal Branding Communication':
+        'Express a clear and authentic professional identity across public platforms.',
+      'S13 Sponsor Communication':
+        'Represent personal and partner values naturally in commercial communication.',
+      'S14 Contract & Role Expectation Conversation':
+        'Discuss playing time, development and career expectations with professional control.',
+    }
+
     const isProfessionalPlayerPathway = selectedRole === 'Professional Player'
 
     const levelHooks: Record<string, string> = {
@@ -5418,7 +5449,7 @@ function AssessmentContent() {
                                 </p>
 
                                 <p className="mt-1 text-xs leading-5 text-fei-bg/40">
-                                  Applied communication practice for a real football situation
+                                  {professionalPlayerScenarioDescriptions[scenario]}
                                 </p>
                               </div>
 
