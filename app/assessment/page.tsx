@@ -3635,14 +3635,16 @@ function AssessmentContent() {
             <section className={selectedRole === 'Professional Player' ? 'max-w-[840px]' : undefined}>
               {selectedRole === 'Professional Player' ? (
                 <>
-                  <div className="mb-3 rounded-xl border border-fei-bg/[0.09] bg-white px-5 py-3.5 shadow-[0_6px_18px_rgba(15,23,42,0.02)] sm:px-6">
-                    <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-fei-bg/35">
-                      {item.context.split('\n\n')[0]}
-                    </p>
+                  <div className="mb-4 overflow-hidden rounded-[1rem] border border-fei-sky/20 bg-gradient-to-br from-white to-fei-sky/[0.035] shadow-[0_8px_24px_rgba(15,23,42,0.035)]">
+                    <div className="border-l-4 border-fei-sky px-5 py-4 sm:px-6 sm:py-5">
+                      <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.16em] text-fei-sky/80">
+                        {item.context.split('\n\n')[0]}
+                      </p>
 
-                    <p className="whitespace-pre-line text-[15px] leading-6.5 text-fei-bg/68 select-none">
-                      {item.context.split('\n\n').slice(1).join('\n\n')}
-                    </p>
+                      <p className="whitespace-pre-line text-base font-medium leading-7 text-fei-bg/78 select-none sm:text-[1.05rem] sm:leading-8">
+                        {item.context.split('\n\n').slice(1).join('\n\n')}
+                      </p>
+                    </div>
                   </div>
 
                   <div className="mb-2.5">
