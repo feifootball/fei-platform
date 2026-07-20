@@ -55,7 +55,7 @@ const items = {
       id: 'r1',
       level: 'A2',
       label: 'Item 3 — Tactical Instruction',
-      context: 'Your assistant coach sends this message before training:\n\n"Today we work in a mid-block. Stay close to the 6 and protect the inside channel. When the ball goes wide to their fullback, jump with the nearest winger. If the pass stays central, hold your position."',
+      context: 'The assistant coach sends this message before training:\n\n"Today we work in a mid-block. Stay close to the 6 and protect the inside channel. When the ball goes wide to their fullback, jump with the nearest winger. If the pass stays central, hold your position."',
       question: 'The opposition keeps the ball in the center. What should you do?',
       options: [
         'A. Move wide and press their fullback',
