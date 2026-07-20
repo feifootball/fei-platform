@@ -2590,7 +2590,7 @@ function OptionButton({
       type="button"
       onClick={onSelect}
       aria-pressed={selected}
-      className={`group flex w-full items-center justify-between gap-5 border-b border-fei-bg/10 px-2 py-5 text-left transition last:border-b-0 sm:px-3 sm:py-6 ${
+      className={`group flex w-full items-center justify-between gap-5 border-b border-fei-bg/10 px-2 py-4 text-left transition last:border-b-0 sm:px-3 sm:py-5 ${
         selected
           ? 'bg-fei-sky/[0.09]'
           : 'hover:bg-white/80'
@@ -3632,25 +3632,21 @@ function AssessmentContent() {
               <SectionBadge label="Professional Reading" />
             </aside>
 
-            <section className={selectedRole === 'Professional Player' ? 'max-w-[800px]' : undefined}>
+            <section className={selectedRole === 'Professional Player' ? 'max-w-[840px]' : undefined}>
               {selectedRole === 'Professional Player' ? (
                 <>
-                  <div className="mb-4 rounded-[1.1rem] border border-fei-bg/[0.11] bg-white px-5 py-4 shadow-[0_10px_30px_rgba(15,23,42,0.03)] sm:px-6">
-                    <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-fei-bg/38">
+                  <div className="mb-3 rounded-xl border border-fei-bg/[0.09] bg-white px-5 py-3.5 shadow-[0_6px_18px_rgba(15,23,42,0.02)] sm:px-6">
+                    <p className="mb-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-fei-bg/35">
                       {item.context.split('\n\n')[0]}
                     </p>
 
-                    <p className="whitespace-pre-line text-[15px] leading-7 text-fei-bg/68 select-none">
+                    <p className="whitespace-pre-line text-[15px] leading-6.5 text-fei-bg/68 select-none">
                       {item.context.split('\n\n').slice(1).join('\n\n')}
                     </p>
                   </div>
 
-                  <div className="mb-3">
-                    <p className="mb-1.5 text-xs font-black uppercase tracking-[0.2em] text-fei-sky">
-                      Your decision
-                    </p>
-
-                    <h1 className="max-w-[760px] text-lg font-semibold leading-7 tracking-[-0.015em] text-fei-bg sm:text-xl sm:leading-8">
+                  <div className="mb-2.5">
+                    <h1 className="max-w-[780px] text-lg font-medium leading-7 tracking-[-0.012em] text-fei-bg sm:text-[1.18rem] sm:leading-8">
                       {item.question}
                     </h1>
                   </div>
@@ -3675,7 +3671,7 @@ function AssessmentContent() {
                 </>
               )}
 
-              <div className="mb-4 overflow-hidden border-y border-fei-bg/10">
+              <div className="mb-4 overflow-hidden border-y border-fei-bg/[0.08]">
                 {item.options.map((option) => (
                   <OptionButton
                     key={option}
