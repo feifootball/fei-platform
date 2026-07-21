@@ -3642,9 +3642,9 @@ function AssessmentContent() {
     const selected = answers[item.id]
 
     return (
-      <div className="min-h-screen bg-[#F6F7F9] px-6 py-5 text-fei-bg sm:px-8 lg:py-6">
-        <div className="mx-auto max-w-[1080px]">
-          <div className="mb-5 flex min-h-[48px] items-center justify-between border-b border-fei-bg/[0.08] pb-3">
+      <div className="min-h-screen bg-[#F6F7F9] text-fei-bg">
+        <header className="border-b border-fei-bg/[0.08] bg-white/90 backdrop-blur-xl">
+          <div className="mx-auto flex h-[64px] w-full max-w-[1280px] items-center justify-between px-6 sm:px-8">
             <button
               type="button"
               onClick={() => router.push('/')}
@@ -3654,7 +3654,7 @@ function AssessmentContent() {
               <img
                 src="/fei-logo-navbar-vector.svg"
                 alt="FEI"
-                className="h-10 w-auto"
+                className="h-9 w-auto"
               />
 
               <span className="mx-4 hidden h-5 w-px bg-fei-bg/10 sm:block" />
@@ -3664,10 +3664,13 @@ function AssessmentContent() {
               </span>
             </button>
 
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-fei-bg/45 sm:text-sm">
-              Diagnostic Assessment
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-fei-bg/38">
+              Diagnostic assessment
             </p>
           </div>
+        </header>
+
+        <main className="mx-auto w-full max-w-[1080px] px-6 py-5 sm:px-8 lg:py-6">
 
           <ProgressBar
             current={getItemNumber('reading', readingStep)}
@@ -3768,7 +3771,7 @@ function AssessmentContent() {
               </div>
             </section>
           </div>
-        </div>
+        </main>
       </div>
     )
   }
@@ -3779,9 +3782,9 @@ function AssessmentContent() {
     const selected = answers[item.id]
 
     return (
-      <div className="min-h-screen bg-[#F6F7F9] px-6 py-5 text-fei-bg sm:px-8 lg:py-6">
-        <div className="mx-auto max-w-[1080px]">
-          <div className="mb-5 flex min-h-[48px] items-center justify-between border-b border-fei-bg/[0.08] pb-3">
+      <div className="min-h-screen bg-[#F6F7F9] text-fei-bg">
+        <header className="border-b border-fei-bg/[0.08] bg-white/90 backdrop-blur-xl">
+          <div className="mx-auto flex h-[64px] w-full max-w-[1280px] items-center justify-between px-6 sm:px-8">
             <button
               type="button"
               onClick={() => router.push('/')}
@@ -3791,7 +3794,7 @@ function AssessmentContent() {
               <img
                 src="/fei-logo-navbar-vector.svg"
                 alt="FEI"
-                className="h-10 w-auto"
+                className="h-9 w-auto"
               />
 
               <span className="mx-4 hidden h-5 w-px bg-fei-bg/10 sm:block" />
@@ -3801,10 +3804,13 @@ function AssessmentContent() {
               </span>
             </button>
 
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-fei-bg/45 sm:text-sm">
-              Diagnostic Assessment
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-fei-bg/38">
+              Diagnostic assessment
             </p>
           </div>
+        </header>
+
+        <main className="mx-auto w-full max-w-[1080px] px-6 py-5 sm:px-8 lg:py-6">
 
           <ProgressBar
             current={getItemNumber('listening', listeningStep)}
@@ -3913,7 +3919,7 @@ function AssessmentContent() {
               </div>
             </section>
           </div>
-        </div>
+        </main>
       </div>
     )
   }
@@ -3942,21 +3948,9 @@ function AssessmentContent() {
       .trim()
 
     return (
-      <div
-        className={`min-h-screen bg-[#F6F7F9] px-6 text-fei-bg sm:px-8 ${
-          selectedRole === 'Professional Player'
-            ? 'py-5 lg:py-6'
-            : 'py-8 lg:py-10'
-        }`}
-      >
-        <div className="mx-auto max-w-[1080px]">
-          <div
-            className={`flex items-center justify-between border-b border-fei-bg/[0.08] ${
-              selectedRole === 'Professional Player'
-                ? 'mb-5 min-h-[48px] pb-3'
-                : 'mb-8 min-h-[52px] pb-5'
-            }`}
-          >
+      <div className="min-h-screen bg-[#F6F7F9] text-fei-bg">
+        <header className="border-b border-fei-bg/[0.08] bg-white/90 backdrop-blur-xl">
+          <div className="mx-auto flex h-[64px] w-full max-w-[1280px] items-center justify-between px-6 sm:px-8">
             <button
               type="button"
               onClick={() => router.push('/')}
@@ -3966,7 +3960,7 @@ function AssessmentContent() {
               <img
                 src="/fei-logo-navbar-vector.svg"
                 alt="FEI"
-                className="h-10 w-auto"
+                className="h-9 w-auto"
               />
 
               <span className="mx-4 hidden h-5 w-px bg-fei-bg/10 sm:block" />
@@ -3976,11 +3970,13 @@ function AssessmentContent() {
               </span>
             </button>
 
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-fei-bg/45 sm:text-sm">
-              Diagnostic Assessment
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-fei-bg/38">
+              Diagnostic assessment
             </p>
           </div>
+        </header>
 
+        <main className="mx-auto w-full max-w-[1080px] px-6 py-5 sm:px-8 lg:py-6">
           <ProgressBar
             current={getItemNumber('vocabulary', vocabStep)}
             total={totalItems}
@@ -4117,7 +4113,7 @@ function AssessmentContent() {
               </div>
             </section>
           </div>
-        </div>
+        </main>
       </div>
     )
   }
@@ -4128,21 +4124,9 @@ function AssessmentContent() {
     const selected = answers[item.id]
 
     return (
-      <div
-        className={`min-h-screen bg-[#F6F7F9] px-6 text-fei-bg sm:px-8 ${
-          selectedRole === 'Professional Player'
-            ? 'py-5 lg:py-6'
-            : 'py-8 lg:py-10'
-        }`}
-      >
-        <div className="mx-auto max-w-[1080px]">
-          <div
-            className={`flex items-center justify-between border-b border-fei-bg/[0.08] ${
-              selectedRole === 'Professional Player'
-                ? 'mb-5 min-h-[48px] pb-3'
-                : 'mb-8 min-h-[52px] pb-5'
-            }`}
-          >
+      <div className="min-h-screen bg-[#F6F7F9] text-fei-bg">
+        <header className="border-b border-fei-bg/[0.08] bg-white/90 backdrop-blur-xl">
+          <div className="mx-auto flex h-[64px] w-full max-w-[1280px] items-center justify-between px-6 sm:px-8">
             <button
               type="button"
               onClick={() => router.push('/')}
@@ -4152,7 +4136,7 @@ function AssessmentContent() {
               <img
                 src="/fei-logo-navbar-vector.svg"
                 alt="FEI"
-                className="h-10 w-auto"
+                className="h-9 w-auto"
               />
 
               <span className="mx-4 hidden h-5 w-px bg-fei-bg/10 sm:block" />
@@ -4162,11 +4146,13 @@ function AssessmentContent() {
               </span>
             </button>
 
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-fei-bg/45 sm:text-sm">
-              Diagnostic Assessment
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-fei-bg/38">
+              Diagnostic assessment
             </p>
           </div>
+        </header>
 
+        <main className="mx-auto w-full max-w-[1080px] px-6 py-5 sm:px-8 lg:py-6">
           <ProgressBar
             current={getItemNumber('functional', functionalStep)}
             total={totalItems}
@@ -4262,7 +4248,7 @@ function AssessmentContent() {
               </div>
             </section>
           </div>
-        </div>
+        </main>
       </div>
     )
   }
@@ -4272,21 +4258,9 @@ function AssessmentContent() {
     const wordCount = writingText.trim() ? writingText.trim().split(/\s+/).length : 0
 
     return (
-      <div
-        className={`min-h-screen bg-[#F6F7F9] px-6 text-fei-bg sm:px-8 ${
-          selectedRole === 'Professional Player'
-            ? 'py-5 lg:py-6'
-            : 'py-8 lg:py-10'
-        }`}
-      >
-        <div className="mx-auto max-w-[1080px]">
-          <div
-            className={`flex items-center justify-between border-b border-fei-bg/[0.08] ${
-              selectedRole === 'Professional Player'
-                ? 'mb-5 min-h-[48px] pb-3'
-                : 'mb-8 min-h-[52px] pb-5'
-            }`}
-          >
+      <div className="min-h-screen bg-[#F6F7F9] text-fei-bg">
+        <header className="border-b border-fei-bg/[0.08] bg-white/90 backdrop-blur-xl">
+          <div className="mx-auto flex h-[64px] w-full max-w-[1280px] items-center justify-between px-6 sm:px-8">
             <button
               type="button"
               onClick={() => router.push('/')}
@@ -4296,7 +4270,7 @@ function AssessmentContent() {
               <img
                 src="/fei-logo-navbar-vector.svg"
                 alt="FEI"
-                className="h-10 w-auto"
+                className="h-9 w-auto"
               />
 
               <span className="mx-4 hidden h-5 w-px bg-fei-bg/10 sm:block" />
@@ -4306,11 +4280,13 @@ function AssessmentContent() {
               </span>
             </button>
 
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-fei-bg/45 sm:text-sm">
-              Diagnostic Assessment
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-fei-bg/38">
+              Diagnostic assessment
             </p>
           </div>
+        </header>
 
+        <main className="mx-auto w-full max-w-[1080px] px-6 py-5 sm:px-8 lg:py-6">
           <ProgressBar current={16} total={totalItems} />
 
           <div
@@ -4446,7 +4422,7 @@ function AssessmentContent() {
           </button>
             </section>
           </div>
-        </div>
+        </main>
       </div>
     )
   }
@@ -4454,21 +4430,9 @@ function AssessmentContent() {
   // SPEAKING
   if (section === 'speaking') {
     return (
-      <div
-        className={`min-h-screen bg-[#F6F7F9] px-6 text-fei-bg sm:px-8 ${
-          selectedRole === 'Professional Player'
-            ? 'py-5 lg:py-6'
-            : 'py-8 lg:py-10'
-        }`}
-      >
-        <div className="mx-auto max-w-[1080px]">
-          <div
-            className={`flex items-center justify-between border-b border-fei-bg/[0.08] ${
-              selectedRole === 'Professional Player'
-                ? 'mb-5 min-h-[48px] pb-3'
-                : 'mb-8 min-h-[52px] pb-5'
-            }`}
-          >
+      <div className="min-h-screen bg-[#F6F7F9] text-fei-bg">
+        <header className="border-b border-fei-bg/[0.08] bg-white/90 backdrop-blur-xl">
+          <div className="mx-auto flex h-[64px] w-full max-w-[1280px] items-center justify-between px-6 sm:px-8">
             <button
               type="button"
               onClick={() => router.push('/')}
@@ -4478,7 +4442,7 @@ function AssessmentContent() {
               <img
                 src="/fei-logo-navbar-vector.svg"
                 alt="FEI"
-                className="h-10 w-auto"
+                className="h-9 w-auto"
               />
 
               <span className="mx-4 hidden h-5 w-px bg-fei-bg/10 sm:block" />
@@ -4488,11 +4452,13 @@ function AssessmentContent() {
               </span>
             </button>
 
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-fei-bg/45 sm:text-sm">
-              Diagnostic Assessment
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-fei-bg/38">
+              Diagnostic assessment
             </p>
           </div>
+        </header>
 
+        <main className="mx-auto w-full max-w-[1080px] px-6 py-5 sm:px-8 lg:py-6">
           <ProgressBar current={17} total={totalItems} />
 
           <div
@@ -4743,7 +4709,7 @@ function AssessmentContent() {
           </div>
             </section>
           </div>
-        </div>
+        </main>
       </div>
     )
   }
