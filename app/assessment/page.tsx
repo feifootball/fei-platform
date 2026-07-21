@@ -4249,9 +4249,21 @@ function AssessmentContent() {
     const wordCount = writingText.trim() ? writingText.trim().split(/\s+/).length : 0
 
     return (
-      <div className="min-h-screen bg-[#F6F7F9] px-6 py-8 text-fei-bg sm:px-8 lg:py-10">
+      <div
+        className={`min-h-screen bg-[#F6F7F9] px-6 text-fei-bg sm:px-8 ${
+          selectedRole === 'Professional Player'
+            ? 'py-5 lg:py-6'
+            : 'py-8 lg:py-10'
+        }`}
+      >
         <div className="mx-auto max-w-[1080px]">
-          <div className="mb-8 flex min-h-[52px] items-center justify-between border-b border-fei-bg/[0.08] pb-5">
+          <div
+            className={`flex items-center justify-between border-b border-fei-bg/[0.08] ${
+              selectedRole === 'Professional Player'
+                ? 'mb-5 min-h-[48px] pb-3'
+                : 'mb-8 min-h-[52px] pb-5'
+            }`}
+          >
             <button
               type="button"
               onClick={() => router.push('/')}
@@ -4278,13 +4290,47 @@ function AssessmentContent() {
 
           <ProgressBar current={16} total={totalItems} />
 
-          <div className="mb-8">
-            <SectionBadge label="Written Production" />
-          </div>
+          <div
+            className={`grid items-start ${
+              selectedRole === 'Professional Player'
+                ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-7'
+                : 'gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12'
+            }`}
+          >
+            <aside className="lg:sticky lg:top-10 lg:pt-1">
+              <SectionBadge label="Written Production" />
+            </aside>
 
-          <div className="mb-8 border-l-4 border-fei-sky pl-5 sm:pl-7">
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-fei-bg/45">Situation</p>
-            <p className="mt-5 text-base leading-8 text-fei-bg/70">
+            <section
+              className={
+                selectedRole === 'Professional Player'
+                  ? 'max-w-[840px]'
+                  : undefined
+              }
+            >
+          <div
+            className={
+              selectedRole === 'Professional Player'
+                ? 'mb-4 rounded-xl border border-fei-bg/[0.09] bg-white px-5 py-4 sm:px-6'
+                : 'mb-8 border-l-4 border-fei-sky pl-5 sm:pl-7'
+            }
+          >
+            <p
+              className={
+                selectedRole === 'Professional Player'
+                  ? 'text-[10px] font-medium uppercase tracking-[0.07em] text-fei-bg/38'
+                  : 'text-xs font-black uppercase tracking-[0.22em] text-fei-bg/45'
+              }
+            >
+              Situation
+            </p>
+            <p
+              className={
+                selectedRole === 'Professional Player'
+                  ? 'mt-2 max-w-[760px] text-[15px] leading-7 tracking-[-0.004em] text-fei-bg/72'
+                  : 'mt-5 text-base leading-8 text-fei-bg/70'
+              }
+            >
 {selectedRole === 'Head Coach'
                 ? 'You are briefing the squad two hours before a match against a high-pressing opponent. Focus on what they will face, what your plan is, and what tone you want to set.'
                 : selectedRole === 'Assistant Coach'
@@ -4309,8 +4355,14 @@ function AssessmentContent() {
             </p>
           </div>
 
-          <div className="mb-5">
-            <p className="text-xl font-black leading-8 text-fei-bg">
+          <div className={selectedRole === 'Professional Player' ? 'mb-4' : 'mb-5'}>
+            <p
+              className={
+                selectedRole === 'Professional Player'
+                  ? 'max-w-[780px] text-base font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-[1.04rem]'
+                  : 'text-xl font-black leading-8 text-fei-bg'
+              }
+            >
               {selectedRole === 'Head Coach'
                 ? 'Write the opening 3–5 sentences of your pre-match briefing.'
                 : selectedRole === 'Assistant Coach'
@@ -4333,15 +4385,27 @@ function AssessmentContent() {
                                   ? 'Write 3–5 sentences with the key issue, strategy and coaching support needed.'
                                   : 'Write a message to the physiotherapist reporting this discomfort.'}
             </p>
-            <p className="mt-3 text-sm leading-6 text-fei-bg/55">Write 3–5 sentences in professional English.</p>
+            <p className="mt-2 text-sm leading-6 text-fei-bg/52">
+              {selectedRole === 'Professional Player'
+                ? 'Include when it started, the movement that caused it, and how it feels now.'
+                : 'Write 3–5 sentences in professional English.'}
+            </p>
           </div>
 
           <textarea
             value={writingText}
             onChange={(e) => setWritingText(e.target.value)}
-            placeholder="Hi, I wanted to report..."
+            placeholder={
+              selectedRole === 'Professional Player'
+                ? 'Hi, I wanted to let you know...'
+                : 'Hi, I wanted to report...'
+            }
             rows={6}
-            className="mb-2 w-full resize-none rounded-2xl border border-fei-bg/15 bg-white px-5 py-4 text-base leading-7 text-fei-bg placeholder:text-fei-bg/25 focus:border-fei-sky focus:outline-none"
+            className={`mb-2 w-full resize-none bg-white text-base leading-7 text-fei-bg placeholder:text-fei-bg/25 focus:border-fei-sky focus:outline-none ${
+              selectedRole === 'Professional Player'
+                ? 'rounded-xl border border-fei-bg/[0.12] px-5 py-4 shadow-[0_4px_14px_rgba(15,23,42,0.025)]'
+                : 'rounded-2xl border border-fei-bg/15 px-5 py-4'
+            }`}
           />
           <div className="mb-8 flex items-center justify-between text-xs text-fei-bg/45">
             <span>{wordCount} words</span>
@@ -4357,6 +4421,8 @@ function AssessmentContent() {
               <ChevronRightIcon />
             </span>
           </button>
+            </section>
+          </div>
         </div>
       </div>
     )
