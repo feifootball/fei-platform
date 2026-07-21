@@ -3900,6 +3900,24 @@ function AssessmentContent() {
     const item = activeItems.vocabulary[vocabStep]
     const selected = answers[item.id]
 
+    const vocabularySpeaker = item.context.toLowerCase().includes('physiotherapist')
+      ? 'Physiotherapist'
+      : item.context.toLowerCase().includes('coach')
+        ? 'Coach'
+        : item.context.toLowerCase().includes('teammate')
+          ? 'Teammate'
+          : 'Match context'
+
+    const vocabularyQuoteMatch = item.context.match(/[“"](.+)[”"]$/)
+    const vocabularyQuote = vocabularyQuoteMatch?.[1] ?? item.context
+
+    const vocabularySetup = item.context
+      .replace(
+        /\s*(?:A teammate shouts|The coach says|The physiotherapist asks):\s*[“"].*[”"]$/,
+        '',
+      )
+      .trim()
+
     return (
       <div
         className={`min-h-screen bg-[#F6F7F9] px-6 text-fei-bg sm:px-8 ${
@@ -3965,11 +3983,31 @@ function AssessmentContent() {
             >
               {selectedRole === 'Professional Player' ? (
                 <>
-                  <div className="mb-4 rounded-xl border border-fei-bg/[0.09] bg-white">
-                    <div className="border-l-2 border-fei-sky px-5 py-4 sm:px-6">
-                      <p className="max-w-[760px] text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72 select-none sm:text-base">
-                        {item.context}
+                  <div className="mb-4">
+                    {vocabularySetup && (
+                      <p className="mb-2 max-w-[720px] text-sm leading-6 text-fei-bg/52">
+                        {vocabularySetup}
                       </p>
+                    )}
+
+                    <div className="flex items-end gap-3">
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-fei-sky/20 bg-fei-sky/[0.08] text-[10px] font-semibold uppercase tracking-[0.05em] text-fei-bg/55">
+                        {vocabularySpeaker
+                          .split(' ')
+                          .map((word) => word[0])
+                          .join('')
+                          .slice(0, 2)}
+                      </div>
+
+                      <div className="relative max-w-[720px] rounded-2xl rounded-bl-md border border-fei-bg/[0.09] bg-white px-5 py-3.5 sm:px-6">
+                        <p className="mb-1 text-[10px] font-medium uppercase tracking-[0.07em] text-fei-bg/38">
+                          {vocabularySpeaker}
+                        </p>
+
+                        <p className="text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/74 select-none sm:text-base">
+                          “{vocabularyQuote}”
+                        </p>
+                      </div>
                     </div>
                   </div>
 
