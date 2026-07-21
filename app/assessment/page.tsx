@@ -3634,31 +3634,31 @@ function AssessmentContent() {
                 : 'gap-7 lg:grid-cols-[0.43fr_1.57fr] lg:gap-9'
             }`}
           >
-            <aside className="lg:sticky lg:top-10">
+            <aside className="lg:sticky lg:top-10 lg:pt-1">
               <SectionBadge label="Professional Reading" />
             </aside>
 
             <section className={selectedRole === 'Professional Player' ? 'max-w-[840px]' : undefined}>
               {selectedRole === 'Professional Player' ? (
                 <>
-                  <div className="mb-4 overflow-hidden rounded-[1rem] border border-fei-sky/20 bg-gradient-to-br from-white to-fei-sky/[0.035] shadow-[0_8px_24px_rgba(15,23,42,0.035)]">
+                  <div className="mb-3 overflow-hidden rounded-[1rem] border border-fei-sky/20 bg-gradient-to-br from-white to-fei-sky/[0.035] shadow-[0_8px_24px_rgba(15,23,42,0.035)]">
                     <div className="border-l-4 border-fei-sky px-5 py-4 sm:px-6 sm:py-5">
                       <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.07em] text-fei-bg/40">
                         {item.context.split('\n\n')[0]}
                       </p>
 
-                      <p className="whitespace-pre-line text-[1.08rem] font-normal leading-[1.68] tracking-[-0.01em] text-fei-bg/74 select-none sm:text-[1.15rem]">
+                      <p className="max-w-[720px] whitespace-pre-line text-[1.08rem] font-normal leading-[1.6] tracking-[-0.008em] text-fei-bg/76 select-none sm:text-[1.15rem]">
                         {item.context.split('\n\n').slice(1).join('\n\n')}
                       </p>
                     </div>
                   </div>
 
                   <div className="mb-3">
-                    <p className="mb-1 text-[11px] font-medium uppercase tracking-[0.08em] text-fei-bg/38">
+                    <p className="mb-0.5 text-[11px] font-medium uppercase tracking-[0.07em] text-fei-bg/38">
                       Question
                     </p>
 
-                    <h1 className="max-w-[780px] text-[1.08rem] font-semibold leading-7 tracking-[-0.012em] text-fei-bg sm:text-[1.16rem]">
+                    <h1 className="max-w-[780px] text-[1.08rem] font-semibold leading-7 tracking-[-0.012em] text-fei-bg/90 sm:text-[1.16rem]">
                       {item.question}
                     </h1>
                   </div>
@@ -3695,7 +3695,9 @@ function AssessmentContent() {
                 ))}
               </div>
 
-              <div className="flex justify-end">
+              <div className={`flex justify-end ${
+                selectedRole === 'Professional Player' ? 'pb-6' : ''
+              }`}>
                 <button
                   type="button"
                   onClick={() => {
