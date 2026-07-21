@@ -4431,9 +4431,21 @@ function AssessmentContent() {
   // SPEAKING
   if (section === 'speaking') {
     return (
-      <div className="min-h-screen bg-[#F6F7F9] px-6 py-8 text-fei-bg sm:px-8 lg:py-10">
+      <div
+        className={`min-h-screen bg-[#F6F7F9] px-6 text-fei-bg sm:px-8 ${
+          selectedRole === 'Professional Player'
+            ? 'py-5 lg:py-6'
+            : 'py-8 lg:py-10'
+        }`}
+      >
         <div className="mx-auto max-w-[1080px]">
-          <div className="mb-8 flex min-h-[52px] items-center justify-between border-b border-fei-bg/[0.08] pb-5">
+          <div
+            className={`flex items-center justify-between border-b border-fei-bg/[0.08] ${
+              selectedRole === 'Professional Player'
+                ? 'mb-5 min-h-[48px] pb-3'
+                : 'mb-8 min-h-[52px] pb-5'
+            }`}
+          >
             <button
               type="button"
               onClick={() => router.push('/')}
@@ -4460,13 +4472,47 @@ function AssessmentContent() {
 
           <ProgressBar current={17} total={totalItems} />
 
-          <div className="mb-8">
-            <SectionBadge label="Speaking Production" />
-          </div>
+          <div
+            className={`grid items-start ${
+              selectedRole === 'Professional Player'
+                ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-7'
+                : 'gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12'
+            }`}
+          >
+            <aside className="lg:sticky lg:top-10 lg:pt-1">
+              <SectionBadge label="Speaking Production" />
+            </aside>
 
-          <div className="mb-8 border-l-4 border-fei-sky pl-5 sm:pl-7">
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-fei-bg/45">Situation</p>
-            <p className="mt-5 text-base leading-8 text-fei-bg/70">
+            <section
+              className={
+                selectedRole === 'Professional Player'
+                  ? 'max-w-[840px]'
+                  : undefined
+              }
+            >
+          <div
+            className={
+              selectedRole === 'Professional Player'
+                ? 'mb-4 rounded-xl border border-fei-bg/[0.09] bg-white px-5 py-4 sm:px-6'
+                : 'mb-8 border-l-4 border-fei-sky pl-5 sm:pl-7'
+            }
+          >
+            <p
+              className={
+                selectedRole === 'Professional Player'
+                  ? 'text-[10px] font-medium uppercase tracking-[0.07em] text-fei-bg/38'
+                  : 'text-xs font-black uppercase tracking-[0.22em] text-fei-bg/45'
+              }
+            >
+              Situation
+            </p>
+            <p
+              className={
+                selectedRole === 'Professional Player'
+                  ? 'mt-2 max-w-[760px] text-[15px] leading-7 tracking-[-0.004em] text-fei-bg/72'
+                  : 'mt-5 text-base leading-8 text-fei-bg/70'
+              }
+            >
 {selectedRole === 'Head Coach'
                 ? 'You have just substituted a senior player after 25 minutes in a 1–0 loss. The player expected to play 90 minutes. The crowd is loud and other players are watching.'
                 : selectedRole === 'Assistant Coach'
@@ -4491,8 +4537,14 @@ function AssessmentContent() {
             </p>
           </div>
 
-          <div className="mb-8">
-            <p className="text-xl font-black leading-8 text-fei-bg">
+          <div className={selectedRole === 'Professional Player' ? 'mb-4' : 'mb-8'}>
+            <p
+              className={
+                selectedRole === 'Professional Player'
+                  ? 'max-w-[780px] text-base font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-[1.04rem]'
+                  : 'text-xl font-black leading-8 text-fei-bg'
+              }
+            >
               {selectedRole === 'Head Coach'
                 ? 'Explain the substitution decision while protecting the relationship and your authority.'
                 : selectedRole === 'Assistant Coach'
@@ -4515,11 +4567,26 @@ function AssessmentContent() {
                                   ? 'Explain the support strategy clearly, balancing confidence, standards, anxiety and sustainable performance.'
                                   : 'Explain how you would respond to the coach professionally.'}
             </p>
-            <p className="mt-3 text-sm leading-6 text-fei-bg/55">Recommended time: 45–60 seconds. Recording stops automatically at 75 seconds.</p>
+            <p className="mt-2 text-sm leading-6 text-fei-bg/52">
+              Recommended: 45–60 seconds · Maximum: 75 seconds
+            </p>
           </div>
 
+          <div
+            className={
+              selectedRole === 'Professional Player'
+                ? 'mb-4 rounded-xl border border-fei-bg/[0.09] bg-white p-4 sm:p-5'
+                : ''
+            }
+          >
           {isRecording && (
-            <div className="mb-6 rounded-2xl border border-red-500/25 bg-white p-5">
+            <div
+              className={
+                selectedRole === 'Professional Player'
+                  ? 'mb-4'
+                  : 'mb-6 rounded-2xl border border-red-500/25 bg-white p-5'
+              }
+            >
               <div className="mb-3 flex items-center gap-3">
                 <div className="h-3 w-3 animate-pulse rounded-full bg-red-500" />
                 <span className="text-sm font-semibold text-red-600">Recording...</span>
@@ -4556,11 +4623,15 @@ function AssessmentContent() {
             </div>
           )}
 
-          <div className="mb-4">
+          <div className={selectedRole === 'Professional Player' ? 'mb-3' : 'mb-4'}>
             {!isRecording && !recordingDone && (
               <button
                 onClick={startRecording}
-                className="inline-flex min-h-[54px] w-full items-center justify-center gap-2 rounded-full bg-red-500 px-8 py-3.5 font-bold text-white transition hover:bg-red-600"
+                className={
+                  selectedRole === 'Professional Player'
+                    ? 'inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-red-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-red-600'
+                    : 'inline-flex min-h-[54px] w-full items-center justify-center gap-2 rounded-full bg-red-500 px-8 py-3.5 font-bold text-white transition hover:bg-red-600'
+                }
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -4584,7 +4655,11 @@ function AssessmentContent() {
             {isRecording && (
               <button
                 onClick={stopRecording}
-                className="inline-flex min-h-[54px] w-full items-center justify-center gap-2 rounded-full border-2 border-red-500 bg-white px-8 py-3.5 font-bold text-red-600 transition hover:bg-red-500/[0.06]"
+                className={
+                  selectedRole === 'Professional Player'
+                    ? 'inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-red-500 bg-white px-6 py-3 text-sm font-semibold text-red-600 transition hover:bg-red-500/[0.05]'
+                    : 'inline-flex min-h-[54px] w-full items-center justify-center gap-2 rounded-full border-2 border-red-500 bg-white px-8 py-3.5 font-bold text-red-600 transition hover:bg-red-500/[0.06]'
+                }
               >
                 <span className="h-3 w-3 rounded-[3px] bg-current" />
                 Stop recording
@@ -4642,6 +4717,9 @@ function AssessmentContent() {
               Skip speaking and submit
             </button>
           )}
+          </div>
+            </section>
+          </div>
         </div>
       </div>
     )
