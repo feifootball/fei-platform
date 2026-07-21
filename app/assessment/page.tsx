@@ -3992,55 +3992,25 @@ function AssessmentContent() {
 
                     <div className="flex items-end gap-3">
                       <div
-                        className={`relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border bg-white ${
+                        className={`relative h-10 w-10 shrink-0 overflow-hidden rounded-full border bg-white ${
                           vocabularySpeaker === 'Physiotherapist'
-                            ? 'border-emerald-500/20'
+                            ? 'border-emerald-500/25'
                             : vocabularySpeaker === 'Coach'
-                              ? 'border-fei-yellow/35'
-                              : 'border-fei-sky/25'
+                              ? 'border-fei-yellow/40'
+                              : 'border-fei-sky/30'
                         }`}
-                        aria-hidden="true"
                       >
-                        <svg
-                          viewBox="0 0 40 40"
-                          className="h-full w-full"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <rect
-                            width="40"
-                            height="40"
-                            rx="20"
-                            className={
-                              vocabularySpeaker === 'Physiotherapist'
-                                ? 'fill-emerald-500/[0.08]'
-                                : vocabularySpeaker === 'Coach'
-                                  ? 'fill-fei-yellow/[0.14]'
-                                  : 'fill-fei-sky/[0.1]'
-                            }
-                          />
-
-                          <circle
-                            cx="20"
-                            cy="14"
-                            r="6"
-                            className="fill-fei-bg/65"
-                          />
-
-                          <path
-                            d="M9 36C9.8 27.8 13.7 23.5 20 23.5C26.3 23.5 30.2 27.8 31 36"
-                            className="fill-fei-bg/58"
-                          />
-
-                          <path
-                            d="M15.5 25.5L20 29L24.5 25.5"
-                            stroke="white"
-                            strokeOpacity="0.75"
-                            strokeWidth="1.2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
+                        <img
+                          src={
+                            vocabularySpeaker === 'Physiotherapist'
+                              ? '/images/diagnostics/avatars/physiotherapist.png'
+                              : vocabularySpeaker === 'Coach'
+                                ? '/images/diagnostics/avatars/coach.png'
+                                : '/images/diagnostics/avatars/teammate.png'
+                          }
+                          alt={`${vocabularySpeaker} avatar`}
+                          className="h-full w-full object-cover object-center"
+                        />
 
                         <span
                           className={`absolute bottom-0 right-0 flex h-4 w-4 items-center justify-center rounded-full border border-white text-[8px] font-bold ${
@@ -4050,6 +4020,7 @@ function AssessmentContent() {
                                 ? 'bg-fei-yellow text-fei-bg'
                                 : 'bg-fei-sky text-fei-bg'
                           }`}
+                          aria-hidden="true"
                         >
                           {vocabularySpeaker === 'Physiotherapist'
                             ? '+'
