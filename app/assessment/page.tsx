@@ -3990,14 +3990,14 @@ function AssessmentContent() {
                       </p>
                     )}
 
-                    <div className="flex items-end gap-3">
+                    <div className="flex items-start gap-4">
                       <div
-                        className={`relative h-10 w-10 shrink-0 overflow-hidden rounded-full border bg-white ${
+                        className={`relative h-14 w-14 shrink-0 overflow-hidden rounded-full border-2 bg-white shadow-[0_5px_16px_rgba(15,23,42,0.08)] ${
                           vocabularySpeaker === 'Physiotherapist'
                             ? 'border-emerald-500/25'
                             : vocabularySpeaker === 'Coach'
-                              ? 'border-fei-yellow/40'
-                              : 'border-fei-sky/30'
+                              ? 'border-fei-yellow/45'
+                              : 'border-fei-sky/35'
                         }`}
                       >
                         <img
@@ -4009,28 +4009,18 @@ function AssessmentContent() {
                                 : '/images/diagnostics/avatars/teammate.png'
                           }
                           alt={`${vocabularySpeaker} avatar`}
+                          loading="eager"
+                          decoding="sync"
                           className="h-full w-full object-cover object-center"
                         />
-
-                        <span
-                          className={`absolute bottom-0 right-0 flex h-4 w-4 items-center justify-center rounded-full border border-white text-[8px] font-bold ${
-                            vocabularySpeaker === 'Physiotherapist'
-                              ? 'bg-emerald-500 text-white'
-                              : vocabularySpeaker === 'Coach'
-                                ? 'bg-fei-yellow text-fei-bg'
-                                : 'bg-fei-sky text-fei-bg'
-                          }`}
-                          aria-hidden="true"
-                        >
-                          {vocabularySpeaker === 'Physiotherapist'
-                            ? '+'
-                            : vocabularySpeaker === 'Coach'
-                              ? 'C'
-                              : 'T'}
-                        </span>
                       </div>
 
-                      <div className="relative max-w-[720px] rounded-2xl rounded-bl-md border border-fei-bg/[0.09] bg-white px-5 py-3.5 sm:px-6">
+                      <div className="relative mt-1 max-w-[720px] rounded-2xl border border-fei-bg/[0.09] bg-white px-5 py-3.5 shadow-[0_4px_14px_rgba(15,23,42,0.035)] sm:px-6">
+                        <span
+                          className="absolute left-[-7px] top-5 h-3.5 w-3.5 rotate-45 border-b border-l border-fei-bg/[0.09] bg-white"
+                          aria-hidden="true"
+                        />
+
                         <p className="mb-1 text-[10px] font-medium uppercase tracking-[0.07em] text-fei-bg/38">
                           {vocabularySpeaker}
                         </p>
