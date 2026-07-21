@@ -3548,14 +3548,23 @@ function AssessmentContent() {
             >
               {selectedRole === 'Professional Player' ? (
                 <>
-                  <div className="mb-4 rounded-xl border border-fei-bg/[0.09] bg-white px-5 py-4 sm:px-6">
-                    <p className="max-w-[760px] text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72">
+                  <div className="relative mb-4 overflow-hidden rounded-2xl border border-fei-sky/25 bg-gradient-to-br from-white via-white to-fei-sky/[0.06] px-5 py-5 shadow-[0_8px_24px_rgba(15,23,42,0.045)] sm:px-6">
+                    <div
+                      className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent"
+                      aria-hidden="true"
+                    />
+
+                    <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.09em] text-fei-bg/38">
+                      Professional Context
+                    </p>
+
+                    <p className="max-w-[760px] text-[15px] font-medium leading-7 tracking-[-0.004em] text-fei-bg/78 sm:text-base">
                       {item.context}
                     </p>
                   </div>
 
-                  <div className="mb-3">
-                    <h1 className="max-w-[780px] text-base font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-[1.04rem]">
+                  <div className="mb-3 pl-1">
+                    <h1 className="max-w-[780px] text-base font-semibold leading-7 tracking-[-0.008em] text-fei-bg/90 sm:text-[1.04rem]">
                       {item.question}
                     </h1>
                   </div>
