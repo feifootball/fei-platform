@@ -4351,7 +4351,7 @@ function AssessmentContent() {
                                 ? 'You need to write a short rehabilitation progress note for the coaching staff. The player is in Week 3. Strength is 70%, pain is 2/10 with activity, agility is 55%, and confidence is improving after the first sprint without hesitation.'
                                 : selectedRole === 'Sports Psychologist'
                                   ? 'You need to write a short mental performance note for the coaching staff. The player is dealing with perfectionism, anxiety before matches and reduced confidence after mistakes.'
-                                  : "After training today, you developed tightness in your left hamstring during the second half. It started when you made a sharp turning movement while sprinting. The sensation increased slightly during the cool-down. You want to report this to the physiotherapist before tomorrow's session."}
+                                  : 'After the match, the coach tells you that your positioning was too deep when the team tried to press. You agree with part of the feedback, but you also felt the distance to midfield made it difficult to step forward at the right moment.'}
             </p>
           </div>
 
@@ -4383,11 +4383,11 @@ function AssessmentContent() {
                                 ? 'Write 3–5 sentences with status, next step and expected return direction.'
                                 : selectedRole === 'Sports Psychologist'
                                   ? 'Write 3–5 sentences with the key issue, strategy and coaching support needed.'
-                                  : 'Write a message to the physiotherapist reporting this discomfort.'}
+                                  : 'Write a short message to the coach explaining your view and how you will adjust in the next match.'}
             </p>
             <p className="mt-2 text-sm leading-6 text-fei-bg/52">
               {selectedRole === 'Professional Player'
-                ? 'Include when it started, the movement that caused it, and how it feels now.'
+                ? 'Acknowledge the feedback, explain the tactical difficulty briefly, and state one clear adjustment you will make.'
                 : 'Write 3–5 sentences in professional English.'}
             </p>
           </div>
@@ -4397,7 +4397,7 @@ function AssessmentContent() {
             onChange={(e) => setWritingText(e.target.value)}
             placeholder={
               selectedRole === 'Professional Player'
-                ? 'Hi, I wanted to let you know...'
+                ? 'Coach, I understand your point about...'
                 : 'Hi, I wanted to report...'
             }
             rows={6}
