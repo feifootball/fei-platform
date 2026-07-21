@@ -3641,24 +3641,20 @@ function AssessmentContent() {
             <section className={selectedRole === 'Professional Player' ? 'max-w-[840px]' : undefined}>
               {selectedRole === 'Professional Player' ? (
                 <>
-                  <div className="mb-3 overflow-hidden rounded-[1rem] border border-fei-sky/20 bg-gradient-to-br from-white to-fei-sky/[0.035] shadow-[0_8px_24px_rgba(15,23,42,0.035)]">
-                    <div className="border-l-4 border-fei-sky px-5 py-4 sm:px-6 sm:py-5">
-                      <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.07em] text-fei-bg/40">
+                  <div className="mb-4 rounded-xl border border-fei-bg/[0.09] bg-white">
+                    <div className="border-l-2 border-fei-sky px-5 py-4 sm:px-6">
+                      <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.06em] text-fei-bg/40">
                         {item.context.split('\n\n')[0]}
                       </p>
 
-                      <p className="max-w-[720px] whitespace-pre-line text-[1.08rem] font-normal leading-[1.6] tracking-[-0.008em] text-fei-bg/76 select-none sm:text-[1.15rem]">
+                      <p className="max-w-[760px] whitespace-pre-line text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72 select-none sm:text-base">
                         {item.context.split('\n\n').slice(1).join('\n\n')}
                       </p>
                     </div>
                   </div>
 
                   <div className="mb-3">
-                    <p className="mb-0.5 text-[11px] font-medium uppercase tracking-[0.07em] text-fei-bg/38">
-                      Question
-                    </p>
-
-                    <h1 className="max-w-[780px] text-[1.08rem] font-semibold leading-7 tracking-[-0.012em] text-fei-bg/90 sm:text-[1.16rem]">
+                    <h1 className="max-w-[780px] text-base font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-[1.04rem]">
                       {item.question}
                     </h1>
                   </div>
