@@ -3991,12 +3991,72 @@ function AssessmentContent() {
                     )}
 
                     <div className="flex items-end gap-3">
-                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-fei-sky/20 bg-fei-sky/[0.08] text-[10px] font-semibold uppercase tracking-[0.05em] text-fei-bg/55">
-                        {vocabularySpeaker
-                          .split(' ')
-                          .map((word) => word[0])
-                          .join('')
-                          .slice(0, 2)}
+                      <div
+                        className={`relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border bg-white ${
+                          vocabularySpeaker === 'Physiotherapist'
+                            ? 'border-emerald-500/20'
+                            : vocabularySpeaker === 'Coach'
+                              ? 'border-fei-yellow/35'
+                              : 'border-fei-sky/25'
+                        }`}
+                        aria-hidden="true"
+                      >
+                        <svg
+                          viewBox="0 0 40 40"
+                          className="h-full w-full"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <rect
+                            width="40"
+                            height="40"
+                            rx="20"
+                            className={
+                              vocabularySpeaker === 'Physiotherapist'
+                                ? 'fill-emerald-500/[0.08]'
+                                : vocabularySpeaker === 'Coach'
+                                  ? 'fill-fei-yellow/[0.14]'
+                                  : 'fill-fei-sky/[0.1]'
+                            }
+                          />
+
+                          <circle
+                            cx="20"
+                            cy="14"
+                            r="6"
+                            className="fill-fei-bg/65"
+                          />
+
+                          <path
+                            d="M9 36C9.8 27.8 13.7 23.5 20 23.5C26.3 23.5 30.2 27.8 31 36"
+                            className="fill-fei-bg/58"
+                          />
+
+                          <path
+                            d="M15.5 25.5L20 29L24.5 25.5"
+                            stroke="white"
+                            strokeOpacity="0.75"
+                            strokeWidth="1.2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+
+                        <span
+                          className={`absolute bottom-0 right-0 flex h-4 w-4 items-center justify-center rounded-full border border-white text-[8px] font-bold ${
+                            vocabularySpeaker === 'Physiotherapist'
+                              ? 'bg-emerald-500 text-white'
+                              : vocabularySpeaker === 'Coach'
+                                ? 'bg-fei-yellow text-fei-bg'
+                                : 'bg-fei-sky text-fei-bg'
+                          }`}
+                        >
+                          {vocabularySpeaker === 'Physiotherapist'
+                            ? '+'
+                            : vocabularySpeaker === 'Coach'
+                              ? 'C'
+                              : 'T'}
+                        </span>
                       </div>
 
                       <div className="relative max-w-[720px] rounded-2xl rounded-bl-md border border-fei-bg/[0.09] bg-white px-5 py-3.5 sm:px-6">
