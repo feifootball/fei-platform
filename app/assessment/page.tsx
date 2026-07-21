@@ -2659,10 +2659,12 @@ function AudioPlayer({
   script,
   itemId,
   audioSrc,
+  minimal = false,
 }: {
   script: string
   itemId: string
   audioSrc?: string
+  minimal?: boolean
 }) {
   const [playCount, setPlayCount] = useState(0)
   const [playing, setPlaying] = useState(false)
@@ -2748,10 +2750,22 @@ function AudioPlayer({
   const limitReached = playCount >= 2
 
   return (
-    <div className="border-y border-fei-bg/10 py-6">
-      <div className="mb-4 flex items-center gap-2">
+    <div
+      className={
+        minimal
+          ? 'rounded-xl border border-fei-bg/[0.09] bg-white px-5 py-4 sm:px-6'
+          : 'border-y border-fei-bg/10 py-6'
+      }
+    >
+      <div className={minimal ? 'mb-2 flex items-center gap-2' : 'mb-4 flex items-center gap-2'}>
         <div className="h-2 w-2 rounded-full bg-fei-sky" />
-        <span className="text-xs font-black uppercase tracking-[0.22em] text-fei-bg/48">
+        <span
+          className={
+            minimal
+              ? 'text-[11px] font-medium uppercase tracking-[0.08em] text-fei-bg/42'
+              : 'text-xs font-black uppercase tracking-[0.22em] text-fei-bg/48'
+          }
+        >
           Audio
         </span>
         {playCount === 1 && (
@@ -2762,7 +2776,13 @@ function AudioPlayer({
         )}
       </div>
 
-      <p className="mb-5 text-sm leading-6 text-fei-bg/55">
+      <p
+        className={
+          minimal
+            ? 'mb-3 text-xs leading-5 text-fei-bg/48'
+            : 'mb-5 text-sm leading-6 text-fei-bg/55'
+        }
+      >
         Click play to hear the audio clip. You may listen up to 2 times.
       </p>
 
@@ -2770,7 +2790,11 @@ function AudioPlayer({
         type="button"
         onClick={handlePlay}
         disabled={playing || limitReached}
-        className="inline-flex min-h-12 items-center gap-2 rounded-full border border-fei-sky/45 bg-fei-sky/[0.08] px-6 py-3 text-sm font-bold text-fei-bg transition hover:border-fei-sky/70 hover:bg-fei-sky/[0.13] disabled:cursor-not-allowed disabled:opacity-50"
+        className={
+          minimal
+            ? 'inline-flex min-h-10 items-center gap-2 rounded-full border border-fei-bg/[0.12] bg-fei-sky/[0.06] px-4 py-2.5 text-sm font-semibold text-fei-bg transition hover:border-fei-sky/35 hover:bg-fei-sky/[0.1] disabled:cursor-not-allowed disabled:opacity-50'
+            : 'inline-flex min-h-12 items-center gap-2 rounded-full border border-fei-sky/45 bg-fei-sky/[0.08] px-6 py-3 text-sm font-bold text-fei-bg transition hover:border-fei-sky/70 hover:bg-fei-sky/[0.13] disabled:cursor-not-allowed disabled:opacity-50'
+        }
       >
         {playing ? (
           <>
@@ -3764,8 +3788,14 @@ function AssessmentContent() {
             total={totalItems}
           />
 
-          <div className="grid items-start gap-7 lg:grid-cols-[0.43fr_1.57fr] lg:gap-9">
-            <aside className="lg:sticky lg:top-10">
+          <div
+            className={`grid items-start ${
+              selectedRole === 'Professional Player'
+                ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-7'
+                : 'gap-7 lg:grid-cols-[0.43fr_1.57fr] lg:gap-9'
+            }`}
+          >
+            <aside className="lg:sticky lg:top-10 lg:pt-1">
               <SectionBadge label="Listening in Context" />
 
               <p className="mt-3 max-w-xs text-sm leading-6 text-fei-bg/55">
@@ -3773,7 +3803,13 @@ function AssessmentContent() {
               </p>
             </aside>
 
-            <section>
+            <section
+              className={
+                selectedRole === 'Professional Player'
+                  ? 'max-w-[840px]'
+                  : undefined
+              }
+            >
               <div className="mb-5">
                 <AudioPlayer
                   script={item.script}
@@ -3783,11 +3819,24 @@ function AssessmentContent() {
                       ? `/audio/diagnostics/professional-player/professional-player-listening-${listeningStep + 1}.mp3`
                       : undefined
                   }
+                  minimal={selectedRole === 'Professional Player'}
                 />
               </div>
 
-              <div className="mb-5 border-l-4 border-fei-sky pl-5 sm:pl-6">
-                <h1 className="text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl">
+              <div
+                className={
+                  selectedRole === 'Professional Player'
+                    ? 'mb-3'
+                    : 'mb-5 border-l-4 border-fei-sky pl-5 sm:pl-6'
+                }
+              >
+                <h1
+                  className={
+                    selectedRole === 'Professional Player'
+                      ? 'max-w-[780px] text-base font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-[1.04rem]'
+                      : 'text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl'
+                  }
+                >
                   {item.question}
                 </h1>
               </div>
@@ -3799,11 +3848,16 @@ function AssessmentContent() {
                     option={option}
                     selected={selected === option}
                     onSelect={() => setAnswer(item.id, option)}
+                    refined={selectedRole === 'Professional Player'}
                   />
                 ))}
               </div>
 
-              <div className="flex justify-end">
+              <div
+                className={`flex justify-end ${
+                  selectedRole === 'Professional Player' ? 'pb-6' : ''
+                }`}
+              >
                 <button
                   type="button"
                   onClick={() => {
