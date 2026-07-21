@@ -3491,8 +3491,14 @@ function AssessmentContent() {
           </div>
         </header>
 
-        <main className="mx-auto w-full max-w-[1280px] px-6 py-8 sm:px-8 lg:py-10">
-          <div className="mb-10">
+        <main
+          className={`mx-auto w-full px-6 sm:px-8 ${
+            selectedRole === 'Professional Player'
+              ? 'max-w-[1080px] py-5 lg:py-6'
+              : 'max-w-[1280px] py-8 lg:py-10'
+          }`}
+        >
+          <div className={selectedRole === 'Professional Player' ? 'mb-5' : 'mb-10'}>
             <div className="flex items-center justify-between gap-4">
               <p className="text-sm font-semibold text-fei-bg/55">
                 Item {currentItem} of {totalItems}
@@ -3511,76 +3517,91 @@ function AssessmentContent() {
             </div>
           </div>
 
-          <div className="grid items-start gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12">
-            <aside className="lg:sticky lg:top-10">
-              <div className="h-1 w-20 rounded-full bg-fei-sky" />
+          <div
+            className={`grid items-start ${
+              selectedRole === 'Professional Player'
+                ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-7'
+                : 'gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12'
+            }`}
+          >
+            <aside className="lg:sticky lg:top-10 lg:pt-1">
+              {selectedRole === 'Professional Player' ? (
+                <SectionBadge label="Role Warm-Up" />
+              ) : (
+                <>
+                  <div className="h-1 w-20 rounded-full bg-fei-sky" />
 
-              <p className="mt-6 text-xs font-black uppercase tracking-[0.3em] text-fei-bg/45">
-                Role Warm-Up
-              </p>
+                  <p className="mt-6 text-xs font-black uppercase tracking-[0.3em] text-fei-bg/45">
+                    Role Warm-Up
+                  </p>
+                </>
+              )}
 
             </aside>
 
-            <section>
-              <div className="border-l-4 border-fei-sky pl-5 sm:pl-7">
-                <h1 className="max-w-3xl text-3xl font-black leading-[1.15] tracking-[-0.035em] text-fei-bg sm:text-4xl">
-                  {item.context}
-                </h1>
+            <section
+              className={
+                selectedRole === 'Professional Player'
+                  ? 'max-w-[840px]'
+                  : undefined
+              }
+            >
+              {selectedRole === 'Professional Player' ? (
+                <>
+                  <div className="mb-4 rounded-xl border border-fei-bg/[0.09] bg-white px-5 py-4 sm:px-6">
+                    <p className="max-w-[760px] text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72">
+                      {item.context}
+                    </p>
+                  </div>
 
-                <p className="mt-5 max-w-3xl text-base font-medium leading-7 text-fei-bg/72 sm:text-lg">
-                  {item.question}
-                </p>
-              </div>
+                  <div className="mb-3">
+                    <h1 className="max-w-[780px] text-base font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-[1.04rem]">
+                      {item.question}
+                    </h1>
+                  </div>
+                </>
+              ) : (
+                <div className="border-l-4 border-fei-sky pl-5 sm:pl-7">
+                  <h1 className="max-w-3xl text-3xl font-black leading-[1.15] tracking-[-0.035em] text-fei-bg sm:text-4xl">
+                    {item.context}
+                  </h1>
 
-              <div className="mt-9 overflow-hidden border-y border-fei-bg/10">
-                {item.options.map((option, index) => (
-                  <button
-                    key={option}
-                    type="button"
-                    aria-pressed={selected === option}
-                    onClick={() => setAnswer(item.id, option)}
-                    className={`group flex w-full items-center justify-between gap-5 border-b border-fei-bg/10 px-1 py-5 text-left transition last:border-b-0 sm:px-3 sm:py-6 ${
-                      selected === option
-                        ? 'bg-fei-sky/[0.09]'
-                        : 'hover:bg-white/75'
-                    }`}
-                  >
-                    <span
-                      className={`text-[15px] font-normal leading-7 transition sm:text-base ${
-                        selected === option
-                          ? 'text-fei-bg'
-                          : 'text-fei-bg/68 group-hover:text-fei-bg'
-                      }`}
-                    >
-                      {option}
-                    </span>
+                  <p className="mt-5 max-w-3xl text-base font-medium leading-7 text-fei-bg/72 sm:text-lg">
+                    {item.question}
+                  </p>
+                </div>
+              )}
 
-                    <span
-                      className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border transition ${
-                        selected === option
-                          ? 'border-fei-yellow bg-fei-yellow text-fei-bg'
-                          : 'border-fei-bg/15 bg-white text-transparent group-hover:border-fei-sky/60'
-                      }`}
-                      aria-hidden
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2.3}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="h-4 w-4"
-                      >
-                        <path d="m7 12 3 3 7-7" />
-                      </svg>
-                    </span>
-                  </button>
-                ))}
-              </div>
+              {selectedRole === 'Professional Player' ? (
+                <div className="mb-4 overflow-hidden border-y border-fei-bg/[0.08]">
+                  {item.options.map((option) => (
+                    <OptionButton
+                      key={option}
+                      option={option}
+                      selected={selected === option}
+                      onSelect={() => setAnswer(item.id, option)}
+                      refined
+                    />
+                  ))}
+                </div>
+              ) : (
+                <div className="mt-9 overflow-hidden border-y border-fei-bg/10">
+                  {item.options.map((option) => (
+                    <OptionButton
+                      key={option}
+                      option={option}
+                      selected={selected === option}
+                      onSelect={() => setAnswer(item.id, option)}
+                    />
+                  ))}
+                </div>
+              )}
 
-              <div className="mt-8 flex justify-end">
+              <div
+                className={`flex justify-end ${
+                  selectedRole === 'Professional Player' ? 'pb-6' : 'mt-8'
+                }`}
+              >
                 <button
                   type="button"
                   onClick={() => {
