@@ -4105,9 +4105,21 @@ function AssessmentContent() {
     const selected = answers[item.id]
 
     return (
-      <div className="min-h-screen bg-[#F6F7F9] px-6 py-8 text-fei-bg sm:px-8 lg:py-10">
+      <div
+        className={`min-h-screen bg-[#F6F7F9] px-6 text-fei-bg sm:px-8 ${
+          selectedRole === 'Professional Player'
+            ? 'py-5 lg:py-6'
+            : 'py-8 lg:py-10'
+        }`}
+      >
         <div className="mx-auto max-w-[1080px]">
-          <div className="mb-8 flex min-h-[52px] items-center justify-between border-b border-fei-bg/[0.08] pb-5">
+          <div
+            className={`flex items-center justify-between border-b border-fei-bg/[0.08] ${
+              selectedRole === 'Professional Player'
+                ? 'mb-5 min-h-[48px] pb-3'
+                : 'mb-8 min-h-[52px] pb-5'
+            }`}
+          >
             <button
               type="button"
               onClick={() => router.push('/')}
@@ -4137,21 +4149,51 @@ function AssessmentContent() {
             total={totalItems}
           />
 
-          <div className="grid items-start gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12">
-            <aside className="lg:sticky lg:top-10">
+          <div
+            className={`grid items-start ${
+              selectedRole === 'Professional Player'
+                ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-7'
+                : 'gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12'
+            }`}
+          >
+            <aside className="lg:sticky lg:top-10 lg:pt-1">
               <SectionBadge label="Functional Communication" />
             </aside>
 
-            <section>
-              <div className="mb-8 border-l-4 border-fei-sky pl-5 sm:pl-7">
-                <p className="text-base leading-8 text-fei-bg/70 select-none">
-                  {item.context}
-                </p>
+            <section
+              className={
+                selectedRole === 'Professional Player'
+                  ? 'max-w-[840px]'
+                  : undefined
+              }
+            >
+              {selectedRole === 'Professional Player' ? (
+                <>
+                  <div className="mb-4 rounded-xl border border-fei-bg/[0.09] bg-white">
+                    <div className="border-l-2 border-fei-sky px-5 py-4 sm:px-6">
+                      <p className="max-w-[760px] text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72 select-none sm:text-base">
+                        {item.context}
+                      </p>
+                    </div>
+                  </div>
 
-                <h1 className="mt-6 text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl">
-                  {item.question}
-                </h1>
-              </div>
+                  <div className="mb-3">
+                    <h1 className="max-w-[780px] text-base font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-[1.04rem]">
+                      {item.question}
+                    </h1>
+                  </div>
+                </>
+              ) : (
+                <div className="mb-8 border-l-4 border-fei-sky pl-5 sm:pl-7">
+                  <p className="text-base leading-8 text-fei-bg/70 select-none">
+                    {item.context}
+                  </p>
+
+                  <h1 className="mt-6 text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl">
+                    {item.question}
+                  </h1>
+                </div>
+              )}
 
               <div className="mb-8 overflow-hidden border-y border-fei-bg/10">
                 {item.options.map((option) => (
@@ -4160,11 +4202,16 @@ function AssessmentContent() {
                     option={option}
                     selected={selected === option}
                     onSelect={() => setAnswer(item.id, option)}
+                    refined={selectedRole === 'Professional Player'}
                   />
                 ))}
               </div>
 
-              <div className="flex justify-end">
+              <div
+                className={`flex justify-end ${
+                  selectedRole === 'Professional Player' ? 'pb-6' : ''
+                }`}
+              >
                 <button
                   type="button"
                   onClick={() => {
