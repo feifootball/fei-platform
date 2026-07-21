@@ -3990,7 +3990,7 @@ function AssessmentContent() {
                       </p>
                     )}
 
-                    <div className="flex items-start gap-4">
+                    <div className="flex items-center gap-4">
                       <div
                         className={`relative h-14 w-14 shrink-0 overflow-hidden rounded-full border-2 bg-white shadow-[0_5px_16px_rgba(15,23,42,0.08)] ${
                           vocabularySpeaker === 'Physiotherapist'
@@ -4015,9 +4015,9 @@ function AssessmentContent() {
                         />
                       </div>
 
-                      <div className="relative mt-1 max-w-[720px] rounded-2xl border border-fei-bg/[0.09] bg-white px-5 py-3.5 shadow-[0_4px_14px_rgba(15,23,42,0.035)] sm:px-6">
+                      <div className="relative max-w-[720px] rounded-2xl border border-fei-bg/[0.09] bg-white px-5 py-3.5 shadow-[0_4px_14px_rgba(15,23,42,0.035)] sm:px-6">
                         <span
-                          className="absolute left-[-7px] top-5 h-3.5 w-3.5 rotate-45 border-b border-l border-fei-bg/[0.09] bg-white"
+                          className="absolute left-[-7px] top-1/2 h-3.5 w-3.5 -translate-y-1/2 rotate-45 border-b border-l border-fei-bg/[0.09] bg-white"
                           aria-hidden="true"
                         />
 
