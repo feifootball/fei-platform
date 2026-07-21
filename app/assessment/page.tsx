@@ -27,7 +27,7 @@ const items = {
       id: 'w1',
       label: 'Item 1 — Role Identification',
       context: 'Which situation is most common in your role as a senior squad player?',
-      question: 'Choose the option that best matches the daily communication reality of the role.',
+      question: 'Choose the best answer.',
       options: [
         'A. Preparing detailed physical reports for the medical staff',
         'B. Explaining opposition trends to recruitment staff',
@@ -40,7 +40,7 @@ const items = {
       id: 'w2',
       label: 'Item 2 — Communication Priority',
       context: 'What type of communication matters most to your daily professional performance?',
-      question: 'Choose the communication area that most directly affects your performance pathway.',
+      question: 'Choose the most relevant option.',
       options: [
         'A. Understanding coaches clearly in real time',
         'B. Writing long tactical reports after matches',
@@ -3548,19 +3548,12 @@ function AssessmentContent() {
             >
               {selectedRole === 'Professional Player' ? (
                 <>
-                  <div className="relative mb-4 overflow-hidden rounded-2xl border border-fei-sky/25 bg-gradient-to-br from-white via-white to-fei-sky/[0.06] px-5 py-5 shadow-[0_8px_24px_rgba(15,23,42,0.045)] sm:px-6">
-                    <div
-                      className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent"
-                      aria-hidden="true"
-                    />
-
-                    <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.09em] text-fei-bg/38">
-                      Professional Context
-                    </p>
-
-                    <p className="max-w-[760px] text-[15px] font-medium leading-7 tracking-[-0.004em] text-fei-bg/78 sm:text-base">
-                      {item.context}
-                    </p>
+                  <div className="mb-4 overflow-hidden rounded-xl border border-fei-bg/[0.09] bg-white shadow-[0_5px_18px_rgba(15,23,42,0.035)]">
+                    <div className="border-l-2 border-fei-sky px-5 py-4 sm:px-6">
+                      <p className="max-w-[760px] text-[15px] font-medium leading-7 tracking-[-0.004em] text-fei-bg/78 sm:text-base">
+                        {item.context}
+                      </p>
+                    </div>
                   </div>
 
                   <div className="mb-3 pl-1">
