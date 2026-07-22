@@ -248,42 +248,46 @@ const headCoachItems = {
     {
       id: 'w1',
       label: 'Item 1 — Role Identification',
-      context: 'Which situation happens most often in your role as a first-team head coach?',
-      question: 'Choose the option that best matches the role’s daily communication reality.',
+      context:
+        'Which communication situation is most typical for a first-team head coach?',
+      question: 'Choose the best answer.',
       options: [
-        'A. Preparing individual nutrition plans for injured players',
-        'B. Writing detailed scouting reports for recruitment meetings',
-        'C. Delivering tactical direction to players and staff',
-        'D. Managing academy school partnerships and family meetings',
+        'A. Giving individual rehabilitation updates to injured players',
+        'B. Presenting detailed player reports to the recruitment department',
+        'C. Setting tactical direction and aligning players and staff',
+        'D. Managing academy education plans with families',
       ],
       correct: 'C',
     },
     {
       id: 'w2',
       label: 'Item 2 — Communication Priority',
-      context: 'What type of communication is most critical for your daily work?',
-      question: 'Choose the area that most directly affects your coaching performance pathway.',
+      context:
+        'Which communication skill has the greatest impact on your effectiveness as a head coach?',
+      question: 'Choose the most relevant option.',
       options: [
-        'A. Explaining tactical decisions clearly to players and staff',
-        'B. Creating public content for club social media channels',
-        'C. Negotiating player contracts with agents and lawyers',
-        'D. Preparing medical return-to-play documentation',
+        'A. Explaining decisions clearly and aligning players and staff',
+        'B. Producing regular public content for club media channels',
+        'C. Leading detailed contract negotiations with agents',
+        'D. Writing medical return-to-play reports for the squad',
       ],
       correct: 'A',
     },
   ],
+
   reading: [
     {
       id: 'r1',
       level: 'A2',
       label: 'Item 3 — Defensive Focus',
-      context: 'Your assistant coach sends this note before training:\\n\\n"Today we work on our mid-block. Keep the midfield line close to the back four. Do not leave space between the lines. When the ball goes wide, shift together and stay compact."',
+      context:
+        'Your assistant coach sends this note before training:\n\n“Today we work on our mid-block. Keep the midfield line close to the back four. Do not leave space between the lines. When the ball goes wide, shift together and stay compact.”',
       question: 'What is the main defensive focus?',
       options: [
-        'A. Press every pass as soon as the opponent receives',
-        'B. Protect the penalty area with a very deep line',
-        'C. Move the midfield wider to create passing angles',
-        'D. Stay compact and protect space between the lines',
+        'A. Press every pass as soon as the opponent receives the ball',
+        'B. Defend close to the penalty area with a very deep block',
+        'C. Move the midfield line wider to cover both touchlines',
+        'D. Stay compact and protect the space between the lines',
       ],
       correct: 'D',
     },
@@ -291,13 +295,14 @@ const headCoachItems = {
       id: 'r2',
       level: 'B1',
       label: 'Item 4 — Opposition Weakness',
-      context: 'The analyst sends this opposition note:\\n\\n"Their fullbacks push high in possession, but the midfield is slow to cover wide spaces. When they lose the ball, there is often a gap behind the fullback. Quick switches can create chances before they recover."',
-      question: 'What weakness should the coach identify?',
+      context:
+        'The analyst sends this opposition note:\n\n“Their fullbacks push high in possession, but the midfield is slow to cover the wide areas. When they lose the ball, space often opens behind the fullbacks. Quick switches and early forward passes can create chances before they recover.”',
+      question: 'Which weakness should the coach target?',
       options: [
-        'A. Their goalkeeper struggles with direct long shots',
-        'B. Their wide cover is slow after fullbacks advance',
-        'C. Their center-backs are weak in first-contact duels',
-        'D. Their strikers stop pressing after losing the ball',
+        'A. The goalkeeper’s positioning against long-range shots',
+        'B. The space behind the fullbacks during defensive transition',
+        'C. The center-backs’ ability to defend direct aerial balls',
+        'D. The strikers’ movement when the team builds from the back',
       ],
       correct: 'B',
     },
@@ -305,29 +310,32 @@ const headCoachItems = {
       id: 'r3',
       level: 'B2',
       label: 'Item 5 — Crisis Management Brief',
-      context: 'Internal staff memo:\\n\\n"The last three results have created pressure, but the tactical framework is not the main issue. The data shows the team is reaching good areas, yet execution in both boxes has dropped. The message to the squad must protect belief while making standards non-negotiable."',
-      question: 'What message should the coach send internally?',
+      context:
+        'Internal staff memo:\n\n“The last three results have increased pressure, but the tactical framework is not the main issue. The data shows that the team is reaching productive areas, although execution in both boxes has declined. The message to the squad must protect confidence while making performance standards non-negotiable.”',
+      question: 'Which internal message best reflects the evidence?',
       options: [
-        'A. Keep the tactical framework, address execution and reinforce standards',
-        'B. Tell the squad the results are unlucky and avoid criticism',
-        'C. Change the tactical model to show immediate action',
-        'D. Focus only on motivation and leave analysis for later',
+        'A. Keep the tactical framework, improve execution and reinforce standards',
+        'B. Protect confidence by avoiding direct criticism of recent performances',
+        'C. Change the tactical model immediately to demonstrate decisive action',
+        'D. Focus on motivation now and postpone the performance analysis',
       ],
       correct: 'A',
     },
   ],
+
   listening: [
     {
       id: 'l1',
       level: 'A2',
       label: 'Item 6 — Midfield Protection',
-      script: 'Today we play with three midfielders. The six protects the space in front of the back line. Stay connected. Do not open the middle. Compact, always compact.',
+      script:
+        'Today we play with three midfielders. The number six protects the space in front of the back line. Stay connected and do not leave the middle open. Compact, always compact.',
       question: 'What is the main priority for the midfield?',
       options: [
-        'A. Push higher to support the striker at every attack',
-        'B. Spread out to cover both touchlines quickly',
-        'C. Protect the central space in front of defense',
-        'D. Drop all midfielders into the penalty area',
+        'A. Push higher to support the striker in every attack',
+        'B. Spread out quickly to cover both touchlines',
+        'C. Protect the central space in front of the defense',
+        'D. Drop all three midfielders into the penalty area',
       ],
       correct: 'C',
     },
@@ -335,13 +343,14 @@ const headCoachItems = {
       id: 'l2',
       level: 'B1',
       label: 'Item 7 — Player Availability Decision',
-      script: 'The fitness coach says the player has high fatigue markers. We still need his pressing early because of the opponent’s build-up. So he starts, but we manage the second half and bring him off before seventy if the match allows.',
+      script:
+        'The fitness coach says the player has high fatigue markers. We still need his pressing early because of the opponent’s build-up. He starts, but we manage his minutes in the second half and bring him off before seventy if the match allows.',
       question: 'What is the final decision about the player?',
       options: [
-        'A. Leave him out so he can fully recover',
+        'A. Leave him out so he can recover fully',
         'B. Start him and manage his minutes before seventy',
-        'C. Use him only if the team is losing late',
-        'D. Play him ninety minutes because he is essential',
+        'C. Use him only if the team is losing late in the match',
+        'D. Play him for the full match because he is essential',
       ],
       correct: 'B',
     },
@@ -349,27 +358,30 @@ const headCoachItems = {
       id: 'l3',
       level: 'B2',
       label: 'Item 8 — Post-Match Leadership',
-      script: 'The result hurts, but the performance was closer to what we want. Our pressing energy was good, and the structure was clearer. The second goal came from one poor decision in build-up. Tomorrow we correct that moment without losing the standards we showed.',
+      script:
+        'The result hurts, but the performance was closer to what we want. Our pressing energy was good, and the structure was clearer. The second goal came from one poor decision in build-up. Tomorrow we correct that moment without losing the standards we showed.',
       question: 'What is the coach’s core message?',
       options: [
-        'A. The defeat proves the tactical structure must change',
-        'B. The team should ignore the result and move on',
-        'C. One mistake matters more than the whole performance',
-        'D. Keep the positives, correct the error and hold standards',
+        'A. The defeat proves that the tactical structure must change',
+        'B. The team should ignore the result and move on immediately',
+        'C. One mistake matters more than the overall performance',
+        'D. Keep the positives, correct the error and maintain standards',
       ],
       correct: 'D',
     },
   ],
+
   vocabulary: [
     {
       id: 'v1',
       level: 'A2',
       label: 'Item 9 — Compactness',
-      context: 'During training, the coach says: “The back line and midfield need compactness when we defend.”',
+      context:
+        'During training, the coach says: “The back line and midfield need compactness when we defend.”',
       question: 'What does “compactness” mean here?',
       options: [
         'A. Players stay close enough to protect central spaces',
-        'B. Players make short passes to keep possession safely',
+        'B. Players use short passes to keep possession safely',
         'C. Players move quickly into wide attacking positions',
         'D. Players keep the ball far away from the goalkeeper',
       ],
@@ -379,11 +391,12 @@ const headCoachItems = {
       id: 'v2',
       level: 'B1',
       label: 'Item 10 — Pressing Trigger',
-      context: 'The assistant coach says: “Their pressing trigger is the pass from our goalkeeper to the center-back.”',
+      context:
+        'The assistant coach says: “Our pressing trigger is the pass from their goalkeeper to the center-back.”',
       question: 'What is a “pressing trigger”?',
       options: [
-        'A. The player who leads the press in every phase',
-        'B. The defensive shape used after losing the ball',
+        'A. The player responsible for leading every pressing action',
+        'B. The defensive shape used after losing possession',
         'C. The moment or cue that starts the press',
         'D. The mistake that ends a pressing sequence',
       ],
@@ -392,30 +405,33 @@ const headCoachItems = {
     {
       id: 'v3',
       level: 'B2',
-      label: 'Item 11 — Squad Availability',
-      context: 'The Sporting Director says: “We need to review squad availability across the next three windows before confirming recruitment priorities.”',
-      question: 'What does “availability across the next three windows” refer to?',
+      label: 'Item 11 — Squad Planning',
+      context:
+        'The Sporting Director says: “We need to review squad availability across the next three transfer windows before confirming recruitment priorities.”',
+      question: 'What does “squad availability” refer to in this context?',
       options: [
         'A. Media commitments during the next three match weeks',
-        'B. Training facility access for future preparation blocks',
-        'C. Matchday travel availability for upcoming away fixtures',
-        'D. Player status and options in future transfer periods',
+        'B. Access to training facilities during preparation periods',
+        'C. Travel availability for upcoming away fixtures',
+        'D. Which players are expected to remain, leave or become available',
       ],
       correct: 'D',
     },
   ],
+
   functional: [
     {
       id: 'f1',
       level: 'B1',
       label: 'Item 12 — Clear Instruction',
-      context: 'A player does not understand the pressing trigger. You have 20 seconds to explain it clearly.',
+      context:
+        'A player does not understand the pressing trigger. You have 20 seconds to explain it clearly.',
       question: 'Which explanation is clearest?',
       options: [
-        'A. Press with intensity, but don’t lose the team shape.',
+        'A. Press with intensity, but do not lose the team shape.',
         'B. Wait for the pass to the fullback; then close him down.',
-        'C. The trigger depends on the opponent’s confidence.',
-        'D. Press when you feel the opponent is under pressure.',
+        'C. The trigger depends on how confident the opponent looks.',
+        'D. Press whenever you feel the opponent is under pressure.',
       ],
       correct: 'B',
     },
@@ -423,13 +439,14 @@ const headCoachItems = {
       id: 'f2',
       level: 'B2',
       label: 'Item 13 — Feedback Under Resistance',
-      context: 'During video feedback, a player says: “But the center-back moved late, not me.” You need to keep the conversation productive.',
+      context:
+        'During video feedback, a player says: “But the center-back moved late, not me.” You need to keep the conversation productive.',
       question: 'What is the best response?',
       options: [
         'A. You are focusing on the wrong player; watch your position again.',
         'B. The center-back was late, so we will review his clip separately.',
         'C. His timing was late, but your starting position gave you no recovery time.',
-        'D. The clip is not about blame; we only need more concentration.',
+        'D. This is not about blame; you only need to concentrate more.',
       ],
       correct: 'C',
     },
@@ -437,13 +454,14 @@ const headCoachItems = {
       id: 'f3',
       level: 'B2',
       label: 'Item 14 — Crisis Media Response',
-      context: 'After two losses, a journalist says: “Your defense looks broken. Do you need to change tactics completely?”',
+      context:
+        'After two losses, a journalist says: “Your defense looks broken. Do you need to change the system completely?”',
       question: 'Which response is most professional?',
       options: [
-        'A. Our defensive structure needs cleaner transition positioning, not a full reset.',
+        'A. Our defensive structure needs better transition positioning, not a complete reset.',
         'B. The defense is not broken; the results make the question sound worse.',
-        'C. We will change what is needed, but I won’t discuss the plan today.',
-        'D. The players know the issue, and tomorrow they must respond better.',
+        'C. We will change what is necessary, but I will not discuss the plan today.',
+        'D. The players know the problem, and they must respond better tomorrow.',
       ],
       correct: 'A',
     },
@@ -451,20 +469,19 @@ const headCoachItems = {
       id: 'f4',
       level: 'C1',
       label: 'Item 15 — Executive Negotiation',
-      context: 'The Sporting Director says: “We need to reduce costs. Can you work with fewer staff members and still compete?”',
+      context:
+        'The Sporting Director says: “We need to reduce costs. Can you work with fewer staff members and still compete?”',
       question: 'What is the most strategic response?',
       options: [
-        'A. We can reduce some staff, but performance risk will increase.',
+        'A. We can reduce some staff, but the performance risk will increase.',
         'B. Yes, if everyone accepts more responsibility across departments.',
-        'C. I can work with less, but recruitment and analysis must stay untouched.',
-        'D. Let’s define acceptable risk first; then I can propose responsible reductions.',
+        'C. I can work with fewer staff, but recruitment and analysis must remain untouched.',
+        'D. Let us define the acceptable level of risk first; then I can propose responsible reductions.',
       ],
       correct: 'D',
     },
   ],
 }
-
-
 
 const assistantCoachItems = {
   warmup: [
