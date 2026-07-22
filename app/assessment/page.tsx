@@ -3510,12 +3510,12 @@ function AssessmentContent() {
 
         <main
           className={`mx-auto w-full px-6 sm:px-8 ${
-            selectedRole === 'Professional Player'
+            (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
               ? 'max-w-[1080px] py-5 lg:py-6'
               : 'max-w-[1280px] py-8 lg:py-10'
           }`}
         >
-          <div className={selectedRole === 'Professional Player' ? 'mb-5' : 'mb-10'}>
+          <div className={(selectedRole === 'Professional Player' || selectedRole === 'Head Coach') ? 'mb-5' : 'mb-10'}>
             <div className="flex items-center justify-between gap-4">
               <p className="text-sm font-semibold text-fei-bg/55">
                 Item {currentItem} of {totalItems}
@@ -3536,13 +3536,13 @@ function AssessmentContent() {
 
           <div
             className={`grid items-start ${
-              selectedRole === 'Professional Player'
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
                 ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-7'
                 : 'gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12'
             }`}
           >
             <aside className="lg:sticky lg:top-10 lg:pt-1">
-              {selectedRole === 'Professional Player' ? (
+              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach') ? (
                 <SectionBadge label="Role Warm-Up" />
               ) : (
                 <>
@@ -3558,12 +3558,12 @@ function AssessmentContent() {
 
             <section
               className={
-                selectedRole === 'Professional Player'
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
                   ? 'max-w-[840px]'
                   : undefined
               }
             >
-              {selectedRole === 'Professional Player' ? (
+              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach') ? (
                 <>
                   <div className="mb-4 overflow-hidden rounded-xl border border-fei-bg/[0.09] bg-white shadow-[0_5px_18px_rgba(15,23,42,0.035)]">
                     <div className="border-l-2 border-fei-sky px-5 py-4 sm:px-6">
@@ -3591,7 +3591,7 @@ function AssessmentContent() {
                 </div>
               )}
 
-              {selectedRole === 'Professional Player' ? (
+              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach') ? (
                 <div className="mb-4 overflow-hidden border-y border-fei-bg/[0.08]">
                   {item.options.map((option) => (
                     <OptionButton
@@ -3618,7 +3618,7 @@ function AssessmentContent() {
 
               <div
                 className={`flex justify-end ${
-                  selectedRole === 'Professional Player' ? 'pb-6' : 'mt-8'
+                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach') ? 'pb-6' : 'mt-8'
                 }`}
               >
                 <button
