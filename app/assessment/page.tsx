@@ -3565,8 +3565,8 @@ function AssessmentContent() {
             >
               {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach') ? (
                 <>
-                  <div className="mb-4 overflow-hidden rounded-xl border border-fei-yellow/30 bg-[#FFF9E8] shadow-[0_5px_18px_rgba(15,23,42,0.035)]">
-                    <div className="border-l-[3px] border-fei-yellow px-5 py-4 sm:px-6">
+                  <div className="mb-4 overflow-hidden rounded-xl border border-[#8B7FA8]/25 bg-[#F1EEF7] shadow-[0_5px_18px_rgba(15,23,42,0.035)]">
+                    <div className="border-l-[3px] border-[#8B7FA8] px-5 py-4 sm:px-6">
                       <p className="max-w-[760px] text-[15px] font-semibold leading-7 tracking-[-0.004em] text-fei-bg/92 sm:text-base">
                         {item.context}
                       </p>
