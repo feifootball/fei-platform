@@ -3714,13 +3714,13 @@ function AssessmentContent() {
             >
               {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach') ? (
                 <>
-                  <div className="mb-4 rounded-xl border border-fei-bg/[0.09] bg-white">
-                    <div className="border-l-2 border-fei-sky px-5 py-4 sm:px-6">
+                  <div className="mb-4 overflow-hidden rounded-xl border border-fei-bg/[0.11] bg-white shadow-[0_4px_14px_rgba(15,23,42,0.025)]">
+                    <div className="border-l-[3px] border-fei-sky px-5 py-4 sm:px-6">
                       <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.06em] text-fei-bg/40">
                         {item.context.split('\n\n')[0]}
                       </p>
 
-                      <p className="max-w-[760px] whitespace-pre-line text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72 select-none sm:text-base">
+                      <p className="max-w-[760px] whitespace-pre-line text-[15px] font-medium leading-7 tracking-[-0.004em] text-fei-bg/84 select-none sm:text-base">
                         {item.context.split('\n\n').slice(1).join('\n\n')}
                       </p>
                     </div>
