@@ -3869,7 +3869,9 @@ function AssessmentContent() {
                   audioSrc={
                     selectedRole === 'Professional Player'
                       ? `/audio/diagnostics/professional-player/professional-player-listening-${listeningStep + 1}.mp3`
-                      : undefined
+                      : selectedRole === 'Head Coach'
+                        ? `/audio/diagnostics/head-coach/head-coach-listening-${listeningStep + 1}.mp3`
+                        : undefined
                   }
                   minimal={selectedRole === 'Professional Player' || selectedRole === 'Head Coach'}
                 />
