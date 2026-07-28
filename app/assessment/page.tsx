@@ -3842,7 +3842,7 @@ function AssessmentContent() {
 
           <div
             className={`grid items-start ${
-              selectedRole === 'Professional Player'
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
                 ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-7'
                 : 'gap-7 lg:grid-cols-[0.43fr_1.57fr] lg:gap-9'
             }`}
@@ -3857,7 +3857,7 @@ function AssessmentContent() {
 
             <section
               className={
-                selectedRole === 'Professional Player'
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
                   ? 'max-w-[840px]'
                   : undefined
               }
@@ -3871,20 +3871,20 @@ function AssessmentContent() {
                       ? `/audio/diagnostics/professional-player/professional-player-listening-${listeningStep + 1}.mp3`
                       : undefined
                   }
-                  minimal={selectedRole === 'Professional Player'}
+                  minimal={selectedRole === 'Professional Player' || selectedRole === 'Head Coach'}
                 />
               </div>
 
               <div
                 className={
-                  selectedRole === 'Professional Player'
+                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
                     ? 'mb-3'
                     : 'mb-5 border-l-4 border-fei-sky pl-5 sm:pl-6'
                 }
               >
                 <h1
                   className={
-                    selectedRole === 'Professional Player'
+                    (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
                       ? 'max-w-[780px] text-base font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-[1.04rem]'
                       : 'text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl'
                   }
@@ -3900,14 +3900,14 @@ function AssessmentContent() {
                     option={option}
                     selected={selected === option}
                     onSelect={() => setAnswer(item.id, option)}
-                    refined={selectedRole === 'Professional Player'}
+                    refined={selectedRole === 'Professional Player' || selectedRole === 'Head Coach'}
                   />
                 ))}
               </div>
 
               <div
                 className={`flex justify-end ${
-                  selectedRole === 'Professional Player' ? 'pb-6' : ''
+                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach') ? 'pb-6' : ''
                 }`}
               >
                 <button
