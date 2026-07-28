@@ -249,7 +249,7 @@ const headCoachItems = {
       id: 'w1',
       label: 'Item 1 — Role Identification',
       context:
-        'Which communication situation is most typical for a first-team head coach?',
+        'Which responsibility is most typical for a first-team head coach?',
       question: 'Choose the best answer.',
       options: [
         'A. Giving individual rehabilitation updates to injured players',
