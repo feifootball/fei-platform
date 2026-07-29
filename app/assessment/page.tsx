@@ -2865,6 +2865,22 @@ function AssessmentContent() {
   const [section, setSection] = useState<Section>('intro')
   const [answers, setAnswers] = useState<Record<string, Answer>>({})
   const [warmupStep, setWarmupStep] = useState(0)
+
+  useEffect(() => {
+    const avatarSources = [
+      '/images/diagnostics/avatars/coach.png',
+      '/images/diagnostics/avatars/teammate.png',
+      '/images/diagnostics/avatars/physiotherapist.png',
+      '/images/diagnostics/avatars/assistant-coach.png',
+      '/images/diagnostics/avatars/sporting-director.png',
+    ]
+
+    avatarSources.forEach((src) => {
+      const image = new Image()
+      image.decoding = 'async'
+      image.src = src
+    })
+  }, [])
   const [readingStep, setReadingStep] = useState(0)
   const [listeningStep, setListeningStep] = useState(0)
   const [vocabStep, setVocabStep] = useState(0)
@@ -3954,20 +3970,26 @@ function AssessmentContent() {
     const item = activeItems.vocabulary[vocabStep]
     const selected = answers[item.id]
 
-    const vocabularySpeaker = item.context.toLowerCase().includes('physiotherapist')
-      ? 'Physiotherapist'
-      : item.context.toLowerCase().includes('coach')
-        ? 'Coach'
-        : item.context.toLowerCase().includes('teammate')
-          ? 'Teammate'
-          : 'Match context'
+    const vocabularyContext = item.context.toLowerCase()
+
+    const vocabularySpeaker = vocabularyContext.includes('sporting director')
+      ? 'Sporting Director'
+      : vocabularyContext.includes('assistant coach')
+        ? 'Assistant Coach'
+        : vocabularyContext.includes('physiotherapist')
+          ? 'Physiotherapist'
+          : vocabularyContext.includes('coach')
+            ? 'Coach'
+            : vocabularyContext.includes('teammate')
+              ? 'Teammate'
+              : 'Match context'
 
     const vocabularyQuoteMatch = item.context.match(/[“"](.+)[”"]$/)
     const vocabularyQuote = vocabularyQuoteMatch?.[1] ?? item.context
 
     const vocabularySetup = item.context
       .replace(
-        /\s*(?:A teammate shouts|The coach says|The physiotherapist asks):\s*[“"].*[”"]$/,
+        /\s*(?:A teammate shouts|The coach says|The physiotherapist asks|The assistant coach says|The Sporting Director says):\s*[“"].*[”"]$/i,
         '',
       )
       .trim()
@@ -4025,7 +4047,7 @@ function AssessmentContent() {
                   : undefined
               }
             >
-              {selectedRole === 'Professional Player' ? (
+              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach') ? (
                 <>
                   <div className="mb-4">
                     {vocabularySetup && (
@@ -4048,13 +4070,18 @@ function AssessmentContent() {
                           src={
                             vocabularySpeaker === 'Physiotherapist'
                               ? '/images/diagnostics/avatars/physiotherapist.png'
-                              : vocabularySpeaker === 'Coach'
-                                ? '/images/diagnostics/avatars/coach.png'
-                                : '/images/diagnostics/avatars/teammate.png'
+                              : vocabularySpeaker === 'Assistant Coach'
+                                ? '/images/diagnostics/avatars/assistant-coach.png'
+                                : vocabularySpeaker === 'Sporting Director'
+                                  ? '/images/diagnostics/avatars/sporting-director.png'
+                                  : vocabularySpeaker === 'Coach'
+                                    ? '/images/diagnostics/avatars/coach.png'
+                                    : '/images/diagnostics/avatars/teammate.png'
                           }
                           alt={`${vocabularySpeaker} avatar`}
                           loading="eager"
-                          decoding="sync"
+                          decoding="async"
+                          fetchPriority="high"
                           className="h-full w-full object-cover object-center"
                         />
                       </div>
