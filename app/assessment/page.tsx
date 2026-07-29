@@ -4212,7 +4212,7 @@ function AssessmentContent() {
 
           <div
             className={`grid items-start ${
-              selectedRole === 'Professional Player'
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
                 ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-7'
                 : 'gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12'
             }`}
@@ -4223,12 +4223,12 @@ function AssessmentContent() {
 
             <section
               className={
-                selectedRole === 'Professional Player'
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
                   ? 'max-w-[840px]'
                   : undefined
               }
             >
-              {selectedRole === 'Professional Player' ? (
+              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach') ? (
                 <>
                   <div className="mb-4 rounded-xl border border-fei-bg/[0.09] bg-white">
                     <div className="border-l-2 border-fei-sky px-5 py-4 sm:px-6">
@@ -4263,14 +4263,14 @@ function AssessmentContent() {
                     option={option}
                     selected={selected === option}
                     onSelect={() => setAnswer(item.id, option)}
-                    refined={selectedRole === 'Professional Player'}
+                    refined={selectedRole === 'Professional Player' || selectedRole === 'Head Coach'}
                   />
                 ))}
               </div>
 
               <div
                 className={`flex justify-end ${
-                  selectedRole === 'Professional Player' ? 'pb-6' : ''
+                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach') ? 'pb-6' : ''
                 }`}
               >
                 <button
