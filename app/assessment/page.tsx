@@ -4521,7 +4521,7 @@ function AssessmentContent() {
 
           <div
             className={`grid items-start ${
-              selectedRole === 'Professional Player'
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
                 ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-7'
                 : 'gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12'
             }`}
@@ -4532,21 +4532,21 @@ function AssessmentContent() {
 
             <section
               className={
-                selectedRole === 'Professional Player'
-                  ? 'max-w-[840px]'
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
+                  ? 'min-w-0 max-w-[840px]'
                   : undefined
               }
             >
           <div
             className={
-              selectedRole === 'Professional Player'
-                ? 'mb-4 rounded-xl border border-fei-bg/[0.09] bg-white px-5 py-4 sm:px-6'
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
+                ? 'mb-4 overflow-hidden rounded-xl border border-fei-bg/[0.11] bg-white px-5 py-4 shadow-[0_4px_14px_rgba(15,23,42,0.025)] sm:px-6'
                 : 'mb-8 border-l-4 border-fei-sky pl-5 sm:pl-7'
             }
           >
             <p
               className={
-                selectedRole === 'Professional Player'
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
                   ? 'text-[10px] font-medium uppercase tracking-[0.07em] text-fei-bg/38'
                   : 'text-xs font-black uppercase tracking-[0.22em] text-fei-bg/45'
               }
@@ -4555,13 +4555,13 @@ function AssessmentContent() {
             </p>
             <p
               className={
-                selectedRole === 'Professional Player'
-                  ? 'mt-2 max-w-[760px] text-[15px] leading-7 tracking-[-0.004em] text-fei-bg/72'
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
+                  ? 'mt-2 max-w-[760px] break-words text-[15px] leading-7 tracking-[-0.004em] text-fei-bg/72'
                   : 'mt-5 text-base leading-8 text-fei-bg/70'
               }
             >
 {selectedRole === 'Head Coach'
-                ? 'You have just substituted a senior player after 25 minutes in a 1–0 loss. The player expected to play 90 minutes. The crowd is loud and other players are watching.'
+                ? 'You substituted a senior player after 25 minutes while the team was losing 1–0. The opponent was repeatedly exploiting the space behind him, and the team’s defensive structure was becoming unstable. The player expected to complete the match and reacts with visible frustration. You need to speak to him briefly near the technical area while the crowd is loud and the rest of the squad is watching.'
                 : selectedRole === 'Assistant Coach'
                   ? 'Two players are not pressing together during a training exercise. One player jumps early, the other waits, and the opponent plays through the gap.'
                   : selectedRole === 'Academy Director'
@@ -4584,16 +4584,16 @@ function AssessmentContent() {
             </p>
           </div>
 
-          <div className={selectedRole === 'Professional Player' ? 'mb-4' : 'mb-8'}>
+          <div className={(selectedRole === 'Professional Player' || selectedRole === 'Head Coach') ? 'mb-4' : 'mb-8'}>
             <p
               className={
-                selectedRole === 'Professional Player'
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
                   ? 'max-w-[780px] text-base font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-[1.04rem]'
                   : 'text-xl font-black leading-8 text-fei-bg'
               }
             >
               {selectedRole === 'Head Coach'
-                ? 'Explain the substitution decision while protecting the relationship and your authority.'
+                ? 'Explain the decision clearly. Acknowledge the player’s frustration, give the tactical reason, protect the relationship, and maintain your authority.'
                 : selectedRole === 'Assistant Coach'
                   ? 'Correct both players clearly and professionally before restarting the drill.'
                   : selectedRole === 'Academy Director'
@@ -4621,7 +4621,7 @@ function AssessmentContent() {
 
           <div
             className={
-              selectedRole === 'Professional Player'
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
                 ? 'mb-4 rounded-xl border border-fei-bg/[0.09] bg-white p-4 sm:p-5'
                 : ''
             }
@@ -4629,7 +4629,7 @@ function AssessmentContent() {
           {isRecording && (
             <div
               className={
-                selectedRole === 'Professional Player'
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
                   ? 'mb-4'
                   : 'mb-6 rounded-2xl border border-red-500/25 bg-white p-5'
               }
@@ -4670,12 +4670,12 @@ function AssessmentContent() {
             </div>
           )}
 
-          <div className={selectedRole === 'Professional Player' ? 'mb-3' : 'mb-4'}>
+          <div className={(selectedRole === 'Professional Player' || selectedRole === 'Head Coach') ? 'mb-3' : 'mb-4'}>
             {!isRecording && !recordingDone && (
               <button
                 onClick={startRecording}
                 className={
-                  selectedRole === 'Professional Player'
+                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
                     ? 'inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-red-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-red-600'
                     : 'inline-flex min-h-[54px] w-full items-center justify-center gap-2 rounded-full bg-red-500 px-8 py-3.5 font-bold text-white transition hover:bg-red-600'
                 }
@@ -4703,7 +4703,7 @@ function AssessmentContent() {
               <button
                 onClick={stopRecording}
                 className={
-                  selectedRole === 'Professional Player'
+                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
                     ? 'inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-red-500 bg-white px-6 py-3 text-sm font-semibold text-red-600 transition hover:bg-red-500/[0.05]'
                     : 'inline-flex min-h-[54px] w-full items-center justify-center gap-2 rounded-full border-2 border-red-500 bg-white px-8 py-3.5 font-bold text-red-600 transition hover:bg-red-500/[0.06]'
                 }
