@@ -4224,15 +4224,15 @@ function AssessmentContent() {
             <section
               className={
                 (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
-                  ? 'max-w-[840px]'
+                  ? 'min-w-0 max-w-[840px]'
                   : undefined
               }
             >
               {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach') ? (
                 <>
-                  <div className="mb-4 rounded-xl border border-fei-bg/[0.09] bg-white">
-                    <div className="border-l-2 border-fei-sky px-5 py-4 sm:px-6">
-                      <p className="max-w-[760px] text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72 select-none sm:text-base">
+                  <div className="mb-4 w-full max-w-full overflow-hidden rounded-xl border border-fei-bg/[0.09] bg-white">
+                    <div className="min-w-0 border-l-2 border-fei-sky px-5 py-4 sm:px-6">
+                      <p className="max-w-[760px] break-words text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72 select-none sm:text-base">
                         {item.context}
                       </p>
                     </div>
