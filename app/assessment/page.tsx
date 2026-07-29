@@ -4343,7 +4343,7 @@ function AssessmentContent() {
 
           <div
             className={`grid items-start ${
-              selectedRole === 'Professional Player'
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
                 ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-7'
                 : 'gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12'
             }`}
@@ -4354,21 +4354,21 @@ function AssessmentContent() {
 
             <section
               className={
-                selectedRole === 'Professional Player'
-                  ? 'max-w-[840px]'
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
+                  ? 'min-w-0 max-w-[840px]'
                   : undefined
               }
             >
           <div
             className={
-              selectedRole === 'Professional Player'
-                ? 'mb-4 rounded-xl border border-fei-bg/[0.09] bg-white px-5 py-4 sm:px-6'
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
+                ? 'mb-4 overflow-hidden rounded-xl border border-fei-bg/[0.11] bg-white px-5 py-4 shadow-[0_4px_14px_rgba(15,23,42,0.025)] sm:px-6'
                 : 'mb-8 border-l-4 border-fei-sky pl-5 sm:pl-7'
             }
           >
             <p
               className={
-                selectedRole === 'Professional Player'
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
                   ? 'text-[10px] font-medium uppercase tracking-[0.07em] text-fei-bg/38'
                   : 'text-xs font-black uppercase tracking-[0.22em] text-fei-bg/45'
               }
@@ -4377,13 +4377,13 @@ function AssessmentContent() {
             </p>
             <p
               className={
-                selectedRole === 'Professional Player'
-                  ? 'mt-2 max-w-[760px] text-[15px] leading-7 tracking-[-0.004em] text-fei-bg/72'
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
+                  ? 'mt-2 max-w-[760px] break-words text-[15px] leading-7 tracking-[-0.004em] text-fei-bg/72'
                   : 'mt-5 text-base leading-8 text-fei-bg/70'
               }
             >
 {selectedRole === 'Head Coach'
-                ? 'You are briefing the squad two hours before a match against a high-pressing opponent. Focus on what they will face, what your plan is, and what tone you want to set.'
+                ? 'Two hours before kick-off, you need to send a short written briefing to the squad before facing a high-pressing opponent. They press aggressively after backward passes and often leave space behind their fullbacks. Your plan is to stay composed, use the goalkeeper when necessary, switch play quickly, and attack the space once the first line of pressure is broken.'
                 : selectedRole === 'Assistant Coach'
                   ? 'You are closing a training session after a pressing exercise. The players pressed well in the first repetitions, but in reps 5–8 they lost focus, spacing, and timing.'
                   : selectedRole === 'Academy Director'
@@ -4406,16 +4406,16 @@ function AssessmentContent() {
             </p>
           </div>
 
-          <div className={selectedRole === 'Professional Player' ? 'mb-4' : 'mb-5'}>
+          <div className={(selectedRole === 'Professional Player' || selectedRole === 'Head Coach') ? 'mb-4' : 'mb-5'}>
             <p
               className={
-                selectedRole === 'Professional Player'
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
                   ? 'max-w-[780px] text-base font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-[1.04rem]'
                   : 'text-xl font-black leading-8 text-fei-bg'
               }
             >
               {selectedRole === 'Head Coach'
-                ? 'Write the opening 3–5 sentences of your pre-match briefing.'
+                ? 'Write a 70–100-word pre-match message to the squad. Explain the main risk, two tactical priorities, and the standard of communication and decision-making you expect.'
                 : selectedRole === 'Assistant Coach'
                   ? 'Write 3–5 sentences to close the session. Include what went well, what needs to improve, and tomorrow’s focus.'
                   : selectedRole === 'Academy Director'
@@ -4439,7 +4439,9 @@ function AssessmentContent() {
             <p className="mt-2 text-sm leading-6 text-fei-bg/52">
               {selectedRole === 'Professional Player'
                 ? 'Acknowledge the feedback, explain the tactical difficulty briefly, and state one clear adjustment you will make.'
-                : 'Write 3–5 sentences in professional English.'}
+                : selectedRole === 'Head Coach'
+                  ? 'Use a direct, confident and professional tone. Connect the tactical plan to the match situation rather than listing isolated instructions.'
+                  : 'Write 3–5 sentences in professional English.'}
             </p>
           </div>
 
@@ -4449,18 +4451,22 @@ function AssessmentContent() {
             placeholder={
               selectedRole === 'Professional Player'
                 ? 'Coach, I understand your point about...'
-                : 'Hi, I wanted to report...'
+                : selectedRole === 'Head Coach'
+                  ? 'Today we need to stay composed when they press...'
+                  : 'Hi, I wanted to report...'
             }
             rows={6}
             className={`mb-2 w-full resize-none bg-white text-base leading-7 text-fei-bg placeholder:text-fei-bg/25 focus:border-fei-sky focus:outline-none ${
-              selectedRole === 'Professional Player'
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
                 ? 'rounded-xl border border-fei-bg/[0.12] px-5 py-4 shadow-[0_4px_14px_rgba(15,23,42,0.025)]'
                 : 'rounded-2xl border border-fei-bg/15 px-5 py-4'
             }`}
           />
           <div className="mb-8 flex items-center justify-between text-xs text-fei-bg/45">
             <span>{wordCount} words</span>
-            <span>Target: 30–80 words</span>
+            <span>
+              {selectedRole === 'Head Coach' ? 'Target: 70–100 words' : 'Target: 30–80 words'}
+            </span>
           </div>
 
           <button
