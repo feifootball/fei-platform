@@ -4393,7 +4393,7 @@ function AssessmentContent() {
 
           <div
             className={`grid items-start ${
-              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach')
                 ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-7'
                 : 'gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12'
             }`}
@@ -4404,7 +4404,7 @@ function AssessmentContent() {
 
             <section
               className={
-                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach')
                   ? 'min-w-0 max-w-[840px]'
                   : undefined
               }
@@ -4413,17 +4413,35 @@ function AssessmentContent() {
             className={
               (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
                 ? 'mb-4 overflow-hidden rounded-xl border border-fei-bg/[0.11] bg-white px-5 py-4 shadow-[0_4px_14px_rgba(15,23,42,0.025)] sm:px-6'
-                : 'mb-8 border-l-4 border-fei-sky pl-5 sm:pl-7'
+                : selectedRole === 'Assistant Coach'
+                  ? 'mb-5 overflow-hidden rounded-2xl border border-fei-bg/[0.10] bg-white shadow-[0_4px_16px_rgba(15,23,42,0.035)]'
+                  : 'mb-8 border-l-4 border-fei-sky pl-5 sm:pl-7'
             }
           >
+            {selectedRole === 'Assistant Coach' && (
+              <div className="flex flex-wrap items-center gap-2 border-b border-fei-bg/[0.07] px-5 py-3 sm:px-6">
+                <span className="rounded-full bg-fei-sky/[0.10] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-fei-bg/58">
+                  To: Head Coach
+                </span>
+                <span className="rounded-full bg-fei-bg/[0.04] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-fei-bg/45">
+                  Purpose: Staff debrief
+                </span>
+              </div>
+            )}
+
+            <div className={selectedRole === 'Assistant Coach' ? 'px-5 py-5 sm:px-6' : undefined}>
             <p
               className={
                 (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
                   ? 'text-[10px] font-medium uppercase tracking-[0.07em] text-fei-bg/38'
-                  : 'text-xs font-black uppercase tracking-[0.22em] text-fei-bg/45'
+                  : selectedRole === 'Assistant Coach'
+                    ? 'text-[10px] font-bold uppercase tracking-[0.16em] text-fei-bg/38'
+                    : 'text-xs font-black uppercase tracking-[0.22em] text-fei-bg/45'
               }
             >
-              Situation
+              {selectedRole === 'Assistant Coach'
+                ? 'Post-session staff debrief'
+                : 'Situation'}
             </p>
             <p
               className={
@@ -4435,7 +4453,7 @@ function AssessmentContent() {
 {selectedRole === 'Head Coach'
                 ? 'Two hours before kick-off, you need to send a short written briefing to the squad before facing a high-pressing opponent. They press aggressively after backward passes and often leave space behind their fullbacks. Your plan is to stay composed, use the goalkeeper when necessary, switch play quickly, and attack the space once the first line of pressure is broken.'
                 : selectedRole === 'Assistant Coach'
-                  ? 'You are closing a training session after a pressing exercise. The players pressed well in the first repetitions, but in reps 5–8 they lost focus, spacing, and timing.'
+                  ? 'You have just finished a first-team training session. The unit work was effective at the start, but during the final repetitions the distance between midfield and defence increased, communication dropped, and players began reacting individually. The Head Coach has asked for a concise written debrief before the staff meeting.'
                   : selectedRole === 'Academy Director'
                     ? 'You need to send a short message to academy coaches about this year’s development standards. Explain that the academy will assess readiness, not only physical dominance or short-term match performance. Mention that the U16 group is strong, but standards must remain consistent.'
                     : selectedRole === 'Head of Scouting'
@@ -4454,6 +4472,7 @@ function AssessmentContent() {
                                   ? 'You need to write a short mental performance note for the coaching staff. The player is dealing with perfectionism, anxiety before matches and reduced confidence after mistakes.'
                                   : 'After the match, the coach tells you that your positioning was too deep when the team tried to press. You agree with part of the feedback, but you also felt the distance to midfield made it difficult to step forward at the right moment.'}
             </p>
+            </div>
           </div>
 
           <div className={(selectedRole === 'Professional Player' || selectedRole === 'Head Coach') ? 'mb-4' : 'mb-5'}>
@@ -4467,7 +4486,7 @@ function AssessmentContent() {
               {selectedRole === 'Head Coach'
                 ? 'Write a 70–100-word pre-match message to the squad. Explain the main risk, two tactical priorities, and the standard of communication and decision-making you expect.'
                 : selectedRole === 'Assistant Coach'
-                  ? 'Write 3–5 sentences to close the session. Include what went well, what needs to improve, and tomorrow’s focus.'
+                  ? 'Write a 60–90-word debrief to the Head Coach. Identify what worked, explain the main problem using observable evidence, and recommend one priority for the next session.'
                   : selectedRole === 'Academy Director'
                     ? 'Write 3–5 sentences to academy coaches about development standards and player readiness.'
                     : selectedRole === 'Head of Scouting'
@@ -4491,7 +4510,9 @@ function AssessmentContent() {
                 ? 'Acknowledge the feedback, explain the tactical difficulty briefly, and state one clear adjustment you will make.'
                 : selectedRole === 'Head Coach'
                   ? 'Use a direct, confident and professional tone. Connect the tactical plan to the match situation rather than listing isolated instructions.'
-                  : 'Write 3–5 sentences in professional English.'}
+                  : selectedRole === 'Assistant Coach'
+                    ? 'Use a concise staff-to-staff tone. Separate observation from interpretation and finish with a clear recommendation.'
+                    : 'Write 3–5 sentences in professional English.'}
             </p>
           </div>
 
@@ -4503,11 +4524,13 @@ function AssessmentContent() {
                 ? 'Coach, I understand your point about...'
                 : selectedRole === 'Head Coach'
                   ? 'Today we need to stay composed when they press...'
-                  : 'Hi, I wanted to report...'
+                  : selectedRole === 'Assistant Coach'
+                    ? 'The first part of the session was effective because...'
+                    : 'Hi, I wanted to report...'
             }
             rows={6}
             className={`mb-2 w-full resize-none bg-white text-base leading-7 text-fei-bg placeholder:text-fei-bg/25 focus:border-fei-sky focus:outline-none ${
-              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach')
                 ? 'rounded-xl border border-fei-bg/[0.12] px-5 py-4 shadow-[0_4px_14px_rgba(15,23,42,0.025)]'
                 : 'rounded-2xl border border-fei-bg/15 px-5 py-4'
             }`}
@@ -4515,7 +4538,11 @@ function AssessmentContent() {
           <div className="mb-8 flex items-center justify-between text-xs text-fei-bg/45">
             <span>{wordCount} words</span>
             <span>
-              {selectedRole === 'Head Coach' ? 'Target: 70–100 words' : 'Target: 30–80 words'}
+              {selectedRole === 'Head Coach'
+                ? 'Target: 70–100 words'
+                : selectedRole === 'Assistant Coach'
+                  ? 'Target: 60–90 words'
+                  : 'Target: 30–80 words'}
             </span>
           </div>
 
