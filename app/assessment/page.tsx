@@ -3583,14 +3583,32 @@ function AssessmentContent() {
                 <>
                   <div className="mb-4 overflow-hidden rounded-xl border border-fei-bg/[0.11] bg-white shadow-[0_4px_14px_rgba(15,23,42,0.025)]">
                     <div className="border-l-[3px] border-fei-sky px-5 py-4 sm:px-6">
-                      <p className="max-w-[760px] text-[15px] font-medium leading-7 tracking-[-0.004em] text-fei-bg/84 sm:text-base">
+                      <p
+                        className={
+                          selectedRole === 'Assistant Coach'
+                            ? 'max-w-[760px] text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72 sm:text-base'
+                            : 'max-w-[760px] text-[15px] font-medium leading-7 tracking-[-0.004em] text-fei-bg/84 sm:text-base'
+                        }
+                      >
                         {item.context}
                       </p>
                     </div>
                   </div>
 
-                  <div className="mb-3 pl-1">
-                    <h1 className="max-w-[780px] text-[1.05rem] font-bold leading-[1.35] tracking-[-0.012em] text-fei-bg/92 sm:text-[1.12rem]">
+                  <div
+                    className={
+                      selectedRole === 'Assistant Coach'
+                        ? 'mb-5 border-l-4 border-fei-sky pl-5 sm:pl-6'
+                        : 'mb-3 pl-1'
+                    }
+                  >
+                    <h1
+                      className={
+                        selectedRole === 'Assistant Coach'
+                          ? 'max-w-[780px] text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl'
+                          : 'max-w-[780px] text-[1.05rem] font-bold leading-[1.35] tracking-[-0.012em] text-fei-bg/92 sm:text-[1.12rem]'
+                      }
+                    >
                       {item.question}
                     </h1>
                   </div>
