@@ -648,42 +648,42 @@ const assistantCoachItems = {
     {
       id: 'f1',
       level: 'B1',
-      label: 'Item 12 — Pressing Trigger Explanation',
-      context: 'A player asks: “When exactly should I start the press?” You need to explain the trigger quickly before the next repetition.',
+      label: 'Item 12 — Clarifying a Build-up Role',
+      context: 'The head coach asks the fullback to move inside during the build-up. The player asks: “When exactly do you want me to come inside?”',
       question: 'Which explanation is clearest?',
       options: [
-        'A. Press when you feel the fullback is unsure.',
-        'B. Press every time the ball moves to the side.',
-        'C. Wait until the striker decides to go first.',
-        'D. Press when the fullback receives facing our goal.',
+        'A. Move inside whenever you think the midfield needs more help.',
+        'B. Start inside before the goalkeeper has decided where to pass.',
+        'C. Stay wide until the winger moves, then copy his position.',
+        'D. Move inside when the centre-back has the ball and the winger is holding the width.',
       ],
       correct: 'D',
     },
     {
       id: 'f2',
       level: 'B2',
-      label: 'Item 13 — Repetition Under Fatigue',
-      context: 'A player is frustrated because the pressing drill keeps repeating. He says: “We already understand this. Why are we doing it again?”',
-      question: 'What is the best response?',
+      label: 'Item 13 — Explaining the Purpose of Repetition',
+      context: 'A player is frustrated because the same transition exercise is being repeated. He says: “We already understand it. Why are we doing it again?”',
+      question: 'What is the most effective response?',
       options: [
-        'A. You are tired because you did not concentrate enough.',
-        'B. We can stop the exercise if the group understands it.',
-        'C. Repetition makes the reaction automatic under match fatigue.',
-        'D. The head coach wants more repetitions, so we continue.',
+        'A. We are repeating it because the head coach is not satisfied with the group.',
+        'B. You understand the idea, but some players are still making basic mistakes.',
+        'C. The idea is clear. Now we are repeating it so the reaction stays coordinated when you are tired.',
+        'D. We can reduce the repetitions if everyone promises to concentrate more.',
       ],
       correct: 'C',
     },
     {
       id: 'f3',
       level: 'B2',
-      label: 'Item 14 — Supporting a Confused Player',
-      context: 'A player looks confused after being corrected for a late pressing action. You need to make the feedback usable without overwhelming him.',
-      question: 'Which response gives the clearest support?',
+      label: 'Item 14 — Prioritising Feedback',
+      context: 'A midfielder has received several corrections during the exercise and now looks uncertain. You need to make the next repetition manageable.',
+      question: 'Which response gives the most useful support?',
       options: [
-        'A. Your position was fine, but your next action needs more intensity.',
-        'B. Your position was right. The timing was late. Move earlier as the pass travels.',
-        'C. You understood the idea, but the recovery run must be more aggressive.',
-        'D. The coach wants more speed, so focus mainly on pressing harder.',
+        'A. Improve your body position, communication, scanning and speed of play.',
+        'B. Focus on one thing: scan before the pass arrives so your next action is quicker.',
+        'C. Forget the previous repetitions and play with more confidence.',
+        'D. Try to remember everything the coaching staff has told you today.',
       ],
       correct: 'B',
     },
@@ -691,20 +691,18 @@ const assistantCoachItems = {
       id: 'f4',
       level: 'C1',
       label: 'Item 15 — Translating Tactical Intention',
-      context: 'The head coach tells a midfielder: “I need you to think, not just react.” The player looks unsure. You need to translate the idea into a clear action.',
-      question: 'What is the most useful clarification?',
+      context: 'The head coach tells the midfield: “We need to control the rhythm instead of forcing the game.” One player asks what that should look like in possession.',
+      question: 'Which clarification translates the intention most effectively?',
       options: [
-        'A. Press quicker and stop waiting for the play to develop.',
-        'B. Stay calmer and make fewer emotional decisions.',
-        'C. Take more time before passing so the safe option appears.',
-        'D. Scan before receiving so you see two options before the ball arrives.',
+        'A. Keep the ball for longer and avoid playing forward until the opposition drops back.',
+        'B. Reduce the tempo of every attack so the team remains compact behind the ball.',
+        'C. Take fewer risks, use shorter passes and wait for the head coach to signal when to attack.',
+        'D. Scan before receiving: if pressure is disorganised, play forward; if it is set, recycle the ball and move them again.',
       ],
       correct: 'D',
     },
   ],
 }
-
-
 
 const academyDirectorItems = {
   warmup: [
@@ -4181,6 +4179,24 @@ function AssessmentContent() {
     const item = activeItems.functional[functionalStep]
     const selected = answers[item.id]
 
+    const functionalQuoteMatch = item.context.match(/[“"]([^”"]+)[”"]/)
+    const functionalQuote = functionalQuoteMatch?.[1] ?? ''
+    const functionalSetup = functionalQuoteMatch
+      ? item.context
+          .replace(functionalQuoteMatch[0], '')
+          .replace(/\s+/g, ' ')
+          .trim()
+      : item.context
+
+    const functionalScenarioLabel =
+      item.level === 'C1'
+        ? 'Tactical mediation'
+        : functionalStep === 0
+          ? 'Player question'
+          : functionalStep === 1
+            ? 'Coaching moment'
+            : 'Individual feedback'
+
     return (
       <div className="min-h-screen bg-[#F6F7F9] text-fei-bg">
         <header className="border-b border-fei-bg/[0.08] bg-white/90 backdrop-blur-xl">
@@ -4218,7 +4234,7 @@ function AssessmentContent() {
 
           <div
             className={`grid items-start ${
-              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach')
                 ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-7'
                 : 'gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12'
             }`}
@@ -4229,7 +4245,7 @@ function AssessmentContent() {
 
             <section
               className={
-                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach')
                   ? 'min-w-0 max-w-[840px]'
                   : undefined
               }
@@ -4246,6 +4262,34 @@ function AssessmentContent() {
 
                   <div className="mb-3">
                     <h1 className="max-w-[780px] text-base font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-[1.04rem]">
+                      {item.question}
+                    </h1>
+                  </div>
+                </>
+              ) : selectedRole === 'Assistant Coach' ? (
+                <>
+                  <div className="mb-5 overflow-hidden rounded-2xl border border-fei-bg/[0.10] bg-white shadow-[0_4px_16px_rgba(15,23,42,0.035)]">
+                    <div className="border-t-[3px] border-fei-sky px-5 py-5 sm:px-6 sm:py-6">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-fei-bg/38">
+                        {functionalScenarioLabel}
+                      </p>
+
+                      <p className="mt-3 max-w-[760px] text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/70 select-none sm:text-base">
+                        {functionalSetup}
+                      </p>
+
+                      {functionalQuote && (
+                        <div className="mt-4 rounded-xl bg-fei-bg/[0.035] px-4 py-3.5 sm:px-5">
+                          <p className="text-[15px] font-medium leading-7 tracking-[-0.006em] text-fei-bg/86 select-none sm:text-base">
+                            “{functionalQuote}”
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="mb-5">
+                    <h1 className="max-w-[780px] text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl">
                       {item.question}
                     </h1>
                   </div>
@@ -4269,14 +4313,14 @@ function AssessmentContent() {
                     option={option}
                     selected={selected === option}
                     onSelect={() => setAnswer(item.id, option)}
-                    refined={selectedRole === 'Professional Player' || selectedRole === 'Head Coach'}
+                    refined={selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach'}
                   />
                 ))}
               </div>
 
               <div
                 className={`flex justify-end ${
-                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach') ? 'pb-6' : ''
+                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach') ? 'pb-6' : ''
                 }`}
               >
                 <button
