@@ -3897,16 +3897,16 @@ function AssessmentContent() {
 
               <div
                 className={
-                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach')
+                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
                     ? 'mb-3'
                     : 'mb-5 border-l-4 border-fei-sky pl-5 sm:pl-6'
                 }
               >
                 <h1
                   className={
-                    (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach')
+                    (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
                       ? 'max-w-[780px] text-base font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-[1.04rem]'
-                      : 'text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl'
+                      : 'max-w-[780px] text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl'
                   }
                 >
                   {item.question}
