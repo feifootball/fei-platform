@@ -27,7 +27,7 @@ const items = {
       id: 'w1',
       label: 'Item 1 — Role Identification',
       context: 'Which situation is most common in your role as a senior squad player?',
-      question: 'Choose the best answer.',
+      question: 'Choose the best option.',
       options: [
         'A. Preparing detailed physical reports for the medical staff',
         'B. Explaining opposition trends to recruitment staff',
@@ -40,7 +40,7 @@ const items = {
       id: 'w2',
       label: 'Item 2 — Communication Priority',
       context: 'What type of communication matters most to your daily professional performance?',
-      question: 'Choose the most relevant option.',
+      question: 'Choose the best option.',
       options: [
         'A. Understanding coaches clearly in real time',
         'B. Writing long tactical reports after matches',
@@ -250,7 +250,7 @@ const headCoachItems = {
       label: 'Item 1 — Role Identification',
       context:
         'Which responsibility is most typical for a first-team head coach?',
-      question: 'Choose the best answer.',
+      question: 'Choose the best option.',
       options: [
         'A. Giving individual rehabilitation updates to injured players',
         'B. Presenting detailed player reports to the recruitment department',
@@ -264,7 +264,7 @@ const headCoachItems = {
       label: 'Item 2 — Communication Priority',
       context:
         'Which communication skill has the greatest impact on your effectiveness as a head coach?',
-      question: 'Choose the most relevant option.',
+      question: 'Choose the best option.',
       options: [
         'A. Explaining decisions clearly and aligning players and staff',
         'B. Producing regular public content for club media channels',
@@ -3583,32 +3583,14 @@ function AssessmentContent() {
                 <>
                   <div className="mb-4 overflow-hidden rounded-xl border border-fei-bg/[0.11] bg-white shadow-[0_4px_14px_rgba(15,23,42,0.025)]">
                     <div className="border-l-[3px] border-fei-sky px-5 py-4 sm:px-6">
-                      <p
-                        className={
-                          selectedRole === 'Assistant Coach'
-                            ? 'max-w-[760px] text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72 sm:text-base'
-                            : 'max-w-[760px] text-[15px] font-medium leading-7 tracking-[-0.004em] text-fei-bg/84 sm:text-base'
-                        }
-                      >
+                      <p className="max-w-[760px] text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72 sm:text-base">
                         {item.context}
                       </p>
                     </div>
                   </div>
 
-                  <div
-                    className={
-                      selectedRole === 'Assistant Coach'
-                        ? 'mb-5 border-l-4 border-fei-sky pl-5 sm:pl-6'
-                        : 'mb-3 pl-1'
-                    }
-                  >
-                    <h1
-                      className={
-                        selectedRole === 'Assistant Coach'
-                          ? 'max-w-[780px] text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl'
-                          : 'max-w-[780px] text-[1.05rem] font-bold leading-[1.35] tracking-[-0.012em] text-fei-bg/92 sm:text-[1.12rem]'
-                      }
-                    >
+                  <div className="mb-5 border-l-4 border-fei-sky pl-5 sm:pl-6">
+                    <h1 className="max-w-[780px] text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl">
                       {item.question}
                     </h1>
                   </div>
