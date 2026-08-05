@@ -489,7 +489,7 @@ const assistantCoachItems = {
       id: 'w1',
       label: 'Item 1 — Role Identification',
       context: 'Which situation is most likely to be part of your daily work as a first-team assistant coach?',
-      question: 'Choose the option that best reflects your communication responsibilities.',
+      question: 'Choose the best option.',
       options: [
         'A. Explaining the head coach’s tactical priorities to a small group of players',
         'B. Approving the club’s final transfer budget with the board',
