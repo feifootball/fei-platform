@@ -517,7 +517,7 @@ const assistantCoachItems = {
       id: 'r1',
       level: 'A2',
       label: 'Item 3 — Session Instruction',
-      context: 'Before training, the head coach sends this note:\\n\\n"In the first exercise, work with the wide players. When the ball goes to the fullback, the winger should move inside and the fullback should overlap. Keep the explanation short and show the movement once."',
+      context: 'Before training, the head coach sends this note:\n\n"In the first exercise, work with the wide players. When the ball goes to the fullback, the winger should move inside and the fullback should overlap. Keep the explanation short and show the movement once."',
       question: 'What should the assistant coach do?',
       options: [
         'A. Explain the movement briefly and demonstrate it once.',
@@ -531,7 +531,7 @@ const assistantCoachItems = {
       id: 'r2',
       level: 'B1',
       label: 'Item 4 — Unit Coordination',
-      context: 'After the first training block, the analyst writes:\\n\\n"The back line moved forward at the right moment, but the midfield line reacted late. This created too much space between the units. The assistant coach should correct the timing before the next repetition."',
+      context: 'After the first training block, the analyst writes:\n\n"The back line moved forward at the right moment, but the midfield line reacted late. This created too much space between the units. The assistant coach should correct the timing before the next repetition."',
       question: 'What is the main issue?',
       options: [
         'A. The back line moved too slowly.',
@@ -545,7 +545,7 @@ const assistantCoachItems = {
       id: 'r3',
       level: 'B2',
       label: 'Item 5 — Translating Analysis into Coaching',
-      context: 'Before the final training block, the performance analyst reports:\\n\\n"The opponent’s midfielders receive comfortably when our first line presses straight ahead. They become less effective when the pressing player curves the run and blocks the inside pass. The players understand the intensity required, but not the angle of the press."',
+      context: 'Before the final training block, the performance analyst reports:\n\n"The opponent’s midfielders receive comfortably when our first line presses straight ahead. They become less effective when the pressing player curves the run and blocks the inside pass. The players understand the intensity required, but not the angle of the press."',
       question: 'What should the assistant coach prioritize in the next correction?',
       options: [
         'A. Increase the speed of every pressing action.',
