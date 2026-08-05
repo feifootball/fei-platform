@@ -4598,7 +4598,7 @@ function AssessmentContent() {
 
           <div
             className={`grid items-start ${
-              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach')
                 ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-7'
                 : 'gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12'
             }`}
@@ -4609,7 +4609,7 @@ function AssessmentContent() {
 
             <section
               className={
-                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach')
                   ? 'min-w-0 max-w-[840px]'
                   : undefined
               }
@@ -4618,7 +4618,9 @@ function AssessmentContent() {
             className={
               (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
                 ? 'mb-4 overflow-hidden rounded-xl border border-fei-bg/[0.11] bg-white px-5 py-4 shadow-[0_4px_14px_rgba(15,23,42,0.025)] sm:px-6'
-                : 'mb-8 border-l-4 border-fei-sky pl-5 sm:pl-7'
+                : selectedRole === 'Assistant Coach'
+                  ? 'mb-5 overflow-hidden rounded-2xl border border-fei-bg/[0.10] bg-white px-5 py-5 shadow-[0_4px_16px_rgba(15,23,42,0.035)] sm:px-6 sm:py-6'
+                  : 'mb-8 border-l-4 border-fei-sky pl-5 sm:pl-7'
             }
           >
             <p
@@ -4628,19 +4630,35 @@ function AssessmentContent() {
                   : 'text-xs font-black uppercase tracking-[0.22em] text-fei-bg/45'
               }
             >
-              Situation
+              {selectedRole === 'Assistant Coach'
+                ? 'Live coaching intervention'
+                : 'Situation'}
             </p>
+
+            {selectedRole === 'Assistant Coach' && (
+              <div className="mt-3 flex flex-wrap gap-2">
+                <span className="rounded-full bg-fei-sky/[0.10] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.11em] text-fei-bg/58">
+                  Audience: Two players
+                </span>
+
+                <span className="rounded-full bg-fei-bg/[0.04] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.11em] text-fei-bg/45">
+                  Time available: 45 seconds
+                </span>
+              </div>
+            )}
             <p
               className={
                 (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
                   ? 'mt-2 max-w-[760px] break-words text-[15px] leading-7 tracking-[-0.004em] text-fei-bg/72'
-                  : 'mt-5 text-base leading-8 text-fei-bg/70'
+                  : selectedRole === 'Assistant Coach'
+                    ? 'mt-4 max-w-[760px] text-[15px] leading-7 tracking-[-0.004em] text-fei-bg/72 sm:text-base'
+                    : 'mt-5 text-base leading-8 text-fei-bg/70'
               }
             >
 {selectedRole === 'Head Coach'
                 ? 'You substituted a senior player after 25 minutes while the team was losing 1–0. The opponent was repeatedly exploiting the space behind him, and the team’s defensive structure was becoming unstable. The player expected to complete the match and reacts with visible frustration. You need to speak to him briefly near the technical area while the crowd is loud and the rest of the squad is watching.'
                 : selectedRole === 'Assistant Coach'
-                  ? 'Two players are not pressing together during a training exercise. One player jumps early, the other waits, and the opponent plays through the gap.'
+                  ? 'During the final 11v11 block, the right winger presses the opposition fullback before the striker has blocked the pass into midfield. The central midfielder then holds his position, leaving an open route inside. The opposition plays through the pressure twice. The Head Coach asks you to stop the exercise and correct the two players before the restart.'
                   : selectedRole === 'Academy Director'
                     ? 'The Sporting Director wants to fast-track a U18 striker into the first team. You believe the player is not ready yet and that a second-team loan is the better pathway.'
                     : selectedRole === 'Head of Scouting'
@@ -4661,18 +4679,28 @@ function AssessmentContent() {
             </p>
           </div>
 
-          <div className={(selectedRole === 'Professional Player' || selectedRole === 'Head Coach') ? 'mb-4' : 'mb-8'}>
+          <div
+            className={
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
+                ? 'mb-4'
+                : selectedRole === 'Assistant Coach'
+                  ? 'mb-5'
+                  : 'mb-8'
+            }
+          >
             <p
               className={
                 (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
                   ? 'max-w-[780px] text-base font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-[1.04rem]'
-                  : 'text-xl font-black leading-8 text-fei-bg'
+                  : selectedRole === 'Assistant Coach'
+                    ? 'max-w-[780px] text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl'
+                    : 'text-xl font-black leading-8 text-fei-bg'
               }
             >
               {selectedRole === 'Head Coach'
                 ? 'Explain the decision clearly. Acknowledge the player’s frustration, give the tactical reason, protect the relationship, and maintain your authority.'
                 : selectedRole === 'Assistant Coach'
-                  ? 'Correct both players clearly and professionally before restarting the drill.'
+                  ? 'Deliver the intervention. Identify the coordination problem, clarify the trigger for the first presser, explain the supporting player’s responsibility, and finish with one clear instruction for the restart.'
                   : selectedRole === 'Academy Director'
                     ? 'Explain your position clearly and professionally, balancing first-team need with player development.'
                     : selectedRole === 'Head of Scouting'
@@ -4692,7 +4720,9 @@ function AssessmentContent() {
                                   : 'Explain how you would respond to the coach professionally.'}
             </p>
             <p className="mt-2 text-sm leading-6 text-fei-bg/52">
-              Recommended: 45–60 seconds · Maximum: 75 seconds
+              {selectedRole === 'Assistant Coach'
+                ? 'Recommended: 45–60 seconds · Be concise, specific and ready to restart the exercise.'
+                : 'Recommended: 45–60 seconds · Maximum: 75 seconds'}
             </p>
           </div>
 
@@ -4700,7 +4730,9 @@ function AssessmentContent() {
             className={
               (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
                 ? 'mb-4 rounded-xl border border-fei-bg/[0.09] bg-white p-4 sm:p-5'
-                : ''
+                : selectedRole === 'Assistant Coach'
+                  ? 'mb-5 rounded-2xl border border-fei-bg/[0.09] bg-white p-4 shadow-[0_4px_14px_rgba(15,23,42,0.025)] sm:p-5'
+                  : ''
             }
           >
           {isRecording && (
