@@ -604,42 +604,42 @@ const assistantCoachItems = {
     {
       id: 'v1',
       level: 'A2',
-      label: 'Item 9 — Rondo',
-      context: 'During training, the head coach says: “Start with a 5v5 rondo. Keep the ball moving and protect the central player.”',
-      question: 'What is a “rondo” in this context?',
+      label: 'Item 9 — Walk-through',
+      context: 'The coach says: “Before we increase the intensity, do one walk-through so everyone understands the movement.”',
+      question: 'What does “walk-through” mean here?',
       options: [
-        'A. A fitness drill focused on long sprint intervals.',
-        'B. A video meeting reviewing pressing clips.',
-        'C. A small-sided possession drill in limited space.',
-        'D. A defensive shape used near the penalty area.',
+        'A. A slow rehearsal of the movement without full intensity.',
+        'B. A recovery walk completed after the training session.',
+        'C. A video review of the exercise with the coaching staff.',
+        'D. A fitness test performed before the players begin training.',
       ],
-      correct: 'C',
+      correct: 'A',
     },
     {
       id: 'v2',
       level: 'B1',
-      label: 'Item 10 — Body Scanning',
-      context: 'During a passing exercise, you tell a player: “Scan before you receive. Check your shoulder before the ball arrives.”',
-      question: 'What does “body scanning” mean here?',
+      label: 'Item 10 — Freeze the Practice',
+      context: 'A player asks: “When you say ‘freeze the practice’, do you want us to stop exactly where we are?”',
+      question: 'What does “freeze the practice” mean?',
       options: [
-        'A. Protecting body position in physical duels.',
-        'B. Checking around before receiving the ball.',
-        'C. Measuring sprint speed after training.',
-        'D. Watching only the ball during possession.',
+        'A. End the exercise because the players are too tired.',
+        'B. Temporarily stop the action so positioning can be corrected.',
+        'C. Reduce the intensity while allowing the exercise to continue.',
+        'D. Repeat the exercise without giving any further instruction.',
       ],
       correct: 'B',
     },
     {
       id: 'v3',
       level: 'B2',
-      label: 'Item 11 — Numerical Overload',
-      context: 'The analyst says: “We can create a numerical overload on the left side if the fullback steps inside and the winger holds the width.”',
-      question: 'What does “numerical overload” mean?',
+      label: 'Item 11 — Third-man Run',
+      context: 'The assistant coach says: “The midfielder plays into the striker, then the winger makes the third-man run beyond him.”',
+      question: 'What is the “third-man run” in this sequence?',
       options: [
-        'A. Playing with fewer touches under pressure.',
-        'B. Creating width with both fullbacks.',
-        'C. Having more players than the opponent in an area.',
-        'D. Moving the defensive line higher than usual.',
+        'A. The striker moving toward the midfielder to receive the first pass.',
+        'B. The midfielder following the pass to support behind the ball.',
+        'C. The winger running beyond after two other players combine.',
+        'D. The fullback moving inside to create an extra passing option.',
       ],
       correct: 'C',
     },
@@ -3980,18 +3980,20 @@ function AssessmentContent() {
         ? 'Assistant Coach'
         : vocabularyContext.includes('physiotherapist')
           ? 'Physiotherapist'
-          : vocabularyContext.includes('coach')
-            ? 'Coach'
-            : vocabularyContext.includes('teammate')
-              ? 'Teammate'
-              : 'Match context'
+          : vocabularyContext.includes('player asks')
+            ? 'Player'
+            : vocabularyContext.includes('coach')
+              ? 'Coach'
+              : vocabularyContext.includes('teammate')
+                ? 'Teammate'
+                : 'Match context'
 
     const vocabularyQuoteMatch = item.context.match(/[“"](.+)[”"]$/)
     const vocabularyQuote = vocabularyQuoteMatch?.[1] ?? item.context
 
     const vocabularySetup = item.context
       .replace(
-        /\s*(?:A teammate shouts|The coach says|The physiotherapist asks|The assistant coach says|The Sporting Director says):\s*[“"].*[”"]$/i,
+        /\s*(?:A teammate shouts|A player asks|The coach says|The physiotherapist asks|The assistant coach says|The Sporting Director says):\s*[“"].*[”"]$/i,
         '',
       )
       .trim()
@@ -4033,7 +4035,7 @@ function AssessmentContent() {
 
           <div
             className={`grid items-start ${
-              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach')
                 ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-7'
                 : 'gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12'
             }`}
@@ -4044,12 +4046,12 @@ function AssessmentContent() {
 
             <section
               className={
-                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach')
                   ? 'max-w-[840px]'
                   : undefined
               }
             >
-              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach') ? (
+              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach') ? (
                 <>
                   <div className="mb-4">
                     {vocabularySetup && (
@@ -4078,7 +4080,9 @@ function AssessmentContent() {
                                   ? '/images/diagnostics/avatars/sporting-director.png'
                                   : vocabularySpeaker === 'Coach'
                                     ? '/images/diagnostics/avatars/coach.png'
-                                    : '/images/diagnostics/avatars/teammate.png'
+                                    : vocabularySpeaker === 'Player'
+                                      ? '/images/diagnostics/avatars/teammate.png'
+                                      : '/images/diagnostics/avatars/teammate.png'
                           }
                           alt={`${vocabularySpeaker} avatar`}
                           loading="eager"
@@ -4130,14 +4134,14 @@ function AssessmentContent() {
                     option={option}
                     selected={selected === option}
                     onSelect={() => setAnswer(item.id, option)}
-                    refined={selectedRole === 'Professional Player' || selectedRole === 'Head Coach'}
+                    refined={selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach'}
                   />
                 ))}
               </div>
 
               <div
                 className={`flex justify-end ${
-                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach') ? 'pb-6' : ''
+                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach') ? 'pb-6' : ''
                 }`}
               >
                 <button
