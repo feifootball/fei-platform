@@ -3758,6 +3758,30 @@ function AssessmentContent() {
                     </h1>
                   </div>
                 </>
+              ) : selectedRole === 'Assistant Coach' ? (
+                <>
+                  <div className="mb-4 overflow-hidden rounded-xl border border-fei-bg/[0.11] bg-white shadow-[0_4px_14px_rgba(15,23,42,0.025)]">
+                    <div className="px-5 py-4 sm:px-6">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-fei-bg/40">
+                        Read carefully
+                      </p>
+
+                      <p className="mt-3 max-w-[760px] text-[15px] leading-7 tracking-[-0.004em] text-fei-bg/68 select-none sm:text-base">
+                        {item.context.split('\n\n')[0]}
+                      </p>
+
+                      <p className="mt-1.5 max-w-[760px] whitespace-pre-line text-[15px] font-medium leading-7 tracking-[-0.004em] text-fei-bg/84 select-none sm:text-base">
+                        {item.context.split('\n\n').slice(1).join('\n\n')}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mb-4 border-l-[3px] border-fei-sky pl-4 sm:pl-5">
+                    <h1 className="max-w-[760px] text-xl font-bold leading-8 tracking-[-0.015em] text-fei-bg sm:text-2xl">
+                      {item.question}
+                    </h1>
+                  </div>
+                </>
               ) : (
                 <>
                   <div className="mb-5 rounded-[1.25rem] border border-fei-bg/[0.14] bg-white p-5 sm:p-6">
@@ -3785,13 +3809,13 @@ function AssessmentContent() {
                     option={option}
                     selected={selected === option}
                     onSelect={() => setAnswer(item.id, option)}
-                    refined={selectedRole === 'Professional Player' || selectedRole === 'Head Coach'}
+                    refined={selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach'}
                   />
                 ))}
               </div>
 
               <div className={`flex justify-end ${
-                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach') ? 'pb-6' : ''
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach') ? 'pb-6' : ''
               }`}>
                 <button
                   type="button"
