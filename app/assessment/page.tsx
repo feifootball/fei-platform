@@ -4693,7 +4693,7 @@ function AssessmentContent() {
                 (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
                   ? 'max-w-[780px] text-base font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-[1.04rem]'
                   : selectedRole === 'Assistant Coach'
-                    ? 'max-w-[780px] text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl'
+                    ? 'max-w-[720px] text-xl font-bold leading-8 tracking-[-0.015em] text-fei-bg sm:text-2xl'
                     : 'text-xl font-black leading-8 text-fei-bg'
               }
             >
