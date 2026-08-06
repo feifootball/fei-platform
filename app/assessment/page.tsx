@@ -3740,8 +3740,20 @@ function AssessmentContent() {
                     </div>
                   </div>
 
-                  <div className="mb-3">
-                    <h1 className="max-w-[780px] text-base font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-[1.04rem]">
+                  <div
+                    className={
+                      selectedRole === 'Professional Player'
+                        ? 'mb-5 border-l-4 border-fei-sky pl-5 sm:pl-6'
+                        : 'mb-3'
+                    }
+                  >
+                    <h1
+                      className={
+                        selectedRole === 'Professional Player'
+                          ? 'max-w-[780px] text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl'
+                          : 'max-w-[780px] text-base font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-[1.04rem]'
+                      }
+                    >
                       {item.question}
                     </h1>
                   </div>
