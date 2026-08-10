@@ -3895,9 +3895,6 @@ function AssessmentContent() {
             <aside className="lg:sticky lg:top-10 lg:-translate-y-4">
               <SectionBadge label="Listening in Context" />
 
-              <p className="mt-3 max-w-xs text-sm leading-6 text-fei-bg/55">
-                Use headphones for best results.
-              </p>
             </aside>
 
             <section
@@ -3922,6 +3919,12 @@ function AssessmentContent() {
                   }
                   minimal={selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach'}
                 />
+
+                {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach') && (
+                  <p className="mt-2 text-xs font-normal leading-5 text-fei-bg/45">
+                    Use headphones for best results.
+                  </p>
+                )}
               </div>
 
               <div
@@ -3933,8 +3936,8 @@ function AssessmentContent() {
               >
                 <h1
                   className={
-                    (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
-                      ? 'max-w-[780px] text-base font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-[1.04rem]'
+                    (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach')
+                      ? 'max-w-[780px] text-lg font-medium leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
                       : 'max-w-[780px] text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl'
                   }
                 >
