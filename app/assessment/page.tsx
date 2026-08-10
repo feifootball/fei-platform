@@ -3573,7 +3573,7 @@ function AssessmentContent() {
             <section
               className={
                 (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach')
-                  ? 'max-w-[840px] lg:pt-1'
+                  ? 'max-w-[840px]'
                   : undefined
               }
             >
@@ -3722,7 +3722,7 @@ function AssessmentContent() {
             <section
               className={
                 (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach')
-                  ? 'max-w-[840px] lg:pt-1'
+                  ? 'max-w-[840px]'
                   : undefined
               }
             >
@@ -3908,7 +3908,7 @@ function AssessmentContent() {
             <section
               className={
                 (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach')
-                  ? 'max-w-[840px] lg:pt-1'
+                  ? 'max-w-[840px]'
                   : undefined
               }
             >
@@ -4081,7 +4081,7 @@ function AssessmentContent() {
             <section
               className={
                 (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach')
-                  ? 'max-w-[840px] lg:pt-1'
+                  ? 'max-w-[840px]'
                   : undefined
               }
             >
