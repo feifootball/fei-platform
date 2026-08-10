@@ -2796,15 +2796,23 @@ function AudioPlayer({
         )}
       </div>
 
-      <p
-        className={
-          minimal
-            ? 'mb-3 text-xs leading-5 text-fei-bg/48'
-            : 'mb-5 text-sm leading-6 text-fei-bg/55'
-        }
-      >
-        Click play to hear the audio clip. You may listen up to 2 times.
-      </p>
+      <div className={minimal ? 'mb-3' : 'mb-5'}>
+        <p
+          className={
+            minimal
+              ? 'text-xs leading-5 text-fei-bg/48'
+              : 'text-sm leading-6 text-fei-bg/55'
+          }
+        >
+          Click play to hear the audio clip. You may listen up to 2 times.
+        </p>
+
+        {minimal && (
+          <p className="mt-1 text-[11px] font-normal leading-5 text-fei-bg/38">
+            Use headphones for best results.
+          </p>
+        )}
+      </div>
 
       <button
         type="button"
@@ -3729,7 +3737,7 @@ function AssessmentContent() {
                 <>
                   <div className="mb-4 overflow-hidden rounded-xl border border-fei-bg/[0.11] bg-white shadow-[0_4px_14px_rgba(15,23,42,0.025)]">
                     <div className="px-5 py-4 sm:px-6">
-                      <p className="mb-2 text-[12px] font-normal tracking-[0.01em] text-fei-bg/52">
+                      <p className="mb-2 text-[11px] font-normal uppercase tracking-[0.08em] text-fei-bg/42">
                         {item.context.split('\n\n')[0]}
                       </p>
 
@@ -3761,7 +3769,7 @@ function AssessmentContent() {
                 <>
                   <div className="mb-4 overflow-hidden rounded-xl border border-fei-bg/[0.11] bg-white shadow-[0_4px_14px_rgba(15,23,42,0.025)]">
                     <div className="px-5 py-4 sm:px-6">
-                      <p className="mb-2 text-[12px] font-normal tracking-[0.01em] text-fei-bg/52">
+                      <p className="mb-2 text-[11px] font-normal uppercase tracking-[0.08em] text-fei-bg/42">
                         {item.context.split('\n\n')[0]}
                       </p>
 
@@ -3920,11 +3928,6 @@ function AssessmentContent() {
                   minimal={selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach'}
                 />
 
-                {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach') && (
-                  <p className="mt-2 text-xs font-normal leading-5 text-fei-bg/45">
-                    Use headphones for best results.
-                  </p>
-                )}
               </div>
 
               <div
