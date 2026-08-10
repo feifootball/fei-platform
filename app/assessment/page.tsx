@@ -2624,7 +2624,12 @@ function OptionButton({
             : 'text-fei-bg/68 group-hover:text-fei-bg'
         }`}
       >
-        {option}
+        <span className="font-semibold text-fei-bg/78">
+          {option.slice(0, 2)}
+        </span>
+        <span>
+          {option.slice(2)}
+        </span>
       </span>
 
       <span
