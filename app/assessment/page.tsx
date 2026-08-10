@@ -3715,7 +3715,7 @@ function AssessmentContent() {
                 : 'gap-7 lg:grid-cols-[0.43fr_1.57fr] lg:gap-9'
             }`}
           >
-            <aside className="lg:sticky lg:top-10 lg:pt-1">
+            <aside className="lg:sticky lg:top-10 lg:-translate-y-4">
               <SectionBadge label="Professional Reading" />
             </aside>
 
@@ -3897,7 +3897,7 @@ function AssessmentContent() {
                 : 'gap-7 lg:grid-cols-[0.43fr_1.57fr] lg:gap-9'
             }`}
           >
-            <aside className="lg:sticky lg:top-10 lg:pt-1">
+            <aside className="lg:sticky lg:top-10 lg:-translate-y-4">
               <SectionBadge label="Listening in Context" />
 
               <p className="mt-3 max-w-xs text-sm leading-6 text-fei-bg/55">
@@ -4074,7 +4074,7 @@ function AssessmentContent() {
                 : 'gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12'
             }`}
           >
-            <aside className="lg:sticky lg:top-10 lg:pt-1">
+            <aside className="lg:sticky lg:top-10 lg:-translate-y-4">
               <SectionBadge label="Football Vocabulary" />
             </aside>
 
@@ -4275,7 +4275,7 @@ function AssessmentContent() {
                 : 'gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12'
             }`}
           >
-            <aside className="lg:sticky lg:top-10 lg:pt-1">
+            <aside className="lg:sticky lg:top-10 lg:-translate-y-4">
               <SectionBadge label="Functional Communication" />
             </aside>
 
@@ -4434,7 +4434,7 @@ function AssessmentContent() {
                 : 'gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12'
             }`}
           >
-            <aside className="lg:sticky lg:top-10 lg:pt-1">
+            <aside className="lg:sticky lg:top-10 lg:-translate-y-4">
               <SectionBadge label="Written Production" />
             </aside>
 
@@ -4639,7 +4639,7 @@ function AssessmentContent() {
                 : 'gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12'
             }`}
           >
-            <aside className="lg:sticky lg:top-10 lg:pt-1">
+            <aside className="lg:sticky lg:top-10 lg:-translate-y-4">
               <SectionBadge label="Speaking Production" />
             </aside>
 
