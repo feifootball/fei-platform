@@ -3581,7 +3581,7 @@ function AssessmentContent() {
                 <>
                   <div className="mb-4 overflow-hidden rounded-xl border border-fei-bg/[0.11] bg-white shadow-[0_4px_14px_rgba(15,23,42,0.025)]">
                     <div className="border-l-[3px] border-fei-sky px-5 py-4 sm:px-6">
-                      <p className="max-w-[760px] text-[15px] font-semibold leading-7 tracking-[-0.004em] text-fei-bg/82 sm:text-base">
+                      <p className="max-w-[760px] text-lg font-semibold leading-7 tracking-[-0.01em] text-fei-bg/82 sm:text-xl">
                         {item.context}
                       </p>
                     </div>
