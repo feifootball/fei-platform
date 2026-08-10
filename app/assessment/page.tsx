@@ -3728,12 +3728,12 @@ function AssessmentContent() {
               {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach') ? (
                 <>
                   <div className="mb-4 overflow-hidden rounded-xl border border-fei-bg/[0.11] bg-white shadow-[0_4px_14px_rgba(15,23,42,0.025)]">
-                    <div className="border-l-[3px] border-fei-sky px-5 py-4 sm:px-6">
-                      <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.06em] text-fei-bg/40">
+                    <div className="px-5 py-4 sm:px-6">
+                      <p className="mb-2 text-[12px] font-normal tracking-[0.01em] text-fei-bg/52">
                         {item.context.split('\n\n')[0]}
                       </p>
 
-                      <p className="max-w-[760px] whitespace-pre-line text-[15px] font-medium leading-7 tracking-[-0.004em] text-fei-bg/84 select-none sm:text-base">
+                      <p className="max-w-[760px] whitespace-pre-line text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/78 select-none sm:text-base">
                         {item.context.split('\n\n').slice(1).join('\n\n')}
                       </p>
                     </div>
@@ -3749,8 +3749,8 @@ function AssessmentContent() {
                     <h1
                       className={
                         selectedRole === 'Professional Player'
-                          ? 'max-w-[780px] text-xl font-bold leading-8 tracking-[-0.015em] text-fei-bg sm:text-2xl'
-                          : 'max-w-[780px] text-base font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-[1.04rem]'
+                          ? 'max-w-[780px] text-xl font-medium leading-8 tracking-[-0.012em] text-fei-bg/88 sm:text-2xl'
+                          : 'max-w-[780px] text-lg font-medium leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
                       }
                     >
                       {item.question}
@@ -3761,22 +3761,18 @@ function AssessmentContent() {
                 <>
                   <div className="mb-4 overflow-hidden rounded-xl border border-fei-bg/[0.11] bg-white shadow-[0_4px_14px_rgba(15,23,42,0.025)]">
                     <div className="px-5 py-4 sm:px-6">
-                      <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-fei-bg/40">
-                        Read carefully
-                      </p>
-
-                      <p className="mt-3 max-w-[760px] text-[15px] leading-7 tracking-[-0.004em] text-fei-bg/68 select-none sm:text-base">
+                      <p className="mb-2 text-[12px] font-normal tracking-[0.01em] text-fei-bg/52">
                         {item.context.split('\n\n')[0]}
                       </p>
 
-                      <p className="mt-1.5 max-w-[760px] whitespace-pre-line text-[15px] font-medium leading-7 tracking-[-0.004em] text-fei-bg/84 select-none sm:text-base">
+                      <p className="max-w-[760px] whitespace-pre-line text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/78 select-none sm:text-base">
                         {item.context.split('\n\n').slice(1).join('\n\n')}
                       </p>
                     </div>
                   </div>
 
                   <div className="mb-4 border-l-[3px] border-fei-sky pl-4 sm:pl-5">
-                    <h1 className="max-w-[760px] text-xl font-bold leading-8 tracking-[-0.015em] text-fei-bg sm:text-2xl">
+                    <h1 className="max-w-[760px] text-xl font-medium leading-8 tracking-[-0.012em] text-fei-bg/88 sm:text-2xl">
                       {item.question}
                     </h1>
                   </div>
