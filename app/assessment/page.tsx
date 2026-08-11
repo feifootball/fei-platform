@@ -3915,7 +3915,7 @@ function AssessmentContent() {
                       className={
                         selectedRole === 'Professional Player'
                           ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
-                          : 'max-w-[780px] text-lg font-medium leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
+                          : 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
                       }
                     >
                       {item.question}
@@ -4098,9 +4098,11 @@ function AssessmentContent() {
                   className={
                     selectedRole === 'Professional Player'
                       ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
-                      : (selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach')
-                        ? 'max-w-[780px] text-lg font-medium leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
-                        : 'max-w-[780px] text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl'
+                      : selectedRole === 'Head Coach'
+                        ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
+                        : selectedRole === 'Assistant Coach'
+                          ? 'max-w-[780px] text-lg font-medium leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
+                          : 'max-w-[780px] text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl'
                   }
                 >
                   {item.question}
@@ -4485,14 +4487,14 @@ function AssessmentContent() {
                 <>
                   <div className="mb-4 w-full max-w-full overflow-hidden rounded-xl border border-fei-bg/[0.09] bg-white">
                     <div className="min-w-0 border-l-2 border-fei-sky px-5 py-4 sm:px-6">
-                      <p className="max-w-[760px] break-words text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72 select-none sm:text-base">
+                      <p className="max-w-[760px] break-words text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72 select-none">
                         {item.context}
                       </p>
                     </div>
                   </div>
 
                   <div className="mb-3">
-                    <h1 className="max-w-[780px] text-base font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-[1.04rem]">
+                    <h1 className="max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl">
                       {item.question}
                     </h1>
                   </div>
@@ -4714,7 +4716,7 @@ function AssessmentContent() {
                 selectedRole === 'Professional Player'
                   ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
                   : selectedRole === 'Head Coach'
-                    ? 'max-w-[780px] text-base font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-[1.04rem]'
+                    ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
                     : 'text-xl font-black leading-8 text-fei-bg'
               }
             >
@@ -4943,7 +4945,7 @@ function AssessmentContent() {
                 selectedRole === 'Professional Player'
                   ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
                   : selectedRole === 'Head Coach'
-                    ? 'max-w-[780px] text-base font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-[1.04rem]'
+                    ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
                     : selectedRole === 'Assistant Coach'
                       ? 'max-w-[720px] text-xl font-bold leading-8 tracking-[-0.015em] text-fei-bg sm:text-2xl'
                       : 'text-xl font-black leading-8 text-fei-bg'
