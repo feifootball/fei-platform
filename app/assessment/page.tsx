@@ -3913,7 +3913,7 @@ function AssessmentContent() {
                     <h1
                       className={
                         selectedRole === 'Professional Player'
-                          ? 'max-w-[780px] text-xl font-medium leading-8 tracking-[-0.012em] text-fei-bg/88 sm:text-2xl'
+                          ? 'max-w-[780px] text-lg font-medium leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
                           : 'max-w-[780px] text-lg font-medium leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
                       }
                     >
@@ -4303,7 +4303,7 @@ function AssessmentContent() {
                   </div>
 
                   <div className="mb-3">
-                    <h1 className="max-w-[780px] text-base font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-[1.04rem]">
+                    <h1 className="max-w-[780px] text-lg font-medium leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl">
                       {item.question}
                     </h1>
                   </div>
@@ -4747,13 +4747,15 @@ function AssessmentContent() {
           />
           <div className="mb-8 flex items-center justify-between text-xs text-fei-bg/45">
             <span>{wordCount} words</span>
-            <span>
-              {selectedRole === 'Head Coach'
-                ? 'Target: 70–100 words'
-                : selectedRole === 'Assistant Coach'
-                  ? 'Target: 60–90 words'
-                  : 'Target: 30–80 words'}
-            </span>
+            {selectedRole !== 'Professional Player' && (
+              <span>
+                {selectedRole === 'Head Coach'
+                  ? 'Target: 70–100 words'
+                  : selectedRole === 'Assistant Coach'
+                    ? 'Target: 60–90 words'
+                    : 'Target: 30–80 words'}
+              </span>
+            )}
           </div>
 
           <button
