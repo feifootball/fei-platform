@@ -4733,12 +4733,12 @@ function AssessmentContent() {
                 selectedRole === 'Professional Player'
                   ? 'mt-2 max-w-[760px] break-words text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/76 sm:text-base'
                   : selectedRole === 'Head Coach'
-                    ? 'mt-2 max-w-[760px] break-words text-[15px] leading-7 tracking-[-0.004em] text-fei-bg/72'
+                    ? 'mt-2 max-w-[760px] break-words text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72'
                     : 'mt-5 text-base leading-8 text-fei-bg/70'
               }
             >
 {selectedRole === 'Head Coach'
-                ? 'Two hours before kick-off, you need to send a short written briefing to the squad before facing a high-pressing opponent. They press aggressively after backward passes and often leave space behind their fullbacks. Your plan is to stay composed, use the goalkeeper when necessary, switch play quickly, and attack the space once the first line of pressure is broken.'
+                ? 'Two hours before kick-off, your team faces an opponent that presses aggressively after backward passes and leaves space behind its fullbacks.'
                 : selectedRole === 'Assistant Coach'
                   ? 'You have just finished a first-team training session. The unit work was effective at the start, but during the final repetitions the distance between midfield and defence increased, communication dropped, and players began reacting individually. The Head Coach has asked for a concise written debrief before the staff meeting.'
                   : selectedRole === 'Academy Director'
@@ -4773,7 +4773,7 @@ function AssessmentContent() {
               }
             >
               {selectedRole === 'Head Coach'
-                ? 'Write a 70–100-word pre-match message to the squad. Explain the main risk, two tactical priorities, and the standard of communication and decision-making you expect.'
+                ? 'Write a short pre-match message to the squad.'
                 : selectedRole === 'Assistant Coach'
                   ? 'Write a 60–90-word debrief to the Head Coach. Identify what worked, explain the main problem using observable evidence, and recommend one priority for the next session.'
                   : selectedRole === 'Academy Director'
@@ -4808,7 +4808,7 @@ function AssessmentContent() {
             ) : (
               <p className="mt-2 text-sm leading-6 text-fei-bg/52">
                 {selectedRole === 'Head Coach'
-                  ? 'Use a direct, confident and professional tone. Connect the tactical plan to the match situation rather than listing isolated instructions.'
+                  ? 'Use a direct, confident and professional tone.'
                   : selectedRole === 'Assistant Coach'
                     ? 'Use a concise staff-to-staff tone. Separate observation from interpretation and finish with a clear recommendation.'
                     : 'Write 3–5 sentences in professional English.'}
@@ -4953,14 +4953,14 @@ function AssessmentContent() {
                 selectedRole === 'Professional Player'
                   ? 'mt-2 max-w-[760px] break-words text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/76 sm:text-base'
                   : selectedRole === 'Head Coach'
-                    ? 'mt-2 max-w-[760px] break-words text-[15px] leading-7 tracking-[-0.004em] text-fei-bg/72'
+                    ? 'mt-2 max-w-[760px] break-words text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72'
                     : selectedRole === 'Assistant Coach'
                       ? 'mt-4 max-w-[760px] text-[15px] leading-7 tracking-[-0.004em] text-fei-bg/72 sm:text-base'
                       : 'mt-5 text-base leading-8 text-fei-bg/70'
               }
             >
 {selectedRole === 'Head Coach'
-                ? 'You substituted a senior player after 25 minutes while the team was losing 1–0. The opponent was repeatedly exploiting the space behind him, and the team’s defensive structure was becoming unstable. The player expected to complete the match and reacts with visible frustration. You need to speak to him briefly near the technical area while the crowd is loud and the rest of the squad is watching.'
+                ? 'You substitute a senior player after 25 minutes because the opponent is repeatedly exploiting the space behind him. He reacts angrily near the technical area and says: “Why me? I wasn’t the only problem.”'
                 : selectedRole === 'Assistant Coach'
                   ? 'During the final 11v11 block, the right winger presses the opposition fullback before the striker has blocked the pass into midfield. The central midfielder then holds his position, leaving an open route inside. The opposition plays through the pressure twice. The Head Coach asks you to stop the exercise and correct the two players before the restart.'
                   : selectedRole === 'Academy Director'
@@ -5004,7 +5004,7 @@ function AssessmentContent() {
               }
             >
               {selectedRole === 'Head Coach'
-                ? 'Explain the decision clearly. Acknowledge the player’s frustration, give the tactical reason, protect the relationship, and maintain your authority.'
+                ? 'Respond to the player in a calm, clear and authoritative way.'
                 : selectedRole === 'Assistant Coach'
                   ? 'Deliver the intervention. Identify the coordination problem, clarify the trigger for the first presser, explain the supporting player’s responsibility, and finish with one clear instruction for the restart.'
                   : selectedRole === 'Academy Director'
