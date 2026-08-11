@@ -3898,7 +3898,7 @@ function AssessmentContent() {
                         {item.context.split('\n\n')[0]}
                       </p>
 
-                      <p className="max-w-[760px] whitespace-pre-line text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/76 select-none sm:text-base">
+                      <p className="max-w-[760px] whitespace-pre-line text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72 select-none">
                         {item.context.split('\n\n').slice(1).join('\n\n')}
                       </p>
                     </div>
