@@ -323,7 +323,7 @@ const headCoachItems = {
       level: 'A2',
       label: 'Item 3 — Defensive Focus',
       context:
-        'Your assistant coach sends this note before training:\n\n“Today we work on our mid-block. Keep the midfield line close to the back four. Do not leave space between the lines. When the ball goes wide, shift together and stay compact.”',
+        'Your assistant coach sends this note before training:\n\n“Today we’re working on our mid-block. Keep the midfield line close to the back four. Do not leave space between the lines. When the ball goes wide, shift together and stay compact.”',
       question: 'What is the main defensive focus?',
       options: [
         'A. Press every pass as soon as the opponent receives the ball',
