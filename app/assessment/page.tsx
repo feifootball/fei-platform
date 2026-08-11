@@ -3028,6 +3028,7 @@ function AssessmentContent() {
       '/images/diagnostics/avatars/physiotherapist.png',
       '/images/diagnostics/avatars/assistant-coach.png',
       '/images/diagnostics/avatars/sporting-director.png',
+      '/images/diagnostics/avatars/analyst.png',
     ]
 
     avatarSources.forEach((src) => {
@@ -3913,7 +3914,7 @@ function AssessmentContent() {
                     <h1
                       className={
                         selectedRole === 'Professional Player'
-                          ? 'max-w-[780px] text-lg font-medium leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
+                          ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
                           : 'max-w-[780px] text-lg font-medium leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
                       }
                     >
@@ -4095,9 +4096,11 @@ function AssessmentContent() {
               >
                 <h1
                   className={
-                    (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach')
-                      ? 'max-w-[780px] text-lg font-medium leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
-                      : 'max-w-[780px] text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl'
+                    selectedRole === 'Professional Player'
+                      ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
+                      : (selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach')
+                        ? 'max-w-[780px] text-lg font-medium leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
+                        : 'max-w-[780px] text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl'
                   }
                 >
                   {item.question}
@@ -4183,7 +4186,7 @@ function AssessmentContent() {
       },
       v4: {
         speaker: 'Analyst',
-        avatar: '/images/diagnostics/avatars/teammate.png',
+        avatar: '/images/diagnostics/avatars/analyst.png',
       },
     }
 
@@ -4293,6 +4296,7 @@ function AssessmentContent() {
                         }`}
                       >
                         <img
+                          key={`${selectedRole}-${item.id}-${vocabularySpeaker}`}
                           src={
                             fixedProfessionalPlayerSpeaker?.avatar ??
                             (vocabularySpeaker === 'Physiotherapist'
@@ -4331,7 +4335,7 @@ function AssessmentContent() {
                   </div>
 
                   <div className="mb-3">
-                    <h1 className="max-w-[780px] text-lg font-medium leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl">
+                    <h1 className="max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl">
                       {item.question}
                     </h1>
                   </div>
