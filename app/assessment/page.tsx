@@ -93,6 +93,20 @@ const items = {
       ],
       correct: 'A',
     },
+    {
+      id: 'r4',
+      level: 'C1',
+      label: 'Item 6 — Role Expectations Under Review',
+      context: 'Before a meeting, your agent forwards you this message from the Sporting Director:\n\n"Having reviewed the last six weeks, the coaching staff still see you as an important part of the squad. That said, with younger players pushing for minutes and the team likely to rotate more heavily, your role may not look exactly as it did at the start of the season.\n\nHad your availability been more consistent, the situation might have developed differently. For now, the club is not looking to move you on, but neither can regular starts be guaranteed. The next month will be important in determining how the role evolves."',
+      question: 'What is the Sporting Director implying about the player\'s situation?',
+      options: [
+        'A. The club has already decided to sell the player because younger players are now preferred',
+        'B. The player remains valued, but his status is less secure and future playing time will depend on upcoming circumstances',
+        'C. The coaching staff believe the player\'s injuries are the only reason he has lost his place in the team',
+        'D. The club wants the player to accept a reduced role for the rest of the season regardless of future performances',
+      ],
+      correct: 'B',
+    },
   ],
   listening: [
     {
@@ -137,6 +151,20 @@ const items = {
       ],
       correct: 'D',
     },
+    {
+      id: 'l4',
+      level: 'C1',
+      label: 'Item 10 — Patience and Passivity',
+      script: 'I don\'t want us chasing the game emotionally if the first twenty minutes don\'t go our way. They\'ll try to drag us into transitions, especially if we start forcing passes. If we\'re patient, their press will eventually open spaces for us. What I don\'t want is for patience to become passivity. We still need to recognize the moments when the game is asking us to accelerate.',
+      question: 'What distinction is the Head Coach making between patience and passivity?',
+      options: [
+        'A. Patience means keeping possession, while passivity means defending deeper',
+        'B. Patience means staying controlled until an opportunity appears; passivity means failing to act when that opportunity comes',
+        'C. Patience means avoiding transitions completely, while passivity means allowing the opponent to attack',
+        'D. Patience means slowing the game down, while passivity means letting teammates make the decisions',
+      ],
+      correct: 'B',
+    },
   ],
   vocabulary: [
     {
@@ -180,6 +208,20 @@ const items = {
         'D. Whether you had the same issue before',
       ],
       correct: 'C',
+    },
+    {
+      id: 'v4',
+      level: 'C1',
+      label: 'Item 14 — Tactical Precision',
+      context: 'The analyst says: "Their midfield tends to overcommit when they press, which leaves the space behind the first line exposed."',
+      question: 'What does "overcommit" mean here?',
+      options: [
+        'A. Move too many players forward into the press and leave space behind',
+        'B. Press with greater physical intensity than the situation requires',
+        'C. Keep pressing for too long after the opposition has escaped',
+        'D. Push the defensive line higher to support the midfield',
+      ],
+      correct: 'A',
     },
   ],
   functional: [
@@ -2512,39 +2554,141 @@ const insights = {
 
 // ─── SCORE CALCULATOR ────────────────────────────────────────────────────────
 
-function calculateResult(assessmentItems: typeof items, answers: Record<string, Answer>, writingScore: number, speakingScore: number): Result {
-  let score = 0
-  const maxObjective = 13
-  const allItems = [...assessmentItems.reading, ...assessmentItems.listening, ...assessmentItems.vocabulary, ...assessmentItems.functional]
+function calculateResult(
+  assessmentItems: typeof items,
+  answers: Record<string, Answer>,
+  writingScore: number,
+  speakingScore: number,
+  role: string
+): Result {
+  const isProfessionalPlayer = role === 'Professional Player'
 
-  allItems.forEach((item) => {
-    const ans = answers[item.id]
-    if (ans && ans.startsWith(item.correct)) score++
-  })
+  const objectiveItems = isProfessionalPlayer
+    ? [
+        ...assessmentItems.reading,
+        ...assessmentItems.listening,
+        ...assessmentItems.vocabulary,
+      ]
+    : [
+        ...assessmentItems.reading,
+        ...assessmentItems.listening,
+        ...assessmentItems.vocabulary,
+        ...assessmentItems.functional,
+      ]
 
-  const totalScore = score + writingScore + speakingScore
+  const objectiveScore = objectiveItems.filter((item) => {
+    const answer = answers[item.id]
+    return answer && answer.startsWith(item.correct)
+  }).length
+
+  const maxObjective = isProfessionalPlayer ? 12 : 13
+  const totalScore = objectiveScore + writingScore + speakingScore
   const maxScore = maxObjective + 4 + 4
-
-  const a2Items = [assessmentItems.reading[0], assessmentItems.listening[0], assessmentItems.vocabulary[0]]
-  const b1Items = [assessmentItems.reading[1], assessmentItems.listening[1], assessmentItems.vocabulary[1], assessmentItems.functional[0]]
-  const b2Items = [assessmentItems.reading[2], assessmentItems.listening[2], assessmentItems.vocabulary[2], assessmentItems.functional[1], assessmentItems.functional[2]]
-  const c1Item = assessmentItems.functional[3]
-
-  const a2Score = a2Items.filter((i) => answers[i.id]?.startsWith(i.correct)).length
-  const b1Score = b1Items.filter((i) => answers[i.id]?.startsWith(i.correct)).length
-  const b2Score = b2Items.filter((i) => answers[i.id]?.startsWith(i.correct)).length
-  const c1Correct = answers[c1Item.id]?.startsWith(c1Item.correct)
 
   let level: 'A2' | 'B1' | 'B2' | 'C1' = 'A2'
 
-  if (c1Correct && b2Score >= 4 && (writingScore === 4 || speakingScore === 4)) {
-    level = 'C1'
-  } else if (b2Score >= 3 && b1Score >= 3) {
-    level = 'B2'
-  } else if (b1Score >= 3 && a2Score >= 2) {
-    level = 'B1'
+  if (isProfessionalPlayer) {
+    const countCorrect = (
+      itemsToCheck: Array<{ id: string; correct: string } | undefined>
+    ) =>
+      itemsToCheck.filter(
+        (item) => item && answers[item.id]?.startsWith(item.correct)
+      ).length
+
+    const a2Score = countCorrect([
+      assessmentItems.reading[0],
+      assessmentItems.listening[0],
+      assessmentItems.vocabulary[0],
+    ])
+
+    const b1Score = countCorrect([
+      assessmentItems.reading[1],
+      assessmentItems.listening[1],
+      assessmentItems.vocabulary[1],
+    ])
+
+    const b2Score = countCorrect([
+      assessmentItems.reading[2],
+      assessmentItems.listening[2],
+      assessmentItems.vocabulary[2],
+    ])
+
+    const c1Score = countCorrect([
+      assessmentItems.reading[3],
+      assessmentItems.listening[3],
+      assessmentItems.vocabulary[3],
+    ])
+
+    if (
+      a2Score >= 2 &&
+      b1Score >= 2 &&
+      b2Score >= 2 &&
+      c1Score >= 2 &&
+      (writingScore === 4 || speakingScore === 4)
+    ) {
+      level = 'C1'
+    } else if (
+      a2Score >= 2 &&
+      b1Score >= 2 &&
+      b2Score >= 2
+    ) {
+      level = 'B2'
+    } else if (
+      a2Score >= 2 &&
+      b1Score >= 2
+    ) {
+      level = 'B1'
+    }
   } else {
-    level = 'A2'
+    const a2Items = [
+      assessmentItems.reading[0],
+      assessmentItems.listening[0],
+      assessmentItems.vocabulary[0],
+    ]
+
+    const b1Items = [
+      assessmentItems.reading[1],
+      assessmentItems.listening[1],
+      assessmentItems.vocabulary[1],
+      assessmentItems.functional[0],
+    ]
+
+    const b2Items = [
+      assessmentItems.reading[2],
+      assessmentItems.listening[2],
+      assessmentItems.vocabulary[2],
+      assessmentItems.functional[1],
+      assessmentItems.functional[2],
+    ]
+
+    const c1Item = assessmentItems.functional[3]
+
+    const a2Score = a2Items.filter(
+      (item) => answers[item.id]?.startsWith(item.correct)
+    ).length
+
+    const b1Score = b1Items.filter(
+      (item) => answers[item.id]?.startsWith(item.correct)
+    ).length
+
+    const b2Score = b2Items.filter(
+      (item) => answers[item.id]?.startsWith(item.correct)
+    ).length
+
+    const c1Correct =
+      c1Item && answers[c1Item.id]?.startsWith(c1Item.correct)
+
+    if (
+      c1Correct &&
+      b2Score >= 4 &&
+      (writingScore === 4 || speakingScore === 4)
+    ) {
+      level = 'C1'
+    } else if (b2Score >= 3 && b1Score >= 3) {
+      level = 'B2'
+    } else if (b1Score >= 3 && a2Score >= 2) {
+      level = 'B1'
+    }
   }
 
   return {
@@ -2912,7 +3056,7 @@ function AssessmentContent() {
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
   const mediaStreamRef = useRef<MediaStream | null>(null)
   const timerRef = useRef<NodeJS.Timeout | null>(null)
-  const totalItems = 17
+  const totalItems = selectedRole === 'Professional Player' ? 16 : 17
 
   useEffect(() => {
     try {
@@ -3073,7 +3217,7 @@ function AssessmentContent() {
 
   async function finishAssessment(spScore: number) {
     const wScore = scoreWriting(writingText)
-    const res = calculateResult(activeItems, answers, wScore, spScore)
+    const res = calculateResult(activeItems, answers, wScore, spScore, selectedRole)
     setResult(res)
     setSaving(true)
 
@@ -3187,15 +3331,27 @@ function AssessmentContent() {
   }
 
   function getItemNumber(section: Section, step: number): number {
-    const map: Record<string, number> = {
-      'warm-up': step + 1,
-      'reading': step + 3,
-      'listening': step + 6,
-      'vocabulary': step + 9,
-      'functional': step + 12,
-      'writing': 16,
-      'speaking': 17,
-    }
+    const map: Record<string, number> =
+      selectedRole === 'Professional Player'
+        ? {
+            'warm-up': step + 1,
+            'reading': step + 3,
+            'listening': step + 7,
+            'vocabulary': step + 11,
+            'functional': step + 15,
+            'writing': 15,
+            'speaking': 16,
+          }
+        : {
+            'warm-up': step + 1,
+            'reading': step + 3,
+            'listening': step + 6,
+            'vocabulary': step + 9,
+            'functional': step + 12,
+            'writing': 16,
+            'speaking': 17,
+          }
+
     return map[section] || 1
   }
 
@@ -4185,6 +4341,8 @@ function AssessmentContent() {
                     if (!selected) return
                     if (vocabStep < activeItems.vocabulary.length - 1) {
                       setVocabStep(vocabStep + 1)
+                    } else if (selectedRole === 'Professional Player') {
+                      setSection('writing')
                     } else {
                       setSection('functional')
                     }
@@ -4198,7 +4356,9 @@ function AssessmentContent() {
                     <span className="inline-flex items-center justify-center gap-2">
                       {vocabStep < activeItems.vocabulary.length - 1
                         ? 'Next'
-                        : 'Continue to Functional Communication'}
+                        : selectedRole === 'Professional Player'
+                          ? 'Continue to Writing'
+                          : 'Continue to Functional Communication'}
                       <ChevronRightIcon />
                     </span>
                   )}
@@ -4426,7 +4586,7 @@ function AssessmentContent() {
         </header>
 
         <main className="mx-auto w-full max-w-[1080px] px-6 py-5 sm:px-8 lg:py-6">
-          <ProgressBar current={16} total={totalItems} />
+          <ProgressBar current={getItemNumber('writing', 0)} total={totalItems} />
 
           <div
             className={`grid items-start ${
@@ -4507,7 +4667,7 @@ function AssessmentContent() {
                                 ? 'You need to write a short rehabilitation progress note for the coaching staff. The player is in Week 3. Strength is 70%, pain is 2/10 with activity, agility is 55%, and confidence is improving after the first sprint without hesitation.'
                                 : selectedRole === 'Sports Psychologist'
                                   ? 'You need to write a short mental performance note for the coaching staff. The player is dealing with perfectionism, anxiety before matches and reduced confidence after mistakes.'
-                                  : 'After the match, the coach tells you that your positioning was too deep when the team tried to press. You agree with part of the feedback, but you also felt the distance to midfield made it difficult to step forward at the right moment.'}
+                                  : 'After training, you feel tightness in your left hamstring. It started during the second half of the session after a sharp turn while sprinting and increased slightly during the cool-down. You want to report it to the physiotherapist before the next session.'}
             </p>
             </div>
           </div>
@@ -4540,11 +4700,11 @@ function AssessmentContent() {
                                 ? 'Write 3–5 sentences with status, next step and expected return direction.'
                                 : selectedRole === 'Sports Psychologist'
                                   ? 'Write 3–5 sentences with the key issue, strategy and coaching support needed.'
-                                  : 'Write a short message to the coach explaining your view and how you will adjust in the next match.'}
+                                  : 'Write a 30–80-word message to the physiotherapist describing the discomfort clearly and asking for an assessment.'}
             </p>
             <p className="mt-2 text-sm leading-6 text-fei-bg/52">
               {selectedRole === 'Professional Player'
-                ? 'Acknowledge the feedback, explain the tactical difficulty briefly, and state one clear adjustment you will make.'
+                ? 'Include where you feel the discomfort, when it started, what movement caused it, how it changed, and what support you need.'
                 : selectedRole === 'Head Coach'
                   ? 'Use a direct, confident and professional tone. Connect the tactical plan to the match situation rather than listing isolated instructions.'
                   : selectedRole === 'Assistant Coach'
@@ -4558,7 +4718,7 @@ function AssessmentContent() {
             onChange={(e) => setWritingText(e.target.value)}
             placeholder={
               selectedRole === 'Professional Player'
-                ? 'Coach, I understand your point about...'
+                ? 'Hi, I want to report some tightness in my left hamstring...'
                 : selectedRole === 'Head Coach'
                   ? 'Today we need to stay composed when they press...'
                   : selectedRole === 'Assistant Coach'
@@ -4631,7 +4791,7 @@ function AssessmentContent() {
         </header>
 
         <main className="mx-auto w-full max-w-[1080px] px-6 py-5 sm:px-8 lg:py-6">
-          <ProgressBar current={17} total={totalItems} />
+          <ProgressBar current={getItemNumber('speaking', 0)} total={totalItems} />
 
           <div
             className={`grid items-start ${
@@ -4712,7 +4872,7 @@ function AssessmentContent() {
                                 ? 'You need to explain a return-to-play recommendation to the head coach. The player is improving, but you need to balance strength, movement testing, confidence and match availability.'
                                 : selectedRole === 'Sports Psychologist'
                                   ? 'You need to explain to the head coach how to support a player whose perfectionism is creating pre-match anxiety and lower confidence after mistakes.'
-                                  : 'You have just received feedback from the head coach about your last match. The coach said you were too slow in transition and needed to be more aggressive in pressing. You disagree slightly because the transition was fast and you were managing some discomfort.'}
+                                  : 'After a difficult 2–1 defeat, a journalist asks you: “Some supporters are saying the team lacked commitment tonight. Do you agree?”'}
             </p>
           </div>
 
@@ -4754,13 +4914,31 @@ function AssessmentContent() {
                                 ? 'Explain the recommendation clearly, balancing medical reality, team need, confidence and risk.'
                                 : selectedRole === 'Sports Psychologist'
                                   ? 'Explain the support strategy clearly, balancing confidence, standards, anxiety and sustainable performance.'
-                                  : 'Explain how you would respond to the coach professionally.'}
+                                  : 'Record a 45–60 second response.'}
             </p>
-            <p className="mt-2 text-sm leading-6 text-fei-bg/52">
-              {selectedRole === 'Assistant Coach'
-                ? 'Recommended: 45–60 seconds · Be concise, specific and ready to restart the exercise.'
-                : 'Recommended: 45–60 seconds · Maximum: 75 seconds'}
-            </p>
+            {selectedRole === 'Professional Player' ? (
+              <>
+                <p className="mt-3 text-sm font-medium leading-6 text-fei-bg/62">
+                  Your response should:
+                </p>
+                <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
+                  <li className="list-disc">acknowledge the result;</li>
+                  <li className="list-disc">address the criticism without sounding defensive;</li>
+                  <li className="list-disc">protect the team and avoid blaming teammates;</li>
+                  <li className="list-disc">explain your view clearly;</li>
+                  <li className="list-disc">maintain a professional media tone.</li>
+                </ul>
+                <p className="mt-3 text-sm leading-6 text-fei-bg/52">
+                  Recommended: 45–60 seconds · Maximum: 75 seconds
+                </p>
+              </>
+            ) : (
+              <p className="mt-2 text-sm leading-6 text-fei-bg/52">
+                {selectedRole === 'Assistant Coach'
+                  ? 'Recommended: 45–60 seconds · Be concise, specific and ready to restart the exercise.'
+                  : 'Recommended: 45–60 seconds · Maximum: 75 seconds'}
+              </p>
+            )}
           </div>
 
           <div
