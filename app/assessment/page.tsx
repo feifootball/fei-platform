@@ -4167,24 +4167,26 @@ function AssessmentContent() {
 
     const vocabularySpeaker = vocabularyContext.includes('sporting director')
       ? 'Sporting Director'
-      : vocabularyContext.includes('assistant coach')
-        ? 'Assistant Coach'
-        : vocabularyContext.includes('physiotherapist')
-          ? 'Physiotherapist'
-          : vocabularyContext.includes('player asks')
-            ? 'Player'
-            : vocabularyContext.includes('coach')
-              ? 'Coach'
-              : vocabularyContext.includes('teammate')
-                ? 'Teammate'
-                : 'Match context'
+      : vocabularyContext.includes('analyst')
+        ? 'Analyst'
+        : vocabularyContext.includes('assistant coach')
+          ? 'Assistant Coach'
+          : vocabularyContext.includes('physiotherapist')
+            ? 'Physiotherapist'
+            : vocabularyContext.includes('player asks')
+              ? 'Player'
+              : vocabularyContext.includes('coach')
+                ? 'Coach'
+                : vocabularyContext.includes('teammate')
+                  ? 'Teammate'
+                  : 'Match context'
 
     const vocabularyQuoteMatch = item.context.match(/[“"](.+)[”"]$/)
     const vocabularyQuote = vocabularyQuoteMatch?.[1] ?? item.context
 
     const vocabularySetup = item.context
       .replace(
-        /\s*(?:A teammate shouts|A player asks|The coach says|The physiotherapist asks|The assistant coach says|The Sporting Director says):\s*[“"].*[”"]$/i,
+        /\s*(?:A teammate shouts|A player asks|The coach says|The physiotherapist asks|The assistant coach says|The Sporting Director says|The analyst says):\s*[“"].*[”"]$/i,
         '',
       )
       .trim()
