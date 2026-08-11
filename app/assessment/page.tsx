@@ -4165,21 +4165,50 @@ function AssessmentContent() {
 
     const vocabularyContext = item.context.toLowerCase()
 
-    const vocabularySpeaker = vocabularyContext.includes('sporting director')
-      ? 'Sporting Director'
-      : vocabularyContext.includes('analyst')
-        ? 'Analyst'
-        : vocabularyContext.includes('assistant coach')
-          ? 'Assistant Coach'
-          : vocabularyContext.includes('physiotherapist')
-            ? 'Physiotherapist'
-            : vocabularyContext.includes('player asks')
-              ? 'Player'
-              : vocabularyContext.includes('coach')
-                ? 'Coach'
-                : vocabularyContext.includes('teammate')
-                  ? 'Teammate'
-                  : 'Match context'
+    const professionalPlayerVocabularySpeakers: Record<
+      string,
+      { speaker: string; avatar: string }
+    > = {
+      v1: {
+        speaker: 'Teammate',
+        avatar: '/images/diagnostics/avatars/teammate.png',
+      },
+      v2: {
+        speaker: 'Coach',
+        avatar: '/images/diagnostics/avatars/coach.png',
+      },
+      v3: {
+        speaker: 'Physiotherapist',
+        avatar: '/images/diagnostics/avatars/physiotherapist.png',
+      },
+      v4: {
+        speaker: 'Analyst',
+        avatar: '/images/diagnostics/avatars/teammate.png',
+      },
+    }
+
+    const fixedProfessionalPlayerSpeaker =
+      selectedRole === 'Professional Player'
+        ? professionalPlayerVocabularySpeakers[item.id]
+        : undefined
+
+    const vocabularySpeaker =
+      fixedProfessionalPlayerSpeaker?.speaker ??
+      (vocabularyContext.includes('sporting director')
+        ? 'Sporting Director'
+        : vocabularyContext.includes('analyst')
+          ? 'Analyst'
+          : vocabularyContext.includes('assistant coach')
+            ? 'Assistant Coach'
+            : vocabularyContext.includes('physiotherapist')
+              ? 'Physiotherapist'
+              : vocabularyContext.includes('player asks')
+                ? 'Player'
+                : vocabularyContext.includes('coach')
+                  ? 'Coach'
+                  : vocabularyContext.includes('teammate')
+                    ? 'Teammate'
+                    : 'Match context')
 
     const vocabularyQuoteMatch = item.context.match(/[“"](.+)[”"]$/)
     const vocabularyQuote = vocabularyQuoteMatch?.[1] ?? item.context
@@ -4265,7 +4294,8 @@ function AssessmentContent() {
                       >
                         <img
                           src={
-                            vocabularySpeaker === 'Physiotherapist'
+                            fixedProfessionalPlayerSpeaker?.avatar ??
+                            (vocabularySpeaker === 'Physiotherapist'
                               ? '/images/diagnostics/avatars/physiotherapist.png'
                               : vocabularySpeaker === 'Assistant Coach'
                                 ? '/images/diagnostics/avatars/assistant-coach.png'
@@ -4273,9 +4303,7 @@ function AssessmentContent() {
                                   ? '/images/diagnostics/avatars/sporting-director.png'
                                   : vocabularySpeaker === 'Coach'
                                     ? '/images/diagnostics/avatars/coach.png'
-                                    : vocabularySpeaker === 'Player'
-                                      ? '/images/diagnostics/avatars/teammate.png'
-                                      : '/images/diagnostics/avatars/teammate.png'
+                                    : '/images/diagnostics/avatars/teammate.png')
                           }
                           alt={`${vocabularySpeaker} avatar`}
                           loading="eager"
