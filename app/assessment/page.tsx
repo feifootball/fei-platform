@@ -363,13 +363,28 @@ const headCoachItems = {
       ],
       correct: 'A',
     },
+    {
+      id: 'r4',
+      level: 'C1',
+      label: 'Item 6 — Strategic Alignment Under Pressure',
+      context:
+        'The Sporting Director sends this message after a difficult run of results:\n\n“The board still supports your work, but the pressure is increasing. Football decisions remain yours, although over the next few weeks I want us to stay more closely aligned on selection and staff decisions. If performances do not improve, we may need to review how some decisions are being made.”',
+      question: 'What is the Sporting Director implying?',
+      options: [
+        'A. The board has decided to take control of team selection',
+        'B. The Head Coach is still supported, but his autonomy may become more limited if results do not improve',
+        'C. The Sporting Director wants the Head Coach to replace members of his staff immediately',
+        'D. The club believes recent results are mainly caused by poor communication',
+      ],
+      correct: 'B',
+    },
   ],
 
   listening: [
     {
       id: 'l1',
       level: 'A2',
-      label: 'Item 6 — Midfield Protection',
+      label: 'Item 7 — Midfield Protection',
       script:
         'Today we play with three midfielders. The number six protects the space in front of the back line. Stay connected and do not leave the middle open. Compact, always compact.',
       question: 'What is the main priority for the midfield?',
@@ -384,7 +399,7 @@ const headCoachItems = {
     {
       id: 'l2',
       level: 'B1',
-      label: 'Item 7 — Player Availability Decision',
+      label: 'Item 8 — Player Availability Decision',
       script:
         'The player is showing higher fatigue levels than normal after this week’s training. He is available to start, but I would not recommend a full match. We should manage his minutes carefully in the second half and monitor how he responds. If the match allows, I suggest taking him off before the 70th minute so we can reduce the risk and keep him available for the next game.',
       question: 'What does the fitness coach recommend?',
@@ -399,7 +414,7 @@ const headCoachItems = {
     {
       id: 'l3',
       level: 'B2',
-      label: 'Item 8 — Post-Match Leadership',
+      label: 'Item 9 — Post-Match Leadership',
       script:
         'The result is difficult to accept, but we cannot let the score distort our analysis. For long periods, our pressing was coordinated, our distances were better, and we controlled the match more effectively than in recent weeks. The second goal came from a poor decision in build-up, and we must take responsibility for that moment. Tomorrow, we will correct the detail without allowing one mistake to erase the progress or lower the standards we expect from this group.',
       question: 'What is the coach’s main message to the team?',
@@ -411,13 +426,28 @@ const headCoachItems = {
       ],
       correct: 'D',
     },
+    {
+      id: 'l4',
+      level: 'C1',
+      label: 'Item 10 — Public Message vs Internal Concern',
+      script:
+        'Publicly, we need to stay calm and show confidence in the direction of the team. Internally, though, we cannot ignore the pattern. The performances are not collapsing, but the same problems are appearing too often. I’m not asking for a complete change, but I do expect us to review whether the current approach is still giving us enough control.',
+      question: 'What is the speaker’s main concern?',
+      options: [
+        'A. The club should publicly admit that the tactical plan has failed',
+        'B. The team needs a complete tactical change before the next match',
+        'C. The public message should remain stable, while the current approach is reviewed more critically behind the scenes',
+        'D. The performances are improving, but external criticism is creating unnecessary pressure',
+      ],
+      correct: 'C',
+    },
   ],
 
   vocabulary: [
     {
       id: 'v1',
       level: 'A2',
-      label: 'Item 9 — Compactness',
+      label: 'Item 11 — Compactness',
       context:
         'During training, the coach says: “The back line and midfield need compactness when we defend.”',
       question: 'What does “compactness” mean here?',
@@ -432,7 +462,7 @@ const headCoachItems = {
     {
       id: 'v2',
       level: 'B1',
-      label: 'Item 10 — Pressing Trigger',
+      label: 'Item 12 — Pressing Trigger',
       context:
         'The assistant coach says: “Our pressing trigger is the pass from their goalkeeper to the center-back.”',
       question: 'What is a “pressing trigger”?',
@@ -447,7 +477,7 @@ const headCoachItems = {
     {
       id: 'v3',
       level: 'B2',
-      label: 'Item 11 — Squad Planning',
+      label: 'Item 13 — Squad Planning',
       context:
         'The Sporting Director says: “We need to review squad availability across the next three transfer windows before confirming recruitment priorities.”',
       question: 'What does “squad availability” refer to in this context?',
@@ -458,6 +488,21 @@ const headCoachItems = {
         'D. Which players are expected to remain, leave or become available',
       ],
       correct: 'D',
+    },
+    {
+      id: 'v4',
+      level: 'C1',
+      label: 'Item 14 — Strategic Language',
+      context:
+        'The Sporting Director says: “We cannot let short-term pressure compromise the principles that underpin the project.”',
+      question: 'What does “underpin” mean here?',
+      options: [
+        'A. Publicly represent the project during difficult periods',
+        'B. Provide the fundamental support or basis for the project',
+        'C. Change the project gradually in response to pressure',
+        'D. Protect the project from criticism outside the club',
+      ],
+      correct: 'B',
     },
   ],
 
@@ -2561,9 +2606,10 @@ function calculateResult(
   speakingScore: number,
   role: string
 ): Result {
-  const isProfessionalPlayer = role === 'Professional Player'
+  const usesProgressiveDiagnostic =
+    role === 'Professional Player' || role === 'Head Coach'
 
-  const objectiveItems = isProfessionalPlayer
+  const objectiveItems = usesProgressiveDiagnostic
     ? [
         ...assessmentItems.reading,
         ...assessmentItems.listening,
@@ -2581,13 +2627,13 @@ function calculateResult(
     return answer && answer.startsWith(item.correct)
   }).length
 
-  const maxObjective = isProfessionalPlayer ? 12 : 13
+  const maxObjective = usesProgressiveDiagnostic ? 12 : 13
   const totalScore = objectiveScore + writingScore + speakingScore
   const maxScore = maxObjective + 4 + 4
 
   let level: 'A2' | 'B1' | 'B2' | 'C1' = 'A2'
 
-  if (isProfessionalPlayer) {
+  if (usesProgressiveDiagnostic) {
     const countCorrect = (
       itemsToCheck: Array<{ id: string; correct: string } | undefined>
     ) =>
@@ -3057,7 +3103,9 @@ function AssessmentContent() {
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
   const mediaStreamRef = useRef<MediaStream | null>(null)
   const timerRef = useRef<NodeJS.Timeout | null>(null)
-  const totalItems = selectedRole === 'Professional Player' ? 16 : 17
+  const uses16ItemDiagnostic =
+    selectedRole === 'Professional Player' || selectedRole === 'Head Coach'
+  const totalItems = uses16ItemDiagnostic ? 16 : 17
 
   useEffect(() => {
     try {
@@ -3333,7 +3381,7 @@ function AssessmentContent() {
 
   function getItemNumber(section: Section, step: number): number {
     const map: Record<string, number> =
-      selectedRole === 'Professional Player'
+      (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
         ? {
             'warm-up': step + 1,
             'reading': step + 3,
@@ -4377,7 +4425,10 @@ function AssessmentContent() {
                     if (!selected) return
                     if (vocabStep < activeItems.vocabulary.length - 1) {
                       setVocabStep(vocabStep + 1)
-                    } else if (selectedRole === 'Professional Player') {
+                    } else if (
+                      selectedRole === 'Professional Player' ||
+                      selectedRole === 'Head Coach'
+                    ) {
                       setSection('writing')
                     } else {
                       setSection('functional')
@@ -4392,7 +4443,8 @@ function AssessmentContent() {
                     <span className="inline-flex items-center justify-center gap-2">
                       {vocabStep < activeItems.vocabulary.length - 1
                         ? 'Next'
-                        : selectedRole === 'Professional Player'
+                        : (selectedRole === 'Professional Player' ||
+                            selectedRole === 'Head Coach')
                           ? 'Continue to Writing'
                           : 'Continue to Functional Communication'}
                       <ChevronRightIcon />
