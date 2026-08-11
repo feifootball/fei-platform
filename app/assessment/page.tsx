@@ -642,12 +642,27 @@ const assistantCoachItems = {
       ],
       correct: 'B',
     },
+    {
+      id: 'r4',
+      level: 'C1',
+      label: 'Item 6 — Set-Piece Adjustment Under Pressure',
+      context:
+        'The opposition has changed its defensive setup on corners. They are now leaving one player higher and using a hybrid marking system, with three zonal defenders across the six-yard box and four players marking individually. Your original routine was designed to overload the back-post zone, but the new setup is reducing the space there.',
+      question: 'What is the most appropriate interpretation for the Assistant Coach responsible for set pieces?',
+      options: [
+        'A. Keep the original routine because changing it during the match could confuse the players',
+        'B. Abandon attacking corners and prioritize defensive security against the counterattack',
+        'C. Adjust the routine to exploit the new defensive structure while preserving the team’s protection against transition',
+        'D. Ask the Head Coach to redesign the entire attacking set-piece plan before the next corner',
+      ],
+      correct: 'C',
+    },
   ],
   listening: [
     {
       id: 'l1',
       level: 'A2',
-      label: 'Item 6 — Drill Transition',
+      label: 'Item 7 — Drill Transition',
       script: 'Start with the possession game. When the defenders win the ball, they have five seconds to attack either mini-goal. Keep the transition quick and let the exercise continue.',
       question: 'What happens after the defenders win the ball?',
       options: [
@@ -661,7 +676,7 @@ const assistantCoachItems = {
     {
       id: 'l2',
       level: 'B1',
-      label: 'Item 7 — Unit Timing',
+      label: 'Item 8 — Unit Timing',
       script: 'The back line is stepping forward at the right moment, but the midfield is reacting too late. That gap is giving the opposition time to receive and turn. Before the next block, reinforce that both units must move together.',
       question: 'What should the assistant coach correct?',
       options: [
@@ -675,7 +690,7 @@ const assistantCoachItems = {
     {
       id: 'l3',
       level: 'B2',
-      label: 'Item 8 — Pressing Angle',
+      label: 'Item 9 — Pressing Angle',
       script: 'The intensity is good, but the first player is pressing in a straight line. That leaves the inside pass open and forces the midfield to react late. In the next repetition, correct the angle of the run. We want the player to press while showing the opponent toward the touchline.',
       question: 'What is the main tactical correction?',
       options: [
@@ -686,12 +701,27 @@ const assistantCoachItems = {
       ],
       correct: 'C',
     },
+    {
+      id: 'l4',
+      level: 'C1',
+      label: 'Item 10 — Set-Piece Responsibility Under Change',
+      script:
+        'On the next corner, keep the same initial setup, but change the second movement. Their front zonal player is stepping aggressively toward the first run, which is opening space behind him. I want the blocker to hold his position half a second longer, then release the runner into that space. Do not change the rest of the structure because we still need protection if they clear the first ball.',
+      question: 'What is the Assistant Coach being asked to adjust?',
+      options: [
+        'A. Replace the entire corner routine because the opponent has changed its marking',
+        'B. Change the timing of one movement while keeping the overall structure and transition protection',
+        'C. Move more players into the penalty area to create a numerical advantage',
+        'D. Remove the blocker because the opponent is defending the first run aggressively',
+      ],
+      correct: 'B',
+    },
   ],
   vocabulary: [
     {
       id: 'v1',
       level: 'A2',
-      label: 'Item 9 — Walk-through',
+      label: 'Item 11 — Walk-through',
       context: 'The coach says: “Before we increase the intensity, do one walk-through so everyone understands the movement.”',
       question: 'What does “walk-through” mean here?',
       options: [
@@ -705,7 +735,7 @@ const assistantCoachItems = {
     {
       id: 'v2',
       level: 'B1',
-      label: 'Item 10 — Freeze the Practice',
+      label: 'Item 12 — Freeze the Practice',
       context: 'A player asks: “When you say ‘freeze the practice’, do you want us to stop exactly where we are?”',
       question: 'What does “freeze the practice” mean?',
       options: [
@@ -719,7 +749,7 @@ const assistantCoachItems = {
     {
       id: 'v3',
       level: 'B2',
-      label: 'Item 11 — Third-man Run',
+      label: 'Item 13 — Third-man Run',
       context: 'The assistant coach says: “The midfielder plays into the striker, then the winger makes the third-man run beyond him.”',
       question: 'What is the “third-man run” in this sequence?',
       options: [
@@ -729,6 +759,21 @@ const assistantCoachItems = {
         'D. The fullback moving inside to create an extra passing option.',
       ],
       correct: 'C',
+    },
+    {
+      id: 'v4',
+      level: 'C1',
+      label: 'Item 14 — Tactical Integrity',
+      context:
+        'The Head Coach says: “Raise the press if the trigger is there, but don’t compromise our rest defense. If the first line gets played through, we still need enough control behind the ball to prevent the counter.”',
+      question: 'What does “compromise” mean in this context?',
+      options: [
+        'A. Make the defensive structure less effective or secure',
+        'B. Delay the pressing action until more players recover',
+        'C. Change the defensive structure to create greater attacking width',
+        'D. Accept a temporary numerical disadvantage in order to press higher',
+      ],
+      correct: 'A',
     },
   ],
   functional: [
@@ -2607,7 +2652,9 @@ function calculateResult(
   role: string
 ): Result {
   const usesProgressiveDiagnostic =
-    role === 'Professional Player' || role === 'Head Coach'
+    role === 'Professional Player' ||
+    role === 'Head Coach' ||
+    role === 'Assistant Coach'
 
   const objectiveItems = usesProgressiveDiagnostic
     ? [
@@ -3104,7 +3151,9 @@ function AssessmentContent() {
   const mediaStreamRef = useRef<MediaStream | null>(null)
   const timerRef = useRef<NodeJS.Timeout | null>(null)
   const uses16ItemDiagnostic =
-    selectedRole === 'Professional Player' || selectedRole === 'Head Coach'
+    selectedRole === 'Professional Player' ||
+    selectedRole === 'Head Coach' ||
+    selectedRole === 'Assistant Coach'
   const totalItems = uses16ItemDiagnostic ? 16 : 17
 
   useEffect(() => {
@@ -3381,7 +3430,9 @@ function AssessmentContent() {
 
   function getItemNumber(section: Section, step: number): number {
     const map: Record<string, number> =
-      (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
+      (selectedRole === 'Professional Player' ||
+        selectedRole === 'Head Coach' ||
+        selectedRole === 'Assistant Coach')
         ? {
             'warm-up': step + 1,
             'reading': step + 3,
@@ -4427,7 +4478,8 @@ function AssessmentContent() {
                       setVocabStep(vocabStep + 1)
                     } else if (
                       selectedRole === 'Professional Player' ||
-                      selectedRole === 'Head Coach'
+                      selectedRole === 'Head Coach' ||
+                      selectedRole === 'Assistant Coach'
                     ) {
                       setSection('writing')
                     } else {
@@ -4444,7 +4496,8 @@ function AssessmentContent() {
                       {vocabStep < activeItems.vocabulary.length - 1
                         ? 'Next'
                         : (selectedRole === 'Professional Player' ||
-                            selectedRole === 'Head Coach')
+                            selectedRole === 'Head Coach' ||
+                            selectedRole === 'Assistant Coach')
                           ? 'Continue to Writing'
                           : 'Continue to Functional Communication'}
                       <ChevronRightIcon />
@@ -4740,7 +4793,7 @@ function AssessmentContent() {
 {selectedRole === 'Head Coach'
                 ? 'Two hours before kick-off, your team faces an opponent that presses aggressively after backward passes and leaves space behind its fullbacks.'
                 : selectedRole === 'Assistant Coach'
-                  ? 'You have just finished a first-team training session. The unit work was effective at the start, but during the final repetitions the distance between midfield and defence increased, communication dropped, and players began reacting individually. The Head Coach has asked for a concise written debrief before the staff meeting.'
+                  ? 'You have just finished a first-team training session. The unit work was effective at the start, but during the final repetitions the distance between midfield and defense increased, communication dropped, and players began reacting individually. The Head Coach has asked for a concise written debrief before the staff meeting.'
                   : selectedRole === 'Academy Director'
                     ? 'You need to send a short message to academy coaches about this year’s development standards. Explain that the academy will assess readiness, not only physical dominance or short-term match performance. Mention that the U16 group is strong, but standards must remain consistent.'
                     : selectedRole === 'Head of Scouting'
@@ -4775,7 +4828,7 @@ function AssessmentContent() {
               {selectedRole === 'Head Coach'
                 ? 'Write a short pre-match message to the squad.'
                 : selectedRole === 'Assistant Coach'
-                  ? 'Write a 60–90-word debrief to the Head Coach. Identify what worked, explain the main problem using observable evidence, and recommend one priority for the next session.'
+                  ? 'Write a 60–90-word debrief to the Head Coach.'
                   : selectedRole === 'Academy Director'
                     ? 'Write 3–5 sentences to academy coaches about development standards and player readiness.'
                     : selectedRole === 'Head of Scouting'
@@ -4794,7 +4847,9 @@ function AssessmentContent() {
                                   ? 'Write 3–5 sentences with the key issue, strategy and coaching support needed.'
                                   : 'Write a 30–80-word message to the physiotherapist describing the discomfort clearly and asking for an assessment.'}
             </p>
-            {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach') ? (
+            {(selectedRole === 'Professional Player' ||
+              selectedRole === 'Head Coach' ||
+              selectedRole === 'Assistant Coach') ? (
               <>
                 <p className="mt-3 text-sm font-medium leading-6 text-fei-bg/62">
                   Your response should:
@@ -4806,19 +4861,23 @@ function AssessmentContent() {
                     <li className="list-disc">explain what movement caused it and how it changed;</li>
                     <li className="list-disc">state clearly what support or assessment you need.</li>
                   </ul>
-                ) : (
+                ) : selectedRole === 'Head Coach' ? (
                   <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
                     <li className="list-disc">identify the main risk when playing through pressure;</li>
                     <li className="list-disc">give two clear tactical priorities;</li>
                     <li className="list-disc">state the communication and decision-making standard you expect.</li>
                   </ul>
+                ) : (
+                  <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
+                    <li className="list-disc">identify what worked before the problem developed;</li>
+                    <li className="list-disc">explain the main issue using observable evidence;</li>
+                    <li className="list-disc">recommend one clear priority for the next session.</li>
+                  </ul>
                 )}
               </>
             ) : (
               <p className="mt-2 text-sm leading-6 text-fei-bg/52">
-                {selectedRole === 'Assistant Coach'
-                  ? 'Use a concise staff-to-staff tone. Separate observation from interpretation and finish with a clear recommendation.'
-                  : 'Write 3–5 sentences in professional English.'}
+                Write 3–5 sentences in professional English.
               </p>
             )}
           </div>
@@ -4951,7 +5010,7 @@ function AssessmentContent() {
                 </span>
 
                 <span className="rounded-full bg-fei-bg/[0.04] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.11em] text-fei-bg/45">
-                  Time available: 45 seconds
+                  Time available: 45–60 seconds
                 </span>
               </div>
             )}
@@ -5013,7 +5072,7 @@ function AssessmentContent() {
               {selectedRole === 'Head Coach'
                 ? 'Respond to the player in a calm, clear and authoritative way.'
                 : selectedRole === 'Assistant Coach'
-                  ? 'Deliver the intervention. Identify the coordination problem, clarify the trigger for the first presser, explain the supporting player’s responsibility, and finish with one clear instruction for the restart.'
+                  ? 'Deliver a 45–60 second coaching intervention to the two players.'
                   : selectedRole === 'Academy Director'
                     ? 'Explain your position clearly and professionally, balancing first-team need with player development.'
                     : selectedRole === 'Head of Scouting'
@@ -5032,7 +5091,9 @@ function AssessmentContent() {
                                   ? 'Explain the support strategy clearly, balancing confidence, standards, anxiety and sustainable performance.'
                                   : 'Record a 45–60 second response.'}
             </p>
-            {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach') ? (
+            {(selectedRole === 'Professional Player' ||
+              selectedRole === 'Head Coach' ||
+              selectedRole === 'Assistant Coach') ? (
               <>
                 <p className="mt-3 text-sm font-medium leading-6 text-fei-bg/62">
                   Your response should:
@@ -5044,11 +5105,17 @@ function AssessmentContent() {
                     <li className="list-disc">protect the team without blaming teammates;</li>
                     <li className="list-disc">explain your view in a calm, professional media tone.</li>
                   </ul>
-                ) : (
+                ) : selectedRole === 'Head Coach' ? (
                   <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
                     <li className="list-disc">acknowledge the player’s frustration;</li>
                     <li className="list-disc">explain the tactical reason without blaming him;</li>
                     <li className="list-disc">maintain your authority while protecting the relationship.</li>
+                  </ul>
+                ) : (
+                  <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
+                    <li className="list-disc">identify the coordination problem between the two players;</li>
+                    <li className="list-disc">clarify the pressing trigger and the supporting player’s responsibility;</li>
+                    <li className="list-disc">finish with one clear instruction for the restart.</li>
                   </ul>
                 )}
 
@@ -5058,9 +5125,7 @@ function AssessmentContent() {
               </>
             ) : (
               <p className="mt-2 text-sm leading-6 text-fei-bg/52">
-                {selectedRole === 'Assistant Coach'
-                  ? 'Recommended: 45–60 seconds · Be concise, specific and ready to restart the exercise.'
-                  : 'Recommended: 45–60 seconds · Maximum: 75 seconds'}
+                Recommended: 45–60 seconds · Maximum: 75 seconds
               </p>
             )}
           </div>
