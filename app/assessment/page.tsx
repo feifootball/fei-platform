@@ -4794,24 +4794,31 @@ function AssessmentContent() {
                                   ? 'Write 3–5 sentences with the key issue, strategy and coaching support needed.'
                                   : 'Write a 30–80-word message to the physiotherapist describing the discomfort clearly and asking for an assessment.'}
             </p>
-            {selectedRole === 'Professional Player' ? (
+            {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach') ? (
               <>
                 <p className="mt-3 text-sm font-medium leading-6 text-fei-bg/62">
                   Your response should:
                 </p>
-                <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
-                  <li className="list-disc">describe where and when the discomfort started;</li>
-                  <li className="list-disc">explain what movement caused it and how it changed;</li>
-                  <li className="list-disc">state clearly what support or assessment you need.</li>
-                </ul>
+
+                {selectedRole === 'Professional Player' ? (
+                  <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
+                    <li className="list-disc">describe where and when the discomfort started;</li>
+                    <li className="list-disc">explain what movement caused it and how it changed;</li>
+                    <li className="list-disc">state clearly what support or assessment you need.</li>
+                  </ul>
+                ) : (
+                  <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
+                    <li className="list-disc">identify the main risk when playing through pressure;</li>
+                    <li className="list-disc">give two clear tactical priorities;</li>
+                    <li className="list-disc">state the communication and decision-making standard you expect.</li>
+                  </ul>
+                )}
               </>
             ) : (
               <p className="mt-2 text-sm leading-6 text-fei-bg/52">
-                {selectedRole === 'Head Coach'
-                  ? 'Use a direct, confident and professional tone.'
-                  : selectedRole === 'Assistant Coach'
-                    ? 'Use a concise staff-to-staff tone. Separate observation from interpretation and finish with a clear recommendation.'
-                    : 'Write 3–5 sentences in professional English.'}
+                {selectedRole === 'Assistant Coach'
+                  ? 'Use a concise staff-to-staff tone. Separate observation from interpretation and finish with a clear recommendation.'
+                  : 'Write 3–5 sentences in professional English.'}
               </p>
             )}
           </div>
@@ -5025,16 +5032,26 @@ function AssessmentContent() {
                                   ? 'Explain the support strategy clearly, balancing confidence, standards, anxiety and sustainable performance.'
                                   : 'Record a 45–60 second response.'}
             </p>
-            {selectedRole === 'Professional Player' ? (
+            {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach') ? (
               <>
                 <p className="mt-3 text-sm font-medium leading-6 text-fei-bg/62">
                   Your response should:
                 </p>
-                <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
-                  <li className="list-disc">acknowledge the result and the criticism;</li>
-                  <li className="list-disc">protect the team without blaming teammates;</li>
-                  <li className="list-disc">explain your view in a calm, professional media tone.</li>
-                </ul>
+
+                {selectedRole === 'Professional Player' ? (
+                  <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
+                    <li className="list-disc">acknowledge the result and the criticism;</li>
+                    <li className="list-disc">protect the team without blaming teammates;</li>
+                    <li className="list-disc">explain your view in a calm, professional media tone.</li>
+                  </ul>
+                ) : (
+                  <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
+                    <li className="list-disc">acknowledge the player’s frustration;</li>
+                    <li className="list-disc">explain the tactical reason without blaming him;</li>
+                    <li className="list-disc">maintain your authority while protecting the relationship.</li>
+                  </ul>
+                )}
+
                 <p className="mt-3 text-sm leading-6 text-fei-bg/52">
                   Recommended: 45–60 seconds · Maximum: 75 seconds
                 </p>
