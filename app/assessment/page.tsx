@@ -1732,29 +1732,29 @@ const performanceAnalystItems = {
   warmup: [
     {
       id: 'w1',
-      label: 'Item 1 — Primary Communication Focus',
-      context: 'You are completing the FEI diagnostic for the Performance Analyst — First Team Analysis role.',
-      question: 'Which communication situation is most central to your role?',
+      label: 'Item 1 — Team Performance Analysis',
+      context: '',
+      question: 'Which task is a core responsibility of a Performance Analyst?',
       options: [
-        'A. Managing player recovery plans with the medical team.',
-        'B. Communicating video and data evidence to coaches and staff.',
-        'C. Negotiating player contracts with external agents.',
-        'D. Running daily tactical drills with the first-team squad.',
+        'A. Managing player rehabilitation programs.',
+        'B. Reviewing match video and data to identify team and player performance patterns.',
+        'C. Leading strength and conditioning sessions.',
+        'D. Negotiating player contracts.',
       ],
       correct: 'B',
     },
     {
       id: 'w2',
-      label: 'Item 2 — Communication Priority',
-      context: 'The diagnostic personalizes the pathway based on your main communication demand.',
-      question: 'Which communication task matters most in your daily work?',
+      label: 'Item 2 — Opposition Analysis',
+      context: '',
+      question: 'What would a Performance Analyst typically prepare before an upcoming match?',
       options: [
-        'A. Giving live touchline instructions during the match.',
-        'B. Writing medical updates after training sessions.',
-        'C. Presenting tactical patterns and analysis clearly.',
-        'D. Handling player salary and contract discussions.',
+        'A. An opposition report highlighting tactical patterns, strengths and vulnerabilities.',
+        'B. A weekly nutrition plan for the squad.',
+        'C. The final starting lineup and substitutions.',
+        'D. Individual rehabilitation targets for injured players.',
       ],
-      correct: 'C',
+      correct: 'A',
     },
   ],
   reading: [
@@ -3896,13 +3896,15 @@ function AssessmentContent() {
             >
               {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst') ? (
                 <>
-                  <div className="mb-4 overflow-hidden rounded-xl border border-fei-bg/[0.11] bg-white shadow-[0_4px_14px_rgba(15,23,42,0.025)]">
-                    <div className="border-l-[3px] border-fei-sky px-5 py-4 sm:px-6">
-                      <p className="max-w-[760px] text-[17px] font-medium leading-7 tracking-[-0.008em] text-fei-bg/82 sm:text-[18px]">
-                        {item.context}
-                      </p>
+                  {selectedRole !== 'Performance Analyst' && (
+                    <div className="mb-4 overflow-hidden rounded-xl border border-fei-bg/[0.11] bg-white shadow-[0_4px_14px_rgba(15,23,42,0.025)]">
+                      <div className="border-l-[3px] border-fei-sky px-5 py-4 sm:px-6">
+                        <p className="max-w-[760px] text-[17px] font-medium leading-7 tracking-[-0.008em] text-fei-bg/82 sm:text-[18px]">
+                          {item.context}
+                        </p>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </>
               ) : (
                 <div className="border-l-4 border-fei-sky pl-5 sm:pl-7">
