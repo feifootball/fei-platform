@@ -3902,7 +3902,13 @@ function AssessmentContent() {
             >
               {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst') ? (
                 <>
-                  {selectedRole !== 'Performance Analyst' && (
+                  {selectedRole === 'Performance Analyst' ? (
+                    <div className="mb-4">
+                      <h1 className="max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl">
+                        {item.question}
+                      </h1>
+                    </div>
+                  ) : (
                     <div className="mb-4 overflow-hidden rounded-xl border border-fei-bg/[0.11] bg-white shadow-[0_4px_14px_rgba(15,23,42,0.025)]">
                       <div className="border-l-[3px] border-fei-sky px-5 py-4 sm:px-6">
                         <p className="max-w-[760px] text-[17px] font-medium leading-7 tracking-[-0.008em] text-fei-bg/82 sm:text-[18px]">
@@ -4045,7 +4051,7 @@ function AssessmentContent() {
                   : undefined
               }
             >
-              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach') ? (
+              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Performance Analyst') ? (
                 <>
                   <div className="mb-4 overflow-hidden rounded-xl border border-fei-bg/[0.11] bg-white shadow-[0_4px_14px_rgba(15,23,42,0.025)]">
                     <div className="px-5 py-4 sm:px-6">
@@ -4246,7 +4252,7 @@ function AssessmentContent() {
 
               <div
                 className={
-                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
+                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Performance Analyst')
                     ? 'mb-3'
                     : 'mb-5 border-l-4 border-fei-sky pl-5 sm:pl-6'
                 }
@@ -4256,6 +4262,8 @@ function AssessmentContent() {
                     selectedRole === 'Professional Player'
                       ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
                       : selectedRole === 'Head Coach'
+                        ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
+                        : selectedRole === 'Performance Analyst'
                         ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
                         : selectedRole === 'Assistant Coach'
                           ? 'max-w-[780px] text-lg font-medium leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
@@ -4809,7 +4817,7 @@ function AssessmentContent() {
             >
           <div
             className={
-              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Performance Analyst')
                 ? 'mb-4 overflow-hidden rounded-xl border border-fei-bg/[0.11] bg-white px-5 py-4 shadow-[0_4px_14px_rgba(15,23,42,0.025)] sm:px-6'
                 : selectedRole === 'Assistant Coach'
                   ? 'mb-5 overflow-hidden rounded-2xl border border-fei-bg/[0.10] bg-white shadow-[0_4px_16px_rgba(15,23,42,0.035)]'
@@ -4830,7 +4838,7 @@ function AssessmentContent() {
             <div className={selectedRole === 'Assistant Coach' ? 'px-5 py-5 sm:px-6' : undefined}>
             <p
               className={
-                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Performance Analyst')
                   ? 'text-[10px] font-medium uppercase tracking-[0.07em] text-fei-bg/38'
                   : selectedRole === 'Assistant Coach'
                     ? 'text-[10px] font-bold uppercase tracking-[0.16em] text-fei-bg/38'
@@ -4847,7 +4855,9 @@ function AssessmentContent() {
                   ? 'mt-2 max-w-[760px] break-words text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/76 sm:text-base'
                   : selectedRole === 'Head Coach'
                     ? 'mt-2 max-w-[760px] break-words text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72'
-                    : 'mt-5 text-base leading-8 text-fei-bg/70'
+                    : selectedRole === 'Performance Analyst'
+                      ? 'mt-2 max-w-[760px] break-words text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72'
+                      : 'mt-5 text-base leading-8 text-fei-bg/70'
               }
             >
 {selectedRole === 'Head Coach'
@@ -4882,7 +4892,9 @@ function AssessmentContent() {
                   ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
                   : selectedRole === 'Head Coach'
                     ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
-                    : 'text-xl font-black leading-8 text-fei-bg'
+                    : selectedRole === 'Performance Analyst'
+                      ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
+                      : 'text-xl font-black leading-8 text-fei-bg'
               }
             >
               {selectedRole === 'Head Coach'
@@ -4959,7 +4971,9 @@ function AssessmentContent() {
                   ? 'Today we need to stay composed when they press...'
                   : selectedRole === 'Assistant Coach'
                     ? 'The first part of the session was effective because...'
-                    : 'Hi, I wanted to report...'
+                    : selectedRole === 'Performance Analyst'
+                      ? 'The opponent’s structure creates an opportunity when...'
+                      : 'Hi, I wanted to report...'
             }
             rows={6}
             className={`mb-2 w-full resize-none bg-white text-base leading-7 text-fei-bg placeholder:text-fei-bg/25 focus:border-fei-sky focus:outline-none ${
@@ -5053,7 +5067,7 @@ function AssessmentContent() {
             >
           <div
             className={
-              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Performance Analyst')
                 ? 'mb-4 overflow-hidden rounded-xl border border-fei-bg/[0.11] bg-white px-5 py-4 shadow-[0_4px_14px_rgba(15,23,42,0.025)] sm:px-6'
                 : selectedRole === 'Assistant Coach'
                   ? 'mb-5 overflow-hidden rounded-2xl border border-fei-bg/[0.10] bg-white px-5 py-5 shadow-[0_4px_16px_rgba(15,23,42,0.035)] sm:px-6 sm:py-6'
@@ -5062,7 +5076,7 @@ function AssessmentContent() {
           >
             <p
               className={
-                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Performance Analyst')
                   ? 'text-[10px] font-medium uppercase tracking-[0.07em] text-fei-bg/38'
                   : 'text-xs font-black uppercase tracking-[0.22em] text-fei-bg/45'
               }
@@ -5091,7 +5105,9 @@ function AssessmentContent() {
                     ? 'mt-2 max-w-[760px] break-words text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72'
                     : selectedRole === 'Assistant Coach'
                       ? 'mt-4 max-w-[760px] text-[15px] leading-7 tracking-[-0.004em] text-fei-bg/72 sm:text-base'
-                      : 'mt-5 text-base leading-8 text-fei-bg/70'
+                      : selectedRole === 'Performance Analyst'
+                        ? 'mt-2 max-w-[760px] break-words text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72'
+                        : 'mt-5 text-base leading-8 text-fei-bg/70'
               }
             >
 {selectedRole === 'Head Coach'
@@ -5135,7 +5151,9 @@ function AssessmentContent() {
                     ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
                     : selectedRole === 'Assistant Coach'
                       ? 'max-w-[720px] text-xl font-bold leading-8 tracking-[-0.015em] text-fei-bg sm:text-2xl'
-                      : 'text-xl font-black leading-8 text-fei-bg'
+                      : selectedRole === 'Performance Analyst'
+                        ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
+                        : 'text-xl font-black leading-8 text-fei-bg'
               }
             >
               {selectedRole === 'Head Coach'
