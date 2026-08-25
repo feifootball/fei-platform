@@ -4446,7 +4446,7 @@ function AssessmentContent() {
               {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst') ? (
                 <>
                   <div className="mb-4">
-                    {vocabularySetup && (
+                    {vocabularySetup && selectedRole !== 'Performance Analyst' && (
                       <p className="mb-2 max-w-[720px] text-sm leading-6 text-fei-bg/52">
                         {vocabularySetup}
                       </p>
