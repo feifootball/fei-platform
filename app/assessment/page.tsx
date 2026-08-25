@@ -4876,7 +4876,7 @@ function AssessmentContent() {
                         : selectedRole === 'Fitness Coach'
                           ? 'You need to write a short weekly load report for the coaching staff. The squad average is 8.3 km, weekly load is up 3%, three players show emerging fatigue, and Friday volume may need to be reduced before the match.'
                           : selectedRole === 'Performance Analyst'
-                            ? 'You need to write a short opposition analysis memo for the coaching staff. The opponent uses a high defensive line, a sweeping goalkeeper, compact midfield pressing and aggressive fullbacks.'
+                            ? 'You are preparing a short opposition note for the coaching staff. Across the last three matches, the opponent’s right fullback has moved very high during possession. When the ball is lost, the right center-back often has to defend wide, leaving more space between the center-backs.'
                             : selectedRole === 'Nutritionist'
                               ? 'You need to write a short match-day nutrition guide for a player. Include breakfast, pre-match fueling, hydration or electrolytes, half-time support and post-match recovery.'
                               : selectedRole === 'Physiotherapist'
@@ -4951,9 +4951,9 @@ function AssessmentContent() {
                   </ul>
                 ) : (
                   <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
-                    <li className="list-disc">identify the main tactical vulnerability in the opponent’s structure;</li>
-                    <li className="list-disc">support your interpretation with at least two pieces of observable evidence;</li>
-                    <li className="list-disc">recommend one clear tactical response without overstating what the evidence proves.</li>
+                    <li className="list-disc">identify the recurring tactical pattern;</li>
+                    <li className="list-disc">explain the vulnerability using the evidence provided;</li>
+                    <li className="list-disc">recommend one clear way your team could exploit it.</li>
                   </ul>
                 )}
               </>
