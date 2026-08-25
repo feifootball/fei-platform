@@ -5126,7 +5126,7 @@ function AssessmentContent() {
                         : selectedRole === 'Fitness Coach'
                           ? 'You need to explain your load position to the head coach. The match is important, current load is close to threshold, and you need to protect performance without sounding negative or overly cautious.'
                           : selectedRole === 'Performance Analyst'
-                            ? 'During the staff meeting, the Head Coach looks at your analysis and says: “We had plenty of the ball. So where exactly did we lose control?” Your analysis shows that the team kept possession but completed fewer progressive actions, received under more pressure and created less territorial advantage in the second half.'
+                            ? 'During the staff meeting, the Head Coach says: “We had more of the ball in the second half, but we still struggled to create chances. What changed?” Your analysis shows that the team circulated possession deeper, received under more pressure in midfield, and completed fewer progressive actions into the final third.'
                             : selectedRole === 'Nutritionist'
                               ? 'You need to explain to a player why you are adjusting his fueling plan. He has been reporting fatigue late in matches, and his hydration and pre-training timing are inconsistent.'
                               : selectedRole === 'Physiotherapist'
@@ -5210,9 +5210,9 @@ function AssessmentContent() {
                   </ul>
                 ) : (
                   <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
-                    <li className="list-disc">explain why high possession did not necessarily mean effective control;</li>
-                    <li className="list-disc">use the evidence to identify what changed in the second half;</li>
-                    <li className="list-disc">finish with one clear tactical implication for the staff to review.</li>
+                    <li className="list-disc">explain why more possession did not mean better attacking control;</li>
+                    <li className="list-disc">use the evidence to identify what changed after halftime;</li>
+                    <li className="list-disc">finish with one clear tactical point for the staff to review.</li>
                   </ul>
                 )}
 
