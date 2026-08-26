@@ -4971,7 +4971,7 @@ function AssessmentContent() {
                       : selectedRole === 'Scout'
                         ? 'Write 3–5 sentences with player quality, profile fit, risk, and recommended next step.'
                         : selectedRole === 'Fitness Coach'
-                          ? 'Write 3–5 sentences with the key load finding and recommendation.'
+                          ? 'You are preparing a short update for the Head Coach before training. One player completed 90 minutes in the previous match. His recovery score is below his usual level, his legs feel heavy, and his recent high-speed running load is above his weekly average.'
                           : selectedRole === 'Performance Analyst'
                             ? 'Write a 60–90-word opposition analysis memo for the coaching staff.'
                             : selectedRole === 'Nutritionist'
@@ -4993,9 +4993,9 @@ function AssessmentContent() {
 
                 {selectedRole === 'Professional Player' ? (
                   <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
-                    <li className="list-disc">describe where and when the discomfort started;</li>
-                    <li className="list-disc">explain what movement caused it and how it changed;</li>
-                    <li className="list-disc">state clearly what support or assessment you need.</li>
+                    <li className="list-disc">summarize the player’s current physical status;</li>
+                    <li className="list-disc">use the available evidence to explain your concern;</li>
+                    <li className="list-disc">recommend one appropriate adjustment to today’s training load.</li>
                   </ul>
                 ) : selectedRole === 'Head Coach' ? (
                   <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
