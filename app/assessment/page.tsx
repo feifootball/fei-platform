@@ -5064,7 +5064,7 @@ function AssessmentContent() {
                               : selectedRole === 'Physiotherapist'
                                 ? 'During the second half of a match, a player lands awkwardly after challenging for the ball and immediately reports pain in his right ankle. He leaves the pitch and is assessed after the match. There is moderate swelling, reduced range of motion, and pain when putting weight on the foot. No final diagnosis has been confirmed yet.'
                                 : selectedRole === 'Sports Psychologist'
-                                  ? 'You need to write a short mental performance note for the coaching staff. The player is dealing with perfectionism, anxiety before matches and reduced confidence after mistakes.'
+                                  ? 'A first-team player has asked for support after several difficult matches. He reports increased self-doubt, frustration after mistakes and difficulty switching off after games. His sleep has become less consistent, but he remains engaged in training and wants to continue playing. He has asked you not to share the personal details of your conversations with the coaching staff.'
                                   : 'After training, you feel tightness in your left hamstring. It started during the second half of the session after a sharp turn while sprinting and increased slightly during the cool-down. You want to report it to the physiotherapist before the next session.'}
             </p>
             </div>
@@ -5113,7 +5113,7 @@ function AssessmentContent() {
                               : selectedRole === 'Physiotherapist'
                                 ? 'Write a 60–90-word medical update for the coaching and performance staff.'
                                 : selectedRole === 'Sports Psychologist'
-                                  ? 'Write 3–5 sentences with the key issue, strategy and coaching support needed.'
+                                  ? 'Write a 60–90-word update for the Head Coach.'
                                   : 'Write a 30–80-word message to the physiotherapist describing the discomfort clearly and asking for an assessment.'}
             </p>
 
@@ -5122,7 +5122,8 @@ function AssessmentContent() {
               selectedRole === 'Assistant Coach' ||
               selectedRole === 'Performance Analyst' ||
               selectedRole === 'Fitness Coach' ||
-              selectedRole === 'Physiotherapist') ? (
+              selectedRole === 'Physiotherapist' ||
+              selectedRole === 'Sports Psychologist') ? (
               <>
                 <p className="mt-3 text-sm font-medium leading-6 text-fei-bg/62">
                   Your response should:
@@ -5159,6 +5160,13 @@ function AssessmentContent() {
                     <li className="list-disc">summarize what the initial assessment shows;</li>
                     <li className="list-disc">state clearly what should happen next.</li>
                   </ul>
+                ) : selectedRole === 'Sports Psychologist' ? (
+                  <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
+                    <li className="list-disc">summarize the player’s current mental-performance status;</li>
+                    <li className="list-disc">identify how it may be affecting performance;</li>
+                    <li className="list-disc">protect confidential personal information;</li>
+                    <li className="list-disc">recommend one appropriate way the coaching staff can support him.</li>
+                  </ul>
                 ) : (
                   <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
                     <li className="list-disc">summarize the player’s current physical status;</li>
@@ -5190,7 +5198,9 @@ function AssessmentContent() {
                       ? 'The player’s current physical status suggests...'
                       : selectedRole === 'Physiotherapist'
                         ? 'During the second half, the player...'
-                        : 'Hi, I wanted to report...'
+                        : selectedRole === 'Sports Psychologist'
+                          ? 'The player is currently showing...'
+                          : 'Hi, I wanted to report...'
             }
             rows={6}
             className={`mb-2 w-full resize-none bg-white text-base leading-7 text-fei-bg placeholder:text-fei-bg/25 focus:border-fei-sky focus:outline-none ${
@@ -5213,7 +5223,9 @@ function AssessmentContent() {
                         ? 'Target: 60–90 words'
                         : selectedRole === 'Physiotherapist'
                           ? 'Target: 60–90 words'
-                          : 'Target: 30–80 words'}
+                          : selectedRole === 'Sports Psychologist'
+                            ? 'Target: 60–90 words'
+                            : 'Target: 30–80 words'}
               </span>
             )}
           </div>
@@ -5351,7 +5363,7 @@ function AssessmentContent() {
                               : selectedRole === 'Physiotherapist'
                                 ? 'A player is recovering from a knee injury. He has completed most of the rehabilitation process and has trained with the team twice. He is pain-free during normal football actions, but he still shows some loss of control during repeated high-speed changes of direction. The Head Coach wants to know if he can be available for an important match in three days.'
                                 : selectedRole === 'Sports Psychologist'
-                                  ? 'You need to explain to the head coach how to support a player whose perfectionism is creating pre-match anxiety and lower confidence after mistakes.'
+                                  ? 'Twenty minutes before an important match, a player tells you: “I keep thinking about the mistakes I made last week. If I make another one tonight, I could lose my place. I know I should focus, but I can’t stop thinking about it.”'
                                   : 'After a difficult 2–1 defeat, a journalist asks you: “Some supporters are saying the team lacked commitment tonight. Do you agree?”'}
             </p>
           </div>
@@ -5398,7 +5410,7 @@ function AssessmentContent() {
                               : selectedRole === 'Physiotherapist'
                                 ? 'Give a 45–60 second update to the Head Coach.'
                                 : selectedRole === 'Sports Psychologist'
-                                  ? 'Explain the support strategy clearly, balancing confidence, standards, anxiety and sustainable performance.'
+                                  ? 'Give a 45–60 second response to the player.'
                                   : 'Record a 45–60 second response.'}
             </p>
             {(selectedRole === 'Professional Player' ||
@@ -5406,7 +5418,8 @@ function AssessmentContent() {
               selectedRole === 'Assistant Coach' ||
               selectedRole === 'Performance Analyst' ||
               selectedRole === 'Fitness Coach' ||
-              selectedRole === 'Physiotherapist') ? (
+              selectedRole === 'Physiotherapist' ||
+              selectedRole === 'Sports Psychologist') ? (
               <>
                 <p className="mt-3 text-sm font-medium leading-6 text-fei-bg/62">
                   Your response should:
@@ -5443,6 +5456,14 @@ function AssessmentContent() {
                     <li className="list-disc">explain how you interpret the current risk;</li>
                     <li className="list-disc">recommend what should happen over the next three days;</li>
                     <li className="list-disc">state whether match availability can be confirmed yet.</li>
+                  </ul>
+                ) : selectedRole === 'Sports Psychologist' ? (
+                  <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
+                    <li className="list-disc">acknowledge the player’s concern without reinforcing the fear;</li>
+                    <li className="list-disc">help him separate previous mistakes from the next performance;</li>
+                    <li className="list-disc">redirect his attention toward controllable actions;</li>
+                    <li className="list-disc">give one practical strategy he can use before kick-off;</li>
+                    <li className="list-disc">finish with a clear performance-focused message.</li>
                   </ul>
                 ) : (
                   <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
