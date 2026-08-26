@@ -4525,7 +4525,7 @@ function AssessmentContent() {
 
     const vocabularySetup = item.context
       .replace(
-        /\s*(?:A teammate shouts|A player asks|The coach says|The physiotherapist asks|The assistant coach says|The Sporting Director says|The analyst says):\s*[“"].*[”"]$/i,
+        /\s*(?:A teammate shouts|A player asks|The coach says|The physiotherapist (?:asks|says)|The assistant coach says|The Sporting Director says|The analyst says):\s*[“"].*[”"]$/i,
         '',
       )
       .trim()
