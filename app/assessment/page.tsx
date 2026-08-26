@@ -5014,7 +5014,7 @@ function AssessmentContent() {
                             : selectedRole === 'Nutritionist'
                               ? 'You need to write a short match-day nutrition guide for a player. Include breakfast, pre-match fueling, hydration or electrolytes, half-time support and post-match recovery.'
                               : selectedRole === 'Physiotherapist'
-                                ? 'You need to write a short rehabilitation progress note for the coaching staff. The player is in Week 3. Strength is 70%, pain is 2/10 with activity, agility is 55%, and confidence is improving after the first sprint without hesitation.'
+                                ? 'During the second half of a match, a player lands awkwardly after challenging for the ball and immediately reports pain in his right ankle. He leaves the pitch and is assessed after the match. There is moderate swelling, reduced range of motion, and pain when putting weight on the foot. No final diagnosis has been confirmed yet.'
                                 : selectedRole === 'Sports Psychologist'
                                   ? 'You need to write a short mental performance note for the coaching staff. The player is dealing with perfectionism, anxiety before matches and reduced confidence after mistakes.'
                                   : 'After training, you feel tightness in your left hamstring. It started during the second half of the session after a sharp turn while sprinting and increased slightly during the cool-down. You want to report it to the physiotherapist before the next session.'}
@@ -5028,7 +5028,8 @@ function AssessmentContent() {
                 selectedRole === 'Head Coach' ||
                 selectedRole === 'Assistant Coach' ||
                 selectedRole === 'Performance Analyst' ||
-                selectedRole === 'Fitness Coach')
+                selectedRole === 'Fitness Coach' ||
+                selectedRole === 'Physiotherapist')
                 ? 'mb-4'
                 : 'mb-5'
             }
@@ -5039,7 +5040,8 @@ function AssessmentContent() {
                   selectedRole === 'Head Coach' ||
                   selectedRole === 'Assistant Coach' ||
                   selectedRole === 'Performance Analyst' ||
-                  selectedRole === 'Fitness Coach')
+                  selectedRole === 'Fitness Coach' ||
+                  selectedRole === 'Physiotherapist')
                   ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
                   : 'text-xl font-black leading-8 text-fei-bg'
               }
@@ -5061,7 +5063,7 @@ function AssessmentContent() {
                             : selectedRole === 'Nutritionist'
                               ? 'Write 3–5 sentences with breakfast, pre-match fueling, hydration, half-time support and post-match recovery.'
                               : selectedRole === 'Physiotherapist'
-                                ? 'Write 3–5 sentences with status, next step and expected return direction.'
+                                ? 'Write a 60–90-word medical update for the coaching and performance staff.'
                                 : selectedRole === 'Sports Psychologist'
                                   ? 'Write 3–5 sentences with the key issue, strategy and coaching support needed.'
                                   : 'Write a 30–80-word message to the physiotherapist describing the discomfort clearly and asking for an assessment.'}
@@ -5071,7 +5073,8 @@ function AssessmentContent() {
               selectedRole === 'Head Coach' ||
               selectedRole === 'Assistant Coach' ||
               selectedRole === 'Performance Analyst' ||
-              selectedRole === 'Fitness Coach') ? (
+              selectedRole === 'Fitness Coach' ||
+              selectedRole === 'Physiotherapist') ? (
               <>
                 <p className="mt-3 text-sm font-medium leading-6 text-fei-bg/62">
                   Your response should:
@@ -5100,6 +5103,13 @@ function AssessmentContent() {
                     <li className="list-disc">identify the recurring tactical pattern;</li>
                     <li className="list-disc">explain the vulnerability using the evidence provided;</li>
                     <li className="list-disc">recommend one clear way your team could exploit it.</li>
+                  </ul>
+                ) : selectedRole === 'Physiotherapist' ? (
+                  <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
+                    <li className="list-disc">explain what happened during the match;</li>
+                    <li className="list-disc">describe the player’s current symptoms;</li>
+                    <li className="list-disc">summarize what the initial assessment shows;</li>
+                    <li className="list-disc">state clearly what should happen next.</li>
                   </ul>
                 ) : (
                   <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
@@ -5286,7 +5296,7 @@ function AssessmentContent() {
                             : selectedRole === 'Nutritionist'
                               ? 'You need to explain to a player why you are adjusting his fueling plan. He has been reporting fatigue late in matches, and his hydration and pre-training timing are inconsistent.'
                               : selectedRole === 'Physiotherapist'
-                                ? 'You need to explain a return-to-play recommendation to the head coach. The player is improving, but you need to balance strength, movement testing, confidence and match availability.'
+                                ? 'A player is recovering from a knee injury. He has completed most of the rehabilitation process and has trained with the team twice. He is pain-free during normal football actions, but he still shows some loss of control during repeated high-speed changes of direction. The Head Coach wants to know if he can be available for an important match in three days.'
                                 : selectedRole === 'Sports Psychologist'
                                   ? 'You need to explain to the head coach how to support a player whose perfectionism is creating pre-match anxiety and lower confidence after mistakes.'
                                   : 'After a difficult 2–1 defeat, a journalist asks you: “Some supporters are saying the team lacked commitment tonight. Do you agree?”'}
@@ -5310,7 +5320,8 @@ function AssessmentContent() {
                     ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
                     : selectedRole === 'Assistant Coach'
                       ? 'max-w-[720px] text-xl font-bold leading-8 tracking-[-0.015em] text-fei-bg sm:text-2xl'
-                      : selectedRole === 'Performance Analyst'
+                      : selectedRole === 'Performance Analyst' ||
+                          selectedRole === 'Physiotherapist'
                         ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
                         : 'text-xl font-black leading-8 text-fei-bg'
               }
@@ -5332,7 +5343,7 @@ function AssessmentContent() {
                             : selectedRole === 'Nutritionist'
                               ? 'Explain the adjustment clearly, linking timing, hydration, energy and realistic behavior change.'
                               : selectedRole === 'Physiotherapist'
-                                ? 'Explain the recommendation clearly, balancing medical reality, team need, confidence and risk.'
+                                ? 'Give a 45–60 second update to the Head Coach.'
                                 : selectedRole === 'Sports Psychologist'
                                   ? 'Explain the support strategy clearly, balancing confidence, standards, anxiety and sustainable performance.'
                                   : 'Record a 45–60 second response.'}
@@ -5341,7 +5352,8 @@ function AssessmentContent() {
               selectedRole === 'Head Coach' ||
               selectedRole === 'Assistant Coach' ||
               selectedRole === 'Performance Analyst' ||
-              selectedRole === 'Fitness Coach') ? (
+              selectedRole === 'Fitness Coach' ||
+              selectedRole === 'Physiotherapist') ? (
               <>
                 <p className="mt-3 text-sm font-medium leading-6 text-fei-bg/62">
                   Your response should:
@@ -5370,6 +5382,14 @@ function AssessmentContent() {
                     <li className="list-disc">explain why more possession did not mean better attacking control;</li>
                     <li className="list-disc">use the evidence to identify what changed after halftime;</li>
                     <li className="list-disc">finish with one clear tactical point for the staff to review.</li>
+                  </ul>
+                ) : selectedRole === 'Physiotherapist' ? (
+                  <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
+                    <li className="list-disc">explain what the player can currently do;</li>
+                    <li className="list-disc">identify what is still limiting his return;</li>
+                    <li className="list-disc">explain how you interpret the current risk;</li>
+                    <li className="list-disc">recommend what should happen over the next three days;</li>
+                    <li className="list-disc">state whether match availability can be confirmed yet.</li>
                   </ul>
                 ) : (
                   <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
