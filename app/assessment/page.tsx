@@ -3965,7 +3965,7 @@ function AssessmentContent() {
             >
               {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach') ? (
                 <>
-                  {selectedRole === 'Performance Analyst' ? (
+                  {(selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach') ? (
                     <div className="mb-4">
                       <h1 className="max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl">
                         {item.question}
@@ -4118,13 +4118,21 @@ function AssessmentContent() {
                 <>
                   <div className="mb-4 overflow-hidden rounded-xl border border-fei-bg/[0.11] bg-white shadow-[0_4px_14px_rgba(15,23,42,0.025)]">
                     <div className="px-5 py-4 sm:px-6">
-                      <p className="mb-2 text-[11px] font-normal uppercase tracking-[0.08em] text-fei-bg/42">
-                        {item.context.split('\n\n')[0]}
-                      </p>
+                      {selectedRole === 'Fitness Coach' ? (
+                        <p className="max-w-[760px] whitespace-pre-line text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72 select-none">
+                          {item.context}
+                        </p>
+                      ) : (
+                        <>
+                          <p className="mb-2 text-[11px] font-normal uppercase tracking-[0.08em] text-fei-bg/42">
+                            {item.context.split('\n\n')[0]}
+                          </p>
 
-                      <p className="max-w-[760px] whitespace-pre-line text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72 select-none">
-                        {item.context.split('\n\n').slice(1).join('\n\n')}
-                      </p>
+                          <p className="max-w-[760px] whitespace-pre-line text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72 select-none">
+                            {item.context.split('\n\n').slice(1).join('\n\n')}
+                          </p>
+                        </>
+                      )}
                     </div>
                   </div>
 
@@ -4306,7 +4314,9 @@ function AssessmentContent() {
                           ? `/audio/diagnostics/assistant-coach/assistant-coach-listening-${listeningStep + 1}.mp3`
                           : selectedRole === 'Performance Analyst'
                             ? `/audio/diagnostics/performance-analyst/performance-analyst-listening-${listeningStep + 1}.mp3`
-                            : undefined
+                            : selectedRole === 'Fitness Coach'
+                              ? `/audio/diagnostics/fitness-coach/fitness-coach-listening-${listeningStep + 1}.mp3`
+                              : undefined
                   }
                   minimal={selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach'}
                 />
@@ -4327,8 +4337,10 @@ function AssessmentContent() {
                       : selectedRole === 'Head Coach'
                         ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
                         : selectedRole === 'Performance Analyst'
-                        ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
-                        : selectedRole === 'Assistant Coach'
+                          ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
+                          : selectedRole === 'Fitness Coach'
+                            ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
+                            : selectedRole === 'Assistant Coach'
                           ? 'max-w-[780px] text-lg font-medium leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
                           : 'max-w-[780px] text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl'
                   }
@@ -4509,7 +4521,9 @@ function AssessmentContent() {
               {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach') ? (
                 <>
                   <div className="mb-4">
-                    {vocabularySetup && selectedRole !== 'Performance Analyst' && (
+                    {vocabularySetup &&
+                      selectedRole !== 'Performance Analyst' &&
+                      selectedRole !== 'Fitness Coach' && (
                       <p className="mb-2 max-w-[720px] text-sm leading-6 text-fei-bg/52">
                         {vocabularySetup}
                       </p>
