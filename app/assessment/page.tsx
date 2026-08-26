@@ -2227,46 +2227,61 @@ const nutritionistItems = {
     {
       id: 'v1',
       level: 'A2',
-      label: 'Item 9 — Glycogen',
-      context: 'The nutritionist says: “We need to restore glycogen after the match.”',
-      question: 'What does glycogen refer to in this context?',
+      label: 'Item 11 — Recovery Meal',
+      context: 'The nutritionist says: “Have a recovery meal after training.”',
+      question: 'What does recovery meal mean?',
       options: [
-        'A. Stored energy in the muscles used during exercise.',
-        'B. A vitamin that controls hydration during training.',
-        'C. A digestive enzyme used after heavy meals.',
-        'D. A recovery drink taken only after injuries.',
+        'A. A meal eaten after exercise to help the body recover.',
+        'B. A meal eaten before training to avoid feeling hungry.',
+        'C. A small snack eaten only during a match.',
+        'D. A meal used to reduce body weight.',
       ],
       correct: 'A',
     },
     {
       id: 'v2',
       level: 'B1',
-      label: 'Item 10 — Nutrient Timing',
-      context: 'The plan says: “Nutrient timing is important on double-session days.”',
+      label: 'Item 12 — Nutrient Timing',
+      context: 'The nutrition plan says: “Nutrient timing is especially important on double-session days.”',
       question: 'What does nutrient timing mean?',
       options: [
-        'A. Eating only when the player feels hungry.',
-        'B. Choosing foods based only on total calories.',
-        'C. Planning when nutrients are consumed around training.',
-        'D. Avoiding all snacks between team meals.',
+        'A. Adjusting when nutrients are consumed around training demands.',
+        'B. Recording the total number of calories eaten each week.',
+        'C. Choosing meals according to the player’s preferred foods.',
+        'D. Reducing portion sizes when training volume increases.',
       ],
-      correct: 'C',
+      correct: 'A',
     },
     {
       id: 'v3',
       level: 'B2',
-      label: 'Item 11 — Micronutrient Density',
-      context: 'The report says: “The player’s meals are high in calories but low in micronutrient density.”',
-      question: 'What does micronutrient density mean?',
+      label: 'Item 13 — Carbohydrate Periodization',
+      context: 'The nutritionist explains: “We are using carbohydrate periodization rather than prescribing the same intake for every training day.”',
+      question: 'What does carbohydrate periodization mean in this context?',
       options: [
-        'A. The amount of protein included in every meal.',
-        'B. The speed at which carbohydrates are digested.',
-        'C. The percentage of calories from fat sources.',
-        'D. The vitamins and minerals provided relative to calories.',
+        'A. Adjusting carbohydrate intake according to the demands and purpose of different sessions.',
+        'B. Increasing carbohydrate intake progressively throughout each training session.',
+        'C. Replacing some carbohydrate sources when gastrointestinal symptoms occur.',
+        'D. Distributing the same carbohydrate target more evenly across the training week.',
       ],
-      correct: 'D',
+      correct: 'A',
+    },
+    {
+      id: 'v4',
+      level: 'C1',
+      label: 'Item 14 — Energy Compensation',
+      context: 'The nutrition review states: “The player shows limited energy compensation on high-load days despite increasing his intake after training.”',
+      question: 'What does limited energy compensation imply in this context?',
+      options: [
+        'A. His additional intake is not fully offsetting the increase in energy expenditure.',
+        'B. His post-training intake is restoring energy stores more slowly than expected.',
+        'C. His total intake is sufficient, but its distribution around training is inappropriate.',
+        'D. His increased intake is producing more energy than the current workload requires.',
+      ],
+      correct: 'A',
     },
   ],
+
   functional: [
     {
       id: 'f1',
@@ -5111,7 +5126,7 @@ function AssessmentContent() {
                           : selectedRole === 'Performance Analyst'
                             ? 'You are preparing a short opposition note for the coaching staff. Across the last three matches, the opponent’s right fullback has moved very high during possession. When the ball is lost, the right center-back often has to defend wide, leaving more space between the center-backs.'
                             : selectedRole === 'Nutritionist'
-                              ? 'You need to write a short match-day nutrition guide for a player. Include breakfast, pre-match fueling, hydration or electrolytes, half-time support and post-match recovery.'
+                              ? 'A first-team midfielder is completing a congested period of three matches in eight days. His body mass has gradually decreased, his appetite is poor after late matches, and large recovery meals are affecting his sleep. He is still training normally, but the nutrition team wants to prevent the situation from affecting recovery.'
                               : selectedRole === 'Physiotherapist'
                                 ? 'During the second half of a match, a player lands awkwardly after challenging for the ball and immediately reports pain in his right ankle. He leaves the pitch and is assessed after the match. There is moderate swelling, reduced range of motion, and pain when putting weight on the foot. No final diagnosis has been confirmed yet.'
                                 : selectedRole === 'Sports Psychologist'
@@ -5160,7 +5175,7 @@ function AssessmentContent() {
                           : selectedRole === 'Performance Analyst'
                             ? 'Write a 60–90-word opposition analysis memo for the coaching staff.'
                             : selectedRole === 'Nutritionist'
-                              ? 'Write 3–5 sentences with breakfast, pre-match fueling, hydration, half-time support and post-match recovery.'
+                              ? 'Write a 60–90-word update for the Head Coach.'
                               : selectedRole === 'Physiotherapist'
                                 ? 'Write a 60–90-word medical update for the coaching and performance staff.'
                                 : selectedRole === 'Sports Psychologist'
@@ -5174,7 +5189,8 @@ function AssessmentContent() {
               selectedRole === 'Performance Analyst' ||
               selectedRole === 'Fitness Coach' ||
               selectedRole === 'Physiotherapist' ||
-              selectedRole === 'Sports Psychologist') ? (
+              selectedRole === 'Sports Psychologist' ||
+              selectedRole === 'Nutritionist') ? (
               <>
                 <p className="mt-3 text-sm font-medium leading-6 text-fei-bg/62">
                   Your response should:
@@ -5210,6 +5226,13 @@ function AssessmentContent() {
                     <li className="list-disc">describe the player’s current symptoms;</li>
                     <li className="list-disc">summarize what the initial assessment shows;</li>
                     <li className="list-disc">state clearly what should happen next.</li>
+                  </ul>
+                ) : selectedRole === 'Nutritionist' ? (
+                  <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
+                    <li className="list-disc">summarize the main nutrition concern;</li>
+                    <li className="list-disc">explain how it may affect recovery;</li>
+                    <li className="list-disc">describe the adjustment you recommend;</li>
+                    <li className="list-disc">state what you will continue to monitor.</li>
                   </ul>
                 ) : selectedRole === 'Sports Psychologist' ? (
                   <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
@@ -5249,9 +5272,11 @@ function AssessmentContent() {
                       ? 'The player’s current physical status suggests...'
                       : selectedRole === 'Physiotherapist'
                         ? 'During the second half, the player...'
-                        : selectedRole === 'Sports Psychologist'
-                          ? 'The player is currently showing...'
-                          : 'Hi, I wanted to report...'
+                        : selectedRole === 'Nutritionist'
+                          ? 'The player’s current nutrition status suggests...'
+                          : selectedRole === 'Sports Psychologist'
+                            ? 'The player is currently showing...'
+                            : 'Hi, I wanted to report...'
             }
             rows={6}
             className={`mb-2 w-full resize-none bg-white text-base leading-7 text-fei-bg placeholder:text-fei-bg/25 focus:border-fei-sky focus:outline-none ${
@@ -5276,7 +5301,9 @@ function AssessmentContent() {
                           ? 'Target: 60–90 words'
                           : selectedRole === 'Sports Psychologist'
                             ? 'Target: 60–90 words'
-                            : 'Target: 30–80 words'}
+                            : selectedRole === 'Nutritionist'
+                              ? 'Target: 60–90 words'
+                              : 'Target: 30–80 words'}
               </span>
             )}
           </div>
@@ -5410,7 +5437,7 @@ function AssessmentContent() {
                           : selectedRole === 'Performance Analyst'
                             ? 'During the staff meeting, the Head Coach says: “We had more of the ball in the second half, but we still struggled to create chances. What changed?” Your analysis shows that the team circulated possession deeper, received under more pressure in midfield, and completed fewer progressive actions into the final third.'
                             : selectedRole === 'Nutritionist'
-                              ? 'You need to explain to a player why you are adjusting his fueling plan. He has been reporting fatigue late in matches, and his hydration and pre-training timing are inconsistent.'
+                              ? 'A player tells you: “After evening matches I’m exhausted and I don’t feel like eating. I usually just drink something and go to bed. I know recovery is important, but a full meal feels impossible.”'
                               : selectedRole === 'Physiotherapist'
                                 ? 'A player is recovering from a knee injury. He has completed most of the rehabilitation process and has trained with the team twice. He is pain-free during normal football actions, but he still shows some loss of control during repeated high-speed changes of direction. The Head Coach wants to know if he can be available for an important match in three days.'
                                 : selectedRole === 'Sports Psychologist'
@@ -5457,7 +5484,7 @@ function AssessmentContent() {
                           : selectedRole === 'Performance Analyst'
                             ? 'Give a 45–60 second response to the Head Coach.'
                             : selectedRole === 'Nutritionist'
-                              ? 'Explain the adjustment clearly, linking timing, hydration, energy and realistic behavior change.'
+                              ? 'Give a 45–60 second response directly to the player.'
                               : selectedRole === 'Physiotherapist'
                                 ? 'Give a 45–60 second update to the Head Coach.'
                                 : selectedRole === 'Sports Psychologist'
@@ -5470,7 +5497,8 @@ function AssessmentContent() {
               selectedRole === 'Performance Analyst' ||
               selectedRole === 'Fitness Coach' ||
               selectedRole === 'Physiotherapist' ||
-              selectedRole === 'Sports Psychologist') ? (
+              selectedRole === 'Sports Psychologist' ||
+              selectedRole === 'Nutritionist') ? (
               <>
                 <p className="mt-3 text-sm font-medium leading-6 text-fei-bg/62">
                   Your response should:
@@ -5507,6 +5535,13 @@ function AssessmentContent() {
                     <li className="list-disc">explain how you interpret the current risk;</li>
                     <li className="list-disc">recommend what should happen over the next three days;</li>
                     <li className="list-disc">state whether match availability can be confirmed yet.</li>
+                  </ul>
+                ) : selectedRole === 'Nutritionist' ? (
+                  <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
+                    <li className="list-disc">acknowledge the player’s concern;</li>
+                    <li className="list-disc">explain why regularly skipping recovery intake may become a problem;</li>
+                    <li className="list-disc">suggest one or two realistic alternatives to a full meal;</li>
+                    <li className="list-disc">agree on a simple plan for the next evening match.</li>
                   </ul>
                 ) : selectedRole === 'Sports Psychologist' ? (
                   <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
