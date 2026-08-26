@@ -2872,6 +2872,8 @@ function calculateResult(
     role === 'Head Coach' ||
     role === 'Assistant Coach' ||
     role === 'Performance Analyst' ||
+    role === 'Fitness Coach' ||
+    role === 'Physiotherapist' ||
     role === 'Sports Psychologist'
 
   const objectiveItems = usesProgressiveDiagnostic
