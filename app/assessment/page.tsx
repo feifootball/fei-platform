@@ -3221,7 +3221,7 @@ function AssessmentContent() {
   const supabase = createClient()
 
   const selectedRole = searchParams.get('role') || 'Professional Player'
-  const assessmentAvailable = selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Academy Director' || selectedRole === 'Head of Scouting' || selectedRole === 'Scout' || selectedRole === 'Fitness Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Nutritionist' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist'
+  const assessmentAvailable = selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Academy Director' || selectedRole === 'Head of Scouting' || selectedRole === 'Scout' || selectedRole === 'Fitness Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Nutritionist' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist'
   const activeItems = selectedRole === 'Head Coach' ? headCoachItems : selectedRole === 'Assistant Coach' ? assistantCoachItems : selectedRole === 'Academy Director' ? academyDirectorItems : selectedRole === 'Head of Scouting' ? headOfScoutingItems : selectedRole === 'Scout' ? scoutItems : selectedRole === 'Fitness Coach' ? fitnessCoachItems : selectedRole === 'Performance Analyst' ? performanceAnalystItems : selectedRole === 'Nutritionist' ? nutritionistItems : selectedRole === 'Physiotherapist' ? physiotherapistItems : selectedRole === 'Sports Psychologist' ? sportsPsychologistItems : items
   const roleSubtitle = selectedRole === 'Academy Director' ? 'Youth & Academy' : selectedRole === 'Head of Scouting' ? 'Recruitment Leadership' : selectedRole === 'Scout' ? 'First Team Recruitment' : selectedRole === 'Fitness Coach' ? 'Strength & Conditioning' : selectedRole === 'Performance Analyst' ? 'First Team Analysis' : selectedRole === 'Nutritionist' ? 'Performance Nutrition' : selectedRole === 'Physiotherapist' ? 'Medical & Rehabilitation' : selectedRole === 'Sports Psychologist' ? 'Mental Performance' : selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' ? 'First Team' : 'Senior Squad'
 
@@ -3269,7 +3269,7 @@ function AssessmentContent() {
     selectedRole === 'Professional Player' ||
     selectedRole === 'Head Coach' ||
     selectedRole === 'Assistant Coach' ||
-    selectedRole === 'Performance Analyst'
+    selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach'
   const totalItems = uses16ItemDiagnostic ? 16 : 17
 
   useEffect(() => {
@@ -3549,7 +3549,7 @@ function AssessmentContent() {
       (selectedRole === 'Professional Player' ||
         selectedRole === 'Head Coach' ||
         selectedRole === 'Assistant Coach' ||
-        selectedRole === 'Performance Analyst')
+        selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach')
         ? {
             'warm-up': step + 1,
             'reading': step + 3,
@@ -3910,12 +3910,12 @@ function AssessmentContent() {
 
         <main
           className={`mx-auto w-full px-6 sm:px-8 ${
-            (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst')
+            (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach')
               ? 'max-w-[1080px] py-5 lg:py-6'
               : 'max-w-[1280px] py-8 lg:py-10'
           }`}
         >
-          <div className={(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst') ? 'mb-5' : 'mb-10'}>
+          <div className={(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach') ? 'mb-5' : 'mb-10'}>
             <div className="flex items-center justify-between gap-4">
               <p className="text-sm font-semibold text-fei-bg/55">
                 Item {currentItem} of {totalItems}
@@ -3936,13 +3936,13 @@ function AssessmentContent() {
 
           <div
             className={`grid items-start ${
-              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst')
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach')
                 ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-7'
                 : 'gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12'
             }`}
           >
             <aside className="lg:sticky lg:top-10 lg:pt-1">
-              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst') ? (
+              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach') ? (
                 <SectionBadge label="Role Warm-Up" />
               ) : (
                 <>
@@ -3958,12 +3958,12 @@ function AssessmentContent() {
 
             <section
               className={
-                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst')
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach')
                   ? 'max-w-[840px]'
                   : undefined
               }
             >
-              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst') ? (
+              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach') ? (
                 <>
                   {selectedRole === 'Performance Analyst' ? (
                     <div className="mb-4">
@@ -3993,7 +3993,7 @@ function AssessmentContent() {
                 </div>
               )}
 
-              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst') ? (
+              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach') ? (
                 <div className="mb-4 overflow-hidden border-y border-fei-bg/[0.08]">
                   {item.options.map((option) => (
                     <OptionButton
@@ -4020,7 +4020,7 @@ function AssessmentContent() {
 
               <div
                 className={`flex justify-end ${
-                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst') ? 'pb-6' : 'mt-8'
+                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach') ? 'pb-6' : 'mt-8'
                 }`}
               >
                 <button
@@ -4098,7 +4098,7 @@ function AssessmentContent() {
 
           <div
             className={`grid items-start ${
-              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst')
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach')
                 ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-7'
                 : 'gap-7 lg:grid-cols-[0.43fr_1.57fr] lg:gap-9'
             }`}
@@ -4109,12 +4109,12 @@ function AssessmentContent() {
 
             <section
               className={
-                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst')
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach')
                   ? 'max-w-[840px] lg:-translate-y-4'
                   : undefined
               }
             >
-              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Performance Analyst') ? (
+              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach') ? (
                 <>
                   <div className="mb-4 overflow-hidden rounded-xl border border-fei-bg/[0.11] bg-white shadow-[0_4px_14px_rgba(15,23,42,0.025)]">
                     <div className="px-5 py-4 sm:px-6">
@@ -4193,13 +4193,13 @@ function AssessmentContent() {
                     option={option}
                     selected={selected === option}
                     onSelect={() => setAnswer(item.id, option)}
-                    refined={selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst'}
+                    refined={selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach'}
                   />
                 ))}
               </div>
 
               <div className={`flex justify-end ${
-                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst') ? 'pb-6' : ''
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach') ? 'pb-6' : ''
               }`}>
                 <button
                   type="button"
@@ -4276,7 +4276,7 @@ function AssessmentContent() {
 
           <div
             className={`grid items-start ${
-              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst')
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach')
                 ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-7'
                 : 'gap-7 lg:grid-cols-[0.43fr_1.57fr] lg:gap-9'
             }`}
@@ -4288,7 +4288,7 @@ function AssessmentContent() {
 
             <section
               className={
-                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst')
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach')
                   ? 'max-w-[840px] lg:-translate-y-4'
                   : undefined
               }
@@ -4308,14 +4308,14 @@ function AssessmentContent() {
                             ? `/audio/diagnostics/performance-analyst/performance-analyst-listening-${listeningStep + 1}.mp3`
                             : undefined
                   }
-                  minimal={selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst'}
+                  minimal={selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach'}
                 />
 
               </div>
 
               <div
                 className={
-                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Performance Analyst')
+                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach')
                     ? 'mb-3'
                     : 'mb-5 border-l-4 border-fei-sky pl-5 sm:pl-6'
                 }
@@ -4344,14 +4344,14 @@ function AssessmentContent() {
                     option={option}
                     selected={selected === option}
                     onSelect={() => setAnswer(item.id, option)}
-                    refined={selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst'}
+                    refined={selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach'}
                   />
                 ))}
               </div>
 
               <div
                 className={`flex justify-end ${
-                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst') ? 'pb-6' : ''
+                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach') ? 'pb-6' : ''
                 }`}
               >
                 <button
@@ -4490,7 +4490,7 @@ function AssessmentContent() {
 
           <div
             className={`grid items-start ${
-              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst')
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach')
                 ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-7'
                 : 'gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12'
             }`}
@@ -4501,12 +4501,12 @@ function AssessmentContent() {
 
             <section
               className={
-                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst')
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach')
                   ? 'max-w-[840px] lg:-translate-y-4'
                   : undefined
               }
             >
-              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst') ? (
+              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach') ? (
                 <>
                   <div className="mb-4">
                     {vocabularySetup && selectedRole !== 'Performance Analyst' && (
@@ -4589,14 +4589,14 @@ function AssessmentContent() {
                     option={option}
                     selected={selected === option}
                     onSelect={() => setAnswer(item.id, option)}
-                    refined={selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst'}
+                    refined={selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach'}
                   />
                 ))}
               </div>
 
               <div
                 className={`flex justify-end ${
-                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst') ? 'pb-6' : ''
+                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach') ? 'pb-6' : ''
                 }`}
               >
                 <button
@@ -4609,7 +4609,7 @@ function AssessmentContent() {
                       selectedRole === 'Professional Player' ||
                       selectedRole === 'Head Coach' ||
                       selectedRole === 'Assistant Coach' ||
-                      selectedRole === 'Performance Analyst'
+                      selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach'
                     ) {
                       setSection('writing')
                     } else {
@@ -4628,7 +4628,7 @@ function AssessmentContent() {
                         : (selectedRole === 'Professional Player' ||
                             selectedRole === 'Head Coach' ||
                             selectedRole === 'Assistant Coach' ||
-                            selectedRole === 'Performance Analyst')
+                            selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach')
                           ? 'Continue to Writing'
                           : 'Continue to Functional Communication'}
                       <ChevronRightIcon />
@@ -4703,7 +4703,7 @@ function AssessmentContent() {
 
           <div
             className={`grid items-start ${
-              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst')
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach')
                 ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-7'
                 : 'gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12'
             }`}
@@ -4714,7 +4714,7 @@ function AssessmentContent() {
 
             <section
               className={
-                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst')
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach')
                   ? 'min-w-0 max-w-[840px] lg:-translate-y-4'
                   : undefined
               }
@@ -4782,14 +4782,14 @@ function AssessmentContent() {
                     option={option}
                     selected={selected === option}
                     onSelect={() => setAnswer(item.id, option)}
-                    refined={selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst'}
+                    refined={selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach'}
                   />
                 ))}
               </div>
 
               <div
                 className={`flex justify-end ${
-                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst') ? 'pb-6' : ''
+                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach') ? 'pb-6' : ''
                 }`}
               >
                 <button
@@ -4862,7 +4862,7 @@ function AssessmentContent() {
 
           <div
             className={`grid items-start ${
-              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst')
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach')
                 ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-7'
                 : 'gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12'
             }`}
@@ -4873,14 +4873,14 @@ function AssessmentContent() {
 
             <section
               className={
-                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst')
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach')
                   ? 'min-w-0 max-w-[840px] lg:-translate-y-4'
                   : undefined
               }
             >
           <div
             className={
-              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Performance Analyst')
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach')
                 ? 'mb-4 overflow-hidden rounded-xl border border-fei-bg/[0.11] bg-white px-5 py-4 shadow-[0_4px_14px_rgba(15,23,42,0.025)] sm:px-6'
                 : selectedRole === 'Assistant Coach'
                   ? 'mb-5 overflow-hidden rounded-2xl border border-fei-bg/[0.10] bg-white shadow-[0_4px_16px_rgba(15,23,42,0.035)]'
@@ -4901,7 +4901,7 @@ function AssessmentContent() {
             <div className={selectedRole === 'Assistant Coach' ? 'px-5 py-5 sm:px-6' : undefined}>
             <p
               className={
-                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Performance Analyst')
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach')
                   ? 'text-[10px] font-medium uppercase tracking-[0.07em] text-fei-bg/38'
                   : selectedRole === 'Assistant Coach'
                     ? 'text-[10px] font-bold uppercase tracking-[0.16em] text-fei-bg/38'
@@ -4934,7 +4934,7 @@ function AssessmentContent() {
                       : selectedRole === 'Scout'
                         ? 'You need to write a short scout report recommendation for a technically strong player with inconsistent form. Include profile fit, risk, and next step.'
                         : selectedRole === 'Fitness Coach'
-                          ? 'You need to write a short weekly load report for the coaching staff. The squad average is 8.3 km, weekly load is up 3%, three players show emerging fatigue, and Friday volume may need to be reduced before the match.'
+                          ? 'You are preparing a short update for the Head Coach before training. One player completed 90 minutes in the previous match. His recovery score is below his usual level, his legs feel heavy, and his recent high-speed running load is above his weekly average.'
                           : selectedRole === 'Performance Analyst'
                             ? 'You are preparing a short opposition note for the coaching staff. Across the last three matches, the opponent’s right fullback has moved very high during possession. When the ball is lost, the right center-back often has to defend wide, leaving more space between the center-backs.'
                             : selectedRole === 'Nutritionist'
@@ -4948,16 +4948,26 @@ function AssessmentContent() {
             </div>
           </div>
 
-          <div className={(selectedRole === 'Professional Player' || selectedRole === 'Head Coach') ? 'mb-4' : 'mb-5'}>
+          <div
+            className={
+              (selectedRole === 'Professional Player' ||
+                selectedRole === 'Head Coach' ||
+                selectedRole === 'Assistant Coach' ||
+                selectedRole === 'Performance Analyst' ||
+                selectedRole === 'Fitness Coach')
+                ? 'mb-4'
+                : 'mb-5'
+            }
+          >
             <p
               className={
-                selectedRole === 'Professional Player'
+                (selectedRole === 'Professional Player' ||
+                  selectedRole === 'Head Coach' ||
+                  selectedRole === 'Assistant Coach' ||
+                  selectedRole === 'Performance Analyst' ||
+                  selectedRole === 'Fitness Coach')
                   ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
-                  : selectedRole === 'Head Coach'
-                    ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
-                    : selectedRole === 'Performance Analyst'
-                      ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
-                      : 'text-xl font-black leading-8 text-fei-bg'
+                  : 'text-xl font-black leading-8 text-fei-bg'
               }
             >
               {selectedRole === 'Head Coach'
@@ -4971,7 +4981,7 @@ function AssessmentContent() {
                       : selectedRole === 'Scout'
                         ? 'Write 3–5 sentences with player quality, profile fit, risk, and recommended next step.'
                         : selectedRole === 'Fitness Coach'
-                          ? 'You are preparing a short update for the Head Coach before training. One player completed 90 minutes in the previous match. His recovery score is below his usual level, his legs feel heavy, and his recent high-speed running load is above his weekly average.'
+                          ? 'Write a 60–90-word message to the Head Coach.'
                           : selectedRole === 'Performance Analyst'
                             ? 'Write a 60–90-word opposition analysis memo for the coaching staff.'
                             : selectedRole === 'Nutritionist'
@@ -4982,10 +4992,12 @@ function AssessmentContent() {
                                   ? 'Write 3–5 sentences with the key issue, strategy and coaching support needed.'
                                   : 'Write a 30–80-word message to the physiotherapist describing the discomfort clearly and asking for an assessment.'}
             </p>
+
             {(selectedRole === 'Professional Player' ||
               selectedRole === 'Head Coach' ||
               selectedRole === 'Assistant Coach' ||
-              selectedRole === 'Performance Analyst') ? (
+              selectedRole === 'Performance Analyst' ||
+              selectedRole === 'Fitness Coach') ? (
               <>
                 <p className="mt-3 text-sm font-medium leading-6 text-fei-bg/62">
                   Your response should:
@@ -4993,9 +5005,9 @@ function AssessmentContent() {
 
                 {selectedRole === 'Professional Player' ? (
                   <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
-                    <li className="list-disc">summarize the player’s current physical status;</li>
-                    <li className="list-disc">use the available evidence to explain your concern;</li>
-                    <li className="list-disc">recommend one appropriate adjustment to today’s training load.</li>
+                    <li className="list-disc">describe where and when the discomfort started;</li>
+                    <li className="list-disc">explain what movement caused it and how it changed;</li>
+                    <li className="list-disc">state clearly what support or assessment you need.</li>
                   </ul>
                 ) : selectedRole === 'Head Coach' ? (
                   <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
@@ -5009,11 +5021,17 @@ function AssessmentContent() {
                     <li className="list-disc">explain the main issue using observable evidence;</li>
                     <li className="list-disc">recommend one clear priority for the next session.</li>
                   </ul>
-                ) : (
+                ) : selectedRole === 'Performance Analyst' ? (
                   <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
                     <li className="list-disc">identify the recurring tactical pattern;</li>
                     <li className="list-disc">explain the vulnerability using the evidence provided;</li>
                     <li className="list-disc">recommend one clear way your team could exploit it.</li>
+                  </ul>
+                ) : (
+                  <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
+                    <li className="list-disc">summarize the player’s current physical status;</li>
+                    <li className="list-disc">use the available evidence to explain your concern;</li>
+                    <li className="list-disc">recommend one appropriate adjustment to today’s training load.</li>
                   </ul>
                 )}
               </>
@@ -5036,11 +5054,13 @@ function AssessmentContent() {
                     ? 'The first part of the session was effective because...'
                     : selectedRole === 'Performance Analyst'
                       ? 'The opponent’s structure creates an opportunity when...'
-                      : 'Hi, I wanted to report...'
+                      : selectedRole === 'Fitness Coach'
+                    ? 'The player’s current physical status suggests...'
+                    : 'Hi, I wanted to report...'
             }
             rows={6}
             className={`mb-2 w-full resize-none bg-white text-base leading-7 text-fei-bg placeholder:text-fei-bg/25 focus:border-fei-sky focus:outline-none ${
-              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst')
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach')
                 ? 'rounded-xl border border-fei-bg/[0.12] px-5 py-4 shadow-[0_4px_14px_rgba(15,23,42,0.025)]'
                 : 'rounded-2xl border border-fei-bg/15 px-5 py-4'
             }`}
@@ -5053,8 +5073,10 @@ function AssessmentContent() {
                   ? 'Target: 70–100 words'
                   : selectedRole === 'Assistant Coach'
                     ? 'Target: 60–90 words'
-                    : selectedRole === 'Performance Analyst'
+                    : selectedRole === 'Fitness Coach'
                       ? 'Target: 60–90 words'
+                      : selectedRole === 'Performance Analyst'
+                        ? 'Target: 60–90 words'
                       : 'Target: 30–80 words'}
               </span>
             )}
@@ -5112,7 +5134,7 @@ function AssessmentContent() {
 
           <div
             className={`grid items-start ${
-              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst')
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach')
                 ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-7'
                 : 'gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12'
             }`}
@@ -5123,14 +5145,14 @@ function AssessmentContent() {
 
             <section
               className={
-                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst')
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach')
                   ? 'min-w-0 max-w-[840px] lg:-translate-y-4'
                   : undefined
               }
             >
           <div
             className={
-              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Performance Analyst')
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach')
                 ? 'mb-4 overflow-hidden rounded-xl border border-fei-bg/[0.11] bg-white px-5 py-4 shadow-[0_4px_14px_rgba(15,23,42,0.025)] sm:px-6'
                 : selectedRole === 'Assistant Coach'
                   ? 'mb-5 overflow-hidden rounded-2xl border border-fei-bg/[0.10] bg-white px-5 py-5 shadow-[0_4px_16px_rgba(15,23,42,0.035)] sm:px-6 sm:py-6'
@@ -5139,7 +5161,7 @@ function AssessmentContent() {
           >
             <p
               className={
-                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Performance Analyst')
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach')
                   ? 'text-[10px] font-medium uppercase tracking-[0.07em] text-fei-bg/38'
                   : 'text-xs font-black uppercase tracking-[0.22em] text-fei-bg/45'
               }
@@ -5184,7 +5206,7 @@ function AssessmentContent() {
                       : selectedRole === 'Scout'
                         ? 'You need to defend a recommendation to the Director of Recruitment. The player is technical, affordable now, and likely to become more expensive, but there are consistency concerns.'
                         : selectedRole === 'Fitness Coach'
-                          ? 'You need to explain your load position to the head coach. The match is important, current load is close to threshold, and you need to protect performance without sounding negative or overly cautious.'
+                          ? 'You are speaking with a player after an evening match. He completed 90 minutes, recorded one of his highest high-speed running totals of the month, and performed several repeated sprint efforts during the final 20 minutes. He also returned from a hamstring injury three weeks ago and is still rebuilding his normal exposure to high-speed running. The team plays again in three days. Tomorrow is a recovery day, followed by one field session before the next match.'
                           : selectedRole === 'Performance Analyst'
                             ? 'During the staff meeting, the Head Coach says: “We had more of the ball in the second half, but we still struggled to create chances. What changed?” Your analysis shows that the team circulated possession deeper, received under more pressure in midfield, and completed fewer progressive actions into the final third.'
                             : selectedRole === 'Nutritionist'
@@ -5230,7 +5252,7 @@ function AssessmentContent() {
                       : selectedRole === 'Scout'
                         ? 'Defend your recommendation clearly, including tactical fit, value, timing, and risk.'
                         : selectedRole === 'Fitness Coach'
-                          ? 'Explain your load recommendation clearly, balancing match performance, risk, and availability.'
+                          ? 'Give a 45–60 second explanation to the player about how he should manage the next two days.'
                           : selectedRole === 'Performance Analyst'
                             ? 'Give a 45–60 second response to the Head Coach.'
                             : selectedRole === 'Nutritionist'
@@ -5244,7 +5266,8 @@ function AssessmentContent() {
             {(selectedRole === 'Professional Player' ||
               selectedRole === 'Head Coach' ||
               selectedRole === 'Assistant Coach' ||
-              selectedRole === 'Performance Analyst') ? (
+              selectedRole === 'Performance Analyst' ||
+              selectedRole === 'Fitness Coach') ? (
               <>
                 <p className="mt-3 text-sm font-medium leading-6 text-fei-bg/62">
                   Your response should:
@@ -5268,11 +5291,19 @@ function AssessmentContent() {
                     <li className="list-disc">clarify the pressing trigger and the supporting player’s responsibility;</li>
                     <li className="list-disc">finish with one clear instruction for the restart.</li>
                   </ul>
-                ) : (
+                ) : selectedRole === 'Performance Analyst' ? (
                   <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
                     <li className="list-disc">explain why more possession did not mean better attacking control;</li>
                     <li className="list-disc">use the evidence to identify what changed after halftime;</li>
                     <li className="list-disc">finish with one clear tactical point for the staff to review.</li>
+                  </ul>
+                ) : (
+                  <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
+                    <li className="list-disc">explain what the match demands mean for his recovery;</li>
+                    <li className="list-disc">consider his recent return from injury when explaining the next training session;</li>
+                    <li className="list-disc">clarify what may need to be adjusted compared with his normal training;</li>
+                    <li className="list-disc">explain what should be monitored before the next match;</li>
+                    <li className="list-disc">keep the message clear, practical and focused on readiness.</li>
                   </ul>
                 )}
 
