@@ -1435,46 +1435,65 @@ const scoutItems = {
     {
       id: 'l1',
       level: 'A2',
-      label: 'Item 6 — Basic Player Profile',
-      script: 'The player is 23 years old, a left winger. Technically he is strong, and his speed is very good. His attitude is sometimes unfocused, but physically he can handle the league.',
-      question: 'Which two strengths are mentioned?',
+      label: 'Item 7 — Basic Player Profile',
+      script:
+        'The player is 22 and usually plays on the right wing. He is quick, comfortable with the ball and works hard when the team loses possession. His crossing is less consistent.',
+      question: 'Which area is identified as less consistent?',
       options: [
-        'A. Leadership and finishing.',
-        'B. Attitude and tactical discipline.',
-        'C. Technical level and speed.',
-        'D. Pressing and defensive positioning.',
+        'A. His speed.',
+        'B. His crossing.',
+        'C. His work rate.',
+        'D. His ball control.',
       ],
-      correct: 'C',
+      correct: 'B',
     },
     {
       id: 'l2',
       level: 'B1',
-      label: 'Item 7 — Comparing Three Strikers',
-      script: 'Profile A is technical and links play well, but less physical. Profile B is strong and direct, but slower. Profile C is balanced, but less proven. For our 4-2-3-1, the technical connection is the priority.',
-      question: 'Which profile best fits the system?',
+      label: 'Item 8 — Comparing Two Profiles',
+      script:
+        'Player A is more experienced and stronger physically, but Player B is quicker and more comfortable receiving between the lines. Because the target role requires mobility and combination play, I would continue monitoring Player B.',
+      question: 'Why does the Scout prefer to continue monitoring Player B?',
       options: [
-        'A. Profile B, because physical power is the only priority.',
-        'B. Profile C, because balance matters more than role fit.',
-        'C. No profile fits because all have weaknesses.',
-        'D. Profile A, because technical link play is the priority.',
+        'A. He has more professional experience.',
+        'B. He is physically stronger.',
+        'C. His qualities fit the target role better.',
+        'D. He has already been approved for recruitment.',
       ],
-      correct: 'D',
+      correct: 'C',
     },
     {
       id: 'l3',
       level: 'B2',
-      label: 'Item 8 — Form or Development?',
-      script: 'We have tracked him for 18 months. Last season he scored 8 goals in 30 matches. This season he has 15 in 20. The question is whether this is genuine improvement or temporary form. We need video evidence of decision-making, not only goals.',
-      question: 'What is the main scouting question?',
+      label: 'Item 9 — Form or Sustainable Improvement?',
+      script:
+        'The forward’s numbers have improved considerably this season, yet the increase in goals does not tell us whether his overall game has developed. I would compare his decision-making, movement and chance quality across several matches before treating the current output as evidence of sustainable progression.',
+      question: 'What does the Scout want to establish?',
       options: [
-        'A. Whether the player is old enough for the first team.',
-        'B. Whether the improvement is sustainable or just current form.',
-        'C. Whether goal numbers are the only recruitment evidence needed.',
-        'D. Whether the player should be signed immediately.',
+        'A. Whether the player’s improvement extends beyond his recent goal total.',
+        'B. Whether the player should immediately move to a stronger league.',
+        'C. Whether his finishing numbers are higher than those of other forwards.',
+        'D. Whether the current season should be considered separately from previous ones.',
+      ],
+      correct: 'A',
+    },
+    {
+      id: 'l4',
+      level: 'C1',
+      label: 'Item 10 — Evaluating Contextual Risk',
+      script:
+        'The midfielder has been highly effective in a possession-dominant team, where he usually receives under controlled conditions. What remains uncertain is whether his decision-making would hold up in a more transitional environment with less time and space. Before endorsing the profile, I would want evidence that his effectiveness is not overly dependent on the current tactical context.',
+      question: 'What is the Scout’s main concern?',
+      options: [
+        'A. His current team gives him too few opportunities to influence possession.',
+        'B. His effectiveness may not transfer reliably to a different tactical environment.',
+        'C. His decision-making is already inadequate under pressure.',
+        'D. His technical quality is less important than his physical profile.',
       ],
       correct: 'B',
     },
   ],
+
   vocabulary: [
     {
       id: 'v1',
@@ -4573,9 +4592,11 @@ function AssessmentContent() {
                                     ? `/audio/diagnostics/nutritionist/nutritionist-listening-${listeningStep + 1}.mp3`
                                     : selectedRole === 'Academy Director'
                                       ? `/audio/diagnostics/academy-director/academy-director-listening-${listeningStep + 1}.mp3`
-                                      : undefined
+                                      : selectedRole === 'Scout'
+                                        ? `/audio/diagnostics/scout/scout-listening-${listeningStep + 1}.mp3`
+                                        : undefined
                   }
-                  minimal={selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director'}
+                  minimal={selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout'}
                 />
 
               </div>
