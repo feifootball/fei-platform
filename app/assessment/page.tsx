@@ -1342,75 +1342,95 @@ const scoutItems = {
   warmup: [
     {
       id: 'w1',
-      label: 'Item 1 — Role Context',
-      context: 'You are completing the FEI diagnostic for the Scout — First Team Recruitment role.',
-      question: 'Which situation is most central to your scouting role?',
+      label: 'Item 1 — Player Evaluation',
+      context: 'You are completing the FEI diagnostic for the Scout role.',
+      question: 'Which task is a core responsibility of a Scout?',
       options: [
-        'A. Preparing player recovery plans after training.',
-        'B. Coaching tactical exercises with the first team.',
-        'C. Observing players live and writing evaluation reports.',
-        'D. Negotiating contract terms with player agents.',
+        'A. Planning rehabilitation schedules for injured players.',
+        'B. Leading tactical sessions with squad players.',
+        'C. Observing players and producing evidence-based evaluations.',
+        'D. Negotiating contractual terms with player representatives.',
       ],
       correct: 'C',
     },
     {
       id: 'w2',
-      label: 'Item 2 — Communication Priority',
-      context: 'The assessment personalizes the pathway based on your main communication need.',
-      question: 'Which communication task is most important in your daily work?',
+      label: 'Item 2 — Recruitment Communication',
+      context: 'The diagnostic personalizes the pathway around the communication demands of your scouting role.',
+      question: 'What would a Scout typically communicate to the recruitment department?',
       options: [
-        'A. Communicating player evaluations and recruitment recommendations.',
-        'B. Creating social media content after matches.',
-        'C. Explaining recovery protocols to injured players.',
-        'D. Presenting nutrition plans to the performance staff.',
+        'A. A player’s suitability for a defined recruitment profile.',
+        'B. The squad’s weekly physical-load targets.',
+        'C. The medical plan for returning an injured player.',
+        'D. Tactical instructions for an upcoming match.',
       ],
       correct: 'A',
     },
   ],
+
   reading: [
     {
       id: 'r1',
       level: 'A2',
-      label: 'Item 3 — Short Player Note',
-      context: 'A scout writes this quick note after watching a winger:\\n\\n"Quick and technical. Good first touch. Weak pressing. Inconsistent across both halves."',
-      question: 'Which area is clearly identified as a weakness?',
+      label: 'Item 3 — Wide Player Observation',
+      context:
+        'Scout note:\n\n“The winger is quick and comfortable with the ball. He makes good runs behind the fullback, but he does not always press after losing possession.”',
+      question: 'Which part of the player’s game needs improvement?',
       options: [
-        'A. The player lacks technical ability on the ball.',
-        'B. The player has a poor first touch under pressure.',
-        'C. The player is slow and physically limited.',
-        'D. The player’s pressing and consistency need attention.',
+        'A. His ability to run with the ball.',
+        'B. His movement behind the defense.',
+        'C. His pressing after possession is lost.',
+        'D. His speed when attacking wide areas.',
       ],
-      correct: 'D',
+      correct: 'C',
     },
     {
       id: 'r2',
       level: 'B1',
-      label: 'Item 4 — Recruitment Monitoring Note',
-      context: 'Internal scouting note:\\n\\n"We have observed this player for six months. He had an excellent U21 season and his market value is rising. Two other clubs are now monitoring him. Recommendation: advance to negotiation before the price increases."',
-      question: 'What is the main recommendation?',
+      label: 'Item 4 — Monitoring Progress',
+      context:
+        'Scouting update:\n\n“The scout has watched the midfielder several times this season. Although his passing range has improved, he still loses possession when he is pressed aggressively. Because the club needs a player who can receive under pressure, another observation has been recommended.”',
+      question: 'Why has another observation been recommended?',
       options: [
-        'A. Monitor the player for another full season.',
-        'B. Move toward negotiation before the market changes.',
-        'C. Reject the player because other clubs are interested.',
-        'D. Wait until his value becomes more stable.',
+        'A. The scout wants to confirm how the player performs under pressure.',
+        'B. The club has already decided to recruit the midfielder.',
+        'C. The player needs to improve his long-range shooting.',
+        'D. The scout believes his passing has become less effective.',
       ],
-      correct: 'B',
+      correct: 'A',
     },
     {
       id: 'r3',
       level: 'B2',
-      label: 'Item 5 — Recruitment Reality Check',
-      context: 'The head coach wants a proven 25–30-year-old goalscorer. The market price for that profile is over €40M, but the available budget is €15M. The recruitment team is considering an U23 forward with high potential and lower cost.',
-      question: 'What is the main communication issue?',
+      label: 'Item 5 — Role Fit',
+      context:
+        'Recruitment assessment:\n\n“The striker has scored consistently, yet much of his output comes from attacking space in transition. The club, by contrast, is assessing a profile that can also combine effectively against compact defensive blocks. Although his production is impressive, the evidence does not yet confirm that his strengths transfer naturally to the required role.”',
+      question: 'What is the Scout’s main reservation?',
       options: [
-        'A. The requested profile and available budget are not aligned.',
-        'B. The recruitment team should ignore the coach’s request.',
-        'C. The club must spend over budget to compete.',
-        'D. The U23 profile has already proven first-team output.',
+        'A. His scoring record is based on too few appearances.',
+        'B. His strongest qualities may not fully match the required profile.',
+        'C. He is unlikely to perform against physically stronger defenders.',
+        'D. His attacking contribution depends mainly on individual technique.',
       ],
-      correct: 'A',
+      correct: 'B',
+    },
+    {
+      id: 'r4',
+      level: 'C1',
+      label: 'Item 6 — Recruitment Projection',
+      context:
+        'Scouting assessment:\n\n“The center-back has excelled in a dominant side whose defensive structure rarely leaves him exposed. While his positioning and distribution appear assured, the extent to which he can manage sustained exposure in large spaces has yet to be established. Given that the target profile requires aggressive positioning with minimal cover, his suitability cannot be inferred solely from current output.”',
+      question: 'Which conclusion is best supported by the report?',
+      options: [
+        'A. His current output provides sufficient evidence to overlook uncertainty about tactical adaptation.',
+        'B. His distribution indicates that he should transfer comfortably to a more demanding defensive structure.',
+        'C. Further evidence is required before concluding that his performance will translate to the intended role.',
+        'D. His experience in a dominant side makes him inherently unsuitable for a more exposed defensive model.',
+      ],
+      correct: 'C',
     },
   ],
+
   listening: [
     {
       id: 'l1',
@@ -3442,7 +3462,7 @@ function AssessmentContent() {
   const selectedRole = searchParams.get('role') || 'Professional Player'
   const assessmentAvailable = selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Academy Director' || selectedRole === 'Head of Scouting' || selectedRole === 'Scout' || selectedRole === 'Fitness Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Nutritionist' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist'
   const activeItems = selectedRole === 'Head Coach' ? headCoachItems : selectedRole === 'Assistant Coach' ? assistantCoachItems : selectedRole === 'Academy Director' ? academyDirectorItems : selectedRole === 'Head of Scouting' ? headOfScoutingItems : selectedRole === 'Scout' ? scoutItems : selectedRole === 'Fitness Coach' ? fitnessCoachItems : selectedRole === 'Performance Analyst' ? performanceAnalystItems : selectedRole === 'Nutritionist' ? nutritionistItems : selectedRole === 'Physiotherapist' ? physiotherapistItems : selectedRole === 'Sports Psychologist' ? sportsPsychologistItems : items
-  const roleSubtitle = selectedRole === 'Academy Director' ? 'Youth & Academy' : selectedRole === 'Head of Scouting' ? 'Recruitment Leadership' : selectedRole === 'Scout' ? 'First Team Recruitment' : selectedRole === 'Fitness Coach' ? 'Strength & Conditioning' : selectedRole === 'Performance Analyst' ? 'First Team Analysis' : selectedRole === 'Nutritionist' ? 'Performance Nutrition' : selectedRole === 'Physiotherapist' ? 'Medical & Rehabilitation' : selectedRole === 'Sports Psychologist' ? 'Mental Performance' : selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' ? 'First Team' : 'Senior Squad'
+  const roleSubtitle = selectedRole === 'Academy Director' ? 'Youth & Academy' : selectedRole === 'Head of Scouting' ? 'Recruitment Leadership' : selectedRole === 'Scout' ? 'Player Scouting & Recruitment' : selectedRole === 'Fitness Coach' ? 'Strength & Conditioning' : selectedRole === 'Performance Analyst' ? 'First Team Analysis' : selectedRole === 'Nutritionist' ? 'Performance Nutrition' : selectedRole === 'Physiotherapist' ? 'Medical & Rehabilitation' : selectedRole === 'Sports Psychologist' ? 'Mental Performance' : selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' ? 'First Team' : 'Senior Squad'
 
   const [section, setSection] = useState<Section>('intro')
   const [answers, setAnswers] = useState<Record<string, Answer>>({})
