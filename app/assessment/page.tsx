@@ -4576,11 +4576,14 @@ function AssessmentContent() {
                         : selectedRole === 'Performance Analyst'
                           ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
                           : selectedRole === 'Fitness Coach' ||
-                              selectedRole === 'Physiotherapist'
+                              selectedRole === 'Physiotherapist' ||
+                              selectedRole === 'Sports Psychologist' ||
+                              selectedRole === 'Nutritionist' ||
+                              selectedRole === 'Academy Director'
                             ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
                             : selectedRole === 'Assistant Coach'
-                          ? 'max-w-[780px] text-lg font-medium leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
-                          : 'max-w-[780px] text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl'
+                              ? 'max-w-[780px] text-lg font-medium leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
+                              : 'max-w-[780px] text-2xl font-black leading-tight tracking-[-0.025em] text-fei-bg sm:text-3xl'
                   }
                 >
                   {item.question}
