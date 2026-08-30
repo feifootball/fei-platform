@@ -4720,16 +4720,18 @@ function AssessmentContent() {
                         <img
                           key={`${selectedRole}-${item.id}-${vocabularySpeaker}`}
                           src={
-                            fixedProfessionalPlayerSpeaker?.avatar ??
-                            (vocabularySpeaker === 'Physiotherapist'
-                              ? '/images/diagnostics/avatars/physiotherapist.png'
-                              : vocabularySpeaker === 'Assistant Coach'
-                                ? '/images/diagnostics/avatars/assistant-coach.png'
-                                : vocabularySpeaker === 'Sporting Director'
-                                  ? '/images/diagnostics/avatars/sporting-director.png'
-                                  : vocabularySpeaker === 'Coach'
-                                    ? '/images/diagnostics/avatars/coach.png'
-                                    : '/images/diagnostics/avatars/teammate.png')
+                            selectedRole === 'Nutritionist'
+                              ? '/avatars/nutritionist.png'
+                              : fixedProfessionalPlayerSpeaker?.avatar ??
+                                (vocabularySpeaker === 'Physiotherapist'
+                                  ? '/images/diagnostics/avatars/physiotherapist.png'
+                                  : vocabularySpeaker === 'Assistant Coach'
+                                    ? '/images/diagnostics/avatars/assistant-coach.png'
+                                    : vocabularySpeaker === 'Sporting Director'
+                                      ? '/images/diagnostics/avatars/sporting-director.png'
+                                      : vocabularySpeaker === 'Coach'
+                                        ? '/images/diagnostics/avatars/coach.png'
+                                        : '/images/diagnostics/avatars/teammate.png')
                           }
                           alt={`${vocabularySpeaker} avatar`}
                           loading="eager"
