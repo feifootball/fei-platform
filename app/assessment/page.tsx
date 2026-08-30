@@ -998,46 +998,61 @@ const academyDirectorItems = {
     {
       id: 'v1',
       level: 'A2',
-      label: 'Item 9 — Competency Framework',
-      context: 'A new coach asks about the academy competency framework. You explain that it shows what players must demonstrate at each stage.',
-      question: 'What does "competency framework" mean here?',
+      label: 'Item 11 — Development Plan',
+      context: 'The Academy Director says: “Each player has a development plan for the season.”',
+      question: 'What does development plan mean here?',
       options: [
-        'A. A list of academy matches and seasonal results',
-        'B. A clear standard of what players must demonstrate',
-        'C. A report showing only physical testing scores',
-        'D. A schedule for moving players between groups',
+        'A. A record of matches played this season.',
+        'B. A plan for how the player should improve.',
+        'C. A schedule for senior-team training sessions.',
+        'D. A report used to review contract decisions.',
       ],
       correct: 'B',
     },
     {
       id: 'v2',
       level: 'B1',
-      label: 'Item 10 — Pathway Mapping',
-      context: 'In a family meeting, you say: "We use pathway mapping to show how a player can move from youth development toward first-team readiness."',
-      question: 'What does "pathway mapping" refer to?',
+      label: 'Item 12 — Readiness Criteria',
+      context: 'The academy report says: “The player meets most of the readiness criteria, but consistency is still a concern.”',
+      question: 'What does readiness criteria mean?',
       options: [
-        'A. A map of academy training facilities',
-        'B. A list of players selected for the next match',
-        'C. A ranking of players by technical potential',
-        'D. A plan showing development stages toward first team',
+        'A. Tests used to compare players in one age group.',
+        'B. Targets used to plan training across the season.',
+        'C. Standards used to decide if a player can progress.',
+        'D. Rules used to decide who receives a new contract.',
       ],
-      correct: 'D',
+      correct: 'C',
     },
     {
       id: 'v3',
       level: 'B2',
-      label: 'Item 11 — Academy ROI Metrics',
-      context: 'The board asks about academy ROI metrics: first-team progressions, player value, transfer potential and club reputation.',
-      question: 'What are "academy ROI metrics" measuring?',
+      label: 'Item 13 — Transitional Exposure',
+      context: 'The pathway review says: “We recommend transitional exposure to senior football rather than immediate permanent promotion.”',
+      question: 'What does transitional exposure mean here?',
       options: [
-        'A. Development impact through progressions, value and reputation',
-        'B. Daily training attendance across all age groups',
-        'C. Player happiness and family satisfaction only',
-        'D. Facility maintenance costs across the academy',
+        'A. Regular movement between different academy teams.',
+        'B. Limited senior involvement before full promotion.',
+        'C. Reduced match minutes during a review period.',
+        'D. Permanent promotion after senior observation.',
       ],
-      correct: 'A',
+      correct: 'B',
+    },
+    {
+      id: 'v4',
+      level: 'C1',
+      label: 'Item 14 — Developmental Trade-Off',
+      context: 'The Academy Director says: “Accelerating promotion may create a developmental trade-off.”',
+      question: 'What does developmental trade-off imply here?',
+      options: [
+        'A. Delaying a decision until staff reach agreement.',
+        'B. Comparing two pathways with similar outcomes.',
+        'C. Gaining one benefit while giving up another.',
+        'D. Moving resources between different age groups.',
+      ],
+      correct: 'C',
     },
   ],
+
   functional: [
     {
       id: 'f1',
@@ -2972,7 +2987,8 @@ function calculateResult(
     role === 'Fitness Coach' ||
     role === 'Physiotherapist' ||
     role === 'Sports Psychologist' ||
-    role === 'Nutritionist'
+    role === 'Nutritionist' ||
+    role === 'Academy Director'
 
   const objectiveItems = usesProgressiveDiagnostic
     ? [
@@ -3476,7 +3492,8 @@ function AssessmentContent() {
     selectedRole === 'Fitness Coach' ||
     selectedRole === 'Physiotherapist' ||
     selectedRole === 'Sports Psychologist' ||
-    selectedRole === 'Nutritionist'
+    selectedRole === 'Nutritionist' ||
+    selectedRole === 'Academy Director'
   const totalItems = uses16ItemDiagnostic ? 16 : 17
 
   useEffect(() => {
@@ -3760,7 +3777,8 @@ function AssessmentContent() {
         selectedRole === 'Fitness Coach' ||
         selectedRole === 'Physiotherapist' ||
         selectedRole === 'Sports Psychologist' ||
-        selectedRole === 'Nutritionist')
+        selectedRole === 'Nutritionist' ||
+        selectedRole === 'Academy Director')
         ? {
             'warm-up': step + 1,
             'reading': step + 3,
@@ -4121,12 +4139,12 @@ function AssessmentContent() {
 
         <main
           className={`mx-auto w-full px-6 sm:px-8 ${
-            (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist')
+            (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director')
               ? 'max-w-[1080px] py-5 lg:py-6'
               : 'max-w-[1280px] py-8 lg:py-10'
           }`}
         >
-          <div className={(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist') ? 'mb-5' : 'mb-10'}>
+          <div className={(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director') ? 'mb-5' : 'mb-10'}>
             <div className="flex items-center justify-between gap-4">
               <p className="text-sm font-semibold text-fei-bg/55">
                 Item {currentItem} of {totalItems}
@@ -4147,13 +4165,13 @@ function AssessmentContent() {
 
           <div
             className={`grid items-start ${
-              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist')
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director')
                 ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-7'
                 : 'gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12'
             }`}
           >
             <aside className="lg:sticky lg:top-10 lg:pt-1">
-              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist') ? (
+              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director') ? (
                 <SectionBadge label="Role Warm-Up" />
               ) : (
                 <>
@@ -4169,14 +4187,14 @@ function AssessmentContent() {
 
             <section
               className={
-                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist')
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director')
                   ? 'max-w-[840px]'
                   : undefined
               }
             >
-              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist') ? (
+              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director') ? (
                 <>
-                  {(selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist') ? (
+                  {(selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director') ? (
                     <div className="mb-4">
                       <h1 className="max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl">
                         {item.question}
@@ -4204,7 +4222,7 @@ function AssessmentContent() {
                 </div>
               )}
 
-              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist') ? (
+              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director') ? (
                 <div className="mb-4 overflow-hidden border-y border-fei-bg/[0.08]">
                   {item.options.map((option) => (
                     <OptionButton
@@ -4231,7 +4249,7 @@ function AssessmentContent() {
 
               <div
                 className={`flex justify-end ${
-                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist') ? 'pb-6' : 'mt-8'
+                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director') ? 'pb-6' : 'mt-8'
                 }`}
               >
                 <button
@@ -4309,7 +4327,7 @@ function AssessmentContent() {
 
           <div
             className={`grid items-start ${
-              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist')
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director')
                 ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-7'
                 : 'gap-7 lg:grid-cols-[0.43fr_1.57fr] lg:gap-9'
             }`}
@@ -4320,12 +4338,12 @@ function AssessmentContent() {
 
             <section
               className={
-                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist')
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director')
                   ? 'max-w-[840px] lg:-translate-y-4'
                   : undefined
               }
             >
-              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist') ? (
+              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director') ? (
                 <>
                   <div className="mb-4 overflow-hidden rounded-xl border border-fei-bg/[0.11] bg-white shadow-[0_4px_14px_rgba(15,23,42,0.025)]">
                     <div className="px-5 py-4 sm:px-6">
@@ -4418,7 +4436,7 @@ function AssessmentContent() {
               </div>
 
               <div className={`flex justify-end ${
-                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist') ? 'pb-6' : ''
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director') ? 'pb-6' : ''
               }`}>
                 <button
                   type="button"
@@ -4495,7 +4513,7 @@ function AssessmentContent() {
 
           <div
             className={`grid items-start ${
-              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist')
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director')
                 ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-7'
                 : 'gap-7 lg:grid-cols-[0.43fr_1.57fr] lg:gap-9'
             }`}
@@ -4507,7 +4525,7 @@ function AssessmentContent() {
 
             <section
               className={
-                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist')
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director')
                   ? 'max-w-[840px] lg:-translate-y-4'
                   : undefined
               }
@@ -4533,16 +4551,18 @@ function AssessmentContent() {
                                   ? `/audio/diagnostics/sports-psychologist/sports-psychologist-listening-${listeningStep + 1}.mp3`
                                   : selectedRole === 'Nutritionist'
                                     ? `/audio/diagnostics/nutritionist/nutritionist-listening-${listeningStep + 1}.mp3`
-                                    : undefined
+                                    : selectedRole === 'Academy Director'
+                                      ? `/audio/diagnostics/academy-director/academy-director-listening-${listeningStep + 1}.mp3`
+                                      : undefined
                   }
-                  minimal={selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Nutritionist'}
+                  minimal={selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director'}
                 />
 
               </div>
 
               <div
                 className={
-                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist')
+                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director')
                     ? 'mb-3'
                     : 'mb-5 border-l-4 border-fei-sky pl-5 sm:pl-6'
                 }
@@ -4581,7 +4601,7 @@ function AssessmentContent() {
 
               <div
                 className={`flex justify-end ${
-                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist') ? 'pb-6' : ''
+                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director') ? 'pb-6' : ''
                 }`}
               >
                 <button
@@ -4678,7 +4698,7 @@ function AssessmentContent() {
 
     const vocabularySetup = item.context
       .replace(
-        /\s*(?:A teammate shouts|A player asks|The coach says|The physiotherapist (?:asks|says)|The player says|The psychologist says|The report says|The assistant coach says|The Sporting Director says|The analyst says|The nutritionist (?:says|explains)|The nutrition plan says|The nutrition review states):\s*[“"].*[”"]$/i,
+        /\s*(?:A teammate shouts|A player asks|The coach says|The physiotherapist (?:asks|says)|The player says|The psychologist says|The report says|The assistant coach says|The Sporting Director says|The analyst says|The nutritionist (?:says|explains)|The nutrition plan says|The nutrition review states|The Academy Director says|The academy report says|The pathway review says):\s*[“"].*[”"]$/i,
         '',
       )
       .trim()
@@ -4721,7 +4741,7 @@ function AssessmentContent() {
           <div
             className={`grid items-start ${
               (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' ||
-                    selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist')
+                    selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director')
                 ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-7'
                 : 'gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12'
             }`}
@@ -4732,12 +4752,12 @@ function AssessmentContent() {
 
             <section
               className={
-                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist')
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director')
                   ? 'max-w-[840px] lg:-translate-y-4'
                   : undefined
               }
             >
-              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist') ? (
+              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director') ? (
                 <>
                   <div className="mb-4">
                     {vocabularySetup &&
@@ -4831,7 +4851,7 @@ function AssessmentContent() {
 
               <div
                 className={`flex justify-end ${
-                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist') ? 'pb-6' : ''
+                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director') ? 'pb-6' : ''
                 }`}
               >
                 <button
@@ -4845,7 +4865,8 @@ function AssessmentContent() {
                       selectedRole === 'Head Coach' ||
                       selectedRole === 'Assistant Coach' ||
                       selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' ||
-                      selectedRole === 'Nutritionist'
+                      selectedRole === 'Nutritionist' ||
+                      selectedRole === 'Academy Director'
                     ) {
                       setSection('writing')
                     } else {
@@ -4864,7 +4885,7 @@ function AssessmentContent() {
                         : (selectedRole === 'Professional Player' ||
                             selectedRole === 'Head Coach' ||
                             selectedRole === 'Assistant Coach' ||
-                            selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist')
+                            selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director')
                           ? 'Continue to Writing'
                           : 'Continue to Functional Communication'}
                       <ChevronRightIcon />
@@ -5098,7 +5119,7 @@ function AssessmentContent() {
 
           <div
             className={`grid items-start ${
-              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist')
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director')
                 ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-7'
                 : 'gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12'
             }`}
@@ -5109,14 +5130,14 @@ function AssessmentContent() {
 
             <section
               className={
-                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist')
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director')
                   ? 'min-w-0 max-w-[840px] lg:-translate-y-4'
                   : undefined
               }
             >
           <div
             className={
-              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist')
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director')
                 ? 'mb-4 overflow-hidden rounded-xl border border-fei-bg/[0.11] bg-white px-5 py-4 shadow-[0_4px_14px_rgba(15,23,42,0.025)] sm:px-6'
                 : selectedRole === 'Assistant Coach'
                   ? 'mb-5 overflow-hidden rounded-2xl border border-fei-bg/[0.10] bg-white shadow-[0_4px_16px_rgba(15,23,42,0.035)]'
@@ -5137,7 +5158,7 @@ function AssessmentContent() {
             <div className={selectedRole === 'Assistant Coach' ? 'px-5 py-5 sm:px-6' : undefined}>
             <p
               className={
-                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist')
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director')
                   ? 'text-[10px] font-medium uppercase tracking-[0.07em] text-fei-bg/38'
                   : selectedRole === 'Assistant Coach'
                     ? 'text-[10px] font-bold uppercase tracking-[0.16em] text-fei-bg/38'
@@ -5165,7 +5186,7 @@ function AssessmentContent() {
                 : selectedRole === 'Assistant Coach'
                   ? 'You have just finished a first-team training session. The unit work was effective at the start, but during the final repetitions the distance between midfield and defense increased, communication dropped, and players began reacting individually. The Head Coach has asked for a concise written debrief before the staff meeting.'
                   : selectedRole === 'Academy Director'
-                    ? 'You need to send a short message to academy coaches about this year’s development standards. Explain that the academy will assess readiness, not only physical dominance or short-term match performance. Mention that the U16 group is strong, but standards must remain consistent.'
+                    ? 'Two U19 players have recently trained with the first team. One has adapted well to the speed and tactical demands but still needs more consistency. The second has shown strong technical quality but has struggled when sessions become more physically and mentally demanding. The first-team staff want both players available more often.'
                     : selectedRole === 'Head of Scouting'
                       ? 'You need to write a short Q4 recruitment memo for leadership. Include priority profiles, strategic logic, and the next decision step.'
                       : selectedRole === 'Scout'
@@ -5192,7 +5213,7 @@ function AssessmentContent() {
                 selectedRole === 'Assistant Coach' ||
                 selectedRole === 'Performance Analyst' ||
                 selectedRole === 'Fitness Coach' ||
-                selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist')
+                selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director')
                 ? 'mb-4'
                 : 'mb-5'
             }
@@ -5204,7 +5225,7 @@ function AssessmentContent() {
                   selectedRole === 'Assistant Coach' ||
                   selectedRole === 'Performance Analyst' ||
                   selectedRole === 'Fitness Coach' ||
-                  selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist')
+                  selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director')
                   ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
                   : 'text-xl font-black leading-8 text-fei-bg'
               }
@@ -5214,7 +5235,7 @@ function AssessmentContent() {
                 : selectedRole === 'Assistant Coach'
                   ? 'Write a 60–90-word debrief to the Head Coach.'
                   : selectedRole === 'Academy Director'
-                    ? 'Write 3–5 sentences to academy coaches about development standards and player readiness.'
+                    ? 'Write a 60–90-word update to the Sporting Director.'
                     : selectedRole === 'Head of Scouting'
                       ? 'Write 3–5 sentences for leadership with priority profiles, strategic logic, and next decision step.'
                       : selectedRole === 'Scout'
@@ -5239,7 +5260,7 @@ function AssessmentContent() {
               selectedRole === 'Fitness Coach' ||
               selectedRole === 'Physiotherapist' ||
               selectedRole === 'Sports Psychologist' ||
-              selectedRole === 'Nutritionist') ? (
+              selectedRole === 'Nutritionist' || selectedRole === 'Academy Director') ? (
               <>
                 <p className="mt-3 text-sm font-medium leading-6 text-fei-bg/62">
                   Your response should:
@@ -5275,6 +5296,13 @@ function AssessmentContent() {
                     <li className="list-disc">describe the player’s current symptoms;</li>
                     <li className="list-disc">summarize what the initial assessment shows;</li>
                     <li className="list-disc">state clearly what should happen next.</li>
+                  </ul>
+                ) : selectedRole === 'Academy Director' ? (
+                  <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
+                    <li className="list-disc">summarize the readiness of both players;</li>
+                    <li className="list-disc">distinguish between their current development needs;</li>
+                    <li className="list-disc">recommend the next step for each player;</li>
+                    <li className="list-disc">explain how the plan supports first-team exposure without rushing permanent promotion.</li>
                   </ul>
                 ) : selectedRole === 'Nutritionist' ? (
                   <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
@@ -5321,15 +5349,17 @@ function AssessmentContent() {
                       ? 'The player’s current physical status suggests...'
                       : selectedRole === 'Physiotherapist'
                         ? 'During the second half, the player...'
-                        : selectedRole === 'Nutritionist'
-                          ? 'The player’s current nutrition status suggests...'
+                        : selectedRole === 'Academy Director'
+                          ? 'The two players currently show different levels of readiness...'
+                          : selectedRole === 'Nutritionist'
+                            ? 'The player’s current nutrition status suggests...'
                           : selectedRole === 'Sports Psychologist'
                             ? 'The player is currently showing...'
                             : 'Hi, I wanted to report...'
             }
             rows={6}
             className={`mb-2 w-full resize-none bg-white text-base leading-7 text-fei-bg placeholder:text-fei-bg/25 focus:border-fei-sky focus:outline-none ${
-              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist')
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director')
                 ? 'rounded-xl border border-fei-bg/[0.12] px-5 py-4 shadow-[0_4px_14px_rgba(15,23,42,0.025)]'
                 : 'rounded-2xl border border-fei-bg/15 px-5 py-4'
             }`}
@@ -5352,7 +5382,9 @@ function AssessmentContent() {
                             ? 'Target: 60–90 words'
                             : selectedRole === 'Nutritionist'
                               ? 'Target: 60–90 words'
-                              : 'Target: 30–80 words'}
+                              : selectedRole === 'Academy Director'
+                                ? 'Target: 60–90 words'
+                                : 'Target: 30–80 words'}
               </span>
             )}
           </div>
@@ -5409,7 +5441,7 @@ function AssessmentContent() {
 
           <div
             className={`grid items-start ${
-              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist')
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director')
                 ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-7'
                 : 'gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12'
             }`}
@@ -5420,14 +5452,14 @@ function AssessmentContent() {
 
             <section
               className={
-                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist')
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director')
                   ? 'min-w-0 max-w-[840px] lg:-translate-y-4'
                   : undefined
               }
             >
           <div
             className={
-              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist')
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director')
                 ? 'mb-4 overflow-hidden rounded-xl border border-fei-bg/[0.11] bg-white px-5 py-4 shadow-[0_4px_14px_rgba(15,23,42,0.025)] sm:px-6'
                 : selectedRole === 'Assistant Coach'
                   ? 'mb-5 overflow-hidden rounded-2xl border border-fei-bg/[0.10] bg-white px-5 py-5 shadow-[0_4px_16px_rgba(15,23,42,0.035)] sm:px-6 sm:py-6'
@@ -5436,7 +5468,7 @@ function AssessmentContent() {
           >
             <p
               className={
-                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist')
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director')
                   ? 'text-[10px] font-medium uppercase tracking-[0.07em] text-fei-bg/38'
                   : 'text-xs font-black uppercase tracking-[0.22em] text-fei-bg/45'
               }
@@ -5476,7 +5508,7 @@ function AssessmentContent() {
                 : selectedRole === 'Assistant Coach'
                   ? 'During the final 11v11 block, the right winger presses the opposition fullback before the striker has blocked the pass into midfield. The central midfielder then holds his position, leaving an open route inside. The opposition plays through the pressure twice. The Head Coach asks you to stop the exercise and correct the two players before the restart.'
                   : selectedRole === 'Academy Director'
-                    ? 'The Sporting Director wants to fast-track a U18 striker into the first team. You believe the player is not ready yet and that a second-team loan is the better pathway.'
+                    ? 'A parent tells you: “My daughter has been one of the best players in her age group all season. She is training well and scoring regularly. I don’t understand why she hasn’t moved up yet. What else does she need to prove?”'
                     : selectedRole === 'Head of Scouting'
                       ? 'The board prefers big-name signings, but your recruitment model prioritizes system fit, early identification, and sustainable value.'
                       : selectedRole === 'Scout'
@@ -5523,7 +5555,7 @@ function AssessmentContent() {
                 : selectedRole === 'Assistant Coach'
                   ? 'Deliver a 45–60 second coaching intervention to the two players.'
                   : selectedRole === 'Academy Director'
-                    ? 'Explain your position clearly and professionally, balancing first-team need with player development.'
+                    ? 'Give a 45–60 second response directly to the parent.'
                     : selectedRole === 'Head of Scouting'
                       ? 'Defend your recruitment strategy clearly and professionally to the board.'
                       : selectedRole === 'Scout'
@@ -5547,7 +5579,7 @@ function AssessmentContent() {
               selectedRole === 'Fitness Coach' ||
               selectedRole === 'Physiotherapist' ||
               selectedRole === 'Sports Psychologist' ||
-              selectedRole === 'Nutritionist') ? (
+              selectedRole === 'Nutritionist' || selectedRole === 'Academy Director') ? (
               <>
                 <p className="mt-3 text-sm font-medium leading-6 text-fei-bg/62">
                   Your response should:
@@ -5584,6 +5616,13 @@ function AssessmentContent() {
                     <li className="list-disc">explain how you interpret the current risk;</li>
                     <li className="list-disc">recommend what should happen over the next three days;</li>
                     <li className="list-disc">state whether match availability can be confirmed yet.</li>
+                  </ul>
+                ) : selectedRole === 'Academy Director' ? (
+                  <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
+                    <li className="list-disc">acknowledge the player’s strong progress;</li>
+                    <li className="list-disc">explain that promotion depends on more than current performance;</li>
+                    <li className="list-disc">clarify one or two areas the academy still wants to evaluate;</li>
+                    <li className="list-disc">give the parent a clear idea of what happens next.</li>
                   </ul>
                 ) : selectedRole === 'Nutritionist' ? (
                   <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
