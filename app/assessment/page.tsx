@@ -2189,7 +2189,7 @@ const nutritionistItems = {
       level: 'B2',
       label: 'Item 5 — Pre-Match Gastrointestinal Discomfort',
       context:
-        'Case note:\n\n“The player has repeatedly reported abdominal discomfort during the warm-up before evening fixtures. On match days, he tends to consume a relatively large meal that is high in fat and fiber shortly before travelling to the stadium. Since the same symptoms are rarely reported after morning sessions, when his meals are lighter and consumed earlier, the nutritionist suspects that meal composition and timing may be contributing to the problem. His hydration status appears normal.”',
+        'Case note:\n\n“The player repeatedly reports abdominal discomfort during warm-ups before evening fixtures. Although his hydration status is normal, he usually eats a large meal high in fat and fiber shortly before travelling to the stadium. By contrast, symptoms are uncommon after morning sessions, when meals are lighter and consumed earlier.”',
       question: 'Which factor is most likely contributing to the player’s symptoms?',
       options: [
         'A. His total fluid intake throughout the training week.',
@@ -2204,7 +2204,7 @@ const nutritionistItems = {
       level: 'C1',
       label: 'Item 6 — Energy Availability During Fixture Congestion',
       context:
-        'Performance nutrition review:\n\n“Monitoring across a congested fixture period indicates a gradual decline in the midfielder’s body mass despite no intentional reduction in energy intake. His appetite appears to be suppressed following late kick-offs, while attempts to compensate through larger post-match meals have negatively affected sleep quality. He is, however, comfortable consuming smaller portions earlier in the day. Although the coaching staff are keen to avoid unnecessary weight gain, maintaining the current trajectory could compromise recovery and subsequent training availability.”',
+        'Performance nutrition review:\n\n“During a congested fixture period, the midfielder has gradually lost body mass despite no deliberate reduction in energy intake. Because late kick-offs suppress his appetite, attempts to compensate with larger post-match meals have begun to impair sleep quality. Smaller meals consumed earlier are better tolerated, yet staff remain concerned about unnecessary weight gain. Continuing the current pattern could compromise recovery and subsequent training availability.”',
       question: 'Which intervention best reconciles the player’s tolerance, recovery requirements and the coaching staff’s concern?',
       options: [
         'A. Maintain his current intake while monitoring whether the decline begins to affect match output.',
@@ -2745,7 +2745,7 @@ const sportsPsychologistItems = {
       id: 'r3',
       level: 'B2',
       label: 'Item 5 — Psychological Readiness After Injury',
-      context: 'Case note:\n\n“The player has met the main physical criteria for his return and has completed two full team sessions without pain. However, during high-intensity drills he remains hesitant when movements resemble the mechanism of his previous injury. He occasionally reduces his speed before contact and reports that he is still anticipating another setback. The medical staff have found no new physical restriction.”',
+      context: 'Case note:\n\n“The player has met the main physical return criteria and completed two full team sessions without pain. However, during high-intensity drills that resemble the mechanism of his previous injury, he becomes hesitant, reduces his speed before contact and reports anticipating another setback. Since no new physical restriction has been identified, his response may reflect a psychological barrier rather than a physical limitation.”',
       question: 'What is the most appropriate interpretation?',
       options: [
         'A. His hesitation indicates that physical rehabilitation was incomplete.',
@@ -2759,7 +2759,7 @@ const sportsPsychologistItems = {
       id: 'r4',
       level: 'C1',
       label: 'Item 6 — Confidentiality and Performance Support',
-      context: 'Case note:\n\n“A senior player privately tells the Sports Psychologist that increasing criticism from outside the club and pressure from his family are affecting his concentration and emotional regulation. He does not want the details shared with the coaching staff because he fears being perceived as mentally weak. During the weekly staff meeting, however, the Head Coach reports changes in the player’s behavior and asks whether there is a problem that should influence his workload, communication or match preparation.”',
+      context: 'Case note:\n\n“A senior player reports that external criticism and family pressure are increasingly impairing his concentration and emotional regulation, yet he explicitly asks that the underlying details remain confidential. Meanwhile, the Head Coach has noticed behavioral changes and wants to know whether adjustments to workload, communication or match preparation are warranted. The psychologist therefore needs to distinguish between information that is personally sensitive and functional guidance that may legitimately support performance.”',
       question: 'Which response best balances the psychologist’s professional responsibilities?',
       options: [
         'A. Disclose the underlying concerns because they may influence sporting decisions.',
