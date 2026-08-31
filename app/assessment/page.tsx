@@ -2581,7 +2581,7 @@ const physiotherapistItems = {
       level: 'B2',
       label: 'Item 5 — Fear of Re-Injury',
       context:
-        'Case note:\n\n“The player continues to report knee discomfort, although imaging does not fully explain the symptoms. During rehabilitation, he moves more cautiously when he expects pain and says he is worried about damaging the knee again. The medical team plans to continue physical rehabilitation while also addressing confidence.”',
+        'The player continues to report knee discomfort, although imaging does not fully explain the symptoms. During rehabilitation, he moves more cautiously when he expects pain and says he is worried about damaging the knee again. The medical team plans to continue physical rehabilitation while also addressing confidence.',
       question: 'What does the case suggest?',
       options: [
         'A. Imaging should determine the entire rehabilitation plan.',
@@ -2596,7 +2596,7 @@ const physiotherapistItems = {
       level: 'C1',
       label: 'Item 6 — Return-to-Play Readiness',
       context:
-        'Case note:\n\n“The player has completed two full training sessions without pain and reports high confidence. Strength testing is close to his pre-injury level. However, during repeated high-speed actions, his output decreases more than expected and movement quality begins to change. The coaching staff would like him available for the next match.”',
+        'The player has completed two full training sessions without pain and reports high confidence. Strength testing is close to his pre-injury level. However, during repeated high-speed actions, his output decreases more than expected and movement quality begins to change. The coaching staff would like him available for the next match.',
       question: 'Which interpretation is best supported by the evidence?',
       options: [
         'A. Pain-free training is sufficient to confirm match readiness.',
