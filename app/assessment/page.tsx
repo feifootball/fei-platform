@@ -4467,7 +4467,8 @@ function AssessmentContent() {
                 <>
                   <div className="mb-4 overflow-hidden rounded-xl border border-fei-bg/[0.11] bg-white shadow-[0_4px_14px_rgba(15,23,42,0.025)]">
                     <div className="px-5 py-4 sm:px-6">
-                      {selectedRole === 'Fitness Coach' ? (
+                      {selectedRole === 'Fitness Coach' ||
+                      (selectedRole === 'Head of Scouting' && !item.context.includes('\n\n')) ? (
                         <p className="max-w-[760px] whitespace-pre-line text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72 select-none">
                           {item.context}
                         </p>
@@ -4704,7 +4705,8 @@ function AssessmentContent() {
                               selectedRole === 'Sports Psychologist' ||
                               selectedRole === 'Nutritionist' ||
                               selectedRole === 'Academy Director' ||
-                              selectedRole === 'Scout'
+                              selectedRole === 'Scout' ||
+                              selectedRole === 'Head of Scouting'
                             ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
                             : selectedRole === 'Assistant Coach'
                               ? 'max-w-[780px] text-lg font-medium leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
@@ -4804,9 +4806,11 @@ function AssessmentContent() {
         : undefined
 
     const vocabularySpeaker =
-      selectedRole === 'Scout'
-        ? 'Scout'
-        : fixedProfessionalPlayerSpeaker?.speaker ??
+      selectedRole === 'Head of Scouting'
+        ? 'Head of Recruitment'
+        : selectedRole === 'Scout'
+          ? 'Scout'
+          : fixedProfessionalPlayerSpeaker?.speaker ??
           (vocabularyContext.includes('sporting director')
         ? 'Sporting Director'
         : vocabularyContext.includes('analyst')
@@ -4826,12 +4830,15 @@ function AssessmentContent() {
     const vocabularyQuoteMatch = item.context.match(/[“"](.+)[”"]$/)
     const vocabularyQuote = vocabularyQuoteMatch?.[1] ?? item.context
 
-    const vocabularySetup = item.context
-      .replace(
-        /\s*(?:A teammate shouts|A player asks|The coach says|The physiotherapist (?:asks|says)|The player says|The psychologist says|The report says|The assistant coach says|The Sporting Director says|The analyst says|The nutritionist (?:says|explains)|The nutrition plan says|The nutrition review states|The Academy Director says|The academy report says|The pathway review says|The Scout says|The recruitment report says|The Scout explains|The scouting review states):\s*[“"].*[”"]$/i,
-        '',
-      )
-      .trim()
+    const vocabularySetup =
+      selectedRole === 'Head of Scouting'
+        ? ''
+        : item.context
+            .replace(
+              /\s*(?:A teammate shouts|A player asks|The coach says|The physiotherapist (?:asks|says)|The player says|The psychologist says|The report says|The assistant coach says|The Sporting Director says|The analyst says|The nutritionist (?:says|explains)|The nutrition plan says|The nutrition review states|The Academy Director says|The academy report says|The pathway review says|The Scout says|The recruitment report says|The Scout explains|The scouting review states):\s*[“"].*[”"]$/i,
+              '',
+            )
+            .trim()
 
     return (
       <div className="min-h-screen bg-[#F6F7F9] text-fei-bg">
@@ -5314,7 +5321,8 @@ function AssessmentContent() {
                   : selectedRole === 'Head Coach'
                     ? 'mt-2 max-w-[760px] break-words text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72'
                     : selectedRole === 'Performance Analyst' ||
-                        selectedRole === 'Physiotherapist'
+                        selectedRole === 'Physiotherapist' ||
+                        selectedRole === 'Head of Scouting'
                       ? 'mt-2 max-w-[760px] break-words text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72'
                       : 'mt-5 text-base leading-8 text-fei-bg/70'
               }
@@ -5650,7 +5658,8 @@ function AssessmentContent() {
                     : selectedRole === 'Assistant Coach'
                       ? 'mt-4 max-w-[760px] text-[15px] leading-7 tracking-[-0.004em] text-fei-bg/72 sm:text-base'
                       : selectedRole === 'Performance Analyst' ||
-                          selectedRole === 'Physiotherapist'
+                          selectedRole === 'Physiotherapist' ||
+                          selectedRole === 'Head of Scouting'
                         ? 'mt-2 max-w-[760px] break-words text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72'
                         : 'mt-5 text-base leading-8 text-fei-bg/70'
               }
@@ -5697,7 +5706,8 @@ function AssessmentContent() {
                     : selectedRole === 'Assistant Coach'
                       ? 'max-w-[720px] text-xl font-bold leading-8 tracking-[-0.015em] text-fei-bg sm:text-2xl'
                       : selectedRole === 'Performance Analyst' ||
-                          selectedRole === 'Physiotherapist'
+                          selectedRole === 'Physiotherapist' ||
+                          selectedRole === 'Head of Scouting'
                         ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
                         : 'text-xl font-black leading-8 text-fei-bg'
               }
