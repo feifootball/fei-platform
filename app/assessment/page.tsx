@@ -2303,7 +2303,7 @@ const nutritionistItems = {
       level: 'B2',
       label: 'Item 5 — Pre-Match Gastrointestinal Discomfort',
       context:
-        'Case note:\n\n“The player repeatedly reports abdominal discomfort during warm-ups before evening fixtures. Although his hydration status is normal, he usually eats a large meal high in fat and fiber shortly before travelling to the stadium. By contrast, symptoms are uncommon after morning sessions, when meals are lighter and consumed earlier.”',
+        '\n\n“The player repeatedly reports abdominal discomfort during warm-ups before evening fixtures. Although his hydration status is normal, he usually eats a large meal high in fat and fiber shortly before travelling to the stadium. By contrast, symptoms are uncommon after morning sessions, when meals are lighter and consumed earlier.”',
       question: 'Which factor is most likely contributing to the player’s symptoms?',
       options: [
         'A. His total fluid intake throughout the training week.',
@@ -4794,6 +4794,9 @@ function AssessmentContent() {
         : undefined
 
     const vocabularySpeaker =
+      selectedRole === 'Nutritionist'
+        ? 'Nutritionist'
+        :
       selectedRole === 'Head of Scouting'
         ? 'Head of Recruitment'
         : selectedRole === 'Scout'
