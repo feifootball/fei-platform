@@ -1275,46 +1275,65 @@ const headOfScoutingItems = {
     {
       id: 'v1',
       level: 'A2',
-      label: 'Item 9 — Recruitment Profile',
-      context: 'The Sporting Director says: “We need a clear recruitment profile before assigning scouts.”',
-      question: 'What is a recruitment profile?',
+      label: 'Item 11 — Recruitment Brief',
+      context:
+        'The Head of Recruitment says: “Before the scouts travel, I want everyone working from the same recruitment brief.”',
+      question: 'What is a recruitment brief?',
       options: [
-        'A. A player’s social media and public image.',
-        'B. The specific criteria for the position and role.',
-        'C. The final contract offered to the player.',
-        'D. A list of previous clubs and agents.',
+        'A. A short description of the player profile the club needs.',
+        'B. A medical summary prepared before a possible signing.',
+        'C. A schedule showing where scouts will watch matches.',
+        'D. A document outlining the main terms of a contract.',
       ],
-      correct: 'B',
+      correct: 'A',
     },
     {
       id: 'v2',
       level: 'B1',
-      label: 'Item 10 — Transfer Window Strategy',
-      context: 'The recruitment department reviews its transfer window strategy before January.',
-      question: 'What does this mean?',
+      label: 'Item 12 — Scouting Coverage',
+      context:
+        'The department review says: “Our scouting coverage in this market is still limited.”',
+      question: 'What does scouting coverage refer to?',
       options: [
-        'A. The travel schedule for scouts during the season.',
-        'B. The press plan for announcing new signings.',
-        'C. The training plan for integrating new players.',
-        'D. The planned recruitment approach for a market period.',
+        'A. How many players are registered in that competition.',
+        'B. How well a market is being monitored by scouts.',
+        'C. How many matches are available on video platforms.',
+        'D. How much budget is assigned to that region.',
       ],
-      correct: 'D',
+      correct: 'B',
     },
     {
       id: 'v3',
       level: 'B2',
-      label: 'Item 11 — Market Intelligence',
-      context: 'A report says: “Market intelligence suggests two competitors are moving early, and availability may change after the window opens.”',
-      question: 'What does market intelligence refer to here?',
+      label: 'Item 13 — Succession Planning',
+      context:
+        'The Head of Recruitment explains: “This search is part of our succession planning, not an immediate replacement.”',
+      question: 'What does succession planning mean here?',
       options: [
-        'A. Information on availability, pricing and competitor activity.',
-        'B. A player’s ability to understand tactical instructions.',
-        'C. A list of public transfer rumors from media sources only.',
-        'D. The financial report from the club’s accounting team.',
+        'A. Preparing early for future changes in key squad roles.',
+        'B. Replacing experienced scouts when their contracts end.',
+        'C. Promoting academy players when senior players are unavailable.',
+        'D. Ranking transfer targets according to their expected cost.',
       ],
       correct: 'A',
     },
+    {
+      id: 'v4',
+      level: 'C1',
+      label: 'Item 14 — Due Diligence',
+      context:
+        'The recruitment meeting concludes: “The sporting case is strong, but the due diligence is not complete.”',
+      question: 'What does due diligence mean in this situation?',
+      options: [
+        'A. A final tactical review before approving the player.',
+        'B. Verifying key information before making a recruitment decision.',
+        'C. Negotiating with the selling club to reduce the fee.',
+        'D. Comparing current performance with future development potential.',
+      ],
+      correct: 'B',
+    },
   ],
+
   functional: [
     {
       id: 'f1',
@@ -4850,7 +4869,7 @@ function AssessmentContent() {
           <div
             className={`grid items-start ${
               (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' ||
-                    selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout')
+                    selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting')
                 ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-7'
                 : 'gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12'
             }`}
@@ -4861,12 +4880,12 @@ function AssessmentContent() {
 
             <section
               className={
-                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout')
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting')
                   ? 'max-w-[840px] lg:-translate-y-4'
                   : undefined
               }
             >
-              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout') ? (
+              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting') ? (
                 <>
                   <div className="mb-4">
                     {vocabularySetup &&
@@ -4896,7 +4915,9 @@ function AssessmentContent() {
                                 ? '/avatars/academy-director.png'
                                 : selectedRole === 'Scout'
                                   ? '/avatars/scout.png'
-                                  : fixedProfessionalPlayerSpeaker?.avatar ??
+                                  : selectedRole === 'Head of Scouting'
+                                    ? '/avatars/head-of-recruitment.png'
+                                    : fixedProfessionalPlayerSpeaker?.avatar ??
                                   (vocabularySpeaker === 'Physiotherapist'
                                     ? '/images/diagnostics/avatars/physiotherapist.png'
                                     : vocabularySpeaker === 'Assistant Coach'
