@@ -1712,7 +1712,7 @@ const fitnessCoachItems = {
       level: 'A2',
       label: 'Item 3 — Training Load',
       context:
-        '“Today’s session was shorter than usual. The players completed fewer high-speed runs and had more recovery time between drills.”',
+        'Training update:\n\nToday’s session was shorter than usual. The players completed fewer high-speed runs and had more recovery time between drills.',
       question: 'What changed in today’s session?',
       options: [
         'A. The players completed more sprint work.',
@@ -1727,7 +1727,7 @@ const fitnessCoachItems = {
       level: 'B1',
       label: 'Item 4 — Player Readiness',
       context:
-        '“Before training, one player reports heavy legs after the previous match. His wellness score is lower than normal, and his recent running load is above his weekly average.”',
+        'Player readiness report:\n\nBefore training, one player reports heavy legs after the previous match. His wellness score is lower than normal, and his recent running load is above his weekly average.',
       question: 'What should the Fitness Coach identify?',
       options: [
         'A. The player may need a reduced training load.',
@@ -1742,7 +1742,7 @@ const fitnessCoachItems = {
       level: 'B2',
       label: 'Item 5 — Interpreting Physical Data',
       context:
-        '“The team covered a similar total distance in both matches. However, in the second match, high-speed running increased significantly and repeated sprint efforts were more frequent.”',
+        'Match load comparison:\n\nThe team covered a similar total distance in both matches. However, in the second match, high-speed running increased significantly and repeated sprint efforts were more frequent.',
       question: 'What does the comparison suggest?',
       options: [
         'A. Both matches created the same physical demands.',
@@ -1757,7 +1757,7 @@ const fitnessCoachItems = {
       level: 'C1',
       label: 'Item 6 — Load vs Performance',
       context:
-        '“Over the last three weeks, the player’s total training volume has remained relatively stable. However, his high-intensity exposure has increased, recovery scores have gradually declined, and his sprint output in training has started to fall.”',
+        'Performance monitoring report:\n\nOver the last three weeks, the player’s total training volume has remained relatively stable. However, his high-intensity exposure has increased, recovery scores have gradually declined, and his sprint output in training has started to fall.',
       question: 'Which interpretation is best supported by the evidence?',
       options: [
         'A. Stable total volume means the player is adapting well.',
