@@ -2845,7 +2845,7 @@ const sportsPsychologistItems = {
       id: 'r2',
       level: 'B1',
       label: 'Item 4 — Pre-Match Pressure',
-      context: 'Case note:\n\n“Before important matches, the player becomes tense and starts thinking about possible mistakes. His breathing becomes faster and he finds it harder to focus on his normal routine. The psychologist wants to introduce a simple breathing strategy and a more realistic way of thinking about mistakes.”',
+      context: '“Before important matches, the player becomes tense and starts thinking about possible mistakes. His breathing becomes faster and he finds it harder to focus on his normal routine. The psychologist wants to introduce a simple breathing strategy and a more realistic way of thinking about mistakes.”',
       question: 'What is the main aim of the intervention?',
       options: [
         'A. Help the player manage pressure and maintain focus.',
@@ -2859,7 +2859,7 @@ const sportsPsychologistItems = {
       id: 'r3',
       level: 'B2',
       label: 'Item 5 — Psychological Readiness After Injury',
-      context: 'Case note:\n\n“The player has met the main physical return criteria and completed two full team sessions without pain. However, during high-intensity drills that resemble the mechanism of his previous injury, he becomes hesitant, reduces his speed before contact and reports anticipating another setback. Since no new physical restriction has been identified, his response may reflect a psychological barrier rather than a physical limitation.”',
+      context: '“The player has met the main physical return criteria and completed two full team sessions without pain. However, during high-intensity drills that resemble the mechanism of his previous injury, he becomes hesitant, reduces his speed before contact and reports anticipating another setback. Since no new physical restriction has been identified, his response may reflect a psychological barrier rather than a physical limitation.”',
       question: 'What is the most appropriate interpretation?',
       options: [
         'A. His hesitation indicates that physical rehabilitation was incomplete.',
@@ -2873,7 +2873,7 @@ const sportsPsychologistItems = {
       id: 'r4',
       level: 'C1',
       label: 'Item 6 — Confidentiality and Performance Support',
-      context: 'Case note:\n\n“A senior player says external criticism and family pressure are affecting his concentration and emotional control, but asks that the personal details remain confidential. The Head Coach has noticed changes in his behavior and wants to know whether communication or match preparation should be adjusted. The psychologist must protect sensitive information while still providing useful performance guidance.”',
+      context: '“A senior player says external criticism and family pressure are affecting his concentration and emotional control, but asks that the personal details remain confidential. The Head Coach has noticed changes in his behavior and wants to know whether communication or match preparation should be adjusted. The psychologist must protect sensitive information while still providing useful performance guidance.”',
       question: 'Which response best balances the psychologist’s professional responsibilities?',
       options: [
         'A. Disclose the underlying concerns because they may influence sporting decisions.',
@@ -4467,6 +4467,7 @@ function AssessmentContent() {
                     <div className="px-5 py-4 sm:px-6">
                       {(selectedRole === 'Assistant Coach' && !item.context.includes('\n\n')) ||
                       (selectedRole === 'Physiotherapist' && !item.context.includes('\n\n')) ||
+                      (selectedRole === 'Sports Psychologist' && !item.context.includes('\n\n')) ||
                       (selectedRole === 'Head of Scouting' && !item.context.includes('\n\n')) ? (
                         <p className="max-w-[760px] whitespace-pre-line text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72 select-none">
                           {item.context}
