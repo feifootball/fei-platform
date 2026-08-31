@@ -5616,6 +5616,7 @@ function AssessmentContent() {
                       ? 'mt-2 max-w-[760px] break-words text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72'
                       : selectedRole === 'Performance Analyst' ||
                           selectedRole === 'Physiotherapist' ||
+                          selectedRole === 'Academy Director' ||
                           selectedRole === 'Head of Scouting'
                         ? 'mt-2 max-w-[760px] break-words text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72'
                         : 'mt-5 text-base leading-8 text-fei-bg/70'
@@ -5656,6 +5657,7 @@ function AssessmentContent() {
                       ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
                       : selectedRole === 'Performance Analyst' ||
                           selectedRole === 'Physiotherapist' ||
+                          selectedRole === 'Academy Director' ||
                           selectedRole === 'Head of Scouting'
                         ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
                         : 'text-xl font-black leading-8 text-fei-bg'
