@@ -5791,7 +5791,7 @@ function AssessmentContent() {
 
           <div
             className={
-              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach')
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Physiotherapist')
                 ? 'mb-4 rounded-xl border border-fei-bg/[0.09] bg-white p-4 sm:p-5'
                 : ''
             }
@@ -5799,7 +5799,7 @@ function AssessmentContent() {
           {isRecording && (
             <div
               className={
-                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Physiotherapist')
                   ? 'mb-4'
                   : 'mb-6 rounded-2xl border border-red-500/25 bg-white p-5'
               }
@@ -5840,12 +5840,12 @@ function AssessmentContent() {
             </div>
           )}
 
-          <div className={(selectedRole === 'Professional Player' || selectedRole === 'Head Coach') ? 'mb-3' : 'mb-4'}>
+          <div className={(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Physiotherapist') ? 'mb-3' : 'mb-4'}>
             {!isRecording && !recordingDone && (
               <button
                 onClick={startRecording}
                 className={
-                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
+                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Physiotherapist')
                     ? 'inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-red-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-red-600'
                     : 'inline-flex min-h-[54px] w-full items-center justify-center gap-2 rounded-full bg-red-500 px-8 py-3.5 font-bold text-white transition hover:bg-red-600'
                 }
@@ -5873,7 +5873,7 @@ function AssessmentContent() {
               <button
                 onClick={stopRecording}
                 className={
-                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
+                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Physiotherapist')
                     ? 'inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-red-500 bg-white px-6 py-3 text-sm font-semibold text-red-600 transition hover:bg-red-500/[0.05]'
                     : 'inline-flex min-h-[54px] w-full items-center justify-center gap-2 rounded-full border-2 border-red-500 bg-white px-8 py-3.5 font-bold text-red-600 transition hover:bg-red-500/[0.06]'
                 }
