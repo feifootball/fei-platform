@@ -5615,6 +5615,7 @@ function AssessmentContent() {
                     : selectedRole === 'Assistant Coach'
                       ? 'mt-2 max-w-[760px] break-words text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72'
                       : selectedRole === 'Performance Analyst' ||
+                          selectedRole === 'Fitness Coach' ||
                           selectedRole === 'Physiotherapist' ||
                           selectedRole === 'Academy Director' ||
                           selectedRole === 'Head of Scouting'
@@ -5656,6 +5657,7 @@ function AssessmentContent() {
                     : selectedRole === 'Assistant Coach'
                       ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
                       : selectedRole === 'Performance Analyst' ||
+                          selectedRole === 'Fitness Coach' ||
                           selectedRole === 'Physiotherapist' ||
                           selectedRole === 'Academy Director' ||
                           selectedRole === 'Head of Scouting'
