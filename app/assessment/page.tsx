@@ -4641,7 +4641,8 @@ function AssessmentContent() {
                               selectedRole === 'Physiotherapist' ||
                               selectedRole === 'Sports Psychologist' ||
                               selectedRole === 'Nutritionist' ||
-                              selectedRole === 'Academy Director'
+                              selectedRole === 'Academy Director' ||
+                              selectedRole === 'Scout'
                             ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
                             : selectedRole === 'Assistant Coach'
                               ? 'max-w-[780px] text-lg font-medium leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
