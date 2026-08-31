@@ -1212,46 +1212,65 @@ const headOfScoutingItems = {
     {
       id: 'l1',
       level: 'A2',
-      label: 'Item 6 — Scouting Network Update',
-      script: 'We have 12 scouts covering six countries. This quarter we completed 240 observations, created an 18-player shortlist and made three formal recommendations.',
-      question: 'How many formal recommendations were made?',
+      label: 'Item 7 — Recruitment Update',
+      script:
+        'We have two priority positions for this window: right-back and striker. The right-back search is more advanced because three players are already being monitored. We still need more options for the striker position.',
+      question: 'Which search is currently more advanced?',
       options: [
-        'A. Three formal recommendations.',
-        'B. Six formal recommendations.',
-        'C. Twelve formal recommendations.',
-        'D. Eighteen formal recommendations.',
+        'A. Striker.',
+        'B. Right-back.',
+        'C. Center-back.',
+        'D. Goalkeeper.',
       ],
-      correct: 'A',
+      correct: 'B',
     },
     {
       id: 'l2',
       level: 'B1',
-      label: 'Item 7 — Two Recruitment Strategies',
-      script: 'The European scout recommends a proven 28-year-old. The South American scout recommends a 21-year-old with potential. With a €15M budget, we should explore both, but they represent different strategies.',
-      question: 'What is the final direction?',
+      label: 'Item 8 — Reallocating Scouting Coverage',
+      script:
+        'Our scouts in Spain have already produced several reports on left-backs, but we still have very little information from Portugal. Since the club wants a wider comparison before making a decision, I’m moving one scout to Portugal for the next two weeks.',
+      question: 'Why is the Head of Recruitment changing the scouting coverage?',
       options: [
-        'A. Choose only the older proven player.',
-        'B. Choose only the younger potential player.',
-        'C. Explore both profiles because they serve different strategies.',
-        'D. Delay all recruitment because the budget is too small.',
+        'A. To stop monitoring left-backs in Spain.',
+        'B. To reduce the number of reports being produced.',
+        'C. To broaden the evidence available before a decision.',
+        'D. To give the Portuguese scout responsibility for the final choice.',
       ],
       correct: 'C',
     },
     {
       id: 'l3',
       level: 'B2',
-      label: 'Item 8 — Urgent Market Opportunity',
-      script: 'An agent says there is a 48-hour opportunity at €18M. Normal market price is closer to €25M. The risk is rushing; the opportunity is value. Our role is to present the case and facilitate the decision.',
-      question: 'What should the Head of Scouting do?',
+      label: 'Item 9 — Managing Recruitment Priorities',
+      script:
+        'The coaching staff want an experienced center-forward who can contribute immediately. At the same time, our squad planning shows that we may need a starting left-back next summer. We cannot fully resource both searches at the same level, so I want the recruitment team to maintain the striker as the immediate priority while continuing targeted work on the left-back market.',
+      question: 'What approach is the Head of Recruitment recommending?',
       options: [
-        'A. Reject the opportunity because 48 hours is too short.',
-        'B. Accept the deal immediately before the price rises.',
-        'C. Ask the agent to make the decision for the club.',
-        'D. Frame the risk and value so leadership can decide.',
+        'A. Focus exclusively on the striker and pause all other work.',
+        'B. Prioritize the urgent need while keeping another future requirement active.',
+        'C. Move the left-back search ahead of the striker search.',
+        'D. Ask the coaching staff to choose which position should be monitored.',
       ],
-      correct: 'D',
+      correct: 'B',
+    },
+    {
+      id: 'l4',
+      level: 'C1',
+      label: 'Item 10 — Challenging a Recruitment Recommendation',
+      script:
+        'The scouting team strongly favors one candidate, but most of the reports come from similar match contexts and reach largely the same conclusion. Before we progress the recommendation, I want to know whether we have tested the assumptions behind it. We need evidence from different environments, not simply more reports that confirm what we already believe.',
+      question: 'What is the Head of Recruitment mainly concerned about?',
+      options: [
+        'A. The number of scouts involved in the process.',
+        'B. The possibility that the assessment has become too expensive.',
+        'C. The risk that the recommendation is based on insufficiently varied evidence.',
+        'D. The lack of agreement between the scouting and coaching departments.',
+      ],
+      correct: 'C',
     },
   ],
+
   vocabulary: [
     {
       id: 'v1',
@@ -4635,7 +4654,9 @@ function AssessmentContent() {
                                       ? `/audio/diagnostics/academy-director/academy-director-listening-${listeningStep + 1}.mp3`
                                       : selectedRole === 'Scout'
                                         ? `/audio/diagnostics/scout/scout-listening-${listeningStep + 1}.mp3`
-                                        : undefined
+                                        : selectedRole === 'Head of Scouting'
+                                          ? `/audio/diagnostics/head-of-recruitment/head-of-recruitment-listening-${listeningStep + 1}.mp3`
+                                          : undefined
                   }
                   minimal={selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout'}
                 />
