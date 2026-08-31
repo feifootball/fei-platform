@@ -2242,7 +2242,7 @@ const nutritionistItems = {
       level: 'Warm-Up',
       label: 'Item 1 — Performance Nutrition',
       context: '',
-      question: 'Which task is a core responsibility of a Performance Nutritionist?',
+      question: 'Which task is a core responsibility of a Nutritionist?',
       options: [
         'A. Planning player fueling and recovery strategies.',
         'B. Designing opposition pressing structures.',
@@ -2256,7 +2256,7 @@ const nutritionistItems = {
       level: 'Warm-Up',
       label: 'Item 2 — Player Support',
       context: '',
-      question: 'What would a Performance Nutritionist typically discuss with a player?',
+      question: 'What would a Nutritionist typically discuss with a player?',
       options: [
         'A. Recruitment priorities for the next window.',
         'B. Fueling, hydration and recovery habits.',
@@ -2318,13 +2318,13 @@ const nutritionistItems = {
       level: 'C1',
       label: 'Item 6 — Energy Availability During Fixture Congestion',
       context:
-        'Performance nutrition review:\n\n“During a congested fixture period, the midfielder has gradually lost body mass despite no deliberate reduction in energy intake. Because late kick-offs suppress his appetite, attempts to compensate with larger post-match meals have begun to impair sleep quality. Smaller meals consumed earlier are better tolerated, yet staff remain concerned about unnecessary weight gain. Continuing the current pattern could compromise recovery and subsequent training availability.”',
-      question: 'Which intervention best reconciles the player’s tolerance, recovery requirements and the coaching staff’s concern?',
+        'Performance nutrition review:\n\n“During a congested fixture period, the midfielder is losing body mass. Late kick-offs reduce his appetite, while large post-match meals disrupt sleep. Smaller meals earlier are better tolerated, but staff are concerned about unnecessary weight gain. The current pattern may compromise recovery.”',
+      question: 'Which intervention best balances fueling and recovery?',
       options: [
-        'A. Maintain his current intake while monitoring whether the decline begins to affect match output.',
-        'B. Concentrate additional energy intake after matches because this remains the primary recovery window.',
-        'C. Redistribute additional energy across tolerated meals and snacks while monitoring body mass and recovery markers.',
-        'D. Increase the size of his main meals so additional snacks do not interfere with his established routine.',
+        'A. Maintain his current intake and monitor performance.',
+        'B. Add most of the extra energy after matches.',
+        'C. Spread extra energy across tolerated meals and snacks.',
+        'D. Increase his main meals and avoid additional snacks.',
       ],
       correct: 'C',
     },
@@ -2398,7 +2398,7 @@ const nutritionistItems = {
       id: 'v1',
       level: 'A2',
       label: 'Item 11 — Recovery Meal',
-      context: 'The nutritionist says: “Have a recovery meal after training.”',
+      context: 'The Nutritionist says: “Have a recovery meal after training.”',
       question: 'What does recovery meal mean?',
       options: [
         'A. A meal eaten after exercise to help the body recover.',
@@ -2412,7 +2412,7 @@ const nutritionistItems = {
       id: 'v2',
       level: 'B1',
       label: 'Item 12 — Nutrient Timing',
-      context: 'The nutrition plan says: “Nutrient timing is especially important on double-session days.”',
+      context: 'The Nutritionist explains: “Nutrient timing is especially important on double-session days.”',
       question: 'What does nutrient timing mean?',
       options: [
         'A. Adjusting when nutrients are consumed around training demands.',
@@ -2426,7 +2426,7 @@ const nutritionistItems = {
       id: 'v3',
       level: 'B2',
       label: 'Item 13 — Carbohydrate Periodization',
-      context: 'The nutritionist explains: “We are using carbohydrate periodization rather than prescribing the same intake for every training day.”',
+      context: 'The Nutritionist explains: “We are using carbohydrate periodization rather than prescribing the same intake for every training day.”',
       question: 'What does carbohydrate periodization mean in this context?',
       options: [
         'A. Adjusting carbohydrate intake according to the demands and purpose of different sessions.',
@@ -2440,7 +2440,7 @@ const nutritionistItems = {
       id: 'v4',
       level: 'C1',
       label: 'Item 14 — Energy Compensation',
-      context: 'The nutrition review states: “The player shows limited energy compensation on high-load days despite increasing his intake after training.”',
+      context: 'The Nutritionist says: “The player shows limited energy compensation on high-load days despite increasing his intake after training.”',
       question: 'What does limited energy compensation imply in this context?',
       options: [
         'A. His additional intake is not fully offsetting the increase in energy expenditure.',
@@ -5621,6 +5621,7 @@ function AssessmentContent() {
                           selectedRole === 'Fitness Coach' ||
                           selectedRole === 'Physiotherapist' ||
                           selectedRole === 'Sports Psychologist' ||
+                          selectedRole === 'Nutritionist' ||
                           selectedRole === 'Academy Director' ||
                           selectedRole === 'Head of Scouting'
                         ? 'mt-2 max-w-[760px] break-words text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72'
@@ -5664,6 +5665,7 @@ function AssessmentContent() {
                           selectedRole === 'Fitness Coach' ||
                           selectedRole === 'Physiotherapist' ||
                           selectedRole === 'Sports Psychologist' ||
+                          selectedRole === 'Nutritionist' ||
                           selectedRole === 'Academy Director' ||
                           selectedRole === 'Head of Scouting'
                         ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
@@ -5796,7 +5798,7 @@ function AssessmentContent() {
 
           <div
             className={
-              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist')
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist')
                 ? 'mb-4 rounded-xl border border-fei-bg/[0.09] bg-white p-4 sm:p-5'
                 : ''
             }
@@ -5804,7 +5806,7 @@ function AssessmentContent() {
           {isRecording && (
             <div
               className={
-                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist')
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist')
                   ? 'mb-4'
                   : 'mb-6 rounded-2xl border border-red-500/25 bg-white p-5'
               }
@@ -5845,12 +5847,12 @@ function AssessmentContent() {
             </div>
           )}
 
-          <div className={(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist') ? 'mb-3' : 'mb-4'}>
+          <div className={(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist') ? 'mb-3' : 'mb-4'}>
             {!isRecording && !recordingDone && (
               <button
                 onClick={startRecording}
                 className={
-                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist')
+                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist')
                     ? 'inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-red-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-red-600'
                     : 'inline-flex min-h-[54px] w-full items-center justify-center gap-2 rounded-full bg-red-500 px-8 py-3.5 font-bold text-white transition hover:bg-red-600'
                 }
@@ -5878,7 +5880,7 @@ function AssessmentContent() {
               <button
                 onClick={stopRecording}
                 className={
-                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist')
+                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist')
                     ? 'inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-red-500 bg-white px-6 py-3 text-sm font-semibold text-red-600 transition hover:bg-red-500/[0.05]'
                     : 'inline-flex min-h-[54px] w-full items-center justify-center gap-2 rounded-full border-2 border-red-500 bg-white px-8 py-3.5 font-bold text-red-600 transition hover:bg-red-500/[0.06]'
                 }
