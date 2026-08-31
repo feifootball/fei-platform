@@ -447,7 +447,7 @@ const headCoachItems = {
       level: 'A2',
       label: 'Item 11 — Compactness',
       context:
-        'During training, the coach says: “The back line and midfield need compactness when we defend.”',
+        'The coach says: “The back line and midfield need compactness when we defend.”',
       question: 'What does “compactness” mean here?',
       options: [
         'A. Players stay close enough to protect central spaces',
