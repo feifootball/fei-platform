@@ -872,7 +872,7 @@ const academyDirectorItems = {
       level: 'A2',
       label: 'Item 3 — Player Progression',
       context:
-        'Academy update:\n\n“Three U17 players will train with the U19 group next month. They will still play most of their matches with the U17 team.”',
+        'Academy update:\n\nThree U17 players will train with the U19 group next month. They will still play most of their matches with the U17 team.',
       question: 'What is changing for these three players?',
       options: [
         'A. They are leaving the U17 squad completely.',
@@ -887,7 +887,7 @@ const academyDirectorItems = {
       level: 'B1',
       label: 'Item 4 — Development Review',
       context:
-        'Coach report:\n\n“The midfielder is technically strong and usually understands the tactical work well. However, when sessions become more demanding, he sometimes loses concentration and reacts negatively to feedback. Before we consider moving him to the next age group, we need to see more consistency in these situations.”',
+        'Coach report:\n\nThe midfielder is technically strong and usually understands the tactical work well. However, when sessions become more demanding, he sometimes loses concentration and reacts negatively to feedback. Before we consider moving him to the next age group, we need to see more consistency in these situations.',
       question: 'Why is the player not ready to progress yet?',
       options: [
         'A. His technical level is below the required standard.',
@@ -902,7 +902,7 @@ const academyDirectorItems = {
       level: 'B2',
       label: 'Item 5 — Managing Early Promotion',
       context:
-        'Pathway review:\n\n“A U18 striker has impressed the first-team staff. Although his technical level has improved, academy coaches remain concerned about how he responds to setbacks and pressure. They are considering occasional senior training while he continues playing regularly at youth level.”',
+        'Pathway review:\n\nA U18 striker has impressed the first-team staff. Although his technical level has improved, academy coaches remain concerned about how he responds to setbacks and pressure. They are considering occasional senior training while he continues playing regularly at youth level.',
       question: 'What is the main purpose of this approach?',
       options: [
         'A. To delay his progression until his technical level improves further.',
@@ -917,7 +917,7 @@ const academyDirectorItems = {
       level: 'C1',
       label: 'Item 6 — Competing Pathway Priorities',
       context:
-        'Academy review:\n\n“Two U19 players could help cover first-team shortages. Senior staff want faster integration, but neither player has consistently met the club’s readiness standards. Limited senior exposure may support development, whereas permanent promotion could allow a short-term staffing problem to dictate a long-term pathway decision.”',
+        'Academy review:\n\nTwo U19 players could help cover first-team shortages. Senior staff want faster integration, but neither player has consistently met the club’s readiness standards. Limited senior exposure may support development, whereas permanent promotion could allow a short-term staffing problem to dictate a long-term pathway decision.',
       question: 'Which approach best reconciles the competing priorities?',
       options: [
         'A. Promote both players because first-team shortages require immediate solutions.',
