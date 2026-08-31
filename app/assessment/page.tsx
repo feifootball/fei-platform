@@ -4987,14 +4987,14 @@ function AssessmentContent() {
                     option={option}
                     selected={selected === option}
                     onSelect={() => setAnswer(item.id, option)}
-                    refined={selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Scout'}
+                    refined={selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting'}
                   />
                 ))}
               </div>
 
               <div
                 className={`flex justify-end ${
-                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout') ? 'pb-6' : ''
+                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting') ? 'pb-6' : ''
                 }`}
               >
                 <button
