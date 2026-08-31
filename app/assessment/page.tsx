@@ -2873,7 +2873,7 @@ const sportsPsychologistItems = {
       id: 'r4',
       level: 'C1',
       label: 'Item 6 — Confidentiality and Performance Support',
-      context: 'Case note:\n\n“A senior player reports that external criticism and family pressure are increasingly impairing his concentration and emotional regulation, yet he explicitly asks that the underlying details remain confidential. Meanwhile, the Head Coach has noticed behavioral changes and wants to know whether adjustments to workload, communication or match preparation are warranted. The psychologist therefore needs to distinguish between information that is personally sensitive and functional guidance that may legitimately support performance.”',
+      context: 'Case note:\n\n“A senior player says external criticism and family pressure are affecting his concentration and emotional control, but asks that the personal details remain confidential. The Head Coach has noticed changes in his behavior and wants to know whether communication or match preparation should be adjusted. The psychologist must protect sensitive information while still providing useful performance guidance.”',
       question: 'Which response best balances the psychologist’s professional responsibilities?',
       options: [
         'A. Disclose the underlying concerns because they may influence sporting decisions.',
