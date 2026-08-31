@@ -291,7 +291,7 @@ const headCoachItems = {
       id: 'w1',
       label: 'Item 1 — Role Identification',
       context: '',
-      question: 'Which responsibility is most typical for a first-team Head Coach?',
+      question: 'Which responsibility is most typical for a Head Coach?',
       options: [
         'A. Giving individual rehabilitation updates to injured players',
         'B. Presenting detailed player reports to the recruitment department',
