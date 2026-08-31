@@ -646,12 +646,12 @@ const assistantCoachItems = {
       label: 'Item 6 — Set-Piece Adjustment Under Pressure',
       context:
         'The opposition has changed its defensive setup on corners. They are now leaving one player higher and using a hybrid marking system, with three zonal defenders across the six-yard box and four players marking individually. Your original routine was designed to overload the back-post zone, but the new setup is reducing the space there.',
-      question: 'What is the most appropriate interpretation for the Assistant Coach responsible for set pieces?',
+      question: 'What should the Assistant Coach do?',
       options: [
-        'A. Keep the original routine because changing it during the match could confuse the players',
-        'B. Abandon attacking corners and prioritize defensive security against the counterattack',
-        'C. Adjust the routine to exploit the new defensive structure while preserving the team’s protection against transition',
-        'D. Ask the Head Coach to redesign the entire attacking set-piece plan before the next corner',
+        'A. Keep the original corner routine.',
+        'B. Focus only on preventing the counterattack.',
+        'C. Adjust the routine to exploit the new setup while protecting transition.',
+        'D. Ask the Head Coach to redesign the full set-piece plan.',
       ],
       correct: 'C',
     },
