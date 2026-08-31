@@ -4466,6 +4466,7 @@ function AssessmentContent() {
                   <div className="mb-4 overflow-hidden rounded-xl border border-fei-bg/[0.11] bg-white shadow-[0_4px_14px_rgba(15,23,42,0.025)]">
                     <div className="px-5 py-4 sm:px-6">
                       {selectedRole === 'Fitness Coach' ||
+                      (selectedRole === 'Assistant Coach' && !item.context.includes('\n\n')) ||
                       (selectedRole === 'Head of Scouting' && !item.context.includes('\n\n')) ? (
                         <p className="max-w-[760px] whitespace-pre-line text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72 select-none">
                           {item.context}
@@ -4821,7 +4822,7 @@ function AssessmentContent() {
         ? ''
         : item.context
             .replace(
-              /\s*(?:A teammate shouts|A player asks|The coach says|The physiotherapist (?:asks|says)|The player says|The psychologist says|The report says|The assistant coach says|The Sporting Director says|The analyst says|The nutritionist (?:says|explains)|The nutrition plan says|The nutrition review states|The Academy Director says|The academy report says|The pathway review says|The Scout says|The recruitment report says|The Scout explains|The scouting review states):\s*[“"].*[”"]$/i,
+              /\s*(?:A teammate shouts|A player asks|The coach says|The Head Coach says|The physiotherapist (?:asks|says)|The player says|The psychologist says|The report says|The assistant coach says|The Sporting Director says|The analyst says|The nutritionist (?:says|explains)|The nutrition plan says|The nutrition review states|The Academy Director says|The academy report says|The pathway review says|The Scout says|The recruitment report says|The Scout explains|The scouting review states):\s*[“"].*[”"]$/i,
               '',
             )
             .trim()
