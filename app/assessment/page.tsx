@@ -4259,12 +4259,12 @@ function AssessmentContent() {
 
         <main
           className={`mx-auto w-full px-6 sm:px-8 ${
-            (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout')
+            (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting')
               ? 'max-w-[1080px] py-5 lg:py-6'
               : 'max-w-[1280px] py-8 lg:py-10'
           }`}
         >
-          <div className={(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout') ? 'mb-5' : 'mb-10'}>
+          <div className={(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting') ? 'mb-5' : 'mb-10'}>
             <div className="flex items-center justify-between gap-4">
               <p className="text-sm font-semibold text-fei-bg/55">
                 Item {currentItem} of {totalItems}
@@ -4285,13 +4285,13 @@ function AssessmentContent() {
 
           <div
             className={`grid items-start ${
-              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout')
+              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting')
                 ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-7'
                 : 'gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12'
             }`}
           >
             <aside className="lg:sticky lg:top-10 lg:pt-1">
-              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout') ? (
+              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting') ? (
                 <SectionBadge label="Role Warm-Up" />
               ) : (
                 <>
@@ -4307,14 +4307,14 @@ function AssessmentContent() {
 
             <section
               className={
-                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout')
+                (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting')
                   ? 'max-w-[840px]'
                   : undefined
               }
             >
-              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout') ? (
+              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting') ? (
                 <>
-                  {(selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout') ? (
+                  {(selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting') ? (
                     <div className="mb-4">
                       <h1 className="max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl">
                         {item.question}
@@ -4342,7 +4342,7 @@ function AssessmentContent() {
                 </div>
               )}
 
-              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout') ? (
+              {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting') ? (
                 <div className="mb-4 overflow-hidden border-y border-fei-bg/[0.08]">
                   {item.options.map((option) => (
                     <OptionButton
@@ -4369,7 +4369,7 @@ function AssessmentContent() {
 
               <div
                 className={`flex justify-end ${
-                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout') ? 'pb-6' : 'mt-8'
+                  (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting') ? 'pb-6' : 'mt-8'
                 }`}
               >
                 <button
