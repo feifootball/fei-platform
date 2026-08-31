@@ -26,8 +26,8 @@ const items = {
     {
       id: 'w1',
       label: 'Item 1 — Role Identification',
-      context: 'Which situation is most common in your role as a senior squad player?',
-      question: 'Choose the best option.',
+      context: '',
+      question: 'Which situation is most common in your role as a professional player?',
       options: [
         'A. Preparing detailed physical reports for the medical staff',
         'B. Explaining opposition trends to recruitment staff',
@@ -39,8 +39,8 @@ const items = {
     {
       id: 'w2',
       label: 'Item 2 — Communication Priority',
-      context: 'What type of communication matters most to your daily professional performance?',
-      question: 'Choose the best option.',
+      context: '',
+      question: 'What type of communication matters most to your daily professional performance?',
       options: [
         'A. Understanding coaches clearly in real time',
         'B. Writing long tactical reports after matches',
@@ -290,9 +290,8 @@ const headCoachItems = {
     {
       id: 'w1',
       label: 'Item 1 — Role Identification',
-      context:
-        'Which responsibility is most typical for a first-team head coach?',
-      question: 'Choose the best option.',
+      context: '',
+      question: 'Which responsibility is most typical for a first-team Head Coach?',
       options: [
         'A. Giving individual rehabilitation updates to injured players',
         'B. Presenting detailed player reports to the recruitment department',
@@ -304,9 +303,8 @@ const headCoachItems = {
     {
       id: 'w2',
       label: 'Item 2 — Communication Priority',
-      context:
-        'Which communication skill has the greatest impact on your effectiveness as a head coach?',
-      question: 'Choose the best option.',
+      context: '',
+      question: 'What would a Head Coach typically need to communicate to players and staff?',
       options: [
         'A. Explaining decisions clearly and aligning players and staff',
         'B. Producing regular public content for club media channels',
@@ -575,8 +573,8 @@ const assistantCoachItems = {
     {
       id: 'w1',
       label: 'Item 1 — Role Identification',
-      context: 'Which situation is most likely to be part of your daily work as a first-team assistant coach?',
-      question: 'Choose the best option.',
+      context: '',
+      question: 'Which situation is most likely to be part of your daily work as a first-team Assistant Coach?',
       options: [
         'A. Explaining the head coach’s tactical priorities to a small group of players',
         'B. Approving the club’s final transfer budget with the board',
