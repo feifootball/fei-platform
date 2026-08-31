@@ -4314,7 +4314,7 @@ function AssessmentContent() {
             >
               {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting') ? (
                 <>
-                  {(selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting') ? (
+                  {(selectedRole === 'Professional Player' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting') ? (
                     <div className="mb-4">
                       <h1 className="max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl">
                         {item.question}
@@ -4486,20 +4486,8 @@ function AssessmentContent() {
                     </div>
                   </div>
 
-                  <div
-                    className={
-                      selectedRole === 'Professional Player'
-                        ? 'mb-4 border-l-[3px] border-fei-sky pl-4 sm:pl-5'
-                        : 'mb-3'
-                    }
-                  >
-                    <h1
-                      className={
-                        selectedRole === 'Professional Player'
-                          ? 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
-                          : 'max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl'
-                      }
-                    >
+                  <div className="mb-3">
+                    <h1 className="max-w-[780px] text-lg font-semibold leading-7 tracking-[-0.008em] text-fei-bg/88 sm:text-xl">
                       {item.question}
                     </h1>
                   </div>
@@ -5317,7 +5305,7 @@ function AssessmentContent() {
             <p
               className={
                 selectedRole === 'Professional Player'
-                  ? 'mt-2 max-w-[760px] break-words text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/76 sm:text-base'
+                  ? 'mt-2 max-w-[760px] break-words text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72'
                   : selectedRole === 'Head Coach'
                     ? 'mt-2 max-w-[760px] break-words text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72'
                     : selectedRole === 'Performance Analyst' ||
@@ -5652,7 +5640,7 @@ function AssessmentContent() {
             <p
               className={
                 selectedRole === 'Professional Player'
-                  ? 'mt-2 max-w-[760px] break-words text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/76 sm:text-base'
+                  ? 'mt-2 max-w-[760px] break-words text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72'
                   : selectedRole === 'Head Coach'
                     ? 'mt-2 max-w-[760px] break-words text-[15px] font-normal leading-7 tracking-[-0.004em] text-fei-bg/72'
                     : selectedRole === 'Assistant Coach'
@@ -5690,7 +5678,7 @@ function AssessmentContent() {
 
           <div
             className={
-              (selectedRole === 'Professional Player' || selectedRole === 'Head Coach')
+              selectedRole === 'Head Coach'
                 ? 'mb-4'
                 : selectedRole === 'Assistant Coach'
                   ? 'mb-5'
