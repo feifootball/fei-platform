@@ -5591,7 +5591,7 @@ function AssessmentContent() {
                     : selectedRole === 'Head of Scouting'
                       ? 'The board prefers big-name signings, but your recruitment model prioritizes system fit, early identification, and sustainable value.'
                       : selectedRole === 'Scout'
-                        ? 'You need to defend a recommendation to the Director of Recruitment. The player is technical, affordable now, and likely to become more expensive, but there are consistency concerns.'
+                        ? 'You are attending a live match with another scout. At halftime, your colleague says: “He looks like the right profile to me. I think we’ve seen enough.” You are not convinced yet. The player has shown good movement and technical quality, but you have not seen how he reacts defensively or under sustained pressure.'
                         : selectedRole === 'Fitness Coach'
                           ? 'You are speaking with a player after an evening match. He completed 90 minutes, recorded one of his highest high-speed running totals of the month, and performed several repeated sprint efforts during the final 20 minutes. He also returned from a hamstring injury three weeks ago and is still rebuilding his normal exposure to high-speed running. The team plays again in three days. Tomorrow is a recovery day, followed by one field session before the next match.'
                           : selectedRole === 'Performance Analyst'
@@ -5638,7 +5638,7 @@ function AssessmentContent() {
                     : selectedRole === 'Head of Scouting'
                       ? 'Defend your recruitment strategy clearly and professionally to the board.'
                       : selectedRole === 'Scout'
-                        ? 'Defend your recommendation clearly, including tactical fit, value, timing, and risk.'
+                        ? 'Give a 45–60 second response to your colleague.'
                         : selectedRole === 'Fitness Coach'
                           ? 'Give a 45–60 second explanation to the player about how he should manage the next two days.'
                           : selectedRole === 'Performance Analyst'
@@ -5698,10 +5698,10 @@ function AssessmentContent() {
                   </ul>
                 ) : selectedRole === 'Scout' ? (
                   <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
-                    <li className="list-disc">state why the player fits the required profile;</li>
-                    <li className="list-disc">support the recommendation with relevant evidence;</li>
-                    <li className="list-disc">acknowledge the consistency risk rather than ignoring it;</li>
-                    <li className="list-disc">explain why the timing and value still justify the next step.</li>
+                    <li className="list-disc">respond professionally to your colleague’s opinion;</li>
+                    <li className="list-disc">explain why you think the evidence is still incomplete;</li>
+                    <li className="list-disc">identify what you want to observe in the second half;</li>
+                    <li className="list-disc">agree on a clear observation focus before the match restarts.</li>
                   </ul>
                 ) : selectedRole === 'Academy Director' ? (
                   <ul className="mt-2 space-y-1.5 pl-5 text-sm leading-6 text-fei-bg/52">
