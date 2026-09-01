@@ -3278,6 +3278,97 @@ function SectionBadge({ label }: { label: string }) {
   )
 }
 
+function DiagnosticProgressSidebar({
+  currentItem,
+  states,
+}: {
+  currentItem: number
+  states: Record<number, 'completed' | 'skipped' | 'pending'>
+}) {
+  const sections = [
+    { label: 'Warm-Up', items: [1, 2] },
+    { label: 'Reading', items: [3, 4, 5, 6] },
+    { label: 'Listening', items: [7, 8, 9, 10] },
+    { label: 'Vocabulary', items: [11, 12, 13, 14] },
+    { label: 'Writing', items: [15] },
+    { label: 'Speaking', items: [16] },
+  ]
+
+  return (
+    <div className="w-full max-w-[170px]">
+      <div className="h-1 w-14 rounded-full bg-gradient-to-r from-fei-yellow to-fei-sky" />
+
+      <p className="mt-4 text-[10px] font-black uppercase tracking-[0.22em] text-fei-bg/42">
+        Assessment progress
+      </p>
+
+      <div className="mt-5 space-y-4">
+        {sections.map((progressSection) => {
+          const sectionIsActive = progressSection.items.includes(currentItem)
+
+          return (
+            <div key={progressSection.label}>
+              <p
+                className={`text-[10px] font-bold uppercase tracking-[0.13em] transition ${
+                  sectionIsActive ? 'text-fei-bg/82' : 'text-fei-bg/36'
+                }`}
+              >
+                {progressSection.label}
+              </p>
+
+              <div className="mt-2 flex flex-wrap gap-1.5">
+                {progressSection.items.map((number) => {
+                  const isCurrent = number === currentItem
+                  const state = states[number] || 'pending'
+
+                  return (
+                    <div
+                      key={number}
+                      aria-current={isCurrent ? 'step' : undefined}
+                      title={
+                        isCurrent
+                          ? `Item ${number} · Current`
+                          : state === 'completed'
+                            ? `Item ${number} · Completed`
+                            : state === 'skipped'
+                              ? `Item ${number} · Not answered`
+                              : `Item ${number} · Pending`
+                      }
+                      className={`relative flex h-8 w-8 select-none items-center justify-center rounded-full text-[11px] font-bold tabular-nums transition ${
+                        isCurrent
+                          ? 'border border-fei-yellow bg-fei-yellow text-fei-bg shadow-[0_0_0_3px_rgba(245,196,0,0.12)]'
+                          : state === 'completed'
+                            ? 'border border-fei-sky/35 bg-fei-sky/[0.10] text-fei-bg/70'
+                            : state === 'skipped'
+                              ? 'border border-fei-bg/[0.10] bg-fei-bg/[0.035] text-fei-bg/45'
+                              : 'border border-fei-bg/[0.10] bg-white text-fei-bg/28'
+                      }`}
+                    >
+                      {String(number).padStart(2, '0')}
+
+                      {!isCurrent && state === 'completed' && (
+                        <span className="absolute -right-1 -top-1 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-fei-sky text-[8px] font-black text-fei-bg">
+                          ✓
+                        </span>
+                      )}
+
+                      {!isCurrent && state === 'skipped' && (
+                        <span className="absolute -right-0.5 -top-0.5 flex h-3 w-3 items-center justify-center rounded-full border border-fei-bg/10 bg-white text-[8px] font-bold text-fei-bg/35">
+                          –
+                        </span>
+                      )}
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
 function OptionButton({
   option,
   selected,
@@ -3686,6 +3777,51 @@ function AssessmentContent() {
     selectedRole === 'Scout' ||
     selectedRole === 'Head of Scouting'
   const totalItems = uses16ItemDiagnostic ? 16 : 17
+
+  const getDiagnosticProgressStates = (
+    currentItem: number
+  ): Record<number, 'completed' | 'skipped' | 'pending'> => {
+    const objectiveItemIds = [
+      activeItems.warmup[0]?.id,
+      activeItems.warmup[1]?.id,
+      activeItems.reading[0]?.id,
+      activeItems.reading[1]?.id,
+      activeItems.reading[2]?.id,
+      activeItems.reading[3]?.id,
+      activeItems.listening[0]?.id,
+      activeItems.listening[1]?.id,
+      activeItems.listening[2]?.id,
+      activeItems.listening[3]?.id,
+      activeItems.vocabulary[0]?.id,
+      activeItems.vocabulary[1]?.id,
+      activeItems.vocabulary[2]?.id,
+      activeItems.vocabulary[3]?.id,
+    ]
+
+    const states: Record<number, 'completed' | 'skipped' | 'pending'> = {}
+
+    for (let number = 1; number <= 16; number += 1) {
+      if (number >= currentItem) {
+        states[number] = 'pending'
+        continue
+      }
+
+      if (number <= 14) {
+        const itemId = objectiveItemIds[number - 1]
+        states[number] = itemId && answers[itemId] ? 'completed' : 'skipped'
+        continue
+      }
+
+      if (number === 15) {
+        states[number] = writingText.trim() ? 'completed' : 'skipped'
+        continue
+      }
+
+      states[number] = 'pending'
+    }
+
+    return states
+  }
 
   useEffect(() => {
     try {
@@ -4365,7 +4501,10 @@ function AssessmentContent() {
           >
             <aside className="lg:sticky lg:top-10 lg:pt-1">
               {(selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting') ? (
-                <SectionBadge label="Role Warm-Up" />
+                <DiagnosticProgressSidebar
+                  currentItem={currentItem}
+                  states={getDiagnosticProgressStates(currentItem)}
+                />
               ) : (
                 <>
                   <div className="h-1 w-20 rounded-full bg-fei-sky" />
@@ -4538,7 +4677,14 @@ function AssessmentContent() {
             }`}
           >
             <aside className="lg:sticky lg:top-10 lg:-translate-y-4">
-              <SectionBadge label="Professional Reading" />
+              {uses16ItemDiagnostic ? (
+                <DiagnosticProgressSidebar
+                  currentItem={getItemNumber('reading', readingStep)}
+                  states={getDiagnosticProgressStates(getItemNumber('reading', readingStep))}
+                />
+              ) : (
+                <SectionBadge label="Professional Reading" />
+              )}
             </aside>
 
             <section
@@ -4727,7 +4873,14 @@ function AssessmentContent() {
             }`}
           >
             <aside className="lg:sticky lg:top-10 lg:-translate-y-4">
-              <SectionBadge label="Listening in Context" />
+              {uses16ItemDiagnostic ? (
+                <DiagnosticProgressSidebar
+                  currentItem={getItemNumber('listening', listeningStep)}
+                  states={getDiagnosticProgressStates(getItemNumber('listening', listeningStep))}
+                />
+              ) : (
+                <SectionBadge label="Listening in Context" />
+              )}
 
             </aside>
 
@@ -4989,7 +5142,14 @@ function AssessmentContent() {
             }`}
           >
             <aside className="lg:sticky lg:top-10 lg:-translate-y-4">
-              <SectionBadge label="Football Vocabulary" />
+              {uses16ItemDiagnostic ? (
+                <DiagnosticProgressSidebar
+                  currentItem={getItemNumber('vocabulary', vocabStep)}
+                  states={getDiagnosticProgressStates(getItemNumber('vocabulary', vocabStep))}
+                />
+              ) : (
+                <SectionBadge label="Football Vocabulary" />
+              )}
             </aside>
 
             <section
@@ -5402,7 +5562,14 @@ function AssessmentContent() {
             }`}
           >
             <aside className="lg:sticky lg:top-10 lg:-translate-y-4">
-              <SectionBadge label="Written Production" />
+              {uses16ItemDiagnostic ? (
+                <DiagnosticProgressSidebar
+                  currentItem={15}
+                  states={getDiagnosticProgressStates(15)}
+                />
+              ) : (
+                <SectionBadge label="Written Production" />
+              )}
             </aside>
 
             <section
@@ -5725,7 +5892,14 @@ function AssessmentContent() {
             }`}
           >
             <aside className="lg:sticky lg:top-10 lg:-translate-y-4">
-              <SectionBadge label="Speaking Production" />
+              {uses16ItemDiagnostic ? (
+                <DiagnosticProgressSidebar
+                  currentItem={16}
+                  states={getDiagnosticProgressStates(16)}
+                />
+              ) : (
+                <SectionBadge label="Speaking Production" />
+              )}
             </aside>
 
             <section
