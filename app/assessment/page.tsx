@@ -3316,7 +3316,7 @@ function DiagnosticProgressSidebar({
                 {progressSection.label}
               </p>
 
-              <div className="mt-2 flex flex-wrap gap-1.5">
+              <div className="mt-2 flex flex-wrap items-center gap-2">
                 {progressSection.items.map((number) => {
                   const isCurrent = number === currentItem
                   const state = states[number] || 'pending'
@@ -3327,35 +3327,25 @@ function DiagnosticProgressSidebar({
                       aria-current={isCurrent ? 'step' : undefined}
                       title={
                         isCurrent
-                          ? `Item ${number} · Current`
+                          ? 'Current'
                           : state === 'completed'
-                            ? `Item ${number} · Completed`
+                            ? 'Completed'
                             : state === 'skipped'
-                              ? `Item ${number} · Not answered`
-                              : `Item ${number} · Pending`
+                              ? 'Not answered'
+                              : 'Pending'
                       }
-                      className={`relative flex h-8 w-8 select-none items-center justify-center rounded-full text-[11px] font-bold tabular-nums transition ${
+                      className={`relative flex h-4 w-4 select-none items-center justify-center rounded-full transition ${
                         isCurrent
-                          ? 'border border-fei-yellow bg-fei-yellow text-fei-bg shadow-[0_0_0_3px_rgba(245,196,0,0.12)]'
+                          ? 'bg-fei-yellow shadow-[0_0_0_3px_rgba(245,196,0,0.12)]'
                           : state === 'completed'
-                            ? 'border border-fei-sky/35 bg-fei-sky/[0.10] text-fei-bg/70'
+                            ? 'bg-fei-sky'
                             : state === 'skipped'
-                              ? 'border border-fei-bg/[0.10] bg-fei-bg/[0.035] text-fei-bg/45'
-                              : 'border border-fei-bg/[0.10] bg-white text-fei-bg/28'
+                              ? 'border border-fei-bg/15 bg-white'
+                              : 'border border-fei-bg/12 bg-white'
                       }`}
                     >
-                      {String(number).padStart(2, '0')}
-
-                      {!isCurrent && state === 'completed' && (
-                        <span className="absolute -right-1 -top-1 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-fei-sky text-[8px] font-black text-fei-bg">
-                          ✓
-                        </span>
-                      )}
-
                       {!isCurrent && state === 'skipped' && (
-                        <span className="absolute -right-0.5 -top-0.5 flex h-3 w-3 items-center justify-center rounded-full border border-fei-bg/10 bg-white text-[8px] font-bold text-fei-bg/35">
-                          –
-                        </span>
+                        <span className="h-1.5 w-1.5 rounded-full bg-fei-bg/25" />
                       )}
                     </div>
                   )
