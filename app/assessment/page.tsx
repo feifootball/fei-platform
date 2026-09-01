@@ -3298,11 +3298,11 @@ function DiagnosticProgressSidebar({
     <div className="w-full max-w-[170px]">
       <div className="h-1 w-14 rounded-full bg-gradient-to-r from-fei-yellow to-fei-sky" />
 
-      <p className="mt-4 text-[10px] font-black uppercase tracking-[0.22em] text-fei-bg/42">
+      <p className="mt-3 text-[10px] font-black uppercase tracking-[0.22em] text-fei-bg/42">
         Assessment progress
       </p>
 
-      <div className="mt-5 space-y-4">
+      <div className="mt-4 space-y-2.5">
         {sections.map((progressSection) => {
           const sectionIsActive = progressSection.items.includes(currentItem)
 
@@ -3316,7 +3316,7 @@ function DiagnosticProgressSidebar({
                 {progressSection.label}
               </p>
 
-              <div className="mt-2 flex flex-wrap items-center gap-2">
+              <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
                 {progressSection.items.map((number) => {
                   const isCurrent = number === currentItem
                   const state = states[number] || 'pending'
@@ -3334,7 +3334,7 @@ function DiagnosticProgressSidebar({
                               ? 'Not answered'
                               : 'Pending'
                       }
-                      className={`relative flex h-4 w-4 select-none items-center justify-center rounded-full transition ${
+                      className={`relative flex h-3.5 w-3.5 select-none items-center justify-center rounded-full transition ${
                         isCurrent
                           ? 'bg-fei-yellow shadow-[0_0_0_3px_rgba(245,196,0,0.12)]'
                           : state === 'completed'
@@ -3345,7 +3345,7 @@ function DiagnosticProgressSidebar({
                       }`}
                     >
                       {!isCurrent && state === 'skipped' && (
-                        <span className="h-1.5 w-1.5 rounded-full bg-fei-bg/25" />
+                        <span className="h-1 w-1 rounded-full bg-fei-bg/25" />
                       )}
                     </div>
                   )
