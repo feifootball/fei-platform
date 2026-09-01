@@ -3575,53 +3575,50 @@ function UnansweredModal({
       onClick={onStay}
     >
       <div
-        className="relative w-full max-w-[420px] overflow-hidden rounded-[1.5rem] border border-fei-bg/[0.12] bg-white p-5 shadow-[0_28px_80px_rgba(7,17,31,0.22)] sm:p-6"
+        className="relative w-full max-w-[430px] overflow-hidden rounded-[1.5rem] border border-fei-bg/[0.12] bg-white p-5 shadow-[0_28px_80px_rgba(7,17,31,0.22)] sm:p-6"
         onClick={(event) => event.stopPropagation()}
       >
         <div className="absolute inset-x-6 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent" />
 
-        <div className="flex items-center gap-3.5">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-fei-sky/35 bg-fei-sky/[0.07] text-fei-bg">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={1.8}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="h-[18px] w-[18px]"
-              aria-hidden
-            >
-              <path d="M9.7 9a2.6 2.6 0 1 1 4.9 1.2c-.45.8-1.35 1.15-1.95 1.75-.42.42-.65.9-.65 1.55" />
-              <path d="M12 17.25h.01" />
-            </svg>
-          </div>
+        <div className="pointer-events-none absolute -right-8 -bottom-10 opacity-[0.08]">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 120 120"
+            className="h-[165px] w-[165px]"
+            aria-hidden
+          >
+            <rect x="18" y="16" width="68" height="13" rx="6.5" fill="currentColor" className="text-fei-bg" />
+            <rect x="18" y="39" width="54" height="13" rx="6.5" fill="currentColor" className="text-fei-bg" />
+            <rect x="18" y="62" width="40" height="13" rx="6.5" fill="currentColor" className="text-fei-bg" />
+            <circle cx="77" cy="70" r="6.5" fill="#8FD8FF" />
+          </svg>
+        </div>
 
+        <div className="relative z-10">
           <h2
             id="unanswered-dialog-title"
-            className="text-[20px] font-semibold leading-[1.3] tracking-[-0.018em] text-fei-bg"
+            className="max-w-[250px] text-[20px] font-semibold leading-[1.3] tracking-[-0.018em] text-fei-bg"
           >
             Continue without answering?
           </h2>
-        </div>
 
-        <div className="mt-4 flex flex-col-reverse gap-2.5 sm:flex-row sm:justify-end">
-          <button
-            type="button"
-            onClick={onStay}
-            className="inline-flex min-h-11 items-center justify-center rounded-full border border-fei-bg/[0.13] bg-fei-bg/[0.015] px-5 py-2.5 text-sm font-medium text-fei-bg/68 transition hover:border-fei-sky/45 hover:bg-fei-sky/[0.035] hover:text-fei-bg"
-          >
-            Stay and answer
-          </button>
+          <div className="mt-4 flex flex-col-reverse gap-2.5 sm:flex-row sm:justify-end">
+            <button
+              type="button"
+              onClick={onStay}
+              className="inline-flex min-h-11 items-center justify-center rounded-full border border-fei-bg/[0.13] bg-fei-bg/[0.015] px-5 py-2.5 text-sm font-medium text-fei-bg/68 transition hover:border-fei-sky/45 hover:bg-fei-sky/[0.035] hover:text-fei-bg"
+            >
+              Stay and answer
+            </button>
 
-          <button
-            type="button"
-            onClick={onContinue}
-            className="inline-flex min-h-11 items-center justify-center rounded-full bg-fei-yellow px-5 py-2.5 text-sm font-semibold text-fei-bg transition hover:bg-fei-yellow/90"
-          >
-            Continue
-          </button>
+            <button
+              type="button"
+              onClick={onContinue}
+              className="inline-flex min-h-11 items-center justify-center rounded-full bg-fei-yellow px-5 py-2.5 text-sm font-semibold text-fei-bg transition hover:bg-fei-yellow/90"
+            >
+              Continue
+            </button>
+          </div>
         </div>
       </div>
     </div>
