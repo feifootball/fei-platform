@@ -3580,18 +3580,13 @@ function UnansweredModal({
       >
         <div className="absolute inset-x-6 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent" />
 
-        <div className="pointer-events-none absolute -right-8 -bottom-10 opacity-[0.08]">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 120 120"
-            className="h-[165px] w-[165px]"
+        <div className="pointer-events-none absolute -right-10 -bottom-12 opacity-[0.065]">
+          <img
+            src="/fei-logo-navbar-vector.svg"
+            alt=""
             aria-hidden
-          >
-            <rect x="18" y="16" width="68" height="13" rx="6.5" fill="currentColor" className="text-fei-bg" />
-            <rect x="18" y="39" width="54" height="13" rx="6.5" fill="currentColor" className="text-fei-bg" />
-            <rect x="18" y="62" width="40" height="13" rx="6.5" fill="currentColor" className="text-fei-bg" />
-            <circle cx="77" cy="70" r="6.5" fill="#8FD8FF" />
-          </svg>
+            className="h-[170px] w-auto"
+          />
         </div>
 
         <div className="relative z-10">
