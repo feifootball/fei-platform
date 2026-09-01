@@ -3683,10 +3683,14 @@ function UnansweredModal({
         <div className="relative z-10 pr-10 sm:pr-14">
           <h2
             id="unanswered-dialog-title"
-            className="max-w-[245px] text-[19px] font-semibold leading-[1.22] tracking-[-0.02em] text-fei-bg/95 sm:text-[20px]"
+            className="whitespace-nowrap text-[19px] font-semibold leading-[1.25] tracking-[-0.02em] text-fei-bg/95 sm:text-[20px]"
           >
             Continue without answering?
           </h2>
+
+          <p className="mt-1.5 text-[11px] font-normal leading-4 text-fei-bg/40 sm:text-xs">
+            You won't be able to return to this question.
+          </p>
 
           <div className="mt-5 flex flex-col-reverse gap-2.5 sm:flex-row sm:justify-end">
             <button
