@@ -3575,25 +3575,21 @@ function UnansweredModal({
       onClick={onStay}
     >
       <div
-        className="w-full max-w-[460px] rounded-[1.5rem] border border-fei-bg/[0.12] bg-white p-6 shadow-[0_28px_80px_rgba(7,17,31,0.22)] sm:p-7"
+        className="w-full max-w-[440px] rounded-[1.5rem] border border-fei-bg/[0.12] bg-white p-6 shadow-[0_28px_80px_rgba(7,17,31,0.22)] sm:p-7"
         onClick={(event) => event.stopPropagation()}
       >
-        <p
+        <h2
           id="unanswered-dialog-title"
-          className="text-xs font-black uppercase tracking-[0.22em] text-fei-bg/45"
+          className="text-[22px] font-bold leading-[1.3] tracking-[-0.02em] text-fei-bg sm:text-[24px]"
         >
-          No answer selected
-        </p>
+          Continue without answering?
+        </h2>
 
-        <p className="mt-3 text-[17px] font-semibold leading-7 text-fei-bg">
-          You haven’t answered this question. Continue anyway?
-        </p>
-
-        <div className="mt-6 flex flex-col-reverse gap-2.5 sm:flex-row sm:justify-end">
+        <div className="mt-5 flex flex-col-reverse gap-2.5 sm:flex-row sm:justify-end">
           <button
             type="button"
             onClick={onStay}
-            className="inline-flex min-h-11 items-center justify-center rounded-full border border-fei-bg/[0.14] bg-white px-5 py-2.5 text-sm font-semibold text-fei-bg/70 transition hover:border-fei-sky/45 hover:text-fei-bg"
+            className="inline-flex min-h-11 items-center justify-center rounded-full border border-fei-bg/[0.14] bg-white px-5 py-2.5 text-sm font-medium text-fei-bg/70 transition hover:border-fei-sky/45 hover:text-fei-bg"
           >
             Stay and answer
           </button>
@@ -3601,7 +3597,7 @@ function UnansweredModal({
           <button
             type="button"
             onClick={onContinue}
-            className="inline-flex min-h-11 items-center justify-center rounded-full bg-fei-yellow px-5 py-2.5 text-sm font-bold text-fei-bg transition hover:bg-fei-yellow/90"
+            className="inline-flex min-h-11 items-center justify-center rounded-full bg-fei-yellow px-5 py-2.5 text-sm font-semibold text-fei-bg transition hover:bg-fei-yellow/90"
           >
             Continue
           </button>
