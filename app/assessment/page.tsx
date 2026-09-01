@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useEffect, useState, useRef, useCallback } from 'react'
+import { createPortal } from 'react-dom'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { createClient } from '@/lib/supabase'
 import { Suspense } from 'react'
@@ -3645,7 +3646,9 @@ function UnansweredModal({
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [onStay])
 
-  return (
+  if (typeof document === 'undefined') return null
+
+  return createPortal(
     <div
       className="fixed inset-0 z-[100] flex items-center justify-center bg-fei-bg/35 px-5 backdrop-blur-[2px]"
       role="dialog"
@@ -3699,7 +3702,8 @@ function UnansweredModal({
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }
 
