@@ -3296,26 +3296,27 @@ function DiagnosticProgressSidebar({
   ]
 
   return (
-    <div className="w-full max-w-[170px]">
-      <p className="text-[10px] font-black uppercase tracking-[0.22em] text-fei-bg/42">
-        Assessment progress
-      </p>
-
-      <div className="mt-4 space-y-2.5">
+    <div className="w-full max-w-[150px]">
+      <div className="space-y-2.5">
         {sections.map((progressSection) => {
           const sectionIsActive = progressSection.items.includes(currentItem)
+          const sectionIsPast = progressSection.items.every((number) => number < currentItem)
 
           return (
-            <div key={progressSection.label}>
+            <div key={progressSection.label} className="relative">
               <p
-                className={`text-[10px] font-bold uppercase tracking-[0.13em] transition ${
-                  sectionIsActive ? 'text-fei-bg/82' : 'text-fei-bg/36'
+                className={`text-[10px] font-bold uppercase tracking-[0.14em] transition ${
+                  sectionIsActive
+                    ? 'text-fei-bg/88'
+                    : sectionIsPast
+                      ? 'text-fei-bg/52'
+                      : 'text-fei-bg/30'
                 }`}
               >
                 {progressSection.label}
               </p>
 
-              <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
+              <div className="mt-1 flex flex-wrap items-center gap-1.5">
                 {progressSection.items.map((number) => {
                   const isCurrent = number === currentItem
                   const state = states[number] || 'pending'
@@ -3333,18 +3334,18 @@ function DiagnosticProgressSidebar({
                               ? 'Not answered'
                               : 'Pending'
                       }
-                      className={`relative flex h-3.5 w-3.5 select-none items-center justify-center rounded-full transition ${
+                      className={`relative flex h-3 w-3 select-none items-center justify-center rounded-full transition ${
                         isCurrent
-                          ? 'bg-fei-yellow shadow-[0_0_0_3px_rgba(245,196,0,0.12)]'
+                          ? 'bg-fei-yellow shadow-[0_0_0_2px_rgba(245,196,0,0.13)]'
                           : state === 'completed'
-                            ? 'bg-fei-sky'
+                            ? 'bg-fei-sky/90'
                             : state === 'skipped'
                               ? 'border border-fei-bg/15 bg-white'
-                              : 'border border-fei-bg/12 bg-white'
+                              : 'border border-fei-bg/[0.11] bg-white'
                       }`}
                     >
                       {!isCurrent && state === 'skipped' && (
-                        <span className="h-1 w-1 rounded-full bg-fei-bg/25" />
+                        <span className="h-[3px] w-[3px] rounded-full bg-fei-bg/25" />
                       )}
                     </div>
                   )
