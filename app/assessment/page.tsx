@@ -4165,24 +4165,24 @@ function AssessmentContent() {
 
               </section>
 
-              <div className="grid gap-4 lg:-mt-10">
-                <section className="rounded-[1.75rem] border border-fei-bg/[0.16] bg-white p-6 shadow-[0_22px_60px_rgba(7,17,31,0.10)] sm:p-7 lg:p-8">
+              <div className="grid gap-3 lg:-mt-10">
+                <section className="rounded-[1.75rem] border border-fei-bg/[0.16] bg-white p-5 shadow-[0_22px_60px_rgba(7,17,31,0.10)] sm:p-6 lg:p-6">
                   <p className="text-xs font-black uppercase tracking-[0.26em] text-fei-bg/48">
                     Before you begin
                   </p>
 
-                  <div className="mt-5 space-y-4">
+                  <div className="mt-4 grid gap-3">
                     {[
                       'Do not close or refresh the page until the assessment is complete.',
                       'Find a quiet place with a reliable internet connection.',
                       'Answer each question based on what you know. If you are not sure, you may continue to the next question without selecting an answer.',
                     ].map((item, index) => (
-                      <div key={item} className="flex items-start gap-4">
-                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-fei-sky/50 bg-fei-sky/[0.10] text-xs font-black text-fei-bg">
+                      <div key={item} className="flex items-start gap-3">
+                        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-fei-sky/50 bg-fei-sky/[0.10] text-[11px] font-black text-fei-bg">
                           {index + 1}
                         </span>
 
-                        <p className="pt-0.5 text-[14px] leading-6 text-fei-bg/68 sm:text-[15px]">
+                        <p className="text-[14px] leading-[1.55] text-fei-bg/68 sm:text-[15px]">
                           {item}
                         </p>
                       </div>
@@ -4190,40 +4190,40 @@ function AssessmentContent() {
                   </div>
                 </section>
 
-                <section className="relative overflow-hidden rounded-[1.75rem] border border-fei-bg/[0.16] bg-white p-6 shadow-[0_22px_60px_rgba(7,17,31,0.10)] sm:p-7 lg:p-8">
+                <section className="relative overflow-hidden rounded-[1.75rem] border border-fei-bg/[0.16] bg-white p-5 shadow-[0_22px_60px_rgba(7,17,31,0.10)] sm:p-6 lg:p-6">
                   <div className="absolute inset-x-8 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent" />
 
                   <p className="text-xs font-black uppercase tracking-[0.3em] text-fei-bg/48">
                     Audio & microphone check
                   </p>
 
-                  <h2 className="mt-4 text-3xl font-black tracking-[-0.035em] text-fei-bg sm:text-4xl">
+                  <h2 className="mt-3 text-[28px] font-black tracking-[-0.035em] text-fei-bg sm:text-3xl">
                     Check your setup
                   </h2>
 
-                  <p className="mt-3 max-w-xl text-[15px] leading-7 text-fei-bg/60">
+                  <p className="mt-2 max-w-xl text-[15px] leading-6 text-fei-bg/60">
                     Check your audio and enable your microphone before starting the diagnostic.
                   </p>
 
-                  <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                  <div className="mt-4 grid gap-3 sm:grid-cols-2">
                     <button
                       type="button"
                       onClick={playAudioTest}
                       disabled={audioTestPlaying}
-                      className="inline-flex min-h-12 items-center justify-center rounded-full border border-fei-sky/50 bg-fei-sky/[0.06] px-5 py-3 text-sm font-bold text-fei-bg transition hover:-translate-y-0.5 hover:border-fei-sky/70 hover:bg-fei-sky/[0.11] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0"
+                      className="inline-flex min-h-11 items-center justify-center rounded-full border border-fei-sky/50 bg-fei-sky/[0.06] px-5 py-2.5 text-sm font-bold text-fei-bg transition hover:-translate-y-0.5 hover:border-fei-sky/70 hover:bg-fei-sky/[0.11] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0"
                     >
                       {audioTestPlaying ? 'Playing...' : 'Play test audio'}
                     </button>
 
                     {micPermission === 'granted' ? (
-                      <div className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-green-500/20 bg-green-500/[0.08] px-5 py-3 text-sm font-bold text-green-700">
+                      <div className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-green-500/20 bg-green-500/[0.08] px-5 py-2.5 text-sm font-bold text-green-700">
                         ✓ Microphone ready
                       </div>
                     ) : micPermission === 'denied' ? (
                       <button
                         type="button"
                         onClick={requestMic}
-                        className="inline-flex min-h-12 items-center justify-center rounded-full border border-red-500/20 bg-red-500/[0.06] px-5 py-3 text-sm font-bold text-red-700 transition hover:bg-red-500/10"
+                        className="inline-flex min-h-11 items-center justify-center rounded-full border border-red-500/20 bg-red-500/[0.06] px-5 py-2.5 text-sm font-bold text-red-700 transition hover:bg-red-500/10"
                       >
                         Microphone access denied
                       </button>
@@ -4231,7 +4231,7 @@ function AssessmentContent() {
                       <button
                         type="button"
                         onClick={requestMic}
-                        className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-fei-yellow px-5 py-3 text-sm font-bold text-fei-bg transition hover:bg-fei-yellow/90"
+                        className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-fei-yellow px-5 py-2.5 text-sm font-bold text-fei-bg transition hover:bg-fei-yellow/90"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
