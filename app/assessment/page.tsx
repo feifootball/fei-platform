@@ -3671,24 +3671,24 @@ function UnansweredModal({
       >
         <div className="absolute inset-x-6 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent" />
 
-        <div className="pointer-events-none absolute -right-10 -bottom-12 opacity-[0.065]">
+        <div className="pointer-events-none absolute -right-5 top-1/2 -translate-y-1/2 opacity-[0.09]">
           <img
             src="/fei-logo-navbar-vector.svg"
             alt=""
             aria-hidden
-            className="h-[170px] w-auto"
+            className="h-[185px] w-auto"
           />
         </div>
 
-        <div className="relative z-10">
+        <div className="relative z-10 pr-10 sm:pr-14">
           <h2
             id="unanswered-dialog-title"
-            className="max-w-[250px] text-[20px] font-semibold leading-[1.3] tracking-[-0.018em] text-fei-bg"
+            className="max-w-[245px] text-[19px] font-semibold leading-[1.22] tracking-[-0.02em] text-fei-bg/95 sm:text-[20px]"
           >
             Continue without answering?
           </h2>
 
-          <div className="mt-4 flex flex-col-reverse gap-2.5 sm:flex-row sm:justify-end">
+          <div className="mt-5 flex flex-col-reverse gap-2.5 sm:flex-row sm:justify-end">
             <button
               type="button"
               onClick={onStay}
