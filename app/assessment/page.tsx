@@ -3548,6 +3548,69 @@ function AudioPlayer({
   )
 }
 
+function UnansweredModal({
+  onStay,
+  onContinue,
+}: {
+  onStay: () => void
+  onContinue: () => void
+}) {
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        onStay()
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [onStay])
+
+  return (
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-fei-bg/35 px-5 backdrop-blur-[2px]"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="unanswered-dialog-title"
+      onClick={onStay}
+    >
+      <div
+        className="w-full max-w-[460px] rounded-[1.5rem] border border-fei-bg/[0.12] bg-white p-6 shadow-[0_28px_80px_rgba(7,17,31,0.22)] sm:p-7"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <p
+          id="unanswered-dialog-title"
+          className="text-xs font-black uppercase tracking-[0.22em] text-fei-bg/45"
+        >
+          No answer selected
+        </p>
+
+        <p className="mt-3 text-[17px] font-semibold leading-7 text-fei-bg">
+          You haven’t answered this question. Continue anyway?
+        </p>
+
+        <div className="mt-6 flex flex-col-reverse gap-2.5 sm:flex-row sm:justify-end">
+          <button
+            type="button"
+            onClick={onStay}
+            className="inline-flex min-h-11 items-center justify-center rounded-full border border-fei-bg/[0.14] bg-white px-5 py-2.5 text-sm font-semibold text-fei-bg/70 transition hover:border-fei-sky/45 hover:text-fei-bg"
+          >
+            Stay and answer
+          </button>
+
+          <button
+            type="button"
+            onClick={onContinue}
+            className="inline-flex min-h-11 items-center justify-center rounded-full bg-fei-yellow px-5 py-2.5 text-sm font-bold text-fei-bg transition hover:bg-fei-yellow/90"
+          >
+            Continue
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 // ─── MAIN COMPONENT ───────────────────────────────────────────────────────────
 
 function AssessmentContent() {
@@ -4369,39 +4432,22 @@ function AssessmentContent() {
               )}
 
               <div
-                className={`flex flex-col items-end gap-3 ${
+                className={`flex justify-end ${
                   (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting') ? 'pb-6' : 'mt-8'
                 }`}
               >
                 {showUnansweredPrompt && !selected && (
-                  <div className="w-full max-w-[560px] rounded-xl border border-fei-bg/[0.12] bg-white px-5 py-4 shadow-[0_8px_24px_rgba(7,17,31,0.06)]">
-                    <p className="text-sm font-semibold leading-6 text-fei-bg/75">
-                      You haven’t answered this question. Continue anyway?
-                    </p>
-                    <div className="mt-3 flex flex-wrap justify-end gap-2">
-                      <button
-                        type="button"
-                        onClick={() => setShowUnansweredPrompt(false)}
-                        className="inline-flex min-h-10 items-center justify-center rounded-full border border-fei-bg/[0.14] bg-white px-4 py-2 text-sm font-semibold text-fei-bg/70"
-                      >
-                        Stay and answer
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setShowUnansweredPrompt(false)
-                          if (warmupStep < activeItems.warmup.length - 1) {
-                            setWarmupStep(warmupStep + 1)
-                          } else {
-                            setSection('reading')
-                          }
-                        }}
-                        className="inline-flex min-h-10 items-center justify-center rounded-full bg-fei-bg px-4 py-2 text-sm font-bold text-white"
-                      >
-                        Continue
-                      </button>
-                    </div>
-                  </div>
+                  <UnansweredModal
+                    onStay={() => setShowUnansweredPrompt(false)}
+                    onContinue={() => {
+                      setShowUnansweredPrompt(false)
+                      if (warmupStep < activeItems.warmup.length - 1) {
+                        setWarmupStep(warmupStep + 1)
+                      } else {
+                        setSection('reading')
+                      }
+                    }}
+                  />
                 )}
                 <button
                   type="button"
@@ -4576,38 +4622,21 @@ function AssessmentContent() {
                 ))}
               </div>
 
-              <div className={`flex flex-col items-end gap-3 ${
+              <div className={`flex justify-end ${
                 (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting') ? 'pb-6' : ''
               }`}>
                 {showUnansweredPrompt && !selected && (
-                  <div className="w-full max-w-[560px] rounded-xl border border-fei-bg/[0.12] bg-white px-5 py-4 shadow-[0_8px_24px_rgba(7,17,31,0.06)]">
-                    <p className="text-sm font-semibold leading-6 text-fei-bg/75">
-                      You haven’t answered this question. Continue anyway?
-                    </p>
-                    <div className="mt-3 flex flex-wrap justify-end gap-2">
-                      <button
-                        type="button"
-                        onClick={() => setShowUnansweredPrompt(false)}
-                        className="inline-flex min-h-10 items-center justify-center rounded-full border border-fei-bg/[0.14] bg-white px-4 py-2 text-sm font-semibold text-fei-bg/70"
-                      >
-                        Stay and answer
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setShowUnansweredPrompt(false)
-                          if (readingStep < activeItems.reading.length - 1) {
-                            setReadingStep(readingStep + 1)
-                          } else {
-                            setSection('listening')
-                          }
-                        }}
-                        className="inline-flex min-h-10 items-center justify-center rounded-full bg-fei-bg px-4 py-2 text-sm font-bold text-white"
-                      >
-                        Continue
-                      </button>
-                    </div>
-                  </div>
+                  <UnansweredModal
+                    onStay={() => setShowUnansweredPrompt(false)}
+                    onContinue={() => {
+                      setShowUnansweredPrompt(false)
+                      if (readingStep < activeItems.reading.length - 1) {
+                        setReadingStep(readingStep + 1)
+                      } else {
+                        setSection('listening')
+                      }
+                    }}
+                  />
                 )}
                 <button
                   type="button"
@@ -4779,42 +4808,25 @@ function AssessmentContent() {
               </div>
 
               <div
-                className={`flex flex-col items-end gap-3 ${
+                className={`flex justify-end ${
                   (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting') ? 'pb-6' : ''
                 }`}
               >
                 {showUnansweredPrompt && !selected && (
-                  <div className="w-full max-w-[560px] rounded-xl border border-fei-bg/[0.12] bg-white px-5 py-4 shadow-[0_8px_24px_rgba(7,17,31,0.06)]">
-                    <p className="text-sm font-semibold leading-6 text-fei-bg/75">
-                      You haven’t answered this question. Continue anyway?
-                    </p>
-                    <div className="mt-3 flex flex-wrap justify-end gap-2">
-                      <button
-                        type="button"
-                        onClick={() => setShowUnansweredPrompt(false)}
-                        className="inline-flex min-h-10 items-center justify-center rounded-full border border-fei-bg/[0.14] bg-white px-4 py-2 text-sm font-semibold text-fei-bg/70"
-                      >
-                        Stay and answer
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setShowUnansweredPrompt(false)
-                          if ('speechSynthesis' in window) {
-                            window.speechSynthesis.cancel()
-                          }
-                          if (listeningStep < activeItems.listening.length - 1) {
-                            setListeningStep(listeningStep + 1)
-                          } else {
-                            setSection('vocabulary')
-                          }
-                        }}
-                        className="inline-flex min-h-10 items-center justify-center rounded-full bg-fei-bg px-4 py-2 text-sm font-bold text-white"
-                      >
-                        Continue
-                      </button>
-                    </div>
-                  </div>
+                  <UnansweredModal
+                    onStay={() => setShowUnansweredPrompt(false)}
+                    onContinue={() => {
+                      setShowUnansweredPrompt(false)
+                      if ('speechSynthesis' in window) {
+                        window.speechSynthesis.cancel()
+                      }
+                      if (listeningStep < activeItems.listening.length - 1) {
+                        setListeningStep(listeningStep + 1)
+                      } else {
+                        setSection('vocabulary')
+                      }
+                    }}
+                  />
                 )}
                 <button
                   type="button"
@@ -5077,53 +5089,36 @@ function AssessmentContent() {
               </div>
 
               <div
-                className={`flex flex-col items-end gap-3 ${
+                className={`flex justify-end ${
                   (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting') ? 'pb-6' : ''
                 }`}
               >
                 {showUnansweredPrompt && !selected && (
-                  <div className="w-full max-w-[560px] rounded-xl border border-fei-bg/[0.12] bg-white px-5 py-4 shadow-[0_8px_24px_rgba(7,17,31,0.06)]">
-                    <p className="text-sm font-semibold leading-6 text-fei-bg/75">
-                      You haven’t answered this question. Continue anyway?
-                    </p>
-                    <div className="mt-3 flex flex-wrap justify-end gap-2">
-                      <button
-                        type="button"
-                        onClick={() => setShowUnansweredPrompt(false)}
-                        className="inline-flex min-h-10 items-center justify-center rounded-full border border-fei-bg/[0.14] bg-white px-4 py-2 text-sm font-semibold text-fei-bg/70"
-                      >
-                        Stay and answer
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setShowUnansweredPrompt(false)
-                          if (vocabStep < activeItems.vocabulary.length - 1) {
-                            setVocabStep(vocabStep + 1)
-                          } else if (
-                            selectedRole === 'Professional Player' ||
-                            selectedRole === 'Head Coach' ||
-                            selectedRole === 'Assistant Coach' ||
-                            selectedRole === 'Performance Analyst' ||
-                            selectedRole === 'Fitness Coach' ||
-                            selectedRole === 'Physiotherapist' ||
-                            selectedRole === 'Sports Psychologist' ||
-                            selectedRole === 'Nutritionist' ||
-                            selectedRole === 'Academy Director' ||
-                            selectedRole === 'Scout' ||
-                            selectedRole === 'Head of Scouting'
-                          ) {
-                            setSection('writing')
-                          } else {
-                            setSection('functional')
-                          }
-                        }}
-                        className="inline-flex min-h-10 items-center justify-center rounded-full bg-fei-bg px-4 py-2 text-sm font-bold text-white"
-                      >
-                        Continue
-                      </button>
-                    </div>
-                  </div>
+                  <UnansweredModal
+                    onStay={() => setShowUnansweredPrompt(false)}
+                    onContinue={() => {
+                      setShowUnansweredPrompt(false)
+                      if (vocabStep < activeItems.vocabulary.length - 1) {
+                        setVocabStep(vocabStep + 1)
+                      } else if (
+                        selectedRole === 'Professional Player' ||
+                        selectedRole === 'Head Coach' ||
+                        selectedRole === 'Assistant Coach' ||
+                        selectedRole === 'Performance Analyst' ||
+                        selectedRole === 'Fitness Coach' ||
+                        selectedRole === 'Physiotherapist' ||
+                        selectedRole === 'Sports Psychologist' ||
+                        selectedRole === 'Nutritionist' ||
+                        selectedRole === 'Academy Director' ||
+                        selectedRole === 'Scout' ||
+                        selectedRole === 'Head of Scouting'
+                      ) {
+                        setSection('writing')
+                      } else {
+                        setSection('functional')
+                      }
+                    }}
+                  />
                 )}
                 <button
                   type="button"
