@@ -4478,7 +4478,7 @@ function AssessmentContent() {
           <div
             className={`grid items-start ${
               (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting')
-                ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-12'
+                ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-16'
                 : 'gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12'
             }`}
           >
@@ -4655,7 +4655,7 @@ function AssessmentContent() {
           <div
             className={`grid items-start ${
               (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting')
-                ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-12'
+                ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-16'
                 : 'gap-7 lg:grid-cols-[0.43fr_1.57fr] lg:gap-9'
             }`}
           >
@@ -4851,7 +4851,7 @@ function AssessmentContent() {
           <div
             className={`grid items-start ${
               (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting')
-                ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-12'
+                ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-16'
                 : 'gap-7 lg:grid-cols-[0.43fr_1.57fr] lg:gap-9'
             }`}
           >
@@ -5120,7 +5120,7 @@ function AssessmentContent() {
             className={`grid items-start ${
               (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' ||
                     selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting')
-                ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-12'
+                ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-16'
                 : 'gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12'
             }`}
           >
@@ -5540,7 +5540,7 @@ function AssessmentContent() {
           <div
             className={`grid items-start ${
               (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting')
-                ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-12'
+                ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-16'
                 : 'gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12'
             }`}
           >
@@ -5870,7 +5870,7 @@ function AssessmentContent() {
           <div
             className={`grid items-start ${
               (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting')
-                ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-12'
+                ? 'gap-6 lg:grid-cols-[0.3fr_1.7fr] lg:gap-16'
                 : 'gap-10 lg:grid-cols-[0.48fr_1.52fr] lg:gap-12'
             }`}
           >
