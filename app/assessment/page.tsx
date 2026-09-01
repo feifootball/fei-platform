@@ -3296,9 +3296,7 @@ function DiagnosticProgressSidebar({
 
   return (
     <div className="w-full max-w-[170px]">
-      <div className="h-1 w-14 rounded-full bg-gradient-to-r from-fei-yellow to-fei-sky" />
-
-      <p className="mt-3 text-[10px] font-black uppercase tracking-[0.22em] text-fei-bg/42">
+      <p className="text-[10px] font-black uppercase tracking-[0.22em] text-fei-bg/42">
         Assessment progress
       </p>
 
