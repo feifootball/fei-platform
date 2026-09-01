@@ -3287,70 +3287,56 @@ function DiagnosticProgressSidebar({
   states: Record<number, 'completed' | 'skipped' | 'pending'>
 }) {
   const sections = [
-    { label: 'Warm-Up', items: [1, 2] },
-    { label: 'Reading', items: [3, 4, 5, 6] },
-    { label: 'Listening', items: [7, 8, 9, 10] },
-    { label: 'Vocabulary', items: [11, 12, 13, 14] },
-    { label: 'Writing', items: [15] },
-    { label: 'Speaking', items: [16] },
+    { label: 'Warm-Up', start: 1, end: 2 },
+    { label: 'Reading', start: 3, end: 6 },
+    { label: 'Listening', start: 7, end: 10 },
+    { label: 'Vocabulary', start: 11, end: 14 },
+    { label: 'Writing', start: 15, end: 15 },
+    { label: 'Speaking', start: 16, end: 16 },
   ]
 
   return (
     <div className="w-full max-w-[150px]">
-      <div className="space-y-2.5">
+      <div className="space-y-2">
         {sections.map((progressSection) => {
-          const sectionIsActive = progressSection.items.includes(currentItem)
-          const sectionIsPast = progressSection.items.every((number) => number < currentItem)
+          const sectionIsActive =
+            currentItem >= progressSection.start &&
+            currentItem <= progressSection.end
+
+          const sectionIsPast = currentItem > progressSection.end
 
           return (
-            <div key={progressSection.label} className="relative">
-              <p
-                className={`text-[10px] font-bold uppercase tracking-[0.14em] transition ${
+            <div
+              key={progressSection.label}
+              className={`flex min-h-8 items-center gap-2.5 rounded-lg px-2 py-1.5 transition ${
+                sectionIsActive
+                  ? 'bg-white shadow-[0_2px_10px_rgba(15,23,42,0.04)]'
+                  : ''
+              }`}
+            >
+              <div className="flex w-4 shrink-0 justify-center">
+                {sectionIsActive ? (
+                  <span className="h-5 w-1 rounded-full bg-gradient-to-b from-fei-yellow to-fei-sky" />
+                ) : sectionIsPast ? (
+                  <span className="flex h-4 w-4 items-center justify-center rounded-full bg-fei-sky/[0.14] text-[9px] font-black text-fei-bg/60">
+                    ✓
+                  </span>
+                ) : (
+                  <span className="h-1.5 w-1.5 rounded-full bg-fei-bg/15" />
+                )}
+              </div>
+
+              <span
+                className={`text-[10px] font-bold uppercase tracking-[0.13em] transition ${
                   sectionIsActive
-                    ? 'text-fei-bg/88'
+                    ? 'text-fei-bg/90'
                     : sectionIsPast
-                      ? 'text-fei-bg/52'
-                      : 'text-fei-bg/30'
+                      ? 'text-fei-bg/50'
+                      : 'text-fei-bg/28'
                 }`}
               >
                 {progressSection.label}
-              </p>
-
-              <div className="mt-1 flex flex-wrap items-center gap-1.5">
-                {progressSection.items.map((number) => {
-                  const isCurrent = number === currentItem
-                  const state = states[number] || 'pending'
-
-                  return (
-                    <div
-                      key={number}
-                      aria-current={isCurrent ? 'step' : undefined}
-                      title={
-                        isCurrent
-                          ? 'Current'
-                          : state === 'completed'
-                            ? 'Completed'
-                            : state === 'skipped'
-                              ? 'Not answered'
-                              : 'Pending'
-                      }
-                      className={`relative flex h-3 w-3 select-none items-center justify-center rounded-full transition ${
-                        isCurrent
-                          ? 'bg-fei-yellow shadow-[0_0_0_2px_rgba(245,196,0,0.13)]'
-                          : state === 'completed'
-                            ? 'bg-fei-sky/90'
-                            : state === 'skipped'
-                              ? 'border border-fei-bg/15 bg-white'
-                              : 'border border-fei-bg/[0.11] bg-white'
-                      }`}
-                    >
-                      {!isCurrent && state === 'skipped' && (
-                        <span className="h-[3px] w-[3px] rounded-full bg-fei-bg/25" />
-                      )}
-                    </div>
-                  )
-                })}
-              </div>
+              </span>
             </div>
           )
         })}
