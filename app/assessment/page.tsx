@@ -3661,7 +3661,7 @@ function UnansweredModal({
       >
         <div className="absolute inset-x-6 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent" />
 
-        <div className="pointer-events-none absolute -right-5 top-1/2 -translate-y-1/2 opacity-[0.09]">
+        <div className="pointer-events-none absolute -right-5 top-1/2 -translate-y-1/2 opacity-[0.045]">
           <img
             src="/fei-logo-navbar-vector.svg"
             alt=""
@@ -3670,7 +3670,7 @@ function UnansweredModal({
           />
         </div>
 
-        <div className="relative z-10 pr-10 sm:pr-14">
+        <div className="relative z-10">
           <h2
             id="unanswered-dialog-title"
             className="whitespace-nowrap text-[19px] font-semibold leading-[1.25] tracking-[-0.02em] text-fei-bg/95 sm:text-[20px]"
@@ -3682,7 +3682,7 @@ function UnansweredModal({
             You won't be able to return to this question.
           </p>
 
-          <div className="mt-5 flex flex-col-reverse gap-2.5 sm:flex-row sm:justify-end">
+          <div className="mt-5 flex flex-col-reverse gap-2.5 sm:flex-row sm:justify-center">
             <button
               type="button"
               onClick={onStay}
