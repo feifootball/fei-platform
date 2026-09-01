@@ -3575,21 +3575,42 @@ function UnansweredModal({
       onClick={onStay}
     >
       <div
-        className="w-full max-w-[440px] rounded-[1.5rem] border border-fei-bg/[0.12] bg-white p-6 shadow-[0_28px_80px_rgba(7,17,31,0.22)] sm:p-7"
+        className="relative w-full max-w-[420px] overflow-hidden rounded-[1.5rem] border border-fei-bg/[0.12] bg-white p-5 shadow-[0_28px_80px_rgba(7,17,31,0.22)] sm:p-6"
         onClick={(event) => event.stopPropagation()}
       >
-        <h2
-          id="unanswered-dialog-title"
-          className="text-[22px] font-bold leading-[1.3] tracking-[-0.02em] text-fei-bg sm:text-[24px]"
-        >
-          Continue without answering?
-        </h2>
+        <div className="absolute inset-x-6 top-0 h-[2px] bg-gradient-to-r from-fei-yellow via-fei-sky to-transparent" />
 
-        <div className="mt-5 flex flex-col-reverse gap-2.5 sm:flex-row sm:justify-end">
+        <div className="flex items-center gap-3.5">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-fei-sky/35 bg-fei-sky/[0.07] text-fei-bg">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={1.8}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-[18px] w-[18px]"
+              aria-hidden
+            >
+              <path d="M9.7 9a2.6 2.6 0 1 1 4.9 1.2c-.45.8-1.35 1.15-1.95 1.75-.42.42-.65.9-.65 1.55" />
+              <path d="M12 17.25h.01" />
+            </svg>
+          </div>
+
+          <h2
+            id="unanswered-dialog-title"
+            className="text-[20px] font-semibold leading-[1.3] tracking-[-0.018em] text-fei-bg"
+          >
+            Continue without answering?
+          </h2>
+        </div>
+
+        <div className="mt-4 flex flex-col-reverse gap-2.5 sm:flex-row sm:justify-end">
           <button
             type="button"
             onClick={onStay}
-            className="inline-flex min-h-11 items-center justify-center rounded-full border border-fei-bg/[0.14] bg-white px-5 py-2.5 text-sm font-medium text-fei-bg/70 transition hover:border-fei-sky/45 hover:text-fei-bg"
+            className="inline-flex min-h-11 items-center justify-center rounded-full border border-fei-bg/[0.13] bg-fei-bg/[0.015] px-5 py-2.5 text-sm font-medium text-fei-bg/68 transition hover:border-fei-sky/45 hover:bg-fei-sky/[0.035] hover:text-fei-bg"
           >
             Stay and answer
           </button>
