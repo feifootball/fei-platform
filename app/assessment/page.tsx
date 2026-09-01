@@ -3684,7 +3684,7 @@ function UnansweredModal({
             <button
               type="button"
               onClick={onStay}
-              className="inline-flex min-h-11 items-center justify-center rounded-full border border-fei-bg/[0.13] bg-fei-bg/[0.015] px-5 py-2.5 text-sm font-medium text-fei-bg/68 transition hover:border-fei-sky/45 hover:bg-fei-sky/[0.035] hover:text-fei-bg"
+              className="inline-flex min-h-10 items-center justify-center rounded-full border border-fei-bg/[0.13] bg-fei-bg/[0.015] px-5 py-2 text-sm font-medium text-fei-bg/68 transition hover:border-fei-sky/45 hover:bg-fei-sky/[0.035] hover:text-fei-bg"
             >
               Stay and answer
             </button>
@@ -3692,7 +3692,7 @@ function UnansweredModal({
             <button
               type="button"
               onClick={onContinue}
-              className="inline-flex min-h-11 items-center justify-center rounded-full bg-fei-yellow px-5 py-2.5 text-sm font-semibold text-fei-bg transition hover:bg-fei-yellow/90"
+              className="inline-flex min-h-10 items-center justify-center rounded-full bg-fei-yellow px-5 py-2 text-sm font-semibold text-fei-bg transition hover:bg-fei-yellow/90"
             >
               Continue
             </button>
