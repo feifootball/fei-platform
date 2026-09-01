@@ -3562,6 +3562,7 @@ function AssessmentContent() {
 
   const [section, setSection] = useState<Section>('intro')
   const [answers, setAnswers] = useState<Record<string, Answer>>({})
+  const [showUnansweredPrompt, setShowUnansweredPrompt] = useState(false)
   const [warmupStep, setWarmupStep] = useState(0)
 
   useEffect(() => {
@@ -3721,6 +3722,7 @@ function AssessmentContent() {
 
   function setAnswer(id: string, value: string) {
     setAnswers((prev) => ({ ...prev, [id]: value }))
+    setShowUnansweredPrompt(false)
   }
 
   function scoreWriting(text: string): number {
@@ -4110,6 +4112,7 @@ function AssessmentContent() {
                     {[
                       'Do not close or refresh the page until the assessment is complete.',
                       'Find a quiet place with a reliable internet connection.',
+                      'Answer each question based on what you know. If you are not sure, you may continue to the next question without selecting an answer.',
                     ].map((item, index) => (
                       <div key={item} className="flex items-start gap-4">
                         <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-fei-sky/50 bg-fei-sky/[0.10] text-xs font-black text-fei-bg">
@@ -4366,33 +4369,62 @@ function AssessmentContent() {
               )}
 
               <div
-                className={`flex justify-end ${
+                className={`flex flex-col items-end gap-3 ${
                   (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting') ? 'pb-6' : 'mt-8'
                 }`}
               >
+                {showUnansweredPrompt && !selected && (
+                  <div className="w-full max-w-[560px] rounded-xl border border-fei-bg/[0.12] bg-white px-5 py-4 shadow-[0_8px_24px_rgba(7,17,31,0.06)]">
+                    <p className="text-sm font-semibold leading-6 text-fei-bg/75">
+                      You haven’t answered this question. Continue anyway?
+                    </p>
+                    <div className="mt-3 flex flex-wrap justify-end gap-2">
+                      <button
+                        type="button"
+                        onClick={() => setShowUnansweredPrompt(false)}
+                        className="inline-flex min-h-10 items-center justify-center rounded-full border border-fei-bg/[0.14] bg-white px-4 py-2 text-sm font-semibold text-fei-bg/70"
+                      >
+                        Stay and answer
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setShowUnansweredPrompt(false)
+                          if (warmupStep < activeItems.warmup.length - 1) {
+                            setWarmupStep(warmupStep + 1)
+                          } else {
+                            setSection('reading')
+                          }
+                        }}
+                        className="inline-flex min-h-10 items-center justify-center rounded-full bg-fei-bg px-4 py-2 text-sm font-bold text-white"
+                      >
+                        Continue
+                      </button>
+                    </div>
+                  </div>
+                )}
                 <button
                   type="button"
                   onClick={() => {
-                    if (!selected) return
+                    if (!selected) {
+                      setShowUnansweredPrompt(true)
+                      return
+                    }
+                    setShowUnansweredPrompt(false)
                     if (warmupStep < activeItems.warmup.length - 1) {
                       setWarmupStep(warmupStep + 1)
                     } else {
                       setSection('reading')
                     }
                   }}
-                  disabled={!selected}
                   className="inline-flex min-h-[56px] min-w-[250px] items-center justify-center rounded-full bg-fei-yellow px-8 py-3.5 text-base font-black text-fei-bg transition duration-300 hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-bg/[0.07] disabled:text-fei-bg/30"
                 >
-                  {!selected ? (
-                    'Select an option to continue'
-                  ) : (
-                    <span className="inline-flex items-center justify-center gap-2">
-                      {warmupStep < activeItems.warmup.length - 1
-                        ? 'Next'
-                        : 'Continue to Reading'}
-                      <ChevronRightIcon />
-                    </span>
-                  )}
+                  <span className="inline-flex items-center justify-center gap-2">
+                    {warmupStep < activeItems.warmup.length - 1
+                      ? 'Next'
+                      : 'Continue to Reading'}
+                    <ChevronRightIcon />
+                  </span>
                 </button>
               </div>
             </section>
@@ -4544,32 +4576,61 @@ function AssessmentContent() {
                 ))}
               </div>
 
-              <div className={`flex justify-end ${
+              <div className={`flex flex-col items-end gap-3 ${
                 (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting') ? 'pb-6' : ''
               }`}>
+                {showUnansweredPrompt && !selected && (
+                  <div className="w-full max-w-[560px] rounded-xl border border-fei-bg/[0.12] bg-white px-5 py-4 shadow-[0_8px_24px_rgba(7,17,31,0.06)]">
+                    <p className="text-sm font-semibold leading-6 text-fei-bg/75">
+                      You haven’t answered this question. Continue anyway?
+                    </p>
+                    <div className="mt-3 flex flex-wrap justify-end gap-2">
+                      <button
+                        type="button"
+                        onClick={() => setShowUnansweredPrompt(false)}
+                        className="inline-flex min-h-10 items-center justify-center rounded-full border border-fei-bg/[0.14] bg-white px-4 py-2 text-sm font-semibold text-fei-bg/70"
+                      >
+                        Stay and answer
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setShowUnansweredPrompt(false)
+                          if (readingStep < activeItems.reading.length - 1) {
+                            setReadingStep(readingStep + 1)
+                          } else {
+                            setSection('listening')
+                          }
+                        }}
+                        className="inline-flex min-h-10 items-center justify-center rounded-full bg-fei-bg px-4 py-2 text-sm font-bold text-white"
+                      >
+                        Continue
+                      </button>
+                    </div>
+                  </div>
+                )}
                 <button
                   type="button"
                   onClick={() => {
-                    if (!selected) return
+                    if (!selected) {
+                      setShowUnansweredPrompt(true)
+                      return
+                    }
+                    setShowUnansweredPrompt(false)
                     if (readingStep < activeItems.reading.length - 1) {
                       setReadingStep(readingStep + 1)
                     } else {
                       setSection('listening')
                     }
                   }}
-                  disabled={!selected}
                   className="inline-flex min-h-[54px] min-w-[240px] items-center justify-center rounded-full bg-fei-yellow px-8 py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-bg/[0.07] disabled:text-fei-bg/30"
                 >
-                  {!selected ? (
-                    'Select an option to continue'
-                  ) : (
-                    <span className="inline-flex items-center justify-center gap-2">
-                      {readingStep < activeItems.reading.length - 1
-                        ? 'Next'
-                        : 'Continue to Listening'}
-                      <ChevronRightIcon />
-                    </span>
-                  )}
+                  <span className="inline-flex items-center justify-center gap-2">
+                    {readingStep < activeItems.reading.length - 1
+                      ? 'Next'
+                      : 'Continue to Listening'}
+                    <ChevronRightIcon />
+                  </span>
                 </button>
               </div>
             </section>
@@ -4718,14 +4779,51 @@ function AssessmentContent() {
               </div>
 
               <div
-                className={`flex justify-end ${
+                className={`flex flex-col items-end gap-3 ${
                   (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting') ? 'pb-6' : ''
                 }`}
               >
+                {showUnansweredPrompt && !selected && (
+                  <div className="w-full max-w-[560px] rounded-xl border border-fei-bg/[0.12] bg-white px-5 py-4 shadow-[0_8px_24px_rgba(7,17,31,0.06)]">
+                    <p className="text-sm font-semibold leading-6 text-fei-bg/75">
+                      You haven’t answered this question. Continue anyway?
+                    </p>
+                    <div className="mt-3 flex flex-wrap justify-end gap-2">
+                      <button
+                        type="button"
+                        onClick={() => setShowUnansweredPrompt(false)}
+                        className="inline-flex min-h-10 items-center justify-center rounded-full border border-fei-bg/[0.14] bg-white px-4 py-2 text-sm font-semibold text-fei-bg/70"
+                      >
+                        Stay and answer
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setShowUnansweredPrompt(false)
+                          if ('speechSynthesis' in window) {
+                            window.speechSynthesis.cancel()
+                          }
+                          if (listeningStep < activeItems.listening.length - 1) {
+                            setListeningStep(listeningStep + 1)
+                          } else {
+                            setSection('vocabulary')
+                          }
+                        }}
+                        className="inline-flex min-h-10 items-center justify-center rounded-full bg-fei-bg px-4 py-2 text-sm font-bold text-white"
+                      >
+                        Continue
+                      </button>
+                    </div>
+                  </div>
+                )}
                 <button
                   type="button"
                   onClick={() => {
-                    if (!selected) return
+                    if (!selected) {
+                      setShowUnansweredPrompt(true)
+                      return
+                    }
+                    setShowUnansweredPrompt(false)
 
                     if ('speechSynthesis' in window) {
                       window.speechSynthesis.cancel()
@@ -4737,19 +4835,14 @@ function AssessmentContent() {
                       setSection('vocabulary')
                     }
                   }}
-                  disabled={!selected}
                   className="inline-flex min-h-[54px] min-w-[240px] items-center justify-center rounded-full bg-fei-yellow px-8 py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-bg/[0.07] disabled:text-fei-bg/30"
                 >
-                  {!selected ? (
-                    'Select an option to continue'
-                  ) : (
-                    <span className="inline-flex items-center justify-center gap-2">
-                      {listeningStep < activeItems.listening.length - 1
-                        ? 'Next'
-                        : 'Continue to Vocabulary'}
-                      <ChevronRightIcon />
-                    </span>
-                  )}
+                  <span className="inline-flex items-center justify-center gap-2">
+                    {listeningStep < activeItems.listening.length - 1
+                      ? 'Next'
+                      : 'Continue to Vocabulary'}
+                    <ChevronRightIcon />
+                  </span>
                 </button>
               </div>
             </section>
@@ -4984,14 +5077,62 @@ function AssessmentContent() {
               </div>
 
               <div
-                className={`flex justify-end ${
+                className={`flex flex-col items-end gap-3 ${
                   (selectedRole === 'Professional Player' || selectedRole === 'Head Coach' || selectedRole === 'Assistant Coach' || selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting') ? 'pb-6' : ''
                 }`}
               >
+                {showUnansweredPrompt && !selected && (
+                  <div className="w-full max-w-[560px] rounded-xl border border-fei-bg/[0.12] bg-white px-5 py-4 shadow-[0_8px_24px_rgba(7,17,31,0.06)]">
+                    <p className="text-sm font-semibold leading-6 text-fei-bg/75">
+                      You haven’t answered this question. Continue anyway?
+                    </p>
+                    <div className="mt-3 flex flex-wrap justify-end gap-2">
+                      <button
+                        type="button"
+                        onClick={() => setShowUnansweredPrompt(false)}
+                        className="inline-flex min-h-10 items-center justify-center rounded-full border border-fei-bg/[0.14] bg-white px-4 py-2 text-sm font-semibold text-fei-bg/70"
+                      >
+                        Stay and answer
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setShowUnansweredPrompt(false)
+                          if (vocabStep < activeItems.vocabulary.length - 1) {
+                            setVocabStep(vocabStep + 1)
+                          } else if (
+                            selectedRole === 'Professional Player' ||
+                            selectedRole === 'Head Coach' ||
+                            selectedRole === 'Assistant Coach' ||
+                            selectedRole === 'Performance Analyst' ||
+                            selectedRole === 'Fitness Coach' ||
+                            selectedRole === 'Physiotherapist' ||
+                            selectedRole === 'Sports Psychologist' ||
+                            selectedRole === 'Nutritionist' ||
+                            selectedRole === 'Academy Director' ||
+                            selectedRole === 'Scout' ||
+                            selectedRole === 'Head of Scouting'
+                          ) {
+                            setSection('writing')
+                          } else {
+                            setSection('functional')
+                          }
+                        }}
+                        className="inline-flex min-h-10 items-center justify-center rounded-full bg-fei-bg px-4 py-2 text-sm font-bold text-white"
+                      >
+                        Continue
+                      </button>
+                    </div>
+                  </div>
+                )}
                 <button
                   type="button"
                   onClick={() => {
-                    if (!selected) return
+                    if (!selected) {
+                      setShowUnansweredPrompt(true)
+                      return
+                    }
+                    setShowUnansweredPrompt(false)
                     if (vocabStep < activeItems.vocabulary.length - 1) {
                       setVocabStep(vocabStep + 1)
                     } else if (
@@ -5010,24 +5151,19 @@ function AssessmentContent() {
                       setSection('functional')
                     }
                   }}
-                  disabled={!selected}
                   className="inline-flex min-h-[54px] min-w-[240px] items-center justify-center rounded-full bg-fei-yellow px-8 py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90 disabled:cursor-not-allowed disabled:bg-fei-bg/[0.07] disabled:text-fei-bg/30"
                 >
-                  {!selected ? (
-                    'Select an option to continue'
-                  ) : (
-                    <span className="inline-flex items-center justify-center gap-2">
-                      {vocabStep < activeItems.vocabulary.length - 1
-                        ? 'Next'
-                        : (selectedRole === 'Professional Player' ||
-                            selectedRole === 'Head Coach' ||
-                            selectedRole === 'Assistant Coach' ||
-                            selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting')
-                          ? 'Continue to Writing'
-                          : 'Continue to Functional Communication'}
-                      <ChevronRightIcon />
-                    </span>
-                  )}
+                  <span className="inline-flex items-center justify-center gap-2">
+                    {vocabStep < activeItems.vocabulary.length - 1
+                      ? 'Next'
+                      : (selectedRole === 'Professional Player' ||
+                          selectedRole === 'Head Coach' ||
+                          selectedRole === 'Assistant Coach' ||
+                          selectedRole === 'Performance Analyst' || selectedRole === 'Fitness Coach' || selectedRole === 'Physiotherapist' || selectedRole === 'Sports Psychologist' || selectedRole === 'Nutritionist' || selectedRole === 'Academy Director' || selectedRole === 'Scout' || selectedRole === 'Head of Scouting')
+                        ? 'Continue to Writing'
+                        : 'Continue to Functional Communication'}
+                    <ChevronRightIcon />
+                  </span>
                 </button>
               </div>
             </section>
