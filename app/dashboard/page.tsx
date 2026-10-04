@@ -73,7 +73,7 @@ function NewUserDashboard({
   ]
 
   return (
-    <main className="min-h-screen bg-[#F3F8FC] text-fei-bg">
+    <main className="min-h-screen bg-[#F7FAFC] text-fei-bg">
       <nav className="border-b border-fei-bg/[0.08] bg-white">
         <div className="mx-auto flex min-h-[64px] max-w-[1440px] items-center justify-between px-6 sm:px-8 lg:px-10">
           <Link href="/" className="flex items-center" aria-label="Go to FEI home">
@@ -129,6 +129,17 @@ function NewUserDashboard({
             <p className="mt-5 max-w-lg text-base leading-7 text-fei-bg/55">
               A short assessment built around your role in football.
             </p>
+
+            <div className="mt-7 border-t border-fei-bg/[0.07] pt-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-fei-bg/40">
+                What we evaluate
+              </p>
+              <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                <p className="text-sm leading-5 text-fei-bg/60">Role-specific football communication</p>
+                <p className="text-sm leading-5 text-fei-bg/60">Clarity in real situations</p>
+                <p className="text-sm leading-5 text-fei-bg/60">Vocabulary and language control</p>
+              </div>
+            </div>
 
             <div className="mt-auto flex flex-wrap items-center gap-4 pt-8">
               <div>
