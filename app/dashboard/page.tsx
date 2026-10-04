@@ -97,7 +97,7 @@ function NewUserDashboard({
       <section className="mx-auto max-w-7xl px-6 py-8 sm:px-8 lg:py-10">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-black tracking-[-0.04em] text-fei-bg sm:text-4xl">
+            <h1 className="text-3xl font-bold tracking-[-0.04em] text-fei-bg sm:text-4xl">
               Welcome, {displayName}
             </h1>
             <p className="mt-2 flex items-center gap-2 text-sm font-semibold text-fei-bg/55">
@@ -110,15 +110,15 @@ function NewUserDashboard({
         <div className="mt-8 grid items-stretch gap-5 md:grid-cols-[1.08fr_0.92fr]">
           <section className="flex flex-col rounded-[28px] border border-fei-bg/10 bg-white p-7 shadow-[0_18px_50px_rgba(7,17,31,0.05)] sm:p-9">
             <div className="flex flex-wrap items-center gap-3">
-              <p className="text-xs font-black uppercase tracking-[0.22em] text-fei-sky">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-fei-sky">
                 Your starting point
               </p>
-              <span className="rounded-full bg-fei-yellow/[0.16] px-3 py-1 text-xs font-bold text-fei-bg">
+              <span className="rounded-full bg-fei-yellow/[0.16] px-3 py-1 text-xs font-semibold text-fei-bg">
                 10–12 min
               </span>
             </div>
 
-            <h2 className="mt-5 max-w-2xl text-3xl font-black leading-[1.08] tracking-[-0.035em] sm:text-4xl">
+            <h2 className="mt-5 max-w-2xl text-3xl font-bold leading-[1.08] tracking-[-0.035em] sm:text-4xl">
               Discover your Football English profile
             </h2>
 
@@ -127,7 +127,7 @@ function NewUserDashboard({
             </p>
 
             <div className="mt-6 rounded-2xl bg-fei-sky/[0.07] px-4 py-4">
-              <p className="text-xs font-black uppercase tracking-[0.16em] text-fei-bg/45">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-fei-bg/45">
                 You will explore
               </p>
               <div className="mt-3 flex flex-wrap gap-2">
@@ -141,15 +141,15 @@ function NewUserDashboard({
 
             <div className="mt-7 grid gap-3 border-t border-fei-bg/10 pt-6 sm:grid-cols-3">
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.16em] text-fei-bg/40">Free</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-fei-bg/40">Free</p>
                 <p className="mt-1 text-sm font-semibold text-fei-bg">No payment</p>
               </div>
               <div className="sm:border-l sm:border-fei-bg/10 sm:pl-4">
-                <p className="text-xs font-black uppercase tracking-[0.16em] text-fei-bg/40">Built for</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-fei-bg/40">Built for</p>
                 <p className="mt-1 text-sm font-semibold text-fei-bg">{userRole}</p>
               </div>
               <div className="sm:border-l sm:border-fei-bg/10 sm:pl-4">
-                <p className="text-xs font-black uppercase tracking-[0.16em] text-fei-bg/40">You receive</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-fei-bg/40">You receive</p>
                 <p className="mt-1 text-sm font-semibold text-fei-bg">Your FEI profile</p>
               </div>
             </div>
@@ -157,7 +157,7 @@ function NewUserDashboard({
             <div className="mt-auto pt-8">
               <Link
                 href={"/assessment?role=" + encodeURIComponent(userRole)}
-                className="inline-flex min-h-[52px] items-center justify-center rounded-full bg-fei-yellow px-7 py-3.5 text-base font-black text-fei-bg shadow-[0_12px_28px_rgba(250,204,21,0.2)] transition hover:-translate-y-0.5 hover:bg-fei-yellow/90"
+                className="inline-flex min-h-[52px] items-center justify-center rounded-full bg-fei-yellow px-7 py-3.5 text-base font-bold text-fei-bg shadow-[0_12px_28px_rgba(250,204,21,0.2)] transition hover:-translate-y-0.5 hover:bg-fei-yellow/90"
               >
                 Start free diagnostic
                 <ChevronRightIcon />
@@ -169,21 +169,21 @@ function NewUserDashboard({
           </section>
 
           <aside className="rounded-[28px] border border-fei-sky/20 bg-[#F2FAFE] p-7 sm:p-8">
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-fei-bg/50">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-fei-bg/50">
               What happens next
             </p>
-            <h3 className="mt-3 text-2xl font-black tracking-[-0.03em]">
+            <h3 className="mt-3 text-2xl font-bold tracking-[-0.03em]">
               One short assessment. A clearer next step.
             </h3>
 
             <div className="mt-6 space-y-4">
               {outcomes.map(([number, title, description]) => (
                 <div key={number} className="flex gap-3">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-fei-sky/35 bg-white text-xs font-black text-fei-bg">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-fei-sky/35 bg-white text-xs font-semibold text-fei-bg">
                     {number}
                   </span>
                   <div>
-                    <p className="text-sm font-black">{title}</p>
+                    <p className="text-sm font-semibold">{title}</p>
                     <p className="mt-1 text-sm leading-5 text-fei-bg/55">{description}</p>
                   </div>
                 </div>
