@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase'
+import type { ObjectiveItemEvidence } from '@/lib/diagnostic/types'
 
 type Assessment = {
   level: string
@@ -18,6 +19,7 @@ type DiagnosticAttempt = {
   status: 'pending_evaluation' | 'human_review_required' | 'evaluated'
   submitted_at: string
   level: string | null
+  objective_evidence?: ObjectiveItemEvidence[]
 }
 
 const diagnosticRoles = [
@@ -36,6 +38,16 @@ const diagnosticRoles = [
 
 const needsRoleSelection = (role: string) => {
   return !role || role === "I'll choose later" || role === 'Other football role'
+}
+
+function getInitialLevel(evidence: ObjectiveItemEvidence[] | undefined) {
+  if (!evidence?.length) return null
+  const correctAt = (level: string) =>
+    evidence.filter((item) => item.level === level && item.correct).length >= 2
+  if (correctAt('A2') && correctAt('B1') && correctAt('B2') && correctAt('C1')) return 'C1'
+  if (correctAt('A2') && correctAt('B1') && correctAt('B2')) return 'B2'
+  if (correctAt('A2') && correctAt('B1')) return 'B1'
+  return 'A2'
 }
 
 function ChevronRightIcon() {
@@ -320,7 +332,7 @@ export default function DashboardPage() {
 
     const { data: diagnosticAttempts, count: diagnosticCount } = await supabase
       .from('diagnostic_attempts')
-      .select('id, role, status, submitted_at', { count: 'exact' })
+      .select('id, role, status, submitted_at, objective_evidence', { count: 'exact' })
       .eq('user_id', user.id)
       .order('submitted_at', { ascending: false })
       .limit(1)
@@ -335,7 +347,8 @@ export default function DashboardPage() {
 
       setLatestDiagnostic({
         ...latestAttempt,
-        level: diagnosticResult?.level ?? null,
+        level: diagnosticResult?.level ?? getInitialLevel(latestAttempt.objective_evidence),
+        objective_evidence: latestAttempt.objective_evidence,
       })
     }
 
