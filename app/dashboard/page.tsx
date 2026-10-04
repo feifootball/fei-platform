@@ -142,7 +142,7 @@ function NewUserDashboard({
             </div>
           </section>
 
-          <aside className="px-0 py-3 lg:border-l lg:border-fei-bg/10 lg:pl-8">
+          <aside className="rounded-[28px] border border-fei-bg/10 bg-white p-7 shadow-[0_18px_50px_rgba(7,17,31,0.04)] sm:p-9">
             <div className="flex items-center justify-between">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-bg/45">
                 Your next step
