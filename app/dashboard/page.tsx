@@ -201,69 +201,10 @@ function NewUserDashboard({
   )
 }
 
-function CompletedDiagnosticDashboard({
-  displayName,
-  userRole,
-  level,
-  attemptId,
-  onSignOut,
-}: {
-  displayName: string
-  userRole: string
-  level: string
-  attemptId: string
-  onSignOut: () => void
-}) {
-  return (
-    <main className="min-h-screen bg-gradient-to-b from-white via-[#F7FAFC] to-[#EAF7FC] text-fei-bg">
-      <nav className="border-b border-fei-bg/[0.08] bg-white">
-        <div className="mx-auto flex min-h-[56px] max-w-[1440px] items-center justify-between px-6 sm:px-8 lg:px-10">
-          <Link href="/" className="flex items-center" aria-label="Go to FEI home">
-            <img src="/fei-logo-navbar-vector.svg" alt="FEI" className="h-9 w-auto" />
-            <span className="mx-4 hidden h-5 w-px bg-fei-bg/10 sm:block" />
-            <span className="hidden text-sm font-medium text-fei-bg/55 sm:inline">Football English Intelligence</span>
-          </Link>
-          <div className="flex items-center gap-2">
-            <Link href="/faq" className="rounded-lg px-3 py-2 text-sm font-medium text-fei-bg/55 hover:bg-fei-bg/[0.04]">Help</Link>
-            <button type="button" onClick={onSignOut} className="rounded-lg px-3 py-2 text-sm font-medium text-fei-bg/55 hover:bg-fei-bg/[0.04]">Sign out</button>
-          </div>
-        </div>
-      </nav>
-      <section className="mx-auto max-w-7xl px-6 py-8 sm:px-8 lg:py-10">
-        <section className="border-b border-fei-bg/10 px-0 pb-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-bg/45">Your FEI profile</p>
-          <div className="mt-3 flex flex-wrap items-end justify-between gap-6">
-            <div>
-              <h1 className="text-4xl font-bold tracking-[-0.045em] sm:text-5xl">{displayName}</h1>
-              <p className="mt-2 text-base font-medium text-fei-bg/55">{userRole}</p>
-            </div>
-            <span className="rounded-full bg-fei-sky/10 px-4 py-2 text-sm font-semibold text-fei-bg/55">Profile ready</span>
-          </div>
-        </section>
-        <section className="mt-6 rounded-[28px] border border-fei-bg/10 bg-white p-6 shadow-[0_18px_50px_rgba(7,17,31,0.04)] sm:p-8">
-          <div className="flex flex-wrap items-end justify-between gap-5">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-bg/45">Your starting point</p>
-              <h2 className="mt-4 text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">Your FEI profile is ready.</h2>
-              <p className="mt-4 max-w-2xl text-base leading-7 text-fei-bg/55">Your initial level, priorities, and role-based pathway are ready to explore.</p>
-            </div>
-            <div className="rounded-2xl bg-fei-bg px-6 py-4 text-center text-white">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/50">Initial level</p>
-              <p className="mt-1 text-4xl font-black">{level}</p>
-            </div>
-          </div>
-          <Link href={`/diagnostic/results/${attemptId}`} className="mt-7 inline-flex min-h-[52px] items-center justify-center rounded-full bg-fei-yellow px-7 py-3.5 text-base font-bold text-fei-bg shadow-[0_12px_28px_rgba(250,204,21,0.2)] transition hover:-translate-y-0.5 hover:bg-fei-yellow/90">
-            View profile and pathway <ChevronRightIcon />
-          </Link>
-        </section>
-      </section>
-    </main>
-  )
-}
-
 export default function DashboardPage() {
   const router = useRouter()
   const supabase = createClient()
+  const returningFromResult = typeof window !== 'undefined' && window.location.search.includes('openResult=1')
 
   const [loading, setLoading] = useState(true)
   const [displayName, setDisplayName] = useState('')
@@ -337,6 +278,10 @@ export default function DashboardPage() {
         ...latestAttempt,
         level: diagnosticResult?.level ?? null,
       })
+      if (!returningFromResult) {
+        router.replace(`/diagnostic/results/${latestAttempt.id}`)
+        return
+      }
     }
 
     setAssessmentCount((count || 0) + (diagnosticCount || 0))
@@ -421,18 +366,6 @@ export default function DashboardPage() {
       <NewUserDashboard
         displayName={displayName}
         userRole={userRole}
-        onSignOut={handleLogout}
-      />
-    )
-  }
-
-  if (latestDiagnostic) {
-    return (
-      <CompletedDiagnosticDashboard
-        displayName={displayName}
-        userRole={userRole}
-        level={currentResult}
-        attemptId={latestDiagnostic.id}
         onSignOut={handleLogout}
       />
     )
