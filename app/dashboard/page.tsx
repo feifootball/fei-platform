@@ -118,8 +118,9 @@ function NewUserDashboard({
               </span>
             </div>
 
-            <h2 className="mt-5 max-w-2xl text-3xl font-bold leading-[1.08] tracking-[-0.035em] sm:text-4xl">
-              Discover your Football English profile
+            <h2 className="mt-5 max-w-2xl text-3xl leading-[1.08] tracking-[-0.035em] sm:text-4xl">
+              <span className="font-bold">Discover your Football English</span>{' '}
+              <span className="font-normal text-fei-bg/65">profile.</span>
             </h2>
 
             <p className="mt-4 max-w-xl text-base leading-7 text-fei-bg/60">
