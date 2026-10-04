@@ -12,6 +12,14 @@ type Assessment = {
   completed_at: string
 }
 
+type DiagnosticAttempt = {
+  id: string
+  role: string
+  status: 'pending_evaluation' | 'human_review_required' | 'evaluated'
+  submitted_at: string
+  level: string | null
+}
+
 const diagnosticRoles = [
   'Professional Player',
   'Head Coach',
@@ -58,6 +66,7 @@ export default function DashboardPage() {
   const [selectedRole, setSelectedRole] = useState('')
   const [savingRole, setSavingRole] = useState(false)
   const [lastAssessment, setLastAssessment] = useState<Assessment | null>(null)
+  const [latestDiagnostic, setLatestDiagnostic] = useState<DiagnosticAttempt | null>(null)
   const [assessmentCount, setAssessmentCount] = useState(0)
 
   useEffect(() => {
@@ -103,7 +112,29 @@ export default function DashboardPage() {
       .limit(1)
 
     setLastAssessment(assessments?.[0] || null)
-    setAssessmentCount(count || 0)
+
+    const { data: diagnosticAttempts, count: diagnosticCount } = await supabase
+      .from('diagnostic_attempts')
+      .select('id, role, status, submitted_at', { count: 'exact' })
+      .eq('user_id', user.id)
+      .order('submitted_at', { ascending: false })
+      .limit(1)
+
+    const latestAttempt = diagnosticAttempts?.[0]
+    if (latestAttempt) {
+      const { data: diagnosticResult } = await supabase
+        .from('diagnostic_results')
+        .select('level')
+        .eq('attempt_id', latestAttempt.id)
+        .maybeSingle()
+
+      setLatestDiagnostic({
+        ...latestAttempt,
+        level: diagnosticResult?.level ?? null,
+      })
+    }
+
+    setAssessmentCount((count || 0) + (diagnosticCount || 0))
     setLoading(false)
   }
 
@@ -165,8 +196,18 @@ export default function DashboardPage() {
   }
 
   const hasValidRole = !needsRoleSelection(userRole)
-  const diagnosticStatus = lastAssessment ? 'Completed' : 'Not started'
-  const currentResult = lastAssessment ? getResultLabel(lastAssessment.level) : '—'
+  const diagnosticStatus = latestDiagnostic
+    ? latestDiagnostic.status === 'evaluated'
+      ? 'Completed'
+      : 'In review'
+    : lastAssessment
+      ? 'Completed'
+      : 'Not started'
+  const currentResult = latestDiagnostic?.level
+    ? getResultLabel(latestDiagnostic.level)
+    : lastAssessment
+      ? getResultLabel(lastAssessment.level)
+      : '—'
 
   return (
     <main className="min-h-screen bg-[#F6F7F9] text-fei-bg">
@@ -434,9 +475,21 @@ export default function DashboardPage() {
             <p className="mt-3 text-sm leading-6 text-fei-bg/55">
               Once completed, your report will show your level, strengths, gaps, and recommended next steps.
             </p>
-            <p className="mt-6 text-sm font-semibold text-fei-bg/35">
-              Available after assessment
-            </p>
+            {latestDiagnostic ? (
+              <Link
+                href={`/diagnostic/results/${latestDiagnostic.id}`}
+                className="mt-6 inline-flex text-sm font-semibold text-fei-sky hover:underline"
+              >
+                <span className="inline-flex items-center gap-1.5">
+                  {latestDiagnostic.level ? 'View Diagnostic Report' : 'View evaluation status'}
+                  <ChevronRightIcon />
+                </span>
+              </Link>
+            ) : (
+              <p className="mt-6 text-sm font-semibold text-fei-bg/35">
+                Available after assessment
+              </p>
+            )}
           </div>
 
           <div className="rounded-3xl border border-fei-bg/10 bg-white p-7 shadow-[0_18px_55px_rgba(7,17,31,0.045)]">

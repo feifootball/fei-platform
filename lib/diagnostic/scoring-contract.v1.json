@@ -1,0 +1,65 @@
+{
+  "contract_version": "1.0.0",
+  "release_status": "approved_for_product_build",
+  "provider_mode": "disabled_no_paid_api",
+  "levels": ["A1", "A2", "B1", "B2", "C1", "Insufficient Evidence"],
+  "diagnostic": {
+    "visible_items": 16,
+    "sections": {
+      "warm_up": 2,
+      "reading": 4,
+      "listening": 4,
+      "vocabulary_functional_communication": 4,
+      "writing": 1,
+      "speaking": 1
+    },
+    "final_placement_policy": "preserve_existing_FEI_logic_after_repository_inspection"
+  },
+  "writing": {
+    "status": "calibrated",
+    "benchmark_cases": 100,
+    "roles": 11,
+    "task_families": 64,
+    "dimensions": [
+      "task_fulfilment",
+      "clarity_and_organisation",
+      "language_control_and_range",
+      "professional_football_communication"
+    ],
+    "integrity_rules": [
+      "overall_is_best_fit_not_average",
+      "overall_lte_language_control_and_range",
+      "length_does_not_determine_level",
+      "technical_vocabulary_alone_does_not_raise_level",
+      "c1_requires_lcr_c1",
+      "c1_requires_task_fulfilment_or_pfc_c1",
+      "c1_has_no_dimension_below_b2",
+      "insufficient_evidence_is_not_a2_or_zero",
+      "floor_lte_overall_lte_ceiling",
+      "borderline_alternative_is_adjacent"
+    ]
+  },
+  "speaking": {
+    "status": "framework_approved_real_audio_validation_pending",
+    "dimensions": [
+      "task_fulfilment_and_professional_relevance",
+      "clarity_organisation_and_interactional_effectiveness",
+      "language_control_and_range",
+      "fluency_and_intelligibility",
+      "professional_football_communication"
+    ],
+    "integrity_rules": [
+      "accent_is_not_pronunciation_score",
+      "evaluate_intelligibility",
+      "fluency_is_not_speed",
+      "normal_pauses_are_not_penalized",
+      "fillers_are_not_counted_mechanically",
+      "self_correction_may_be_positive_evidence",
+      "technical_audio_quality_does_not_lower_language_level",
+      "transcript_does_not_replace_audio",
+      "audio_has_priority_over_transcript",
+      "duration_does_not_determine_level",
+      "technical_unassessable_is_not_zero"
+    ]
+  }
+}
