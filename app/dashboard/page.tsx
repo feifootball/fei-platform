@@ -66,14 +66,8 @@ function NewUserDashboard({
   userRole: string
   onSignOut: () => void
 }) {
-  const outcomes = [
-    ['01', 'Your FEI level', 'A clear starting point for your football English.'],
-    ['02', 'Your priorities', 'The areas that will help you communicate more effectively.'],
-    ['03', 'Your next step', 'A preview of the pathway built for your role.'],
-  ]
-
   return (
-    <main className="min-h-screen bg-[#F6F7F9] text-fei-bg">
+    <main className="min-h-screen bg-[#F7FAFC] text-fei-bg">
       <nav className="border-b border-fei-bg/[0.08] bg-white">
         <div className="mx-auto flex min-h-[64px] max-w-[1440px] items-center justify-between px-6 sm:px-8 lg:px-10">
           <Link href="/" className="flex items-center" aria-label="Go to FEI home">
@@ -83,91 +77,120 @@ function NewUserDashboard({
               Football English Intelligence
             </span>
           </Link>
-
           <div className="flex items-center gap-2">
             <Link href="/faq" className="rounded-lg px-3 py-2 text-sm font-medium text-fei-bg/55 hover:bg-fei-bg/[0.04]">
               Help
             </Link>
-            <button
-              type="button"
-              onClick={onSignOut}
-              className="rounded-lg px-3 py-2 text-sm font-medium text-fei-bg/55 hover:bg-fei-bg/[0.04]"
-            >
+            <button type="button" onClick={onSignOut} className="rounded-lg px-3 py-2 text-sm font-medium text-fei-bg/55 hover:bg-fei-bg/[0.04]">
               Sign out
             </button>
           </div>
         </div>
       </nav>
 
-      <section className="mx-auto max-w-7xl px-6 py-8 sm:px-8 lg:py-10">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <div>
-            <h1 className="text-3xl font-black tracking-[-0.04em] text-fei-bg sm:text-4xl">
-              Welcome, {displayName}
-            </h1>
-            <div className="mt-2 flex items-center gap-2 text-sm font-semibold text-fei-bg/55">
-              <span className="h-2.5 w-2.5 rounded-full bg-fei-sky" />
-              <span>{userRole}</span>
-            </div>
-            <p className="mt-3 text-sm text-fei-bg/50">
-              Your role-specific path to practical football English.
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-8 grid gap-5 lg:grid-cols-[1.25fr_0.75fr]">
-          <section className="rounded-[28px] bg-fei-bg p-7 text-white shadow-[0_20px_55px_rgba(7,17,31,0.14)] sm:p-9">
-            <div className="flex flex-wrap items-center gap-3">
-              <p className="text-xs font-black uppercase tracking-[0.22em] text-fei-yellow">
-                Free diagnostic
+      <section className="mx-auto max-w-7xl px-6 py-6 sm:px-8 lg:py-8">
+        <section className="border-b border-fei-bg/10 px-0 py-3 pb-8 sm:py-5 sm:pb-9">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">
+                Your FEI profile
               </p>
-              <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-white/65">
-                10–12 min
-              </span>
+              <h1 className="mt-3 text-4xl font-bold tracking-[-0.045em] sm:text-5xl">
+                {displayName}
+              </h1>
+              <p className="mt-2 text-base font-medium text-fei-bg/55">
+                {userRole}
+              </p>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-fei-bg/55">
+              <span className="h-2.5 w-2.5 rounded-full border-2 border-fei-yellow bg-white" />
+              <span className="font-semibold text-fei-bg/70">Diagnostic status</span>
+              <span>Not started</span>
+            </div>
+          </div>
+        </section>
+
+        <div className="mt-5 h-px bg-gradient-to-r from-transparent via-fei-bg/[0.05] to-transparent" />
+
+        <div className="mt-5 grid items-stretch gap-6 lg:grid-cols-[1.08fr_0.92fr]">
+          <section className="flex flex-col rounded-[28px] border border-fei-bg/10 bg-white p-6 shadow-[0_18px_50px_rgba(7,17,31,0.04)] sm:p-7">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-bg/45">
+              Your starting point
+            </p>
+            <h2 className="mt-5 max-w-xl text-3xl font-semibold leading-[1.12] tracking-[-0.035em] sm:text-4xl">
+              Find your current football english level.
+            </h2>
+            <p className="mt-5 max-w-lg text-base leading-7 text-fei-bg/55">
+              A short assessment built around your role in football.
+            </p>
+            <p className="mt-3 text-sm font-medium text-fei-bg/45">
+              15–20 min
+            </p>
+
+            <div className="mt-7 border-t border-fei-bg/[0.07] pt-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-fei-bg/40">
+                What we evaluate
+              </p>
+              <div className="mt-4 divide-y divide-fei-bg/[0.07]">
+                {[
+                  'Role-specific football communication',
+                  'Clarity in real situations',
+                  'Vocabulary and language control',
+                ].map(item => (
+                  <div key={item} className="flex items-center gap-3 py-3 first:pt-0 last:pb-0">
+                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-fei-sky" />
+                    <p className="text-sm leading-5 text-fei-bg/60">{item}</p>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <h2 className="mt-5 max-w-2xl text-3xl font-black leading-tight tracking-[-0.035em] sm:text-4xl">
-              Discover your Football English profile.
-            </h2>
-
-            <p className="mt-4 max-w-xl text-base leading-7 text-white/65">
-              Find your starting point for clear communication in football.
-            </p>
-
-            <Link
-              href={"/assessment?role=" + encodeURIComponent(userRole)}
-              className="mt-7 inline-flex min-h-[52px] items-center justify-center rounded-full bg-fei-yellow px-7 py-3.5 text-base font-black text-fei-bg transition hover:-translate-y-0.5 hover:bg-fei-yellow/90"
-            >
-              Start free diagnostic
-              <ChevronRightIcon />
-            </Link>
-
-            <p className="mt-4 text-sm text-white/45">
-              No payment required to receive your initial FEI profile.
-            </p>
+            <div className="flex justify-start pt-6">
+              <div>
+                <Link
+                  href={"/assessment?role=" + encodeURIComponent(userRole)}
+                  className="inline-flex min-h-[52px] items-center justify-center rounded-full bg-fei-yellow px-7 py-3.5 text-base font-bold text-fei-bg shadow-[0_12px_28px_rgba(250,204,21,0.2)] transition hover:-translate-y-0.5 hover:bg-fei-yellow/90"
+                >
+                  Start diagnostic
+                  <ChevronRightIcon />
+                </Link>
+                <p className="mt-3 text-sm text-fei-bg/45">Free initial assessment</p>
+              </div>
+            </div>
           </section>
 
-          <aside className="rounded-[28px] border border-fei-bg/10 bg-white p-7 sm:p-8">
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-fei-sky">
-              After this free step
+          <aside className="px-0 py-3 sm:py-5">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-bg/45">
+              Your next step
             </p>
 
-            <div className="mt-6 space-y-5">
-              {outcomes.map(([number, title, description]) => (
-                <div key={number} className="flex gap-3">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-fei-sky/35 bg-fei-sky/[0.08] text-xs font-black">
-                    {number}
-                  </span>
-                  <div>
-                    <p className="text-sm font-black">{title}</p>
-                    <p className="mt-1 text-xs leading-5 text-fei-bg/50">{description}</p>
-                  </div>
-                </div>
-              ))}
+            <div className="mt-8">
+              <p className="text-2xl font-semibold tracking-[-0.025em]">Start with your diagnostic</p>
+              <p className="mt-3 text-sm leading-6 text-fei-bg/55">
+                Your result will unlock the next two steps in your FEI pathway.
+              </p>
             </div>
 
-            <div className="mt-6 border-t border-fei-bg/10 pt-5 text-xs font-bold text-fei-bg/45">
-              Diagnostic <span className="mx-1 text-fei-sky">→</span> Profile <span className="mx-1 text-fei-sky">→</span> Pathway
+            <div className="mt-6 border-t border-fei-bg/10 pt-6">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-fei-bg/40">
+                FEI profile preview
+              </p>
+              <div className="mt-5 grid gap-x-6 gap-y-5 sm:grid-cols-2">
+                {[
+                  ['Level', 'Your starting point'],
+                  ['Strengths', 'What you already do well'],
+                  ['Improvements', 'What to work on next'],
+                  ['Pathway', 'Your next role-based step'],
+                ].map(([title, description]) => (
+                  <div key={title} className="group border-t border-fei-bg/[0.07] pt-3 transition duration-200 hover:-translate-y-0.5">
+                    <div className="flex items-center gap-2">
+                      <span className="h-2 w-2 rounded-full bg-fei-sky/55 transition group-hover:scale-125 group-hover:bg-fei-yellow" />
+                      <p className="text-sm font-semibold transition group-hover:text-fei-sky">{title}</p>
+                    </div>
+                    <p className="mt-2 text-xs leading-5 text-fei-bg/45">{description}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </aside>
         </div>
