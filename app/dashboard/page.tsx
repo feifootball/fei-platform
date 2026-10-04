@@ -134,10 +134,17 @@ function NewUserDashboard({
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-fei-bg/40">
                 What we evaluate
               </p>
-              <div className="mt-4 grid gap-3 sm:grid-cols-3">
-                <p className="text-sm leading-5 text-fei-bg/60">Role-specific football communication</p>
-                <p className="text-sm leading-5 text-fei-bg/60">Clarity in real situations</p>
-                <p className="text-sm leading-5 text-fei-bg/60">Vocabulary and language control</p>
+              <div className="mt-4 grid gap-4 sm:grid-cols-3">
+                {[
+                  ['01', 'Role-specific football communication'],
+                  ['02', 'Clarity in real situations'],
+                  ['03', 'Vocabulary and language control'],
+                ].map(([number, item]) => (
+                  <div key={number} className="border-l-2 border-fei-sky/30 pl-3">
+                    <p className="text-xs font-semibold tracking-[0.14em] text-fei-sky">{number}</p>
+                    <p className="mt-2 text-sm leading-5 text-fei-bg/60">{item}</p>
+                  </div>
+                ))}
               </div>
             </div>
 
