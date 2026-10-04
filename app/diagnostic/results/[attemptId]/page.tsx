@@ -106,16 +106,16 @@ export default async function DiagnosticResultPage({
   const evidence = Array.isArray(attempt.objective_evidence) ? attempt.objective_evidence : []
   const initialLevel = result?.level ?? provisionalLevel(evidence)
   const signals = profileSignals(evidence)
+  const latestBySkill = new Map<string, Evaluation>()
+  for (const evaluation of (evaluationData ?? []) as Evaluation[]) {
+    if (!latestBySkill.has(evaluation.skill)) latestBySkill.set(evaluation.skill, evaluation)
+  }
   const communicationProfile = buildCommunicationProfile({
     role: attempt.role,
     level: initialLevel as PlacementLevel,
     writingDimensions: latestBySkill.get('writing')?.evaluation_payload.dimensions,
     speakingDimensions: latestBySkill.get('speaking')?.evaluation_payload.dimensions,
   })
-  const latestBySkill = new Map<string, Evaluation>()
-  for (const evaluation of (evaluationData ?? []) as Evaluation[]) {
-    if (!latestBySkill.has(evaluation.skill)) latestBySkill.set(evaluation.skill, evaluation)
-  }
 
   const isReady = result?.status === 'ready' && Boolean(result.level)
   const objectiveEvidence = result?.objective_evidence ?? summarizeObjectiveEvidence(evidence)
