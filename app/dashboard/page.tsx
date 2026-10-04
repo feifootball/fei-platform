@@ -160,18 +160,9 @@ function NewUserDashboard({
           </section>
 
           <aside className="px-0 py-3 sm:py-5">
-            <div className="flex items-center justify-between">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-bg/45">
-                Your next step
-              </p>
-              <span className="text-xs font-semibold text-fei-sky">01 / 03</span>
-            </div>
-
-            <div className="mt-6 flex items-center gap-2">
-              <span className="h-2.5 flex-1 rounded-full bg-fei-sky" />
-              <span className="h-2.5 flex-1 rounded-full bg-fei-bg/10" />
-              <span className="h-2.5 flex-1 rounded-full bg-fei-bg/10" />
-            </div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-bg/45">
+              Your next step
+            </p>
 
             <div className="mt-8">
               <p className="text-2xl font-semibold tracking-[-0.025em]">Start with your diagnostic</p>
@@ -191,13 +182,10 @@ function NewUserDashboard({
                   ['Improvements', 'What to work on next'],
                   ['Pathway', 'Your next role-based step'],
                 ].map(([title, description]) => (
-                  <div key={title}>
-                    <div className="flex items-center justify-between gap-3">
-                      <p className="text-sm font-semibold">{title}</p>
-                      <span className="text-xs text-fei-bg/35">Pending</span>
-                    </div>
-                    <div className="mt-2 h-1.5 rounded-full bg-fei-bg/[0.08]">
-                      <div className="h-1.5 w-1/4 rounded-full bg-fei-sky/35" />
+                  <div key={title} className="group border-t border-fei-bg/[0.07] pt-3 transition duration-200 hover:-translate-y-0.5">
+                    <div className="flex items-center gap-2">
+                      <span className="h-2 w-2 rounded-full bg-fei-sky/55 transition group-hover:scale-125 group-hover:bg-fei-yellow" />
+                      <p className="text-sm font-semibold transition group-hover:text-fei-sky">{title}</p>
                     </div>
                     <p className="mt-2 text-xs leading-5 text-fei-bg/45">{description}</p>
                   </div>
