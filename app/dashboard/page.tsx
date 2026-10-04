@@ -67,9 +67,9 @@ function NewUserDashboard({
   onSignOut: () => void
 }) {
   const outcomes = [
-    ['01', 'Your level', 'A clear starting point for your football English.'],
-    ['02', 'Your priorities', 'The communication areas to develop first.'],
-    ['03', 'Your next step', 'A role-specific pathway built from your result.'],
+    ['01', 'Understand', 'How you communicate in common football situations.'],
+    ['02', 'Identify', 'The communication areas to develop first.'],
+    ['03', 'Recommend', 'The next FEI pathway for your role.'],
   ]
 
   return (
@@ -168,9 +168,9 @@ function NewUserDashboard({
             </div>
           </section>
 
-          <aside className="rounded-[28px] border border-fei-sky/20 bg-[#F2FAFE] p-7 sm:p-8">
+          <aside className="rounded-[28px] border border-fei-bg/10 bg-white p-7 shadow-[0_18px_50px_rgba(7,17,31,0.04)] sm:p-8">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-fei-bg/50">
-              What happens next
+              Your diagnostic in three stages
             </p>
             <h3 className="mt-3 text-2xl font-bold tracking-[-0.03em]">
               One short assessment. A clearer next step.
