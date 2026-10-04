@@ -95,7 +95,7 @@ function NewUserDashboard({
       </nav>
 
       <section className="mx-auto max-w-7xl px-6 py-8 sm:px-8 lg:py-10">
-        <section className="rounded-[28px] border border-fei-bg/10 bg-white px-6 py-7 shadow-[0_18px_50px_rgba(7,17,31,0.04)] sm:px-9 sm:py-8">
+        <section className="px-0 py-3 sm:py-5">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">
@@ -117,7 +117,7 @@ function NewUserDashboard({
         </section>
 
         <div className="mt-6 grid items-stretch gap-6 lg:grid-cols-[1.08fr_0.92fr]">
-          <section className="flex flex-col px-0 py-3 sm:py-5">
+          <section className="flex flex-col rounded-[28px] border border-fei-bg/10 bg-white p-7 shadow-[0_18px_50px_rgba(7,17,31,0.04)] sm:p-9">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-bg/45">
               Your starting point
             </p>
@@ -142,7 +142,7 @@ function NewUserDashboard({
             </div>
           </section>
 
-          <aside className="rounded-[28px] border border-fei-bg/10 bg-white p-7 shadow-[0_18px_50px_rgba(7,17,31,0.04)] sm:p-9">
+          <aside className="px-0 py-3 sm:py-5">
             <div className="flex items-center justify-between">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-bg/45">
                 Your next step
