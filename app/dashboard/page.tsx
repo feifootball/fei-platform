@@ -136,20 +136,26 @@ function NewUserDashboard({
               </p>
               <div className="mt-4 grid gap-4 sm:grid-cols-3">
                 {[
-                  ['01', 'Role-specific football communication'],
-                  ['02', 'Clarity in real situations'],
-                  ['03', 'Vocabulary and language control'],
-                ].map(([number, item]) => (
-                  <div key={number} className="border-l-2 border-fei-sky/30 pl-3">
-                    <p className="text-xs font-semibold tracking-[0.14em] text-fei-sky">{number}</p>
+                  ['communication', 'Role-specific football communication'],
+                  ['clarity', 'Clarity in real situations'],
+                  ['language', 'Vocabulary and language control'],
+                ].map(([icon, item]) => (
+                  <div key={icon} className="border-l-2 border-fei-sky/30 pl-3">
+                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-fei-sky/[0.12] text-fei-sky" aria-hidden>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-4 w-4">
+                        {icon === 'communication' && <path strokeLinecap="round" strokeLinejoin="round" d="M5 6.5h14v9H9l-4 3v-12Z" />}
+                        {icon === 'clarity' && <path strokeLinecap="round" strokeLinejoin="round" d="m12 3 2.3 5.2L20 10l-5.7 1.8L12 17l-2.3-5.2L4 10l5.7-1.8L12 3Z" />}
+                        {icon === 'language' && <path strokeLinecap="round" strokeLinejoin="round" d="M5 6h14M8 3v3m8-3v3M6 10h12M7 14h5m-5 4h8" />}
+                      </svg>
+                    </span>
                     <p className="mt-2 text-sm leading-5 text-fei-bg/60">{item}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="mt-auto flex flex-wrap items-center gap-4 pt-8">
-              <div>
+            <div className="mt-auto flex justify-end pt-8">
+              <div className="text-right">
                 <Link
                   href={"/assessment?role=" + encodeURIComponent(userRole)}
                   className="inline-flex min-h-[52px] items-center justify-center rounded-full bg-fei-yellow px-7 py-3.5 text-base font-bold text-fei-bg shadow-[0_12px_28px_rgba(250,204,21,0.2)] transition hover:-translate-y-0.5 hover:bg-fei-yellow/90"
