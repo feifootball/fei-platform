@@ -204,7 +204,6 @@ function NewUserDashboard({
 export default function DashboardPage() {
   const router = useRouter()
   const supabase = createClient()
-  const returningFromResult = typeof window !== 'undefined' && window.location.search.includes('openResult=1')
 
   const [loading, setLoading] = useState(true)
   const [displayName, setDisplayName] = useState('')
@@ -278,10 +277,6 @@ export default function DashboardPage() {
         ...latestAttempt,
         level: diagnosticResult?.level ?? null,
       })
-      if (!returningFromResult) {
-        router.replace(`/diagnostic/results/${latestAttempt.id}`)
-        return
-      }
     }
 
     setAssessmentCount((count || 0) + (diagnosticCount || 0))
