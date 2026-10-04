@@ -191,7 +191,7 @@ function NewUserDashboard({
               <div className="mt-9 flex items-center gap-2">
                 {['Diagnostic', 'Profile', 'Pathway'].map((label, index) => (
                   <div key={label} className="flex min-w-0 flex-1 items-center gap-2">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] text-sm font-semibold text-white/80">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-fei-bg/10 bg-white/70 text-sm font-semibold text-fei-bg/70">
                       0{index + 1}
                     </div>
                     {index < 2 && <div className="h-px flex-1 bg-fei-bg/10" />}
@@ -202,7 +202,7 @@ function NewUserDashboard({
                 <span>Diagnostic</span><span>Profile</span><span>Pathway</span>
               </div>
 
-              <div className="mt-10 border-t border-white/10 pt-6">
+              <div className="mt-10 border-t border-fei-bg/10 pt-6">
                 <p className="text-xs font-bold uppercase tracking-[0.2em] text-fei-bg/42">
                   What your result includes
                 </p>
@@ -210,7 +210,7 @@ function NewUserDashboard({
                   {profilePreview.map(([title, description]) => (
                     <div key={title} tabIndex={0} className="group rounded-2xl border border-fei-bg/10 bg-white/70 p-4 transition duration-300 hover:-translate-y-1 hover:border-fei-sky/45 hover:bg-white focus:-translate-y-1 focus:border-fei-sky/45 focus:bg-white">
                       <div className="flex items-center justify-between gap-2">
-                        <p className="text-sm font-semibold text-white/90">{title}</p>
+                        <p className="text-sm font-semibold text-fei-bg/80">{title}</p>
                         <span className="h-1.5 w-1.5 rounded-full bg-fei-sky transition group-hover:bg-fei-yellow group-focus:bg-fei-yellow" />
                       </div>
                       <p className="mt-3 max-h-0 overflow-hidden text-xs leading-5 text-fei-bg/58 opacity-0 transition-all duration-300 group-hover:max-h-20 group-hover:opacity-100 group-focus:max-h-20 group-focus:opacity-100">
