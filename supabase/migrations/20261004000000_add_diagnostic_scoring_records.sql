@@ -72,9 +72,31 @@ create index if not exists diagnostic_attempts_user_created_idx
 create index if not exists diagnostic_evaluations_attempt_skill_idx
   on public.diagnostic_production_evaluations (attempt_id, skill, version desc);
 
+create index if not exists diagnostic_evaluations_created_by_idx
+  on public.diagnostic_production_evaluations (created_by)
+  where created_by is not null;
+
 alter table public.diagnostic_attempts enable row level security;
 alter table public.diagnostic_production_evaluations enable row level security;
 alter table public.diagnostic_results enable row level security;
+
+revoke all on table
+  public.diagnostic_attempts,
+  public.diagnostic_production_evaluations,
+  public.diagnostic_results
+from public, anon, authenticated;
+
+grant usage on schema public to authenticated, service_role;
+grant select, insert on table public.diagnostic_attempts to authenticated;
+grant select on table
+  public.diagnostic_production_evaluations,
+  public.diagnostic_results
+to authenticated;
+grant all on table
+  public.diagnostic_attempts,
+  public.diagnostic_production_evaluations,
+  public.diagnostic_results
+to service_role;
 
 drop policy if exists "Users can insert their own diagnostic attempts"
   on public.diagnostic_attempts;
@@ -82,7 +104,7 @@ create policy "Users can insert their own diagnostic attempts"
   on public.diagnostic_attempts
   for insert
   to authenticated
-  with check (auth.uid() = user_id);
+  with check ((select auth.uid()) = user_id);
 
 drop policy if exists "Users can read their own diagnostic attempts"
   on public.diagnostic_attempts;
@@ -90,7 +112,7 @@ create policy "Users can read their own diagnostic attempts"
   on public.diagnostic_attempts
   for select
   to authenticated
-  using (auth.uid() = user_id);
+  using ((select auth.uid()) = user_id);
 
 drop policy if exists "Users can read their own production evaluations"
   on public.diagnostic_production_evaluations;
@@ -103,7 +125,7 @@ create policy "Users can read their own production evaluations"
       select 1
       from public.diagnostic_attempts attempts
       where attempts.id = attempt_id
-        and attempts.user_id = auth.uid()
+        and attempts.user_id = (select auth.uid())
     )
   );
 
@@ -118,7 +140,7 @@ create policy "Users can read their own diagnostic results"
       select 1
       from public.diagnostic_attempts attempts
       where attempts.id = attempt_id
-        and attempts.user_id = auth.uid()
+        and attempts.user_id = (select auth.uid())
     )
   );
 
@@ -156,7 +178,7 @@ create policy "Users can upload their own diagnostic audio"
   to authenticated
   with check (
     bucket_id = 'diagnostic-speaking'
-    and (storage.foldername(name))[1] = auth.uid()::text
+    and (storage.foldername(name))[1] = (select auth.uid())::text
   );
 
 drop policy if exists "Users can read their own diagnostic audio"
@@ -167,7 +189,7 @@ create policy "Users can read their own diagnostic audio"
   to authenticated
   using (
     bucket_id = 'diagnostic-speaking'
-    and (storage.foldername(name))[1] = auth.uid()::text
+    and (storage.foldername(name))[1] = (select auth.uid())::text
   );
 
 drop policy if exists "Users can delete failed diagnostic audio uploads"
@@ -178,5 +200,5 @@ create policy "Users can delete failed diagnostic audio uploads"
   to authenticated
   using (
     bucket_id = 'diagnostic-speaking'
-    and (storage.foldername(name))[1] = auth.uid()::text
+    and (storage.foldername(name))[1] = (select auth.uid())::text
   );
