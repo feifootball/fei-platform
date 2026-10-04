@@ -1,9 +1,8 @@
 import Link from 'next/link'
 import { notFound, redirect } from 'next/navigation'
-import { createClient } from '@/lib/supabase/server'
-import { summarizeObjectiveEvidence } from '@/lib/diagnostic/placement'
+import type { PlacementLevel } from '@/lib/diagnostic/types'
 import { buildCommunicationProfile } from '@/lib/learning/pathway'
-import type { ObjectiveItemEvidence, PlacementLevel } from '@/lib/diagnostic/types'
+import { createClient } from '@/lib/supabase/server'
 
 type Result = {
   status: 'ready' | 'pending_production_evaluation' | 'human_review_required'
@@ -16,14 +15,6 @@ type Result = {
   total_points: number | null
   max_points: number
   updated_at: string
-}
-
-type Attempt = {
-  id: string
-  role: string
-  status: string
-  submitted_at: string
-  objective_evidence: ObjectiveItemEvidence[]
 }
 
 type EvaluationPayload = {
@@ -40,39 +31,17 @@ type Evaluation = {
   evaluation_payload: EvaluationPayload
 }
 
+const PLACEMENT_LEVELS = new Set(['A2', 'B1', 'B2', 'C1'])
+
+function isPlacementLevel(value: unknown): value is PlacementLevel {
+  return typeof value === 'string' && PLACEMENT_LEVELS.has(value)
+}
+
 function dimensionLabel(value: string) {
   return value
     .split('_')
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ')
-}
-
-function provisionalLevel(evidence: ObjectiveItemEvidence[]): PlacementLevel {
-  const summary = summarizeObjectiveEvidence(evidence)
-  if (summary.A2.thresholdMet && summary.B1.thresholdMet && summary.B2.thresholdMet && summary.C1.thresholdMet) return 'C1'
-  if (summary.A2.thresholdMet && summary.B1.thresholdMet && summary.B2.thresholdMet) return 'B2'
-  if (summary.A2.thresholdMet && summary.B1.thresholdMet) return 'B1'
-  return 'A2'
-}
-
-function profileSignals(evidence: ObjectiveItemEvidence[]) {
-  const sections = ['reading', 'listening', 'vocabulary'] as const
-  const labels = {
-    reading: 'Reading football information',
-    listening: 'Understanding spoken football English',
-    vocabulary: 'Football vocabulary and language choices',
-  }
-  const scores = sections.map((section) => {
-    const items = evidence.filter((item) => item.section === section)
-    const correct = items.filter((item) => item.correct).length
-    return { section, label: labels[section], correct, total: items.length }
-  })
-  const strengths = [...scores].sort((a, b) => b.correct / Math.max(b.total, 1) - a.correct / Math.max(a.total, 1))
-  const priorities = [...scores].sort((a, b) => a.correct / Math.max(a.total, 1) - b.correct / Math.max(b.total, 1))
-  return {
-    strengths: strengths.slice(0, 2).map((item) => item.label),
-    priorities: priorities.slice(0, 2).map((item) => item.label),
-  }
 }
 
 export default async function DiagnosticResultPage({
@@ -85,10 +54,10 @@ export default async function DiagnosticResultPage({
   const { data: userData } = await supabase.auth.getUser()
   if (!userData.user) redirect('/login')
 
-  const [{ data: attemptData }, { data: resultData }, { data: evaluationData }] = await Promise.all([
+  const [{ data: attempt }, { data: resultData }, { data: evaluationData }] = await Promise.all([
     supabase
       .from('diagnostic_attempts')
-      .select('id, role, status, submitted_at, objective_evidence')
+      .select('id, role, status, submitted_at')
       .eq('id', attemptId)
       .maybeSingle(),
     supabase.from('diagnostic_results').select('*').eq('attempt_id', attemptId).maybeSingle(),
@@ -99,134 +68,104 @@ export default async function DiagnosticResultPage({
       .order('version', { ascending: false }),
   ])
 
-  if (!attemptData) notFound()
+  if (!attempt) notFound()
 
-  const attempt = attemptData as Attempt
   const result = resultData as Result | null
-  const evidence = Array.isArray(attempt.objective_evidence) ? attempt.objective_evidence : []
-  const initialLevel = result?.level ?? provisionalLevel(evidence)
-  const signals = profileSignals(evidence)
   const latestBySkill = new Map<string, Evaluation>()
   for (const evaluation of (evaluationData ?? []) as Evaluation[]) {
     if (!latestBySkill.has(evaluation.skill)) latestBySkill.set(evaluation.skill, evaluation)
   }
-  const communicationProfile = buildCommunicationProfile({
-    role: attempt.role,
-    level: initialLevel as PlacementLevel,
-    writingDimensions: latestBySkill.get('writing')?.evaluation_payload.dimensions,
-    speakingDimensions: latestBySkill.get('speaking')?.evaluation_payload.dimensions,
-  })
 
-  const isReady = result?.status === 'ready' && Boolean(result.level)
-  const objectiveEvidence = result?.objective_evidence ?? summarizeObjectiveEvidence(evidence)
-  const objectiveCorrect = result?.objective_correct ?? evidence.filter((item) => item.correct).length
-  const objectiveTotal = result?.objective_total ?? evidence.length
+  const isReady = result?.status === 'ready' && isPlacementLevel(result.level)
+  const communicationProfile = isReady
+    ? buildCommunicationProfile({
+        role: attempt.role,
+        level: result.level as PlacementLevel,
+        writingDimensions: latestBySkill.get('writing')?.evaluation_payload.dimensions,
+        speakingDimensions: latestBySkill.get('speaking')?.evaluation_payload.dimensions,
+      })
+    : null
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-white via-[#F7FAFC] to-[#EAF7FC] px-6 py-10 text-fei-bg sm:px-8">
+    <main className="min-h-screen bg-[#F6F7F9] px-6 py-12 text-fei-bg sm:px-8">
       <div className="mx-auto max-w-5xl">
-        <Link href="/dashboard?openResult=1" className="text-sm font-semibold text-fei-bg/45 hover:underline">
+        <Link href="/dashboard" className="text-sm font-semibold text-fei-sky hover:underline">
           ← Back to dashboard
         </Link>
 
-        <section className="mt-8 rounded-[30px] border border-fei-bg/10 bg-white p-8 shadow-[0_20px_60px_rgba(15,23,42,0.07)] sm:p-12">
+        <section className="mt-8 rounded-3xl border border-fei-bg/10 bg-white p-8 shadow-[0_20px_60px_rgba(15,23,42,0.08)] sm:p-12">
           {isReady ? (
-            <>
-              <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/45">Final FEI profile</p>
-              <div className="mt-4 flex flex-wrap items-end justify-between gap-5">
-                <div>
-                  <h1 className="text-7xl font-black tracking-[-0.06em] text-fei-bg">{result.level}</h1>
-                  <p className="mt-2 text-lg font-semibold text-fei-bg/65">{attempt.role}</p>
-                </div>
-                <span className="rounded-full bg-fei-yellow/20 px-4 py-2 text-sm font-bold text-fei-bg">Final result</span>
+            <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-sky">FEI diagnostic result</p>
+                <h1 className="mt-4 text-6xl font-black tracking-tight text-fei-bg">{result?.level}</h1>
+                <p className="mt-4 text-lg font-semibold text-fei-bg/70">{attempt.role}</p>
+                <p className="mt-5 max-w-2xl text-sm leading-7 text-fei-bg/55">{result?.reason}</p>
               </div>
-              <p className="mt-6 max-w-2xl text-sm leading-7 text-fei-bg/55">{result.reason}</p>
-            </>
+              <Link href="/learning" className="inline-flex min-h-12 items-center justify-center rounded-full bg-fei-yellow px-7 py-3 font-black text-fei-bg">
+                View my Learning Path →
+              </Link>
+            </div>
           ) : (
             <>
-              <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/45">Initial FEI profile</p>
-              <div className="mt-4 flex flex-wrap items-end justify-between gap-5">
-                <div>
-                  <h1 className="text-7xl font-black tracking-[-0.06em] text-fei-bg">{initialLevel}</h1>
-                  <p className="mt-2 text-lg font-semibold text-fei-bg/65">{attempt.role}</p>
-                </div>
-                <span className="rounded-full bg-fei-sky/10 px-4 py-2 text-sm font-bold text-fei-bg/45">Ready now</span>
-              </div>
-              <p className="mt-6 max-w-2xl text-base leading-7 text-fei-bg/65">
-                Your initial profile is ready from your objective responses. Writing and Speaking will refine your final FEI level later.
+              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-fei-sky/10 text-2xl text-fei-sky">⌛</div>
+              <p className="mt-7 text-xs font-black uppercase tracking-[0.2em] text-fei-sky">Evaluation in progress</p>
+              <h1 className="mt-3 text-3xl font-black tracking-tight text-fei-bg sm:text-4xl">
+                Your final level is not ready yet
+              </h1>
+              <p className="mt-5 text-sm leading-7 text-fei-bg/55">
+                FEI is reviewing your Writing and Speaking evidence. This page will show your result once both production tasks have a valid evaluation.
               </p>
+              {result?.reason && <p className="mt-3 text-sm leading-6 text-fei-bg/45">{result.reason}</p>}
             </>
           )}
-
-          {!isReady && (
-            <div className="mt-8 rounded-2xl border border-fei-sky/20 bg-fei-sky/[0.06] p-5">
-              <p className="text-sm font-bold text-fei-bg">You can start with this profile today.</p>
-              <p className="mt-1 text-sm leading-6 text-fei-bg/55">
-                Your pathway can use this starting point while the production evidence is reviewed.
-              </p>
-            </div>
-          )}
         </section>
 
-        <section className="mt-6 grid gap-4 sm:grid-cols-2">
-          <div className="rounded-[24px] border border-fei-bg/10 bg-white p-7">
-            <p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/40">Strengths</p>
-            <ul className="mt-4 space-y-3 text-sm leading-6 text-fei-bg/65">
-              {signals.strengths.map((item) => <li key={item}>• {item}</li>)}
-            </ul>
-          </div>
-          <div className="rounded-[24px] border border-fei-bg/10 bg-white p-7">
-            <p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/40">Priorities</p>
-            <ul className="mt-4 space-y-3 text-sm leading-6 text-fei-bg/65">
-              {signals.priorities.map((item) => <li key={item}>• {item}</li>)}
-            </ul>
-          </div>
-        </section>
-
-        <section className="mt-6 rounded-[28px] bg-fei-bg p-7 text-white shadow-[0_24px_70px_rgba(7,17,31,0.16)] sm:p-9">
-          <div className="flex flex-wrap items-end justify-between gap-5">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/45">Your FEI pathway</p>
-              <h2 className="mt-3 text-3xl font-bold tracking-[-0.03em]">{communicationProfile.levelLabel}</h2>
-              <p className="mt-2 text-sm text-white/60">{communicationProfile.nextGoal}</p>
-            </div>
-            <Link href="/learning" className="rounded-full bg-fei-yellow px-5 py-2.5 text-sm font-bold text-fei-bg transition hover:bg-fei-yellow/90">
-              Explore pathway
-            </Link>
-          </div>
-          <div className="mt-8 grid gap-4 lg:grid-cols-3">
-            {communicationProfile.modules.map((module) => (
-              <article key={module.id} className="rounded-2xl border border-white/10 bg-white/[0.06] p-5">
-                <p className="text-xs font-bold uppercase tracking-[0.16em] text-white/40">Module {String(module.order).padStart(2, '0')}</p>
-                <h3 className="mt-3 text-lg font-bold">{module.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-white/65">{module.scenario}</p>
-                <div className="mt-5 border-t border-white/10 pt-4">
-                  <p className="text-xs font-bold text-fei-bg/45">Communication focus</p>
-                  <p className="mt-1 text-sm text-white/70">{module.communicationFocus}</p>
+        {communicationProfile && (
+          <section className="mt-6 rounded-3xl bg-fei-bg p-7 text-fei-text sm:p-9">
+            <div className="grid gap-8 md:grid-cols-2">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-sky">Stronger evidence</p>
+                <div className="mt-4 space-y-3">
+                  {communicationProfile.strengths.length > 0 ? communicationProfile.strengths.map((item) => (
+                    <div key={item.key} className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.04] px-4 py-3">
+                      <p className="font-semibold">{item.label}</p>
+                      <p className="mt-1 text-xs text-fei-text/45">{item.evidence.map((evidence) => `${evidence.skill} ${evidence.level}`).join(' · ')}</p>
+                    </div>
+                  )) : <p className="text-sm text-fei-text/50">More evidence will appear as you complete activities.</p>}
                 </div>
-                <p className="mt-4 text-xs leading-5 text-white/50">{module.outcome}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="mt-6 rounded-[24px] border border-fei-bg/10 bg-white p-7">
-          <div className="flex flex-wrap items-end justify-between gap-3">
-            <div>
-              <h2 className="text-xl font-bold text-fei-bg">Objective evidence</h2>
-              <p className="mt-2 text-sm text-fei-bg/50">{objectiveCorrect} of {objectiveTotal} objective items correct</p>
-            </div>
-            {!isReady && <span className="text-xs font-semibold text-fei-bg/40">Initial signal</span>}
-          </div>
-          <div className="mt-5 grid gap-3 sm:grid-cols-4">
-            {Object.entries(objectiveEvidence).map(([level, item]) => (
-              <div key={level} className="rounded-2xl border border-fei-bg/10 bg-fei-bg/[0.025] p-4 text-center">
-                <p className="text-2xl font-black text-fei-bg">{level}</p>
-                <p className="mt-1 text-sm text-fei-bg/50">{item.correct}/{item.total}</p>
               </div>
-            ))}
-          </div>
-        </section>
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-yellow">Priority areas</p>
+                <div className="mt-4 space-y-3">
+                  {communicationProfile.priorities.map((item) => (
+                    <div key={item.key} className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.04] px-4 py-3">
+                      <p className="font-semibold">{item.label}</p>
+                      <p className="mt-1 text-xs text-fei-text/45">{item.evidence.map((evidence) => `${evidence.skill} ${evidence.level}`).join(' · ') || 'Recommended starting focus'}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {result && (
+          <section className="mt-6 rounded-3xl border border-fei-bg/10 bg-white p-7">
+            <h2 className="text-xl font-bold text-fei-bg">Objective evidence</h2>
+            <p className="mt-2 text-sm text-fei-bg/50">
+              {result.objective_correct} of {result.objective_total} objective items correct
+            </p>
+            <div className="mt-5 grid gap-3 sm:grid-cols-4">
+              {Object.entries(result.objective_evidence).map(([level, evidence]) => (
+                <div key={level} className="rounded-2xl border border-fei-bg/10 bg-fei-bg/[0.025] p-4 text-center">
+                  <p className="text-2xl font-black text-fei-bg">{level}</p>
+                  <p className="mt-1 text-sm text-fei-bg/50">{evidence.correct}/{evidence.total}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {latestBySkill.size > 0 && (
           <section className="mt-6 grid gap-6 md:grid-cols-2">
@@ -236,7 +175,7 @@ export default async function DiagnosticResultPage({
               const payload = evaluation.evaluation_payload
               return (
                 <div key={skill} className="rounded-3xl border border-fei-bg/10 bg-white p-7">
-                  <p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/45">{skill}</p>
+                  <p className="text-xs font-black uppercase tracking-[0.18em] text-fei-sky">{skill}</p>
                   <p className="mt-3 text-4xl font-black text-fei-bg">{payload.overallLevel ?? 'Review'}</p>
                   {payload.rationale && <p className="mt-4 text-sm leading-6 text-fei-bg/55">{payload.rationale}</p>}
                   {payload.dimensions && (
