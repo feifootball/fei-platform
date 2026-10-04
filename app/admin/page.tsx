@@ -282,6 +282,12 @@ export default async function AdminPage() {
           <p className="mt-3 max-w-2xl text-fei-text/50">
             Internal view of users, assessments, and revenue metrics.
           </p>
+          <Link
+            href="/admin/diagnostics"
+            className="mt-5 inline-flex rounded-full bg-fei-yellow px-5 py-2.5 text-sm font-bold text-fei-bg transition hover:bg-fei-yellow/90"
+          >
+            Review diagnostic submissions →
+          </Link>
         </div>
 
         <div className="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
