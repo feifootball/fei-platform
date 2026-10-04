@@ -112,7 +112,7 @@ function NewUserDashboard({
 
         <div className="mt-5 h-px bg-gradient-to-r from-transparent via-fei-bg/[0.05] to-transparent" />
 
-        <div className="mt-5 grid items-stretch gap-6 lg:grid-cols-[1.08fr_0.92fr]">
+        <div className="mt-5 grid grid-cols-1 gap-6">
           <section className="flex flex-col rounded-[28px] border border-fei-bg/10 bg-white p-6 shadow-[0_18px_50px_rgba(7,17,31,0.04)] sm:p-7">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-bg/45">
               Your starting point
