@@ -175,19 +175,19 @@ function NewUserDashboard({
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-fei-bg/40">
                 FEI profile preview
               </p>
-              <div className="mt-5 grid gap-x-6 gap-y-5 sm:grid-cols-2">
+              <div className="mt-5 grid grid-cols-2 gap-3">
                 {[
                   ['Level', 'Your starting point'],
                   ['Strengths', 'What you already do well'],
                   ['Improvements', 'What to work on next'],
                   ['Pathway', 'Your next role-based step'],
                 ].map(([title, description]) => (
-                  <div key={title} className="group border-t border-fei-bg/[0.07] pt-3 transition duration-200 hover:-translate-y-0.5">
-                    <div className="flex items-center gap-2">
-                      <span className="h-2 w-2 rounded-full bg-fei-sky/55 transition group-hover:scale-125 group-hover:bg-fei-yellow" />
+                  <div key={title} className="group flex min-h-[112px] flex-col justify-between rounded-2xl border border-fei-bg/10 bg-[#F8FCFE] p-4 transition duration-200 hover:-translate-y-0.5 hover:border-fei-sky/35 hover:bg-white">
+                    <div className="flex items-center justify-between gap-2">
                       <p className="text-sm font-semibold transition group-hover:text-fei-sky">{title}</p>
+                      <span className="h-2 w-2 rounded-full bg-fei-sky/55 transition group-hover:bg-fei-yellow" />
                     </div>
-                    <p className="mt-2 text-xs leading-5 text-fei-bg/45">{description}</p>
+                    <p className="mt-3 text-xs leading-5 text-fei-bg/45">{description}</p>
                   </div>
                 ))}
               </div>
