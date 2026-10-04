@@ -101,10 +101,12 @@ function NewUserDashboard({
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">
                 Your FEI profile
               </p>
-              <h1 className="mt-3 text-4xl tracking-[-0.05em] sm:text-5xl">
-                <span className="font-bold">{displayName}</span>{' '}
-                <span className="font-normal text-fei-bg/55">{userRole}</span>
+              <h1 className="mt-3 text-4xl font-bold tracking-[-0.045em] sm:text-5xl">
+                {displayName}
               </h1>
+              <p className="mt-2 text-base font-medium text-fei-bg/55">
+                {userRole}
+              </p>
             </div>
             <div className="flex items-center gap-3 rounded-2xl border border-fei-bg/10 bg-[#F8FAFC] px-4 py-3">
               <span className="h-3 w-3 rounded-full border-2 border-fei-yellow bg-white" />
@@ -125,9 +127,8 @@ function NewUserDashboard({
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-bg/45">
               Your starting point
             </p>
-            <h2 className="mt-5 max-w-xl text-3xl leading-[1.1] tracking-[-0.04em] sm:text-4xl">
-              <span className="font-bold">Find your Football English level.</span>{' '}
-              <span className="font-normal text-fei-bg/60">Then know what to work on next.</span>
+            <h2 className="mt-5 max-w-xl text-3xl font-semibold leading-[1.12] tracking-[-0.035em] sm:text-4xl">
+              Start with a clear picture of your football English.
             </h2>
             <p className="mt-5 max-w-lg text-base leading-7 text-fei-bg/55">
               A short assessment built around your role in football.
@@ -160,7 +161,7 @@ function NewUserDashboard({
             </div>
 
             <div className="mt-8">
-              <p className="text-2xl font-bold tracking-[-0.03em]">Start with your diagnostic</p>
+              <p className="text-2xl font-semibold tracking-[-0.025em]">Start with your diagnostic</p>
               <p className="mt-3 text-sm leading-6 text-fei-bg/55">
                 Your result will unlock the next two steps in your FEI pathway.
               </p>
