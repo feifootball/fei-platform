@@ -28,4 +28,4 @@ The assessment route now captures the real Speaking recording and submits it wit
 
 The Supabase migration must be applied before the application change is merged. It creates immutable attempts, versioned production evaluations, final results, and a private audio bucket with user-level access policies.
 
-The next product increment is the admin review/import screen that writes structured evaluations and publishes the final result.
+The admin review queue shows the exact versioned task prompt, Writing response, and private Speaking recording. It prepares the no-cost external evaluation prompt, validates imported JSON, stores versioned evaluations, and publishes the calculated result to the user-facing status page.
