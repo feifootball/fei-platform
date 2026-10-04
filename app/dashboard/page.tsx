@@ -67,9 +67,9 @@ function NewUserDashboard({
   onSignOut: () => void
 }) {
   const outcomes = [
-    ['01', 'Understand', 'How you communicate in common football situations.'],
-    ['02', 'Identify', 'The communication areas to develop first.'],
-    ['03', 'Recommend', 'The next FEI pathway for your role.'],
+    ['01', 'Your FEI level', 'A clear starting point for your football English.'],
+    ['02', 'Your priorities', 'The communication areas to develop first.'],
+    ['03', 'Your next pathway', 'A role-specific route built from your result.'],
   ]
 
   return (
@@ -157,7 +157,7 @@ function NewUserDashboard({
 
           <aside className="rounded-[28px] border border-fei-bg/10 bg-white p-7 shadow-[0_18px_50px_rgba(7,17,31,0.04)] sm:p-8">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-fei-bg/50">
-              Your diagnostic in three stages
+              What you will receive
             </p>
             <h3 className="mt-3 text-2xl tracking-[-0.03em]">
               <span className="font-bold">One short assessment.</span>{' '}
@@ -191,9 +191,6 @@ function NewUserDashboard({
                 Real football communication, in your role
               </h3>
             </div>
-            <p className="max-w-md text-sm leading-6 text-fei-bg/50">
-              Short activities help us understand how you communicate before we recommend your FEI pathway.
-            </p>
           </div>
 
           <div className="mt-7 grid gap-6 sm:grid-cols-3">
