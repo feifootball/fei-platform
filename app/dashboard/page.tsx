@@ -173,21 +173,21 @@ function NewUserDashboard({
 
             <div className="mt-6 border-t border-fei-bg/10 pt-6">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-fei-bg/40">
-                FEI profile preview
+                Example FEI profile
               </p>
               <div className="mt-5 grid grid-cols-2 gap-3">
                 {[
-                  ['Level', 'Your starting point'],
-                  ['Strengths', 'What you already do well'],
-                  ['Improvements', 'What to work on next'],
-                  ['Pathway', 'Your next role-based step'],
+                  ['Level', 'Example: B2 · Professional'],
+                  ['Strengths', 'Example: Clear matchday instructions'],
+                  ['Improvements', 'Example: More precise tactical vocabulary'],
+                  ['Pathway', 'Example: Professional Player · Unit 1'],
                 ].map(([title, description]) => (
                   <div key={title} className="group flex min-h-[112px] flex-col justify-between rounded-2xl border border-fei-bg/10 bg-[#F8FCFE] p-4 transition duration-200 hover:-translate-y-0.5 hover:border-fei-sky/35 hover:bg-white">
                     <div className="flex items-center justify-between gap-2">
                       <p className="text-sm font-semibold transition group-hover:text-fei-sky">{title}</p>
                       <span className="h-2 w-2 rounded-full bg-fei-sky/55 transition group-hover:bg-fei-yellow" />
                     </div>
-                    <p className="mt-3 text-xs leading-5 text-fei-bg/45">{description}</p>
+                    <p className="mt-3 text-xs leading-5 text-fei-bg/55">{description}</p>
                   </div>
                 ))}
               </div>
