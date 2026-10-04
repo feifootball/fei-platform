@@ -356,7 +356,7 @@ export default function DashboardPage() {
 
   const isNewUser = hasValidRole && !latestDiagnostic
 
-  if (isNewUser) {
+  if (hasValidRole) {
     return (
       <NewUserDashboard
         displayName={displayName}
