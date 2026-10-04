@@ -89,7 +89,7 @@ function NewUserDashboard({
       </nav>
 
       <section className="mx-auto max-w-7xl px-6 py-3 sm:px-8 lg:py-4">
-        <section className="border-b border-fei-bg/10 bg-gradient-to-b from-white via-white to-[#EAF7FC] px-0 py-3 pb-8 sm:py-5 sm:pb-9">
+        <section className="border-b border-fei-bg/[0.06] bg-white px-0 py-3 pb-8 sm:py-5 sm:pb-9">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">
