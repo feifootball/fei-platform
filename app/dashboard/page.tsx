@@ -73,7 +73,7 @@ function NewUserDashboard({
   ]
 
   return (
-    <main className="min-h-screen bg-[#F6F7F9] text-fei-bg">
+    <main className="min-h-screen bg-[#F3F8FC] text-fei-bg">
       <nav className="border-b border-fei-bg/[0.08] bg-white">
         <div className="mx-auto flex min-h-[64px] max-w-[1440px] items-center justify-between px-6 sm:px-8 lg:px-10">
           <Link href="/" className="flex items-center" aria-label="Go to FEI home">
@@ -116,7 +116,7 @@ function NewUserDashboard({
           </div>
         </section>
 
-        <div className="mt-7 border-t border-fei-bg/10" />
+        <div className="mt-7 h-px bg-gradient-to-r from-transparent via-fei-bg/[0.08] to-transparent" />
 
         <div className="mt-7 grid items-stretch gap-6 lg:grid-cols-[1.08fr_0.92fr]">
           <section className="flex flex-col rounded-[28px] border border-fei-bg/10 bg-white p-7 shadow-[0_18px_50px_rgba(7,17,31,0.04)] sm:p-9">
@@ -124,7 +124,7 @@ function NewUserDashboard({
               Your starting point
             </p>
             <h2 className="mt-5 max-w-xl text-3xl font-semibold leading-[1.12] tracking-[-0.035em] sm:text-4xl">
-              Find your current football English level.
+              Find your current football english level.
             </h2>
             <p className="mt-5 max-w-lg text-base leading-7 text-fei-bg/55">
               A short assessment built around your role in football.
