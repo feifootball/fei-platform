@@ -205,11 +205,13 @@ function CompletedDiagnosticDashboard({
   displayName,
   userRole,
   level,
+  attemptId,
   onSignOut,
 }: {
   displayName: string
   userRole: string
   level: string
+  attemptId: string
   onSignOut: () => void
 }) {
   return (
@@ -250,7 +252,7 @@ function CompletedDiagnosticDashboard({
               <p className="mt-1 text-4xl font-black">{level}</p>
             </div>
           </div>
-          <Link href="/diagnostic/results/latest" className="mt-7 inline-flex min-h-[52px] items-center justify-center rounded-full bg-fei-yellow px-7 py-3.5 text-base font-bold text-fei-bg shadow-[0_12px_28px_rgba(250,204,21,0.2)] transition hover:-translate-y-0.5 hover:bg-fei-yellow/90">
+          <Link href={`/diagnostic/results/${attemptId}`} className="mt-7 inline-flex min-h-[52px] items-center justify-center rounded-full bg-fei-yellow px-7 py-3.5 text-base font-bold text-fei-bg shadow-[0_12px_28px_rgba(250,204,21,0.2)] transition hover:-translate-y-0.5 hover:bg-fei-yellow/90">
             View profile and pathway <ChevronRightIcon />
           </Link>
         </section>
@@ -433,6 +435,7 @@ export default function DashboardPage() {
         displayName={displayName}
         userRole={userRole}
         level={currentResult}
+        attemptId={latestDiagnostic.id}
         onSignOut={handleLogout}
       />
     )
