@@ -110,9 +110,9 @@ function NewUserDashboard({
           </div>
         </section>
 
-        <div className="mt-5 h-px bg-gradient-to-r from-transparent via-fei-bg/[0.05] to-transparent" />
+        <div className="mt-5 h-px bg-gradient-to-r from-transparent via-fei-bg/[0.06] to-transparent" />
 
-        <div className="mt-5 grid items-stretch gap-6 lg:grid-cols-[1.08fr_0.92fr]">
+        <div className="mt-5 grid grid-cols-1 gap-6">
           <section className="flex flex-col rounded-[28px] border border-fei-bg/10 bg-white p-6 shadow-[0_18px_50px_rgba(7,17,31,0.04)] sm:p-7">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-bg/45">
               Your starting point
@@ -173,21 +173,21 @@ function NewUserDashboard({
 
             <div className="mt-6 border-t border-fei-bg/10 pt-6">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-fei-bg/40">
-                FEI profile preview
+                FEI profile
               </p>
-              <div className="mt-5 grid gap-x-6 gap-y-5 sm:grid-cols-2">
+              <div className="mt-5 grid grid-cols-2 gap-3">
                 {[
-                  ['Level', 'Your starting point'],
-                  ['Strengths', 'What you already do well'],
-                  ['Improvements', 'What to work on next'],
-                  ['Pathway', 'Your next role-based step'],
+                  ['Level', 'A CEFR-aligned result showing your current communication level in football.'],
+                  ['Strengths', 'The communication habits and language resources you already use effectively.'],
+                  ['Improvements', 'The specific gaps to work on first, from clarity to vocabulary and control.'],
+                  ['Pathway', 'A role-based sequence of modules matched to your diagnostic profile.'],
                 ].map(([title, description]) => (
-                  <div key={title} className="group border-t border-fei-bg/[0.07] pt-3 transition duration-200 hover:-translate-y-0.5">
-                    <div className="flex items-center gap-2">
-                      <span className="h-2 w-2 rounded-full bg-fei-sky/55 transition group-hover:scale-125 group-hover:bg-fei-yellow" />
-                      <p className="text-sm font-semibold transition group-hover:text-fei-sky">{title}</p>
+                  <div key={title} tabIndex={0} className="group flex min-h-[112px] cursor-default flex-col justify-between overflow-hidden rounded-2xl border border-fei-bg/10 bg-[#F8FCFE] p-4 outline-none transition duration-300 hover:-translate-y-0.5 hover:border-fei-sky/35 hover:bg-white focus:-translate-y-0.5 focus:border-fei-sky/35 focus:bg-white">
+                    <div className="flex items-center justify-between gap-2">
+                      <p className="text-sm font-semibold transition group-hover:text-fei-sky group-focus:text-fei-sky">{title}</p>
+                      <span className="h-2 w-2 rounded-full bg-fei-sky/55 transition group-hover:bg-fei-yellow group-focus:bg-fei-yellow" />
                     </div>
-                    <p className="mt-2 text-xs leading-5 text-fei-bg/45">{description}</p>
+                    <p className="mt-3 max-h-0 overflow-hidden text-xs leading-5 text-fei-bg/55 opacity-0 transition-all duration-300 group-hover:max-h-24 group-hover:opacity-100 group-focus:max-h-24 group-focus:opacity-100">{description}</p>
                   </div>
                 ))}
               </div>
