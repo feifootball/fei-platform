@@ -105,9 +105,6 @@ function NewUserDashboard({
               {userRole}
             </p>
           </div>
-          <p className="max-w-sm text-sm leading-6 text-fei-bg/50 md:text-right">
-            Your role-specific path to practical football English.
-          </p>
         </div>
 
         <div className="mt-8 grid items-stretch gap-5 md:grid-cols-[1.08fr_0.92fr]">
