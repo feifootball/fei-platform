@@ -3,6 +3,7 @@ import type { ObjectiveItemEvidence } from '@/lib/diagnostic/types'
 
 const MAX_AUDIO_BYTES = 15 * 1024 * 1024
 const MAX_TEXT_LENGTH = 10_000
+const MAX_TASK_ID_LENGTH = 200
 const EXPECTED_OBJECTIVE_ITEMS = 12
 const PLACEMENT_LEVELS = new Set(['A2', 'B1', 'B2', 'C1'])
 const OBJECTIVE_SECTIONS = new Set(['reading', 'listening', 'vocabulary'])
@@ -66,58 +67,65 @@ export async function POST(request: Request) {
 
   const formData = await request.formData()
   const role = textField(formData, 'role')
-  const writingPrompt = textField(formData, 'writingPrompt')
+  const writingTaskId = textField(formData, 'writingTaskId')
   const writingResponse = textField(formData, 'writingResponse')
-  const speakingPrompt = textField(formData, 'speakingPrompt')
+  const speakingTaskId = textField(formData, 'speakingTaskId')
   const durationValue = Number(textField(formData, 'speakingDurationSeconds'))
   const objectiveEvidence = parseObjectiveEvidence(
     textField(formData, 'objectiveEvidence'),
   )
   const speakingAudio = formData.get('speakingAudio')
 
-  if (!role || !writingPrompt || !speakingPrompt || !objectiveEvidence) {
+  if (!role || !writingTaskId || !speakingTaskId || !objectiveEvidence) {
     return Response.json({ error: 'The diagnostic submission is incomplete.' }, { status: 400 })
   }
 
   if (
-    writingPrompt.length > MAX_TEXT_LENGTH ||
+    writingTaskId.length > MAX_TASK_ID_LENGTH ||
     writingResponse.length > MAX_TEXT_LENGTH ||
-    speakingPrompt.length > MAX_TEXT_LENGTH
+    speakingTaskId.length > MAX_TASK_ID_LENGTH
   ) {
     return Response.json({ error: 'A text field is too long.' }, { status: 400 })
   }
 
-  if (!(speakingAudio instanceof File) || speakingAudio.size === 0) {
-    return Response.json({ error: 'A Speaking recording is required.' }, { status: 400 })
-  }
+  const hasSpeakingAudio = speakingAudio instanceof File && speakingAudio.size > 0
+  const audioContentType = hasSpeakingAudio
+    ? speakingAudio.type.split(';')[0]
+    : null
 
-  if (
+  if (hasSpeakingAudio && (
     speakingAudio.size > MAX_AUDIO_BYTES ||
-    !speakingAudio.type.startsWith('audio/')
-  ) {
+    !audioContentType?.startsWith('audio/')
+  )) {
     return Response.json({ error: 'The Speaking recording is not supported.' }, { status: 400 })
   }
 
   const attemptId = crypto.randomUUID()
-  const extension = audioExtension(speakingAudio.type)
-  const audioPath = `${user.id}/${attemptId}.${extension}`
+  const extension = audioContentType ? audioExtension(audioContentType) : null
+  const audioPath = extension ? `${user.id}/${attemptId}.${extension}` : null
   const durationSeconds = Number.isFinite(durationValue)
     ? Math.max(0, Math.round(durationValue))
     : null
 
-  const { error: audioError } = await supabase.storage
-    .from('diagnostic-speaking')
-    .upload(audioPath, speakingAudio, {
-      contentType: speakingAudio.type,
-      upsert: false,
-    })
+  if (hasSpeakingAudio && audioPath && audioContentType) {
+    const { error: audioError } = await supabase.storage
+      .from('diagnostic-speaking')
+      .upload(audioPath, speakingAudio, {
+        contentType: audioContentType,
+        upsert: false,
+      })
 
-  if (audioError) {
-    return Response.json(
-      { error: 'The Speaking recording could not be saved.' },
-      { status: 500 },
-    )
+    if (audioError) {
+      return Response.json(
+        { error: 'The Speaking recording could not be saved.' },
+        { status: 500 },
+      )
+    }
   }
+
+  const attemptStatus = hasSpeakingAudio
+    ? 'pending_evaluation'
+    : 'human_review_required'
 
   const { error: attemptError } = await supabase
     .from('diagnostic_attempts')
@@ -126,17 +134,19 @@ export async function POST(request: Request) {
       user_id: user.id,
       role,
       objective_evidence: objectiveEvidence,
-      writing_prompt: writingPrompt,
+      writing_task_id: writingTaskId,
       writing_response: writingResponse,
-      speaking_prompt: speakingPrompt,
+      speaking_task_id: speakingTaskId,
       speaking_audio_path: audioPath,
-      speaking_media_type: speakingAudio.type,
+      speaking_media_type: audioContentType,
       speaking_duration_seconds: durationSeconds,
-      status: 'pending_evaluation',
+      status: attemptStatus,
     })
 
   if (attemptError) {
-    await supabase.storage.from('diagnostic-speaking').remove([audioPath])
+    if (audioPath) {
+      await supabase.storage.from('diagnostic-speaking').remove([audioPath])
+    }
     return Response.json(
       { error: 'The diagnostic attempt could not be saved.' },
       { status: 500 },
@@ -146,8 +156,10 @@ export async function POST(request: Request) {
   return Response.json(
     {
       attemptId,
-      status: 'pending_evaluation',
-      message: 'Your diagnostic was submitted for evaluation.',
+      status: attemptStatus,
+      message: hasSpeakingAudio
+        ? 'Your diagnostic was submitted for evaluation.'
+        : 'Your diagnostic was submitted and requires Speaking review.',
     },
     { status: 201 },
   )
