@@ -5,19 +5,19 @@ import { useEffect, useState, useRef, useCallback } from 'react'
 import { createPortal } from 'react-dom'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { createClient } from '@/lib/supabase'
+import type { ObjectiveItemEvidence } from '@/lib/diagnostic/types'
 import { Suspense } from 'react'
 
 // ─── TYPES ────────────────────────────────────────────────────────────────────
 
-type Section = 'intro' | 'audio-check' | 'warm-up' | 'reading' | 'listening' | 'vocabulary' | 'functional' | 'writing' | 'speaking' | 'result'
+type Section = 'intro' | 'audio-check' | 'warm-up' | 'reading' | 'listening' | 'vocabulary' | 'functional' | 'writing' | 'speaking' | 'pending'
 
 type Answer = string | null
 
-interface Result {
-  level: 'A2' | 'B1' | 'B2' | 'C1'
-  insight: string
-  score: number
-  maxScore: number
+interface SubmissionReceipt {
+  attemptId: string
+  status: 'pending_evaluation' | 'human_review_required'
+  message: string
 }
 
 // ─── ASSESSMENT DATA ───────────────────────────────────────────────────────────
@@ -3062,186 +3062,6 @@ const sportsPsychologistItems = {
 }
 
 
-const insights = {
-  A2: {
-    level: 'A2',
-    title: 'Foundation',
-    insight: 'You understand basic football communication situations and can follow direct instructions. Your pathway will help you build confidence and clarity in more complex professional contexts. Training focus: Understanding tactical instructions; asking for clarification; reporting physical status; responding to basic feedback. Every lesson connects directly to your professional role.',
-  },
-  B1: {
-    level: 'B1',
-    title: 'Intermediate',
-    insight: 'You already understand many common football communication situations and can respond professionally in routine interactions. Your pathway will help you communicate with more confidence, structure and precision in complex situations. Training focus: Tactical clarification; feedback response; medical communication; speaking with confidence under pressure. Every lesson connects directly to your professional role.',
-  },
-  B2: {
-    level: 'B2',
-    title: 'Professional',
-    insight: 'You communicate with clarity and professionalism across most football situations. Your pathway will help you manage more complex conversations, pressure moments and leadership communication with stronger strategic control. Training focus: Complex feedback conversations; playing-time and role discussions; public communication; leadership communication under pressure. Every lesson connects directly to your professional role.',
-  },
-  C1: {
-    level: 'C1',
-    title: 'Advanced Professional',
-    insight: 'You demonstrate advanced professional communication with precision, maturity and strategic awareness. Your pathway will help you refine leadership communication, negotiation, public presence and high-pressure decision-making. Training focus: Advanced leadership communication; strategic negotiation; crisis and media communication; personal brand and reputation management. Every lesson connects directly to your professional role.',
-  },
-}
-
-// ─── SCORE CALCULATOR ────────────────────────────────────────────────────────
-
-function calculateResult(
-  assessmentItems: typeof items,
-  answers: Record<string, Answer>,
-  writingScore: number,
-  speakingScore: number,
-  role: string
-): Result {
-  const usesProgressiveDiagnostic =
-    role === 'Professional Player' ||
-    role === 'Head Coach' ||
-    role === 'Assistant Coach' ||
-    role === 'Performance Analyst' ||
-    role === 'Fitness Coach' ||
-    role === 'Physiotherapist' ||
-    role === 'Sports Psychologist' ||
-    role === 'Nutritionist' ||
-    role === 'Academy Director' ||
-    role === 'Scout' ||
-    role === 'Head of Scouting'
-
-  const objectiveItems = usesProgressiveDiagnostic
-    ? [
-        ...assessmentItems.reading,
-        ...assessmentItems.listening,
-        ...assessmentItems.vocabulary,
-      ]
-    : [
-        ...assessmentItems.reading,
-        ...assessmentItems.listening,
-        ...assessmentItems.vocabulary,
-        ...assessmentItems.functional,
-      ]
-
-  const objectiveScore = objectiveItems.filter((item) => {
-    const answer = answers[item.id]
-    return answer && answer.startsWith(item.correct)
-  }).length
-
-  const maxObjective = usesProgressiveDiagnostic ? 12 : 13
-  const totalScore = objectiveScore + writingScore + speakingScore
-  const maxScore = maxObjective + 4 + 4
-
-  let level: 'A2' | 'B1' | 'B2' | 'C1' = 'A2'
-
-  if (usesProgressiveDiagnostic) {
-    const countCorrect = (
-      itemsToCheck: Array<{ id: string; correct: string } | undefined>
-    ) =>
-      itemsToCheck.filter(
-        (item) => item && answers[item.id]?.startsWith(item.correct)
-      ).length
-
-    const a2Score = countCorrect([
-      assessmentItems.reading[0],
-      assessmentItems.listening[0],
-      assessmentItems.vocabulary[0],
-    ])
-
-    const b1Score = countCorrect([
-      assessmentItems.reading[1],
-      assessmentItems.listening[1],
-      assessmentItems.vocabulary[1],
-    ])
-
-    const b2Score = countCorrect([
-      assessmentItems.reading[2],
-      assessmentItems.listening[2],
-      assessmentItems.vocabulary[2],
-    ])
-
-    const c1Score = countCorrect([
-      assessmentItems.reading[3],
-      assessmentItems.listening[3],
-      assessmentItems.vocabulary[3],
-    ])
-
-    if (
-      a2Score >= 2 &&
-      b1Score >= 2 &&
-      b2Score >= 2 &&
-      c1Score >= 2 &&
-      (writingScore === 4 || speakingScore === 4)
-    ) {
-      level = 'C1'
-    } else if (
-      a2Score >= 2 &&
-      b1Score >= 2 &&
-      b2Score >= 2
-    ) {
-      level = 'B2'
-    } else if (
-      a2Score >= 2 &&
-      b1Score >= 2
-    ) {
-      level = 'B1'
-    }
-  } else {
-    const a2Items = [
-      assessmentItems.reading[0],
-      assessmentItems.listening[0],
-      assessmentItems.vocabulary[0],
-    ]
-
-    const b1Items = [
-      assessmentItems.reading[1],
-      assessmentItems.listening[1],
-      assessmentItems.vocabulary[1],
-      assessmentItems.functional[0],
-    ]
-
-    const b2Items = [
-      assessmentItems.reading[2],
-      assessmentItems.listening[2],
-      assessmentItems.vocabulary[2],
-      assessmentItems.functional[1],
-      assessmentItems.functional[2],
-    ]
-
-    const c1Item = assessmentItems.functional[3]
-
-    const a2Score = a2Items.filter(
-      (item) => answers[item.id]?.startsWith(item.correct)
-    ).length
-
-    const b1Score = b1Items.filter(
-      (item) => answers[item.id]?.startsWith(item.correct)
-    ).length
-
-    const b2Score = b2Items.filter(
-      (item) => answers[item.id]?.startsWith(item.correct)
-    ).length
-
-    const c1Correct =
-      c1Item && answers[c1Item.id]?.startsWith(c1Item.correct)
-
-    if (
-      c1Correct &&
-      b2Score >= 4 &&
-      (writingScore === 4 || speakingScore === 4)
-    ) {
-      level = 'C1'
-    } else if (b2Score >= 3 && b1Score >= 3) {
-      level = 'B2'
-    } else if (b1Score >= 3 && a2Score >= 2) {
-      level = 'B1'
-    }
-  }
-
-  return {
-    level,
-    insight: insights[level].insight,
-    score: totalScore,
-    maxScore,
-  }
-}
 
 // ─── COMPONENTS ───────────────────────────────────────────────────────────────
 
@@ -3732,19 +3552,18 @@ function AssessmentContent() {
   const [vocabStep, setVocabStep] = useState(0)
   const [functionalStep, setFunctionalStep] = useState(0)
   const [writingText, setWritingText] = useState('')
-  const [writingScore, setWritingScore] = useState(0)
-  const [speakingScore, setSpeakingScore] = useState(0)
   const [isRecording, setIsRecording] = useState(false)
   const [recordingTime, setRecordingTime] = useState(0)
   const [recordingDone, setRecordingDone] = useState(false)
+  const [recordingBlob, setRecordingBlob] = useState<Blob | null>(null)
   const [micPermission, setMicPermission] = useState<'unknown' | 'granted' | 'denied'>('unknown')
   const [audioTestPlaying, setAudioTestPlaying] = useState(false)
-  const [result, setResult] = useState<Result | null>(null)
   const [saving, setSaving] = useState(false)
-  const [animatedEvidence, setAnimatedEvidence] = useState(0)
-  const resultStorageKey = `fei-diagnostic-result:${selectedRole}`
+  const [submission, setSubmission] = useState<SubmissionReceipt | null>(null)
+  const [submitError, setSubmitError] = useState<string | null>(null)
 
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
+  const audioChunksRef = useRef<Blob[]>([])
   const mediaStreamRef = useRef<MediaStream | null>(null)
   const timerRef = useRef<NodeJS.Timeout | null>(null)
   const uses16ItemDiagnostic =
@@ -3806,92 +3625,9 @@ function AssessmentContent() {
     return states
   }
 
-  useEffect(() => {
-    try {
-      const savedResult = window.localStorage.getItem(resultStorageKey)
-
-      if (!savedResult) return
-
-      const parsedResult = JSON.parse(savedResult) as {
-        role: string
-        result: Result
-      }
-
-      if (
-        parsedResult.role === selectedRole &&
-        parsedResult.result &&
-        typeof parsedResult.result.score === 'number' &&
-        typeof parsedResult.result.maxScore === 'number' &&
-        typeof parsedResult.result.level === 'string'
-      ) {
-        setResult(parsedResult.result)
-        setSection('result')
-      }
-    } catch (error) {
-      console.error('FEI saved diagnostic result could not be restored:', error)
-      window.localStorage.removeItem(resultStorageKey)
-    }
-  }, [resultStorageKey, selectedRole])
-
-  useEffect(() => {
-    if (section !== 'result' || !result) {
-      setAnimatedEvidence(0)
-      return
-    }
-
-    const targetEvidence = Math.round(
-      (result.score / result.maxScore) * 100
-    )
-
-    if (targetEvidence <= 0) {
-      setAnimatedEvidence(0)
-      return
-    }
-
-    setAnimatedEvidence(0)
-
-    const initialPause = 180
-    const countingDuration = 1820
-    const stepDuration = countingDuration / targetEvidence
-    let currentValue = 0
-    let interval: number | undefined
-
-    const timeout = window.setTimeout(() => {
-      interval = window.setInterval(() => {
-        currentValue += 1
-        setAnimatedEvidence(currentValue)
-
-        if (currentValue >= targetEvidence && interval) {
-          window.clearInterval(interval)
-        }
-      }, stepDuration)
-    }, initialPause)
-
-    return () => {
-      window.clearTimeout(timeout)
-
-      if (interval) {
-        window.clearInterval(interval)
-      }
-    }
-  }, [section, result])
-
-  // ── Security: block navigation ───────────────────────────────────────────────
-  useEffect(() => {
-    if (section === 'intro' || section === 'result') return
-
-    function handleBeforeUnload(e: BeforeUnloadEvent) {
-      e.preventDefault()
-      e.returnValue = ''
-    }
-
-    window.addEventListener('beforeunload', handleBeforeUnload)
-    return () => window.removeEventListener('beforeunload', handleBeforeUnload)
-  }, [section])
-
   // ── Security: disable copy/paste/right-click ──────────────────────────────────
   useEffect(() => {
-    if (section === 'intro' || section === 'result') return
+    if (section === 'intro' || section === 'pending') return
 
     function prevent(e: Event) { e.preventDefault() }
 
@@ -3916,98 +3652,73 @@ function AssessmentContent() {
     setShowUnansweredPrompt(false)
   }
 
-  function scoreWriting(text: string): number {
-    const words = text.trim() ? text.trim().split(/\s+/).length : 0
-    const sentences = text.trim().split(/[.!?]+/).filter(Boolean).length
-    const lower = text.toLowerCase()
-
-    const professionalPlayerKeywords = ['hamstring', 'sharp', 'turn', 'cool-down', 'sprint', 'tight']
-    const headCoachKeywords = ['press', 'pressure', 'plan', 'space', 'calm', 'width', 'standards', 'discipline', 'belief']
-    const assistantCoachKeywords = ['press', 'pressing', 'spacing', 'timing', 'fatigue', 'repetition', 'compactness', 'structure', 'focus']
-    const academyDirectorKeywords = ['academy', 'readiness', 'standards', 'development', 'pathway', 'u16', 'progress', 'consistency', 'first-team']
-    const headOfScoutingKeywords = ['recruitment', 'priority', 'budget', 'strategy', 'risk', 'recommend', 'striker', 'midfielder', 'value', 'future']
-    const scoutKeywords = ['scout', 'scouting', 'player', 'technical', 'fit', 'risk', 'monitoring', 'market', 'value', 'recommendation']
-    const fitnessCoachKeywords = ['load', 'fitness', 'fatigue', 'recovery', 'threshold', 'volume', 'intensity', 'availability', 'risk', 'readiness']
-    const performanceAnalystKeywords = ['analysis', 'data', 'video', 'pattern', 'press', 'transition', 'opponent', 'space', 'evidence', 'tactical']
-    const nutritionistKeywords = ['nutrition', 'fueling', 'hydration', 'recovery', 'carbohydrate', 'protein', 'glycogen', 'meal', 'timing', 'performance']
-    const physiotherapistKeywords = ['injury', 'rehab', 'rehabilitation', 'pain', 'strength', 'agility', 'confidence', 'return', 'play', 'risk']
-    const sportsPsychologistKeywords = ['confidence', 'pressure', 'anxiety', 'resilience', 'support', 'mistakes', 'performance', 'psychology', 'mental', 'coach']
-
-    const keywords =
-      selectedRole === 'Head Coach'
-        ? headCoachKeywords
-        : selectedRole === 'Assistant Coach'
-          ? assistantCoachKeywords
-          : selectedRole === 'Academy Director'
-            ? academyDirectorKeywords
-            : selectedRole === 'Head of Scouting'
-              ? headOfScoutingKeywords
-              : selectedRole === 'Scout'
-                ? scoutKeywords
-                : selectedRole === 'Fitness Coach'
-                  ? fitnessCoachKeywords
-                  : selectedRole === 'Performance Analyst'
-                    ? performanceAnalystKeywords
-                    : selectedRole === 'Nutritionist'
-                      ? nutritionistKeywords
-                      : selectedRole === 'Physiotherapist'
-                        ? physiotherapistKeywords
-                        : selectedRole === 'Sports Psychologist'
-                          ? sportsPsychologistKeywords
-                          : professionalPlayerKeywords
-
-    const hasKey = keywords.some((w) => lower.includes(w))
-
-    if (words < 20 || sentences < 2) return 1
-    if (words >= 20 && sentences >= 3 && !hasKey) return 2
-    if (words >= 35 && sentences >= 3 && hasKey) return 3
-    return 4
+  function productionTaskId(skill: 'writing' | 'speaking') {
+    const roleSlug = selectedRole.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+    return `${roleSlug}-${skill}-v1`
   }
 
-  async function finishAssessment(spScore: number) {
-    const wScore = scoreWriting(writingText)
-    const res = calculateResult(activeItems, answers, wScore, spScore, selectedRole)
-    setResult(res)
+  function buildObjectiveEvidence(): ObjectiveItemEvidence[] {
+    const sections = ['reading', 'listening', 'vocabulary'] as const
+
+    return sections.flatMap((objectiveSection) =>
+      activeItems[objectiveSection].map((item) => ({
+        itemId: item.id,
+        level: item.level as ObjectiveItemEvidence['level'],
+        section: objectiveSection,
+        correct: Boolean(answers[item.id]?.startsWith(item.correct)),
+      })),
+    )
+  }
+
+  async function submitAssessment() {
+    if (saving) return
+
     setSaving(true)
-
-    const { data: { user }, error: userError } = await supabase.auth.getUser()
-
-    if (userError) {
-      console.error('FEI assessment user error:', userError)
-    }
-
-    if (!user) {
-      console.error('FEI assessment was not saved because there is no authenticated user.')
-    } else {
-      const { error: saveError } = await supabase.from('assessment_history').insert({
-        user_id: user.id,
-        role: selectedRole,
-        score: Math.round((res.score / res.maxScore) * 100),
-        level: res.level,
-        completed_at: new Date().toISOString(),
-      })
-
-      if (saveError) {
-        console.error('FEI assessment save error:', saveError)
-      } else {
-        console.log('FEI assessment saved successfully.')
-      }
-    }
+    setSubmitError(null)
 
     try {
-      window.localStorage.setItem(
-        resultStorageKey,
-        JSON.stringify({
-          role: selectedRole,
-          result: res,
-        })
-      )
-    } catch (error) {
-      console.error('FEI diagnostic result could not be saved locally:', error)
-    }
+      const formData = new FormData()
+      formData.set('role', selectedRole)
+      formData.set('objectiveEvidence', JSON.stringify(buildObjectiveEvidence()))
+      formData.set('writingTaskId', productionTaskId('writing'))
+      formData.set('writingResponse', writingText)
+      formData.set('speakingTaskId', productionTaskId('speaking'))
+      formData.set('speakingDurationSeconds', String(recordingTime))
 
-    setSaving(false)
-    setSection('result')
+      if (recordingBlob) {
+        formData.set('speakingAudio', recordingBlob, `speaking.${recordingBlob.type.includes('mp4') ? 'm4a' : 'webm'}`)
+      }
+
+      const response = await fetch('/api/diagnostic/attempts', {
+        method: 'POST',
+        body: formData,
+      })
+      const payload = (await response.json()) as {
+        attemptId?: string
+        status?: SubmissionReceipt['status']
+        message?: string
+        error?: string
+      }
+
+      if (!response.ok || !payload.attemptId || !payload.status || !payload.message) {
+        throw new Error(payload.error || 'The diagnostic could not be submitted.')
+      }
+
+      setSubmission({
+        attemptId: payload.attemptId,
+        status: payload.status,
+        message: payload.message,
+      })
+      setSection('pending')
+    } catch (error) {
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : 'The diagnostic could not be submitted.',
+      )
+    } finally {
+      setSaving(false)
+    }
   }
 
   async function requestMic() {
@@ -4051,6 +3762,19 @@ function AssessmentContent() {
 
       const mediaRecorder = new MediaRecorder(stream)
       mediaRecorderRef.current = mediaRecorder
+      audioChunksRef.current = []
+      setRecordingBlob(null)
+      setRecordingDone(false)
+
+      mediaRecorder.ondataavailable = (event) => {
+        if (event.data.size > 0) audioChunksRef.current.push(event.data)
+      }
+      mediaRecorder.onstop = () => {
+        const contentType = mediaRecorder.mimeType || 'audio/webm'
+        setRecordingBlob(new Blob(audioChunksRef.current, { type: contentType }))
+        setRecordingDone(true)
+      }
+
       mediaRecorder.start()
       setMicPermission('granted')
       setIsRecording(true)
@@ -4076,7 +3800,6 @@ function AssessmentContent() {
     }
     if (timerRef.current) clearInterval(timerRef.current)
     setIsRecording(false)
-    setRecordingDone(true)
   }
 
   function getItemNumber(section: Section, step: number): number {
@@ -6141,7 +5864,7 @@ function AssessmentContent() {
               </p>
               <p className="mt-1 text-[11px] leading-4 text-fei-bg/42">
                 {recordingTime < 45
-                  ? 'Your response is shorter than recommended. For a stronger AI Insight, try to speak for 45–60 seconds.'
+                  ? 'Your sample is shorter than recommended, but duration will not determine your level.'
                   : 'Your speaking sample has been captured.'}
               </p>
             </div>
@@ -6191,6 +5914,12 @@ function AssessmentContent() {
             )}
           </div>
 
+          {submitError && (
+            <p className="mb-4 rounded-xl border border-red-500/20 bg-red-500/[0.04] px-4 py-3 text-sm text-red-700">
+              {submitError}
+            </p>
+          )}
+
           {recordingDone && (
             <div className="space-y-3">
               <button
@@ -6198,6 +5927,8 @@ function AssessmentContent() {
                   setRecordingDone(false)
                   setRecordingTime(0)
                   setIsRecording(false)
+                  setRecordingBlob(null)
+                  audioChunksRef.current = []
                 }}
                 className="mx-auto flex w-fit items-center justify-center gap-2 rounded-full border border-fei-bg/15 bg-white px-5 py-2.5 text-sm font-medium text-fei-bg/65 transition hover:border-fei-sky/50 hover:text-fei-bg"
               >
@@ -6218,7 +5949,8 @@ function AssessmentContent() {
                 Record again
               </button>
               <button
-                onClick={() => finishAssessment(Math.min(4, Math.max(1, Math.round(recordingTime / 18))))}
+                onClick={submitAssessment}
+                disabled={saving || !recordingBlob}
                 className="w-full rounded-full bg-fei-yellow py-3.5 font-bold text-fei-bg transition hover:bg-fei-yellow/90"
               >
                 {saving ? (
@@ -6235,10 +5967,11 @@ function AssessmentContent() {
 
           {!isRecording && !recordingDone && (
             <button
-              onClick={() => finishAssessment(1)}
+              onClick={submitAssessment}
+              disabled={saving}
               className="mt-5 w-full text-center text-xs text-fei-bg/35 transition hover:text-fei-bg/55"
             >
-              Skip speaking and submit
+              Submit without speaking recording
             </button>
           )}
           </div>
@@ -6249,1197 +5982,61 @@ function AssessmentContent() {
     )
   }
 
-  // RESULT
-  if (section === 'result' && result) {
-    const levelLabels: Record<string, string> = {
-      A2: 'Foundation',
-      B1: 'Intermediate',
-      B2: 'Professional',
-      C1: 'Advanced Professional',
-    }
-
-    const levelColors: Record<string, string> = {
-      A2: 'text-fei-sky',
-      B1: 'text-fei-sky',
-      B2: 'text-fei-yellow',
-      C1: 'text-fei-yellow',
-    }
-
-    const pathwayDescriptions: Record<string, string> = {
-      A2: 'You understand basic football communication and can follow direct instructions in training and matchday contexts. Your pathway will build the confidence and vocabulary you need to communicate more clearly with coaches, medical staff, and teammates in everyday professional situations.',
-      B1: 'You can manage many common football communication situations and respond professionally in routine interactions. Your pathway will help you communicate with more structure, confidence, and precision when situations become more complex.',
-      B2: 'You communicate with clarity across most professional football situations and can handle feedback, tactical information, and role-related conversations with growing confidence. Your pathway will help you strengthen strategic control in pressure moments.',
-      C1: 'You demonstrate advanced professional communication with strong awareness, precision, and maturity. Your pathway will help you refine leadership communication, negotiation, public presence, and high-pressure decision-making.',
-    }
-
-    const aiInsights: Record<string, string> = {
-      A2: 'Your result shows a developing foundation in professional football English. You can handle some direct communication in familiar situations, but you need more consistency when instructions become faster, more tactical, or more pressure-based. Your next step is to strengthen real-time understanding, clarification skills, and clearer communication with coaches, teammates, and medical staff. FEI recommends starting with practical role-specific training so you can improve in the situations that affect your daily performance most.',
-      B1: 'Your result shows that you can manage common football communication, especially when the context is familiar and the message is direct. Your next step is to communicate with more structure and precision when conversations become more detailed, tactical, or pressure-based. FEI recommends focused role-specific training to help you respond more confidently in professional situations.',
-      B2: 'Your result shows strong professional communication potential across football-specific situations. You can understand and respond to many complex messages, but your next step is to improve strategic control in feedback, role conversations, and high-pressure communication. FEI recommends advanced role-specific training to help you communicate with more authority and precision.',
-      C1: 'Your result shows advanced professional communication ability with strong awareness, precision, and maturity. Your next step is refinement: leadership communication, negotiation, public presence, and high-pressure decision-making. FEI recommends advanced training designed to sharpen your communication at the highest professional level.',
-    }
-
-    const pathwayFocus: Record<string, string[]> = {
-      A2: [
-        'Understanding tactical instructions',
-        'Asking for clarification',
-        'Reporting physical status',
-        'Responding to basic feedback',
-      ],
-      B1: [
-        'Tactical clarification',
-        'Feedback response',
-        'Medical communication',
-        'Speaking with confidence under pressure',
-      ],
-      B2: [
-        'Complex feedback conversations',
-        'Playing-time and role discussions',
-        'Public communication',
-        'Leadership communication under pressure',
-      ],
-      C1: [
-        'Advanced leadership communication',
-        'Strategic negotiation',
-        'Crisis and media communication',
-        'Personal brand and reputation management',
-      ],
-    }
-
-    const rolePathwayDescriptions: Record<string, string> =
-      selectedRole === 'Head Coach'
-        ? {
-            A2: 'You can deliver clear tactical instructions in familiar situations. Your pathway will build your ability to manage feedback, staff alignment, and matchday communication with more authority.',
-            B1: 'You communicate effectively with players and staff on routine matters. Your pathway will help you lead more complex team situations, match briefings, and feedback conversations with greater clarity.',
-            B2: 'You lead teams with professional clarity and control. Your pathway will refine your crisis management, executive communication, and ability to influence staff and squad behavior under pressure.',
-            C1: 'You command multi-audience communication strategically. Your pathway will deepen your ability to align football operations, lead through complexity, and represent the club with authority.',
-          }
-        : selectedRole === 'Assistant Coach'
-          ? {
-              A2: 'You can understand and deliver simple training instructions in familiar contexts. Your pathway will build confidence in tactical clarification, correction, and player support during training.',
-              B1: 'You manage common assistant-coach communication tasks and can support players in routine training situations. Your pathway will strengthen precision, tactical explanation, and correction under pressure.',
-              B2: 'You communicate with professional clarity across tactical and training contexts. Your pathway will refine how you translate coaching ideas, manage player confusion, and support staff alignment.',
-              C1: 'You communicate with strategic precision and strong staff awareness. Your pathway will deepen your ability to translate tactical intent, correct behavior under pressure, and protect alignment across the coaching team.',
-            }
-          : selectedRole === 'Academy Director'
-            ? {
-                A2: 'You can understand basic academy communication and identify clear development information. Your pathway will help you communicate standards, expectations, and player pathway decisions with more confidence.',
-                B1: 'You manage many routine academy communication situations and can explain common development needs. Your pathway will help you add structure, precision, and authority when speaking with staff, families, and leadership.',
-                B2: 'You communicate academy standards with professional clarity across several stakeholder situations. Your pathway will help you strengthen difficult conversations, strategic reporting, and alignment with the first team.',
-                C1: 'You demonstrate advanced academy leadership communication with strategic awareness and institutional maturity. Your pathway will refine board-level influence, stakeholder alignment, and high-pressure pathway decisions.',
-              }
-            : selectedRole === 'Head of Scouting'
-              ? {
-                  A2: 'You understand basic recruitment information and simple priorities. Your pathway will build profile language, scouting communication, and clearer recruitment criteria.',
-                  B1: 'You manage common recruitment communication. Your pathway will strengthen precision, alignment, and recommendation structure across scouts and decision-makers.',
-                  B2: 'You communicate recruitment priorities clearly. Your pathway will develop market reasoning, profile-fit communication, and executive recommendations.',
-                  C1: 'You demonstrate strategic recruitment leadership. Your pathway will refine board-level influence, high-stakes alignment, and long-term recruitment value communication.',
-                }
-              : selectedRole === 'Sports Psychologist'
-                ? {
-                    A2: 'You understand basic mental-performance communication. Your pathway will build confidence in check-ins, support language and simple pressure-management tools.',
-                    B1: 'You can support common confidence and pressure situations. Your pathway will strengthen structure, emotional precision and player-centered communication.',
-                    B2: 'You communicate psychological support with clarity and professionalism. Your pathway will develop advanced resilience, injury psychology and coach-facing communication.',
-                    C1: 'You manage complex mental-performance communication with strategic care. Your pathway will refine multi-stakeholder alignment, confidentiality and high-pressure support.',
-                  }
-                : selectedRole === 'Physiotherapist'
-                ? {
-                    A2: 'You understand basic injury and rehabilitation information. Your pathway will build confidence in explaining status, treatment and simple return-to-play decisions.',
-                    B1: 'You can communicate common medical updates and basic rehab plans. Your pathway will strengthen precision, risk explanation and player-coach communication.',
-                    B2: 'You communicate injury status and rehabilitation progress with professional clarity. Your pathway will develop complex return-to-play, confidence and multidisciplinary communication.',
-                    C1: 'You manage complex medical communication with precision, care and strategic judgment. Your pathway will refine high-stakes return-to-play and stakeholder alignment.',
-                  }
-                : selectedRole === 'Nutritionist'
-                ? {
-                    A2: 'You understand basic nutrition and recovery instructions. Your pathway will build confidence in explaining fueling, hydration and recovery routines.',
-                    B1: 'You can communicate common nutrition plans. Your pathway will strengthen timing, personalization and practical player behavior change.',
-                    B2: 'You explain performance nutrition decisions with professional clarity. Your pathway will develop cultural adaptation, adherence strategy and high-pressure player communication.',
-                    C1: 'You manage complex nutrition communication with precision and strategic awareness. Your pathway will refine multi-stakeholder decisions and long-term performance planning.',
-                  }
-                : selectedRole === 'Performance Analyst'
-                ? {
-                    A2: 'You understand basic analysis information and key tactical terms. Your pathway will build confidence in explaining patterns clearly.',
-                    B1: 'You can communicate common analysis points. Your pathway will strengthen evidence structure and tactical explanation.',
-                    B2: 'You present analysis with clarity and professional logic. Your pathway will develop influence, pressure communication, and advanced interpretation.',
-                    C1: 'You demonstrate strategic analysis communication. Your pathway will refine multi-stakeholder interpretation and high-level tactical influence.',
-                  }
-                : selectedRole === 'Fitness Coach'
-                ? {
-                    A2: 'You understand basic fitness and recovery information. Your pathway will build confidence in explaining load, readiness, and simple risk decisions.',
-                    B1: 'You can communicate common load and recovery decisions. Your pathway will strengthen structure, data explanation, and coach-facing clarity.',
-                    B2: 'You communicate workload and availability with professional clarity. Your pathway will develop pressure communication, risk framing, and strategic influence.',
-                    C1: 'You demonstrate strategic performance communication. Your pathway will refine institutional influence, availability planning, and high-stakes load decisions.',
-                  }
-                : selectedRole === 'Scout'
-                ? {
-                    A2: 'You can understand basic scouting information and identify simple player strengths. Your pathway will build confidence in writing clearer observations and recommendations.',
-                    B1: 'You can manage common scouting communication and explain routine player observations. Your pathway will strengthen evidence, comparison, and recommendation language.',
-                    B2: 'You communicate player evaluations with professional clarity. Your pathway will develop strategic recruitment communication, risk framing, and executive recommendations.',
-                    C1: 'You demonstrate strategic recruitment communication. Your pathway will refine board-level influence, market reasoning, and high-stakes recommendation defense.',
-                  }
-                : pathwayDescriptions
-
-    const roleAiInsights: Record<string, string> =
-      selectedRole === 'Head Coach'
-        ? {
-            A2: 'Your result shows a developing foundation in first-team coaching communication. You can communicate direct tactical ideas in familiar situations, but your next step is to build more structure when managing feedback, staff alignment, and matchday pressure. FEI recommends starting with clear tactical language and practical briefing work so your communication becomes more consistent with players and staff.',
-            B1: 'Your result shows that you can manage routine coaching communication with players and staff. Your next step is to lead more complex situations with stronger structure, especially tactical adjustments, individual feedback, match briefings, and media responses. FEI recommends focused role-specific training to help you communicate decisions with clarity and authority.',
-            B2: 'Your result shows strong professional coaching communication across tactical, staff, and pressure-based situations. Your next step is to refine crisis management, executive communication, and leadership under pressure. FEI recommends advanced role-specific training to help you influence players, staff, and decision-makers with greater strategic control.',
-            C1: 'Your result shows advanced strategic communication for a first-team head coach. You can manage complex football messages across players, staff, media, and executives. Your next step is refinement: institutional alignment, high-pressure leadership, executive influence, and elite communication control.',
-          }
-        : selectedRole === 'Assistant Coach'
-          ? {
-              A2: 'Your result shows a developing foundation in assistant-coach communication. You can handle simple training instructions in familiar contexts, but your next step is to build more confidence in tactical clarification, player correction, and support during live training situations.',
-              B1: 'Your result shows that you can manage common assistant-coach communication tasks and support players in routine training situations. Your next step is to communicate with more precision when explaining tactical details, correcting technique, and responding under pressure.',
-              B2: 'Your result shows strong professional communication across tactical and training contexts. You can explain, correct, and support players with clarity. Your next step is to refine how you translate coaching ideas, manage player confusion, and maintain staff alignment under pressure.',
-              C1: 'Your result shows strategic precision and strong staff awareness. You can translate tactical intent, correct behavior under pressure, and protect alignment across the coaching team. Your next step is advanced communication control in high-speed training and matchday support contexts.',
-            }
-          : selectedRole === 'Academy Director'
-            ? {
-                A2: 'Your result shows a developing foundation in academy leadership communication. You can understand basic development information and clear pathway updates, but your next step is to communicate standards, expectations, and player progression decisions with more confidence.',
-                B1: 'Your result shows that you can manage many routine academy communication situations. Your next step is to add more structure, precision, and authority when explaining development needs to coaches, families, and leadership.',
-                B2: 'Your result shows strong professional communication across academy standards, pathway decisions, and stakeholder situations. Your next step is to strengthen difficult conversations, strategic reporting, and alignment with the first team.',
-                C1: 'Your result shows advanced academy leadership communication with strategic awareness and institutional maturity. Your next step is refinement: board-level influence, stakeholder alignment, high-pressure pathway decisions, and long-term development philosophy.',
-              }
-            : selectedRole === 'Head of Scouting'
-              ? {
-                  A2: 'Your result shows that you can understand direct recruitment information and simple priorities. Your next step is to build stronger profile language, clearer scouting criteria, and more confident communication with scouts and recruitment staff.',
-                  B1: 'Your result shows that you can manage common recruitment communication. Your next step is to improve specificity, alignment, and recommendation structure so scouting reports connect more clearly to recruitment priorities and role profiles.',
-                  B2: 'Your result shows strong professional recruitment communication. You can communicate priorities, profile fit, and market reality with clarity. Your next step is to develop sharper market reasoning and executive recommendation language under pressure.',
-                  C1: 'Your result shows strategic recruitment leadership. You can frame fit, value, risk, and long-term squad sustainability for senior decision-makers. Your next step is refinement: board-level influence, high-stakes alignment, and institutional recruitment strategy.',
-                }
-              : selectedRole === 'Sports Psychologist'
-                ? {
-                    A2: 'Your result shows that you understand basic mental-performance communication. Your next step is to build confidence in check-ins, support language and simple pressure-management tools.',
-                    B1: 'Your result shows that you can support common confidence and pressure situations. Your next step is to strengthen structure, emotional precision and player-centered communication.',
-                    B2: 'Your result shows strong professional communication around psychological support. Your next step is to develop advanced resilience language, injury psychology communication and coach-facing strategies.',
-                    C1: 'Your result shows complex mental-performance communication with strategic care. Your next step is refinement: multi-stakeholder alignment, confidentiality boundaries and high-pressure support.',
-                  }
-                : selectedRole === 'Physiotherapist'
-                ? {
-                    A2: 'Your result shows that you understand basic injury and rehabilitation information. Your next step is to build confidence explaining status, treatment and simple return-to-play decisions in clear football language.',
-                    B1: 'Your result shows that you can communicate common medical updates and basic rehab plans. Your next step is to strengthen precision, risk explanation and player-coach communication.',
-                    B2: 'Your result shows strong professional communication around injury status and rehabilitation progress. Your next step is to develop complex return-to-play, confidence and multidisciplinary communication.',
-                    C1: 'Your result shows complex medical communication with precision, care and strategic judgment. Your next step is refinement: high-stakes return-to-play decisions, stakeholder alignment and clinically mature communication under pressure.',
-                  }
-                : selectedRole === 'Nutritionist'
-                ? {
-                    A2: 'Your result shows that you understand basic nutrition and recovery instructions. Your next step is to build confidence explaining fueling, hydration and recovery routines in simple football situations.',
-                    B1: 'Your result shows that you can communicate common nutrition plans. Your next step is to strengthen timing, personalization and practical player behavior-change language.',
-                    B2: 'Your result shows strong professional communication around performance nutrition decisions. Your next step is to develop cultural adaptation, adherence strategy and high-pressure player communication.',
-                    C1: 'Your result shows complex nutrition communication with precision and strategic awareness. Your next step is refinement: multi-stakeholder decisions, long-term performance planning and realistic behavior-change leadership.',
-                  }
-                : selectedRole === 'Performance Analyst'
-                ? {
-                    A2: 'Your result shows that you understand basic analysis information and key tactical terms. Your next step is to build confidence explaining patterns clearly and connecting simple evidence to coaching decisions.',
-                    B1: 'Your result shows that you can communicate common analysis points. Your next step is to strengthen evidence structure, tactical explanation, and clearer recommendations for coaching staff.',
-                    B2: 'Your result shows strong professional analysis communication. You can present patterns, evidence, and recommendations with clarity. Your next step is to develop influence, pressure communication, and advanced interpretation across staff contexts.',
-                    C1: 'Your result shows strategic analysis communication. You can separate evidence from interpretation and integrate multiple stakeholder perspectives. Your next step is refinement: multi-stakeholder interpretation and high-level tactical influence.',
-                  }
-                : selectedRole === 'Fitness Coach'
-                ? {
-                    A2: 'Your result shows that you understand basic fitness and recovery information. Your next step is to build confidence explaining load, readiness, and simple risk decisions to players and staff.',
-                    B1: 'Your result shows that you can communicate common load and recovery decisions. Your next step is to strengthen structure, data explanation, and coach-facing clarity when discussing workload and readiness.',
-                    B2: 'Your result shows strong professional communication around workload, readiness, and risk. Your next step is to develop pressure communication, risk framing, and strategic influence with coaches and leadership.',
-                    C1: 'Your result shows strategic performance communication. You can frame short-term performance, injury risk, and squad availability with maturity. Your next step is refinement: institutional influence, availability planning, and high-stakes load decisions.',
-                  }
-                : selectedRole === 'Scout'
-                ? {
-                    A2: 'Your result shows that you can understand basic scouting information and identify simple player strengths. Your next step is to build clearer observation language, stronger report structure, and more confident recommendation writing.',
-                    B1: 'Your result shows that you can manage common scouting communication and explain routine player observations. Your next step is to strengthen evidence, comparison language, and clearer recommendation structure.',
-                    B2: 'Your result shows strong professional scouting communication. You can evaluate players with clarity and connect profile fit, risk, and recruitment timing. Your next step is to develop strategic recommendation defense and executive-ready language.',
-                    C1: 'Your result shows advanced strategic scouting communication. You can frame opportunity, risk, value, and recommendation logic with confidence. Your next step is refinement: board-level influence, market reasoning, and high-stakes recommendation defense.',
-                  }
-                : aiInsights
-
-    const rolePathwayFocus: Record<string, string[]> =
-      selectedRole === 'Head Coach'
-        ? {
-            A2: [
-              'Clear tactical language',
-              'Basic briefing structure',
-              'Simple staff communication',
-              'Player feedback foundations',
-            ],
-            B1: [
-              'Tactical adjustment',
-              'Individual feedback',
-              'Match briefings',
-              'Media response under pressure',
-            ],
-            B2: [
-              'Crisis communication',
-              'Executive negotiation',
-              'Leadership under pressure',
-              'Advanced staff alignment',
-            ],
-            C1: [
-              'Strategic influence',
-              'High-pressure leadership',
-              'Institutional alignment',
-              'Elite communication control',
-            ],
-          }
-        : selectedRole === 'Assistant Coach'
-          ? {
-              A2: [
-                'Simple training instructions',
-                'Basic tactical clarification',
-                'Player support language',
-                'Training vocabulary foundations',
-              ],
-              B1: [
-                'Exercise explanation',
-                'Pressing trigger correction',
-                'Technique feedback',
-                'Communication under repetition',
-              ],
-              B2: [
-                'Tactical correction under fatigue',
-                'Player confusion support',
-                'Staff alignment',
-                'Training motivation',
-              ],
-              C1: [
-                'Head coach message translation',
-                'Strategic tactical clarification',
-                'Collective correction under pressure',
-                'Advanced coaching-team alignment',
-              ],
-            }
-          : selectedRole === 'Academy Director'
-            ? {
-                A2: [
-                  'Basic academy updates',
-                  'Development standards',
-                  'Player pathway vocabulary',
-                  'Clear staff communication',
-                ],
-                B1: [
-                  'Talent pathway communication',
-                  'Parent expectation management',
-                  'Academy standards',
-                  'Staff leadership basics',
-                ],
-                B2: [
-                  'Organisational alignment',
-                  'Fast-track pressure',
-                  'Strategic academy reporting',
-                  'First-team pathway decisions',
-                ],
-                C1: [
-                  'Academy philosophy communication',
-                  'Board-level influence',
-                  'Stakeholder alignment',
-                  'High-pressure pathway decisions',
-                ],
-              }
-            : selectedRole === 'Head of Scouting'
-              ? {
-                  A2: [
-                    'Recruitment profile language',
-                    'Basic scouting communication',
-                    'Simple priority updates',
-                    'Recruitment criteria foundations',
-                  ],
-                  B1: [
-                    'Scout report specificity',
-                    'Profile-fit communication',
-                    'Recommendation structure',
-                    'Recruitment team alignment',
-                  ],
-                  B2: [
-                    'Market intelligence',
-                    'Strategic priority protection',
-                    'Budget and value framing',
-                    'Executive recommendation clarity',
-                  ],
-                  C1: [
-                    'Board-level influence',
-                    'High-stakes recruitment alignment',
-                    'Sustainable squad value',
-                    'Strategic risk and value framing',
-                  ],
-                }
-              : selectedRole === 'Sports Psychologist'
-                ? {
-                    A2: [
-                      'Basic check-in language',
-                      'Confidence support',
-                      'Simple pressure-management tools',
-                      'Safe player communication',
-                    ],
-                    B1: [
-                      'Anxiety reframing',
-                      'Supportive feedback',
-                      'Player-centered communication',
-                      'Resilience foundations',
-                    ],
-                    B2: [
-                      'Performance identity',
-                      'Mistake reframing',
-                      'Injury psychology support',
-                      'Coach-facing communication',
-                    ],
-                    C1: [
-                      'Confidentiality boundaries',
-                      'Multi-stakeholder alignment',
-                      'High-pressure support',
-                      'Strategic mental-performance care',
-                    ],
-                  }
-                : selectedRole === 'Physiotherapist'
-                ? {
-                    A2: [
-                      'Basic injury status language',
-                      'Simple rehab instructions',
-                      'Pain and movement vocabulary',
-                      'Clear player explanations',
-                    ],
-                    B1: [
-                      'Rehabilitation timeline communication',
-                      'Risk explanation',
-                      'Player-coach updates',
-                      'Return-to-play foundations',
-                    ],
-                    B2: [
-                      'Graduated return-to-play',
-                      'Coach pressure conversations',
-                      'Confidence and fear communication',
-                      'Clinical progress reporting',
-                    ],
-                    C1: [
-                      'Complex case framing',
-                      'Multidisciplinary care communication',
-                      'High-stakes availability decisions',
-                      'Stakeholder alignment under pressure',
-                    ],
-                  }
-                : selectedRole === 'Nutritionist'
-                ? {
-                    A2: [
-                      'Basic fueling language',
-                      'Hydration instructions',
-                      'Recovery meal timing',
-                      'Simple nutrition explanations',
-                    ],
-                    B1: [
-                      'Nutrient timing',
-                      'Player plan personalization',
-                      'Recovery routines',
-                      'Behavior-change support',
-                    ],
-                    B2: [
-                      'Cultural nutrition adaptation',
-                      'Dietary restriction support',
-                      'Hydration and fatigue explanation',
-                      'Adherence strategy',
-                    ],
-                    C1: [
-                      'Multi-stakeholder nutrition decisions',
-                      'Strategic performance planning',
-                      'Digestive tolerance communication',
-                      'Long-term behavior-change leadership',
-                    ],
-                  }
-                : selectedRole === 'Performance Analyst'
-                ? {
-                    A2: [
-                      'Basic tactical vocabulary',
-                      'Simple pattern explanation',
-                      'Video evidence foundations',
-                      'Clear observation language',
-                    ],
-                    B1: [
-                      'Tactical pattern recognition',
-                      'Evidence structure',
-                      'Coach-facing explanations',
-                      'Video clip presentation',
-                    ],
-                    B2: [
-                      'Data and video interpretation',
-                      'Recommendation under pressure',
-                      'Advanced tactical vocabulary',
-                      'Player analysis communication',
-                    ],
-                    C1: [
-                      'Multi-stakeholder interpretation',
-                      'Strategic tactical influence',
-                      'Evidence vs meaning',
-                      'High-pressure analysis communication',
-                    ],
-                  }
-                : selectedRole === 'Fitness Coach'
-                ? {
-                    A2: [
-                      'Basic recovery communication',
-                      'Load vocabulary foundations',
-                      'Simple readiness explanations',
-                      'Player support language',
-                    ],
-                    B1: [
-                      'Coach-facing load reports',
-                      'Recovery and return-to-play communication',
-                      'Wellness data explanation',
-                      'Clear workload recommendations',
-                    ],
-                    B2: [
-                      'Risk and availability framing',
-                      'Threshold communication',
-                      'Pressure conversations with coaches',
-                      'Quality over volume language',
-                    ],
-                    C1: [
-                      'Strategic performance protection',
-                      'Institutional availability planning',
-                      'High-stakes load decisions',
-                      'Executive-level risk communication',
-                    ],
-                  }
-                : selectedRole === 'Scout'
-                ? {
-                    A2: [
-                      'Basic player observation',
-                      'Scouting vocabulary',
-                      'Simple strengths and weaknesses',
-                      'Clear report foundations',
-                    ],
-                    B1: [
-                      'Evidence-based reports',
-                      'Player monitoring logic',
-                      'Recommendation language',
-                      'Recruitment communication basics',
-                    ],
-                    B2: [
-                      'Profile fit and comparison',
-                      'Risk and value framing',
-                      'Market timing',
-                      'Recommendation defense',
-                    ],
-                    C1: [
-                      'Strategic recruitment communication',
-                      'High-stakes recommendation defense',
-                      'Market reasoning',
-                      'Executive-ready scouting reports',
-                    ],
-                  }
-                : pathwayFocus
-
-    const focusItems = rolePathwayFocus[result.level] || rolePathwayFocus.A2
-    const pathwayLabel = levelLabels[result.level] || 'Foundation'
-    const pathwayColor = levelColors[result.level] || 'text-fei-sky'
-    const overallEvidence = Math.round((result.score / result.maxScore) * 100)
-    const previewFocus = focusItems[1] || focusItems[0] || 'Professional football communication under pressure'
-
-    const nextLevels: Record<string, string> = {
-      A2: 'B1',
-      B1: 'B2',
-      B2: 'C1',
-      C1: 'Elite refinement',
-    }
-
-    const levelMeanings: Record<string, string> = {
-      A2: 'At A2, you can handle basic football communication in familiar situations. You may understand simple instructions, but you still need support with speed, detail, clarification, and pressure moments.',
-      B1: 'At B1, you can manage common football communication tasks. Your next step is to speak with more structure, confidence, and precision when situations become tactical, detailed, or pressured.',
-      B2: 'At B2, you can communicate clearly in most professional football situations. Your next step is to improve strategic control in feedback, leadership, and high-pressure conversations.',
-      C1: 'At C1, you communicate with advanced professional control. Your pathway focuses on refinement, leadership influence, strategic communication, and elite-level pressure situations.',
-    }
-
-    const levelStrengths: Record<string, string[]> = {
-      A2: [
-        'Understands simple football instructions',
-        'Recognizes familiar role vocabulary',
-        'Can communicate basic needs in routine situations',
-      ],
-      B1: [
-        'Handles common football conversations',
-        'Responds to direct feedback',
-        'Explains familiar situations with some structure',
-      ],
-      B2: [
-        'Communicates clearly in professional contexts',
-        'Understands more complex football information',
-        'Can support decisions with relevant detail',
-      ],
-      C1: [
-        'Uses mature professional communication',
-        'Handles complex stakeholder conversations',
-        'Communicates with precision under pressure',
-      ],
-    }
-
-    const levelImprovements: Record<string, string[]> = {
-      A2: [
-        'Ask for clarification with more confidence',
-        'Build stronger football-specific vocabulary',
-        'Respond better when instructions are fast or pressured',
-      ],
-      B1: [
-        'Add more structure to explanations',
-        'Improve tactical and role-specific precision',
-        'Communicate more confidently under pressure',
-      ],
-      B2: [
-        'Refine leadership and feedback conversations',
-        'Improve strategic communication in complex situations',
-        'Control tone and detail in pressure moments',
-      ],
-      C1: [
-        'Refine influence across stakeholders',
-        'Strengthen executive and media-level communication',
-        'Sharpen elite decision-making language',
-      ],
-    }
-
-    const rolePathwayModules: {
-      title: string
-      detail: string
-      scenarios?: string[]
-    }[] =
-      selectedRole === 'Head Coach'
-        ? [
-            { title: 'Match Briefing Language', detail: 'Structure pre-match and half-time messages with clarity, tactical focus, and emotional control.' },
-            { title: 'Tactical Correction & Feedback', detail: 'Correct players without losing authority, confidence, or tactical precision.' },
-            { title: 'Pressure Communication with Players', detail: 'Handle difficult decisions, frustration, substitutions, and performance conversations.' },
-            { title: 'Media and Leadership Communication', detail: 'Represent decisions clearly to media, staff, leadership, and the squad.' },
-          ]
-        : selectedRole === 'Assistant Coach'
-          ? [
-              { title: 'Training Exercise Communication', detail: 'Explain drills, objectives, timing, and corrections clearly during training.' },
-              { title: 'Tactical Clarification', detail: 'Translate tactical ideas into simple player-facing language.' },
-              { title: 'Player Correction Under Pressure', detail: 'Give useful corrections during repetition, fatigue, and live-play moments.' },
-              { title: 'Staff Alignment Communication', detail: 'Support the head coach message and maintain consistency across the staff.' },
-            ]
-          : selectedRole === 'Academy Director'
-            ? [
-                { title: 'Academy Standards Communication', detail: 'Communicate development expectations clearly to coaches, players, and families.' },
-                { title: 'Player Pathway Conversations', detail: 'Explain progression, readiness, setbacks, and long-term development decisions.' },
-                { title: 'Parent and Staff Alignment', detail: 'Manage expectations and keep stakeholders aligned around development priorities.' },
-                { title: 'First-Team Readiness Decisions', detail: 'Frame readiness decisions with evidence, maturity, and institutional clarity.' },
-              ]
-            : selectedRole === 'Head of Scouting'
-              ? [
-                  { title: 'Recruitment Profile Language', detail: 'Define player profiles, priorities, and fit with more precision.' },
-                  { title: 'Scout Report Alignment', detail: 'Create consistent language across reports, observations, and recommendations.' },
-                  { title: 'Market and Value Communication', detail: 'Explain timing, budget, value, availability, and risk to decision-makers.' },
-                  { title: 'Board-Level Recommendation Defense', detail: 'Defend recruitment logic with strategic clarity and evidence.' },
-                ]
-              : selectedRole === 'Scout'
-                ? [
-                    { title: 'Player Observation Language', detail: 'Describe strengths, weaknesses, role fit, and behavior with clear football language.' },
-                    { title: 'Evidence-Based Scout Reports', detail: 'Connect observations to evidence, context, and recruitment relevance.' },
-                    { title: 'Profile Fit and Risk Framing', detail: 'Compare players, explain uncertainty, and communicate value responsibly.' },
-                    { title: 'Recommendation Defense', detail: 'Present and defend recommendations to recruitment leaders with confidence.' },
-                  ]
-                : selectedRole === 'Fitness Coach'
-                  ? [
-                      { title: 'Load and Readiness Communication', detail: 'Explain workload, fatigue, availability, and readiness in practical football language.' },
-                      { title: 'Recovery and Risk Updates', detail: 'Communicate recovery status and risk without sounding negative or unclear.' },
-                      { title: 'Coach-Facing Performance Reports', detail: 'Turn data into clear recommendations for coaching staff.' },
-                      { title: 'Pressure Conversations Around Availability', detail: 'Manage difficult conversations when performance and injury risk compete.' },
-                    ]
-                  : selectedRole === 'Performance Analyst'
-                    ? [
-                        {
-                          title: 'Tactical Pattern Communication',
-                          detail: 'Explain patterns, threats, and opportunities with concise tactical language.',
-                          scenarios: [
-                            'Identify an opponent build-up pattern',
-                            'Explain a recurring defensive weakness',
-                            'Highlight a transition opportunity',
-                          ],
-                        },
-                        {
-                          title: 'Video and Data Explanation',
-                          detail: 'Connect clips and data to coaching decisions without overloading the message.',
-                          scenarios: [
-                            'Introduce a video sequence to coaching staff',
-                            'Connect performance data to match evidence',
-                            'Prioritize the most relevant analytical insight',
-                          ],
-                        },
-                        {
-                          title: 'Coach-Facing Recommendations',
-                          detail: 'Present clear recommendations for staff meetings and match preparation.',
-                          scenarios: [
-                            'Recommend a tactical adjustment',
-                            'Defend an analysis during a staff meeting',
-                            'Summarize opposition priorities before the match',
-                          ],
-                        },
-                        {
-                          title: 'Player Analysis Under Pressure',
-                          detail: 'Communicate individual analysis with clarity, confidence, and useful detail.',
-                          scenarios: [
-                            'Deliver concise individual video feedback',
-                            'Explain a mistake without undermining confidence',
-                            'Respond to player disagreement or clarification',
-                          ],
-                        },
-                      ]
-                    : selectedRole === 'Nutritionist'
-                      ? [
-                          { title: 'Fueling and Hydration Communication', detail: 'Explain fueling, hydration, recovery, and timing in practical player language.' },
-                          { title: 'Match-Day Nutrition Planning', detail: 'Guide players through pre-match, half-time, and post-match nutrition routines.' },
-                          { title: 'Player Behavior Change', detail: 'Support adherence with realistic, culturally aware communication.' },
-                          { title: 'Performance Nutrition Under Pressure', detail: 'Manage nutrition conversations around fatigue, recovery, and performance demands.' },
-                        ]
-                      : selectedRole === 'Physiotherapist'
-                        ? [
-                            { title: 'Injury Status Communication', detail: 'Explain pain, status, treatment, and short-term expectations clearly.' },
-                            { title: 'Rehabilitation Progress Updates', detail: 'Communicate rehab progress to players, coaches, and staff with precision.' },
-                            { title: 'Return-to-Play Conversations', detail: 'Frame readiness, risk, confidence, and next steps responsibly.' },
-                            { title: 'Coach and Player Risk Alignment', detail: 'Manage pressure around availability while protecting player welfare.' },
-                          ]
-                        : selectedRole === 'Sports Psychologist'
-                          ? [
-                              { title: 'Confidence and Pressure Language', detail: 'Support players through anxiety, mistakes, pressure, and confidence dips.' },
-                              { title: 'Player Check-In Communication', detail: 'Use clear, safe, player-centered language in mental performance conversations.' },
-                              { title: 'Mistake Reframing and Resilience', detail: 'Help players reset after errors and build stronger performance routines.' },
-                              { title: 'Coach-Facing Mental Performance Support', detail: 'Communicate support needs to staff while protecting trust and confidentiality.' },
-                            ]
-                          : [
-                              { title: 'Matchday Communication Foundations', detail: 'Build confidence with basic instructions, clarification, and everyday matchday situations.' },
-                              { title: 'Clarification and Feedback', detail: 'Learn how to ask questions, confirm instructions, and respond to feedback professionally.' },
-                              { title: 'Medical and Physical Status Communication', detail: 'Explain discomfort, fatigue, recovery, and availability clearly to staff.' },
-                              { title: 'Pressure Interviews and Team Communication', detail: 'Prepare for short interviews, teammate communication, and pressure moments.' },
-                            ]
-
-    const nextLevel = nextLevels[result.level] || 'Next level'
-    const levelMeaning = levelMeanings[result.level] || levelMeanings.A2
-    const strengths = levelStrengths[result.level] || levelStrengths.A2
-    const improvements = levelImprovements[result.level] || levelImprovements.A2
-
-    const communicationBase =
-      selectedRole === 'Performance Analyst'
-        ? [
-            'You can follow the main message in familiar football and analysis conversations.',
-            'You recognize essential language used around video, data and tactical preparation.',
-            'You can share straightforward observations when the context is clear.',
-          ]
-        : strengths
-
-    const pathwayOutcomes =
-      selectedRole === 'Performance Analyst'
-        ? [
-            'Turn tactical patterns into clear messages coaches can act on.',
-            'Present video and data insights without overloading the conversation.',
-            'Defend recommendations with confidence in staff meetings and match preparation.',
-          ]
-        : improvements
-
-    const foundations = [
-      'Building Professional Relationships',
-      'Giving & Receiving Feedback',
-      'Managing Difficult Conversations',
-      'Communicating Under Pressure',
-      'Influencing & Leading Communication',
-      'Explaining Decisions',
-      'Negotiating Professionally',
-    ]
-
-    const professionalPlayerDomains = [
-      {
-        domain: 'Domain 1',
-        title: 'On-Pitch Communication',
-        detail: 'Fast, directional and unambiguous communication during live football situations.',
-        scenarios: ['S1 Match Communication', 'S2 Tactical Communication & Clarification'],
-      },
-      {
-        domain: 'Domain 2',
-        title: 'Feedback, Staff & Availability',
-        detail: 'Feedback conversations, tactical clarification, injury reporting and staff communication.',
-        scenarios: ['S3 Receiving Feedback', 'S4 Feedback Delivery', 'S5 Communicating Injury or Discomfort'],
-      },
-      {
-        domain: 'Domain 3',
-        title: 'Dressing Room Leadership',
-        detail: 'Leadership, peer support and private conflict resolution inside the squad environment.',
-        scenarios: ['S6 Leadership Communication', 'S7 Peer Support Communication', 'S8 Conflict Resolution'],
-      },
-      {
-        domain: 'Domain 4',
-        title: 'Media & Public Communication',
-        detail: 'Media interviews, public statements and crisis communication where every word is visible.',
-        scenarios: ['S9 Media Interview Communication', 'S10 Apology or Crisis Statement', 'S11 Social Media Communication'],
-      },
-      {
-        domain: 'Domain 5',
-        title: 'Personal Brand',
-        detail: 'Personal narrative, sponsor communication and authentic public identity across platforms.',
-        scenarios: ['S12 Personal Branding Communication', 'S13 Sponsor Communication'],
-      },
-      {
-        domain: 'Domain 6',
-        title: 'Career Management',
-        detail: 'Role expectations, playing time, development conversations and professional negotiation.',
-        scenarios: ['S14 Contract & Role Expectation Conversation'],
-      },
-    ]
-
-    const professionalPlayerScenarioDescriptions: Record<string, string> = {
-      'S1 Match Communication':
-        'Give and respond to clear, immediate instructions during live match situations.',
-      'S2 Tactical Communication & Clarification':
-        'Understand tactical detail and ask precise questions when instructions are unclear.',
-      'S3 Receiving Feedback':
-        'Process coaching feedback professionally and confirm the action required.',
-      'S4 Feedback Delivery':
-        'Give constructive feedback to teammates with clarity, respect and purpose.',
-      'S5 Communicating Injury or Discomfort':
-        'Describe pain, discomfort and physical limitations accurately to medical staff.',
-      'S6 Leadership Communication':
-        'Guide teammates with calm, credible communication during demanding moments.',
-      'S7 Peer Support Communication':
-        'Support teammates through setbacks, pressure and difficult performance moments.',
-      'S8 Conflict Resolution':
-        'Address disagreement privately and protect trust within the squad.',
-      'S9 Media Interview Communication':
-        'Respond to media questions clearly while protecting the team and club.',
-      'S10 Apology or Crisis Statement':
-        'Take responsibility and communicate appropriately after a sensitive incident.',
-      'S11 Social Media Communication':
-        'Communicate publicly with awareness of audience, tone and professional risk.',
-      'S12 Personal Branding Communication':
-        'Express a clear and authentic professional identity across public platforms.',
-      'S13 Sponsor Communication':
-        'Represent personal and partner values naturally in commercial communication.',
-      'S14 Contract & Role Expectation Conversation':
-        'Discuss playing time, development and career expectations with professional control.',
-    }
-
-    const isProfessionalPlayerPathway = selectedRole === 'Professional Player'
-
-    const levelHooks: Record<string, string> = {
-      A2: 'You already communicate in familiar football situations. Your next step is responding with greater confidence when messages become faster, more tactical or more pressured.',
-      B1: 'You manage routine football communication. Your next step is adding more structure, precision and confidence in demanding situations.',
-      B2: 'You communicate effectively in most professional situations. Your next step is gaining greater strategic control in leadership, feedback and pressure moments.',
-      C1: 'You communicate with advanced professional control. Your next step is refining influence, leadership presence and elite communication under pressure.',
-    }
-
-    const nextLevelLabels: Record<string, string> = {
-      A2: 'Intermediate',
-      B1: 'Professional',
-      B2: 'Advanced Professional',
-      C1: 'Elite refinement',
-    }
-
-    const pathwayScenarioCount = isProfessionalPlayerPathway
-      ? professionalPlayerDomains.reduce(
-          (total, domain) => total + domain.scenarios.length,
-          0
-        )
-      : rolePathwayModules.reduce(
-          (total, module) => total + (module.scenarios?.length || 0),
-          0
-        )
+  // PENDING EVALUATION
+  if (section === 'pending' && submission) {
+    const needsSpeakingReview = submission.status === 'human_review_required'
 
     return (
-      <div className="min-h-screen bg-[#F7F8FA] text-fei-bg">
-        <nav className="sticky top-0 z-50 w-full border-b border-fei-bg/[0.08] bg-white/90 backdrop-blur-xl">
-          <div className="mx-auto flex min-h-[60px] w-full max-w-[1440px] items-center justify-between px-6 sm:px-8 lg:px-10">
-            <Link
-              href="/"
-              className="flex items-center"
-              aria-label="Go to FEI home"
-            >
-              <img
-                src="/fei-logo-navbar-vector.svg"
-                alt="FEI"
-                className="h-9 w-auto"
-              />
-
+      <div className="min-h-screen bg-[#F6F7F9] text-fei-bg">
+        <header className="border-b border-fei-bg/[0.08] bg-white/90 backdrop-blur-xl">
+          <div className="mx-auto flex h-[64px] w-full max-w-[1280px] items-center justify-between px-6 sm:px-8">
+            <Link href="/" className="flex items-center">
+              <img src="/fei-logo-navbar-vector.svg" alt="FEI" className="h-9 w-auto" />
               <span className="mx-4 hidden h-5 w-px bg-fei-bg/10 sm:block" />
-
               <span className="hidden text-sm font-medium text-fei-bg/55 sm:inline">
                 Football English Intelligence
               </span>
             </Link>
-
-            <div className="flex items-center gap-1 sm:gap-2">
-              <Link
-                href="/dashboard"
-                className="relative hidden px-3 py-2 text-sm font-semibold text-fei-bg after:absolute after:inset-x-3 after:-bottom-[11px] after:h-0.5 after:bg-fei-yellow sm:inline-flex"
-              >
-                Dashboard
-              </Link>
-
-              <Link
-                href="/learning"
-                className="hidden rounded-lg px-3 py-2 text-sm font-medium text-fei-bg/55 transition hover:bg-fei-bg/[0.04] hover:text-fei-bg sm:inline-flex"
-              >
-                Learning Path
-              </Link>
-
-              <Link
-                href="/settings"
-                className="hidden rounded-lg px-3 py-2 text-sm font-medium text-fei-bg/55 transition hover:bg-fei-bg/[0.04] hover:text-fei-bg sm:inline-flex"
-              >
-                Settings
-              </Link>
-
-              <span className="mx-2 hidden h-5 w-px bg-fei-bg/10 sm:block" />
-
-              <button
-                type="button"
-                onClick={handleLogout}
-                className="rounded-lg px-3 py-2 text-sm font-medium text-fei-bg/50 transition hover:bg-fei-bg/[0.04] hover:text-fei-bg"
-              >
-                Sign out
-              </button>
-            </div>
-          </div>
-        </nav>
-
-        <main className="px-6 pb-6 pt-7 sm:px-8 lg:pb-7 lg:pt-9">
-          <div className="mx-auto w-full max-w-[1280px]">
-            <section className="pb-10">
-              <h1 className="max-w-5xl text-4xl leading-[1.02] tracking-[-0.045em] text-fei-bg sm:text-5xl lg:text-[3.35rem]">
-                <span className="font-normal">
-                  Your
-                </span>{' '}
-                <span className="font-black">
-                  FEI diagnostic result
-                </span>{' '}
-                <span className="font-normal">
-                  is ready.
-                </span>
-              </h1>
-
-            </section>
-
-            <section className="overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-white shadow-[0_18px_55px_rgba(7,17,31,0.05)]">
-              <div className="grid lg:grid-cols-[0.78fr_1.22fr]">
-                <div className="p-6 sm:p-6 lg:border-r lg:border-fei-bg/10 lg:px-8 lg:py-6">
-                  <p className="text-xs font-black uppercase tracking-[0.23em] text-fei-bg/55">
-                    Your Current Level
-                  </p>
-
-                  <div className="mt-4 flex items-end gap-4">
-                    <p className="text-6xl font-black leading-none tracking-[-0.07em] text-fei-sky sm:text-7xl">
-                      {result.level}
-                    </p>
-
-                    <div className="pb-2">
-                      <p className="text-3xl font-black tracking-[-0.035em] text-fei-bg sm:text-4xl">
-                        {pathwayLabel}
-                      </p>
-
-                      <p className="mt-2 text-sm font-medium text-fei-bg/42">
-                        CEFR professional communication level
-                      </p>
-                    </div>
-                  </div>
-
-                  <p className="mt-4 text-sm font-bold text-fei-bg/65">
-                    {selectedRole}
-                  </p>
-                </div>
-
-                <div className="border-t border-fei-bg/10 p-6 sm:p-6 lg:border-t-0 lg:px-8 lg:py-6">
-                  <p className="text-xs font-black uppercase tracking-[0.23em] text-fei-bg/40">
-                    What This Means
-                  </p>
-
-                  <p className="mt-4 max-w-2xl text-base font-normal leading-7 text-fei-bg/68">
-                    {levelHooks[result.level] || levelHooks.A2}
-                  </p>
-
-                  <div className="mt-6 border-t border-fei-bg/10 pt-4">
-                    <div className="flex items-center justify-between gap-4">
-                      <p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/40">
-                        Diagnostic Evidence
-                      </p>
-
-                      <p className="min-w-[76px] text-right text-3xl font-black tabular-nums tracking-[-0.04em] text-fei-bg">
-                        {animatedEvidence}%
-                      </p>
-                    </div>
-
-                    <div className="mt-3 h-2.5 overflow-hidden rounded-full bg-fei-bg/10">
-                      <div
-                        className="h-full rounded-full bg-gradient-to-r from-fei-sky to-fei-yellow transition-[width] duration-75 ease-linear"
-                        style={{ width: `${animatedEvidence}%` }}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <section className="mt-7 border-y border-fei-bg/10 py-6">
-              <div>
-                <p className="text-xs font-black uppercase tracking-[0.23em] text-fei-bg/55">
-                  Your Communication Opportunity
-                </p>
-
-                <h2 className="mt-2 text-2xl font-black tracking-[-0.035em] text-fei-bg sm:text-[1.7rem]">
-                  Your communication potential—and how FEI develops it.
-                </h2>
-              </div>
-
-              <div className="mt-6 grid gap-8 lg:grid-cols-2 lg:gap-14">
-                <div className="lg:pr-8">
-                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-fei-bg/52">
-                    Your Current Base
-                  </p>
-
-                  <div className="mt-3 border-t border-fei-bg/10">
-                    {communicationBase.map((item) => (
-                      <div
-                        key={item}
-                        className="flex items-start gap-3 border-b border-fei-bg/[0.08] py-3"
-                      >
-                        <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-fei-sky" />
-
-                        <p className="text-sm leading-6 text-fei-bg/66">
-                          {item}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="border-t border-fei-bg/10 pt-7 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
-                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-fei-bg/52">
-                    What FEI Will Help You Deliver
-                  </p>
-
-                  <div className="mt-3 border-t border-fei-bg/10">
-                    {pathwayOutcomes.map((item) => (
-                      <div
-                        key={item}
-                        className="flex items-start gap-3 border-b border-fei-bg/[0.08] py-3"
-                      >
-                        <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-fei-yellow" />
-
-                        <p className="text-sm font-normal leading-6 text-fei-bg/66">
-                          {item}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <section className="mt-10">
-              <div className="overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-white shadow-[0_18px_55px_rgba(7,17,31,0.045)]">
-                <div className="grid lg:grid-cols-[1fr_340px]">
-                  <div className="p-7 sm:p-9 lg:border-r lg:border-fei-bg/10">
-                    <p className="text-xs font-black uppercase tracking-[0.23em] text-fei-bg/42">
-                      Your Personalized Training Pathway
-                    </p>
-
-                    <h2 className="mt-3 text-3xl font-black tracking-[-0.035em] text-fei-bg sm:text-4xl">
-                      {selectedRole}
-                    </h2>
-
-                    <p className="mt-3 text-sm font-semibold text-fei-bg/48">
-                      {isProfessionalPlayerPathway
-                        ? `${professionalPlayerDomains.length} domains · ${pathwayScenarioCount} real football scenarios`
-                        : pathwayScenarioCount > 0
-                          ? `${rolePathwayModules.length} role-specific modules · ${pathwayScenarioCount} professional scenarios`
-                          : `${rolePathwayModules.length} role-specific modules`}
-                    </p>
-
-                    <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-4 border-t border-fei-bg/10 pt-6">
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-xs font-black uppercase tracking-[0.16em] text-fei-bg/36">
-                          Current
-                        </span>
-
-                        <span className="text-2xl font-black text-fei-sky">
-                          {result.level}
-                        </span>
-
-                        <span className="text-base font-bold text-fei-bg/65">
-                          {pathwayLabel}
-                        </span>
-                      </div>
-
-                      <span className="text-xl font-black text-fei-bg/20">
-                        →
-                      </span>
-
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-xs font-black uppercase tracking-[0.16em] text-fei-sky">
-                          Next
-                        </span>
-
-                        <span className="text-2xl font-black text-fei-bg">
-                          {nextLevel}
-                        </span>
-
-                        <span className="text-base font-bold text-fei-bg/65">
-                          {nextLevelLabels[result.level] || 'Next milestone'}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="relative flex flex-col justify-between overflow-hidden border-t border-fei-bg/10 bg-fei-sky/[0.055] p-7 sm:p-9 lg:border-t-0">
-                    <div className="absolute inset-x-0 top-0 h-1 bg-fei-yellow" />
-                    <div>
-                      <p className="text-center text-xs font-black uppercase tracking-[0.22em] text-fei-bg/52">
-                        Complete pathway
-                      </p>
-
-                      <div className="mt-5 flex items-end justify-center gap-2 text-center">
-                        <p className="text-6xl font-black leading-none tracking-[-0.06em] text-fei-bg">
-                          $49
-                        </p>
-
-                        <p className="pb-1.5 text-base font-bold text-fei-bg/48">
-                          / month
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="mt-7">
-                      <button
-                        type="button"
-                        onClick={() => router.push('/#pricing')}
-                        className="w-full rounded-full bg-fei-yellow px-7 py-4 text-base font-black text-fei-bg shadow-[0_12px_30px_rgba(255,204,0,0.22)] transition hover:-translate-y-0.5 hover:bg-fei-yellow/90"
-                      >
-                        Unlock My Pathway
-                      </button>
-
-                      <button
-                        type="button"
-                        onClick={() => router.push('/dashboard')}
-                        className="mt-4 w-full text-center text-sm font-bold text-fei-bg/44 transition hover:text-fei-bg"
-                      >
-                        Review My Dashboard
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {isProfessionalPlayerPathway ? (
-                <div className="mt-3 lg:ml-10">
-                  {professionalPlayerDomains.map((domain, index) => (
-                    <article
-                      key={domain.domain}
-                      className="grid gap-5 border-b border-fei-bg/10 py-7 lg:grid-cols-[72px_0.8fr_1.2fr] lg:items-center"
-                    >
-                      <p className="text-3xl font-black text-fei-sky">
-                        {String(index + 1).padStart(2, '0')}
-                      </p>
-
-                      <div>
-                        <p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/38">
-                          {domain.domain}
-                        </p>
-
-                        <h3 className="mt-2 text-xl font-black text-fei-bg">
-                          {domain.title}
-                        </h3>
-
-                        <p className="mt-2 max-w-md text-sm leading-6 text-fei-bg/48">
-                          {domain.detail}
-                        </p>
-                      </div>
-
-                      <div>
-                        <p className="mb-4 text-xs font-black uppercase tracking-[0.18em] text-fei-sky">
-                          Your Practice Journey
-                        </p>
-
-                        <div className="flex flex-col">
-                          {domain.scenarios.map((scenario, scenarioIndex) => (
-                            <div
-                              key={scenario}
-                              className="grid grid-cols-[34px_1fr] items-center gap-3 border-b border-fei-bg/[0.07] py-3 first:pt-0 last:border-b-0 last:pb-0"
-                            >
-                              <span className="text-xs font-black text-fei-sky">
-                                {String(scenarioIndex + 1).padStart(2, '0')}
-                              </span>
-
-                              <div>
-                                <p className="text-sm font-bold leading-5 text-fei-bg/72">
-                                  {scenario.replace(/^S\d+\s*/, '')}
-                                </p>
-
-                                <p className="mt-1 text-xs leading-5 text-fei-bg/40">
-                                  {professionalPlayerScenarioDescriptions[scenario]}
-                                </p>
-                              </div>
-
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </article>
-                  ))}
-                </div>
-              ) : (
-                <div className="mt-3 lg:ml-12">
-                  {rolePathwayModules.map((module, index) => (
-                    <article
-                      key={module.title}
-                      className="grid gap-5 border-b border-fei-bg/10 py-8 lg:grid-cols-[72px_0.82fr_1.18fr] lg:items-start"
-                    >
-                      <p className="text-3xl font-black text-fei-sky">
-                        {String(index + 1).padStart(2, '0')}
-                      </p>
-
-                      <div>
-                        <p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/38">
-                          Module {String(index + 1).padStart(2, '0')}
-                        </p>
-
-                        <h3 className="mt-2 text-xl font-black text-fei-bg">
-                          {module.title}
-                        </h3>
-
-                        <p className="mt-3 max-w-md text-sm leading-7 text-fei-bg/52">
-                          {module.detail}
-                        </p>
-                      </div>
-
-                      {module.scenarios && module.scenarios.length > 0 && (
-                        <div className="lg:pl-14">
-                          <p className="mb-4 text-xs font-black uppercase tracking-[0.18em] text-fei-sky">
-                            Professional Scenarios
-                          </p>
-
-                          <div className="flex flex-col">
-                            {module.scenarios.map((scenario, scenarioIndex) => (
-                              <div
-                                key={scenario}
-                                className="grid grid-cols-[34px_1fr] items-center gap-3 border-b border-fei-bg/[0.07] py-3 first:pt-0 last:border-b-0 last:pb-0"
-                              >
-                                <span className="text-xs font-black text-fei-sky">
-                                  {String(scenarioIndex + 1).padStart(2, '0')}
-                                </span>
-
-                                <div>
-                                  <p className="text-sm font-bold leading-5 text-fei-bg/72">
-                                    {scenario}
-                                  </p>
-
-                                  <p className="mt-1 text-xs leading-5 text-fei-bg/40">
-                                    Applied communication practice in a real performance environment
-                                  </p>
-                                </div>
-
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </article>
-                  ))}
-                </div>
-              )}
-            </section>
-
-            <p className="mt-5 text-center text-xs text-fei-bg/35">
-              Your diagnostic profile has been saved to your FEI dashboard.
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-fei-bg/38">
+              Diagnostic assessment
             </p>
           </div>
+        </header>
+
+        <main className="mx-auto flex min-h-[calc(100vh-64px)] w-full max-w-[760px] items-center px-6 py-12 sm:px-8">
+          <section className="w-full rounded-3xl border border-fei-bg/10 bg-white p-8 shadow-[0_20px_60px_rgba(15,23,42,0.08)] sm:p-12">
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-fei-sky/10 text-2xl text-fei-sky">
+              ✓
+            </div>
+            <p className="mt-7 text-xs font-black uppercase tracking-[0.2em] text-fei-sky">
+              Submission received
+            </p>
+            <h1 className="mt-3 text-3xl font-black tracking-tight text-fei-bg sm:text-4xl">
+              Your diagnostic is being evaluated
+            </h1>
+            <p className="mt-5 text-base leading-7 text-fei-bg/60">
+              {needsSpeakingReview
+                ? 'Your answers and Writing response were saved. Because no Speaking recording was submitted, this attempt requires manual review.'
+                : 'Your answers, Writing response, and Speaking recording were saved successfully.'}
+            </p>
+            <p className="mt-4 text-sm leading-6 text-fei-bg/50">
+              FEI will show a final CEFR level only after Writing and Speaking have been evaluated with the approved framework. Word count, keywords, and recording duration do not determine your level.
+            </p>
+            <div className="mt-8 rounded-2xl border border-fei-bg/8 bg-fei-bg/[0.03] px-5 py-4">
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-fei-bg/35">
+                Attempt reference
+              </p>
+              <p className="mt-2 break-all text-sm font-semibold text-fei-bg/70">
+                {submission.attemptId}
+              </p>
+            </div>
+            <Link
+              href="/dashboard"
+              className="mt-8 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-fei-yellow px-6 py-3 font-bold text-fei-bg transition hover:bg-fei-yellow/90"
+            >
+              Return to dashboard
+            </Link>
+          </section>
         </main>
       </div>
     )
