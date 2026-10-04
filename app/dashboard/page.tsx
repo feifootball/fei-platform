@@ -117,7 +117,7 @@ function NewUserDashboard({
           </div>
         </section>
 
-        <div className="mt-5 h-px bg-gradient-to-r from-transparent via-fei-bg/[0.08] to-transparent" />
+        <div className="mt-5 h-px bg-gradient-to-r from-transparent via-fei-bg/[0.05] to-transparent" />
 
         <div className="mt-5 grid items-stretch gap-6 lg:grid-cols-[1.08fr_0.92fr]">
           <section className="flex flex-col rounded-[28px] border border-fei-bg/10 bg-white p-6 shadow-[0_18px_50px_rgba(7,17,31,0.04)] sm:p-7">
@@ -189,18 +189,13 @@ function NewUserDashboard({
 
             <div className="mt-6 border-t border-fei-bg/10 pt-6">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-fei-bg/40">
-                Your result will include
+                Your result will show
               </p>
-              <div className="mt-4 space-y-3">
+              <div className="mt-4 grid gap-x-5 gap-y-4 sm:grid-cols-2">
                 {resultItems.map(([number, title, description]) => (
-                  <div key={number} className="flex items-center gap-3">
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-fei-sky/30 bg-fei-sky/[0.06] text-xs font-semibold">
-                      {number}
-                    </span>
-                    <div>
-                      <p className="text-sm font-semibold">{title}</p>
-                      <p className="text-sm text-fei-bg/50">{description}</p>
-                    </div>
+                  <div key={number} className="border-t border-fei-bg/[0.07] pt-3">
+                    <p className="text-sm font-semibold">{title}</p>
+                    <p className="mt-1 text-sm leading-5 text-fei-bg/50">{description}</p>
                   </div>
                 ))}
               </div>
