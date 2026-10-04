@@ -117,7 +117,7 @@ function NewUserDashboard({
         </section>
 
         <div className="mt-6 grid items-stretch gap-6 lg:grid-cols-[1.08fr_0.92fr]">
-          <section className="flex flex-col rounded-[28px] border border-fei-bg/10 bg-white p-7 shadow-[0_18px_50px_rgba(7,17,31,0.04)] sm:p-9">
+          <section className="flex flex-col px-0 py-3 sm:py-5">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-bg/45">
               Your starting point
             </p>
