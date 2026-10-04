@@ -189,7 +189,7 @@ function NewUserDashboard({
 
             <div className="mt-6 border-t border-fei-bg/10 pt-6">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-fei-bg/40">
-                Your result will show
+                Your diagnostic profile
               </p>
               <div className="mt-4 grid gap-x-5 gap-y-4 sm:grid-cols-2">
                 {resultItems.map(([number, title, description]) => (
