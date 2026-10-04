@@ -177,14 +177,14 @@ function NewUserDashboard({
               </div>
             </section>
 
-            <aside className="rounded-[32px] bg-[#07111F] p-7 text-white shadow-[0_24px_70px_rgba(7,17,31,0.16)] sm:p-10">
-              <p className="text-xs font-bold uppercase tracking-[0.24em] text-white/45">
+            <aside className="rounded-[32px] bg-gradient-to-br from-white via-[#F8FCFE] to-[#EDF8FD] p-7 text-fei-bg shadow-[0_24px_70px_rgba(7,17,31,0.08)] ring-1 ring-fei-sky/15 sm:p-10">
+              <p className="text-xs font-bold uppercase tracking-[0.24em] text-fei-bg/45">
                 Your next step
               </p>
               <h2 className="mt-5 max-w-md text-3xl font-semibold leading-tight tracking-[-0.04em]">
                 Start with your diagnostic.
               </h2>
-              <p className="mt-4 max-w-md text-base leading-7 text-white/58">
+              <p className="mt-4 max-w-md text-base leading-7 text-fei-bg/58">
                 One short assessment opens the profile and pathway built around your role.
               </p>
 
@@ -194,26 +194,26 @@ function NewUserDashboard({
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] text-sm font-semibold text-white/80">
                       0{index + 1}
                     </div>
-                    {index < 2 && <div className="h-px flex-1 bg-white/15" />}
+                    {index < 2 && <div className="h-px flex-1 bg-fei-bg/10" />}
                   </div>
                 ))}
               </div>
-              <div className="mt-3 flex justify-between text-[11px] font-semibold uppercase tracking-[0.12em] text-white/42">
+              <div className="mt-3 flex justify-between text-[11px] font-semibold uppercase tracking-[0.12em] text-fei-bg/42">
                 <span>Diagnostic</span><span>Profile</span><span>Pathway</span>
               </div>
 
               <div className="mt-10 border-t border-white/10 pt-6">
-                <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/42">
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-fei-bg/42">
                   What your result includes
                 </p>
                 <div className="mt-4 grid grid-cols-2 gap-3">
                   {profilePreview.map(([title, description]) => (
-                    <div key={title} tabIndex={0} className="group rounded-2xl border border-white/10 bg-white/[0.06] p-4 transition duration-300 hover:-translate-y-1 hover:border-fei-sky/60 hover:bg-white/[0.11] focus:-translate-y-1 focus:border-fei-sky/60 focus:bg-white/[0.11]">
+                    <div key={title} tabIndex={0} className="group rounded-2xl border border-fei-bg/10 bg-white/70 p-4 transition duration-300 hover:-translate-y-1 hover:border-fei-sky/45 hover:bg-white focus:-translate-y-1 focus:border-fei-sky/45 focus:bg-white">
                       <div className="flex items-center justify-between gap-2">
                         <p className="text-sm font-semibold text-white/90">{title}</p>
                         <span className="h-1.5 w-1.5 rounded-full bg-fei-sky transition group-hover:bg-fei-yellow group-focus:bg-fei-yellow" />
                       </div>
-                      <p className="mt-3 max-h-0 overflow-hidden text-xs leading-5 text-white/58 opacity-0 transition-all duration-300 group-hover:max-h-20 group-hover:opacity-100 group-focus:max-h-20 group-focus:opacity-100">
+                      <p className="mt-3 max-h-0 overflow-hidden text-xs leading-5 text-fei-bg/58 opacity-0 transition-all duration-300 group-hover:max-h-20 group-hover:opacity-100 group-focus:max-h-20 group-focus:opacity-100">
                         {description}
                       </p>
                     </div>
