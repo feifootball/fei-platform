@@ -68,8 +68,9 @@ function NewUserDashboard({
 }) {
   const resultItems = [
     ['01', 'FEI level', 'Your current starting point'],
-    ['02', 'Priorities', 'What to develop first'],
-    ['03', 'Pathway', 'Your next role-based step'],
+    ['02', 'Strengths', 'What you already do well'],
+    ['03', 'Improvements', 'What to work on next'],
+    ['04', 'Pathway', 'Your next role-based step'],
   ]
 
   return (
@@ -94,7 +95,7 @@ function NewUserDashboard({
         </div>
       </nav>
 
-      <section className="mx-auto max-w-7xl px-6 py-8 sm:px-8 lg:py-10">
+      <section className="mx-auto max-w-7xl px-6 py-6 sm:px-8 lg:py-8">
         <section className="border-b border-fei-bg/10 px-0 py-3 pb-8 sm:py-5 sm:pb-9">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
@@ -116,10 +117,10 @@ function NewUserDashboard({
           </div>
         </section>
 
-        <div className="mt-7 h-px bg-gradient-to-r from-transparent via-fei-bg/[0.08] to-transparent" />
+        <div className="mt-5 h-px bg-gradient-to-r from-transparent via-fei-bg/[0.08] to-transparent" />
 
-        <div className="mt-7 grid items-stretch gap-6 lg:grid-cols-[1.08fr_0.92fr]">
-          <section className="flex flex-col rounded-[28px] border border-fei-bg/10 bg-white p-7 shadow-[0_18px_50px_rgba(7,17,31,0.04)] sm:p-9">
+        <div className="mt-5 grid items-stretch gap-6 lg:grid-cols-[1.08fr_0.92fr]">
+          <section className="flex flex-col rounded-[28px] border border-fei-bg/10 bg-white p-6 shadow-[0_18px_50px_rgba(7,17,31,0.04)] sm:p-7">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-bg/45">
               Your starting point
             </p>
@@ -130,7 +131,7 @@ function NewUserDashboard({
               A short assessment built around your role in football.
             </p>
             <p className="mt-3 text-sm font-medium text-fei-bg/45">
-              15–20 min <span className="mx-2 text-fei-bg/25">·</span> Role-specific assessment
+              15–20 min
             </p>
 
             <div className="mt-7 border-t border-fei-bg/[0.07] pt-5">
@@ -151,7 +152,7 @@ function NewUserDashboard({
               </div>
             </div>
 
-            <div className="mt-auto flex justify-start pt-8">
+            <div className="flex justify-start pt-6">
               <div>
                 <Link
                   href={"/assessment?role=" + encodeURIComponent(userRole)}
@@ -186,11 +187,11 @@ function NewUserDashboard({
               </p>
             </div>
 
-            <div className="mt-8 border-t border-fei-bg/10 pt-6">
+            <div className="mt-6 border-t border-fei-bg/10 pt-6">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-fei-bg/40">
                 Your result will include
               </p>
-              <div className="mt-5 space-y-4">
+              <div className="mt-4 space-y-3">
                 {resultItems.map(([number, title, description]) => (
                   <div key={number} className="flex items-center gap-3">
                     <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-fei-sky/30 bg-fei-sky/[0.06] text-xs font-semibold">
