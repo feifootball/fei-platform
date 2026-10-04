@@ -129,33 +129,30 @@ function NewUserDashboard({
             <p className="mt-5 max-w-lg text-base leading-7 text-fei-bg/55">
               A short assessment built around your role in football.
             </p>
+            <p className="mt-3 text-sm font-medium text-fei-bg/45">
+              15–20 min <span className="mx-2 text-fei-bg/25">·</span> Role-specific assessment
+            </p>
 
             <div className="mt-7 border-t border-fei-bg/[0.07] pt-5">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-fei-bg/40">
                 What we evaluate
               </p>
-              <div className="mt-4 grid gap-4 sm:grid-cols-3">
+              <div className="mt-4 divide-y divide-fei-bg/[0.07]">
                 {[
-                  ['communication', 'Role-specific football communication'],
-                  ['clarity', 'Clarity in real situations'],
-                  ['language', 'Vocabulary and language control'],
-                ].map(([icon, item]) => (
-                  <div key={icon} className="border-l-2 border-fei-sky/30 pl-3">
-                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-fei-sky/[0.12] text-fei-sky" aria-hidden>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-4 w-4">
-                        {icon === 'communication' && <path strokeLinecap="round" strokeLinejoin="round" d="M5 6.5h14v9H9l-4 3v-12Z" />}
-                        {icon === 'clarity' && <path strokeLinecap="round" strokeLinejoin="round" d="m12 3 2.3 5.2L20 10l-5.7 1.8L12 17l-2.3-5.2L4 10l5.7-1.8L12 3Z" />}
-                        {icon === 'language' && <path strokeLinecap="round" strokeLinejoin="round" d="M5 6h14M8 3v3m8-3v3M6 10h12M7 14h5m-5 4h8" />}
-                      </svg>
-                    </span>
-                    <p className="mt-2 text-sm leading-5 text-fei-bg/60">{item}</p>
+                  'Role-specific football communication',
+                  'Clarity in real situations',
+                  'Vocabulary and language control',
+                ].map(item => (
+                  <div key={item} className="flex items-center gap-3 py-3 first:pt-0 last:pb-0">
+                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-fei-sky" />
+                    <p className="text-sm leading-5 text-fei-bg/60">{item}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="mt-auto flex justify-end pt-8">
-              <div className="text-right">
+            <div className="mt-auto flex justify-start pt-8">
+              <div>
                 <Link
                   href={"/assessment?role=" + encodeURIComponent(userRole)}
                   className="inline-flex min-h-[52px] items-center justify-center rounded-full bg-fei-yellow px-7 py-3.5 text-base font-bold text-fei-bg shadow-[0_12px_28px_rgba(250,204,21,0.2)] transition hover:-translate-y-0.5 hover:bg-fei-yellow/90"
