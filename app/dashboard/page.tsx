@@ -129,6 +129,19 @@ function NewUserDashboard({
               See how confidently you communicate in football and where to focus next.
             </p>
 
+            <div className="mt-6 rounded-2xl bg-fei-sky/[0.07] px-4 py-4">
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-fei-bg/45">
+                You will explore
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {['Matchday communication', 'Your football role', 'Feedback and decisions'].map(item => (
+                  <span key={item} className="rounded-full border border-fei-sky/20 bg-white px-3 py-1.5 text-xs font-semibold text-fei-bg/65">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+
             <div className="mt-7 grid gap-3 border-t border-fei-bg/10 pt-6 sm:grid-cols-3">
               <div>
                 <p className="text-xs font-black uppercase tracking-[0.16em] text-fei-bg/40">Free</p>
