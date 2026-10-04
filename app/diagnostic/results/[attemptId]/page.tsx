@@ -130,42 +130,19 @@ export default async function DiagnosticResultPage({
         </Link>
 
         <section className="mt-8 rounded-[30px] border border-fei-bg/10 bg-white p-8 shadow-[0_20px_60px_rgba(15,23,42,0.07)] sm:p-12">
-          {isReady ? (
-            <>
-              <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/45">Final FEI profile</p>
-              <div className="mt-4 flex flex-wrap items-end justify-between gap-5">
-                <div>
-                  <h1 className="text-7xl font-black tracking-[-0.06em] text-fei-bg">{result.level}</h1>
-                  <p className="mt-2 text-lg font-semibold text-fei-bg/65">{attempt.role}</p>
-                </div>
-                <span className="rounded-full bg-fei-yellow/20 px-4 py-2 text-sm font-bold text-fei-bg">Final result</span>
-              </div>
-              <p className="mt-6 max-w-2xl text-sm leading-7 text-fei-bg/55">{result.reason}</p>
-            </>
-          ) : (
-            <>
-              <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/45">Initial FEI profile</p>
-              <div className="mt-4 flex flex-wrap items-end justify-between gap-5">
-                <div>
-                  <h1 className="text-7xl font-black tracking-[-0.06em] text-fei-bg">{initialLevel}</h1>
-                  <p className="mt-2 text-lg font-semibold text-fei-bg/65">{attempt.role}</p>
-                </div>
-                <span className="rounded-full bg-fei-sky/10 px-4 py-2 text-sm font-bold text-fei-bg/45">Ready now</span>
-              </div>
-              <p className="mt-6 max-w-2xl text-base leading-7 text-fei-bg/65">
-                Your initial profile is ready from your objective responses. Writing and Speaking will refine your final FEI level later.
-              </p>
-            </>
-          )}
-
-          {!isReady && (
-            <div className="mt-8 rounded-2xl border border-fei-sky/20 bg-fei-sky/[0.06] p-5">
-              <p className="text-sm font-bold text-fei-bg">You can start with this profile today.</p>
-              <p className="mt-1 text-sm leading-6 text-fei-bg/55">
-                Your pathway can use this starting point while the production evidence is reviewed.
+          <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-fei-bg/45">FEI diagnostic result</p>
+              <h1 className="mt-4 text-7xl font-black tracking-[-0.06em] text-fei-bg">{initialLevel}</h1>
+              <p className="mt-2 text-lg font-semibold text-fei-bg/65">{attempt.role}</p>
+              <p className="mt-5 max-w-2xl text-sm leading-7 text-fei-bg/55">
+                {isReady ? result?.reason : 'Your initial profile is ready now. Writing and Speaking can refine this level as they are reviewed.'}
               </p>
             </div>
-          )}
+            <Link href="/learning" className="inline-flex min-h-12 items-center justify-center rounded-full bg-fei-yellow px-7 py-3 font-black text-fei-bg transition hover:bg-fei-yellow/90">
+              View my Learning Path →
+            </Link>
+          </div>
         </section>
 
         <section className="mt-6 grid gap-4 sm:grid-cols-2">
