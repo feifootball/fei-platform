@@ -111,7 +111,7 @@ function NewUserDashboard({
           <section className="flex flex-col rounded-[28px] border border-fei-bg/10 bg-white p-7 shadow-[0_18px_50px_rgba(7,17,31,0.05)] sm:p-9">
             <div className="flex flex-wrap items-center gap-3">
               <p className="text-xs font-black uppercase tracking-[0.22em] text-fei-sky">
-                Your free starting point
+                Your starting point
               </p>
               <span className="rounded-full bg-fei-yellow/[0.16] px-3 py-1 text-xs font-bold text-fei-bg">
                 10–12 min
@@ -190,14 +190,6 @@ function NewUserDashboard({
               ))}
             </div>
 
-            <div className="mt-7 flex items-center gap-2 text-xs font-black uppercase tracking-[0.14em] text-fei-bg/45">
-              <span className="h-2 w-2 rounded-full bg-fei-sky" />
-              Diagnostic
-              <span className="text-fei-sky">→</span>
-              Profile
-              <span className="text-fei-sky">→</span>
-              Pathway
-            </div>
           </aside>
         </div>
       </section>
