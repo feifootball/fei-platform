@@ -338,15 +338,15 @@ export default function DashboardPage() {
                 <div className="mb-7 h-1 w-24 rounded-full bg-fei-sky" />
 
                 <p className="text-xs font-black uppercase tracking-[0.32em] text-fei-bg/45">
-                  FEI Diagnostic
+                  Free initial diagnostic
                 </p>
 
                 <h2 className="mt-5 max-w-3xl text-4xl font-black leading-[1.08] tracking-[-0.04em] text-fei-bg sm:text-5xl">
-                  Start your {userRole} diagnostic assessment
+                  Discover your Football English profile
                 </h2>
 
                 <p className="mt-6 max-w-2xl text-base leading-8 text-fei-bg/58">
-                  Complete a short role-specific diagnostic and receive one recommended FEI pathway based on your football communication profile.
+                  Complete a free, role-specific diagnostic to understand how you communicate in football and identify your next development priority.
                 </p>
 
                 <div className="mt-9 grid gap-6 border-t border-fei-bg/10 pt-7 sm:grid-cols-3">
@@ -364,7 +364,7 @@ export default function DashboardPage() {
                       Result
                     </p>
                     <p className="mt-2 text-base font-bold text-fei-bg">
-                      FEI Pathway
+                      Personal FEI profile
                     </p>
                   </div>
 
@@ -383,7 +383,7 @@ export default function DashboardPage() {
                   className="mt-9 inline-flex min-h-[54px] items-center justify-center rounded-full bg-fei-yellow px-8 py-3.5 text-base font-black text-fei-bg shadow-[0_14px_34px_rgba(250,204,21,0.24)] transition duration-300 hover:-translate-y-0.5 hover:bg-fei-yellow/90 hover:shadow-[0_18px_40px_rgba(250,204,21,0.32)]"
                 >
                   <span className="inline-flex items-center gap-2">
-                    Start Assessment
+                    Start your free diagnostic
                     <ChevronRightIcon />
                   </span>
                 </Link>
