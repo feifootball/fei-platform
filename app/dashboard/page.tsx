@@ -108,16 +108,10 @@ function NewUserDashboard({
                 {userRole}
               </p>
             </div>
-            <div className="flex items-center gap-3 rounded-2xl border border-fei-bg/10 bg-[#F8FAFC] px-4 py-3">
-              <span className="h-3 w-3 rounded-full border-2 border-fei-yellow bg-white" />
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-fei-bg/45">
-                  Profile status
-                </p>
-                <p className="mt-1 text-sm font-semibold text-fei-bg">
-                  Not assessed yet
-                </p>
-              </div>
+            <div className="flex items-center gap-2 text-sm text-fei-bg/55">
+              <span className="h-2.5 w-2.5 rounded-full border-2 border-fei-yellow bg-white" />
+              <span className="font-semibold text-fei-bg/70">Current level</span>
+              <span>Not assessed yet</span>
             </div>
           </div>
         </section>
@@ -128,25 +122,27 @@ function NewUserDashboard({
               Your starting point
             </p>
             <h2 className="mt-5 max-w-xl text-3xl font-semibold leading-[1.12] tracking-[-0.035em] sm:text-4xl">
-              Start with a clear picture of your football English.
+              Find your current football English level.
             </h2>
             <p className="mt-5 max-w-lg text-base leading-7 text-fei-bg/55">
               A short assessment built around your role in football.
             </p>
 
             <div className="mt-auto flex flex-wrap items-center gap-4 pt-8">
-              <Link
-                href={"/assessment?role=" + encodeURIComponent(userRole)}
-                className="inline-flex min-h-[52px] items-center justify-center rounded-full bg-fei-yellow px-7 py-3.5 text-base font-bold text-fei-bg shadow-[0_12px_28px_rgba(250,204,21,0.2)] transition hover:-translate-y-0.5 hover:bg-fei-yellow/90"
-              >
-                Start diagnostic
-                <ChevronRightIcon />
-              </Link>
-              <span className="text-sm text-fei-bg/45">Free initial assessment</span>
+              <div>
+                <Link
+                  href={"/assessment?role=" + encodeURIComponent(userRole)}
+                  className="inline-flex min-h-[52px] items-center justify-center rounded-full bg-fei-yellow px-7 py-3.5 text-base font-bold text-fei-bg shadow-[0_12px_28px_rgba(250,204,21,0.2)] transition hover:-translate-y-0.5 hover:bg-fei-yellow/90"
+                >
+                  Start diagnostic
+                  <ChevronRightIcon />
+                </Link>
+                <p className="mt-3 text-sm text-fei-bg/45">Free initial assessment</p>
+              </div>
             </div>
           </section>
 
-          <aside className="rounded-[28px] border border-fei-bg/10 bg-white p-7 shadow-[0_18px_50px_rgba(7,17,31,0.04)] sm:p-9">
+          <aside className="px-0 py-3 lg:border-l lg:border-fei-bg/10 lg:pl-8">
             <div className="flex items-center justify-between">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-bg/45">
                 Your next step
