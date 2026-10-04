@@ -95,7 +95,7 @@ function NewUserDashboard({
       </nav>
 
       <section className="mx-auto max-w-7xl px-6 py-8 sm:px-8 lg:py-10">
-        <section className="px-0 py-3 sm:py-5">
+        <section className="border-b border-fei-bg/10 px-0 py-3 pb-8 sm:py-5 sm:pb-9">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">
@@ -110,8 +110,8 @@ function NewUserDashboard({
             </div>
             <div className="flex items-center gap-2 text-sm text-fei-bg/55">
               <span className="h-2.5 w-2.5 rounded-full border-2 border-fei-yellow bg-white" />
-              <span className="font-semibold text-fei-bg/70">Current level</span>
-              <span>Not assessed yet</span>
+              <span className="font-semibold text-fei-bg/70">Diagnostic status</span>
+              <span>Not started</span>
             </div>
           </div>
         </section>
