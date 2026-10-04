@@ -6031,8 +6031,14 @@ function AssessmentContent() {
               </p>
             </div>
             <Link
-              href="/dashboard"
+              href={`/diagnostic/results/${submission.attemptId}`}
               className="mt-8 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-fei-yellow px-6 py-3 font-bold text-fei-bg transition hover:bg-fei-yellow/90"
+            >
+              View diagnostic status
+            </Link>
+            <Link
+              href="/dashboard"
+              className="mt-3 inline-flex min-h-10 w-full items-center justify-center text-sm font-semibold text-fei-bg/50 transition hover:text-fei-bg"
             >
               Return to dashboard
             </Link>
