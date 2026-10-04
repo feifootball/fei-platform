@@ -66,13 +66,6 @@ function NewUserDashboard({
   userRole: string
   onSignOut: () => void
 }) {
-  const resultItems = [
-    ['01', 'FEI level', 'Your current starting point'],
-    ['02', 'Strengths', 'What you already do well'],
-    ['03', 'Improvements', 'What to work on next'],
-    ['04', 'Pathway', 'Your next role-based step'],
-  ]
-
   return (
     <main className="min-h-screen bg-[#F7FAFC] text-fei-bg">
       <nav className="border-b border-fei-bg/[0.08] bg-white">
@@ -189,13 +182,24 @@ function NewUserDashboard({
 
             <div className="mt-6 border-t border-fei-bg/10 pt-6">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-fei-bg/40">
-                Your diagnostic profile
+                FEI profile preview
               </p>
-              <div className="mt-4 grid gap-x-5 gap-y-4 sm:grid-cols-2">
-                {resultItems.map(([number, title, description]) => (
-                  <div key={number} className="border-t border-fei-bg/[0.07] pt-3">
-                    <p className="text-sm font-semibold">{title}</p>
-                    <p className="mt-1 text-sm leading-5 text-fei-bg/50">{description}</p>
+              <div className="mt-5 grid gap-x-6 gap-y-5 sm:grid-cols-2">
+                {[
+                  ['Level', 'Your starting point'],
+                  ['Strengths', 'What you already do well'],
+                  ['Improvements', 'What to work on next'],
+                  ['Pathway', 'Your next role-based step'],
+                ].map(([title, description]) => (
+                  <div key={title}>
+                    <div className="flex items-center justify-between gap-3">
+                      <p className="text-sm font-semibold">{title}</p>
+                      <span className="text-xs text-fei-bg/35">Pending</span>
+                    </div>
+                    <div className="mt-2 h-1.5 rounded-full bg-fei-bg/[0.08]">
+                      <div className="h-1.5 w-1/4 rounded-full bg-fei-sky/35" />
+                    </div>
+                    <p className="mt-2 text-xs leading-5 text-fei-bg/45">{description}</p>
                   </div>
                 ))}
               </div>
