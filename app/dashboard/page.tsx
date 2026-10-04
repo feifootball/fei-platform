@@ -67,7 +67,7 @@ function NewUserDashboard({
   onSignOut: () => void
 }) {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-white via-[#F7FAFC] to-[#EAF7FC] text-fei-bg">
+    <main className="min-h-screen bg-[#F7FAFC] text-fei-bg">
       <nav className="border-b border-fei-bg/[0.08] bg-white">
         <div className="mx-auto flex min-h-[56px] max-w-[1440px] items-center justify-between px-6 sm:px-8 lg:px-10">
           <Link href="/" className="flex items-center" aria-label="Go to FEI home">
@@ -89,7 +89,7 @@ function NewUserDashboard({
       </nav>
 
       <section className="mx-auto max-w-7xl px-6 py-3 sm:px-8 lg:py-4">
-        <section className="border-b border-fei-bg/[0.06] bg-white px-0 py-3 pb-8 sm:py-5 sm:pb-9">
+        <section className="border-b border-fei-bg/10 px-0 py-3 pb-8 sm:py-5 sm:pb-9">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">

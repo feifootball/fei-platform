@@ -6012,15 +6012,15 @@ function AssessmentContent() {
               Submission received
             </p>
             <h1 className="mt-3 text-3xl font-black tracking-tight text-fei-bg sm:text-4xl">
-              Your diagnostic is being evaluated
+              Your initial FEI profile is ready
             </h1>
             <p className="mt-5 text-base leading-7 text-fei-bg/60">
               {needsSpeakingReview
-                ? 'Your answers and Writing response were saved. Because no Speaking recording was submitted, this attempt requires manual review.'
-                : 'Your answers, Writing response, and Speaking recording were saved successfully.'}
+                ? 'Your responses were saved successfully. You can view your initial profile now.'
+                : 'Your responses, Writing response, and Speaking recording were saved successfully. You can view your initial profile now.'}
             </p>
             <p className="mt-4 text-sm leading-6 text-fei-bg/50">
-              FEI will show a final CEFR level only after Writing and Speaking have been evaluated with the approved framework. Word count, keywords, and recording duration do not determine your level.
+              This initial profile is based on your objective responses. Writing and Speaking will refine your final FEI level later. Word count, keywords, and recording duration do not determine your level.
             </p>
             <div className="mt-8 rounded-2xl border border-fei-bg/8 bg-fei-bg/[0.03] px-5 py-4">
               <p className="text-xs font-bold uppercase tracking-[0.16em] text-fei-bg/35">
@@ -6034,7 +6034,7 @@ function AssessmentContent() {
               href={`/diagnostic/results/${submission.attemptId}`}
               className="mt-8 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-fei-yellow px-6 py-3 font-bold text-fei-bg transition hover:bg-fei-yellow/90"
             >
-              View diagnostic status
+              View your initial profile
             </Link>
             <Link
               href="/dashboard"
