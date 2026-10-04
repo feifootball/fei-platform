@@ -56,6 +56,126 @@ function ChevronRightIcon() {
   )
 }
 
+
+function NewUserDashboard({
+  displayName,
+  userRole,
+  onSignOut,
+}: {
+  displayName: string
+  userRole: string
+  onSignOut: () => void
+}) {
+  const outcomes = [
+    ['01', 'Your FEI level', 'A clear starting point for your football English.'],
+    ['02', 'Your priorities', 'The areas that will help you communicate more effectively.'],
+    ['03', 'Your next step', 'A preview of the pathway built for your role.'],
+  ]
+
+  return (
+    <main className="min-h-screen bg-[#F6F7F9] text-fei-bg">
+      <nav className="border-b border-fei-bg/[0.08] bg-white">
+        <div className="mx-auto flex min-h-[64px] max-w-[1440px] items-center justify-between px-6 sm:px-8 lg:px-10">
+          <Link href="/" className="flex items-center" aria-label="Go to FEI home">
+            <img src="/fei-logo-navbar-vector.svg" alt="FEI" className="h-9 w-auto" />
+            <span className="mx-4 hidden h-5 w-px bg-fei-bg/10 sm:block" />
+            <span className="hidden text-sm font-medium text-fei-bg/55 sm:inline">
+              Football English Intelligence
+            </span>
+          </Link>
+
+          <div className="flex items-center gap-2">
+            <Link href="/faq" className="rounded-lg px-3 py-2 text-sm font-medium text-fei-bg/55 hover:bg-fei-bg/[0.04]">
+              Help
+            </Link>
+            <button
+              type="button"
+              onClick={onSignOut}
+              className="rounded-lg px-3 py-2 text-sm font-medium text-fei-bg/55 hover:bg-fei-bg/[0.04]"
+            >
+              Sign out
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      <section className="mx-auto max-w-7xl px-6 py-8 sm:px-8 lg:py-10">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <h1 className="text-3xl font-black tracking-[-0.04em] text-fei-bg sm:text-4xl">
+              Welcome, {displayName}
+            </h1>
+            <div className="mt-2 flex items-center gap-2 text-sm font-semibold text-fei-bg/55">
+              <span className="h-2.5 w-2.5 rounded-full bg-fei-sky" />
+              <span>{userRole}</span>
+            </div>
+            <p className="mt-3 text-sm text-fei-bg/50">
+              Your role-specific path to practical football English.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-8 grid gap-5 lg:grid-cols-[1.25fr_0.75fr]">
+          <section className="rounded-[28px] bg-fei-bg p-7 text-white shadow-[0_20px_55px_rgba(7,17,31,0.14)] sm:p-9">
+            <div className="flex flex-wrap items-center gap-3">
+              <p className="text-xs font-black uppercase tracking-[0.22em] text-fei-yellow">
+                Free diagnostic
+              </p>
+              <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-bold text-white/65">
+                10–12 min
+              </span>
+            </div>
+
+            <h2 className="mt-5 max-w-2xl text-3xl font-black leading-tight tracking-[-0.035em] sm:text-4xl">
+              Discover your Football English profile.
+            </h2>
+
+            <p className="mt-4 max-w-xl text-base leading-7 text-white/65">
+              Find your starting point for clear communication in football.
+            </p>
+
+            <Link
+              href={"/assessment?role=" + encodeURIComponent(userRole)}
+              className="mt-7 inline-flex min-h-[52px] items-center justify-center rounded-full bg-fei-yellow px-7 py-3.5 text-base font-black text-fei-bg transition hover:-translate-y-0.5 hover:bg-fei-yellow/90"
+            >
+              Start free diagnostic
+              <ChevronRightIcon />
+            </Link>
+
+            <p className="mt-4 text-sm text-white/45">
+              No payment required to receive your initial FEI profile.
+            </p>
+          </section>
+
+          <aside className="rounded-[28px] border border-fei-bg/10 bg-white p-7 sm:p-8">
+            <p className="text-xs font-black uppercase tracking-[0.22em] text-fei-sky">
+              After this free step
+            </p>
+
+            <div className="mt-6 space-y-5">
+              {outcomes.map(([number, title, description]) => (
+                <div key={number} className="flex gap-3">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-fei-sky/35 bg-fei-sky/[0.08] text-xs font-black">
+                    {number}
+                  </span>
+                  <div>
+                    <p className="text-sm font-black">{title}</p>
+                    <p className="mt-1 text-xs leading-5 text-fei-bg/50">{description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-6 border-t border-fei-bg/10 pt-5 text-xs font-bold text-fei-bg/45">
+              Diagnostic <span className="mx-1 text-fei-sky">→</span> Profile <span className="mx-1 text-fei-sky">→</span> Pathway
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+  )
+}
+
 export default function DashboardPage() {
   const router = useRouter()
   const supabase = createClient()
@@ -208,6 +328,22 @@ export default function DashboardPage() {
     : lastAssessment
       ? getResultLabel(lastAssessment.level)
       : '—'
+
+  const isNewUser =
+    hasValidRole &&
+    assessmentCount === 0 &&
+    !latestDiagnostic &&
+    !lastAssessment
+
+  if (isNewUser) {
+    return (
+      <NewUserDashboard
+        displayName={displayName}
+        userRole={userRole}
+        onSignOut={handleLogout}
+      />
+    )
+  }
 
   return (
     <main className="min-h-screen bg-[#F6F7F9] text-fei-bg">
