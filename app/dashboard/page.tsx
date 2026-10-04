@@ -66,10 +66,10 @@ function NewUserDashboard({
   userRole: string
   onSignOut: () => void
 }) {
-  const outcomes = [
-    ['01', 'Your FEI level', 'A clear starting point based on your football communication.'],
-    ['02', 'Your priorities', 'The role-specific areas to develop first.'],
-    ['03', 'Your next pathway', 'A route built from your result and role.'],
+  const resultItems = [
+    ['01', 'FEI level', 'Your current starting point'],
+    ['02', 'Priorities', 'What to develop first'],
+    ['03', 'Pathway', 'Your next role-based step'],
   ]
 
   return (
@@ -95,93 +95,97 @@ function NewUserDashboard({
       </nav>
 
       <section className="mx-auto max-w-7xl px-6 py-8 sm:px-8 lg:py-10">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <h1 className="text-3xl font-bold tracking-[-0.04em] text-fei-bg sm:text-4xl">
-              Welcome, {displayName}
-            </h1>
-            <p className="mt-2 flex items-center gap-2 text-sm font-semibold text-fei-bg/55">
-              <span className="h-2.5 w-2.5 rounded-full bg-fei-sky" />
-              {userRole}
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-8 grid items-stretch gap-5 md:grid-cols-[1.08fr_0.92fr]">
-          <section className="flex flex-col rounded-[28px] border border-fei-bg/10 bg-white p-7 shadow-[0_18px_50px_rgba(7,17,31,0.05)] sm:p-9">
-            <div className="flex flex-wrap items-center gap-3">
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-fei-sky">
-                Your starting point
+        <section className="rounded-[28px] border border-fei-bg/10 bg-white px-6 py-7 shadow-[0_18px_50px_rgba(7,17,31,0.04)] sm:px-9 sm:py-8">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">
+                Your FEI profile
               </p>
-              <span className="rounded-full bg-fei-yellow/[0.16] px-3 py-1 text-xs font-semibold text-fei-bg">
-                10–12 min
-              </span>
+              <h1 className="mt-3 text-4xl tracking-[-0.05em] sm:text-5xl">
+                <span className="font-bold">{displayName}</span>{' '}
+                <span className="font-normal text-fei-bg/55">{userRole}</span>
+              </h1>
             </div>
+            <div className="flex items-center gap-3 rounded-2xl border border-fei-bg/10 bg-[#F8FAFC] px-4 py-3">
+              <span className="h-3 w-3 rounded-full border-2 border-fei-yellow bg-white" />
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-fei-bg/45">
+                  Profile status
+                </p>
+                <p className="mt-1 text-sm font-semibold text-fei-bg">
+                  Not assessed yet
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
 
-            <h2 className="mt-5 max-w-2xl text-3xl leading-[1.08] tracking-[-0.035em] sm:text-4xl">
-              <span className="font-bold">Discover your Football English</span>{' '}
-              <span className="font-normal text-fei-bg/65">profile.</span>
+        <div className="mt-6 grid items-stretch gap-6 lg:grid-cols-[1.08fr_0.92fr]">
+          <section className="flex flex-col rounded-[28px] border border-fei-bg/10 bg-white p-7 shadow-[0_18px_50px_rgba(7,17,31,0.04)] sm:p-9">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-bg/45">
+              Your starting point
+            </p>
+            <h2 className="mt-5 max-w-xl text-3xl leading-[1.1] tracking-[-0.04em] sm:text-4xl">
+              <span className="font-bold">Find your Football English level.</span>{' '}
+              <span className="font-normal text-fei-bg/60">Then know what to work on next.</span>
             </h2>
-
-            <p className="mt-4 max-w-xl text-base leading-7 text-fei-bg/60">
-              See how confidently you communicate in football and where to focus next.
+            <p className="mt-5 max-w-lg text-base leading-7 text-fei-bg/55">
+              A short assessment built around your role in football.
             </p>
 
-            <div className="mt-7 grid gap-3 border-t border-fei-bg/10 pt-6 sm:grid-cols-3">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-fei-bg/40">Free</p>
-                <p className="mt-1 text-sm font-semibold text-fei-bg">No payment</p>
-              </div>
-              <div className="sm:border-l sm:border-fei-bg/10 sm:pl-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-fei-bg/40">Built for</p>
-                <p className="mt-1 text-sm font-semibold text-fei-bg">{userRole}</p>
-              </div>
-              <div className="sm:border-l sm:border-fei-bg/10 sm:pl-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-fei-bg/40">You receive</p>
-                <p className="mt-1 text-sm font-semibold text-fei-bg">Your FEI profile</p>
-              </div>
-            </div>
-
-            <div className="mt-auto pt-8">
+            <div className="mt-auto flex flex-wrap items-center gap-4 pt-8">
               <Link
                 href={"/assessment?role=" + encodeURIComponent(userRole)}
                 className="inline-flex min-h-[52px] items-center justify-center rounded-full bg-fei-yellow px-7 py-3.5 text-base font-bold text-fei-bg shadow-[0_12px_28px_rgba(250,204,21,0.2)] transition hover:-translate-y-0.5 hover:bg-fei-yellow/90"
               >
-                Start free diagnostic
+                Start diagnostic
                 <ChevronRightIcon />
               </Link>
-              <p className="mt-3 text-sm text-fei-bg/45">
-                Your initial FEI profile is free.
-              </p>
+              <span className="text-sm text-fei-bg/45">Free initial assessment</span>
             </div>
           </section>
 
-          <aside className="rounded-[28px] border border-fei-bg/10 bg-white p-7 shadow-[0_18px_50px_rgba(7,17,31,0.04)] sm:p-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-fei-bg/50">
-              What you will receive
-            </p>
-            <h3 className="mt-3 text-2xl tracking-[-0.03em]">
-              <span className="font-bold">One short assessment.</span>{' '}
-              <span className="font-normal text-fei-bg/65">A clearer next step.</span>
-            </h3>
-
-            <div className="mt-6 space-y-4">
-              {outcomes.map(([number, title, description]) => (
-                <div key={number} className="flex gap-3">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-fei-sky/35 bg-white text-xs font-semibold text-fei-bg">
-                    {number}
-                  </span>
-                  <div>
-                    <p className="text-sm font-semibold">{title}</p>
-                    <p className="mt-1 text-sm leading-5 text-fei-bg/55">{description}</p>
-                  </div>
-                </div>
-              ))}
+          <aside className="rounded-[28px] border border-fei-bg/10 bg-white p-7 shadow-[0_18px_50px_rgba(7,17,31,0.04)] sm:p-9">
+            <div className="flex items-center justify-between">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-bg/45">
+                Your next step
+              </p>
+              <span className="text-xs font-semibold text-fei-sky">01 / 03</span>
             </div>
 
+            <div className="mt-6 flex items-center gap-2">
+              <span className="h-2.5 flex-1 rounded-full bg-fei-sky" />
+              <span className="h-2.5 flex-1 rounded-full bg-fei-bg/10" />
+              <span className="h-2.5 flex-1 rounded-full bg-fei-bg/10" />
+            </div>
+
+            <div className="mt-8">
+              <p className="text-2xl font-bold tracking-[-0.03em]">Start with your diagnostic</p>
+              <p className="mt-3 text-sm leading-6 text-fei-bg/55">
+                Your result will unlock the next two steps in your FEI pathway.
+              </p>
+            </div>
+
+            <div className="mt-8 border-t border-fei-bg/10 pt-6">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-fei-bg/40">
+                Your result will include
+              </p>
+              <div className="mt-5 space-y-4">
+                {resultItems.map(([number, title, description]) => (
+                  <div key={number} className="flex items-center gap-3">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-fei-sky/30 bg-fei-sky/[0.06] text-xs font-semibold">
+                      {number}
+                    </span>
+                    <div>
+                      <p className="text-sm font-semibold">{title}</p>
+                      <p className="text-sm text-fei-bg/50">{description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </aside>
         </div>
-
       </section>
     </main>
   )
