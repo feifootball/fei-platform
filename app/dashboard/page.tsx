@@ -147,8 +147,8 @@ function NewUserDashboard({
               </div>
             </div>
 
-            <div className="flex justify-center pt-4">
-              <div className="text-center">
+            <div className="flex justify-start pt-4">
+              <div className="inline-block">
                 <Link
                   href={"/assessment?role=" + encodeURIComponent(userRole)}
                   className="inline-flex min-h-[52px] items-center justify-center rounded-full bg-fei-yellow px-7 py-3.5 text-base font-bold text-fei-bg shadow-[0_12px_28px_rgba(250,204,21,0.2)] transition hover:-translate-y-0.5 hover:bg-fei-yellow/90"
@@ -156,7 +156,7 @@ function NewUserDashboard({
                   Start diagnostic
                   <ChevronRightIcon />
                 </Link>
-                <p className="mt-3 text-sm text-fei-bg/45">Free initial assessment</p>
+                <p className="mt-2 text-center text-sm text-fei-bg/45">Free initial assessment</p>
               </div>
             </div>
           </section>
@@ -184,7 +184,7 @@ function NewUserDashboard({
                   ['Improvements', 'The specific gaps to work on first, from clarity to vocabulary and control.'],
                   ['Pathway', 'A role-based sequence of modules matched to your diagnostic profile.'],
                 ].map(([title, description]) => (
-                  <div key={title} tabIndex={0} className="group flex min-h-[92px] cursor-default flex-col justify-between overflow-hidden rounded-2xl border border-fei-bg/10 bg-[#F8FCFE] p-3 outline-none transition duration-300 hover:-translate-y-0.5 hover:border-fei-sky/35 hover:bg-white focus:-translate-y-0.5 focus:border-fei-sky/35 focus:bg-white">
+                  <div key={title} tabIndex={0} className="group flex min-h-[68px] cursor-default flex-col justify-between overflow-hidden rounded-2xl border border-fei-bg/10 bg-[#F8FCFE] p-2.5 outline-none transition duration-300 hover:-translate-y-0.5 hover:border-fei-sky/35 hover:bg-white focus:-translate-y-0.5 focus:border-fei-sky/35 focus:bg-white">
                     <div className="flex items-center justify-between gap-2">
                       <p className="text-sm font-semibold transition group-hover:text-fei-sky group-focus:text-fei-sky">{title}</p>
                       <span className="h-2 w-2 rounded-full bg-fei-sky/55 transition group-hover:bg-fei-yellow group-focus:bg-fei-yellow" />
