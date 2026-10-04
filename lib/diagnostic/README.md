@@ -22,6 +22,10 @@ No OpenAI or Anthropic API is enabled. Evaluations can enter the module through:
 
 When a production task is submitted without an imported evaluation, the platform must save the response and show it as pending evaluation. It must not create a provisional language level from surface features.
 
-## Next integration step
+## Product integration
 
-The assessment route will use these functions to replace the legacy `scoreWriting` and recording-duration score. The submission record will also preserve evaluation status, dimension levels, evidence floor and ceiling, confidence, flags, rationale, and evaluator metadata for audit.
+The assessment route now captures the real Speaking recording and submits it with the Writing response and objective evidence. A new attempt stays pending until structured evaluations exist. Submitting without Speaking audio creates a manual-review state.
+
+The Supabase migration must be applied before the application change is merged. It creates immutable attempts, versioned production evaluations, final results, and a private audio bucket with user-level access policies.
+
+The next product increment is the admin review/import screen that writes structured evaluations and publishes the final result.
