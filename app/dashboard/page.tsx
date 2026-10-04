@@ -159,8 +159,9 @@ function NewUserDashboard({
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-fei-bg/50">
               Your diagnostic in three stages
             </p>
-            <h3 className="mt-3 text-2xl font-bold tracking-[-0.03em]">
-              One short assessment. A clearer next step.
+            <h3 className="mt-3 text-2xl tracking-[-0.03em]">
+              <span className="font-bold">One short assessment.</span>{' '}
+              <span className="font-normal text-fei-bg/65">A clearer next step.</span>
             </h3>
 
             <div className="mt-6 space-y-4">
