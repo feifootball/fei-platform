@@ -125,7 +125,7 @@ export default async function DiagnosticResultPage({
   return (
     <main className="min-h-screen bg-gradient-to-b from-white via-[#F7FAFC] to-[#EAF7FC] px-6 py-10 text-fei-bg sm:px-8">
       <div className="mx-auto max-w-5xl">
-        <Link href="/dashboard?openResult=1" className="text-sm font-semibold text-fei-bg/45 hover:underline">
+        <Link href="/dashboard" className="text-sm font-semibold text-fei-bg/45 hover:underline">
           ← Back to dashboard
         </Link>
 
