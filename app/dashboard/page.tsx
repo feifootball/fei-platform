@@ -277,6 +277,8 @@ export default function DashboardPage() {
         ...latestAttempt,
         level: diagnosticResult?.level ?? null,
       })
+      router.replace(`/diagnostic/results/${latestAttempt.id}`)
+      return
     }
 
     setAssessmentCount((count || 0) + (diagnosticCount || 0))
