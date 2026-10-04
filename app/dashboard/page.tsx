@@ -173,21 +173,21 @@ function NewUserDashboard({
 
             <div className="mt-6 border-t border-fei-bg/10 pt-6">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-fei-bg/40">
-                Example FEI profile
+                FEI profile
               </p>
               <div className="mt-5 grid grid-cols-2 gap-3">
                 {[
-                  ['Level', 'Example: B2 · Professional'],
-                  ['Strengths', 'Example: Clear matchday instructions'],
-                  ['Improvements', 'Example: More precise tactical vocabulary'],
-                  ['Pathway', 'Example: Professional Player · Unit 1'],
+                  ['Level', 'A CEFR-aligned result showing your current communication level in football.'],
+                  ['Strengths', 'The communication habits and language resources you already use effectively.'],
+                  ['Improvements', 'The specific gaps to work on first, from clarity to vocabulary and control.'],
+                  ['Pathway', 'A role-based sequence of modules matched to your diagnostic profile.'],
                 ].map(([title, description]) => (
-                  <div key={title} className="group flex min-h-[112px] flex-col justify-between rounded-2xl border border-fei-bg/10 bg-[#F8FCFE] p-4 transition duration-200 hover:-translate-y-0.5 hover:border-fei-sky/35 hover:bg-white">
+                  <div key={title} tabIndex={0} className="group flex min-h-[112px] cursor-default flex-col justify-between overflow-hidden rounded-2xl border border-fei-bg/10 bg-[#F8FCFE] p-4 outline-none transition duration-300 hover:-translate-y-0.5 hover:border-fei-sky/35 hover:bg-white focus:-translate-y-0.5 focus:border-fei-sky/35 focus:bg-white">
                     <div className="flex items-center justify-between gap-2">
-                      <p className="text-sm font-semibold transition group-hover:text-fei-sky">{title}</p>
-                      <span className="h-2 w-2 rounded-full bg-fei-sky/55 transition group-hover:bg-fei-yellow" />
+                      <p className="text-sm font-semibold transition group-hover:text-fei-sky group-focus:text-fei-sky">{title}</p>
+                      <span className="h-2 w-2 rounded-full bg-fei-sky/55 transition group-hover:bg-fei-yellow group-focus:bg-fei-yellow" />
                     </div>
-                    <p className="mt-3 text-xs leading-5 text-fei-bg/55">{description}</p>
+                    <p className="mt-3 max-h-0 overflow-hidden text-xs leading-5 text-fei-bg/55 opacity-0 transition-all duration-300 group-hover:max-h-24 group-hover:opacity-100 group-focus:max-h-24 group-focus:opacity-100">{description}</p>
                   </div>
                 ))}
               </div>
