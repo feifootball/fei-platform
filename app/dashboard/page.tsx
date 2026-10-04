@@ -354,11 +354,7 @@ export default function DashboardPage() {
       ? getResultLabel(lastAssessment.level)
       : '—'
 
-  const isNewUser =
-    hasValidRole &&
-    assessmentCount === 0 &&
-    !latestDiagnostic &&
-    !lastAssessment
+  const isNewUser = hasValidRole && !latestDiagnostic
 
   if (isNewUser) {
     return (
