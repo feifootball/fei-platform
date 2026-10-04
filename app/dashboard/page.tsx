@@ -69,7 +69,7 @@ function NewUserDashboard({
   return (
     <main className="min-h-screen bg-[#F7FAFC] text-fei-bg">
       <nav className="border-b border-fei-bg/[0.08] bg-white">
-        <div className="mx-auto flex min-h-[64px] max-w-[1440px] items-center justify-between px-6 sm:px-8 lg:px-10">
+        <div className="mx-auto flex min-h-[56px] max-w-[1440px] items-center justify-between px-6 sm:px-8 lg:px-10">
           <Link href="/" className="flex items-center" aria-label="Go to FEI home">
             <img src="/fei-logo-navbar-vector.svg" alt="FEI" className="h-9 w-auto" />
             <span className="mx-4 hidden h-5 w-px bg-fei-bg/10 sm:block" />
@@ -88,7 +88,7 @@ function NewUserDashboard({
         </div>
       </nav>
 
-      <section className="mx-auto max-w-7xl px-6 py-6 sm:px-8 lg:py-8">
+      <section className="mx-auto max-w-7xl px-6 py-3 sm:px-8 lg:py-4">
         <section className="border-b border-fei-bg/10 px-0 py-3 pb-8 sm:py-5 sm:pb-9">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
@@ -110,10 +110,10 @@ function NewUserDashboard({
           </div>
         </section>
 
-        <div className="mt-5 h-px bg-gradient-to-r from-transparent via-fei-bg/[0.06] to-transparent" />
+        <div className="mt-3 h-px bg-gradient-to-r from-transparent via-fei-bg/[0.06] to-transparent" />
 
-        <div className="mt-5 grid grid-cols-1 gap-6">
-          <section className="flex flex-col rounded-[28px] border border-fei-bg/10 bg-white p-6 shadow-[0_18px_50px_rgba(7,17,31,0.04)] sm:p-7">
+        <div className="mt-3 grid grid-cols-1 gap-4">
+          <section className="flex flex-col rounded-[28px] border border-fei-bg/10 bg-white p-5 shadow-[0_18px_50px_rgba(7,17,31,0.04)] sm:p-6">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-bg/45">
               Your starting point
             </p>
@@ -127,17 +127,17 @@ function NewUserDashboard({
               15–20 min
             </p>
 
-            <div className="mt-7 border-t border-fei-bg/[0.07] pt-5">
+            <div className="mt-5 border-t border-fei-bg/[0.07] pt-4">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-fei-bg/40">
                 What we evaluate
               </p>
-              <div className="mt-4 divide-y divide-fei-bg/[0.07]">
+              <div className="mt-3 divide-y divide-fei-bg/[0.07]">
                 {[
                   'Role-specific football communication',
                   'Clarity in real situations',
                   'Vocabulary and language control',
                 ].map(item => (
-                  <div key={item} className="flex items-center gap-3 py-3 first:pt-0 last:pb-0">
+                  <div key={item} className="flex items-center gap-3 py-2 first:pt-0 last:pb-0">
                     <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-fei-sky" />
                     <p className="text-sm leading-5 text-fei-bg/60">{item}</p>
                   </div>
@@ -145,7 +145,7 @@ function NewUserDashboard({
               </div>
             </div>
 
-            <div className="flex justify-start pt-6">
+            <div className="flex justify-start pt-4">
               <div>
                 <Link
                   href={"/assessment?role=" + encodeURIComponent(userRole)}
@@ -182,7 +182,7 @@ function NewUserDashboard({
                   ['Improvements', 'The specific gaps to work on first, from clarity to vocabulary and control.'],
                   ['Pathway', 'A role-based sequence of modules matched to your diagnostic profile.'],
                 ].map(([title, description]) => (
-                  <div key={title} tabIndex={0} className="group flex min-h-[112px] cursor-default flex-col justify-between overflow-hidden rounded-2xl border border-fei-bg/10 bg-[#F8FCFE] p-4 outline-none transition duration-300 hover:-translate-y-0.5 hover:border-fei-sky/35 hover:bg-white focus:-translate-y-0.5 focus:border-fei-sky/35 focus:bg-white">
+                  <div key={title} tabIndex={0} className="group flex min-h-[76px] cursor-default flex-col justify-between overflow-hidden rounded-2xl border border-fei-bg/10 bg-[#F8FCFE] p-3 outline-none transition duration-300 hover:min-h-[140px] hover:-translate-y-0.5 hover:border-fei-sky/35 hover:bg-white focus:min-h-[140px] focus:-translate-y-0.5 focus:border-fei-sky/35 focus:bg-white">
                     <div className="flex items-center justify-between gap-2">
                       <p className="text-sm font-semibold transition group-hover:text-fei-sky group-focus:text-fei-sky">{title}</p>
                       <span className="h-2 w-2 rounded-full bg-fei-sky/55 transition group-hover:bg-fei-yellow group-focus:bg-fei-yellow" />
