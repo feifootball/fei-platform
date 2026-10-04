@@ -67,9 +67,9 @@ function NewUserDashboard({
   onSignOut: () => void
 }) {
   const outcomes = [
-    ['01', 'Your FEI level', 'A clear starting point for your football English.'],
-    ['02', 'Your priorities', 'The communication areas to develop first.'],
-    ['03', 'Your next pathway', 'A role-specific route built from your result.'],
+    ['01', 'Your FEI level', 'A clear starting point based on your football communication.'],
+    ['02', 'Your priorities', 'The role-specific areas to develop first.'],
+    ['03', 'Your next pathway', 'A route built from your result and role.'],
   ]
 
   return (
@@ -181,32 +181,6 @@ function NewUserDashboard({
           </aside>
         </div>
 
-        <section className="mt-8 border-y border-fei-bg/10 py-8 sm:py-10">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-fei-sky">
-                Inside the diagnostic
-              </p>
-              <h3 className="mt-2 text-2xl font-bold tracking-[-0.03em] text-fei-bg">
-                Real football communication, in your role
-              </h3>
-            </div>
-          </div>
-
-          <div className="mt-7 grid gap-6 sm:grid-cols-3">
-            {[
-              ['01', 'Matchday communication', 'Understand instructions and respond clearly under pressure.'],
-              ['02', 'Role-specific situations', 'Use the English your football responsibilities require.'],
-              ['03', 'Feedback and decisions', 'Explain observations, choices, and next actions.'],
-            ].map(([number, title, description]) => (
-              <div key={number} className="border-l-2 border-fei-sky/35 pl-4">
-                <p className="text-xs font-semibold tracking-[0.16em] text-fei-sky">{number}</p>
-                <p className="mt-2 text-sm font-semibold text-fei-bg">{title}</p>
-                <p className="mt-1 text-sm leading-6 text-fei-bg/50">{description}</p>
-              </div>
-            ))}
-          </div>
-        </section>
       </section>
     </main>
   )
