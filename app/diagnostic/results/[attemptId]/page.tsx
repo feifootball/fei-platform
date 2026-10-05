@@ -176,7 +176,10 @@ export default function DiagnosticResultPage() {
               </div>
             </div>
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/42">Production result</p>
+              <div className="flex items-center justify-between gap-3">
+                <p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/42">Production result</p>
+                <a href="/#how-we-evaluate" className="text-right text-[11px] font-bold text-fei-sky hover:underline">How was my result calculated? →</a>
+              </div>
               <div className="mt-4 grid gap-3">
                 <div className="rounded-2xl bg-fei-bg/[0.035] px-4 py-3">
                   <div className="flex items-center justify-between"><span className="text-sm font-semibold text-fei-bg/65">Writing</span><span className="text-xl font-black text-fei-sky">B1</span></div>
@@ -187,11 +190,7 @@ export default function DiagnosticResultPage() {
                   <p className="mt-2 text-xs leading-5 text-fei-bg/48">You can respond in familiar situations. Next: build fluency and precise match vocabulary.</p>
                 </div>
               </div>
-              <div className="mt-5 border-t border-fei-bg/10 pt-4">
-                <p className="text-sm font-semibold text-fei-bg">How was my result calculated?</p>
-                <a href="/#how-we-evaluate" className="mt-1 inline-flex text-xs font-bold text-fei-sky hover:underline">See how FEI evaluates your communication →</a>
-              </div>
-            </div>
+            </div>            </div>
           </div>
         </section>
 
@@ -221,13 +220,17 @@ export default function DiagnosticResultPage() {
           </div>
         </section>
 
-        <section className="mt-10">
+        <section className="mt-10 rounded-[2.5rem] bg-gradient-to-b from-white via-[#f8fcfe] to-[#eaf7fc] px-5 py-8 sm:px-8 sm:py-10">
+          <div className="mb-6">
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/45">Your next step</p>
+            <h2 className="mt-2 text-2xl font-black tracking-[-0.035em] sm:text-3xl">Download your complete result and continue.</h2>
+          </div>
           <div className="overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-white shadow-[0_18px_55px_rgba(7,17,31,0.045)]">
             <div className="grid lg:grid-cols-[1fr_340px]">
               <div className="p-7 sm:p-10 lg:border-r lg:border-fei-bg/10">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/42">Your complete result</p>
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/42">Complete result</p>
                 <h2 className="mt-3 text-3xl font-black tracking-[-0.035em] sm:text-4xl">{role}</h2>
-                <p className="mt-3 text-sm font-semibold text-fei-bg/48">6 domains · 14 real football scenarios</p>
+                <p className="mt-3 text-sm font-semibold text-fei-bg/48">Your full result and pathway are ready to download.</p>
                 <div className="mt-8 border-t border-fei-bg/10 pt-6"><p className="text-sm font-semibold text-fei-bg/70">Your complete result includes your level, evidence and recommended next steps.</p><a href="#download-result" className="mt-3 inline-flex text-sm font-bold text-fei-sky hover:underline">Download full result →</a></div>
               </div>
               <div className="relative flex flex-col justify-between border-t border-fei-bg/10 bg-fei-sky/[0.055] p-7 sm:p-10 lg:border-t-0"><div className="absolute inset-x-0 top-0 h-1 bg-fei-yellow" /><div><p className="text-center text-xs font-black uppercase tracking-[0.2em] text-fei-bg/52">Complete pathway</p><div className="mt-5 flex items-end justify-center gap-2"><p className="text-6xl font-black leading-none">$49</p><p className="pb-1 text-base font-bold text-fei-bg/48">/ month</p></div></div><div className="mt-8"><button type="button" onClick={() => router.push('/#pricing')} className="w-full rounded-full bg-fei-yellow px-6 py-4 text-base font-black shadow-[0_12px_30px_rgba(255,204,0,0.22)] transition hover:-translate-y-0.5">Unlock My Pathway</button><button type="button" onClick={() => router.push('/dashboard')} className="mt-4 w-full text-sm font-bold text-fei-bg/45 hover:text-fei-bg">Review My Dashboard</button></div></div>
