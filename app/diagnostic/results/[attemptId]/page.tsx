@@ -64,7 +64,7 @@ function demoResult(): ResultData {
     level: 'B1',
     score: 24,
     maxScore: 32,
-    reason: 'You handle common football conversations. Your next step is clearer, more precise communication under pressure.',
+    reason: 'You manage routine football communication and understand the main idea in familiar professional situations. Your pathway now focuses on more structure, precision and confidence when the pace increases.',
   }
 }
 
@@ -143,13 +143,13 @@ export default function DiagnosticResultPage() {
 
         <section className="mt-8 rounded-[2rem] border border-fei-bg/10 bg-white shadow-[0_18px_55px_rgba(7,17,31,0.05)]">
           <div className="grid lg:grid-cols-[0.58fr_1.42fr]">
-            <div className="p-5 sm:p-7 lg:border-r lg:border-fei-bg/10">
+            <div className="p-4 sm:p-6 lg:border-r lg:border-fei-bg/10">
               <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/48">Your level</p>
               <p className="mt-4 text-7xl font-black leading-none tracking-[-0.08em] text-fei-sky">{result.level}</p>
             </div>
-            <div className="p-5 sm:p-7">
+            <div className="p-4 sm:p-6">
               <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/48">What this means</p>
-              <p className="mt-4 line-clamp-2 max-w-2xl text-sm leading-6 text-fei-bg/62">{result.reason}</p>
+              <p className="mt-4 max-w-2xl text-sm leading-6 text-fei-bg/62">{result.reason}</p>
             </div>
           </div>
         </section>
@@ -218,24 +218,21 @@ export default function DiagnosticResultPage() {
           </div>
         </section>
 
-        <section className="mt-10 rounded-[2.5rem] bg-gradient-to-b from-white via-[#f8fcfe] to-[#eaf7fc] px-5 py-8 sm:px-8 sm:py-10">
-          <div className="mb-5">
-            <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/45">Your next step</p>
-          </div>
-          <div className="overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-white shadow-[0_18px_55px_rgba(7,17,31,0.045)]">
+        <section className="mt-10">
+          <div className="overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-gradient-to-b from-white via-[#f8fcfe] to-[#eaf7fc] shadow-[0_18px_55px_rgba(7,17,31,0.045)]">
             <div className="grid lg:grid-cols-[1fr_340px]">
               <div className="p-5 sm:p-7 lg:border-r lg:border-fei-bg/10">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/42">Your FEI course</p>
-                <h2 className="mt-3 text-3xl font-black tracking-[-0.035em] sm:text-4xl">Continue your learning</h2>
-                <p className="mt-3 max-w-md text-sm font-semibold leading-6 text-fei-bg/48">Your result sets the starting point. Unlock the course and pathway built for your role.</p>
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/42">Your learning pathway</p>
+                <h2 className="mt-3 text-3xl font-black tracking-[-0.035em] sm:text-4xl">Keep building from here</h2>
+                <p className="mt-3 max-w-md text-sm font-normal leading-6 text-fei-bg/58">Your result gives you a clear starting point. The course turns it into practical football communication, with role-specific lessons and scenarios to use next.</p>
               </div>
-              <div className="relative flex flex-col justify-between border-t border-fei-bg/10 bg-fei-sky/[0.055] p-5 sm:p-7 lg:border-t-0"><div className="absolute inset-x-0 top-0 h-1 bg-fei-yellow" /><div><p className="text-center text-xs font-black uppercase tracking-[0.2em] text-fei-bg/52">Course access</p><div className="mt-5 flex items-end justify-center gap-2"><p className="text-4xl font-black leading-none">$49</p><p className="pb-1 text-base font-bold text-fei-bg/48">/ month</p></div></div><div className="mt-5"><button type="button" onClick={() => router.push('/#pricing')} className="w-full rounded-full bg-fei-yellow px-5 py-3 text-sm font-black transition hover:-translate-y-0.5">Unlock course access</button><button type="button" onClick={() => router.push('/dashboard')} className="mt-4 w-full text-sm font-bold text-fei-bg/45 hover:text-fei-bg">Review My Dashboard</button></div></div>
+              <div className="relative flex flex-col justify-between border-t border-fei-bg/10 bg-fei-sky/[0.055] p-5 sm:p-7 lg:border-t-0"><div className="absolute inset-x-0 top-0 h-1 bg-fei-yellow" /><div><p className="text-center text-xs font-black uppercase tracking-[0.2em] text-fei-bg/52">Course access</p><div className="mt-5 flex items-end justify-center gap-2"><p className="text-4xl font-black leading-none">$49</p><p className="pb-1 text-base font-bold text-fei-bg/48">/ month</p></div></div><div className="mt-5"><button type="button" onClick={() => router.push('/#pricing')} className="w-full rounded-full bg-fei-yellow px-5 py-3 text-sm font-black transition hover:-translate-y-0.5">Unlock course access</button></div></div>
             </div>
           </div>
 
           <div className="mt-8">
-            <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/45">Your pathway at a glance</p>
-            <h2 className="mt-2 text-2xl font-black tracking-[-0.035em]">The first modules in your journey.</h2>
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/45">Your learning pathway</p>
+            <h2 className="mt-2 text-2xl font-black tracking-[-0.035em]">A clear route from your result to practice.</h2>
           </div>
           <div className="mt-4">
             {domains.slice(0, 3).map((domain, index) => <article key={domain.title} className="grid gap-5 border-b border-fei-bg/10 py-7 lg:grid-cols-[72px_0.8fr_1.2fr] lg:items-center"><p className="text-3xl font-black text-fei-sky">{String(index + 1).padStart(2, '0')}</p><div><p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/38">Domain {index + 1}</p><h3 className="mt-2 text-xl font-black">{domain.title}</h3><p className="mt-2 max-w-md text-sm leading-6 text-fei-bg/48">{domain.detail}</p></div><div><p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-fei-sky">Your practice journey</p>{domain.scenarios.map((scenario, i) => <div key={scenario} className="flex gap-3 border-t border-fei-bg/[0.07] py-3 text-sm font-bold text-fei-bg/68"><span className="text-xs text-fei-sky">{String(i + 1).padStart(2, '0')}</span>{scenario}</div>)}</div></article>)}
