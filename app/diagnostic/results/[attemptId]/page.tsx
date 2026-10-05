@@ -175,22 +175,34 @@ export default function DiagnosticResultPage() {
           </div>
         </section>
 
+        <section className="mt-10 rounded-[2rem] border border-fei-bg/10 bg-white p-7 shadow-[0_18px_55px_rgba(7,17,31,0.04)] sm:p-10">
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/45">Your next focus</p>
+          <div className="mt-4 grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
+            <div>
+              <h2 className="text-2xl font-black tracking-[-0.035em]">Build more confidence in live football conversations.</h2>
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-fei-bg/58">Start with tactical clarification, structured feedback and precise match vocabulary.</p>
+            </div>
+            <div className="rounded-2xl bg-fei-sky/[0.08] px-5 py-4 text-sm font-bold text-fei-bg/72">Recommended first module<br /><span className="text-fei-sky">Tactical communication</span></div>
+          </div>
+        </section>
+
         <section className="mt-10">
           <div className="overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-white shadow-[0_18px_55px_rgba(7,17,31,0.045)]">
             <div className="grid lg:grid-cols-[1fr_340px]">
               <div className="p-7 sm:p-10 lg:border-r lg:border-fei-bg/10">
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/42">Your personalized training pathway</p>
                 <h2 className="mt-3 text-3xl font-black tracking-[-0.035em] sm:text-4xl">{role}</h2>
-                <p className="mt-3 text-sm font-semibold text-fei-bg/48">6 domains · 14 real football scenarios</p>
+                <p className="mt-3 text-sm font-semibold text-fei-bg/48">A role-based pathway built for your football communication.</p>
                 <div className="mt-8 flex flex-wrap items-center gap-5 border-t border-fei-bg/10 pt-6"><span className="text-xs font-black uppercase tracking-[0.16em] text-fei-bg/38">Current</span><span className="text-2xl font-black text-fei-sky">{result.level}</span><span className="text-xl font-black text-fei-bg/20">→</span><span className="text-xs font-black uppercase tracking-[0.16em] text-fei-sky">Next</span><span className="text-2xl font-black">B2</span></div>
               </div>
-              <div className="relative flex flex-col justify-between border-t border-fei-bg/10 bg-fei-sky/[0.055] p-7 sm:p-10 lg:border-t-0"><div className="absolute inset-x-0 top-0 h-1 bg-fei-yellow" /><div><p className="text-center text-xs font-black uppercase tracking-[0.2em] text-fei-bg/52">Complete pathway</p><div className="mt-5 flex items-end justify-center gap-2"><p className="text-6xl font-black leading-none">$49</p><p className="pb-1 text-base font-bold text-fei-bg/48">/ month</p></div></div><div className="mt-8"><button type="button" onClick={() => router.push('/#pricing')} className="w-full rounded-full bg-fei-yellow px-6 py-4 text-base font-black shadow-[0_12px_30px_rgba(255,204,0,0.22)] transition hover:-translate-y-0.5">Unlock My Pathway</button><button type="button" onClick={() => router.push('/dashboard')} className="mt-4 w-full text-sm font-bold text-fei-bg/45 hover:text-fei-bg">Review My Dashboard</button></div></div>
+              <div className="relative flex flex-col justify-between border-t border-fei-bg/10 bg-fei-sky/[0.055] p-7 sm:p-10 lg:border-t-0"><div className="absolute inset-x-0 top-0 h-1 bg-fei-yellow" /><div><p className="text-center text-xs font-black uppercase tracking-[0.2em] text-fei-bg/52">Complete pathway</p><div className="mt-5 flex items-end justify-center gap-2"><p className="text-6xl font-black leading-none">$49</p><p className="pb-1 text-base font-bold text-fei-bg/48">/ month</p></div><p className="mt-4 text-center text-xs leading-5 text-fei-bg/45">Role-specific modules, practice scenarios and your next development steps.</p></div><div className="mt-8"><button type="button" onClick={() => router.push('/#pricing')} className="w-full rounded-full bg-fei-yellow px-6 py-4 text-base font-black shadow-[0_12px_30px_rgba(255,204,0,0.22)] transition hover:-translate-y-0.5">Unlock My Pathway</button><button type="button" onClick={() => router.push('/dashboard')} className="mt-4 w-full text-sm font-bold text-fei-bg/45 hover:text-fei-bg">Review My Dashboard</button></div></div>
             </div>
           </div>
 
           <div className="mt-4">
-            {domains.map((domain, index) => <article key={domain.title} className="grid gap-5 border-b border-fei-bg/10 py-7 lg:grid-cols-[72px_0.8fr_1.2fr] lg:items-center"><p className="text-3xl font-black text-fei-sky">{String(index + 1).padStart(2, '0')}</p><div><p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/38">Domain {index + 1}</p><h3 className="mt-2 text-xl font-black">{domain.title}</h3><p className="mt-2 max-w-md text-sm leading-6 text-fei-bg/48">{domain.detail}</p></div><div><p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-fei-sky">Your practice journey</p>{domain.scenarios.map((scenario, i) => <div key={scenario} className="flex gap-3 border-t border-fei-bg/[0.07] py-3 text-sm font-bold text-fei-bg/68"><span className="text-xs text-fei-sky">{String(i + 1).padStart(2, '0')}</span>{scenario}</div>)}</div></article>)}
+            {domains.slice(0, 3).map((domain, index) => <article key={domain.title} className="grid gap-5 border-b border-fei-bg/10 py-7 lg:grid-cols-[72px_0.8fr_1.2fr] lg:items-center"><p className="text-3xl font-black text-fei-sky">{String(index + 1).padStart(2, '0')}</p><div><p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/38">Domain {index + 1}</p><h3 className="mt-2 text-xl font-black">{domain.title}</h3><p className="mt-2 max-w-md text-sm leading-6 text-fei-bg/48">{domain.detail}</p></div><div><p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-fei-sky">Your practice journey</p>{domain.scenarios.map((scenario, i) => <div key={scenario} className="flex gap-3 border-t border-fei-bg/[0.07] py-3 text-sm font-bold text-fei-bg/68"><span className="text-xs text-fei-sky">{String(i + 1).padStart(2, '0')}</span>{scenario}</div>)}</div></article>)}
           </div>
+          <p className="mt-6 text-center text-xs font-semibold text-fei-bg/42">Three core domains to start. More pathway areas unlock as you progress.</p>
         </section>
 
         <p className="mt-6 text-center text-xs text-fei-bg/35">Your diagnostic profile has been saved to your FEI dashboard.</p>
