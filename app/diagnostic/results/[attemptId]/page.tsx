@@ -160,7 +160,7 @@ export default function DiagnosticResultPage() {
               <p className="mt-4 max-w-2xl text-base leading-7 text-fei-bg/68">{result.reason}</p>
               <div className="mt-6 border-t border-fei-bg/10 pt-5">
                 <div className="flex items-center justify-between"><span className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/40">Diagnostic evidence</span><span className="text-2xl font-black">{evidence}%</span></div>
-                <div className="mt-3 h-2 overflow-hidden rounded-full bg-fei-bg/10"><div className="h-full rounded-full bg-gradient-to-r from-fei-sky to-fei-yellow" style={{ width: \`\${evidence}%\` }} /></div>
+                <div className="mt-3 h-2 overflow-hidden rounded-full bg-fei-bg/10"><div className="h-full rounded-full bg-gradient-to-r from-fei-sky to-fei-yellow" style={{ width: `${evidence}%` }} /></div>
               </div>
             </div>
           </div>
