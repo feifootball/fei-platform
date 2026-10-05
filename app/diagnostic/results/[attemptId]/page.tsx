@@ -139,6 +139,7 @@ export default function DiagnosticResultPage() {
 
         <section className="mt-7">
           <h1 className="text-3xl tracking-[-0.04em] sm:text-5xl"><span className="font-normal">Your profile is </span><span className="font-black">ready.</span></h1>
+          <p className="mt-2 text-xs text-fei-bg/40">Your diagnostic profile has been saved to your FEI dashboard.</p>
         </section>
 
         <section className="mt-8 rounded-[2rem] border border-fei-bg/10 bg-white shadow-[0_18px_55px_rgba(7,17,31,0.05)]">
@@ -240,7 +241,6 @@ export default function DiagnosticResultPage() {
           <p className="mt-5 text-xs font-medium text-fei-bg/40">More role-specific modules will appear as you move through your pathway.</p>
         </section>
 
-        <p className="mt-6 text-center text-xs text-fei-bg/35">Your diagnostic profile has been saved to your FEI dashboard.</p>
       </main>
     </div>
   )
