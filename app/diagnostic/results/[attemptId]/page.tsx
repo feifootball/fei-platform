@@ -135,7 +135,7 @@ export default function DiagnosticResultPage() {
       </nav>
 
       <main className="mx-auto max-w-[1280px] px-6 pb-20 pt-10 sm:px-10">
-        <Link href="/dashboard" className="text-sm font-semibold text-fei-sky hover:underline">← Back to dashboard</Link>
+        <Link href="/dashboard" className="text-sm font-semibold text-fei-bg/55 transition hover:text-fei-bg">← Back to dashboard</Link>
 
         <section className="mt-7">
           <h1 className="text-3xl tracking-[-0.04em] sm:text-5xl"><span className="font-normal">Your profile is </span><span className="font-black">ready.</span></h1>
@@ -165,9 +165,9 @@ export default function DiagnosticResultPage() {
                   ['B2', '2 / 4', 'Next focus', 50],
                   ['C1', '1 / 4', 'Future focus', 25],
                 ].map(([level, score, status, percentage]) => (
-                  <div key={level as string} className="flex items-center gap-4 border-b border-fei-bg/[0.08] px-4 py-3 last:border-b-0">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-full" style={{ background: `conic-gradient(#73cffa ${percentage}%, rgba(15,23,42,0.10) 0)` }}>
-                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-[10px] font-black text-fei-bg">{level}</span>
+                  <div key={level as string} className="flex items-center gap-4 border-b border-fei-bg/[0.08] px-4 py-2 last:border-b-0">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full" style={{ background: `conic-gradient(#73cffa ${percentage}%, rgba(15,23,42,0.10) 0)` }}>
+                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white text-[10px] font-black text-fei-bg">{level}</span>
                     </div>
                     <span className="text-sm font-semibold text-fei-bg/65">{score}</span>
                     <span className="ml-auto text-xs font-medium text-fei-bg/42">{status}</span>
@@ -227,10 +227,10 @@ export default function DiagnosticResultPage() {
           <div className="overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-white shadow-[0_18px_55px_rgba(7,17,31,0.045)]">
             <div className="grid lg:grid-cols-[1fr_340px]">
               <div className="p-7 sm:p-10 lg:border-r lg:border-fei-bg/10">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/42">Complete result</p>
-                <h2 className="mt-3 text-3xl font-black tracking-[-0.035em] sm:text-4xl">{role}</h2>
-                <p className="mt-3 text-sm font-semibold text-fei-bg/48">Your full result and pathway are ready to download.</p>
-                <div className="mt-8 border-t border-fei-bg/10 pt-6"><p className="text-sm font-semibold text-fei-bg/70">Your complete result includes your level, evidence and recommended next steps.</p><a href="#download-result" className="mt-3 inline-flex text-sm font-bold text-fei-sky hover:underline">Download full result →</a></div>
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/42">Full report</p>
+                <h2 className="mt-3 text-3xl font-black tracking-[-0.035em] sm:text-4xl">Download your result</h2>
+                <p className="mt-3 max-w-md text-sm font-semibold leading-6 text-fei-bg/48">Your level, evidence and pathway in one report.</p>
+                <a href="#download-result" className="mt-7 inline-flex text-sm font-bold text-fei-sky hover:underline">Download report →</a>
               </div>
               <div className="relative flex flex-col justify-between border-t border-fei-bg/10 bg-fei-sky/[0.055] p-7 sm:p-10 lg:border-t-0"><div className="absolute inset-x-0 top-0 h-1 bg-fei-yellow" /><div><p className="text-center text-xs font-black uppercase tracking-[0.2em] text-fei-bg/52">Complete pathway</p><div className="mt-5 flex items-end justify-center gap-2"><p className="text-6xl font-black leading-none">$49</p><p className="pb-1 text-base font-bold text-fei-bg/48">/ month</p></div></div><div className="mt-8"><button type="button" onClick={() => router.push('/#pricing')} className="w-full rounded-full bg-fei-yellow px-6 py-4 text-base font-black shadow-[0_12px_30px_rgba(255,204,0,0.22)] transition hover:-translate-y-0.5">Unlock My Pathway</button><button type="button" onClick={() => router.push('/dashboard')} className="mt-4 w-full text-sm font-bold text-fei-bg/45 hover:text-fei-bg">Review My Dashboard</button></div></div>
             </div>
