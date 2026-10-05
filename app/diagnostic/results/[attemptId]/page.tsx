@@ -144,16 +144,12 @@ export default function DiagnosticResultPage() {
         <section className="mt-8 rounded-[2rem] border border-fei-bg/10 bg-white shadow-[0_18px_55px_rgba(7,17,31,0.05)]">
           <div className="grid lg:grid-cols-[0.8fr_1.2fr]">
             <div className="p-7 sm:p-10 lg:border-r lg:border-fei-bg/10">
-              <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/48">Your current level</p>
-              <div className="mt-4 flex items-end gap-4">
-                <p className="text-8xl font-black leading-none tracking-[-0.08em] text-fei-sky">{result.level}</p>
-                <div className="pb-2"><p className="text-2xl font-black">Football English</p><p className="mt-1 text-sm text-fei-bg/45">current level</p></div>
-              </div>
-              <p className="mt-5 text-sm font-bold text-fei-bg/65">{role}</p>
+              <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/48">Your level</p>
+              <p className="mt-4 text-8xl font-black leading-none tracking-[-0.08em] text-fei-sky">{result.level}</p>
             </div>
             <div className="p-7 sm:p-10">
               <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/48">What this means</p>
-              <p className="mt-4 max-w-2xl text-base leading-7 text-fei-bg/68">{result.reason}</p>
+              <p className="mt-4 max-w-2xl text-sm leading-6 text-fei-bg/62">{result.reason}</p>
             </div>
           </div>
         </section>
@@ -195,12 +191,29 @@ export default function DiagnosticResultPage() {
           </div>
         </section>
 
-        <section className="mt-8 border-y border-fei-bg/10 py-8">
-          <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/45">Your diagnostic insight</p>
-          <h2 className="mt-2 text-2xl font-black tracking-[-0.035em]">What you can use now — and improve next.</h2>
-          <div className="mt-6 grid gap-8 lg:grid-cols-2 lg:gap-14">
-            <div><p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/45">Current strengths</p><div className="mt-3">{strengths.map((item) => <div key={item} className="flex gap-3 border-t border-fei-bg/[0.08] py-3 text-sm text-fei-bg/68"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-fei-sky" />{item}</div>)}</div></div>
-            <div className="lg:border-l lg:border-fei-bg/10 lg:pl-12"><p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/45">Next priorities</p><div className="mt-3">{priorities.map((item) => <div key={item} className="flex gap-3 border-t border-fei-bg/[0.08] py-3 text-sm text-fei-bg/68"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-fei-yellow" />{item}</div>)}</div></div>
+        <section className="mt-8 border-y border-fei-bg/10 py-7">
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/45">Your communication profile</p>
+          <div className="mt-5 grid gap-7 lg:grid-cols-2 lg:gap-14">
+            <div>
+              <p className="text-sm font-black text-fei-bg">Strengths</p>
+              <div className="mt-2">
+                {['Understands common football conversations', 'Responds to feedback', 'Explains familiar situations'].map((item) => (
+                  <div key={item} className="flex gap-3 border-t border-fei-bg/[0.08] py-2.5 text-sm text-fei-bg/62">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-fei-sky" />{item}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="lg:border-l lg:border-fei-bg/10 lg:pl-12">
+              <p className="text-sm font-black text-fei-bg">Next focus</p>
+              <div className="mt-2">
+                {['More structured explanations', 'Tactical precision', 'Confidence under pressure'].map((item) => (
+                  <div key={item} className="flex gap-3 border-t border-fei-bg/[0.08] py-2.5 text-sm text-fei-bg/62">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-fei-yellow" />{item}
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
