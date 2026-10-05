@@ -164,14 +164,15 @@ export default function DiagnosticResultPage() {
               <p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/42">Objective result</p>
               <div className="mt-4 overflow-hidden rounded-2xl border border-fei-bg/10">
                 {[
-                  ['A2', '4 / 4', 'Strong foundation', 'bg-fei-sky'],
-                  ['B1', '3 / 4', 'Working level', 'bg-fei-sky'],
-                  ['B2', '2 / 4', 'Next focus', 'bg-fei-yellow'],
-                  ['C1', '1 / 4', 'Future focus', 'bg-fei-bg/25'],
-                ].map(([level, score, status, dot]) => (
-                  <div key={level} className="flex items-center gap-4 border-b border-fei-bg/[0.08] px-4 py-3 last:border-b-0">
-                    <span className={`h-2.5 w-2.5 shrink-0 rounded-full ${dot}`} />
-                    <span className="w-10 text-sm font-black text-fei-bg">{level}</span>
+                  ['A2', '4 / 4', 'Strong foundation', 100],
+                  ['B1', '3 / 4', 'Working level', 75],
+                  ['B2', '2 / 4', 'Next focus', 50],
+                  ['C1', '1 / 4', 'Future focus', 25],
+                ].map(([level, score, status, percentage]) => (
+                  <div key={level as string} className="flex items-center gap-4 border-b border-fei-bg/[0.08] px-4 py-3 last:border-b-0">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full" style={{ background: `conic-gradient(#73cffa ${percentage}%, rgba(15,23,42,0.10) 0)` }}>
+                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-[10px] font-black text-fei-bg">{level}</span>
+                    </div>
                     <span className="text-sm font-semibold text-fei-bg/65">{score}</span>
                     <span className="ml-auto text-xs font-medium text-fei-bg/42">{status}</span>
                   </div>
@@ -180,9 +181,15 @@ export default function DiagnosticResultPage() {
             </div>
             <div>
               <p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/42">Production result</p>
-              <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-                <div className="flex items-center justify-between rounded-2xl bg-fei-bg/[0.035] px-4 py-3"><span className="text-sm font-semibold text-fei-bg/65">Writing</span><span className="text-xl font-black text-fei-sky">B1</span></div>
-                <div className="flex items-center justify-between rounded-2xl bg-fei-bg/[0.035] px-4 py-3"><span className="text-sm font-semibold text-fei-bg/65">Speaking</span><span className="text-xl font-black text-fei-sky">A2</span></div>
+              <div className="mt-4 grid gap-3">
+                <div className="rounded-2xl bg-fei-bg/[0.035] px-4 py-3">
+                  <div className="flex items-center justify-between"><span className="text-sm font-semibold text-fei-bg/65">Writing</span><span className="text-xl font-black text-fei-sky">B1</span></div>
+                  <p className="mt-2 text-xs leading-5 text-fei-bg/48">Clear main ideas and a professional tone. Next: add detail and stronger links between ideas.</p>
+                </div>
+                <div className="rounded-2xl bg-fei-bg/[0.035] px-4 py-3">
+                  <div className="flex items-center justify-between"><span className="text-sm font-semibold text-fei-bg/65">Speaking</span><span className="text-xl font-black text-fei-sky">A2</span></div>
+                  <p className="mt-2 text-xs leading-5 text-fei-bg/48">You can respond in familiar situations. Next: build fluency and precise match vocabulary.</p>
+                </div>
               </div>
             </div>
           </div>
