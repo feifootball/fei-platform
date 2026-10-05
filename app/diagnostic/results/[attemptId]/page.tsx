@@ -119,7 +119,6 @@ export default function DiagnosticResultPage() {
     return <div className="flex min-h-screen items-center justify-center bg-[#F7F8FA] text-fei-bg/50">Loading your result…</div>
   }
 
-  const evidence = Math.round((result.score / result.maxScore) * 100)
   const strengths = strengthsByLevel[result.level] ?? strengthsByLevel.B1
   const priorities = prioritiesByLevel[result.level] ?? prioritiesByLevel.B1
 
@@ -139,13 +138,10 @@ export default function DiagnosticResultPage() {
         <Link href="/dashboard" className="text-sm font-semibold text-fei-sky hover:underline">← Back to dashboard</Link>
 
         <section className="mt-7">
-          <p className="text-xs font-black uppercase tracking-[0.23em] text-fei-bg/45">Your FEI diagnostic result</p>
-          <h1 className="mt-3 text-4xl tracking-[-0.045em] sm:text-6xl">
-            <span className="font-normal">Your </span><span className="font-black">profile is ready.</span>
-          </h1>
+          <h1 className="text-4xl font-black tracking-[-0.045em] sm:text-6xl">Your profile is ready.</h1>
         </section>
 
-        <section className="mt-8 overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-white shadow-[0_18px_55px_rgba(7,17,31,0.05)]">
+        <section className="mt-8 rounded-[2rem] border border-fei-bg/10 bg-white shadow-[0_18px_55px_rgba(7,17,31,0.05)]">
           <div className="grid lg:grid-cols-[0.8fr_1.2fr]">
             <div className="p-7 sm:p-10 lg:border-r lg:border-fei-bg/10">
               <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/48">Your current level</p>
@@ -158,14 +154,38 @@ export default function DiagnosticResultPage() {
             <div className="p-7 sm:p-10">
               <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/48">What this means</p>
               <p className="mt-4 max-w-2xl text-base leading-7 text-fei-bg/68">{result.reason}</p>
-              <div className="mt-6 border-t border-fei-bg/10 pt-5">
-                <div className="flex items-center justify-between"><span className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/40">Diagnostic evidence</span><span className="text-2xl font-black">{evidence}%</span></div>
-                <div className="mt-3 h-2 overflow-hidden rounded-full bg-fei-bg/10"><div className="h-full rounded-full bg-gradient-to-r from-fei-sky to-fei-yellow" style={{ width: `${evidence}%` }} /></div>
-              </div>
             </div>
           </div>
         </section>
 
+        <section className="mt-5 rounded-3xl border border-fei-bg/10 bg-white p-5 sm:p-7">
+          <div className="grid gap-6 lg:grid-cols-[1fr_1fr]">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/42">Objective answers</p>
+              <div className="mt-4 grid grid-cols-4 gap-2">
+                {[
+                  ['A2', '4 / 4', 'all correct'],
+                  ['B1', '3 / 4', '1 to review'],
+                  ['B2', '2 / 4', '2 to review'],
+                  ['C1', '1 / 4', '3 to review'],
+                ].map(([level, score, note]) => (
+                  <div key={level} className="rounded-2xl bg-fei-bg/[0.035] px-2 py-3 text-center">
+                    <p className="text-xs font-black text-fei-bg/45">{level}</p>
+                    <p className="mt-1 text-lg font-black text-fei-bg">{score}</p>
+                    <p className="mt-1 text-[10px] leading-3 text-fei-bg/40">{note}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/42">Production tasks</p>
+              <div className="mt-4 grid grid-cols-2 gap-3">
+                <div className="rounded-2xl border border-fei-bg/10 px-4 py-3"><p className="text-xs font-black uppercase tracking-[0.14em] text-fei-bg/42">Writing</p><p className="mt-1 text-2xl font-black text-fei-sky">B1</p></div>
+                <div className="rounded-2xl border border-fei-bg/10 px-4 py-3"><p className="text-xs font-black uppercase tracking-[0.14em] text-fei-bg/42">Speaking</p><p className="mt-1 text-2xl font-black text-fei-sky">A2</p></div>
+              </div>
+            </div>
+          </div>
+        </section>
         <section className="mt-8 border-y border-fei-bg/10 py-8">
           <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/45">Your diagnostic insight</p>
           <h2 className="mt-2 text-2xl font-black tracking-[-0.035em]">What you can use now — and improve next.</h2>
