@@ -3704,12 +3704,7 @@ function AssessmentContent() {
         throw new Error(payload.error || 'The diagnostic could not be submitted.')
       }
 
-      setSubmission({
-        attemptId: payload.attemptId,
-        status: payload.status,
-        message: payload.message,
-      })
-      setSection('pending')
+      router.push('/diagnostic/results/' + payload.attemptId)
     } catch (error) {
       setSubmitError(
         error instanceof Error
