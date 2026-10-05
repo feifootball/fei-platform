@@ -86,13 +86,6 @@ export default async function DiagnosticResultPage({
       })
     : null
 
-  const insightSections = communicationProfile
-    ? [
-        { title: 'Stronger evidence', subtitle: 'The communication skills you already show.', items: communicationProfile.strengths, accent: 'bg-fei-sky' },
-        { title: 'Priority areas', subtitle: 'The skills to develop next.', items: communicationProfile.priorities, accent: 'bg-fei-yellow' },
-      ]
-    : []
-
   return (
     <main className="min-h-screen bg-[#F5F8FB] px-6 py-10 text-fei-bg sm:px-8">
       <div className="mx-auto max-w-6xl">
@@ -171,21 +164,33 @@ export default async function DiagnosticResultPage({
             </section>
 
             <section className="mt-6 grid gap-6 lg:grid-cols-2">
-              {insightSections.map((section) => (
-                <div key={section.title} className="rounded-[28px] bg-white p-7 shadow-[0_18px_55px_rgba(7,17,31,0.06)] ring-1 ring-fei-bg/[0.08] sm:p-8">
-                  <div className={section.accent + ' mb-5 h-1 w-14 rounded-full'} />
-                  <h2 className="text-2xl font-semibold tracking-[-0.035em]">{section.title}</h2>
-                  <p className="mt-2 text-sm text-fei-bg/50">{section.subtitle}</p>
-                  <div className="mt-6 space-y-3">
-                    {section.items.length > 0 ? section.items.map((item) => (
-                      <div key={item.key} className="rounded-2xl bg-[#F7FAFC] p-4 ring-1 ring-fei-bg/[0.05]">
-                        <p className="font-semibold">{item.label}</p>
-                        <p className="mt-1 text-xs leading-5 text-fei-bg/50">{item.evidence.map((evidence) => evidence.skill + ' ' + evidence.level).join(' · ') || 'Recommended starting focus'}</p>
-                      </div>
-                    )) : <p className="text-sm text-fei-bg/50">More evidence will appear as you complete activities.</p>}
-                  </div>
+              <div className="rounded-[28px] bg-white p-7 shadow-[0_18px_55px_rgba(7,17,31,0.06)] ring-1 ring-fei-bg/[0.08] sm:p-8">
+                <div className="mb-5 h-1 w-14 rounded-full bg-fei-sky" />
+                <h2 className="text-2xl font-semibold tracking-[-0.035em]">Stronger evidence</h2>
+                <p className="mt-2 text-sm text-fei-bg/50">The communication skills you already show.</p>
+                <div className="mt-6 space-y-3">
+                  {communicationProfile.strengths.length > 0 ? communicationProfile.strengths.map((item) => (
+                    <div key={item.key} className="rounded-2xl bg-[#F7FAFC] p-4 ring-1 ring-fei-bg/[0.05]">
+                      <p className="font-semibold">{item.label}</p>
+                      <p className="mt-1 text-xs leading-5 text-fei-bg/50">{item.evidence.map((evidence) => evidence.skill + ' ' + evidence.level).join(' · ') || 'Recommended starting focus'}</p>
+                    </div>
+                  )) : <p className="text-sm text-fei-bg/50">More evidence will appear as you complete activities.</p>}
                 </div>
-              ))}           </section>
+              </div>
+              <div className="rounded-[28px] bg-white p-7 shadow-[0_18px_55px_rgba(7,17,31,0.06)] ring-1 ring-fei-bg/[0.08] sm:p-8">
+                <div className="mb-5 h-1 w-14 rounded-full bg-fei-yellow" />
+                <h2 className="text-2xl font-semibold tracking-[-0.035em]">Priority areas</h2>
+                <p className="mt-2 text-sm text-fei-bg/50">The skills to develop next.</p>
+                <div className="mt-6 space-y-3">
+                  {communicationProfile.priorities.length > 0 ? communicationProfile.priorities.map((item) => (
+                    <div key={item.key} className="rounded-2xl bg-[#F7FAFC] p-4 ring-1 ring-fei-bg/[0.05]">
+                      <p className="font-semibold">{item.label}</p>
+                      <p className="mt-1 text-xs leading-5 text-fei-bg/50">{item.evidence.map((evidence) => evidence.skill + ' ' + evidence.level).join(' · ') || 'Recommended starting focus'}</p>
+                    </div>
+                  )) : <p className="text-sm text-fei-bg/50">More evidence will appear as you complete activities.</p>}
+                </div>
+              </div>
+            </section>
 
             {result && (
               <section className="mt-6 rounded-[28px] bg-white p-7 shadow-[0_18px_55px_rgba(7,17,31,0.06)] ring-1 ring-fei-bg/[0.08] sm:p-8">
