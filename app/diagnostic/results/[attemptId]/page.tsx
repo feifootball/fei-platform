@@ -240,4 +240,9 @@ export default async function DiagnosticResultPage({
     </main>
   )
 
+}function levelPosition(level: string | null) {
+  const index = ['A2', 'B1', 'B2', 'C1'].indexOf(level ?? '')
+  return index < 0 ? 0 : index
 }
+
+
