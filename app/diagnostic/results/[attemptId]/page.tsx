@@ -51,22 +51,80 @@ export default async function DiagnosticResultPage({
 }) {
   const { attemptId } = await params
   const supabase = await createClient()
+  const isDemo = attemptId === 'demo'
   const { data: userData } = await supabase.auth.getUser()
-  if (!userData.user) redirect('/login')
+  if (!userData.user && !isDemo) redirect('/login')
 
-  const [{ data: attempt }, { data: resultData }, { data: evaluationData }] = await Promise.all([
-    supabase
-      .from('diagnostic_attempts')
-      .select('id, role, status, submitted_at')
-      .eq('id', attemptId)
-      .maybeSingle(),
-    supabase.from('diagnostic_results').select('*').eq('attempt_id', attemptId).maybeSingle(),
-    supabase
-      .from('diagnostic_production_evaluations')
-      .select('skill, version, evaluation_payload')
-      .eq('attempt_id', attemptId)
-      .order('version', { ascending: false }),
-  ])
+  let attempt: { id: string; role: string; status: string; submitted_at: string } | null
+  let resultData: Result | null
+  let evaluationData: Evaluation[]
+
+  if (isDemo) {
+    attempt = {
+      id: 'demo',
+      role: 'Professional Player',
+      status: 'evaluated',
+      submitted_at: new Date().toISOString(),
+    }
+    resultData = {
+      status: 'ready',
+      level: 'B1',
+      reason: 'You understand common football instructions and can communicate your ideas in familiar situations. Your next step is to build more confidence with fast spoken English, precise vocabulary, and longer explanations.',
+      objective_evidence: {
+        A2: { correct: 4, total: 4, thresholdMet: true },
+        B1: { correct: 3, total: 4, thresholdMet: true },
+        B2: { correct: 2, total: 4, thresholdMet: false },
+        C1: { correct: 1, total: 4, thresholdMet: false },
+      },
+      objective_correct: 10,
+      objective_total: 16,
+      production_points: 14,
+      total_points: 24,
+      max_points: 32,
+      updated_at: new Date().toISOString(),
+    }
+    evaluationData = [
+      {
+        skill: 'writing',
+        version: 1,
+        evaluation_payload: {
+          status: 'evaluated',
+          overallLevel: 'B1',
+          confidence: 'medium',
+          rationale: 'You communicate the main idea clearly and keep a professional tone. More detail and stronger linking would make your message easier to follow.',
+          dimensions: { clarity: 'B1', vocabulary: 'B1', control: 'A2' },
+        },
+      },
+      {
+        skill: 'speaking',
+        version: 1,
+        evaluation_payload: {
+          status: 'evaluated',
+          overallLevel: 'A2',
+          confidence: 'medium',
+          rationale: 'You can respond to a familiar football situation and make yourself understood. More fluency and precise match language are the next focus.',
+          dimensions: { interaction: 'A2', fluency: 'A2', vocabulary: 'B1' },
+        },
+      },
+    ]
+  } else {
+    const response = await Promise.all([
+      supabase
+        .from('diagnostic_attempts')
+        .select('id, role, status, submitted_at')
+        .eq('id', attemptId)
+        .maybeSingle(),
+      supabase.from('diagnostic_results').select('*').eq('attempt_id', attemptId).maybeSingle(),
+      supabase
+        .from('diagnostic_production_evaluations')
+        .select('skill, version, evaluation_payload')
+        .eq('attempt_id', attemptId)
+        .order('version', { ascending: false }),
+    ])
+    attempt = response[0].data
+    resultData = response[1].data as Result | null
+    evaluationData = (response[2].data ?? []) as Evaluation[]
+  }
 
   if (!attempt) notFound()
 
