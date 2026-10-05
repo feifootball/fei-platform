@@ -138,7 +138,7 @@ export default function DiagnosticResultPage() {
         <Link href="/dashboard" className="text-sm font-semibold text-fei-sky hover:underline">← Back to dashboard</Link>
 
         <section className="mt-7">
-          <h1 className="text-4xl font-black tracking-[-0.045em] sm:text-6xl">Your profile is ready.</h1>
+          <h1 className="text-3xl tracking-[-0.04em] sm:text-5xl"><span className="font-normal">Your profile is </span><span className="font-black">ready.</span></h1>
         </section>
 
         <section className="mt-8 rounded-[2rem] border border-fei-bg/10 bg-white shadow-[0_18px_55px_rgba(7,17,31,0.05)]">
@@ -147,7 +147,7 @@ export default function DiagnosticResultPage() {
               <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/48">Your current level</p>
               <div className="mt-4 flex items-end gap-4">
                 <p className="text-8xl font-black leading-none tracking-[-0.08em] text-fei-sky">{result.level}</p>
-                <div className="pb-2"><p className="text-2xl font-black">Professional</p><p className="mt-1 text-sm text-fei-bg/45">football communication</p></div>
+                <div className="pb-2"><p className="text-2xl font-black">Football English</p><p className="mt-1 text-sm text-fei-bg/45">current level</p></div>
               </div>
               <p className="mt-5 text-sm font-bold text-fei-bg/65">{role}</p>
             </div>
@@ -159,33 +159,35 @@ export default function DiagnosticResultPage() {
         </section>
 
         <section className="mt-5 rounded-3xl border border-fei-bg/10 bg-white p-5 sm:p-7">
-          <div className="grid gap-6 lg:grid-cols-[1fr_1fr]">
+          <div className="grid gap-7 lg:grid-cols-[1.15fr_0.85fr]">
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/42">Objective answers</p>
-              <div className="mt-4 grid grid-cols-4 gap-2">
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/42">Objective result</p>
+              <div className="mt-4 overflow-hidden rounded-2xl border border-fei-bg/10">
                 {[
-                  ['A2', '4 / 4', 'all correct'],
-                  ['B1', '3 / 4', '1 to review'],
-                  ['B2', '2 / 4', '2 to review'],
-                  ['C1', '1 / 4', '3 to review'],
-                ].map(([level, score, note]) => (
-                  <div key={level} className="rounded-2xl bg-fei-bg/[0.035] px-2 py-3 text-center">
-                    <p className="text-xs font-black text-fei-bg/45">{level}</p>
-                    <p className="mt-1 text-lg font-black text-fei-bg">{score}</p>
-                    <p className="mt-1 text-[10px] leading-3 text-fei-bg/40">{note}</p>
+                  ['A2', '4 / 4', 'Strong foundation', 'bg-fei-sky'],
+                  ['B1', '3 / 4', 'Working level', 'bg-fei-sky'],
+                  ['B2', '2 / 4', 'Next focus', 'bg-fei-yellow'],
+                  ['C1', '1 / 4', 'Future focus', 'bg-fei-bg/25'],
+                ].map(([level, score, status, dot]) => (
+                  <div key={level} className="flex items-center gap-4 border-b border-fei-bg/[0.08] px-4 py-3 last:border-b-0">
+                    <span className={`h-2.5 w-2.5 shrink-0 rounded-full ${dot}`} />
+                    <span className="w-10 text-sm font-black text-fei-bg">{level}</span>
+                    <span className="text-sm font-semibold text-fei-bg/65">{score}</span>
+                    <span className="ml-auto text-xs font-medium text-fei-bg/42">{status}</span>
                   </div>
                 ))}
               </div>
             </div>
             <div>
-              <p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/42">Production tasks</p>
-              <div className="mt-4 grid grid-cols-2 gap-3">
-                <div className="rounded-2xl border border-fei-bg/10 px-4 py-3"><p className="text-xs font-black uppercase tracking-[0.14em] text-fei-bg/42">Writing</p><p className="mt-1 text-2xl font-black text-fei-sky">B1</p></div>
-                <div className="rounded-2xl border border-fei-bg/10 px-4 py-3"><p className="text-xs font-black uppercase tracking-[0.14em] text-fei-bg/42">Speaking</p><p className="mt-1 text-2xl font-black text-fei-sky">A2</p></div>
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/42">Production result</p>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+                <div className="flex items-center justify-between rounded-2xl bg-fei-bg/[0.035] px-4 py-3"><span className="text-sm font-semibold text-fei-bg/65">Writing</span><span className="text-xl font-black text-fei-sky">B1</span></div>
+                <div className="flex items-center justify-between rounded-2xl bg-fei-bg/[0.035] px-4 py-3"><span className="text-sm font-semibold text-fei-bg/65">Speaking</span><span className="text-xl font-black text-fei-sky">A2</span></div>
               </div>
             </div>
           </div>
         </section>
+
         <section className="mt-8 border-y border-fei-bg/10 py-8">
           <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/45">Your diagnostic insight</p>
           <h2 className="mt-2 text-2xl font-black tracking-[-0.035em]">What you can use now — and improve next.</h2>
