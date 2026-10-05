@@ -64,7 +64,7 @@ function demoResult(): ResultData {
     level: 'B1',
     score: 24,
     maxScore: 32,
-    reason: 'You manage routine football communication and understand the main idea in familiar professional situations. Your pathway now focuses on more structure, precision and confidence when the pace increases.',
+    reason: 'You handle common football conversations. Your next step is clearer, more precise communication under pressure.',
   }
 }
 
@@ -149,7 +149,7 @@ export default function DiagnosticResultPage() {
             </div>
             <div className="p-5 sm:p-7">
               <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/48">What this means</p>
-              <p className="mt-4 max-w-2xl text-sm leading-6 text-fei-bg/62">{result.reason}</p>
+              <p className="mt-4 line-clamp-2 max-w-2xl text-sm leading-6 text-fei-bg/62">{result.reason}</p>
             </div>
           </div>
         </section>
@@ -178,7 +178,7 @@ export default function DiagnosticResultPage() {
             <div>
               <div className="flex items-center justify-between gap-3">
                 <p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/42">Production result</p>
-                <a href="/#how-we-evaluate" className="text-right text-[11px] font-bold text-fei-sky hover:underline">How was my result calculated? →</a>
+                <a href="/#how-we-evaluate" className="text-right text-[11px] font-bold text-fei-sky hover:underline">How was my result calculated?</a>
               </div>
               <div className="mt-4 grid gap-3">
                 <div className="rounded-2xl bg-fei-bg/[0.035] px-4 py-3">
@@ -194,8 +194,7 @@ export default function DiagnosticResultPage() {
         </section>
 
         <section className="mt-8 border-y border-fei-bg/10 py-7">
-          <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/45">Your communication profile</p>
-          <div className="mt-5 grid gap-7 lg:grid-cols-2 lg:gap-14">
+          <div className="grid gap-7 lg:grid-cols-2 lg:gap-14">
             <div>
               <p className="text-sm font-black text-fei-bg">Strengths</p>
               <div className="mt-2">
@@ -226,12 +225,11 @@ export default function DiagnosticResultPage() {
           <div className="overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-white shadow-[0_18px_55px_rgba(7,17,31,0.045)]">
             <div className="grid lg:grid-cols-[1fr_340px]">
               <div className="p-5 sm:p-7 lg:border-r lg:border-fei-bg/10">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/42">Full report</p>
-                <h2 className="mt-3 text-3xl font-black tracking-[-0.035em] sm:text-4xl">Download your result</h2>
-                <p className="mt-3 max-w-md text-sm font-semibold leading-6 text-fei-bg/48">Your level, evidence and pathway in one report.</p>
-                <a href="#download-result" className="mt-7 inline-flex text-sm font-bold text-fei-sky hover:underline">Download report →</a>
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/42">Your FEI course</p>
+                <h2 className="mt-3 text-3xl font-black tracking-[-0.035em] sm:text-4xl">Continue your learning</h2>
+                <p className="mt-3 max-w-md text-sm font-semibold leading-6 text-fei-bg/48">Your result sets the starting point. Unlock the course and pathway built for your role.</p>
               </div>
-              <div className="relative flex flex-col justify-between border-t border-fei-bg/10 bg-fei-sky/[0.055] p-5 sm:p-7 lg:border-t-0"><div className="absolute inset-x-0 top-0 h-1 bg-fei-yellow" /><div><p className="text-center text-xs font-black uppercase tracking-[0.2em] text-fei-bg/52">Complete pathway</p><div className="mt-5 flex items-end justify-center gap-2"><p className="text-4xl font-black leading-none">$49</p><p className="pb-1 text-base font-bold text-fei-bg/48">/ month</p></div></div><div className="mt-5"><button type="button" onClick={() => router.push('/#pricing')} className="w-full rounded-full bg-fei-yellow px-5 py-3 text-sm font-black transition hover:-translate-y-0.5">Unlock My Pathway</button><button type="button" onClick={() => router.push('/dashboard')} className="mt-4 w-full text-sm font-bold text-fei-bg/45 hover:text-fei-bg">Review My Dashboard</button></div></div>
+              <div className="relative flex flex-col justify-between border-t border-fei-bg/10 bg-fei-sky/[0.055] p-5 sm:p-7 lg:border-t-0"><div className="absolute inset-x-0 top-0 h-1 bg-fei-yellow" /><div><p className="text-center text-xs font-black uppercase tracking-[0.2em] text-fei-bg/52">Course access</p><div className="mt-5 flex items-end justify-center gap-2"><p className="text-4xl font-black leading-none">$49</p><p className="pb-1 text-base font-bold text-fei-bg/48">/ month</p></div></div><div className="mt-5"><button type="button" onClick={() => router.push('/#pricing')} className="w-full rounded-full bg-fei-yellow px-5 py-3 text-sm font-black transition hover:-translate-y-0.5">Unlock course access</button><button type="button" onClick={() => router.push('/dashboard')} className="mt-4 w-full text-sm font-bold text-fei-bg/45 hover:text-fei-bg">Review My Dashboard</button></div></div>
             </div>
           </div>
 
