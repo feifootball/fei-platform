@@ -203,7 +203,24 @@ function UnpaidResultView({
           <p className="mt-4 text-xs font-medium text-fei-bg/40">More role-specific modules will appear as you move through your pathway.</p>
         </section>
 
-        <section className="mx-auto mt-14 max-w-3xl border-t border-fei-bg/10 pt-8 text-center">
+        <section className="mt-10">
+          <div className="grid gap-4 sm:grid-cols-3">
+            <div className="overflow-hidden rounded-2xl border border-fei-bg/10 bg-white">
+              <img src="/images/diagnostics/avatars/coach.png" alt="" className="h-32 w-full object-cover" />
+              <div className="p-4"><p className="text-xs font-black uppercase tracking-[0.14em] text-fei-bg/38">Matchday</p><p className="mt-1 text-sm font-black">Communicate under pressure</p></div>
+            </div>
+            <div className="overflow-hidden rounded-2xl border border-fei-bg/10 bg-white">
+              <img src="/images/diagnostics/avatars/analyst.png" alt="" className="h-32 w-full object-cover" />
+              <div className="p-4"><p className="text-xs font-black uppercase tracking-[0.14em] text-fei-bg/38">Tactical work</p><p className="mt-1 text-sm font-black">Explain decisions clearly</p></div>
+            </div>
+            <div className="overflow-hidden rounded-2xl border border-fei-bg/10 bg-white">
+              <img src="/images/diagnostics/avatars/teammate.png" alt="" className="h-32 w-full object-cover" />
+              <div className="p-4"><p className="text-xs font-black uppercase tracking-[0.14em] text-fei-bg/38">Team conversations</p><p className="mt-1 text-sm font-black">Build confident responses</p></div>
+            </div>
+          </div>
+        </section>
+
+        <section className="mx-auto mt-14 max-w-3xl border-t border-fei-bg/10 pt-8">
           <p className="text-[11px] font-black uppercase tracking-[0.22em] text-fei-bg/40">Before you unlock</p>
           <h2 className="mt-2 text-2xl font-black tracking-[-0.045em]">A few things to know about FEI.</h2>
           <div className="mx-auto mt-5 max-w-2xl divide-y divide-fei-bg/10 text-left">
