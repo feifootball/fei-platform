@@ -95,10 +95,10 @@ function UnpaidResultView({
 
         <section className="mt-7 flex flex-col justify-between gap-6 border-b border-fei-bg/10 pb-8 sm:flex-row sm:items-end">
           <div className="flex items-center gap-4">
-            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-fei-bg text-lg font-black text-white shadow-[0_8px_20px_rgba(7,17,31,0.12)]">DP</div>
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-fei-bg text-lg font-black text-white shadow-[0_8px_20px_rgba(7,17,31,0.12)]">DP</div>
             <div>
               <p className="text-[11px] font-black uppercase tracking-[0.22em] text-fei-bg/38">Your FEI profile</p>
-              <h1 className="mt-1 text-3xl font-black tracking-[-0.055em] sm:text-4xl">Daniela Portilla</h1>
+              <h1 className="mt-1 text-2xl font-black tracking-[-0.055em] sm:text-3xl">Daniela Portilla</h1>
               <p className="mt-1 text-sm font-medium text-fei-bg/52">{role}</p>
             </div>
           </div>
@@ -114,7 +114,7 @@ function UnpaidResultView({
               <p className="text-[11px] font-black uppercase tracking-[0.24em] text-fei-bg/40">Diagnostic result</p>
               <div className="mt-8 flex flex-col justify-between gap-8 sm:flex-row sm:items-end">
                 <div>
-                  <p className="text-[8rem] font-black leading-[0.8] tracking-[-0.1em] text-fei-sky">{result.level}</p>
+                  <p className="text-[6.5rem] font-black leading-[0.8] tracking-[-0.1em] text-fei-sky">{result.level}</p>
                   <p className="mt-5 text-sm font-bold text-fei-bg/58">Your current football English level</p>
                 </div>
                 <div className="max-w-xs border-l-2 border-fei-sky/35 pl-5">
@@ -134,11 +134,11 @@ function UnpaidResultView({
             <div className="relative flex h-full flex-col justify-between">
               <div>
                 <p className="text-[11px] font-black uppercase tracking-[0.22em] text-white/50">Course access</p>
-                <h2 className="mt-4 text-3xl font-black leading-tight tracking-[-0.05em]">Keep building from your result.</h2>
+                <h2 className="mt-4 text-2xl font-black leading-tight tracking-[-0.05em]">Keep building from your result.</h2>
                 <p className="mt-4 text-sm leading-6 text-white/65">Unlock the role-based lessons, practice scenarios and full pathway built for you.</p>
               </div>
               <div className="mt-10">
-                <div className="flex items-end gap-2"><span className="text-5xl font-black tracking-[-0.07em]">$49</span><span className="pb-1 text-sm font-bold text-white/50">/ month</span></div>
+                <div className="flex items-end gap-2"><span className="text-4xl font-black tracking-[-0.07em]">$49</span><span className="pb-1 text-sm font-bold text-white/50">/ month</span></div>
                 <button type="button" onClick={onUnlock} className="mt-5 w-full rounded-full bg-fei-yellow px-5 py-3.5 text-sm font-black text-fei-bg shadow-[0_12px_24px_rgba(255,201,20,0.2)] transition hover:-translate-y-0.5">Unlock course access <span aria-hidden="true">→</span></button>
                 <button type="button" onClick={onUnlock} className="mt-4 text-xs font-bold text-white/60 underline-offset-4 hover:text-white hover:underline">Download full result</button>
               </div>
@@ -149,7 +149,7 @@ function UnpaidResultView({
         <section className="mt-14">
           <div className="max-w-2xl">
             <p className="text-[11px] font-black uppercase tracking-[0.22em] text-fei-bg/40">Your learning experience</p>
-            <h2 className="mt-3 text-4xl font-black tracking-[-0.06em] sm:text-5xl">See how your pathway will look.</h2>
+            <h2 className="mt-3 text-3xl font-black tracking-[-0.06em] sm:text-4xl">See how your pathway will look.</h2>
             <p className="mt-3 text-base leading-7 text-fei-bg/55">A practical workspace with lessons, football scenarios and progress built around your role.</p>
           </div>
 
@@ -159,7 +159,7 @@ function UnpaidResultView({
                 <span className="h-2.5 w-2.5 rounded-full bg-[#ff776f]" /><span className="h-2.5 w-2.5 rounded-full bg-[#ffc94d]" /><span className="h-2.5 w-2.5 rounded-full bg-[#6fd5a0]" />
                 <span className="ml-3 hidden rounded-md bg-white px-3 py-1 text-[10px] font-medium text-fei-bg/40 sm:inline">fei-platform / pathway</span>
               </div>
-              <div className="grid min-h-[360px] sm:grid-cols-[210px_1fr]">
+              <div className="grid min-h-[300px] sm:grid-cols-[190px_1fr]">
                 <aside className="hidden border-r border-fei-bg/10 bg-[#fbfcfd] p-5 sm:block">
                   <div className="text-sm font-black">FEI</div>
                   <p className="mt-8 text-[10px] font-black uppercase tracking-[0.16em] text-fei-bg/38">My pathway</p>
@@ -171,7 +171,7 @@ function UnpaidResultView({
                   </div>
                   <div className="mt-10 rounded-xl bg-fei-sky/10 p-3"><p className="text-[10px] font-black uppercase tracking-[0.12em] text-fei-sky">Your level</p><p className="mt-1 text-2xl font-black">B1</p></div>
                 </aside>
-                <div className="bg-[#fdfefe] p-5 sm:p-8">
+                <div className="bg-[#fdfefe] p-4 sm:p-6">
                   <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-start">
                     <div><p className="text-[10px] font-black uppercase tracking-[0.16em] text-fei-bg/38">Good afternoon, Daniela</p><h3 className="mt-2 text-2xl font-black tracking-[-0.045em]">Build confidence in real situations.</h3></div>
                     <button type="button" className="rounded-full border border-fei-bg/10 bg-white px-3 py-1.5 text-[10px] font-bold text-fei-bg/50">Your pathway</button>
@@ -194,6 +194,34 @@ function UnpaidResultView({
             </div>
           </div>
           <p className="mt-4 text-xs font-medium text-fei-bg/40">More role-specific modules will appear as you move through your pathway.</p>
+        </section>
+
+        <section className="mx-auto mt-14 max-w-3xl border-t border-fei-bg/10 pt-8">
+          <p className="text-[11px] font-black uppercase tracking-[0.22em] text-fei-bg/40">Before you unlock</p>
+          <h2 className="mt-2 text-2xl font-black tracking-[-0.045em]">A few things to know about FEI.</h2>
+          <div className="mt-5 divide-y divide-fei-bg/10">
+            <details className="group py-4">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-bold text-fei-bg/75">
+                What does course access include?
+                <span className="text-lg font-normal text-fei-bg/35 transition group-open:rotate-45">+</span>
+              </summary>
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-fei-bg/55">Role-specific lessons, practical football scenarios and a pathway that starts from the communication priorities in your diagnostic.</p>
+            </details>
+            <details className="group py-4">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-bold text-fei-bg/75">
+                How is my pathway built?
+                <span className="text-lg font-normal text-fei-bg/35 transition group-open:rotate-45">+</span>
+              </summary>
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-fei-bg/55">FEI uses your role and your diagnostic profile to decide what to practise first, then expands the route as you progress.</p>
+            </details>
+            <details className="group py-4">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-bold text-fei-bg/75">
+                What will I see after unlocking?
+                <span className="text-lg font-normal text-fei-bg/35 transition group-open:rotate-45">+</span>
+              </summary>
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-fei-bg/55">Your full result, the first lessons in your pathway and practice activities connected to real football communication.</p>
+            </details>
+          </div>
         </section>
       </main>
     </div>
