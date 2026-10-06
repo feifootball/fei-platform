@@ -71,6 +71,7 @@ function demoResult(): ResultData {
 export default function DiagnosticResultPage() {
   const params = useParams<{ attemptId: string }>()
   const router = useRouter()
+  const isUnpaidDemo = params.attemptId === 'unpaid-demo'
   const [role, setRole] = useState('Professional Player')
   const [result, setResult] = useState<ResultData>(demoResult())
   const [loading, setLoading] = useState(true)
@@ -138,9 +139,8 @@ export default function DiagnosticResultPage() {
         <Link href="/dashboard" className="text-sm font-semibold text-fei-bg/55 transition hover:text-fei-bg">← Back to dashboard</Link>
 
         <section className="mt-7">
-          <h1 className="text-3xl tracking-[-0.04em] sm:text-5xl"><span className="font-normal">Your profile is </span><span className="font-black">ready.</span></h1>
-          <p className="mt-2 text-xs text-fei-bg/40">Your diagnostic profile has been saved to your FEI dashboard.</p>
-          <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-fei-yellow/35 bg-fei-yellow/[0.08] px-3 py-1.5 text-xs font-semibold text-fei-bg/65"><span className="h-2 w-2 rounded-full bg-fei-yellow" />Diagnostic complete · Course access not unlocked</div>
+          <h1 className="text-3xl tracking-[-0.04em] sm:text-5xl"><span className="font-normal">Your result is </span><span className="font-black">ready.</span></h1>
+          <p className="mt-3 max-w-xl text-sm leading-6 text-fei-bg/55">Your diagnostic is complete. Unlock the FEI course to turn this result into practical football communication.</p>
         </section>
 
         <section className="mt-8 rounded-[2rem] border border-fei-bg/10 bg-white shadow-[0_18px_55px_rgba(7,17,31,0.05)]">
@@ -224,20 +224,20 @@ export default function DiagnosticResultPage() {
           <div className="overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-gradient-to-b from-white via-[#f8fcfe] to-[#eaf7fc] shadow-[0_18px_55px_rgba(7,17,31,0.045)]">
             <div className="grid lg:grid-cols-[1fr_340px]">
               <div className="p-5 sm:p-7 lg:border-r lg:border-fei-bg/10">
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/42">Your learning pathway</p>
-                <h2 className="mt-3 text-3xl font-black tracking-[-0.035em] sm:text-4xl">Keep building from here</h2>
-                <p className="mt-3 max-w-md text-sm font-normal leading-6 text-fei-bg/58">Your result gives you a clear starting point. The course turns it into practical football communication, with role-specific lessons and scenarios to use next.</p>
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/42">Course access</p>
+                <h2 className="mt-3 text-3xl font-black tracking-[-0.035em] sm:text-4xl">Turn your result into practice</h2>
+                <p className="mt-3 max-w-md text-sm font-normal leading-6 text-fei-bg/58">Unlock the course to access role-specific lessons, practice scenarios and the complete pathway built from your result.</p>
               </div>
-              <div className="relative flex flex-col justify-between border-t border-fei-bg/10 bg-fei-sky/[0.055] p-5 sm:p-7 lg:border-t-0"><div className="absolute inset-x-0 top-0 h-1 bg-fei-yellow" /><div><p className="text-center text-xs font-black uppercase tracking-[0.2em] text-fei-bg/52">Course access</p><div className="mt-5 flex items-end justify-center gap-2"><p className="text-6xl font-black leading-none">$49</p><p className="pb-1 text-lg font-bold text-fei-bg/48">/ month</p></div></div><div className="mt-5"><button type="button" onClick={() => router.push('/#pricing')} className="w-full rounded-full bg-fei-yellow px-5 py-3 text-sm font-black transition hover:-translate-y-0.5">Unlock course access</button></div></div>
+              <div className="relative flex flex-col justify-between border-t border-fei-bg/10 bg-fei-sky/[0.055] p-5 sm:p-7 lg:border-t-0"><div className="absolute inset-x-0 top-0 h-1 bg-fei-yellow" /><div><p className="text-center text-xs font-black uppercase tracking-[0.2em] text-fei-bg/52">Unlock your course</p><div className="mt-5 flex items-end justify-center gap-2"><p className="text-6xl font-black leading-none">$49</p><p className="pb-1 text-lg font-bold text-fei-bg/48">/ month</p></div></div><div className="mt-5"><button type="button" onClick={() => router.push('/#pricing')} className="w-full rounded-full bg-fei-yellow px-5 py-3 text-sm font-black transition hover:-translate-y-0.5">Unlock course access</button></div></div>
             </div>
           </div>
 
           <div className="mt-8">
-            <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/45">Your learning pathway</p>
-            <h2 className="mt-2 text-2xl font-black tracking-[-0.035em]">A clear route from your result to practice.</h2>
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/45">Course preview</p>
+            <h2 className="mt-2 text-2xl font-black tracking-[-0.035em]">See what your pathway will unlock.</h2>
           </div>
           <div className="mt-4">
-            {domains.slice(0, 3).map((domain, index) => <article key={domain.title} className={`grid gap-5 border-b border-fei-bg/10 py-7 lg:grid-cols-[72px_0.8fr_1.2fr] lg:items-center ${index === 2 ? 'blur-[3px] opacity-45 select-none' : ''}`}><p className="text-3xl font-black text-fei-sky">{String(index + 1).padStart(2, '0')}</p><div><p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/38">Domain {index + 1}</p><h3 className="mt-2 text-xl font-black">{domain.title}</h3><p className="mt-2 max-w-md text-sm leading-6 text-fei-bg/48">{domain.detail}</p></div><div><p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-fei-sky">Your practice journey</p>{domain.scenarios.map((scenario, i) => <div key={scenario} className="flex gap-3 border-t border-fei-bg/[0.07] py-3 text-sm font-bold text-fei-bg/68"><span className="text-xs text-fei-sky">{String(i + 1).padStart(2, '0')}</span>{scenario}</div>)}</div></article>)}
+            {domains.slice(0, 2).map((domain, index) => <article key={domain.title} className={`grid gap-5 border-b border-fei-bg/10 py-7 lg:grid-cols-[72px_0.8fr_1.2fr] lg:items-center ${index === 2 ? 'blur-[3px] opacity-45 select-none' : ''}`}><p className="text-3xl font-black text-fei-sky">{String(index + 1).padStart(2, '0')}</p><div><p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/38">Domain {index + 1}</p><h3 className="mt-2 text-xl font-black">{domain.title}</h3><p className="mt-2 max-w-md text-sm leading-6 text-fei-bg/48">{domain.detail}</p></div><div><p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-fei-sky">Your practice journey</p>{domain.scenarios.map((scenario, i) => <div key={scenario} className="flex gap-3 border-t border-fei-bg/[0.07] py-3 text-sm font-bold text-fei-bg/68"><span className="text-xs text-fei-sky">{String(i + 1).padStart(2, '0')}</span>{scenario}</div>)}</div></article>)}
           </div>
           <p className="mt-5 text-xs font-medium text-fei-bg/40">More role-specific modules will appear as you move through your pathway.</p>
         </section>
