@@ -168,6 +168,7 @@ function UnpaidResultView({
               </div>
             </div>
           </div>
+          </div>
           <aside className="lg:sticky lg:top-24">
             <div className="overflow-hidden rounded-[1.5rem] border border-fei-yellow/45 bg-[#fff9df] shadow-[0_18px_45px_rgba(255,201,20,0.16)]">
               <div className="h-1.5 bg-fei-yellow" />
