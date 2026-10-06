@@ -18,6 +18,7 @@ type DiagnosticAttempt = {
   status: 'pending_evaluation' | 'human_review_required' | 'evaluated'
   submitted_at: string
   level: string | null
+  objective_evidence?: Array<{ level: string; correct: boolean }> | null
 }
 
 const diagnosticRoles = [
@@ -33,6 +34,18 @@ const diagnosticRoles = [
   'Sports Psychologist',
   'Nutritionist',
 ]
+
+function initialLevelFromEvidence(evidence: Array<{ level: string; correct: boolean }> | null | undefined) {
+  if (!evidence?.length) return null
+  const levels = ['A2', 'B1', 'B2', 'C1']
+  let current = 'A2'
+  for (const level of levels) {
+    const items = evidence.filter((item) => item.level === level)
+    if (items.length && items.filter((item) => item.correct).length >= 2) current = level
+    else if (level !== 'A2') break
+  }
+  return current
+}
 
 const needsRoleSelection = (role: string) => {
   return !role || role === "I'll choose later" || role === 'Other football role'
@@ -303,7 +316,7 @@ export default function DashboardPage() {
 
     const { data: diagnosticAttempts, count: diagnosticCount } = await supabase
       .from('diagnostic_attempts')
-      .select('id, role, status, submitted_at', { count: 'exact' })
+      .select('id, role, status, submitted_at, objective_evidence', { count: 'exact' })
       .eq('user_id', user.id)
       .order('submitted_at', { ascending: false })
       .limit(1)
@@ -318,7 +331,8 @@ export default function DashboardPage() {
 
       setLatestDiagnostic({
         ...latestAttempt,
-        level: diagnosticResult?.level ?? null,
+        level: diagnosticResult?.level ?? initialLevelFromEvidence(latestAttempt.objective_evidence),
+        objective_evidence: latestAttempt.objective_evidence,
       })
     }
 
@@ -387,7 +401,7 @@ export default function DashboardPage() {
   const diagnosticStatus = latestDiagnostic
     ? latestDiagnostic.status === 'evaluated'
       ? 'Completed'
-      : 'In review'
+      : 'Profile ready'
     : lastAssessment
       ? 'Completed'
       : 'Not started'
@@ -677,11 +691,11 @@ export default function DashboardPage() {
             </p>
             {latestDiagnostic ? (
               <Link
-                href={`/diagnostic/results/${latestDiagnostic.id}`}
+                href={`/diagnostic/results/${latestDiagnostic.status === 'evaluated' ? latestDiagnostic.id : 'unpaid-demo'}`}
                 className="mt-6 inline-flex text-sm font-semibold text-fei-sky hover:underline"
               >
                 <span className="inline-flex items-center gap-1.5">
-                  {latestDiagnostic.level ? 'View Diagnostic Report' : 'View evaluation status'}
+                  View Diagnostic Report
                   <ChevronRightIcon />
                 </span>
               </Link>
