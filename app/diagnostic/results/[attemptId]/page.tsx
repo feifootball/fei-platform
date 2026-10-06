@@ -68,6 +68,122 @@ function demoResult(): ResultData {
   }
 }
 
+
+function UnpaidResultView({
+  result,
+  role,
+  onUnlock,
+}: {
+  result: ResultData
+  role: string
+  onUnlock: () => void
+}) {
+  return (
+    <div className="min-h-screen bg-[#F7F8FA] text-fei-bg">
+      <nav className="border-b border-fei-bg/[0.08] bg-white">
+        <div className="mx-auto flex min-h-[60px] max-w-[1280px] items-center justify-between px-6 sm:px-10">
+          <Link href="/dashboard" className="flex items-center gap-3">
+            <img src="/fei-logo-navbar-vector.svg" alt="FEI" className="h-9 w-auto" />
+            <span className="hidden border-l border-fei-bg/10 pl-4 text-sm font-medium text-fei-bg/55 sm:inline">Football English Intelligence</span>
+          </Link>
+          <Link href="/dashboard" className="text-sm font-semibold text-fei-bg/55 hover:text-fei-bg">Dashboard</Link>
+        </div>
+      </nav>
+
+      <main className="mx-auto max-w-[1280px] px-6 pb-20 pt-8 sm:px-10">
+        <Link href="/dashboard" className="text-sm font-semibold text-fei-bg/55 hover:text-fei-bg">← Back to dashboard</Link>
+
+        <section className="mt-7 flex flex-col gap-5 border-b border-fei-bg/10 pb-7 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/40">Your FEI profile</p>
+            <h1 className="mt-2 text-4xl font-black tracking-[-0.055em] sm:text-6xl">Daniela Portilla</h1>
+            <p className="mt-2 text-base font-medium text-fei-bg/55">{role}</p>
+          </div>
+          <div className="flex items-center gap-2 text-sm font-semibold text-fei-bg/55">
+            <span className="h-2.5 w-2.5 rounded-full bg-fei-yellow" /> Diagnostic complete
+          </div>
+        </section>
+
+        <section className="mt-8 grid gap-5 lg:grid-cols-[0.72fr_1.28fr]">
+          <div className="rounded-[1.75rem] border border-fei-bg/10 bg-white p-6 shadow-[0_18px_50px_rgba(7,17,31,0.04)] sm:p-8">
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/42">Diagnostic result</p>
+            <div className="mt-5 flex items-end justify-between gap-4">
+              <div>
+                <p className="text-7xl font-black leading-none tracking-[-0.08em] text-fei-sky">{result.level}</p>
+                <p className="mt-3 text-sm font-semibold text-fei-bg/55">Your current football English level</p>
+              </div>
+              <div className="h-16 w-16 rounded-full p-[6px]" style={{ background: 'conic-gradient(#73cffa 72%, rgba(15,23,42,0.10) 0)' }}>
+                <div className="flex h-full w-full items-center justify-center rounded-full bg-white text-xs font-black text-fei-bg/60">72%</div>
+              </div>
+            </div>
+            <p className="mt-6 border-t border-fei-bg/[0.08] pt-5 text-sm leading-6 text-fei-bg/58">{result.reason}</p>
+          </div>
+
+          <div className="rounded-[1.75rem] border border-fei-bg/10 bg-white p-6 shadow-[0_18px_50px_rgba(7,17,31,0.04)] sm:p-8">
+            <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-center">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/42">Your full result</p>
+                <h2 className="mt-2 text-2xl font-black tracking-[-0.04em]">Download your diagnostic result.</h2>
+                <p className="mt-2 max-w-xl text-sm leading-6 text-fei-bg/55">Get the detailed breakdown and unlock the course built around your role.</p>
+              </div>
+              <button type="button" onClick={onUnlock} className="shrink-0 rounded-full bg-fei-yellow px-5 py-3 text-sm font-black shadow-[0_12px_24px_rgba(255,201,20,0.2)] transition hover:-translate-y-0.5">Download result</button>
+            </div>
+          </div>
+        </section>
+
+        <section className="mt-5 flex flex-col gap-4 rounded-[1.5rem] border border-fei-bg/10 bg-white px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/42">Course access</p>
+            <p className="mt-1 text-sm text-fei-bg/58">Unlock role-specific lessons and practice scenarios.</p>
+          </div>
+          <div className="flex items-center gap-4">
+            <span className="text-xl font-black">$49 <span className="text-xs font-semibold text-fei-bg/45">/ month</span></span>
+            <button type="button" onClick={onUnlock} className="rounded-full border border-fei-bg/15 px-4 py-2 text-xs font-black transition hover:border-fei-bg/35">Unlock access</button>
+          </div>
+        </section>
+
+        <section className="mt-10">
+          <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/42">Your learning experience</p>
+          <h2 className="mt-2 max-w-2xl text-3xl font-black tracking-[-0.045em] sm:text-4xl">See how your pathway will look.</h2>
+          <p className="mt-2 max-w-xl text-sm leading-6 text-fei-bg/55">A practical workspace with lessons, football scenarios and progress built around your role.</p>
+
+          <div className="mt-6 overflow-hidden rounded-[1.75rem] border border-fei-bg/10 bg-[#f2f4f6] p-3 shadow-[0_18px_50px_rgba(7,17,31,0.06)] sm:p-5">
+            <div className="overflow-hidden rounded-2xl border border-fei-bg/10 bg-white">
+              <div className="flex h-11 items-center gap-3 border-b border-fei-bg/10 px-4">
+                <span className="text-xs font-black text-fei-bg">FEI</span>
+                <span className="text-xs font-semibold text-fei-bg/45">My pathway</span>
+                <span className="ml-auto h-2 w-2 rounded-full bg-fei-sky" />
+              </div>
+              <div className="grid min-h-[250px] sm:grid-cols-[170px_1fr]">
+                <aside className="hidden border-r border-fei-bg/10 bg-[#fbfcfd] p-4 sm:block">
+                  <p className="text-[10px] font-black uppercase tracking-[0.16em] text-fei-bg/38">Your pathway</p>
+                  <div className="mt-4 space-y-2 text-xs font-semibold">
+                    <div className="rounded-lg bg-fei-sky/10 px-3 py-2 text-fei-bg">Overview</div>
+                    <div className="px-3 py-2 text-fei-bg/45">On-pitch communication</div>
+                    <div className="px-3 py-2 text-fei-bg/45">Feedback & staff</div>
+                    <div className="px-3 py-2 text-fei-bg/45">Leadership</div>
+                  </div>
+                </aside>
+                <div className="p-5 sm:p-7">
+                  <div className="flex items-start justify-between gap-4">
+                    <div><p className="text-[10px] font-black uppercase tracking-[0.16em] text-fei-bg/38">Current pathway</p><p className="mt-2 text-xl font-black tracking-[-0.03em]">Build confidence in real situations</p></div>
+                    <span className="rounded-full bg-fei-sky/10 px-3 py-1 text-[10px] font-black text-fei-sky">B1</span>
+                  </div>
+                  <div className="mt-6 grid gap-3 sm:grid-cols-3">
+                    <div className="rounded-xl border border-fei-bg/10 p-3"><p className="text-[10px] font-black uppercase tracking-[0.12em] text-fei-bg/38">Next lesson</p><p className="mt-2 text-sm font-bold">Match communication</p><div className="mt-4 h-1.5 rounded-full bg-fei-bg/10"><div className="h-1.5 w-3/5 rounded-full bg-fei-sky" /></div></div>
+                    <div className="rounded-xl border border-fei-bg/10 p-3"><p className="text-[10px] font-black uppercase tracking-[0.12em] text-fei-bg/38">Practice</p><p className="mt-2 text-sm font-bold">Clarify a tactical decision</p><span className="mt-3 inline-block rounded-full bg-fei-yellow/20 px-2 py-1 text-[10px] font-black">Ready</span></div>
+                    <div className="rounded-xl border border-fei-bg/10 p-3"><p className="text-[10px] font-black uppercase tracking-[0.12em] text-fei-bg/38">Progress</p><p className="mt-2 text-sm font-bold">Your role pathway</p><div className="mt-4 flex items-end gap-1"><span className="h-5 w-2 rounded-sm bg-fei-sky/40" /><span className="h-8 w-2 rounded-sm bg-fei-sky/60" /><span className="h-11 w-2 rounded-sm bg-fei-sky" /><span className="h-14 w-2 rounded-sm bg-fei-bg/10" /></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  )
+}
+
 export default function DiagnosticResultPage() {
   const params = useParams<{ attemptId: string }>()
   const router = useRouter()
