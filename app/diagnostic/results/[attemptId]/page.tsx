@@ -126,6 +126,7 @@ function UnpaidResultView({
                 <div className="h-2 flex-1 overflow-hidden rounded-full bg-fei-bg/[0.08]"><div className="h-full w-[72%] rounded-full bg-fei-sky" /></div>
                 <span className="text-xs font-black text-fei-bg/45">Starting point</span>
               </div>
+              <button type="button" onClick={onUnlock} className="mt-5 text-sm font-black text-fei-sky underline-offset-4 hover:underline">Download full result →</button>
             </div>
           </div>
 
@@ -138,9 +139,8 @@ function UnpaidResultView({
                 <p className="mt-4 text-sm leading-6 text-white/65">Unlock the role-based lessons, practice scenarios and full pathway built for you.</p>
               </div>
               <div className="mt-10">
-                <div className="flex items-end gap-2"><span className="text-4xl font-black tracking-[-0.07em]">$49</span><span className="pb-1 text-sm font-bold text-white/50">/ month</span></div>
+                <div className="flex items-end gap-2"><span className="text-6xl font-black tracking-[-0.07em]">$49</span><span className="pb-1 text-sm font-bold text-white/50">/ month</span></div>
                 <button type="button" onClick={onUnlock} className="mt-5 w-full rounded-full bg-fei-yellow px-5 py-3.5 text-sm font-black text-fei-bg shadow-[0_12px_24px_rgba(255,201,20,0.2)] transition hover:-translate-y-0.5">Unlock course access <span aria-hidden="true">→</span></button>
-                <button type="button" onClick={onUnlock} className="mt-4 text-xs font-bold text-white/60 underline-offset-4 hover:text-white hover:underline">Download full result</button>
               </div>
             </div>
           </aside>
@@ -185,6 +185,13 @@ function UnpaidResultView({
                       <button type="button" className="mt-5 rounded-full bg-fei-bg px-4 py-2 text-xs font-black text-white">Continue lesson →</button>
                     </div>
                     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+                      <div className="overflow-hidden rounded-2xl border border-fei-bg/10 bg-white">
+                        <div className="flex h-20 items-center gap-3 bg-fei-sky/10 px-4">
+                          <img src="/images/diagnostics/avatars/coach.png" alt="" className="h-12 w-12 rounded-xl object-cover" />
+                          <div><p className="text-[10px] font-black uppercase tracking-[0.15em] text-fei-bg/38">Scenario coach</p><p className="mt-1 text-sm font-black">Ready for your next practice</p></div>
+                        </div>
+                        <div className="p-4"><p className="text-xs leading-5 text-fei-bg/52">Apply your result in a realistic football conversation.</p></div>
+                      </div>
                       <div className="rounded-2xl border border-fei-bg/10 bg-white p-4"><p className="text-[10px] font-black uppercase tracking-[0.15em] text-fei-bg/38">Next practice</p><p className="mt-2 text-sm font-black">Clarify a tactical decision</p><span className="mt-3 inline-block rounded-full bg-fei-yellow/25 px-2 py-1 text-[10px] font-black">Ready</span></div>
                       <div className="rounded-2xl border border-fei-bg/10 bg-white p-4"><p className="text-[10px] font-black uppercase tracking-[0.15em] text-fei-bg/38">Pathway progress</p><div className="mt-4 flex items-end gap-1.5"><span className="h-5 w-2 rounded-sm bg-fei-sky/35" /><span className="h-8 w-2 rounded-sm bg-fei-sky/55" /><span className="h-11 w-2 rounded-sm bg-fei-sky" /><span className="h-14 w-2 rounded-sm bg-fei-bg/10" /><span className="h-10 w-2 rounded-sm bg-fei-bg/10" /></div></div>
                     </div>
@@ -196,10 +203,10 @@ function UnpaidResultView({
           <p className="mt-4 text-xs font-medium text-fei-bg/40">More role-specific modules will appear as you move through your pathway.</p>
         </section>
 
-        <section className="mx-auto mt-14 max-w-3xl border-t border-fei-bg/10 pt-8">
+        <section className="mx-auto mt-14 max-w-3xl border-t border-fei-bg/10 pt-8 text-center">
           <p className="text-[11px] font-black uppercase tracking-[0.22em] text-fei-bg/40">Before you unlock</p>
           <h2 className="mt-2 text-2xl font-black tracking-[-0.045em]">A few things to know about FEI.</h2>
-          <div className="mt-5 divide-y divide-fei-bg/10">
+          <div className="mx-auto mt-5 max-w-2xl divide-y divide-fei-bg/10 text-left">
             <details className="group py-4">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-bold text-fei-bg/75">
                 What does course access include?
