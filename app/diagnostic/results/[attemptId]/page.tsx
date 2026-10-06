@@ -119,15 +119,9 @@ function UnpaidResultView({
             <p className="mt-6 border-t border-fei-bg/[0.08] pt-5 text-sm leading-6 text-fei-bg/58">{result.reason}</p>
           </div>
 
-          <div className="rounded-[1.75rem] border border-fei-bg/10 bg-white p-6 shadow-[0_18px_50px_rgba(7,17,31,0.04)] sm:p-8">
-            <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-center">
-              <div>
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/42">Your full result</p>
-                <h2 className="mt-2 text-xl font-black tracking-[-0.04em]">Download your full result.</h2>
-                <p className="mt-2 max-w-xl text-sm leading-6 text-fei-bg/55">Get the detailed breakdown with your pathway.</p>
-              </div>
-              <button type="button" onClick={onUnlock} className="shrink-0 rounded-full border border-fei-bg/15 bg-white px-4 py-2.5 text-xs font-black transition hover:border-fei-bg/35">Download result</button>
-            </div>
+          <div className="flex items-center justify-between gap-4 border-b border-fei-bg/10 px-1 pb-5 pt-2">
+            <p className="text-sm text-fei-bg/55">Want the detailed breakdown?</p>
+            <button type="button" onClick={onUnlock} className="shrink-0 text-sm font-black text-fei-sky underline-offset-4 hover:underline">Download full result</button>
           </div>
         </section>
 
@@ -139,12 +133,16 @@ function UnpaidResultView({
 
           <div className="mt-6 overflow-hidden rounded-[1.75rem] border border-fei-bg/10 bg-[#f2f4f6] p-3 shadow-[0_18px_50px_rgba(7,17,31,0.06)] sm:p-5">
             <div className="overflow-hidden rounded-2xl border border-fei-bg/10 bg-white">
+              <div className="flex h-9 items-center gap-2 border-b border-fei-bg/10 bg-[#f7f8fa] px-4">
+                <span className="h-2 w-2 rounded-full bg-[#ff6b6b]" /><span className="h-2 w-2 rounded-full bg-[#ffc928]" /><span className="h-2 w-2 rounded-full bg-[#6fd6a6]" />
+                <span className="ml-3 rounded-md bg-white px-3 py-1 text-[10px] font-medium text-fei-bg/40">fei-platform / my-pathway</span>
+              </div>
               <div className="flex h-11 items-center gap-3 border-b border-fei-bg/10 px-4">
                 <span className="text-xs font-black text-fei-bg">FEI</span>
                 <span className="text-xs font-semibold text-fei-bg/45">My pathway</span>
-                <span className="ml-auto h-2 w-2 rounded-full bg-fei-sky" />
+                <span className="ml-auto text-[10px] font-semibold text-fei-bg/35">Welcome back, Daniela</span>
               </div>
-              <div className="grid min-h-[250px] sm:grid-cols-[170px_1fr]">
+              <div className="grid min-h-[310px] sm:grid-cols-[190px_1fr]">
                 <aside className="hidden border-r border-fei-bg/10 bg-[#fbfcfd] p-4 sm:block">
                   <p className="text-[10px] font-black uppercase tracking-[0.16em] text-fei-bg/38">Your pathway</p>
                   <div className="mt-4 space-y-2 text-xs font-semibold">
@@ -154,7 +152,7 @@ function UnpaidResultView({
                     <div className="px-3 py-2 text-fei-bg/45">Leadership</div>
                   </div>
                 </aside>
-                <div className="p-5 sm:p-7">
+                <div className="bg-[#fcfdfe] p-5 sm:p-7">
                   <div className="flex items-start justify-between gap-4">
                     <div><p className="text-[10px] font-black uppercase tracking-[0.16em] text-fei-bg/38">Current pathway</p><p className="mt-2 text-xl font-black tracking-[-0.03em]">Build confidence in real situations</p></div>
                     <span className="rounded-full bg-fei-sky/10 px-3 py-1 text-[10px] font-black text-fei-sky">B1</span>
@@ -180,7 +178,7 @@ function UnpaidResultView({
                   <p className="text-4xl font-black leading-none">$49</p>
                   <p className="pb-0.5 text-sm font-bold text-fei-bg/50">/ month</p>
                 </div>
-                <button type="button" onClick={onUnlock} className="mt-5 w-full rounded-full bg-fei-yellow px-4 py-3 text-sm font-black shadow-[0_10px_20px_rgba(255,201,20,0.2)] transition hover:-translate-y-0.5">Unlock course access</button>
+                <button type="button" onClick={onUnlock} className="mt-5 w-full rounded-full bg-fei-bg px-4 py-3 text-sm font-black text-white shadow-[0_10px_20px_rgba(7,17,31,0.14)] transition hover:-translate-y-0.5">Unlock course access <span aria-hidden="true">→</span></button>
               </div>
             </div>
           </aside>
