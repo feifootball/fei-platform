@@ -105,7 +105,7 @@ function UnpaidResultView({
         </section>
 
         <section className="mt-8 grid gap-5 lg:grid-cols-[0.72fr_1.28fr]">
-          <div className="rounded-[1.75rem] border border-fei-bg/10 bg-white p-6 shadow-[0_18px_50px_rgba(7,17,31,0.04)] sm:p-8">
+          <div className="rounded-2xl border border-fei-bg/10 bg-white p-5 shadow-[0_12px_32px_rgba(7,17,31,0.03)] sm:p-6">
             <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/42">Diagnostic result</p>
             <div className="mt-5 flex items-end justify-between gap-4">
               <div>
@@ -123,26 +123,16 @@ function UnpaidResultView({
             <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-center">
               <div>
                 <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/42">Your full result</p>
-                <h2 className="mt-2 text-2xl font-black tracking-[-0.04em]">Download your diagnostic result.</h2>
-                <p className="mt-2 max-w-xl text-sm leading-6 text-fei-bg/55">Get the detailed breakdown and unlock the course built around your role.</p>
+                <h2 className="mt-2 text-xl font-black tracking-[-0.04em]">Download your full result.</h2>
+                <p className="mt-2 max-w-xl text-sm leading-6 text-fei-bg/55">Get the detailed breakdown with your pathway.</p>
               </div>
-              <button type="button" onClick={onUnlock} className="shrink-0 rounded-full bg-fei-yellow px-5 py-3 text-sm font-black shadow-[0_12px_24px_rgba(255,201,20,0.2)] transition hover:-translate-y-0.5">Download result</button>
+              <button type="button" onClick={onUnlock} className="shrink-0 rounded-full border border-fei-bg/15 bg-white px-4 py-2.5 text-xs font-black transition hover:border-fei-bg/35">Download result</button>
             </div>
           </div>
         </section>
 
-        <section className="mt-5 flex flex-col gap-4 rounded-[1.5rem] border border-fei-bg/10 bg-white px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <section className="mt-10 grid items-start gap-7 lg:grid-cols-[1fr_310px]">
           <div>
-            <p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/42">Course access</p>
-            <p className="mt-1 text-sm text-fei-bg/58">Unlock role-specific lessons and practice scenarios.</p>
-          </div>
-          <div className="flex items-center gap-4">
-            <span className="text-xl font-black">$49 <span className="text-xs font-semibold text-fei-bg/45">/ month</span></span>
-            <button type="button" onClick={onUnlock} className="rounded-full border border-fei-bg/15 px-4 py-2 text-xs font-black transition hover:border-fei-bg/35">Unlock access</button>
-          </div>
-        </section>
-
-        <section className="mt-10">
           <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/42">Your learning experience</p>
           <h2 className="mt-2 max-w-2xl text-3xl font-black tracking-[-0.045em] sm:text-4xl">See how your pathway will look.</h2>
           <p className="mt-2 max-w-xl text-sm leading-6 text-fei-bg/55">A practical workspace with lessons, football scenarios and progress built around your role.</p>
@@ -178,6 +168,21 @@ function UnpaidResultView({
               </div>
             </div>
           </div>
+          <aside className="lg:sticky lg:top-24">
+            <div className="overflow-hidden rounded-[1.5rem] border border-fei-yellow/45 bg-[#fff9df] shadow-[0_18px_45px_rgba(255,201,20,0.16)]">
+              <div className="h-1.5 bg-fei-yellow" />
+              <div className="p-5">
+                <p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/55">Course access</p>
+                <h3 className="mt-3 text-xl font-black tracking-[-0.035em]">Keep building from your result.</h3>
+                <p className="mt-2 text-sm leading-6 text-fei-bg/62">Unlock lessons and practice scenarios tailored to your role.</p>
+                <div className="mt-5 flex items-end gap-2">
+                  <p className="text-4xl font-black leading-none">$49</p>
+                  <p className="pb-0.5 text-sm font-bold text-fei-bg/50">/ month</p>
+                </div>
+                <button type="button" onClick={onUnlock} className="mt-5 w-full rounded-full bg-fei-yellow px-4 py-3 text-sm font-black shadow-[0_10px_20px_rgba(255,201,20,0.2)] transition hover:-translate-y-0.5">Unlock course access</button>
+              </div>
+            </div>
+          </aside>
         </section>
       </main>
     </div>
