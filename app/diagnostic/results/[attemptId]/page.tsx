@@ -239,6 +239,8 @@ export default function DiagnosticResultPage() {
   const strengths = strengthsByLevel[result.level] ?? strengthsByLevel.B1
   const priorities = prioritiesByLevel[result.level] ?? prioritiesByLevel.B1
 
+  if (isUnpaidDemo) return <UnpaidResultView result={result} role={role} onUnlock={() => router.push('/#pricing')} />
+
   return (
     <div className="min-h-screen bg-[#F7F8FA] text-fei-bg">
       <nav className="sticky top-0 z-20 border-b border-fei-bg/[0.08] bg-white/90 backdrop-blur-xl">
