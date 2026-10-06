@@ -79,7 +79,7 @@ export default function DiagnosticResultPage() {
     let active = true
 
     async function load() {
-      if (params.attemptId === 'demo') {
+      if (params.attemptId === 'demo' || params.attemptId === 'unpaid-demo') {
         if (active) setLoading(false)
         return
       }
@@ -140,6 +140,7 @@ export default function DiagnosticResultPage() {
         <section className="mt-7">
           <h1 className="text-3xl tracking-[-0.04em] sm:text-5xl"><span className="font-normal">Your profile is </span><span className="font-black">ready.</span></h1>
           <p className="mt-2 text-xs text-fei-bg/40">Your diagnostic profile has been saved to your FEI dashboard.</p>
+          <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-fei-yellow/35 bg-fei-yellow/[0.08] px-3 py-1.5 text-xs font-semibold text-fei-bg/65"><span className="h-2 w-2 rounded-full bg-fei-yellow" />Diagnostic complete · Course access not unlocked</div>
         </section>
 
         <section className="mt-8 rounded-[2rem] border border-fei-bg/10 bg-white shadow-[0_18px_55px_rgba(7,17,31,0.05)]">
