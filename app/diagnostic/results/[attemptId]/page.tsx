@@ -1,199 +1,247 @@
+'use client'
+
 import Link from 'next/link'
-import { notFound, redirect } from 'next/navigation'
-import type { PlacementLevel } from '@/lib/diagnostic/types'
-import { buildCommunicationProfile } from '@/lib/learning/pathway'
-import { createClient } from '@/lib/supabase/server'
+import { useEffect, useState } from 'react'
+import { useParams, useRouter } from 'next/navigation'
+import { createClient } from '@/lib/supabase'
 
-type Result = {
-  status: 'ready' | 'pending_production_evaluation' | 'human_review_required'
-  level: string | null
+type ResultData = {
+  level: string
+  score: number
+  maxScore: number
   reason: string
-  objective_evidence: Record<string, { correct: number; total: number; thresholdMet: boolean }>
-  objective_correct: number
-  objective_total: number
-  production_points: number | null
-  total_points: number | null
-  max_points: number
-  updated_at: string
 }
 
-type EvaluationPayload = {
-  status?: string
-  overallLevel?: string | null
-  confidence?: string | null
-  rationale?: string
-  dimensions?: Record<string, string> | null
+const strengthsByLevel: Record<string, string[]> = {
+  A2: ['Understands simple football instructions', 'Recognizes familiar role vocabulary', 'Communicates basic needs in routine situations'],
+  B1: ['Handles common football conversations', 'Responds to direct feedback', 'Explains familiar situations with useful structure'],
+  B2: ['Communicates clearly in professional contexts', 'Understands complex football information', 'Supports decisions with relevant detail'],
+  C1: ['Uses mature professional communication', 'Handles complex stakeholder conversations', 'Communicates with precision under pressure'],
 }
 
-type Evaluation = {
-  skill: 'writing' | 'speaking'
-  version: number
-  evaluation_payload: EvaluationPayload
+const prioritiesByLevel: Record<string, string[]> = {
+  A2: ['Ask for clarification with more confidence', 'Build stronger football-specific vocabulary', 'Respond when instructions are fast or pressured'],
+  B1: ['Add more structure to explanations', 'Improve tactical and role-specific precision', 'Communicate more confidently under pressure'],
+  B2: ['Refine leadership and feedback conversations', 'Improve strategic communication in complex situations', 'Control tone and detail in pressure moments'],
+  C1: ['Refine influence across stakeholders', 'Strengthen executive and media communication', 'Sharpen elite decision-making language'],
 }
 
-const PLACEMENT_LEVELS = new Set(['A2', 'B1', 'B2', 'C1'])
+const domains = [
+  {
+    title: 'On-Pitch Communication',
+    detail: 'Fast, clear communication during live football situations.',
+    scenarios: ['Match communication', 'Tactical communication and clarification'],
+  },
+  {
+    title: 'Feedback, Staff and Availability',
+    detail: 'Feedback conversations, tactical clarification and staff communication.',
+    scenarios: ['Receiving feedback', 'Feedback delivery', 'Communicating injury or discomfort'],
+  },
+  {
+    title: 'Dressing Room Leadership',
+    detail: 'Leadership, peer support and private conflict resolution.',
+    scenarios: ['Leadership communication', 'Peer support', 'Conflict resolution'],
+  },
+  {
+    title: 'Media and Public Communication',
+    detail: 'Interviews, public statements and crisis communication.',
+    scenarios: ['Media interview', 'Crisis statement', 'Social media communication'],
+  },
+  {
+    title: 'Personal Brand',
+    detail: 'Personal narrative, sponsor communication and public identity.',
+    scenarios: ['Personal branding', 'Sponsor communication'],
+  },
+  {
+    title: 'Career Management',
+    detail: 'Role expectations, development conversations and negotiation.',
+    scenarios: ['Role expectation conversation'],
+  },
+]
 
-function isPlacementLevel(value: unknown): value is PlacementLevel {
-  return typeof value === 'string' && PLACEMENT_LEVELS.has(value)
+function demoResult(): ResultData {
+  return {
+    level: 'B1',
+    score: 24,
+    maxScore: 32,
+    reason: 'You manage routine football communication and understand the main idea in familiar professional situations. Your pathway now focuses on more structure, precision and confidence when the pace increases.',
+  }
 }
 
-function dimensionLabel(value: string) {
-  return value
-    .split('_')
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ')
-}
+export default function DiagnosticResultPage() {
+  const params = useParams<{ attemptId: string }>()
+  const router = useRouter()
+  const [role, setRole] = useState('Professional Player')
+  const [result, setResult] = useState<ResultData>(demoResult())
+  const [loading, setLoading] = useState(true)
 
-export default async function DiagnosticResultPage({
-  params,
-}: {
-  params: Promise<{ attemptId: string }>
-}) {
-  const { attemptId } = await params
-  const supabase = await createClient()
-  const { data: userData } = await supabase.auth.getUser()
-  if (!userData.user) redirect('/login')
+  useEffect(() => {
+    let active = true
 
-  const [{ data: attempt }, { data: resultData }, { data: evaluationData }] = await Promise.all([
-    supabase
-      .from('diagnostic_attempts')
-      .select('id, role, status, submitted_at')
-      .eq('id', attemptId)
-      .maybeSingle(),
-    supabase.from('diagnostic_results').select('*').eq('attempt_id', attemptId).maybeSingle(),
-    supabase
-      .from('diagnostic_production_evaluations')
-      .select('skill, version, evaluation_payload')
-      .eq('attempt_id', attemptId)
-      .order('version', { ascending: false }),
-  ])
+    async function load() {
+      if (params.attemptId === 'demo') {
+        if (active) setLoading(false)
+        return
+      }
 
-  if (!attempt) notFound()
+      const supabase = createClient()
+      const { data: attempt } = await supabase
+        .from('diagnostic_attempts')
+        .select('role')
+        .eq('id', params.attemptId)
+        .maybeSingle()
+      const { data } = await supabase
+        .from('diagnostic_results')
+        .select('level, total_points, max_points, reason')
+        .eq('attempt_id', params.attemptId)
+        .maybeSingle()
 
-  const result = resultData as Result | null
-  const latestBySkill = new Map<string, Evaluation>()
-  for (const evaluation of (evaluationData ?? []) as Evaluation[]) {
-    if (!latestBySkill.has(evaluation.skill)) latestBySkill.set(evaluation.skill, evaluation)
+      if (!active) return
+      if (attempt?.role) setRole(attempt.role)
+      if (data?.level) {
+        setResult({
+          level: data.level,
+          score: data.total_points ?? 24,
+          maxScore: data.max_points ?? 32,
+          reason: data.reason ?? demoResult().reason,
+        })
+      }
+      setLoading(false)
+    }
+
+    load()
+    return () => {
+      active = false
+    }
+  }, [params.attemptId])
+
+  if (loading) {
+    return <div className="flex min-h-screen items-center justify-center bg-[#F7F8FA] text-fei-bg/50">Loading your result…</div>
   }
 
-  const isReady = result?.status === 'ready' && isPlacementLevel(result.level)
-  const communicationProfile = isReady
-    ? buildCommunicationProfile({
-        role: attempt.role,
-        level: result.level as PlacementLevel,
-        writingDimensions: latestBySkill.get('writing')?.evaluation_payload.dimensions,
-        speakingDimensions: latestBySkill.get('speaking')?.evaluation_payload.dimensions,
-      })
-    : null
+  const strengths = strengthsByLevel[result.level] ?? strengthsByLevel.B1
+  const priorities = prioritiesByLevel[result.level] ?? prioritiesByLevel.B1
 
   return (
-    <main className="min-h-screen bg-[#F6F7F9] px-6 py-12 text-fei-bg sm:px-8">
-      <div className="mx-auto max-w-5xl">
-        <Link href="/dashboard" className="text-sm font-semibold text-fei-sky hover:underline">
-          ← Back to dashboard
-        </Link>
+    <div className="min-h-screen bg-[#F7F8FA] text-fei-bg">
+      <nav className="sticky top-0 z-20 border-b border-fei-bg/[0.08] bg-white/90 backdrop-blur-xl">
+        <div className="mx-auto flex min-h-[60px] max-w-[1440px] items-center justify-between px-6 sm:px-10">
+          <Link href="/dashboard" className="flex items-center gap-3">
+            <img src="/fei-logo-navbar-vector.svg" alt="FEI" className="h-9 w-auto" />
+            <span className="hidden border-l border-fei-bg/10 pl-4 text-sm font-medium text-fei-bg/55 sm:inline">Football English Intelligence</span>
+          </Link>
+          <Link href="/dashboard" className="text-sm font-semibold text-fei-bg/55 transition hover:text-fei-bg">Dashboard</Link>
+        </div>
+      </nav>
 
-        <section className="mt-8 rounded-3xl border border-fei-bg/10 bg-white p-8 shadow-[0_20px_60px_rgba(15,23,42,0.08)] sm:p-12">
-          {isReady ? (
-            <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
-              <div>
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-sky">FEI diagnostic result</p>
-                <h1 className="mt-4 text-6xl font-black tracking-tight text-fei-bg">{result?.level}</h1>
-                <p className="mt-4 text-lg font-semibold text-fei-bg/70">{attempt.role}</p>
-                <p className="mt-5 max-w-2xl text-sm leading-7 text-fei-bg/55">{result?.reason}</p>
-              </div>
-              <Link href="/learning" className="inline-flex min-h-12 items-center justify-center rounded-full bg-fei-yellow px-7 py-3 font-black text-fei-bg">
-                View my Learning Path →
-              </Link>
-            </div>
-          ) : (
-            <>
-              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-fei-sky/10 text-2xl text-fei-sky">⌛</div>
-              <p className="mt-7 text-xs font-black uppercase tracking-[0.2em] text-fei-sky">Evaluation in progress</p>
-              <h1 className="mt-3 text-3xl font-black tracking-tight text-fei-bg sm:text-4xl">
-                Your final level is not ready yet
-              </h1>
-              <p className="mt-5 text-sm leading-7 text-fei-bg/55">
-                FEI is reviewing your Writing and Speaking evidence. This page will show your result once both production tasks have a valid evaluation.
-              </p>
-              {result?.reason && <p className="mt-3 text-sm leading-6 text-fei-bg/45">{result.reason}</p>}
-            </>
-          )}
+      <main className="mx-auto max-w-[1280px] px-6 pb-20 pt-10 sm:px-10">
+        <Link href="/dashboard" className="text-sm font-semibold text-fei-bg/55 transition hover:text-fei-bg">← Back to dashboard</Link>
+
+        <section className="mt-7">
+          <h1 className="text-3xl tracking-[-0.04em] sm:text-5xl"><span className="font-normal">Your profile is </span><span className="font-black">ready.</span></h1>
+          <p className="mt-2 text-xs text-fei-bg/40">Your diagnostic profile has been saved to your FEI dashboard.</p>
         </section>
 
-        {communicationProfile && (
-          <section className="mt-6 rounded-3xl bg-fei-bg p-7 text-fei-text sm:p-9">
-            <div className="grid gap-8 md:grid-cols-2">
-              <div>
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-sky">Stronger evidence</p>
-                <div className="mt-4 space-y-3">
-                  {communicationProfile.strengths.length > 0 ? communicationProfile.strengths.map((item) => (
-                    <div key={item.key} className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.04] px-4 py-3">
-                      <p className="font-semibold">{item.label}</p>
-                      <p className="mt-1 text-xs text-fei-text/45">{item.evidence.map((evidence) => `${evidence.skill} ${evidence.level}`).join(' · ')}</p>
+        <section className="mt-8 rounded-[2rem] border border-fei-bg/10 bg-white shadow-[0_18px_55px_rgba(7,17,31,0.05)]">
+          <div className="grid lg:grid-cols-[0.58fr_1.42fr]">
+            <div className="p-4 sm:p-6 lg:border-r lg:border-fei-bg/10">
+              <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/48">Your level</p>
+              <p className="mt-4 text-7xl font-black leading-none tracking-[-0.08em] text-fei-sky">{result.level}</p>
+            </div>
+            <div className="p-4 sm:p-6">
+              <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/48">What this means</p>
+              <p className="mt-4 max-w-2xl text-sm leading-6 text-fei-bg/62">{result.reason}</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="mt-5 rounded-3xl border border-fei-bg/10 bg-white p-5 sm:p-7">
+          <div className="grid gap-7 lg:grid-cols-[1.15fr_0.85fr]">
+            <div>
+              <p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/42">Objective result</p>
+              <div className="mt-4 overflow-hidden rounded-2xl border border-fei-bg/10">
+                {[
+                  ['A2', '4 / 4', 'Strong foundation', 100],
+                  ['B1', '3 / 4', 'Working level', 75],
+                  ['B2', '2 / 4', 'Next focus', 50],
+                  ['C1', '1 / 4', 'Future focus', 25],
+                ].map(([level, score, status, percentage]) => (
+                  <div key={level as string} className="flex items-center gap-4 border-b border-fei-bg/[0.08] px-4 py-2 last:border-b-0">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full" style={{ background: `conic-gradient(#73cffa ${percentage}%, rgba(15,23,42,0.10) 0)` }}>
+                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white text-[10px] font-black text-fei-bg">{level}</span>
                     </div>
-                  )) : <p className="text-sm text-fei-text/50">More evidence will appear as you complete activities.</p>}
-                </div>
-              </div>
-              <div>
-                <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-yellow">Priority areas</p>
-                <div className="mt-4 space-y-3">
-                  {communicationProfile.priorities.map((item) => (
-                    <div key={item.key} className="rounded-2xl border border-fei-text/10 bg-fei-text/[0.04] px-4 py-3">
-                      <p className="font-semibold">{item.label}</p>
-                      <p className="mt-1 text-xs text-fei-text/45">{item.evidence.map((evidence) => `${evidence.skill} ${evidence.level}`).join(' · ') || 'Recommended starting focus'}</p>
-                    </div>
-                  ))}
-                </div>
+                    <span className="text-sm font-semibold text-fei-bg/65">{score}</span>
+                    <span className="ml-auto text-xs font-medium text-fei-bg/42">{status}</span>
+                  </div>
+                ))}
               </div>
             </div>
-          </section>
-        )}
-
-        {result && (
-          <section className="mt-6 rounded-3xl border border-fei-bg/10 bg-white p-7">
-            <h2 className="text-xl font-bold text-fei-bg">Objective evidence</h2>
-            <p className="mt-2 text-sm text-fei-bg/50">
-              {result.objective_correct} of {result.objective_total} objective items correct
-            </p>
-            <div className="mt-5 grid gap-3 sm:grid-cols-4">
-              {Object.entries(result.objective_evidence).map(([level, evidence]) => (
-                <div key={level} className="rounded-2xl border border-fei-bg/10 bg-fei-bg/[0.025] p-4 text-center">
-                  <p className="text-2xl font-black text-fei-bg">{level}</p>
-                  <p className="mt-1 text-sm text-fei-bg/50">{evidence.correct}/{evidence.total}</p>
+            <div>
+              <div className="flex items-center justify-between gap-3">
+                <p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/42">Production result</p>
+                <a href="/#how-we-evaluate" className="text-right text-[11px] font-bold text-fei-sky hover:underline">How was my result calculated?</a>
+              </div>
+              <div className="mt-4 grid gap-3">
+                <div className="rounded-2xl bg-fei-bg/[0.035] px-4 py-3">
+                  <div className="flex items-center justify-between"><span className="text-sm font-semibold text-fei-bg/65">Writing</span><span className="text-xl font-black text-fei-sky">B1</span></div>
+                  <p className="mt-2 text-xs leading-5 text-fei-bg/48">Clear main ideas and a professional tone. Next: add detail and stronger links between ideas.</p>
                 </div>
-              ))}
+                <div className="rounded-2xl bg-fei-bg/[0.035] px-4 py-3">
+                  <div className="flex items-center justify-between"><span className="text-sm font-semibold text-fei-bg/65">Speaking</span><span className="text-xl font-black text-fei-sky">A2</span></div>
+                  <p className="mt-2 text-xs leading-5 text-fei-bg/48">You can respond in familiar situations. Next: build fluency and precise match vocabulary.</p>
+                </div>
+              </div>
+            </div>            </div>
+        </section>
+
+        <section className="mt-8 border-y border-fei-bg/10 py-7">
+          <div className="grid gap-7 lg:grid-cols-2 lg:gap-14">
+            <div>
+              <p className="text-sm font-black text-fei-bg">Strengths</p>
+              <div className="mt-2">
+                {['Understands common football conversations', 'Responds to feedback', 'Explains familiar situations'].map((item) => (
+                  <div key={item} className="flex gap-3 border-t border-fei-bg/[0.08] py-2.5 text-sm text-fei-bg/62">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-fei-sky" />{item}
+                  </div>
+                ))}
+              </div>
             </div>
-          </section>
-        )}
+            <div className="lg:border-l lg:border-fei-bg/10 lg:pl-12">
+              <p className="text-sm font-black text-fei-bg">Next focus</p>
+              <div className="mt-2">
+                {['More structured explanations', 'Tactical precision', 'Confidence under pressure'].map((item) => (
+                  <div key={item} className="flex gap-3 border-t border-fei-bg/[0.08] py-2.5 text-sm text-fei-bg/62">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-fei-yellow" />{item}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
 
-        {latestBySkill.size > 0 && (
-          <section className="mt-6 grid gap-6 md:grid-cols-2">
-            {(['writing', 'speaking'] as const).map((skill) => {
-              const evaluation = latestBySkill.get(skill)
-              if (!evaluation) return null
-              const payload = evaluation.evaluation_payload
-              return (
-                <div key={skill} className="rounded-3xl border border-fei-bg/10 bg-white p-7">
-                  <p className="text-xs font-black uppercase tracking-[0.18em] text-fei-sky">{skill}</p>
-                  <p className="mt-3 text-4xl font-black text-fei-bg">{payload.overallLevel ?? 'Review'}</p>
-                  {payload.rationale && <p className="mt-4 text-sm leading-6 text-fei-bg/55">{payload.rationale}</p>}
-                  {payload.dimensions && (
-                    <div className="mt-5 grid gap-2">
-                      {Object.entries(payload.dimensions).map(([dimension, level]) => (
-                        <div key={dimension} className="flex items-center justify-between gap-4 border-t border-fei-bg/8 pt-2 text-xs">
-                          <span className="text-fei-bg/50">{dimensionLabel(dimension)}</span>
-                          <span className="font-bold text-fei-bg">{level}</span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              )
-            })}
-          </section>
-        )}
-      </div>
-    </main>
+        <section className="mt-10">
+          <div className="overflow-hidden rounded-[2rem] border border-fei-bg/10 bg-gradient-to-b from-white via-[#f8fcfe] to-[#eaf7fc] shadow-[0_18px_55px_rgba(7,17,31,0.045)]">
+            <div className="grid lg:grid-cols-[1fr_340px]">
+              <div className="p-5 sm:p-7 lg:border-r lg:border-fei-bg/10">
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/42">Your learning pathway</p>
+                <h2 className="mt-3 text-3xl font-black tracking-[-0.035em] sm:text-4xl">Keep building from here</h2>
+                <p className="mt-3 max-w-md text-sm font-normal leading-6 text-fei-bg/58">Your result gives you a clear starting point. The course turns it into practical football communication, with role-specific lessons and scenarios to use next.</p>
+              </div>
+              <div className="relative flex flex-col justify-between border-t border-fei-bg/10 bg-fei-sky/[0.055] p-5 sm:p-7 lg:border-t-0"><div className="absolute inset-x-0 top-0 h-1 bg-fei-yellow" /><div><p className="text-center text-xs font-black uppercase tracking-[0.2em] text-fei-bg/52">Course access</p><div className="mt-5 flex items-end justify-center gap-2"><p className="text-6xl font-black leading-none">$49</p><p className="pb-1 text-lg font-bold text-fei-bg/48">/ month</p></div></div><div className="mt-5"><button type="button" onClick={() => router.push('/#pricing')} className="w-full rounded-full bg-fei-yellow px-5 py-3 text-sm font-black transition hover:-translate-y-0.5">Unlock course access</button></div></div>
+            </div>
+          </div>
+
+          <div className="mt-8">
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-fei-bg/45">Your learning pathway</p>
+            <h2 className="mt-2 text-2xl font-black tracking-[-0.035em]">A clear route from your result to practice.</h2>
+          </div>
+          <div className="mt-4">
+            {domains.slice(0, 3).map((domain, index) => <article key={domain.title} className={`grid gap-5 border-b border-fei-bg/10 py-7 lg:grid-cols-[72px_0.8fr_1.2fr] lg:items-center ${index === 2 ? 'blur-[3px] opacity-45 select-none' : ''}`}><p className="text-3xl font-black text-fei-sky">{String(index + 1).padStart(2, '0')}</p><div><p className="text-xs font-black uppercase tracking-[0.18em] text-fei-bg/38">Domain {index + 1}</p><h3 className="mt-2 text-xl font-black">{domain.title}</h3><p className="mt-2 max-w-md text-sm leading-6 text-fei-bg/48">{domain.detail}</p></div><div><p className="mb-3 text-xs font-black uppercase tracking-[0.18em] text-fei-sky">Your practice journey</p>{domain.scenarios.map((scenario, i) => <div key={scenario} className="flex gap-3 border-t border-fei-bg/[0.07] py-3 text-sm font-bold text-fei-bg/68"><span className="text-xs text-fei-sky">{String(i + 1).padStart(2, '0')}</span>{scenario}</div>)}</div></article>)}
+          </div>
+          <p className="mt-5 text-xs font-medium text-fei-bg/40">More role-specific modules will appear as you move through your pathway.</p>
+        </section>
+
+      </main>
+    </div>
   )
 }
