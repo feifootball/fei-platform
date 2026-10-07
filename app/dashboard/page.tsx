@@ -689,9 +689,9 @@ export default function DashboardPage() {
             <p className="mt-3 text-sm leading-6 text-fei-bg/55">
               Once completed, your report will show your level, strengths, gaps, and recommended next steps.
             </p>
-            {latestDiagnostic ? (
+            {latestDiagnostic || lastAssessment ? (
               <Link
-                href={`/diagnostic/results/${latestDiagnostic.status === 'evaluated' ? latestDiagnostic.id : 'unpaid-demo'}`}
+                href={`/diagnostic/results/${latestDiagnostic?.status === 'evaluated' ? latestDiagnostic.id : 'unpaid-demo'}`}
                 className="mt-6 inline-flex text-sm font-semibold text-fei-sky hover:underline"
               >
                 <span className="inline-flex items-center gap-1.5">
