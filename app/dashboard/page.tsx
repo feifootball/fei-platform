@@ -411,7 +411,7 @@ export default function DashboardPage() {
       ? getResultLabel(lastAssessment.level)
       : '—'
 
-  const isNewUser = hasValidRole && !latestDiagnostic
+  const isNewUser = hasValidRole && !latestDiagnostic && !lastAssessment
 
   if (isNewUser) {
     return (
